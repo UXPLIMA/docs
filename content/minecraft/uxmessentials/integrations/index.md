@@ -1,0 +1,15 @@
+---
+title: Integrations
+order: 148
+description: Overview, Vault & Treasury, PlaceholderAPI, LuckPerms, Land Claims, Bedrock
+  (Floodgate), Custom Items & Heads and Discord.
+---
+
+- [Overview](overview.md) — uxmEssentials integrates with 50 other plugins. Every one of them is optional and none of them needs turning on. uxmEssentials detects the plugin at startup, and when it is not installed no class from it is ever loaded: an absent integration is a silent no-op, not an error in your console.
+- [Vault & Treasury](vault-treasury.md) — uxmEssentials ships its own DB-backed economy — a multi-currency wallet that survives world rollbacks. Vault and Treasury don't power that economy; they are the bridges that let every other plugin on your server (shops, jobs, crates, ...) read and write those balances. This page explains the two sides of that relationship: the economy uxmEssentials serves, and the currencies it can read from other plugins.
+- [PlaceholderAPI](placeholderapi.md) — uxmEssentials works with placeholders in both directions. It publishes its own data as placeholders other plugins can display, and it resolves PlaceholderAPI tokens inside its own text — menus, holograms, scoreboards and more. If you run PlaceholderAPI (and optionally MiniPlaceholders), all of this lights up automatically.
+- [LuckPerms](luckperms.md) — uxmEssentials never hard-depends on a permission plugin. Every permission check goes through an internal Permissions port that sits on top of Bukkit's ordinary hasPermission, so the sensible defaults work on a bare server. When LuckPerms is installed, one extra capability unlocks: numbered quota nodes can also be read from LuckPerms meta.
+- [Land Claims](claims.md) — If your server runs a land-claim plugin, uxmEssentials respects it. Homes will not be set inside somebody else's claim, /rtp will not drop a player into claimed land, and sitting down is gated the same way building is.
+- [Bedrock (Floodgate)](floodgate.md) — Running a cross-platform server that accepts Bedrock Edition players through Geyser? uxmEssentials detects those players and, instead of showing them a chest GUI, renders native Cumulus forms — the tidy list-and-button dialogs Bedrock players expect. It all keys off Floodgate, and there is nothing to configure beyond installing the Bedrock stack itself.
+- [Custom Items & Heads](custom-items.md) — Anywhere uxmEssentials asks for a material — menu icons, and the same shared icon resolution used for kits and hologram displays — you aren't limited to vanilla items. A short provider:id prefix lets you drop in custom items from ItemsAdder, Oraxen, Nexo, MMOItems or ExecutableItems, and custom heads from HeadDatabase, base64 textures or player skins.
+- [Discord](discord.md) — uxmEssentials can reach into Discord through a small companion jar built on JDA (the Java Discord API). It mirrors server events into your Discord channels and hosts the Discord side of account linking. It's entirely optional — a separate download that sits dormant until you give it a bot token.
