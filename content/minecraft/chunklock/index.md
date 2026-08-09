@@ -2,6 +2,7 @@
 title: Chunklock
 order: 166
 description: Overview, Installation, How It Works, Commands and Configuration.
+section: true
 ---
 
 - [Overview](overview.md)

@@ -3,6 +3,7 @@ title: uxmEssentials
 order: 89
 description: Getting Started, The Module System, Commands, Menus, Configuration, Feature
   Guides, Integrations, Database, Cross-Server, Permissions and Developer API.
+section: true
 ---
 
 - [Getting Started](getting-started/)
