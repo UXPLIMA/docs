@@ -9,7 +9,9 @@ description: uxmEssentials is built to be a good neighbour. Your plugin can watc
 - **[Adding the dependency](dependency.md)** gives you the coordinate.
 - **[Events](events.md)** is the reference for the ninety-odd events, and the handful you can cancel.
 - **[Query API](queries.md)** is for asking what is true right now: homes, balances, punishments, who is away.
+- **[Action API](actions.md)** is for changing it: set a home, pay a player, hand over a kit, ban somebody.
 - **[Menu API](menu-api.md)** is for teaching the GUI engine your own actions, requirements and placeholders.
+- **[REST API](rest-api.md)** is the same reach over HTTP, for a panel, a bot or a script that is not a plugin.
 
 ## The front door
 
@@ -64,8 +66,9 @@ absent, still loading, or shutting down. Nothing here throws merely because the 
 | Veto (cancellable pre-events) for the operations that can be refused cleanly | Available | [Events](events.md#what-you-can-cancel) |
 | Menu extension: actions, requirements, placeholders, list sources, icons | Available | [Menu API](menu-api.md) |
 | Reading data directly, across fourteen contexts | Available | [Query API](queries.md) |
+| Performing operations directly, across twelve contexts | Available | [Action API](actions.md) |
+| HTTP and WebSocket access for programs that are not plugins | Available as a separate add-on jar | [REST API](rest-api.md) |
 | Economy | Available through Vault and Treasury | [Vault and Treasury](../integrations/vault-treasury.md) |
-| Performing operations directly (set a home, pay a player, jail somebody) | Planned | |
 
 Economy deliberately has no bespoke port. uxmEssentials registers itself into the ecosystem's standard slots,
 Treasury first and then Vault, so if you already talk to `net.milkbowl.vault.economy.Economy` you are already talking
@@ -110,4 +113,6 @@ working fails on the commit that broke it rather than on somebody's server month
 
 - [Adding the dependency](dependency.md)
 - [Events](events.md)
+- [Action API](actions.md)
 - [Menu API](menu-api.md)
+- [REST API](rest-api.md)

@@ -1,6 +1,9 @@
 ---
 title: Menu API
-order: 1650
+order: 1660
+description: 'The menu engine behind every GUI in uxmEssentials is extensible: teach
+  it your own actions, requirements, placeholders, list sources and icons, and operators
+  can write your ids in their own menu files.'
 ---
 
 The [menu engine](../menus/engine.md) behind every GUI in uxmEssentials is extensible. Through `MenuApi` you teach it
