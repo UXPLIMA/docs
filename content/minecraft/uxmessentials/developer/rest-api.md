@@ -225,6 +225,18 @@ too, which is the honest reply to a bot passing along whatever a user typed.
 `can-rank-up` is `false` for a player who is offline, because a rank requirement may read their inventory. The
 `standing` key is `null` rather than missing when the ranks module holds nothing for them.
 
+### Regions, snapshots and security
+
+| Route | Answers |
+|---|---|
+| `GET /worlds/{name}/regions` | Every region in the world, or those covering a point with `?x=&y=&z=` |
+| `GET /worlds/{name}/regions/{id}` | One region, or `null` |
+| `GET /players/{uuid}/snapshots` | The inventory snapshots held for them, newest first |
+| `GET /players/{uuid}/security` | Which factors are on file, and whether they are locked out |
+
+The covering set comes back highest priority first, which is the order that decides an overlap. A partial
+coordinate is a `400`: a point needs all three. No factor material is in the security answer and none ever will be.
+
 ### Teleport, worlds, votes and messaging
 
 | Route | Answers |
@@ -342,6 +354,18 @@ is not something a single answer can say honestly.
 There is no route that creates a binding. A link is only real once the player proved it in game with a one-time
 code, so the only write here is the removal, which answers `not-found` for somebody who was never linked.
 
+### Snapshots and security
+
+| Route | Body |
+|---|---|
+| `POST /players/{uuid}/snapshots/restore` | `snapshot` |
+| `POST /players/{uuid}/security/force` | none |
+| `POST /players/{uuid}/security/unlock` | none |
+
+A restore takes the same safety copy the command does and needs the player online. `force` forgets the account's
+trusted devices so its next join proves the factor again; `unlock` ends a lockout early. There is no route that
+enrols or clears a factor.
+
 ### Teleport, worlds, votes and messaging
 
 | Route | Body |
@@ -358,10 +382,12 @@ code, so the only write here is the removal, which answers `not-found` for someb
 Mail without a `from` comes from the server: it waits in the mailbox rather than being lost to an offline player,
 and no mute or ignore applies to it, because neither can be about a plugin.
 
-<Callout type="note" title="Player warps, vaults and trade are read-only">
+<Callout type="note" title="Player warps, vaults, trade and regions are read-only">
 
-All three publish a query surface and no action surface, so over HTTP they are readable and nothing more. That is
-the published API's shape showing through rather than a decision taken in the add-on.
+All four publish a query surface and no action surface, so over HTTP they are readable and nothing more. That is
+the published API's shape showing through rather than a decision taken in the add-on. For regions the reason is
+worth saying out loud: editing a protection is an operator act with its own command and its own audit trail, and a
+protection changed by a plugin would leave staff looking at something nobody in the logs ever did.
 
 </Callout>
 
@@ -422,6 +448,7 @@ Seventy-nine events, named `context.thing`. Every notification event uxmEssentia
 | `economy` | `wallet-credit`, `wallet-debit`, `wallet-reject`, `bank-deposit`, `bank-withdraw`, `loan-disburse`, `loan-repay` |
 | `hologram` | `create`, `delete` |
 | `home` | `create`, `delete`, `relocate`, `rename`, `icon-change`, `visibility-change`, `limit-reached` |
+| `invrollback` | `inventory-restore` |
 | `itemworld` | `entity-purge`, `mob-spawn` |
 | `kit` | `claim` |
 | `messaging` | `private-message`, `mail-deliver`, `help-op` |
@@ -434,6 +461,7 @@ Seventy-nine events, named `context.thing`. Every notification event uxmEssentia
 | `trade` | `complete`, `cancel` |
 | `rank` | `up`, `set`, `prestige` |
 | `scoreboard` | `visibility` |
+| `security` | `verification-pass`, `verification-fail`, `lockout` |
 | `staff` | `chat`, `mode` |
 | `teleport` | `player-teleport`, `back-location-capture`, `warmup-start`, `warmup-cancel`, `request-send`, `request-accept`, `request-deny`, `request-cancel`, `request-expire` |
 | `vault` | `open`, `contents-change` |

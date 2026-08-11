@@ -371,6 +371,43 @@ different, which is why a panel or a bot can do it.
 It writes one row, so an offline account is fine, which is most of what this is called for. A player who had no
 binding answers `not-found` rather than a quiet success, so a caller can tell a removal from a no-op.
 
+## Inventory snapshots
+
+`actions.invRollback()` &rarr; `UxmInvRollbackActions`
+
+| Method | Does |
+|---|---|
+| `restore(playerId, snapshotId)` | put a stored inventory back, as `/invrestore` does |
+
+The same safety copy the command takes is taken here: what the player is holding right now is frozen as its own
+snapshot before it is overwritten, so a restore run by mistake can itself be undone.
+
+The player has to be online. A snapshot is applied to a live inventory and never written to disk, so an offline
+target answers `player-offline`; their snapshots keep, and the restore works once they return. A snapshot id that no
+longer resolves, pruned or already restored, answers `not-found`.
+
+There is no capture verb. Snapshots are taken by the events that make them worth taking, a death and a logout, and
+one minted on request would sit in the same bounded set and push a real one out of it.
+
+## Security
+
+`actions.security()` &rarr; `UxmSecurityActions`
+
+| Method | Does |
+|---|---|
+| `forceVerification(playerId)` | make the account prove its factor again on the next join |
+| `clearLockout(playerId)` | end a lockout early |
+
+Both go in the safe direction. Forcing a verification forgets every device the account is trusted from, which is
+what a panel does when an account looks compromised; an account holding no factor has nothing to be made to prove
+and answers `not-found`. Clearing a lockout is what staff do for a player who locked themselves out; an account that
+is not locked out answers `already-in-state`, and a lockout the operator chose to write to the ban list is lifted by
+the unban that lifts every other one.
+
+There is deliberately no enrol and no reset. Enrolling for somebody else would mean minting a secret they never saw,
+and clearing an account's factors is a security downgrade that belongs behind an operator's own command, where it is
+logged as a person having done it.
+
 ## Vote
 
 `actions.vote()` &rarr; `UxmVoteActions`

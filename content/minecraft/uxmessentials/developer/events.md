@@ -275,6 +275,30 @@ assume a live player from it. The unlink event carries the account that was boun
 there is nowhere left to look it up, and it covers all three ways a binding ends: the player, an operator, or a
 plugin.
 
+### Inventory snapshots
+
+| Event | Fires when | Carries |
+|---|---|---|
+| `UxmInventoryRestoreEvent` | a stored snapshot was put back | `getSnapshotId()`, `getCause()`, `getTakenAt()` |
+
+Fires after the items are set, so a listener reading the inventory sees the restored one. The safety copy taken of
+what was there before is a capture rather than a restore, and fires nothing.
+
+### Security
+
+| Event | Fires when | Carries |
+|---|---|---|
+| `UxmVerificationPassEvent` | a player proved their second factor | player id and name |
+| `UxmVerificationFailEvent` | a submitted value proved nothing | `getRemainingAttempts()` |
+| `UxmSecurityLockoutEvent` | an account ran out of attempts | `getLockout()`, `isBanned()` |
+
+The attempt that spends the last try fires the lockout rather than another failure, so one submission never fires
+both. Which factor was presented is not carried, because the verification does not learn it either: that is what
+makes the comparison constant-time.
+
+A pass fires only for a proof that was actually made. A player holding no factor is never asked for one, and one
+waved through by a remembered device proved nothing this time.
+
 ### Voting and item or world utilities
 
 | Event | Fires when | Carries |

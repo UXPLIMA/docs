@@ -355,6 +355,60 @@ the check runs on the player's own thread and answers `false` for a player who i
 own rule rather than a shortcut here: a condition that cannot be verified fails closed instead of passing on a
 guess.
 
+## Regions
+
+`api.regions()` &rarr; `UxmRegionsQuery`
+
+| Method | Answers |
+|---|---|
+| `available()` | whether WorldGuard is installed and reachable |
+| `in(worldName)` | every region defined in a world |
+| `region(worldName, id)` | one region by id |
+| `at(location)` | every region covering a point, highest priority first |
+
+A convenience rather than a second source of truth. WorldGuard owns region state and has its own API; this exists so
+a plugin that already depends on us can ask "what covers this spot" without taking a second dependency.
+
+Every answer is a future because the region container is read on the server thread rather than on a worker: those
+maps are live server state, and reading them from a pool thread is not something WorldGuard's API promises to
+survive. `available()` is the exception and answers where you stand, because it is the question you ask first. When
+it is false the others answer empty rather than failing.
+
+A region carries its priority, both rosters and the flags it sets. The roster entries are identifiers rather than
+players (a uuid, an old name, or a group written `g:name`), because that is what a region holds. The shape is not
+published: a region may be a cuboid, a polygon or the whole world, and a corner pair would be a lie for two of the
+three.
+
+## Inventory snapshots
+
+`api.invRollback()` &rarr; `UxmInvRollbackQuery`
+
+| Method | Answers |
+|---|---|
+| `of(playerId)` | every snapshot held for that player, newest first |
+
+The set is already bounded by the retention rules, per player and by age, so there is no limit to pass: what you get
+is what the server kept. The items are not in it. A snapshot's contents are serialized Bukkit item stacks and there
+is no honest way to hand them across this boundary; what is published is enough to list them and to name one for a
+restore.
+
+## Security
+
+`api.security()` &rarr; `UxmSecurityQuery`
+
+| Method | Answers |
+|---|---|
+| `of(playerId)` | which factors are on file, when they enrolled, and whether they are locked out |
+| `isLockedOut(playerId)` | whether the account is inside a lockout window right now |
+
+Enough for a staff panel to show who has enrolled and to explain why somebody cannot get in. Never the factor
+itself: no PIN, no authenticator secret, no recovery material. Those exist so that only the account holder can
+present them, and an API that handed them out would be handing out the account.
+
+An account with no registration is an answer rather than an absence: nothing enrolled, no enrolment date. The
+lockout is in-memory per-run state, so it is answered on the calling thread; a lockout the operator chose to write
+to the ban list is a ban as well and reads as one there.
+
 ## Vote
 
 `api.vote()` &rarr; `UxmVoteQuery`
