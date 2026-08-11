@@ -252,6 +252,23 @@ coordinate is a `400`: a point needs all three. No factor material is in the sec
 | `GET /players/{uuid}/mail` | The mailbox, with the unread count |
 | `GET /players/{uuid}/ignores` | Who they are ignoring |
 
+### NPCs, holograms, staff and powertools
+
+| Route | Answers |
+|---|---|
+| `GET /npcs` | Every NPC, or one player's with `?owner=` |
+| `GET /npcs/{name}` | One NPC, or `404` |
+| `GET /holograms` | Every hologram |
+| `GET /holograms/{name}` | One hologram, or `404` |
+| `GET /staff` | Everybody in staff mode right now |
+| `GET /players/{uuid}/staff` | Whether they are on duty, and which mode |
+| `GET /players/{uuid}/powertools` | Every bound item in their inventory, in slot order |
+| `GET /players/{uuid}/powertools/held` | What the item in their main hand runs, or `null` |
+
+Hologram text comes back as stored, before MiniMessage and before placeholders: a placeholder line reads
+differently for every viewer, so there is no one rendered answer to send. The powertool routes read a live
+inventory, so an offline player answers empty rather than `404`.
+
 ## Writing
 
 Every write is a `POST` with a JSON body, and every one of them maps onto a verb the Action API already has. There
@@ -418,12 +435,40 @@ whitelist, the bans, the earnings and the history with it.
 Mail without a `from` comes from the server: it waits in the mailbox rather than being lost to an offline player,
 and no mute or ignore applies to it, because neither can be about a plugin.
 
-<Callout type="note" title="Trade and regions are read-only">
+### NPCs and holograms
 
-Both publish a query surface and no action surface, so over HTTP they are readable and nothing more. That is
+| Route | Body |
+|---|---|
+| `POST /npcs` | `actor`, `name`, `location` |
+| `POST /npcs/{name}/move` | `actor`, `location` |
+| `POST /npcs/{name}/skin` | `actor`, `skin` (the account to copy; null takes the skin off) |
+| `POST /npcs/{name}/name` | `actor`, `name` (null shows the id again) or `hidden: true` (show nothing) |
+| `POST /npcs/{name}/command` | `actor`, `command` (null unbinds it) |
+| `POST /npcs/{name}/delete` | `actor` |
+| `POST /holograms` | `actor`, `name`, `location`, `line` |
+| `POST /holograms/{name}/move` | `actor`, `location` |
+| `POST /holograms/{name}/lines` | `actor`, and see below |
+| `POST /holograms/{name}/command` | `actor`, `command` (null unbinds it) |
+| `POST /holograms/{name}/delete` | `actor` |
+
+Every one of these names an `actor` in its body rather than taking it from the token. The plugin runs the same use
+case the command runs, and that use case is written for a person: a create is charged to the actor's NPC limit and
+records them as the owner. A token is not a player, and an NPC nobody owns is one an operator cannot ask anybody
+about.
+
+The one line route says all three edits. No `line` number adds `text` to the bottom. A `line` number with `text`
+replaces that line, and a `line` number without it removes that line. Numbers count from one. Removing the last
+remaining line is refused: delete the hologram instead.
+
+<Callout type="note" title="Trade, regions, staff and powertools are read-only">
+
+Each publishes a query surface and no action surface, so over HTTP they are readable and nothing more. That is
 the published API's shape showing through rather than a decision taken in the add-on. For regions the reason is
 worth saying out loud: editing a protection is an operator act with its own command and its own audit trail, and a
-protection changed by a plugin would leave staff looking at something nobody in the logs ever did.
+protection changed by a plugin would leave staff looking at something nobody in the logs ever did. Staff mode is
+the same kind of case: entering it swaps a real inventory for a loadout, and only the module can be trusted to put
+the real one back. A powertool binding is stamped onto the item a player is holding, and there is no held item in
+an HTTP request.
 
 </Callout>
 

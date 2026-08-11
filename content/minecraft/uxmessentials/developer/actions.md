@@ -516,6 +516,69 @@ a message it can show. A world no loaded world answers to is `not-found`.
 Nothing is charged and no rent is settled: those follow from a player running the command. The owner's warp limit
 does still apply to a new warp.
 
+## NPCs
+
+`actions.npc()` &rarr; `UxmNpcActions`
+
+| Method | Does |
+|---|---|
+| `create(actorId, name, location)` | put up an NPC standing there |
+| `move(actorId, name, location)` | move it |
+| `setSkin(actorId, name, skinOwner)` | dress it in that account's skin |
+| `clearSkin(actorId, name)` | take the skin back off |
+| `setDisplayName(actorId, name, label)` | show a label above it |
+| `hideDisplayName(actorId, name)` | show nothing above it |
+| `clearDisplayName(actorId, name)` | go back to showing its id |
+| `setClickCommand(actorId, name, command)` | run a command when it is clicked |
+| `clearClickCommand(actorId, name)` | stop a click running one |
+| `delete(actorId, name)` | remove it |
+
+Every verb names the player it acts as, and runs the use case `/npc` runs for them. So a create is charged to that
+player's NPC limit and records them as the owner. Pass whoever asked for it; an NPC nobody owns is one an operator
+cannot ask anybody about.
+
+A skin is named by the account that wears it rather than by a base64 texture, and is resolved through the same
+server-wide lookup `/npc skin` uses, which works on an offline-mode server too. A name no account answers to is
+`not-found`.
+
+The three label verbs are three states rather than two. `hideDisplayName` shows nothing at all; `clearDisplayName`
+goes back to showing the NPC's id, which is the default.
+
+An NPC moves inside the world it stands in. A location in another world is `refused` rather than half-honoured:
+moving one across worlds means despawning it for everybody watching and spawning it for a different set, which is a
+copy and a delete rather than a move.
+
+What is not here is the render detail: equipment, pose, scale, per-type metadata. Those stay behind `/npc` because
+their vocabulary is the renderer's, and publishing it would freeze it.
+
+## Holograms
+
+`actions.holograms()` &rarr; `UxmHologramsActions`
+
+| Method | Does |
+|---|---|
+| `create(actorId, name, location, firstLine)` | put up a text hologram showing one line |
+| `move(actorId, name, location)` | move it |
+| `addLine(actorId, name, text)` | add a line at the bottom |
+| `setLine(actorId, name, line, text)` | replace one line |
+| `removeLine(actorId, name, line)` | remove one line |
+| `setClickCommand(actorId, name, command)` | run a command when it is clicked |
+| `clearClickCommand(actorId, name)` | stop a click running one |
+| `delete(actorId, name)` | remove it |
+
+A hologram put up this way is an ordinary hologram: same table, same rendering, and an operator can edit or delete
+it with the commands afterwards rather than having to go back to whatever put it there.
+
+Line numbers count from one, the way the commands number them and the way the hologram reads on screen. A number
+past the end is `not-found`. Removing the last remaining line is `refused`: a hologram keeps at least one, and an
+empty one would be an invisible thing an operator cannot find. Delete it instead.
+
+Creating takes one line rather than a list, because a hologram must always have at least one and starting with
+exactly that makes the rule impossible to trip over. Add the rest with `addLine`.
+
+Text is stored as given, MiniMessage and placeholders included, both resolved per viewer at render time. A
+hologram carrying a placeholder needs a refresh interval to keep up with it, which is set with `/hologram refresh`.
+
 ## Next steps
 
 - [Query API](queries.md) for reading what is true

@@ -441,6 +441,75 @@ somebody's mail and quietly cleared their unread count would take it from them.
 
 An ignore is one-way. Alice ignoring Bob says nothing about what Bob hears.
 
+## NPCs
+
+`api.npc()` &rarr; `UxmNpcQuery`
+
+| Method | Answers |
+|---|---|
+| `list()` | every NPC on the server |
+| `get(name)` | one NPC, or empty |
+| `exists(name)` | whether the name is taken, which is the check `/npc create` makes |
+| `ownedBy(playerId)` | the NPCs that player created, which is what their limit counts |
+
+What comes back is the shape of an NPC: its name, where it stands, what it renders as, its label, what a click
+runs, whether it glows, who owns it. Not the render detail. An NPC carries several dozen appearance knobs that only
+the renderer interprets, and publishing them would freeze that renderer's vocabulary into a promise we would then
+have to keep. The skin is the clearest case: `skinned()` says whether one is set, and the base64 texture stays
+where it is useful.
+
+The label has three states, not two, and they are three different answers here. `displayName()` present is a label
+that was set. `nameHidden()` true means it was explicitly cleared, so nothing shows above the NPC at all. Neither
+means the NPC shows its own id, which is the default.
+
+## Holograms
+
+`api.holograms()` &rarr; `UxmHologramsQuery`
+
+| Method | Answers |
+|---|---|
+| `list()` | every hologram on the server |
+| `get(name)` | one hologram, or empty |
+| `exists(name)` | whether the name is taken |
+
+Text comes back as stored, before MiniMessage and before placeholders. There is no single rendered answer to give:
+a line carrying `%player_name%` reads differently for every viewer, and the source is the only version that is the
+same for everybody asking. A hologram that is not made of text carries its item, block, head texture or entity type
+in `content()` instead, with `type()` saying which.
+
+## Staff
+
+`api.staff()` &rarr; `UxmStaffQuery`
+
+| Method | Answers |
+|---|---|
+| `isInStaffMode(playerId)` | whether they are on duty right now |
+| `modeOf(playerId)` | which named mode they are on, or empty |
+| `inStaffMode()` | everybody on duty |
+
+Nothing here waits: the state is a small in-memory map of the players who are online.
+
+This is not the same question as "do they hold a staff permission". Somebody with every node in the plugin is off
+duty until they turn it on, and a chat plugin marking a message as staff wants the toggle rather than the node.
+Staff mode does not survive a quit, by design, so nobody comes back holding a gadget hotbar.
+
+## Powertools
+
+`api.itemworld()` &rarr; `UxmItemworldQuery`
+
+| Method | Answers |
+|---|---|
+| `powertoolInHand(playerId)` | what the item in their main hand is bound to run, or empty |
+| `powertools(playerId)` | every bound item in their inventory, in slot order |
+
+The one readable corner of an otherwise stateless module. Repairing an item or aliasing the weather is a verb with
+nothing behind it to read; a `/powertool` binding is state a player set, and a command-handling plugin has a real
+reason to know about it before deciding what a click meant.
+
+The binding lives on the item, not on the player, so it travels with the item: dropping it, trading it or putting
+it in a chest takes the binding along. Both reads reach into a live inventory, so an offline player answers empty.
+
+
 ---
 
 ## A worked example
