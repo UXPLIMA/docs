@@ -74,6 +74,60 @@ Economy deliberately has no bespoke port. uxmEssentials registers itself into th
 Treasury first and then Vault, so if you already talk to `net.milkbowl.vault.economy.Economy` you are already talking
 to uxmEssentials when it is the active provider.
 
+## Per-context coverage
+
+Which surfaces each module publishes today. A blank is a deliberate absence rather than a backlog item, and the
+reason is on the page the column links to.
+
+| Module | Read | Write | Events | REST |
+|---|---|---|---|---|
+| economy | Yes | Yes | Yes | Yes |
+| homes | Yes | Yes | Yes | Yes |
+| warps | Yes | Yes | Yes | Yes |
+| playerwarps | Yes | Yes | Yes | Yes |
+| kits | Yes | Yes | Yes | Yes |
+| vaults | Yes | Yes | Yes | Yes |
+| teleport | Yes | Yes | Yes | Yes |
+| worlds | Yes | Yes | Yes | Yes |
+| moderation | Yes | Yes | Yes | Yes |
+| messaging | Yes | Yes | Yes | Yes |
+| presence | Yes | Yes | Yes | Yes |
+| vanish | Yes | Yes | Yes | Yes |
+| playerstate | Yes | Yes | Yes | Yes |
+| ranks | Yes | Yes | Yes | Yes |
+| vote | Yes | Yes | Yes | Yes |
+| discordlink | Yes | Yes | Yes | Yes |
+| security | Yes | Yes | Yes | Yes |
+| invrollback | Yes | Yes | Yes | Yes |
+| npc | Yes | Yes | Yes | Yes |
+| holograms | Yes | Yes | Yes | Yes |
+| scoreboard | Yes | Yes | Yes | Yes |
+| tablist | | Yes | | Yes |
+| nametags | | Yes | | Yes |
+| staff | Yes | | Yes | Yes |
+| trade | Yes | | Yes | Yes |
+| regions | Yes | | | Yes |
+| itemworld | Yes | | Yes | Yes |
+| commandcontrol | Yes | | | Yes |
+| communication | | | Yes | |
+| poses | | | Yes | |
+| custommenus | \* | \* | | |
+| survival | | | | |
+| villagers | | | | |
+| servertweaks | | | | |
+
+\* custommenus is extended rather than queried: the [Menu API](menu-api.md) registers actions, requirements,
+placeholders, list sources and icons into the menu engine, which is a different shape of surface from reading and
+writing and so has a page of its own.
+
+The write column is blank where writing would be dishonest rather than unimplemented. Regions and staff say why on
+their own sections; itemworld's state lives on the item a player is holding; the command gate's rules are the
+operator's config file. The read column is blank for tablist and nametags because what they show is authored in
+config and repainted on a timer, so there is no per-player state to read.
+
+The last four publish nothing at all. They are mechanic switches: they change how the server behaves rather than
+holding state a consumer would read or offering an operation one would drive.
+
 ## Modules that are switched off
 
 uxmEssentials is a set of modules an operator can turn off one at a time, and [nine of them ship switched

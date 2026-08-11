@@ -141,6 +141,11 @@ list, so "nobody has a home" and "homes are off" are never the same answer.
 | `GET /economy/top?limit=&currency=` | The leaderboard, up to 100 rows |
 | `GET /players/{uuid}/balance?currency=` | One balance; the default currency without the parameter |
 | `GET /players/{uuid}/balances` | Every currency this player holds |
+| `GET /players/{uuid}/balance/afford?amount=&currency=` | Whether they hold at least that much |
+
+Affordability is worth a route rather than two numbers subtracted client side: it is the same comparison the plugin
+makes before charging, and a shop that works it out itself can disagree with the plugin, which shows up as a
+purchase failing after the player was told it would go through.
 
 ### Homes
 
@@ -193,8 +198,11 @@ worse item format that this project would then have to keep in step with Minecra
 | `GET /players/{uuid}/playtime` | How long they have played |
 | `GET /players/{uuid}/presence` | Whether they are away, since when, and why |
 | `GET /presence/afk` | Everybody currently away |
-| `GET /players/{uuid}/vanish` | Whether they are hidden, and at what level |
+| `GET /players/{uuid}/vanish?viewer=` | Whether they are hidden, at what level, and with `?viewer=` whether that viewer can see them |
 | `GET /vanish` | Everybody hidden |
+
+Vanish has levels, so "is this player hidden" and "is this player hidden from you" are different questions with
+different answers. Passing `?viewer=` adds `visible-to-viewer` and saves a caller reimplementing the rule.
 
 ### Trade
 
@@ -229,10 +237,14 @@ too, which is the honest reply to a bot passing along whatever a user typed.
 
 | Route | Answers |
 |---|---|
+| `GET /regions` | Whether region support is installed at all |
 | `GET /worlds/{name}/regions` | Every region in the world, or those covering a point with `?x=&y=&z=` |
 | `GET /worlds/{name}/regions/{id}` | One region, or `null` |
 | `GET /players/{uuid}/snapshots` | The inventory snapshots held for them, newest first |
 | `GET /players/{uuid}/security` | Which factors are on file, and whether they are locked out |
+
+Ask `GET /regions` before the others. With no WorldGuard installed every region read answers empty, which looks
+exactly like a world nobody has protected; that route is what tells the two apart.
 
 The covering set comes back highest priority first, which is the order that decides an overlap. A partial
 coordinate is a `400`: a point needs all three. No factor material is in the security answer and none ever will be.
@@ -351,6 +363,10 @@ page to get around a cooldown.
 
 A `duration-seconds` makes it temporary; without one it is permanent. A warning always says why: an entry on
 somebody's record with no reason on it is not worth writing.
+
+Every one of these also takes an optional `silent`, which suppresses the server-wide announcement and nothing else:
+the punishment still lands, is still audited, and the player is still told. It is what an anti-cheat or a panel
+writing its own announcements wants, so the server is not told twice.
 
 ### Players
 
