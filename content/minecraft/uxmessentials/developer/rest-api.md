@@ -366,6 +366,42 @@ A restore takes the same safety copy the command does and needs the player onlin
 trusted devices so its next join proves the factor again; `unlock` ends a lockout early. There is no route that
 enrols or clears a factor.
 
+### Vaults
+
+| Route | Body |
+|---|---|
+| `POST /players/{uuid}/vaults/{index}/open` | none |
+| `POST /players/{uuid}/vaults/{index}/label` | `name`, `icon`, or both |
+| `POST /players/{uuid}/vaults/{index}/delete` | none |
+
+`open` puts the real vault window in front of its owner, who has to be online for there to be a window. Nothing
+here moves items: an inventory rendered as JSON would be a second, worse item format, and the window is where the
+item policy and the save-on-close live.
+
+On `label`, a field left out is left alone and a field sent as `null` is cleared, so one call can name a vault and
+drop its icon. A body with neither field is a `400`. The icon is a Bukkit material name; one that does not exist
+answers `refused`.
+
+### Player warps
+
+| Route | Body |
+|---|---|
+| `POST /players/{uuid}/playerwarps` | `name`, `location` |
+| `POST /playerwarps/{name}/relocate` | `actor`, `location` |
+| `POST /playerwarps/{name}/rename` | `actor`, `new-name` |
+| `POST /playerwarps/{name}/archive` | `actor` |
+| `POST /playerwarps/{name}/restore` | `actor` |
+| `POST /playerwarps/{name}/delete` | `actor` |
+
+Every write names the player it acts as, in the body as `actor`, because a warp's rules are written in terms of a
+person: the owner may remove it, a manager may move it, a stranger may do neither. A token is not a person, so it
+has to say which person it stands for. The create route takes its actor from the path instead, since a new warp's
+actor is its owner.
+
+`archive` is the recoverable one and what a cleanup should reach for: the warp leaves the listings and nobody can
+travel to it, while it and everything hanging off it survive until `restore`. `delete` frees the name and takes the
+whitelist, the bans, the earnings and the history with it.
+
 ### Teleport, worlds, votes and messaging
 
 | Route | Body |
@@ -382,9 +418,9 @@ enrols or clears a factor.
 Mail without a `from` comes from the server: it waits in the mailbox rather than being lost to an offline player,
 and no mute or ignore applies to it, because neither can be about a plugin.
 
-<Callout type="note" title="Player warps, vaults, trade and regions are read-only">
+<Callout type="note" title="Trade and regions are read-only">
 
-All four publish a query surface and no action surface, so over HTTP they are readable and nothing more. That is
+Both publish a query surface and no action surface, so over HTTP they are readable and nothing more. That is
 the published API's shape showing through rather than a decision taken in the add-on. For regions the reason is
 worth saying out loud: editing a protection is an operator act with its own command and its own audit trail, and a
 protection changed by a plugin would leave staff looking at something nobody in the logs ever did.
@@ -439,7 +475,7 @@ money is a money whichever way it arrived.
 
 ### What is carried
 
-Seventy-nine events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
+Eighty-six events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
 
 | Context | Names |
 |---|---|
@@ -464,6 +500,7 @@ Seventy-nine events, named `context.thing`. Every notification event uxmEssentia
 | `security` | `verification-pass`, `verification-fail`, `lockout` |
 | `staff` | `chat`, `mode` |
 | `teleport` | `player-teleport`, `back-location-capture`, `warmup-start`, `warmup-cancel`, `request-send`, `request-accept`, `request-deny`, `request-cancel`, `request-expire` |
+| `vanish` | `toggle` |
 | `vault` | `open`, `contents-change` |
 | `vote` | `receive`, `party` |
 | `warp` | `create`, `delete` |

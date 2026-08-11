@@ -460,6 +460,62 @@ Nothing refuses it: there is no mute that applies to a plugin and no way for a p
 A body over 256 characters, or blank, is a malformed call and throws. That is the width of the mail column, so a
 body accepted here is a body that survives a restart.
 
+## Vaults
+
+`actions.vaults()` &rarr; `UxmVaultsActions`
+
+| Method | Does |
+|---|---|
+| `open(ownerId, index)` | put the real vault window in front of its owner, as `/vault <n>` does |
+| `delete(ownerId, index)` | remove a vault, and the items in it with it |
+| `rename(ownerId, index, name)` | name a vault, which is what the selector shows |
+| `clearName(ownerId, index)` | drop the name, so the selector falls back to the number |
+| `setIcon(ownerId, index, material)` | draw the vault with this material in the selector |
+| `clearIcon(ownerId, index)` | drop the icon, so the default is drawn again |
+
+Vault numbers count from one, the way the owner types them.
+
+There is nothing here to put items in a vault with, or take them out. An item stack is a Bukkit value with no
+published form, and the window is where the item policy, the size quota and the save-on-close live: a write that
+went around it would be a second, weaker way into the same storage. `open` hands the player the real window
+instead.
+
+These run the owner's own path rather than a staff override. Their amount quota gates a vault that does not exist
+yet, a configured fee is charged to them and a configured refund is paid back, and they are told what happened in
+their own language. A vault handed out around the quota would be one the plugin's own selector refuses to draw.
+
+`open` needs them online, because a window has to be shown to somebody; the other five work whether they are here
+or not. An icon that is not a real material, or a custom icon at all when the operator switched them off, answers
+`refused`.
+
+## Player warps
+
+`actions.playerWarps()` &rarr; `UxmPlayerWarpsActions`
+
+| Method | Does |
+|---|---|
+| `create(actorId, name, location)` | create a warp, or re-anchor their own one of that name |
+| `relocate(actorId, name, location)` | move an existing warp |
+| `rename(actorId, name, newName)` | rename one in place |
+| `archive(actorId, name)` | retire one, recoverably |
+| `restore(actorId, name)` | bring an archived one back |
+| `delete(actorId, name)` | drop one for good, freeing its name |
+
+Every verb names the player it acts as, because a warp's rules are written in terms of a person: the owner may
+remove it, a manager may move it, a stranger may do neither. Passing somebody who is not entitled gets exactly the
+answer they would get in game, `refused`, rather than a quiet success.
+
+`archive` is the one a cleanup wants. It takes the warp out of the listings and stops travel to it while the warp
+itself, its whitelist, its bans, its earnings and its history all survive, and `restore` puts it back. `delete` is
+the irreversible one: the row goes and so does everything hanging off it.
+
+Names are server-wide unique, lowercase, three to thirty-two characters of `a-z`, `0-9`, `_` and `-`. A name that
+does not fit that shape answers `refused` rather than throwing, so a panel passing user input straight through gets
+a message it can show. A world no loaded world answers to is `not-found`.
+
+Nothing is charged and no rent is settled: those follow from a player running the command. The owner's warp limit
+does still apply to a new warp.
+
 ## Next steps
 
 - [Query API](queries.md) for reading what is true

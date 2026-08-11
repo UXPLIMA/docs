@@ -299,6 +299,22 @@ makes the comparison constant-time.
 A pass fires only for a proof that was actually made. A player holding no factor is never asked for one, and one
 waved through by a remembered device proved nothing this time.
 
+### Vanish
+
+| Event | Fires when | Carries |
+|---|---|---|
+| `UxmVanishToggleEvent` | a player went hidden, or came back into view | `isVanished()`, `getLevel()` |
+
+Fires for every door into vanish: the command, the staff-mode toggle, the presence panel, and a plugin calling the
+published action. By the time it fires the player is already hidden or already visible, so a listener mirroring the
+state elsewhere can read it straight off the event.
+
+The level is the tier they are hidden at, counting from one. On a reveal it is the tier they were hidden at until a
+moment ago, which is what a listener needs to undo whatever it did when they vanished.
+
+A quit does not fire it. A player who logs out hidden logs back in hidden, and treating a disconnect as a reveal
+would make every listener flicker on a server hop.
+
 ### Voting and item or world utilities
 
 | Event | Fires when | Carries |
