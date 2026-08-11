@@ -321,6 +321,22 @@ enforces, so a snapshot read a moment before a change reports the state as it wa
 Only trades on this server are visible. A cross-server trade's other half lives on the backend the partner is
 connected to.
 
+## Discord links
+
+`api.discordLink()` &rarr; `UxmDiscordLinkQuery`
+
+| Method | Answers |
+|---|---|
+| `of(playerId)` | the Discord account bound to them, or empty |
+| `byDiscordId(discordId)` | the same binding read from the Discord side |
+| `isLinked(playerId)` | whether they have one at all |
+
+Both directions are indexed, so neither is the slow one, and every answer is a database row rather than something
+held in memory: a binding is account identity and survives a restart and a world rollback alike.
+
+The Discord id is a string because that is how Discord's own API writes a snowflake. An id that is not one answers
+empty rather than throwing, which is what a bot passing through whatever a user typed wants.
+
 ## Ranks
 
 `api.ranks()` &rarr; `UxmRanksQuery`

@@ -263,6 +263,18 @@ the same path. The completion event fires whether or not the operator has the tr
 A rankup fires after the new rank is stored and its actions have run. `UxmRankSetEvent` may be about a player who
 is offline, and `getPreviousRank()` is empty for one who had never been ranked before.
 
+### Discord links
+
+| Event | Fires when | Carries |
+|---|---|---|
+| `UxmAccountLinkEvent` | a code was redeemed and the accounts are bound | `getDiscordId()`, `getLinkedAt()` |
+| `UxmAccountUnlinkEvent` | a binding was removed | `getDiscordId()` |
+
+The code is redeemed on Discord's side, so the link event very often fires for a player who is not online. Do not
+assume a live player from it. The unlink event carries the account that was bound because by the time it fires
+there is nowhere left to look it up, and it covers all three ways a binding ends: the player, an operator, or a
+plugin.
+
 ### Voting and item or world utilities
 
 | Event | Fires when | Carries |

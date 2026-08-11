@@ -356,6 +356,21 @@ it exists for. A rank id that is not on the ladder answers `not-found` rather th
 Prestige is a module switch. With `prestige.enabled` off the server publishes no `/prestige` verb, and this action
 answers `refused` rather than pretending a switched-off mechanic ran.
 
+## Discord links
+
+`actions.discordLink()` &rarr; `UxmDiscordLinkActions`
+
+| Method | Does |
+|---|---|
+| `unlink(playerId)` | remove their Discord binding, as `/discordunlink` does |
+
+One verb, and deliberately. There is no force-link: a binding is only real once the player proved it in game with
+a one-time code, and one written from outside would say something the player never agreed to. Removing one is
+different, which is why a panel or a bot can do it.
+
+It writes one row, so an offline account is fine, which is most of what this is called for. A player who had no
+binding answers `not-found` rather than a quiet success, so a caller can tell a removal from a no-op.
+
 ## Vote
 
 `actions.vote()` &rarr; `UxmVoteActions`
