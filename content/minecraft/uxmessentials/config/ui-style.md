@@ -10,7 +10,7 @@ patchwork. This page is the practical summary for operators.
 
 <Callout type="warning" title="HOCON, not YAML">
 
-Message catalogs and menu files are HOCON — quoted `"key" = "value"` lines and
+Message catalogs and menu files are HOCON: quoted `"key" = "value"` lines and
 `{ … }` blocks. The styling below is written in MiniMessage tags inside those values.
 
 </Callout>
@@ -21,20 +21,20 @@ Message catalogs and menu files are HOCON — quoted `"key" = "value"` lines and
 
 The plugin defines a fixed palette once, in code, and exposes it as **semantic tags**.
 Instead of writing a hex code, you name the *role* the text plays. This is why editing one
-message never clashes with the rest of the UI — every line pulls from the same palette.
+message never clashes with the rest of the UI: every line pulls from the same palette.
 
 | Token | Use it for | Colour |
 |---|---|---|
 | `<value>` / `<accent>` | Names, `{placeholder}` values, coordinates | cyan |
-| `<body>` | The sentence itself, field labels — the default reading colour | cream |
-| `<cta>` | "Click to…", `/command` hints — the next action | orange |
+| `<body>` | The sentence itself, field labels: the default reading colour | cream |
+| `<cta>` | "Click to…", `/command` hints: the next action | orange |
 | `<money>` / `<good>` | Money amounts and success words | green |
 | `<bad>` | Error / denial wording | red |
 | `<level>` | Counts, page numbers, quantities | yellow |
 | `<muted>` | Dates, breadcrumbs, list bullets, parentheticals | gray |
 | `<tag:'X'>` | The chat prefix for a normal message (`X` = module label) | gold gradient |
 | `<etag:'X'>` | The chat prefix for an error/denial | red gradient |
-| `<h:'X'>` | A gold-gradient bold header — GUI titles and lore titles | gold gradient |
+| `<h:'X'>` | A gold-gradient bold header: GUI titles and lore titles | gold gradient |
 
 The solid-colour tokens wrap their content (`<value>Steve</value>`). The composite tokens
 (`<tag:'HOME'>`, `<etag:'ERROR'>`, `<h:'Your Homes'>`) take one quoted argument and are
@@ -46,7 +46,7 @@ Don't write `<#7cc7ff>`, `<gradient:#…>`, `&a`, or `§a` in a restyled line. R
 a token instead. A raw hex in a catalog is treated as a regression and flagged by the
 build's drift checks.
 
-Also never put a `{placeholder}` **inside** a tag argument (e.g. `<h:'Home {home}'>`) —
+Also never put a `{placeholder}` **inside** a tag argument (e.g. `<h:'Home {home}'>`):
 a value containing a quote or angle bracket would break the tag. Put dynamic values
 outside the argument: `<h:'Home'> <value>{home}</value>`.
 
@@ -74,7 +74,7 @@ string: a crest + title, a muted breadcrumb, a section header, body lines, then 
 " ⛨ <h:'Home Panel'><newline>    <muted>Your saved homes</muted><newline><newline> ✎ <accent>Description</accent><newline>   <body>Teleport to a saved location instantly.</body><newline><newline> ▶ <cta>Click to teleport</cta>"
 ```
 
-A labelled fact inside lore is one info row — a muted `|` bullet, a `<body>` label, the
+A labelled fact inside lore is one info row: a muted `|` bullet, a `<body>` label, the
 value, and a matching glyph:
 
 ```hocon
@@ -106,8 +106,8 @@ These are plain Unicode characters (no resource pack). Use each for its meaning:
 ## Styling menus
 
 Custom menus in `plugins/uxmEssentials/menus/*.conf` are styled with the **same
-MiniMessage tags**. Titles, item names, and lore in a menu file are written **verbatim** —
-they are not routed through the message catalogs — so you can style them however you like,
+MiniMessage tags**. Titles, item names, and lore in a menu file are written **verbatim**:
+they are not routed through the message catalogs, so you can style them however you like,
 though matching the palette above keeps them consistent with the built-in GUIs.
 
 ```hocon
@@ -126,7 +126,7 @@ items {
 ```
 
 The built-in module GUIs (the `modules/<m>/gui/*.conf` panels) already follow these
-conventions — treat them as worked examples if you are building your own.
+conventions: treat them as worked examples if you are building your own.
 
 ---
 
@@ -134,7 +134,7 @@ conventions — treat them as worked examples if you are building your own.
 
 - **Do** reference colours by token, use `<h:'…'>` for headers, and end chat lines with
   the matching status glyph.
-- **Do** use normal capitalization — Title Case for headers, sentence case for body text.
+- **Do** use normal capitalization: Title Case for headers, sentence case for body text.
 - **Don't** inline hex or legacy `&`/`§` codes, invent new tokens, or rename
   `{placeholders}`.
 - Styling is language-independent: when you restyle a key in one language, apply the same
@@ -144,6 +144,6 @@ conventions — treat them as worked examples if you are building your own.
 
 ## Next Steps
 
-- [Messages & Languages](messages.md) — editing the text these tokens style.
-- [Custom Menu Engine](../menus/engine.md) — building your own GUIs.
-- [Built-in Menu Guide](../menus/built-in.md) — the panels that already follow this style.
+- [Messages & Languages](messages.md): editing the text these tokens style.
+- [Custom Menu Engine](../menus/engine.md): building your own GUIs.
+- [Built-in Menu Guide](../menus/built-in.md): the panels that already follow this style.

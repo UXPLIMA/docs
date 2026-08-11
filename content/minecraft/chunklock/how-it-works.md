@@ -33,7 +33,7 @@ A chunk's distance from the island center is its **ring** (Chebyshev distance):
 2 2 2 2 2
 ```
 
-The **cost** to unlock a chunk depends on its ring — farther rings cost rarer items.
+The **cost** to unlock a chunk depends on its ring: farther rings cost rarer items.
 
 ---
 
@@ -44,7 +44,7 @@ To open a locked chunk:
 1. **Look at** the locked chunk (you'll see a hologram telling you what it costs).
 2. **Drop (Q)** the required item while looking at it.
 3. Dropped items **accumulate** until the cost is satisfied.
-4. When the cost is met, the chunk **unlocks** — the barrier wall comes down and a
+4. When the cost is met, the chunk **unlocks**: the barrier wall comes down and a
    sound plays.
 
 The cost is read from the **first band** in `unlock.items` whose `max-ring` is at
@@ -78,12 +78,12 @@ systems.
 
 Entering a locked chunk is stopped by **movement blocking**:
 
-- Works at **every height** — you can't jump over it from Y 200 like a barrier.
+- Works at **every height**: you can't jump over it from Y 200 like a barrier.
 - Follows the **exact shape** of your open area, so opening one direction never
   opens the opposite side by accident.
 - Bypass with the `chunklock.bypass` permission (for staff).
 
-A **barrier wall** is built on the edge of a locked chunk as the *visible* marker —
+A **barrier wall** is built on the edge of a locked chunk as the *visible* marker,
 but the real stop is the movement blocking, not the barrier.
 
 <Callout type="info" title="Terrain is preserved">
@@ -97,7 +97,7 @@ to air (self-healing).
 ### 2. Island-Upgrade Border (optional)
 
 A square **WorldBorder** showing the island's protection size, which grows with the
-uxmSkyblock **size upgrade**. Purely informative — toggle it with
+uxmSkyblock **size upgrade**. Purely informative: toggle it with
 `island-border.enabled`.
 
 ---
@@ -112,6 +112,6 @@ It's configurable (title, requirement line, footer) under `hologram:` in the con
 ## What Comes From the Core
 
 Membership, roles, bans, warps, visiting, the bank, and upgrades are **all
-uxmSkyblock features** — Chunklock doesn't reimplement them. A Chunklock island is
+uxmSkyblock features**: Chunklock doesn't reimplement them. A Chunklock island is
 a normal core island with a lock layer on top, so everything in the
 [uxmSkyblock wiki](../uxmskyblock/getting-started/welcome.md) applies.

@@ -1,8 +1,8 @@
 ---
 title: Warps
 order: 540
-description: Public warps let other players teleport to specific spots on your island
-  — a shop, a farm, an arena. An island can have several named warps.
+description: 'Public warps let other players teleport to specific spots on your island:
+  a shop, a farm, an arena. An island can have several named warps.'
 ---
 
 ---
@@ -50,7 +50,7 @@ warp:
 ```
 
 - Everyone gets `default-limit` warps.
-- A player raises their limit with the permission `skyblock.warps.<number>` — the
+- A player raises their limit with the permission `skyblock.warps.<number>`: the
   **highest** number they hold wins.
 
 | Permission | Warp limit |

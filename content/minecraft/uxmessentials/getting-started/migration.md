@@ -17,7 +17,7 @@ The importer is a single admin command:
 ```
 
 - It runs **off the main thread**, so your server never freezes during an import.
-- It is **idempotent** — every record is written as an *upsert* keyed by identity.
+- It is **idempotent**: every record is written as an *upsert* keyed by identity.
   Balances are **set, never added**, so re-running an import can never double a
   player's money.
 - It's **safe to run again** if something looked off, or if new data appeared.
@@ -34,7 +34,7 @@ You need the `uxmessentials.admin.import` permission (operators have it by defau
 
 **Always take a backup of your world and plugin data before importing**, and
 **always run with `--dry-run` first**. A dry run produces the *exact same*
-per-record report as a real import — it just doesn't write anything — so you
+per-record report as a real import (it just doesn't write anything) so you
 can review precisely what would change before committing.
 
 </Callout>
@@ -157,7 +157,7 @@ When an incoming record collides with something already in uxmEssentials, the
 <Tab label="skip (default)">
 
 
-Keep what's already there. The safest choice — nothing existing is overwritten.
+Keep what's already there. The safest choice; nothing existing is overwritten.
 
 </Tab>
 <Tab label="overwrite">
@@ -201,7 +201,7 @@ your per-group **quotas still apply** to migrated data.
 
 ## Next Steps
 
-- [🔧 Installation](installation.md) — if you haven't installed the plugin yet
-- [🧠 Core Concepts](concepts.md) — how modules, config and permissions fit together
-- [📟 Commands Overview](../commands/overview.md) — the full command set
-- [🔑 Permission Reference](../permissions/reference.md) — quotas and node families
+- [🔧 Installation](installation.md): if you haven't installed the plugin yet
+- [🧠 Core Concepts](concepts.md): how modules, config and permissions fit together
+- [📟 Commands Overview](../commands/overview.md): the full command set
+- [🔑 Permission Reference](../permissions/reference.md): quotas and node families

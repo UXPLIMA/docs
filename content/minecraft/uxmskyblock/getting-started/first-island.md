@@ -4,18 +4,18 @@ order: 490
 ---
 
 This page walks a player through creating an island and getting started, step by
-step. Every command below uses the default name `/is` — your server may have
+step. Every command below uses the default name `/is`: your server may have
 renamed it (see [config.yml](../configuration/config-yml.md)).
 
 ---
 
-## Step 1 — Create Your Island
+## Step 1: Create Your Island
 
 ```
 /is create
 ```
 
-This opens the **island type** menu — click the starter island you want and it's
+This opens the **island type** menu: click the starter island you want and it's
 built instantly. If you already know the type, skip the menu by naming it:
 
 ```
@@ -28,7 +28,7 @@ island is the **owner**.
 <Callout type="tip" title="Nether &amp; End">
 
 Your island comes with its own **Nether** and **End** plots. Build a Nether
-portal on your island to reach them — there's a ready End portal waiting in your
+portal on your island to reach them: there's a ready End portal waiting in your
 Nether plot.
 
 </Callout>
@@ -42,7 +42,7 @@ A player owns one island at a time. To start over, delete the current one with
 
 ---
 
-## Step 2 — Look Around
+## Step 2: Look Around
 
 You're standing on your starter island. A colored **border** marks how far your
 protected area reaches. Outside the border, nothing is protected.
@@ -57,7 +57,7 @@ From here you reach settings, upgrades, warps, the bank, and your team.
 
 ---
 
-## Step 3 — Invite Your Friends
+## Step 3: Invite Your Friends
 
 ```
 /is invite Steve
@@ -74,10 +74,10 @@ See [Roles & Permissions](../protection/roles-permissions.md) for what each role
 
 ---
 
-## Step 4 — Start Leveling Up
+## Step 4: Start Leveling Up
 
 Your island has a **level**, raised by the value of the blocks you place. Mine
-cobblestone, smelt ores, build with valuable blocks — every block placed adds
+cobblestone, smelt ores, build with valuable blocks: every block placed adds
 points (breaking it removes them).
 
 Check your progress:
@@ -92,7 +92,7 @@ and how points become levels is in [levels.yml](../configuration/levels-yml.md).
 
 ---
 
-## Step 5 — Buy Upgrades
+## Step 5: Buy Upgrades
 
 As your level rises, you unlock upgrades:
 
@@ -106,7 +106,7 @@ Bigger team, bigger island, faster spawners, double crops, and better
 
 ---
 
-## Step 6 — Open Up to Visitors
+## Step 6: Open Up to Visitors
 
 Set a public warp so people can find your island:
 

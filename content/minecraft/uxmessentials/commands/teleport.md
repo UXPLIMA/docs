@@ -5,7 +5,7 @@ order: 970
 
 ## Teleportation
 
-The `teleport` module is the busiest command surface in uxmEssentials. It covers player-to-player requests, return-to-last-spot, random wilderness teleports, spawns, staff teleports, and a whole family of vertical/directional jumps — all governed by a shared warmup and cooldown system.
+The `teleport` module is the busiest command surface in uxmEssentials. It covers player-to-player requests, return-to-last-spot, random wilderness teleports, spawns, staff teleports, and a whole family of vertical/directional jumps: all governed by a shared warmup and cooldown system.
 
 <Callout type="warning" title="Move cancels warmup">
 
@@ -19,17 +19,17 @@ Teleports with a configured warmup are cancelled if you move (and, depending on 
 
 | Command | Aliases | Description | Permission |
 |---------|---------|-------------|------------|
-| `/tpa <player>` | — | Request to teleport to a player | `uxmessentials.tpa.use` |
-| `/tpahere <player>` | — | Ask a player to teleport to you | `uxmessentials.tpahere.use` |
+| `/tpa <player>` | - | Request to teleport to a player | `uxmessentials.tpa.use` |
+| `/tpahere <player>` | - | Ask a player to teleport to you | `uxmessentials.tpahere.use` |
 | `/tpaccept` | `tpyes` | Accept a pending request | `uxmessentials.tpa.use` |
 | `/tpdeny` | `tpno` | Deny a pending request | `uxmessentials.tpa.use` |
 | `/tpcancel` | `tpacancel` | Withdraw your outgoing request | `uxmessentials.tpa.cancel` |
 | `/tpalist` | `tprequests` | List players waiting on your reply | `uxmessentials.tpa.use` |
 | `/tptoggle` | `toggletp` | Refuse all incoming requests (toggle) | `uxmessentials.tpa.toggle` |
-| `/tpon` · `/tpoff` | — | Idempotently accept / refuse incoming requests | `uxmessentials.tpa.toggle` |
-| `/tpauto` | — | Auto-accept incoming requests (toggle) | `uxmessentials.tpa.auto` |
-| `/tpblock <player>` · `/tpunblock <player>` | — | Block/unblock a player's requests | `uxmessentials.tpa.block` |
-| `/tpaall` | — | Request every online player to teleport to you | `uxmessentials.tpa.all` |
+| `/tpon` · `/tpoff` | - | Idempotently accept / refuse incoming requests | `uxmessentials.tpa.toggle` |
+| `/tpauto` | - | Auto-accept incoming requests (toggle) | `uxmessentials.tpa.auto` |
+| `/tpblock <player>` · `/tpunblock <player>` | - | Block/unblock a player's requests | `uxmessentials.tpa.block` |
+| `/tpaall` | - | Request every online player to teleport to you | `uxmessentials.tpa.all` |
 
 ### Examples
 
@@ -50,7 +50,7 @@ Teleports with a configured warmup are cancelled if you move (and, depending on 
 | `/back` | `return` | Return to your last captured location | `uxmessentials.back.use` |
 | `/deathback` | `dback` | Return to your last death location | `uxmessentials.back.use` |
 | `/rtp` | `wild` | Opens the world-picker GUI by default (config `command-opens-gui`; off = random teleport from the pre-warmed safe queue) | `uxmessentials.rtp.use` |
-| `/settpr <minRange> <maxRange>` | — | Set the `/rtp` search zone at runtime | `uxmessentials.teleport.settpr` |
+| `/settpr <minRange> <maxRange>` | - | Set the `/rtp` search zone at runtime | `uxmessentials.teleport.settpr` |
 
 <Callout type="info" title="Return-on-death is a grant">
 
@@ -96,12 +96,12 @@ These pull players around directly, without a request handshake, and default to 
 
 | Command | Aliases | Description | Permission |
 |---------|---------|-------------|------------|
-| `/tp <player>` · `/tphere <player>` · `/goto <player>` · `/bring <player>` | — | Direct staff teleport to/from a player | `uxmessentials.tp.use` |
-| `/tp <x> <y> <z> [world]` · `/goto …` · `/tppos …` | — | Teleport to raw coordinates | `uxmessentials.tp.position` |
+| `/tp <player>` · `/tphere <player>` · `/goto <player>` · `/bring <player>` | - | Direct staff teleport to/from a player | `uxmessentials.tp.use` |
+| `/tp <x> <y> <z> [world]` · `/goto …` · `/tppos …` | - | Teleport to raw coordinates | `uxmessentials.tp.position` |
 | `/tprandomplayer` | `tprp` | Teleport to a random visible player | `uxmessentials.tp.use` |
-| `/tpo <player>` · `/tpohere <player>` | — | Teleport overriding no-tp flags | `uxmessentials.tp.others` |
-| `/tpall` | — | Pull every online player to you | `uxmessentials.tp.all` |
-| `/tpoffline <player>` · `/tpofflinehere <player>` | — | To/from a player's logout location | `uxmessentials.tp.offline` |
+| `/tpo <player>` · `/tpohere <player>` | - | Teleport overriding no-tp flags | `uxmessentials.tp.others` |
+| `/tpall` | - | Pull every online player to you | `uxmessentials.tp.all` |
+| `/tpoffline <player>` · `/tpofflinehere <player>` | - | To/from a player's logout location | `uxmessentials.tp.offline` |
 
 ### Examples
 

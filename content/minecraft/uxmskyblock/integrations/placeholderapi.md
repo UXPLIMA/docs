@@ -9,7 +9,7 @@ description: uxmSkyblock registers a PlaceholderAPI expansion so other plugins (
 
 ## Installing
 
-Install **PlaceholderAPI**. The `skyblock` expansion registers automatically — no
+Install **PlaceholderAPI**. The `skyblock` expansion registers automatically: no
 download needed.
 
 <Callout type="tip" title="Menus work even without PlaceholderAPI">

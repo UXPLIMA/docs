@@ -2,10 +2,10 @@
 title: Teleport & RTP
 order: 1230
 description: 'The teleport module is the busiest part of uxmEssentials. It bundles
-  everything that moves a player around: player-to-player teleport requests, return-to-last-spot,
-  random wilderness teleports, spawns, and the direct staff teleports — all governed
-  by one shared warmup and cooldown system so the rules feel consistent no matter
-  which command a player uses.'
+  everything that moves a player around: player-to-player teleport requests,
+  return-to-last-spot, random wilderness teleports, spawns, and the direct staff
+  teleports: all governed by one shared warmup and cooldown system so the rules feel
+  consistent no matter which command a player uses.'
 ---
 
 Everything here runs through the plugin's Folia-ready scheduler and does its I/O off the main thread, so even the safe-search behind `/rtp` never freezes the server.
@@ -39,7 +39,7 @@ By default `/back` and `/deathback` only take a player back to their last **tele
 
 </Callout>
 
-The `back` config block controls the death behaviour: `on-death` (whether deaths are captured at all), `death-delay-seconds` (a grace window), and `ignored-causes` (death causes that don't seed a back point — void, for instance).
+The `back` config block controls the death behaviour: `on-death` (whether deaths are captured at all), `death-delay-seconds` (a grace window), and `ignored-causes` (death causes that don't seed a back point: void, for instance).
 
 ---
 
@@ -47,17 +47,17 @@ The `back` config block controls the death behaviour: `on-death` (whether deaths
 
 `/rtp` (alias `wild`) drops a player at a random safe spot in the wilderness. The important detail is **how** it stays fast: instead of searching for a safe location the moment a player runs the command (which can be slow and blocks nothing usefully), uxmEssentials keeps a **pre-warmed queue** of validated safe locations. `/rtp` hands out a location from the queue instantly, and the queue tops itself back up in the background.
 
-<Callout type="success" title="Fully asynchronous — no TPS drops, no chunk leaks">
+<Callout type="success" title="Fully asynchronous: no TPS drops, no chunk leaks">
 
 The background safe-search loads and inspects candidate chunks **off the main
 thread** (via asynchronous chunk loading), so scanning the wilderness never
 freezes the server the way a naive RTP does. Just as importantly, any chunk the
-search loads to check is **released again afterward** — RTP won't quietly bloat
+search loads to check is **released again afterward**: RTP won't quietly bloat
 your memory or region files with far-off, one-off chunks.
 
 </Callout>
 
-<Callout type="tip" title="Survives restarts — no cold-start lag spike">
+<Callout type="tip" title="Survives restarts: no cold-start lag spike">
 
 Validated locations are also **saved to the database**, so after a restart the
 queue re-warms itself from disk (re-checking each spot is still safe) instead of
@@ -84,16 +84,16 @@ Cooldown and reach can be tuned per rank with the numbered permissions
 **`/rtp biome <biome>`** drops a player in the biome they ask for. Common biomes
 come straight from the pool; for rare ones (mushroom fields, cherry groves…),
 uxmEssentials keeps a lightweight, passive map of where each biome has been seen
-as the world is explored, and steers the search toward those spots — so finding
+as the world is explored, and steers the search toward those spots, so finding
 a rare biome converges instead of hammering the server with random guesses.
 
 </Callout>
 
 <Callout type="tip" title="Safe landings &amp; fair charging">
 
-On arrival players get a short **grace window** — Resistance and Slow-Falling
-plus no fall damage — so nobody dies to the ground before the chunks render.
-And any RTP **cost or cooldown is only applied once the teleport succeeds** — a
+On arrival players get a short **grace window**: Resistance and Slow-Falling
+plus no fall damage, so nobody dies to the ground before the chunks render.
+And any RTP **cost or cooldown is only applied once the teleport succeeds**: a
 player is never charged, and their cooldown never starts, for a search that
 failed. RTP can also fire automatically **on respawn** and **on a player's first
 join** (both configurable), served straight from the pre-warmed pool.
@@ -111,7 +111,7 @@ The search zone and queue behaviour live in `modules/teleport/rtp.conf`:
 | `queue-target-size` | How many safe locations to keep pre-warmed. |
 | `queue-low-water` | Refill the queue when it drops below this. |
 | `max-attempts` | How many candidate points a single search may try before giving up. |
-| `max-chunk-loads` | Cap on chunks a single search may load — a hard ceiling on its cost. |
+| `max-chunk-loads` | Cap on chunks a single search may load: a hard ceiling on its cost. |
 | `max-wall-clock-ms` | Time budget for a single search; whichever cap is hit first ends it. |
 | `persist-pool` | Save validated locations to the database so the queue survives restarts. |
 | `pool-max-per-world` | Cap on how many validated locations are stored per world. |
@@ -154,18 +154,18 @@ Named spawns let you run destinations like `/spawn pvp` or `/spawn events`; `/mi
 
 These pull players directly, without the request handshake, and default to `op`:
 
-- `/tp`, `/tphere`, `/goto`, `/bring` — direct player teleports (`uxmessentials.tp.use`).
-- `/tp <x> <y> <z> [world]`, `/tppos …` — coordinate teleports (`uxmessentials.tp.position`).
-- `/tpo`, `/tpohere` — override no-tp flags (`uxmessentials.tp.others`).
-- `/tpall` — pull everyone to you (`uxmessentials.tp.all`).
-- `/tpoffline`, `/tpofflinehere` — to/from a player's logout location (`uxmessentials.tp.offline`).
-- `/top`, `/bottom`, `/jump`, `/up`, `/down`, `/ascend`, `/descend`, `/thru` — vertical/directional jumps (`uxmessentials.tp.vertical`).
+- `/tp`, `/tphere`, `/goto`, `/bring`: direct player teleports (`uxmessentials.tp.use`).
+- `/tp <x> <y> <z> [world]`, `/tppos …`: coordinate teleports (`uxmessentials.tp.position`).
+- `/tpo`, `/tpohere`: override no-tp flags (`uxmessentials.tp.others`).
+- `/tpall`: pull everyone to you (`uxmessentials.tp.all`).
+- `/tpoffline`, `/tpofflinehere`: to/from a player's logout location (`uxmessentials.tp.offline`).
+- `/top`, `/bottom`, `/jump`, `/up`, `/down`, `/ascend`, `/descend`, `/thru`: vertical/directional jumps (`uxmessentials.tp.vertical`).
 
 ---
 
 ## Warmups, Cooldowns & the Move Rule
 
-Every teleport can carry a **warmup** (a countdown before it fires) and a **cooldown** (a wait before the next one). Both are granted through numbered permission tiers, so ranks can be tuned independently — and the **highest matching value wins**:
+Every teleport can carry a **warmup** (a countdown before it fires) and a **cooldown** (a wait before the next one). Both are granted through numbered permission tiers, so ranks can be tuned independently, and the **highest matching value wins**:
 
 | Node | Purpose |
 |------|---------|
@@ -206,19 +206,19 @@ So with neither plugin installed this setting does nothing at all, and nothing i
 
 Two files:
 
-- **`modules/teleport/config.conf`** — `default-warmup`, `default-cooldown`, `cooldown-start-phase`, `request-ttl-seconds`, `teleport-to-center`, and the `effects`, `arrival-messages`, `cooldowns`, `warmup { … }`, `combat { … }`, and `back { … }` blocks.
-- **`modules/teleport/rtp.conf`** — the RTP ring, queue, and safe-search tuning described above.
+- **`modules/teleport/config.conf`**: `default-warmup`, `default-cooldown`, `cooldown-start-phase`, `request-ttl-seconds`, `teleport-to-center`, and the `effects`, `arrival-messages`, `cooldowns`, `warmup { … }`, `combat { … }`, and `back { … }` blocks.
+- **`modules/teleport/rtp.conf`**: the RTP ring, queue, and safe-search tuning described above.
 
 ---
 
 ## Tips & Gotchas
 
-- **RTP feels instant because it's pre-warmed.** If players report `/rtp` "failing", check the search budget (`max-attempts` / `max-wall-clock-ms`) and `excluded-biomes` — an over-restrictive search can starve the queue. Every search is bounded and spread across ticks, so raising these tunes success rate without ever stalling the server.
+- **RTP feels instant because it's pre-warmed.** If players report `/rtp` "failing", check the search budget (`max-attempts` / `max-wall-clock-ms`) and `excluded-biomes`: an over-restrictive search can starve the queue. Every search is bounded and spread across ticks, so raising these tunes success rate without ever stalling the server.
 - **`/back` after death does nothing without `back.ondeath`.** If players expect to return to their corpse, grant `uxmessentials.back.ondeath` and set `back.on-death = true`.
 - **Warmups are a feature, not a bug.** Setting `default-warmup = 0` (or granting `tp.warmup.bypass` to everyone) removes the move-to-cancel protection that stops players escaping combat.
 - **`cooldown-start-phase` changes the feel.** Starting the cooldown on *arrival* rather than on *command* effectively adds the warmup to the wait.
-- **RTP avoids protected land.** With `respect-claims` / `respect-worldguard` on (the default), a candidate spot inside anyone's land claim or a WorldGuard region is rejected, so players only land in true wilderness. Both work with no extra setup — install the claim plugin or WorldGuard and RTP just honours it.
-- **The "no lag" guarantee is built in.** RTP's wilderness scan is designed so it can never load a chunk on the server thread — and the build itself refuses to compile if that ever changes — so `/rtp` stays fast no matter how the plugin evolves.
+- **RTP avoids protected land.** With `respect-claims` / `respect-worldguard` on (the default), a candidate spot inside anyone's land claim or a WorldGuard region is rejected, so players only land in true wilderness. Both work with no extra setup: install the claim plugin or WorldGuard and RTP just honours it.
+- **The "no lag" guarantee is built in.** RTP's wilderness scan is designed so it can never load a chunk on the server thread (and the build itself refuses to compile if that ever changes) so `/rtp` stays fast no matter how the plugin evolves.
 
 ---
 

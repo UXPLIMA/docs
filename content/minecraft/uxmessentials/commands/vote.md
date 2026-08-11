@@ -48,7 +48,7 @@ Votes received while a player is offline are banked and handed out with `/vote c
 
 <Callout type="tip" title="Test rewards before you go live">
 
-`/vote testreward` runs your reward chain exactly as a real vote would — without needing a listing site to send anything — so you can confirm items, commands, and messages land correctly before players start voting.
+`/vote testreward` runs your reward chain exactly as a real vote would (without needing a listing site to send anything) so you can confirm items, commands, and messages land correctly before players start voting.
 
 </Callout>
 
@@ -78,7 +78,7 @@ Votes received while a player is offline are banked and handed out with `/vote c
 
 <Callout type="note" title="Rename or disable any of these">
 
-Every command literal above can be renamed, re-aliased, or switched off in `commands/commands.conf` without touching permissions — see [Renaming Commands](../config/commands-conf.md).
+Every command literal above can be renamed, re-aliased, or switched off in `commands/commands.conf` without touching permissions, see [Renaming Commands](../config/commands-conf.md).
 
 </Callout>
 

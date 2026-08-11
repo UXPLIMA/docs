@@ -1,10 +1,10 @@
 ---
 title: Overview
 order: 1140
-description: uxmEssentials keeps its settings in HOCON files (.conf), not YAML. If
-  you have configured other plugins with config.yml, the ideas are the same — keys,
-  values, lists — but the syntax is a little friendlier and the layout is split by
-  module rather than piled into one giant file.
+description: 'uxmEssentials keeps its settings in HOCON files (.conf), not YAML. If you
+  have configured other plugins with config.yml, the ideas are the same (keys, values,
+  lists) but the syntax is a little friendlier and the layout is split by module rather
+  than piled into one giant file.'
 ---
 
 This page explains how the config system is organised, where each file lives, and how
@@ -21,7 +21,7 @@ loaded with Configurate. That gives us a few practical wins over YAML:
   counting spaces. A stray space can't silently reparent a key.
 - **Comments survive.** Lines starting with `#` are part of the file, so the shipped
   defaults document themselves right next to each key.
-- **Values are typed.** A number is a number and a duration is a duration — the plugin
+- **Values are typed.** A number is a number and a duration is a duration: the plugin
   validates them on load and tells you exactly which key is wrong instead of failing
   cryptically.
 
@@ -35,7 +35,7 @@ HOCON is forgiving about **whitespace and indentation** but strict about
 - String values are usually quoted: `backend = "sqlite"`. Numbers and `true`/`false`
   are not: `port = 3306`, `enabled = true`.
 - Lists use square brackets: `disabled-worlds = ["arena", "spawn"]`.
-- Keys are **kebab-case** (`read-pool-size`, `default-locale`) — never camelCase.
+- Keys are **kebab-case** (`read-pool-size`, `default-locale`): never camelCase.
 
 If a file won't load after an edit, you almost always have a missing `}` or a stray
 quote. The server log names the file and line.
@@ -95,7 +95,7 @@ tune one feature.
 
 <Callout type="danger" title="There is no `modules.conf` file">
 
-A common misconception — carried over from older notes — is that a central
+A common misconception (carried over from older notes) is that a central
 `modules.conf` switchboard turns modules on and off. **It does not exist.** It is
 not shipped and never created. Each module is enabled or disabled by the
 **`enabled` key at the top of its own `modules/<module>/config.conf`**. See
@@ -108,12 +108,12 @@ not shipped and never created. Each module is enabled or disabled by the
 Most modules need only their `config.conf`. A few large features lift a big block out
 into a sibling file so the main file stays readable:
 
-- `modules/teleport/rtp.conf` — the `/rtp` safe-search tuning.
-- `modules/economy/currencies.conf` — every currency definition.
-- `modules/communication/{join-quit,announcer,info-pages,advancements}.conf` — the four
+- `modules/teleport/rtp.conf`: the `/rtp` safe-search tuning.
+- `modules/economy/currencies.conf`: every currency definition.
+- `modules/communication/{join-quit,announcer,info-pages,advancements}.conf`: the four
   communication feature blocks.
 
-The `gui/` sub-folder holds one file per management GUI panel — the in-game editors you
+The `gui/` sub-folder holds one file per management GUI panel: the in-game editors you
 reach through `/uxmess gui`. You rarely edit these by hand; they are styled the same way
 as [custom menus](../menus/engine.md).
 
@@ -209,7 +209,7 @@ anything reported `[OK]`, apply immediately.
 
 ## Next Steps
 
-- [config.conf (Globals)](global-config.md) — storage, locale, and network settings.
-- [Per-Module Config](per-module.md) — enable/disable and tune each feature.
-- [Modules & Reloading](../modules/overview.md) — the full module roster and reload model.
-- [Permission Reference](../permissions/reference.md) — the nodes that gate every feature.
+- [config.conf (Globals)](global-config.md): storage, locale, and network settings.
+- [Per-Module Config](per-module.md): enable/disable and tune each feature.
+- [Modules & Reloading](../modules/overview.md): the full module roster and reload model.
+- [Permission Reference](../permissions/reference.md): the nodes that gate every feature.

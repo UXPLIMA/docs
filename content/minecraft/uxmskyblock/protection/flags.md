@@ -1,9 +1,9 @@
 ---
 title: Island Flags
 order: 680
-description: Flags are island-wide toggles that control what happens inside the protected
-  area — separate from roles, which control what members may do. Flip them in /is
-  settings (requires the TOGGLESETTINGS permission).
+description: 'Flags are island-wide toggles that control what happens inside the
+  protected area: separate from roles, which control what members may do. Flip them in
+  /is settings (requires the TOGGLESETTINGS permission).'
 ---
 
 ---
@@ -13,14 +13,14 @@ description: Flags are island-wide toggles that control what happens inside the 
 | Flag | Default | When ON |
 |------|---------|---------|
 | `PVP` | OFF | Players can damage each other on the island |
-| `MOB_SPAWNING` | — | Hostile mobs spawn naturally |
+| `MOB_SPAWNING` | - | Hostile mobs spawn naturally |
 | `CREEPER_EXPLOSION` | OFF | Creeper explosions damage terrain |
 | `TNT_EXPLOSION` | OFF | TNT explosions damage terrain |
 | `FIRE_SPREAD` | OFF | Fire spreads from block to block |
 | `VISITOR_INTERACT` | OFF | Visitors can use doors, buttons, etc. |
 
 Plus the **Visitors** toggle (the island lock), which decides whether non-members
-can visit at all — also controlled by `/is lock`.
+can visit at all: also controlled by `/is lock`.
 
 ---
 

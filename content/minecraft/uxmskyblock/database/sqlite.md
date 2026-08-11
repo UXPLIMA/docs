@@ -1,8 +1,8 @@
 ---
 title: SQLite (Easy)
 order: 800
-description: SQLite is the default storage backend. It needs zero setup — no database
-  server, no credentials. Perfect for a single server.
+description: 'SQLite is the default storage backend. It needs zero setup: no database
+  server, no credentials. Perfect for a single server.'
 ---
 
 ---
@@ -16,9 +16,9 @@ storage:
   type: sqlite
 ```
 
-A database file is created inside `plugins/uxmSkyblock/` on first start. Everything —
+A database file is created inside `plugins/uxmSkyblock/` on first start. Everything:
 islands, members, roles, points, levels, bank, warps, bans, upgrades, border
-colors, custom roles — is stored in it.
+colors, custom roles: is stored in it.
 
 ---
 
@@ -31,7 +31,7 @@ colors, custom roles — is stored in it.
 | You don't need cross-server sync |
 
 If you run **multiple backend servers** behind a proxy, you need shared storage
-instead — switch to [MySQL](mysql.md).
+instead: switch to [MySQL](mysql.md).
 
 ---
 
@@ -42,7 +42,7 @@ server (or ensure no writes) and copy that file somewhere safe.
 
 <Callout type="warning" title="Can't share across servers">
 
-SQLite is a local file — two servers can't safely use the same one. For a
+SQLite is a local file: two servers can't safely use the same one. For a
 network, use [MySQL](mysql.md) and the [proxy layer](../proxy/cross-server.md).
 
 </Callout>

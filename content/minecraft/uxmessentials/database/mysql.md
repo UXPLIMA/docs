@@ -1,11 +1,11 @@
 ---
 title: MySQL / MariaDB
 order: 1570
-description: When one server outgrows SQLite — or when you want several servers to
-  share the same data — switch the storage backend to MySQL or MariaDB. Both speak
-  the MySQL wire protocol, so a single backend = "mysql" setting drives either one.
-  This is a first-class, fully tested path (the same queries and migrations run on
-  every backend), not a fallback.
+description: 'When one server outgrows SQLite (or when you want several servers to share
+  the same data) switch the storage backend to MySQL or MariaDB. Both speak the MySQL
+  wire protocol, so a single backend = "mysql" setting drives either one. This is a
+  first-class, fully tested path (the same queries and migrations run on every backend),
+  not a fallback.'
 ---
 
 ---
@@ -15,7 +15,7 @@ description: When one server outgrows SQLite — or when you want several server
 | Pros                               | Cons                              |
 |------------------------------------|-----------------------------------|
 | ✅ Handles heavy concurrent writes  | ❌ You must run a database server  |
-| ✅ Remote access — many servers, one DB | ❌ More to configure          |
+| ✅ Remote access: many servers, one DB | ❌ More to configure          |
 | ✅ Real row-level locking           | ❌ Needs its own backup strategy   |
 | ✅ Required for cross-server sync   |                                   |
 
@@ -63,7 +63,7 @@ storage {
 }
 ```
 
-uxmEssentials builds the JDBC connection for you from `host`, `port` and `database` — there is
+uxmEssentials builds the JDBC connection for you from `host`, `port` and `database`: there is
 no raw URL to paste. For a remote database, point `host` at that machine and make sure its port
 (default `3306`) is reachable through your firewall and allowed for the user you created.
 
@@ -72,7 +72,7 @@ no raw URL to paste. For a remote database, point `host` at that machine and mak
 | `backend` | Selects the database engine; `mysql` covers MySQL and MariaDB | `sqlite` |
 | `host` / `port` | Where the database server listens | `localhost` / `3306` |
 | `database` | The schema/database name from Step 1 | `uxmessentials` |
-| `username` / `password` | The account from Step 1 | — |
+| `username` / `password` | The account from Step 1 | - |
 | `read-pool-size` | Concurrent read connections | `8` |
 | `connection-timeout-ms` | Wait before a connection attempt fails | `5000` |
 
@@ -80,14 +80,14 @@ no raw URL to paste. For a remote database, point `host` at that machine and mak
 
 ## Connection Pool Sizing
 
-Connections are pooled by **HikariCP**. On a network backend there is no single-writer pin —
+Connections are pooled by **HikariCP**. On a network backend there is no single-writer pin:
 the database's own row-level locking keeps things safe, so reads and writes run in parallel.
 
 - `read-pool-size = 8` is a sensible default for most servers. Raising it helps a read-heavy
   server (frequent balance/home/warp lookups); there is little point pushing it far past the
   number of cores your database can actually serve.
 - Keep `connection-timeout-ms` at `5000` unless you see timeout warnings on a slow or remote
-  link — a higher value hides a saturated pool rather than fixing it.
+  link: a higher value hides a saturated pool rather than fixing it.
 
 ---
 
@@ -108,7 +108,7 @@ It reports the active backend and whether the database is healthy.
 ## Migrating from SQLite
 
 Switching `backend` from `sqlite` to `mysql` starts a **fresh, empty schema** on the new
-database — it does not copy your SQLite data across. There is no built-in file-to-server
+database; it does not copy your SQLite data across. There is no built-in file-to-server
 converter. To carry data over, use a database export/import tool against each engine, or accept
 a clean start on the new backend.
 
@@ -135,7 +135,7 @@ empty database it will treat that as the source of truth. A backup is your only 
 
 ## Next Steps
 
-- [PostgreSQL Setup](postgresql.md) — the same shape on Postgres.
-- [Cross-Server](../cross-server/overview.md) — share this database across a network of backends.
-- [config.conf (Globals)](../config/global-config.md) — every global setting alongside `storage`.
-- [Economy](../features/economy.md) — the most write-sensitive module, and why balances are always DB-backed.
+- [PostgreSQL Setup](postgresql.md): the same shape on Postgres.
+- [Cross-Server](../cross-server/overview.md): share this database across a network of backends.
+- [config.conf (Globals)](../config/global-config.md): every global setting alongside `storage`.
+- [Economy](../features/economy.md): the most write-sensitive module, and why balances are always DB-backed.

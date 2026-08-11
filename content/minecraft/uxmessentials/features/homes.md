@@ -3,10 +3,9 @@ title: Homes
 order: 1200
 description: 'Homes are private teleport points that each player saves for themselves.
   In uxmEssentials they are deliberately GUI-first: instead of memorising /sethome,
-  /delhome, and a pile of subcommands, a player types /home and manages everything
-  from a slot grid. The single root command /home (aliases h, homes) is the whole
-  surface — creating, deleting, renaming, re-iconing, and teleporting all happen inside
-  the menu.'
+  /delhome, and a pile of subcommands, a player types /home and manages everything from
+  a slot grid. The single root command /home (aliases h, homes) is the whole surface:
+  creating, deleting, renaming, re-iconing, and teleporting all happen inside the menu.'
 ---
 
 Homes are **DB-backed**. A player's homes live in the database, not in a chunk or in player-data files, so they survive world rollbacks, `/reload`, and server restarts.
@@ -17,15 +16,15 @@ Homes are **DB-backed**. A player's homes live in the database, not in a chunk o
 
 Opening `/home` shows a grid of **slots**, numbered starting at **1**. Each slot is either an existing home (click to teleport) or an empty slot (click to create a home at your current location). The grid is where a player does everything:
 
-- **Teleport** — click a filled slot.
-- **Create** — click an empty slot to save your current position there.
-- **Rename / re-icon / delete** — open a slot's detail view.
+- **Teleport**: click a filled slot.
+- **Create**: click an empty slot to save your current position there.
+- **Rename / re-icon / delete**: open a slot's detail view.
 
 Because the number of slots a player sees is driven by their **quota** (below), the grid naturally communicates "you can have this many homes" without a separate limits command.
 
 <Callout type="tip" title="Custom icons">
 
-Players who hold `uxmessentials.home.icon` can set a custom icon (a material) for each home, so the grid becomes a personal, visual list — a bed for the base, a diamond for the mine, and so on.
+Players who hold `uxmessentials.home.icon` can set a custom icon (a material) for each home, so the grid becomes a personal, visual list: a bed for the base, a diamond for the mine, and so on.
 
 </Callout>
 
@@ -95,7 +94,7 @@ Homes are configured in `modules/homes/config.conf`. The notable knobs:
 | Key | What it does |
 |-----|--------------|
 | `default-limit` | Home quota for players matching no numbered node (default `3`). |
-| `limit-mode` | `highest` or `stack` — how numbered quota nodes combine. |
+| `limit-mode` | `highest` or `stack`: how numbered quota nodes combine. |
 | `unlimited-max` | Ceiling applied when resolving very high quota grants. |
 | `disabled-worlds` | Worlds where homes cannot be set. |
 | `block-unsafe-sethome` | Refuse creating a home at an unsafe spot. |
@@ -122,7 +121,7 @@ Charges are drawn through the DB-backed [economy](economy.md). Players with `uxm
 
 ### Land-claim awareness
 
-The `claims` block integrates with a land-claim provider (uxmClaims, Lands, GriefPrevention, and others). When enabled you can require homes to sit inside a claim, block homes set inside **foreign** claims, and check teleport access on arrival — so a player can't set a home inside someone else's protected base and keep visiting it.
+The `claims` block integrates with a land-claim provider (uxmClaims, Lands, GriefPrevention, and others). When enabled you can require homes to sit inside a claim, block homes set inside **foreign** claims, and check teleport access on arrival, so a player can't set a home inside someone else's protected base and keep visiting it.
 
 ---
 
@@ -131,13 +130,13 @@ The `claims` block integrates with a land-claim provider (uxmClaims, Lands, Grie
 | Node | Purpose | Default |
 |------|---------|---------|
 | `uxmessentials.home.use` | Open and manage own homes | `true` |
-| `uxmessentials.home.visit` | Visit invited/public homes | — |
-| `uxmessentials.home.invite` | Invite/uninvite others | — |
+| `uxmessentials.home.visit` | Visit invited/public homes | - |
+| `uxmessentials.home.invite` | Invite/uninvite others | - |
 | `uxmessentials.home.admin` | Manage other players' homes | `op` |
-| `uxmessentials.home.icon` | Set custom home icons | — |
-| `uxmessentials.home.limit.<n>` (opt. `.<world>`) | Home quota tier | — |
-| `uxmessentials.home.bypass.unsafe` | Teleport to unsafe homes | — |
-| `uxmessentials.home.bypass.cost` | Skip home economy costs | — |
+| `uxmessentials.home.icon` | Set custom home icons | - |
+| `uxmessentials.home.limit.<n>` (opt. `.<world>`) | Home quota tier | - |
+| `uxmessentials.home.bypass.unsafe` | Teleport to unsafe homes | - |
+| `uxmessentials.home.bypass.cost` | Skip home economy costs | - |
 
 ---
 
@@ -145,7 +144,7 @@ The `claims` block integrates with a land-claim provider (uxmClaims, Lands, Grie
 
 - **Slots are 1-based.** `/home visit Steve 2` means Steve's second slot, not a zero-indexed one.
 - **Quotas clamp everywhere.** Homes imported from EssentialsX go through the same service as `/home`, so a migrated player never ends up over their quota.
-- **`highest` vs `stack` matters for LadderPerms setups.** If you grant home limits at multiple rank levels expecting them to add up, you must set `limit-mode = stack` — the default `highest` will only honour the biggest.
+- **`highest` vs `stack` matters for LadderPerms setups.** If you grant home limits at multiple rank levels expecting them to add up, you must set `limit-mode = stack`: the default `highest` will only honour the biggest.
 - **Per-world quotas need the world name exactly.** The suffix is the Bukkit world name (`world`, `world_nether`, `world_the_end`, or your custom world folder).
 - **Unsafe-teleport confirmation** protects players from warping into a spot that has since become lava or a drop; holders of `uxmessentials.home.bypass.unsafe` skip both the check and the prompt.
 

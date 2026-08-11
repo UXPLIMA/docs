@@ -10,7 +10,7 @@ description: uxmSkyblock exposes a clean API so other plugins and modules can re
 ## Adding the Dependency
 
 The core runs as its own plugin on the server, so you compile against it but don't
-bundle it — use `compileOnly` / `provided`.
+bundle it: use `compileOnly` / `provided`.
 
 <Tabs>
 <Tab label="Gradle">
@@ -68,12 +68,12 @@ UxmSkyblockPlugin core =
 ```
 
 If you're writing a **module**, you instead receive the core through your
-`ModuleContext` in `onLoad` — no `getPlugin` lookup needed. See
+`ModuleContext` in `onLoad`: no `getPlugin` lookup needed. See
 [Writing a Module](modules.md).
 
 ---
 
-## Example — Read and Modify an Island
+## Example: Read and Modify an Island
 
 ```java
 Island island = core.getIslandManager().getByMember(player.getUniqueId());
@@ -98,5 +98,5 @@ the change over the proxy).
 
 ## Next
 
-- [Events](events.md) — react to island creation/deletion
-- [Writing a Module](modules.md) — the drop-in add-on system
+- [Events](events.md): react to island creation/deletion
+- [Writing a Module](modules.md): the drop-in add-on system

@@ -3,12 +3,12 @@ title: Inventory Rollback
 order: 1360
 description: 'The invrollback module gives staff the one thing a survival server almost
   always ends up wanting a separate plugin for: a way to hand a player back an inventory
-  they lost — to a lag death, a bad restart, a bug — without a manual /give guessing
-  game. It snapshots a player''s inventory at the moments things go wrong (a death,
-  a logout), keeps a bounded history of those snapshots in the database, and lets
-  staff browse and restore them from a GUI with /invrestore <player>. It''s the AxInventoryRestore
-  feature set, built into the same module system as everything else and configured
-  from one HOCON file, modules/invrollback/config.conf.'
+  they lost (to a lag death, a bad restart, a bug) without a manual /give guessing game.
+  It snapshots a player''s inventory at the moments things go wrong (a death, a logout),
+  keeps a bounded history of those snapshots in the database, and lets staff browse and
+  restore them from a GUI with /invrestore <player>. It''s the AxInventoryRestore
+  feature set, built into the same module system as everything else and configured from
+  one HOCON file, modules/invrollback/config.conf.'
 ---
 
 <Callout type="info" title="Ships switched off, and starts capturing the moment you turn it on">
@@ -25,7 +25,7 @@ it on. It cannot recover an inventory that was lost while the module was off.
 
 </Callout>
 
-Every snapshot is **DB-backed and never stored in PDC** — the same hard invariant the
+Every snapshot is **DB-backed and never stored in PDC**: the same hard invariant the
 economy and vaults ledgers hold. The authority is the stored row, not the live
 inventory, so a snapshot **survives a world rollback**: roll the world back to last
 night and the snapshot you took this morning is still there to restore from. The
@@ -38,17 +38,17 @@ baseline, so the module runs no migrations of its own.
 
 A snapshot freezes the player's **full inventory** at the moment it's taken:
 
-- the **main inventory** — hotbar and storage,
+- the **main inventory**: hotbar and storage,
 - the **armour** they're wearing,
 - the **offhand** slot,
 - and, when `include-enderchest` is on, the **ender chest** alongside it,
 - plus **where the player was standing**, so staff can go back to the scene.
 
-Each item is serialised whole — components, enchantments, custom names and all — so a
+Each item is serialised whole (components, enchantments, custom names and all) so a
 restored item is byte-for-byte the one that was lost, not a re-rolled stand-in. Empty
 slots store nothing, so a near-empty inventory stays compact in the table.
 
-Every capture is tagged with a **cause** — `DEATH`, `LOGOUT`, or `RESTORE` — which the
+Every capture is tagged with a **cause** (`DEATH`, `LOGOUT`, or `RESTORE`) which the
 restore GUI shows so staff can tell a death snapshot apart from a routine logout one.
 
 ---
@@ -64,7 +64,7 @@ capture { on-death = true }
 ```
 
 With it on, the player's inventory is read **the instant they die, before the items
-drop**, and frozen into a `DEATH` snapshot. The capture is a pure observer — it runs at
+drop**, and frozen into a `DEATH` snapshot. The capture is a pure observer; it runs at
 the lowest priority and never alters the death, the drops, or the death message; it only
 reads. This is the trigger you'll restore from most often.
 
@@ -75,14 +75,14 @@ capture { on-logout = true }
 ```
 
 With it on, the player's inventory is frozen into a `LOGOUT` snapshot when they leave
-the server — a cheap "last known good" state that covers a crash, a kick, or a dupe that
+the server: a cheap "last known good" state that covers a crash, a kick, or a dupe that
 only shows up after they've logged off.
 
 ### The pre-restore safety snapshot
 
 There's a third cause you never configure: **`RESTORE`**. Immediately before a restore
 overwrites a player's live inventory, the module snapshots their **current** inventory
-first, tagged `RESTORE`. So a restore is itself undoable — pick the wrong snapshot and
+first, tagged `RESTORE`. So a restore is itself undoable: pick the wrong snapshot and
 you can restore the `RESTORE` copy to put things back exactly as they were. This safety
 copy is only taken when the chosen snapshot actually resolves; a dead click on an
 already-pruned snapshot writes nothing.
@@ -97,34 +97,34 @@ capture never blocks a region thread and is Folia-safe from line one.
 
 ---
 
-## Restoring an inventory — `/invrestore <player>`
+## Restoring an inventory: `/invrestore <player>`
 
 Staff holding **`uxmessentials.invrollback.restore`** run **`/invrestore <player>`** to
 open the restore GUI for a target. The whole flow is three steps:
 
 1. **The snapshot list.** A paginated window lists every snapshot the target holds,
-   **newest first**, one icon each. The icon's material tracks the cause — a
+   **newest first**, one icon each. The icon's material tracks the cause: a
    **skeleton skull** for a death, an **ender pearl** for a logout, a **clock** for a
-   pre-restore safety copy — and its label names the cause and the capture time, with a
+   pre-restore safety copy, and its label names the cause and the capture time, with a
    click-to-preview hint. If the target has no snapshots, you get a "no snapshots" line
    instead of an empty window.
 2. **The preview.** Click a snapshot to open a **read-only** preview: a chest window
    whose top five rows mirror the snapshot's inventory exactly as it was, with a lime
    **restore button** in the bottom row. Every other click is cancelled, so you can look
-   without touching — nothing you do in the preview changes anything until you press the
+   without touching; nothing you do in the preview changes anything until you press the
    button.
 3. **The restore.** Press the button and the target's live inventory (main, armour,
    offhand, and the ender chest when the snapshot carried one) is overwritten with the
-   snapshot's contents — after the pre-restore safety snapshot is taken first. You get a
+   snapshot's contents, after the pre-restore safety snapshot is taken first. You get a
    confirmation line naming the player and the cause you restored.
 
 <Callout type="warning" title="The target must be online">
 
-A restore is applied to a **live** inventory — it's never written to the player's
+A restore is applied to a **live** inventory: it's never written to the player's
 saved file on disk. So the target has to be **online** for the restore to land; aim
 `/invrestore` at an offline or unknown name and you get a "not online" line and
 nothing changes. Their snapshots persist regardless, so the restore succeeds the
-moment they rejoin — open the GUI again once they're back.
+moment they rejoin: open the GUI again once they're back.
 
 </Callout>
 
@@ -189,7 +189,7 @@ retention {
 
 | Key | Default | What it does |
 |-----|---------|--------------|
-| `max-per-player` | `10` | The most snapshots kept per player. After **every** capture the player's snapshots past this count are pruned **oldest-first**, so a player's history is trimmed the moment it overflows — you always keep their most recent `10`. `0` disables the count cap. |
+| `max-per-player` | `10` | The most snapshots kept per player. After **every** capture the player's snapshots past this count are pruned **oldest-first**, so a player's history is trimmed the moment it overflows; you always keep their most recent `10`. `0` disables the count cap. |
 | `max-age-days` | `30` | The oldest a snapshot may get. A scheduled sweep removes any snapshot older than this. `0` disables the age cap. |
 
 The **count cap** is enforced immediately on every capture, so between sweeps only the
@@ -253,22 +253,22 @@ Listing, exporting and teleporting all work while they are offline.
 ## Permissions
 
 Three action nodes, plus the per-module reload gate. All default to `op`, so a fresh
-install hands the restore tools to operators and nobody else — grant the specific node to
+install hands the restore tools to operators and nobody else: grant the specific node to
 the staff rank that should have it. Splitting them lets you hand out the read-only verbs
 (export, teleport) without the one that overwrites a live inventory.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.invrollback.restore` | `op` | `/invrestore <player>` — open the snapshot GUI and restore from it |
-| `uxmessentials.invrollback.export` | `op` | `/invrestore export <player> <index>` — pack a snapshot into shulker boxes |
-| `uxmessentials.invrollback.teleport` | `op` | `/invrestore tp <player> <index>` — teleport to the capture location |
+| `uxmessentials.invrollback.restore` | `op` | `/invrestore <player>`: open the snapshot GUI and restore from it |
+| `uxmessentials.invrollback.export` | `op` | `/invrestore export <player> <index>`: pack a snapshot into shulker boxes |
+| `uxmessentials.invrollback.teleport` | `op` | `/invrestore tp <player> <index>`: teleport to the capture location |
 | `uxmessentials.module.invrollback` | `op` | Reload / inspect the module (`/uxmess reload invrollback`) |
 
 ---
 
 ## Next Steps
 
-- [🔑 Permission Reference](../permissions/reference.md) — the full node list
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/invrollback/config.conf` lives and how it's loaded
-- [🗄️ Vaults](vaults.md) — DB-backed player-owned item storage, the same "survives a rollback" guarantee
-- [🛡️ Moderation](moderation.md) — bans, mutes and warnings for the staff who hold the restore node
+- [🔑 Permission Reference](../permissions/reference.md): the full node list
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/invrollback/config.conf` lives and how it's loaded
+- [🗄️ Vaults](vaults.md): DB-backed player-owned item storage, the same "survives a rollback" guarantee
+- [🛡️ Moderation](moderation.md): bans, mutes and warnings for the staff who hold the restore node

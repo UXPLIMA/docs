@@ -1,8 +1,8 @@
 ---
 title: Bank & Economy
 order: 550
-description: Every island has a shared bank — a single balance the whole team can
-  pay into. The bank is backed by Vault, so it uses your server's real economy.
+description: 'Every island has a shared bank: a single balance the whole team can pay
+  into. The bank is backed by Vault, so it uses your server''s real economy.'
 ---
 
 <Callout type="note" title="Vault required">

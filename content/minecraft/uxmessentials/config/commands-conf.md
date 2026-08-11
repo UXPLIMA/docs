@@ -25,7 +25,7 @@ Keep braces and quotes balanced.
 ## How the file is built
 
 `commands.conf` is generated from the live command list the **first time** the plugin
-runs, and then left untouched — your edits are safe across upgrades. Each command is one
+runs, and then left untouched; your edits are safe across upgrades. Each command is one
 block keyed by its **stable id**:
 
 ```hocon
@@ -45,7 +45,7 @@ commands {
 
 | Key | What it does |
 |---|---|
-| `enabled` | `false` drops the command entirely — it registers nothing. |
+| `enabled` | `false` drops the command entirely; it registers nothing. |
 | `name` | The primary literal players type. Edit it to rename the command. |
 | `aliases` | Extra literals that map to the same command. |
 
@@ -69,7 +69,7 @@ commands {
 <Callout type="info" title="Permission nodes never change on rename">
 
 Permission nodes are keyed to the **command id**, not to the name players type.
-Renaming `tpaccept` to `accept` does not change `uxmessentials.tpa.use` — your
+Renaming `tpaccept` to `accept` does not change `uxmessentials.tpa.use`: your
 permission setup keeps working. Renaming is purely cosmetic. Do **not** rename the
 block key (`tpaccept`); only edit `name` and `aliases` inside it.
 
@@ -102,14 +102,14 @@ commands {
 }
 ```
 
-Avoid giving two commands the same name or alias — the first one registered wins and the
+Avoid giving two commands the same name or alias: the first one registered wins and the
 other silently loses that literal.
 
 ---
 
 ## Disabling a command
 
-Set `enabled = false` to remove a command completely. It registers nothing — no literal,
+Set `enabled = false` to remove a command completely. It registers nothing: no literal,
 no aliases, no tab-completion:
 
 ```hocon
@@ -124,7 +124,7 @@ commands {
 
 Disabling a single command is different from disabling its whole module: the rest of the
 module keeps working. To turn off an entire feature, use the module's `enabled` key
-instead — see [Per-Module Config](per-module.md).
+instead, see [Per-Module Config](per-module.md).
 
 ---
 
@@ -140,7 +140,7 @@ immediately.
 
 ## Next Steps
 
-- [Commands Overview](../commands/overview.md) — every command and its default aliases.
-- [Per-Module Config](per-module.md) — disable a whole feature instead of one command.
-- [Permission Reference](../permissions/reference.md) — the id-keyed nodes that stay
+- [Commands Overview](../commands/overview.md): every command and its default aliases.
+- [Per-Module Config](per-module.md): disable a whole feature instead of one command.
+- [Permission Reference](../permissions/reference.md): the id-keyed nodes that stay
   stable across renames.

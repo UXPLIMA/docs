@@ -4,11 +4,11 @@ order: 1690
 ---
 
 Chunklock adds a single **informational** command. The actual unlocking is done by
-**dropping items** while looking at a locked chunk, not by a command — see
+**dropping items** while looking at a locked chunk, not by a command, see
 [How It Works](how-it-works.md).
 
 All island management (create, home, visit, team, warps, upgrades) uses the normal
-uxmSkyblock commands — see [Commands Overview](../uxmskyblock/commands/overview.md).
+uxmSkyblock commands, see [Commands Overview](../uxmskyblock/commands/overview.md).
 
 ---
 
@@ -26,14 +26,14 @@ Aliases: `/cl`, `/chunk`.
 /chunklock cost
 ```
 
-The "facing" target is the chunk you're **looking at** — aim at a locked chunk to
+The "facing" target is the chunk you're **looking at**: aim at a locked chunk to
 see what it costs.
 
 ---
 
 ## Unlocking (no command)
 
-To unlock a chunk you don't type anything — you **drop the item**:
+To unlock a chunk you don't type anything; you **drop the item**:
 
 1. Look at the locked chunk.
 2. Press **Q** (drop) with the required item.
@@ -47,7 +47,7 @@ To unlock a chunk you don't type anything — you **drop the item**:
 |------|---------|
 | `chunklock.bypass` | Walk through locked chunks freely (staff) |
 
-There are no other Bukkit permissions — team access is governed by uxmSkyblock
+There are no other Bukkit permissions: team access is governed by uxmSkyblock
 [roles](../uxmskyblock/protection/roles-permissions.md).
 
 ---

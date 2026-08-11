@@ -1,14 +1,14 @@
 ---
 title: Regions (WorldGuard)
 order: 1400
-description: 'The regions module is an in-game manager for WorldGuard regions: browse
-  a world''s regions, carve out a new cuboid, cycle its protection flags, and edit
-  its member and owner rosters — all from a menu, without touching /rg or reaching
-  for a permission plugin. It''s built for the operator who runs WorldGuard for protection
-  but doesn''t want to memorise the flag list or type out a UUID to add a co-owner.'
+description: 'The regions module is an in-game manager for WorldGuard regions: browse a
+  world''s regions, carve out a new cuboid, cycle its protection flags, and edit its
+  member and owner rosters: all from a menu, without touching /rg or reaching for a
+  permission plugin. It''s built for the operator who runs WorldGuard for protection but
+  doesn''t want to memorise the flag list or type out a UUID to add a co-owner.'
 ---
 
-<Callout type="danger" title="WorldGuard is a soft-dependency — the module is inert without it">
+<Callout type="danger" title="WorldGuard is a soft-dependency: the module is inert without it">
 
 `regions` does not bundle WorldGuard and does not manage protection on its own. It is
 a **front-end** over an installed WorldGuard. With WorldGuard **absent**, the module
@@ -22,7 +22,7 @@ manage.
 <Callout type="info" title="WorldEdit is needed only for selection-based create">
 
 `/regions create` prefers your **WorldEdit** selection when one is present. If you
-don't run WorldEdit — or haven't made a selection — mark the two corners with
+don't run WorldEdit (or haven't made a selection) mark the two corners with
 `/regions pos1` and `/regions pos2` instead. Everything else works with WorldGuard
 alone.
 
@@ -37,11 +37,11 @@ installed, and set it back to `false` to switch the module off again.
 
 ## Browsing a World's Regions
 
-`/regions [world]` opens a paginated list of the regions in a world — your current world
+`/regions [world]` opens a paginated list of the regions in a world; your current world
 when you omit the name, or a named world when you pass one. Each entry shows the region's
 **id**, its **priority**, and its **member count** at a glance.
 
-Click a region to open its **detail panel** — the hub for that one region. From there you
+Click a region to open its **detail panel**: the hub for that one region. From there you
 jump straight to its flag editor and its member/owner roster, so you rarely type the
 `<id>` sub-commands by hand once the list is open.
 
@@ -52,7 +52,7 @@ and drive everything else from its panel.
 
 ## Creating a Region
 
-Defining a cuboid region is two steps — pick the volume, then name it.
+Defining a cuboid region is two steps: pick the volume, then name it.
 
 **Pick the volume.** If you run WorldEdit, make a normal cuboid selection with the wand;
 `/regions create` reads it directly. Without WorldEdit, mark the corners yourself:
@@ -71,7 +71,7 @@ region:
 
 - an **`<id>` that already exists** in that world, so you never clobber a region by reusing
   a name;
-- a **create with no volume** — no WorldEdit selection *and* not both corners marked yet.
+- a **create with no volume**: no WorldEdit selection *and* not both corners marked yet.
 
 <Callout type="tip" title="Corners live until you create">
 
@@ -96,7 +96,7 @@ every type, and each one is edited in the way that suits it:
 | **Text** | `greeting`, `farewell` | Opens a text prompt |
 | **Number** | `heal-amount`, `min-heal` | Opens a validated number prompt |
 | **Fixed choice** | `game-mode`, `weather-lock`, a region group | Opens a choice picker |
-| **Complex** | sets, locations | Shown **read-only** — edit those with WorldGuard's own commands |
+| **Complex** | sets, locations | Shown **read-only**: edit those with WorldGuard's own commands |
 
 Each click writes the new value straight to WorldGuard, so what you see in the menu is the
 region's real flag state. `UNSET` clears the override and lets the flag fall back to
@@ -106,7 +106,7 @@ WorldGuard's own default for that region.
 
 Listing every registered flag is a lot of items on a server with several flag-adding
 plugins. Set `flags.editable` to a non-empty list and the editor shows **exactly**
-those flags, in that order — see [Configuration](#configuration).
+those flags, in that order, see [Configuration](#configuration).
 
 </Callout>
 
@@ -118,7 +118,7 @@ Open the roster from a region's detail panel, or with `/regions members <id>`. I
 region's **owners first**, then its members, so the people with the most authority read at
 the top. Click any member or owner to **remove** them from the region.
 
-Adding people is two commands, and both are **offline-safe** — a name you pass is resolved
+Adding people is two commands, and both are **offline-safe**: a name you pass is resolved
 to a UUID even when that player has never joined while you were looking, so you can seed a
 region's roster before its owners log in:
 
@@ -130,7 +130,7 @@ region's roster before its owners log in:
 <Callout type="note" title="Legacy entries are read-only">
 
 A WorldGuard region can hold **name-only** entries (from before UUIDs) and **group**
-entries like `g:builders`. These render in the roster **greyed out and read-only** — the
+entries like `g:builders`. These render in the roster **greyed out and read-only**: the
 module shows them so the picture is complete, but a click won't remove them, because they
 aren't UUID-backed players. Manage those with WorldGuard directly.
 
@@ -141,7 +141,7 @@ aren't UUID-backed players. Manage those with WorldGuard directly.
 ## Priority
 
 `/regions priority <id> <value>` sets a region's **priority**. When two regions overlap,
-WorldGuard applies the higher-priority region's flags — so a small `no-pvp` arena inside a
+WorldGuard applies the higher-priority region's flags, so a small `no-pvp` arena inside a
 larger `pvp` world just needs a higher number than its parent. This is a plain admin knob,
 gated behind the module's `.admin` node.
 
@@ -190,7 +190,7 @@ flags, using the ids WorldGuard registers (lower kebab-case).
 <Callout type="warning" title="WorldGuard must be installed at runtime">
 
 WorldGuard is declared as a **soft-depend** in `paper-plugin.yml`, so uxmEssentials
-loads cleanly whether or not it's present — but the `regions` module can only *do*
+loads cleanly whether or not it's present, but the `regions` module can only *do*
 something when WorldGuard is actually on the server. With WorldGuard missing, every
 command short-circuits with *"WorldGuard not installed"*. WorldEdit is a further optional
 soft-depend, needed only for selection-based `/regions create`.
@@ -209,24 +209,24 @@ picture.
 
 ## Permissions
 
-Region management is staff work, so every node defaults to `op` — a fresh install hands the
+Region management is staff work, so every node defaults to `op`: a fresh install hands the
 region tools to operators and nobody else. Grant the specific node to the staff rank that
 should hold it.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.regions.list` | `op` | `/regions [world]` — browse a world's regions and open a region's detail panel |
-| `uxmessentials.regions.create` | `op` | `/regions create <id>`, `/regions pos1`, `/regions pos2` — define a new cuboid region |
-| `uxmessentials.regions.flags` | `op` | The flag editor (from the panel or `/regions flags <id>`) — cycle a region's state flags |
+| `uxmessentials.regions.list` | `op` | `/regions [world]`: browse a world's regions and open a region's detail panel |
+| `uxmessentials.regions.create` | `op` | `/regions create <id>`, `/regions pos1`, `/regions pos2`: define a new cuboid region |
+| `uxmessentials.regions.flags` | `op` | The flag editor (from the panel or `/regions flags <id>`): cycle a region's state flags |
 | `uxmessentials.regions.members` | `op` | The member/owner roster (from the panel or `/regions members <id>`), plus `/regions addmember` / `addowner` |
-| `uxmessentials.regions.admin` | `op` | `/regions priority <id> <value>` — set a region's priority |
+| `uxmessentials.regions.admin` | `op` | `/regions priority <id> <value>`: set a region's priority |
 | `uxmessentials.module.regions` | `op` | Reload / inspect the module (`/uxmess reload regions`) |
 
 ---
 
 ## Next Steps
 
-- [🗺️ Regions Commands](../commands/regions.md) — the full `/regions` command reference
-- [🔑 Permission Reference](../permissions/reference.md) — the `uxmessentials.regions.*` nodes
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/regions/config.conf` lives and how it's loaded
-- [🧩 The Module System](../modules/overview.md) — turn modules on and off
+- [🗺️ Regions Commands](../commands/regions.md): the full `/regions` command reference
+- [🔑 Permission Reference](../permissions/reference.md): the `uxmessentials.regions.*` nodes
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/regions/config.conf` lives and how it's loaded
+- [🧩 The Module System](../modules/overview.md): turn modules on and off

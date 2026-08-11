@@ -1,9 +1,9 @@
 ---
 title: Actions & Requirements
 order: 1100
-description: Everything a menu does is an action; everything it checks is a requirement
-  (also called a condition). Both are written the same way — a bare id:value reference
-  — and both are shared by the built-in menus and your own.
+description: 'Everything a menu does is an action; everything it checks is a requirement
+  (also called a condition). Both are written the same way (a bare id:value reference)
+  and both are shared by the built-in menus and your own.'
 ---
 
 <Callout type="warning" title="Bare references, never brackets">
@@ -19,8 +19,8 @@ inverts it: `!perm:uxmessentials.vip`.
 
 ## Actions
 
-Actions run in order. Any action reference can also carry per-action modifiers — a
-`delay` in ticks, a `chance` percent, and a fallback to run if the chance roll fails —
+Actions run in order. Any action reference can also carry per-action modifiers: a
+`delay` in ticks, a `chance` percent, and a fallback to run if the chance roll fails:
 when written as a block instead of a bare string.
 
 The table below is the **common set**; the engine ships around sixty action ids in total
@@ -146,7 +146,7 @@ click {
 }
 ```
 
-### `minimum` — how requirements combine
+### `minimum`: how requirements combine
 
 The `minimum` key turns a requirement list into AND / OR / N-of-M without a separate
 flag:
@@ -175,14 +175,14 @@ view {
 }
 ```
 
-A tile whose `view` fails is not drawn at all — it does not appear greyed-out, it simply
+A tile whose `view` fails is not drawn at all; it does not appear greyed-out, it simply
 isn't there.
 
 ---
 
 ## Next Steps
 
-- [Custom Menu Engine](engine.md) — the full spec and a worked example.
-- [Menu API](../developer/menu-api.md) — register your own actions, conditions and placeholders.
-- [Permission Reference](../permissions/reference.md) — nodes for `perm:` conditions.
-- [Bedrock Forms](bedrock.md) — how these menus render for Floodgate players.
+- [Custom Menu Engine](engine.md): the full spec and a worked example.
+- [Menu API](../developer/menu-api.md): register your own actions, conditions and placeholders.
+- [Permission Reference](../permissions/reference.md): nodes for `perm:` conditions.
+- [Bedrock Forms](bedrock.md): how these menus render for Floodgate players.

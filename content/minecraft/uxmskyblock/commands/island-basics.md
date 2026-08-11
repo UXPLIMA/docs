@@ -7,7 +7,7 @@ description: The everyday commands for creating, reaching, and managing your own
 <Callout type="note" title="Default words">
 
 Commands are shown with `/is` and the default English sub-command words. Your
-server may use different words/aliases — see [config.yml](../configuration/config-yml.md).
+server may use different words/aliases, see [config.yml](../configuration/config-yml.md).
 
 </Callout>
 
@@ -15,7 +15,7 @@ server may use different words/aliases — see [config.yml](../configuration/con
 
 ## `/is`
 
-Opens the **main menu** — your hub for settings, upgrades, warps, the bank, and
+Opens the **main menu**: your hub for settings, upgrades, warps, the bank, and
 your team. See the [Main Menu](../menus/main-menu.md) guide.
 
 ---
@@ -30,7 +30,7 @@ Creates your island and teleports you to it. You become the **owner**.
 ```
 
 Run with **no type** to open the [Island Type menu](../menus/island-type.md) and
-pick a starter island with a click. Pass a `[type]` to skip the menu — it's a
+pick a starter island with a click. Pass a `[type]` to skip the menu: it's a
 **schematic** defined in `schematics:` in config (e.g. `classic`, `desert`). On
 `void` worlds the schematic is pasted; on `normal` worlds a starter platform is
 placed on the surface.
@@ -126,6 +126,6 @@ undone.**
 
 ## Related
 
-- [Team & Roles](team-roles.md) — invite and manage members
-- [Settings menu](../menus/settings.md) — flags, lock, time
-- [Bank & Economy](bank.md) — the island bank
+- [Team & Roles](team-roles.md): invite and manage members
+- [Settings menu](../menus/settings.md): flags, lock, time
+- [Bank & Economy](bank.md): the island bank

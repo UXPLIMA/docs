@@ -1,11 +1,11 @@
 ---
 title: Bedrock Forms
 order: 1110
-description: 'Bedrock players — those joining a Java server through Geyser with Floodgate
-  installed — do not see chest GUIs the way Java players do. A chest menu is clunky
-  on a touch screen. So when uxmEssentials detects a Bedrock viewer, it renders the
-  very same menu as a native Bedrock form instead: the clean, scrollable, tappable
-  UI Bedrock players already know.'
+description: 'Bedrock players (those joining a Java server through Geyser with Floodgate
+  installed) do not see chest GUIs the way Java players do. A chest menu is clunky on a
+  touch screen. So when uxmEssentials detects a Bedrock viewer, it renders the very same
+  menu as a native Bedrock form instead: the clean, scrollable, tappable UI Bedrock
+  players already know.'
 ---
 
 This is automatic. You author one menu; Java players get the chest, Bedrock players get
@@ -26,8 +26,8 @@ shape:
 | **CustomForm** | A menu with an explicit `bedrock { }` block | A form built from dropdowns, sliders, toggles and text inputs. |
 
 For a **SimpleForm**, the degradation is done for you: each item that binds at least one
-click action becomes a button carrying that item's name. Decorative tiles — the filler
-panes, blank borders, display-only info items — bind no action, so they are left off the
+click action becomes a button carrying that item's name. Decorative tiles: the filler
+panes, blank borders, display-only info items: bind no action, so they are left off the
 form (a button that does nothing on tap would be meaningless). Tap a button and its
 action list runs exactly as a click would on Java.
 
@@ -43,7 +43,7 @@ takes the chest path. See [Bedrock (Floodgate)](../integrations/floodgate.md).
 
 ## When the chest is kept anyway: `chest-only`
 
-Some menus can't be a form. A form is a flat list of buttons — it cannot display or edit
+Some menus can't be a form. A form is a flat list of buttons; it cannot display or edit
 real item stacks. So a menu that shows an inventory (the vault, the inventory viewer, a
 storage-style grid) stays a chest even for a Bedrock viewer.
 
@@ -62,7 +62,7 @@ makes sense in a chest.
 
 ## An explicit form: the `bedrock { }` block
 
-The automatic SimpleForm is a button list — it can't offer a dropdown, a slider or a
+The automatic SimpleForm is a button list; it can't offer a dropdown, a slider or a
 text field. When you want those form-native controls, add a `bedrock { }` block. A
 Bedrock viewer then gets that explicit **CustomForm**; a Java viewer never sees it and
 keeps the chest.
@@ -95,21 +95,21 @@ bedrock {
 ```
 
 Each value widget carries a `name`. When the player submits, its value is bound to a
-`%name%` placeholder — `%warp-name%`, `%cost%`, `%locked%` above — and the `on-submit`
+`%name%` placeholder (`%warp-name%`, `%cost%`, `%locked%` above) and the `on-submit`
 action list runs with those values in scope.
 
 ### Widget types
 
 | `type` | Keys | Value bound to `%name%` |
 |---|---|---|
-| `label` | `text` | (none — display only) |
+| `label` | `text` | (none: display only) |
 | `input` | `name`, `label`, `placeholder`, `default` | The typed text |
 | `dropdown` | `name`, `label`, `options`, `default` (index) | The selected option string |
 | `slider` | `name`, `label`, `min`, `max`, `step`, `default` | The chosen number |
 | `toggle` | `name`, `label`, `default` | `true` / `false` |
 
 Widget labels, the form title and `content` are verbatim MiniMessage (or `@catalog.key`),
-just like item names — they may hold placeholders and are resolved per open.
+just like item names; they may hold placeholders and are resolved per open.
 
 ---
 
@@ -122,13 +122,13 @@ Everything degrades to something sensible:
 - **No `bedrock { }` block** → the automatic SimpleForm/ModalForm degradation is used.
 - **A `bedrock { }` block** → Bedrock viewers get that CustomForm; Java viewers ignore it.
 
-You never end up with a broken menu — the worst case is a Bedrock player seeing the same
+You never end up with a broken menu: the worst case is a Bedrock player seeing the same
 chest a Java player would.
 
 ---
 
 ## Next Steps
 
-- [Bedrock (Floodgate)](../integrations/floodgate.md) — enabling Floodgate detection.
-- [Custom Menu Engine](engine.md) — the `chest-only` and `bedrock` keys in context.
-- [Actions & Requirements](actions-requirements.md) — what `on-submit` actions can do.
+- [Bedrock (Floodgate)](../integrations/floodgate.md): enabling Floodgate detection.
+- [Custom Menu Engine](engine.md): the `chest-only` and `bedrock` keys in context.
+- [Actions & Requirements](actions-requirements.md): what `on-submit` actions can do.

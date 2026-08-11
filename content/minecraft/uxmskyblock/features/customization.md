@@ -78,4 +78,4 @@ creation:
 
 - Format is `MATERIAL AMOUNT` (or `MATERIAL:AMOUNT`); amount defaults to `1`.
 - Invalid material names are skipped.
-- Only newly created islands are affected — existing chests are never touched retroactively.
+- Only newly created islands are affected: existing chests are never touched retroactively.

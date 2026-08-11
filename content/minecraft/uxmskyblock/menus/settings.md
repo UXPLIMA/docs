@@ -1,9 +1,9 @@
 ---
 title: Settings
 order: 600
-description: /is settings opens the Settings menu — where the owner (or anyone with
-  the TOGGLESETTINGS permission) controls how the island behaves. The layout lives
-  in menus/settings.yml.
+description: '/is settings opens the Settings menu, where the owner (or anyone with the
+  TOGGLESETTINGS permission) controls how the island behaves. The layout lives in
+  menus/settings.yml.'
 ---
 
 ---
@@ -31,9 +31,9 @@ See [Island Flags](../protection/flags.md) for the full description of each.
 
 Depending on your menu config, the settings menu can also expose:
 
-- **Island lock** — open or close to visitors (same as `/is lock`)
-- **Island time** — lock day/night, requires the `skyblock.time` permission
-- **Border color** — BLUE / GREEN / RED
+- **Island lock**: open or close to visitors (same as `/is lock`)
+- **Island time**: lock day/night, requires the `skyblock.time` permission
+- **Border color**: BLUE / GREEN / RED
 
 ---
 
@@ -47,5 +47,5 @@ server permission `skyblock.time` (op/VIP by default).
 
 ## Customizing
 
-Every button — its slot, material, name, lore, and the `flag:<NAME>` action — is
+Every button (its slot, material, name, lore, and the `flag:<NAME>` action) is
 editable in `menus/settings.yml`. See [Menu Customization](../configuration/menus.md).

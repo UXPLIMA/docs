@@ -8,7 +8,7 @@ order: 510
 By default the main command is `/island`, with aliases `/is`, `/sb`, `/ada`,
 `/sky`. **Both the name and every alias are configurable** in
 [config.yml](../configuration/config-yml.md) under `command:`, and the plugin
-registers them dynamically — there is no command in `plugin.yml`.
+registers them dynamically: there is no command in `plugin.yml`.
 
 Every **sub-command word** is configurable too, and most accept several aliases
 (English + Turkish out of the box). For example `create` also responds to
@@ -18,7 +18,7 @@ This wiki uses `/is` and the **default English sub-command words**.
 
 <Callout type="tip" title="Tab completion everywhere">
 
-Every sub-command and its arguments support context-aware tab completion —
+Every sub-command and its arguments support context-aware tab completion:
 player names, role IDs, warp names, border colors, bank actions, and more.
 
 </Callout>
@@ -65,14 +65,14 @@ player names, role IDs, warp names, border colors, bank actions, and more.
 
 ## Permissions
 
-uxmSkyblock uses very few server-level permission nodes — most "permissions" are
+uxmSkyblock uses very few server-level permission nodes: most "permissions" are
 **island role permissions**, not Bukkit ones.
 
 | Node | Default | Purpose |
 |------|---------|---------|
 | `skyblock.admin` | op | Access to `/is admin`, `/is anaspawn`, `/is proxy` |
 | `skyblock.time` | op | Lock the island time (day/night) |
-| `skyblock.warps.<n>` | — | Raise a player's warp limit to `<n>` |
+| `skyblock.warps.<n>` | - | Raise a player's warp limit to `<n>` |
 
 See [Roles & Permissions](../protection/roles-permissions.md) for the in-island
 permission system.

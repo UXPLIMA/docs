@@ -4,7 +4,7 @@ order: 1580
 ---
 
 **PostgreSQL** is the third first-class backend. It behaves exactly like the
-[MySQL / MariaDB](mysql.md) path — same tables, same migrations, same features — and differs
+[MySQL / MariaDB](mysql.md) path (same tables, same migrations, same features) and differs
 only in the driver and the default port. Reach for it if Postgres is what you already run and
 operate well.
 
@@ -68,7 +68,7 @@ storage {
 
 The only differences from the [MySQL setup](mysql.md) are `backend = "postgres"` and the default
 `port = 5432`. As with MySQL, uxmEssentials builds the JDBC connection for you from `host`,
-`port` and `database` — there is no raw URL to enter. Pool sizing (`read-pool-size`,
+`port` and `database`: there is no raw URL to enter. Pool sizing (`read-pool-size`,
 `connection-timeout-ms`) works identically; see [Connection Pool Sizing](mysql.md#connection-pool-sizing).
 
 ---
@@ -108,7 +108,7 @@ psql -U uxmessentials uxmessentials \< backup.sql
 
 <Callout type="warning" title="Back up before switching backends">
 
-Changing `backend` starts a **fresh, empty schema** on the new database — it does not copy
+Changing `backend` starts a **fresh, empty schema** on the new database; it does not copy
 your old data across. Back up your current database first (SQLite file or a `pg_dump`) before
 you change the value.
 
@@ -118,6 +118,6 @@ you change the value.
 
 ## Next Steps
 
-- [MySQL / MariaDB Setup](mysql.md) — the sibling network backend, with pool-sizing details.
-- [Cross-Server](../cross-server/overview.md) — share this database across a network of backends.
-- [config.conf (Globals)](../config/global-config.md) — every global setting alongside `storage`.
+- [MySQL / MariaDB Setup](mysql.md): the sibling network backend, with pool-sizing details.
+- [Cross-Server](../cross-server/overview.md): share this database across a network of backends.
+- [config.conf (Globals)](../config/global-config.md): every global setting alongside `storage`.

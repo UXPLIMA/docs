@@ -5,9 +5,9 @@ order: 1450
 
 ## What Is Sitting & Poses?
 
-The **poses** module lets players relax in the world — sit down on the ground or on
+The **poses** module lets players relax in the world: sit down on the ground or on
 furniture-like blocks, with more poses on the way. It is the built-in answer to
-"do I need a separate sit plugin?" — you don't.
+"do I need a separate sit plugin?"; you don't.
 
 Like every part of uxmEssentials, it is a module you can turn off entirely
 (`modules/poses/config.conf` → `enabled = false`) if your server doesn't want it.
@@ -15,7 +15,7 @@ Like every part of uxmEssentials, it is a module you can turn off entirely
 <Callout type="tip" title="Everything's here">
 
 The full pose set is available: **sit**, **sit on other players**, **lay**,
-**belly-flop**, **spin**, and **crawl** — one module, no extra plugins.
+**belly-flop**, **spin**, and **crawl**: one module, no extra plugins.
 
 </Callout>
 
@@ -35,7 +35,7 @@ You stand back up by **sneaking**, taking damage, teleporting, or logging out.
 <Callout type="tip" title="You return to where you sat">
 
 With `return-to-start` enabled (the default), standing up puts you back on the
-exact spot you were before you sat — no drifting off the seat.
+exact spot you were before you sat: no drifting off the seat.
 
 </Callout>
 
@@ -44,12 +44,12 @@ exact spot you were before you sat — no drifting off the seat.
 ## Sitting on Other Players
 
 Players can pile up: **right-click another player to sit on their shoulders**, and
-they can right-click someone too — the stack goes as high as you like.
+they can right-click someone too: the stack goes as high as you like.
 
 This is **off by default** because it's a novelty, not every server wants it. Turn
 it on with `features.player-sit = true` in the config.
 
-Anyone can opt out of being sat on with **`/poses toggle`** — one command flips
+Anyone can opt out of being sat on with **`/poses toggle`**: one command flips
 between allowing and refusing riders. Their choice is remembered across logouts.
 Prefer a menu? **`/poses`** opens a small settings panel showing your current pose
 and the same allow/refuse switch.
@@ -62,7 +62,7 @@ and the same allow/refuse switch.
 <Callout type="tip" title="Nobody gets stuck">
 
 If the player you're sitting on logs out, you're gently dropped and set back on
-your feet — no floating, no stuck passengers.
+your feet: no floating, no stuck passengers.
 
 </Callout>
 
@@ -78,12 +78,12 @@ Sitting isn't the only way to relax:
 | `/bellyflop` | Flop face-down on the ground |
 | `/spin` | Sit and slowly spin in place |
 
-You leave any pose the same way you leave a seat — sneak, take damage, teleport,
+You leave any pose the same way you leave a seat: sneak, take damage, teleport,
 or log out.
 
 <Callout type="tip" title="Snoring, no resource pack needed">
 
-Players who `/lay` down softly **snore** — a gentle sound plays every few
+Players who `/lay` down softly **snore**: a gentle sound plays every few
 seconds, with no resource pack required. Turn it off with `snore = false` in
 the config.
 
@@ -96,18 +96,18 @@ Each pose can be turned off individually in the config (`features.lay`,
 
 ## Crawling
 
-**`/crawl`** drops you into a crawl so you can move through 1-block-high gaps —
+**`/crawl`** drops you into a crawl so you can move through 1-block-high gaps:
 under slabs, into 1×1 tunnels, wherever a standing player wouldn't fit. Run
 `/crawl` again to stand back up. It also ends when you teleport, die, or log out.
 
 Unlike the other poses, you can **keep walking** while you crawl.
 
-<Callout type="note" title="How it works — and its one limit">
+<Callout type="note" title="How it works, and its one limit">
 
 Crawling shows *you* an invisible block above your head that keeps you low; it
 is client-side only, so it never places a real block, never suffocates you, and
 is cleared the instant you stand, teleport, or leave. At a full sprint the
-effect can trail you by a single tick — harmless, and it catches up immediately.
+effect can trail you by a single tick: harmless, and it catches up immediately.
 
 </Callout>
 
@@ -121,7 +121,7 @@ Out of the box, players can right-click **stairs, slabs, and carpets**. You deci
 the full list in the config with `sittable-materials`, and you can turn
 right-click seating off entirely while keeping `/sit`.
 
-The plugin works out the right sitting height and facing from the block — a player
+The plugin works out the right sitting height and facing from the block: a player
 on a stair faces the way the stair faces, and sits at the correct height on slabs
 and carpets.
 
@@ -132,15 +132,15 @@ and carpets.
 Poses respect your land-protection setup, so players can't sit or crawl where they
 aren't welcome:
 
-- **Land claims** — if you run a claim plugin (GriefPrevention, PlotSquared,
+- **Land claims**: if you run a claim plugin (GriefPrevention, PlotSquared,
   uxmClaims and others), a player can only pose where they're trusted to act.
   Toggle with `respect-claims`.
-- **WorldGuard flags** — when WorldGuard is installed, uxmEssentials registers four
-  custom region flags — **`sit`**, **`playersit`**, **`pose`**, **`crawl`** — each
+- **WorldGuard flags**: when WorldGuard is installed, uxmEssentials registers four
+  custom region flags (**`sit`**, **`playersit`**, **`pose`**, **`crawl`**) each
   defaulting to *allow*. Set a flag to `deny` in a region to block that pose there.
   Toggle the whole check with `respect-worldguard`.
 
-If you don't run any region plugin, everything is simply allowed — no setup needed.
+If you don't run any region plugin, everything is simply allowed: no setup needed.
 
 <Callout type="note" title="WorldGuard flag registration">
 
@@ -231,14 +231,14 @@ With PlaceholderAPI installed:
 | `%uxmessentials_poses_sitting%` | `yes` while the player is sitting, `no` otherwise |
 | `%uxmessentials_poses_posing%` | `yes` while the player is laying, belly-flopping, or spinning |
 | `%uxmessentials_poses_pose%` | the current pose: `sit`, `lay`, `bellyflop`, `spin`, or `none` |
-| `%uxmessentials_poses_toggle%` | `allow` or `refuse` — whether the player accepts riders |
+| `%uxmessentials_poses_toggle%` | `allow` or `refuse`: whether the player accepts riders |
 
 ---
 
 ## Good to know
 
 - **No ghost seats.** Seats are invisible, non-saved helper entities that are
-  cleaned up the moment you stand, log out, or the chunk unloads — and any stray
+  cleaned up the moment you stand, log out, or the chunk unloads, and any stray
   left by a crash is swept away on the next server start. You will never find a
   leftover invisible stand in your world.
 - **Folia-ready.** All seat handling runs through the region-aware scheduler, so
@@ -248,6 +248,6 @@ With PlaceholderAPI installed:
 
 ## Next Steps
 
-- ⚙️ [Configuration](../config/overview.md) — how uxmEssentials config works
-- 🧩 [The Module System](../modules/overview.md) — turn modules on and off
-- 🔑 [Permission Reference](../permissions/reference.md) — every node
+- ⚙️ [Configuration](../config/overview.md): how uxmEssentials config works
+- 🧩 [The Module System](../modules/overview.md): turn modules on and off
+- 🔑 [Permission Reference](../permissions/reference.md): every node

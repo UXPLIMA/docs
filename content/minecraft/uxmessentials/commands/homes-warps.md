@@ -7,13 +7,13 @@ order: 960
 
 Three separate modules cover the "save a spot and jump back to it" family:
 
-- **Homes** — private, per-player teleport points, managed through a slot-based GUI.
-- **Warps** — server-wide destinations created by staff (with optional cost, locks, passwords, and ratings).
-- **Player Warps** — player-owned public warps, keyed by owner and name.
+- **Homes**: private, per-player teleport points, managed through a slot-based GUI.
+- **Warps**: server-wide destinations created by staff (with optional cost, locks, passwords, and ratings).
+- **Player Warps**: player-owned public warps, keyed by owner and name.
 
 <Callout type="tip" title="Renamed on your server?">
 
-Every command below can be renamed, re-aliased, or disabled in `commands/commands.conf` — see [Command Configuration](../config/commands-conf.md). Permission nodes stay keyed to the command id regardless of what it's renamed to.
+Every command below can be renamed, re-aliased, or disabled in `commands/commands.conf`: see [Command Configuration](../config/commands-conf.md). Permission nodes stay keyed to the command id regardless of what it's renamed to.
 
 </Callout>
 
@@ -46,7 +46,7 @@ Homes are **GUI-first**. The single root command `/home` (aliases `h`, `homes`) 
 
 | Node | Purpose |
 |------|---------|
-| `uxmessentials.home.limit.<n>` (optional `.<world>`) | Home quota — highest `<n>` wins, or stacks depending on `limit-mode` |
+| `uxmessentials.home.limit.<n>` (optional `.<world>`) | Home quota: highest `<n>` wins, or stacks depending on `limit-mode` |
 | `uxmessentials.home.icon` | Allow setting a custom home icon |
 | `uxmessentials.home.bypass.unsafe` | Teleport even when the destination is unsafe |
 | `uxmessentials.home.bypass.cost` | Skip any per-teleport home cost |

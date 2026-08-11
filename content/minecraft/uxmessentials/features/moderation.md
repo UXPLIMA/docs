@@ -2,9 +2,9 @@
 title: Moderation
 order: 1300
 description: 'The moderation module is a full punishment toolkit: mutes, bans, tempbans,
-  IP-bans, jails, warnings with escalation, freezes, and a complete disciplinary history
-  — all backed by the database, all with silent variants, and all reachable from a
-  /mod GUI as well as the command line.'
+  IP-bans, jails, warnings with escalation, freezes, and a complete disciplinary
+  history: all backed by the database, all with silent variants, and all reachable from
+  a /mod GUI as well as the command line.'
 ---
 
 Because records live in the database, punishments **survive world rollbacks** and, on
@@ -39,7 +39,7 @@ acting instantly, which makes accidental punishments hard to fire.
 Every punishment is a database record: who issued it, against whom, why, when, and
 (for timed sanctions) when it expires. `/history <player>` reads the whole trail back.
 
-**Silent mode.** Add `-s` to a punishment to suppress its public broadcast — the
+**Silent mode.** Add `-s` to a punishment to suppress its public broadcast: the
 action still happens and is still logged, but chat stays quiet. The `-s` token is
 parsed at the front of the reason:
 
@@ -86,7 +86,7 @@ lowering the count changes what the next warning triggers.
 
 - **Jails** are named locations you define with `/setjail <name>`. `/jail <player> <jail> [duration] [reason]` confines a player there; `/togglejail` flips them in and out. `jail-countdown` decides whether a timed jail counts down only while the player is online or on the wall clock.
 - **Freeze** (`/freeze`, `/unfreeze`) pins a player in place for questioning without a formal punishment.
-- **Lockdown** (`/lockdown on|off`) refuses all logins except holders of `uxmessentials.moderation.lockdown.bypass` — a fast "close the server" switch.
+- **Lockdown** (`/lockdown on|off`) refuses all logins except holders of `uxmessentials.moderation.lockdown.bypass`: a fast "close the server" switch.
 
 ---
 
@@ -121,9 +121,9 @@ member's own breakdown:
 ```
 
 A bare number is read as a day window, so `/modstats 7` scopes the leaderboard to the
-last week. Every report counts the four punitive actions — **bans** (permanent, timed
+last week. Every report counts the four punitive actions: **bans** (permanent, timed
 and IP), **mutes** (permanent and timed), **warns** (standing and timed) and
-**kicks** — and the leaderboard orders staff by total punishments, busiest first.
+**kicks**: and the leaderboard orders staff by total punishments, busiest first.
 
 The read runs off the tick thread and is bounded, so it never stalls the server even
 on a long history. Names resolve to each staffer's *current* name, so a rename since
@@ -132,8 +132,8 @@ the punishment still shows correctly. Gated by `uxmessentials.moderation.stats`.
 <Callout type="note" title="Jails, unbans and unmutes don't count">
 
 Analytics only tallies what the sanction history records as a punishment: ban,
-mute, warn and kick. **Jails are not counted** — they are never written to the
-sanction history the report reads — and lifts (`/unban`, `/unmute`) are reversals,
+mute, warn and kick. **Jails are not counted**: they are never written to the
+sanction history the report reads, and lifts (`/unban`, `/unmute`) are reversals,
 not punishments, so they never appear either. A staffer who only lifted sanctions
 won't show up on the leaderboard at all.
 
@@ -143,7 +143,7 @@ won't show up on the leaderboard at all.
 
 ## Punishment Templates
 
-Templates are named punishment presets — a fixed reason plus an optional duration —
+Templates are named punishment presets: a fixed reason plus an optional duration:
 that a staffer applies in one command instead of retyping the reason each time:
 
 ```
@@ -167,7 +167,7 @@ if you had typed `/ban` or `/tempban` yourself. Template names tab-complete and 
 case-insensitively (`/punish Griefer Griefing` finds `griefing`); an unknown name is
 refused. Whether the punishment broadcasts follows `broadcast.silent-by-default`.
 
-**Templates ship empty** (`templates {}`) — none are defined out of the box, and
+**Templates ship empty** (`templates {}`): none are defined out of the box, and
 `/punish` needs its own `uxmessentials.moderation.templates` node. A template with a
 blank reason or an unparseable duration is skipped at load with a log warning, so a
 typo can never produce a broken preset.
@@ -177,7 +177,7 @@ typo can never produce a broken preset.
 ## Discord Notifications
 
 Set `discord-notify = true` and every successful punishment also emits a readable,
-name-based line — *who punished whom, the type, reason and duration* — onto the shared
+name-based line (*who punished whom, the type, reason and duration*) onto the shared
 audit channel:
 
 ```hocon
@@ -188,10 +188,10 @@ discord-notify = false   # set true to emit punishment notices on the audit chan
 The optional [Discord bridge](discord-link.md) (`uxmessentials-discord`) forwards that
 channel, so with the bridge installed your staff read clean, name-based punishment
 notices in Discord rather than the raw UUID-keyed operator audit. **Off by default**,
-and a no-op when no bridge is present — the line simply lands in the audit log like
+and a no-op when no bridge is present: the line simply lands in the audit log like
 any other, so turning it on never depends on the Discord jar.
 
-Only the single-target punitive verbs notify — **ban, tempban, mute, jail, warn and
+Only the single-target punitive verbs notify: **ban, tempban, mute, jail, warn and
 kick**. Lifts, freezes, IP bans, mass kicks and infrastructure events (lockdown, jail
 definitions) stay off the notice channel.
 
@@ -199,7 +199,7 @@ definitions) stay off the notice channel.
 
 ## The `/mod` GUI
 
-`/mod` opens the moderation management GUI — the same operations as the commands,
+`/mod` opens the moderation management GUI: the same operations as the commands,
 arranged as a point-and-click panel, gated by `uxmessentials.moderation.gui`.
 
 ---
@@ -211,10 +211,10 @@ cross-cutting ones:
 
 | Node | Meaning |
 |------|---------|
-| `uxmessentials.moderation.exempt` | **Target-side immunity** — this player cannot be punished |
+| `uxmessentials.moderation.exempt` | **Target-side immunity**: this player cannot be punished |
 | `uxmessentials.moderation.broadcast.receive` | Receives punishment broadcasts |
 | `uxmessentials.moderation.stats` | `/modstats` staff punishment analytics |
-| `uxmessentials.moderation.templates` | `/punish` — apply a configured template |
+| `uxmessentials.moderation.templates` | `/punish`: apply a configured template |
 | `uxmessentials.moderation.lockdown.bypass` | Can log in during a lockdown |
 | `uxmessentials.moderation.ban.maxduration.<seconds>` | Longest ban this holder may issue |
 | `uxmessentials.moderation.mute.maxduration.<seconds>` | Longest mute this holder may issue |
@@ -228,7 +228,7 @@ bans.
 <Callout type="warning" title="Give trusted ranks the exempt node">
 
 `uxmessentials.moderation.exempt` makes a player un-punishable. Grant it to admins
-and console-driven automation, but audit it — anyone with it is immune to
+and console-driven automation, but audit it; anyone with it is immune to
 `/ban`, `/mute`, `/jail`, and the rest.
 
 </Callout>
@@ -255,8 +255,8 @@ discord-notify = false           # emit punishment notices on the audit channel
 
 ## Importing Existing Bans
 
-Coming from another punishment plugin? uxmEssentials imports **LiteBans** — bans,
-IP-bans, mutes and warns — over a direct JDBC read of its database:
+Coming from another punishment plugin? uxmEssentials imports **LiteBans**: bans,
+IP-bans, mutes and warns: over a direct JDBC read of its database:
 
 ```
 /uxmess import litebans --dry-run
@@ -269,7 +269,7 @@ for the full importer workflow, conflict policy, and auto-detection notes.
 <Callout type="note" title="LibertyBans is not supported">
 
 Only LiteBans has an import path today. LibertyBans is a reserved id with no
-implementation — there is no LibertyBans importer.
+implementation: there is no LibertyBans importer.
 
 </Callout>
 
@@ -277,10 +277,10 @@ implementation — there is no LibertyBans importer.
 
 ## Tips & Gotchas
 
-- **`-s` is a leading token**, not a trailing flag — put it before the reason text.
+- **`-s` is a leading token**, not a trailing flag: put it before the reason text.
 - Bare `/ban <player>` (no reason) opens the confirm GUI; supply a reason to act immediately.
 - On a network, mutes and bans propagate to every backend via the cross-server bus, so a ban on one server is a ban everywhere.
-- `/commandspy` (alias `cspy`) lets you watch other players' command usage live — handy during an investigation.
+- `/commandspy` (alias `cspy`) lets you watch other players' command usage live: handy during an investigation.
 
 ---
 

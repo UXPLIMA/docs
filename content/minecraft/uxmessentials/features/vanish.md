@@ -1,12 +1,12 @@
 ---
 title: Vanish
 order: 1320
-description: Vanish makes a player invisible to everyone who is not allowed to see
-  hidden players, and it does the job properly — the vanished player drops off the
-  tab list, their join and quit lines can be faked so nobody notices they merely went
-  invisible, and they move through the world untouched by damage, hunger, and mobs.
-  It is a PremiumVanish-class feature with layered see/use levels, so a senior admin
-  can hide from a junior moderator while still watching over them.
+description: 'Vanish makes a player invisible to everyone who is not allowed to see
+  hidden players, and it does the job properly: the vanished player drops off the tab
+  list, their join and quit lines can be faked so nobody notices they merely went
+  invisible, and they move through the world untouched by damage, hunger, and mobs. It
+  is a PremiumVanish-class feature with layered see/use levels, so a senior admin can
+  hide from a junior moderator while still watching over them.'
 ---
 
 Vanish is its own **`vanish`** module. It is the single authority over vanish state:
@@ -31,12 +31,12 @@ Everything lives under one command, `/vanish` (alias `/v`).
 | `/vanish <player>` | Toggle another player's vanish (console-usable) | `uxmessentials.vanish.others` |
 | `/vanish list` | List the hidden players you are permitted to see | `uxmessentials.vanish.list` |
 | `/vanish pickup [on\|off]` | Flip whether you pick up items while vanished | `uxmessentials.vanish.use` |
-| `/vanish -s` (also `on -s` / `off -s`) | Vanish or reappear **silently** — no fake join/quit broadcast | `uxmessentials.vanish.silent` |
+| `/vanish -s` (also `on -s` / `off -s`) | Vanish or reappear **silently**: no fake join/quit broadcast | `uxmessentials.vanish.silent` |
 
 A few notes:
 
 - **`/vanish list` is scoped to your see level.** It never leaks a player hidden
-  *above* your see level — you only ever learn about the vanished players you could
+  *above* your see level; you only ever learn about the vanished players you could
   already see. A vanished caller appears in their own list (that reads as "you are
   vanished").
 - **`/vanish pickup` is remembered per player** and defaults to the `pickup-items`
@@ -64,15 +64,15 @@ Levels come from permissions:
 | `uxmessentials.vanish.see.level<N>` | See level `N` (highest wins) |
 | plain `uxmessentials.vanish.use` (no number) | Use level **1** |
 | plain `uxmessentials.vanish.see` (no number) | See level **1** |
-| *no `.see` node at all* | See level **0** — sees nobody who is vanished |
-| op or a wildcard grant | A very high level — sees every vanished player, and hides from every non-op viewer |
+| *no `.see` node at all* | See level **0**: sees nobody who is vanished |
+| op or a wildcard grant | A very high level: sees every vanished player, and hides from every non-op viewer |
 
 <Callout type="info" title="With layered permissions off, it's just a flat toggle">
 
 If you never grant a numbered `.level<N>` node, every vanished player is use level 1
 and every `.see` holder is see level 1, so `1 >= 1` reveals and `0 >= 1` (no see
 node) hides. That is exactly the classic "staff see each other, players see nobody"
-behaviour — the levels are there only if you want tiers.
+behaviour: the levels are there only if you want tiers.
 
 </Callout>
 
@@ -93,9 +93,9 @@ uxmessentials.vanish.see.level2
 Now:
 
 - An **admin** vanishes at use level 2. A **moderator** (see level 1) does **not** see
-  them — `1 >= 2` is false — so an admin can hide even from staff below them.
-- A **moderator** vanishes at use level 1. An **admin** (see level 2) *does* see them —
-  `2 >= 1` — and can `/tp` to them (that needs `uxmessentials.vanish.see`).
+  them (`1 >= 2` is false) so an admin can hide even from staff below them.
+- A **moderator** vanishes at use level 1. An **admin** (see level 2) *does* see them:
+  `2 >= 1`: and can `/tp` to them (that needs `uxmessentials.vanish.see`).
 - Two admins see each other (`2 >= 2`); two moderators see each other (`1 >= 1`).
 - A **regular player** holds no `.see` node, so their see level is 0 and every vanished
   player stays invisible to them.
@@ -109,12 +109,12 @@ pickup) so a vanished admin moves through the world unseen and untouched out of 
 
 | Toggle | What it does |
 |--------|--------------|
-| `silent-chests` | Silences the open animation and sound when a vanished player opens a **chest, shulker box, ender chest, or barrel** — the lidded containers whose open would otherwise broadcast to every nearby player and give the vanished player away. (Furnaces, hoppers, anvils and the like animate nothing, so they need no help.) |
+| `silent-chests` | Silences the open animation and sound when a vanished player opens a **chest, shulker box, ender chest, or barrel**: the lidded containers whose open would otherwise broadcast to every nearby player and give the vanished player away. (Furnaces, hoppers, anvils and the like animate nothing, so they need no help.) |
 | `pickup-items` | The **default** for whether a vanished player picks up items. Ships **off** so a vanished player doesn't silently vacuum drops; each player flips their own preference with `/vanish pickup`. |
 | `night-vision` | Grants permanent night vision while vanished, with no tint or particles, so a hidden staffer can see in the dark. Removed on reappear. |
-| `allow-flight` | Allows flight while vanished. On reappear the allowance is restored to your **game-mode default** — creative and spectator keep flying; survival and adventure lose the granted flight. |
+| `allow-flight` | Allows flight while vanished. On reappear the allowance is restored to your **game-mode default**: creative and spectator keep flying; survival and adventure lose the granted flight. |
 | `no-hunger` | Stops hunger draining while vanished. A deliberate eat still tops the food bar back up; only the drain is blocked. |
-| `no-damage` | Makes a vanished player invulnerable — cancels all incoming damage while hidden. |
+| `no-damage` | Makes a vanished player invulnerable: cancels all incoming damage while hidden. |
 | `mob-target` | Stops mobs targeting a vanished player, and drops any target a mob already had on them, so nothing paths to or attacks a hidden player. |
 
 <Callout type="note" title="How silent containers work">
@@ -124,7 +124,7 @@ When `silent-chests` is on, opening a lidded container as a vanished player show
 the copy is written back to the real container when you close it. It's the same live
 inventory-mirror pattern the `/invsee` and offline-container views use. The copy is a
 point-in-time snapshot, so if another player edits the real chest while you have the
-mirror open, your write-back on close wins — a negligible window for a quick peek.
+mirror open, your write-back on close wins: a negligible window for a quick peek.
 
 </Callout>
 
@@ -148,11 +148,11 @@ fake-join-message-staff = ""
 | Key | What it does |
 |-----|--------------|
 | `fake-join-quit` | Master switch for the whole illusion. Off, and a vanish/reappear broadcasts nothing (the player just winks out). |
-| `fake-quit-message` / `fake-join-message` | The fake lines, as MiniMessage. `{player}` is replaced with the player's name. They mirror the vanilla connection format by default — change them to match your server's real join/quit style so the illusion is seamless. |
+| `fake-quit-message` / `fake-join-message` | The fake lines, as MiniMessage. `{player}` is replaced with the player's name. They mirror the vanilla connection format by default: change them to match your server's real join/quit style so the illusion is seamless. |
 | `fake-quit-message-staff` / `fake-join-message-staff` | The lines shown **instead** to viewers who *can* see the vanishing player (staff). Left **blank** by default, so staff are sent nothing and simply watch the player wink out rather than getting a misleading "left the game". |
 
 **The `-s` flag skips the fake broadcast entirely.** `/vanish -s` (gated by
-`uxmessentials.vanish.silent`) is a truly silent vanish or reappear — nobody, staff
+`uxmessentials.vanish.silent`) is a truly silent vanish or reappear; nobody, staff
 included, gets a line.
 
 ---
@@ -193,14 +193,14 @@ cross-server = false
 On a network, `cross-server` syncs vanish state across every backend: someone vanished
 on `survival-1` arrives already hidden on `survival-2`, and `/vanish list` shows the
 hidden players across the whole network (still scoped to the caller's see level). A
-server hop is **not** read as an unvanish — only a genuine `/vanish` flip crosses the
+server hop is **not** read as an unvanish, only a genuine `/vanish` flip crosses the
 bus.
 
 <Callout type="warning" title="Needs the network bus">
 
 Cross-server vanish requires the network bus in `network.conf` to be enabled (a
-Velocity proxy or a Redis bus). It ships **off**, and is completely inert — with no
-change to same-server vanish — when the bus is absent. See
+Velocity proxy or a Redis bus). It ships **off**, and is completely inert, with no
+change to same-server vanish: when the bus is absent. See
 [Cross-Server: Velocity & Redis](../cross-server/overview.md).
 
 </Callout>
@@ -279,15 +279,15 @@ line and it falls back to the shipped default above, never to `false`.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.vanish.use` | `op` | `/vanish` (and `on`/`off`, `/vanish pickup`) — become invisible |
-| `uxmessentials.vanish.others` | `op` | `/vanish <player>` — toggle another player's vanish |
-| `uxmessentials.vanish.list` | `op` | `/vanish list` — the hidden players you may see |
+| `uxmessentials.vanish.use` | `op` | `/vanish` (and `on`/`off`, `/vanish pickup`): become invisible |
+| `uxmessentials.vanish.others` | `op` | `/vanish <player>`: toggle another player's vanish |
+| `uxmessentials.vanish.list` | `op` | `/vanish list`: the hidden players you may see |
 | `uxmessentials.vanish.see` | `op` | See vanished players (staff-among-staff) and `/tp` to them |
-| `uxmessentials.vanish.silent` | `op` | `/vanish -s` — vanish or reappear with no fake broadcast |
+| `uxmessentials.vanish.silent` | `op` | `/vanish -s`: vanish or reappear with no fake broadcast |
 | `uxmessentials.vanish.persist` | `op` | Rejoin already vanished across a relog |
 | `uxmessentials.module.vanish` | `op` | Reload / inspect the module (`/uxmess reload vanish`) |
 
-**Layered level families** (optional, granted per rank — no boolean default):
+**Layered level families** (optional, granted per rank: no boolean default):
 
 | Node family | Meaning | Reduction |
 |-------------|---------|-----------|
@@ -295,15 +295,15 @@ line and it falls back to the shipped default above, never to `false`.
 | `uxmessentials.vanish.see.level<N>` | See vanished players up to level `N` | highest `<N>` wins |
 
 Because their value space is open, the numbered nodes are not enumerated in
-`paper-plugin.yml` — grant the specific `level<N>` instances your ranks need. See
+`paper-plugin.yml`: grant the specific `level<N>` instances your ranks need. See
 [Numbered and Tiered Nodes](../permissions/reference.md#numbered-and-tiered-nodes).
 
 ---
 
 ## Next Steps
 
-- [🔑 Permission Reference](../permissions/reference.md) — the full `uxmessentials.vanish.*` node list
-- [🕵️ Staff Mode](staff-mode.md) — the on-duty toolkit that drops you into this same vanish
-- [💬 Messaging](../commands/chat-messaging.md) — how `/msg` resolution respects vanish
-- [🌐 Cross-Server: Velocity & Redis](../cross-server/overview.md) — the bus that `cross-server` rides on
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/vanish/config.conf` lives and how it's loaded
+- [🔑 Permission Reference](../permissions/reference.md): the full `uxmessentials.vanish.*` node list
+- [🕵️ Staff Mode](staff-mode.md): the on-duty toolkit that drops you into this same vanish
+- [💬 Messaging](../commands/chat-messaging.md): how `/msg` resolution respects vanish
+- [🌐 Cross-Server: Velocity & Redis](../cross-server/overview.md): the bus that `cross-server` rides on
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/vanish/config.conf` lives and how it's loaded

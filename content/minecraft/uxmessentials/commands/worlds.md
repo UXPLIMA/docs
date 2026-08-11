@@ -5,11 +5,11 @@ order: 1060
 
 ## Worlds Commands
 
-The `worlds` module is a full multi-world manager: create, import, load, unload, configure, teleport between, pre-generate, back up, and restore worlds — all from `/worlds`, all through **Brigadier** with tab-completed world names, properties, and gamerules.
+The `worlds` module is a full multi-world manager: create, import, load, unload, configure, teleport between, pre-generate, back up, and restore worlds: all from `/worlds`, all through **Brigadier** with tab-completed world names, properties, and gamerules.
 
 <Callout type="info" title="`/worlds` (plural) vs `/world` (singular)">
 
-`/worlds` is the **management** command described here — it manages every world on the server and uses the `uxmessentials.world.*` permission tree.
+`/worlds` is the **management** command described here; it manages every world on the server and uses the `uxmessentials.world.*` permission tree.
 
 `/world` (singular) is a completely different, player-facing command from the **Player State** module that simply tells you which world you are standing in. See [Player State](playerstate.md) for that one.
 
@@ -50,8 +50,8 @@ The `worlds` module is a full multi-world manager: create, import, load, unload,
 
 When you create a world, the generator argument shapes what gets built:
 
-- `void` — an empty world with nothing but the spawn platform you set. Ideal for lobbies, hubs, and creative plots.
-- `flat` — a superflat world.
+- `void`: an empty world with nothing but the spawn platform you set. Ideal for lobbies, hubs, and creative plots.
+- `flat`: a superflat world.
 
 Leave the generator off for a normal world using the vanilla terrain generator for the chosen environment (`NORMAL`, `NETHER`, or `THE_END`).
 
@@ -62,14 +62,14 @@ Leave the generator off for a normal world using the vanilla terrain generator f
 
 ---
 
-<Callout type="warning" title="Delete and restore are staged — they need confirmation">
+<Callout type="warning" title="Delete and restore are staged; they need confirmation">
 
 Destructive world operations happen in two steps so you cannot wipe or overwrite a world by accident:
 
 - `/worlds delete <name>` stages the deletion; nothing is removed until you run `/worlds confirm <name>`.
 - `/worlds restore <name> <backup>` stages the restore; the world is not overwritten until you run `/worlds restoreconfirm <name>`.
 
-Always double-check the world name before you confirm — these actions cannot be undone.
+Always double-check the world name before you confirm: these actions cannot be undone.
 
 </Callout>
 
@@ -106,7 +106,7 @@ Always double-check the world name before you confirm — these actions cannot b
 
 <Callout type="note" title="Rename or disable any of these">
 
-Every command literal above can be renamed, re-aliased, or switched off in `commands/commands.conf` without touching permissions — see [Renaming Commands](../config/commands-conf.md).
+Every command literal above can be renamed, re-aliased, or switched off in `commands/commands.conf` without touching permissions, see [Renaming Commands](../config/commands-conf.md).
 
 </Callout>
 

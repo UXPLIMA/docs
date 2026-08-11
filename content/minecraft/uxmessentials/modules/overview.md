@@ -16,7 +16,7 @@ This matters because of one simple rule:
 
 When a module is off it registers **no commands**, adds **no listeners**, runs
 **no database migrations**, ticks **no background tasks**, and holds **zero**
-runtime state. Turn off what you don't use — it is genuinely free.
+runtime state. Turn off what you don't use; it is genuinely free.
 
 </Callout>
 
@@ -42,7 +42,7 @@ holograms {
 }
 ```
 
-That's it — no `modules.conf`, no central switchboard. The `enabled` key inside
+That's it: no `modules.conf`, no central switchboard. The `enabled` key inside
 each module's own file *is* the switch. Flip it back to `true` and reload to bring
 the module back. **Disabling a module never deletes its data**, so you can safely
 turn it off and on again.
@@ -54,11 +54,11 @@ turn it off and on again.
 | Command | What it does |
 |---------|--------------|
 | `/uxmess status` | Lists every module and whether it's enabled |
-| `/uxmess doctor` | Runtime health checks — database, economy provider, soft-depends, threading |
+| `/uxmess doctor` | Runtime health checks: database, economy provider, soft-depends, threading |
 | `/uxmess reload [module]` | Reload one module by id, or everything if you omit the id |
 
 `/uxmess reload <module>` re-reads just that module's config, stops and restarts it
-off the main thread, and republishes its commands — no full server restart needed.
+off the main thread, and republishes its commands: no full server restart needed.
 
 The admin root `/uxmess` also answers to `/uxmessentials` and `/uxe`.
 
@@ -77,7 +77,7 @@ The admin root `/uxmess` also answers to `/uxmessentials` and `/uxe`.
 | `playerstate` | Player State | `/god`, `/fly`, `/heal`, `/feed`, `/gamemode`, `/speed` and info verbs |
 | `messaging` | Messaging | Private messages, mail, ignore lists, helpop and socialspy |
 | `presence` | Presence | AFK, `/list`, `/nick`, `/whois`, `/gc`, `/staff` |
-| `moderation` | Moderation | Mute, jail, ban, tempban, warn, freeze — with history and a GUI |
+| `moderation` | Moderation | Mute, jail, ban, tempban, warn, freeze, with history and a GUI |
 | `itemworld` | Item & World | ~65 item, workstation, cleanup and admin-fun verbs (7 sub-groups) |
 | `vaults` | Vaults | DB-persisted player item storage with quotas and optional cost |
 | `communication` | Communication | Join/quit messages, rotating announcer, info pages, chat control |
@@ -139,11 +139,11 @@ Everything not in that table ships **enabled**.
 
 A couple of things behave a little differently from the 34 toggleable modules:
 
-- **`migration`** — the EssentialsX / Vault / LiteBans importer. It ships
+- **`migration`**: the EssentialsX / Vault / LiteBans importer. It ships
   **disabled** because it's a one-shot admin tool: enable it for a cutover, run
   your import, then switch it back off. See
   [Migrating from EssentialsX](../getting-started/migration.md).
-- **`management`** — the in-game management GUI framework that backs `/uxmess gui`
+- **`management`**: the in-game management GUI framework that backs `/uxmess gui`
   and every module's admin panel. It's **always on** and isn't a toggleable module.
 
 ---
@@ -163,7 +163,7 @@ controls who can reload or inspect that specific module.
 
 ## Next Steps
 
-- [🧠 Core Concepts](../getting-started/concepts.md) — modules, config, permissions and messages
-- [⚙️ Per-Module Config](../config/per-module.md) — what's inside each module's file
-- [📟 Commands Overview](../commands/overview.md) — every command, grouped by module
-- [🔑 Permission Reference](../permissions/reference.md) — module tiers and quota nodes
+- [🧠 Core Concepts](../getting-started/concepts.md): modules, config, permissions and messages
+- [⚙️ Per-Module Config](../config/per-module.md): what's inside each module's file
+- [📟 Commands Overview](../commands/overview.md): every command, grouped by module
+- [🔑 Permission Reference](../permissions/reference.md): module tiers and quota nodes

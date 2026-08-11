@@ -1,12 +1,12 @@
 ---
 title: NPCs
 order: 1380
-description: 'NPCs are the interactive characters you scatter around a server — a
-  shopkeeper at spawn, a warp guide, a tutorial helper, or a fake-player standing
-  at the crossroads. uxmEssentials renders them with its own packet layer (part of
-  the sibling uxmLib toolkit), so an NPC is not a real world entity: it exists only
-  in each viewer''s client, costs the server almost nothing, and never wanders off,
-  despawns, or gets killed. No client mod is required.'
+description: 'NPCs are the interactive characters you scatter around a server: a
+  shopkeeper at spawn, a warp guide, a tutorial helper, or a fake-player standing at the
+  crossroads. uxmEssentials renders them with its own packet layer (part of the sibling
+  uxmLib toolkit), so an NPC is not a real world entity: it exists only in each
+  viewer''s client, costs the server almost nothing, and never wanders off, despawns, or
+  gets killed. No client mod is required.'
 ---
 
 Every NPC is edited live from `/npc` (or the management GUI) and persisted to the
@@ -48,7 +48,7 @@ Use `skinslim <bool>` to switch between the classic and slim (Alex) arm models.
 
 <Callout type="info" title="Skins, authlib and MineSkin">
 
-Skin data is a signed texture bound to a game profile — that signature is what
+Skin data is a signed texture bound to a game profile: that signature is what
 makes a skin render for other players rather than showing up blank. uxmEssentials
 handles the profile plumbing for you; for `url:`-based skins it can call the
 **MineSkin** service to generate a signed texture, configured with an optional
@@ -106,7 +106,7 @@ also a global `click-cooldown-millis` in `npc.conf`) so an NPC can't be spam-cli
 
 <Callout type="tip" title="NPCs are buttons that walk">
 
-An NPC's chain runs the same kind of steps a menu button does — run a command,
+An NPC's chain runs the same kind of steps a menu button does: run a command,
 send a message, open a GUI. A shopkeeper NPC is just an action chain that
 opens your shop menu.
 
@@ -131,11 +131,11 @@ to put the id back above its head.
 
 ## Player-Owned NPCs
 
-NPCs can be owned by ordinary players, not just staff — useful for a "hire an NPC"
+NPCs can be owned by ordinary players, not just staff: useful for a "hire an NPC"
 perk or player shops. `npc.conf` controls the model:
 
-- `default-limit` — how many NPCs a player may own (`-1` = unlimited).
-- `blocked-commands` — commands an owned NPC's action chain may **not** run, so a
+- `default-limit`: how many NPCs a player may own (`-1` = unlimited).
+- `blocked-commands`: commands an owned NPC's action chain may **not** run, so a
   player can't wire an NPC to a staff command.
 
 `uxmessentials.npc.admin` gates the full `/npc` surface; a reserved
@@ -155,7 +155,7 @@ own with `/uxmess reload npc` (tier `uxmessentials.module.npc`).
 
 ## Next Steps
 
-- [🪧 Holograms](holograms.md) — floating displays and NPC nameplates
-- [🎛️ Custom Menu Engine](../menus/engine.md) — the GUIs an NPC click opens
-- [🧩 Per-Module Config](../config/per-module.md) — `npc.conf` limits, cooldowns, MineSkin key
-- [🔑 Permission Reference](../permissions/reference.md) — the `uxmessentials.npc.*` nodes
+- [🪧 Holograms](holograms.md): floating displays and NPC nameplates
+- [🎛️ Custom Menu Engine](../menus/engine.md): the GUIs an NPC click opens
+- [🧩 Per-Module Config](../config/per-module.md): `npc.conf` limits, cooldowns, MineSkin key
+- [🔑 Permission Reference](../permissions/reference.md): the `uxmessentials.npc.*` nodes

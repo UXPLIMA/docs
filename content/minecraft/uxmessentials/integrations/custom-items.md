@@ -1,11 +1,11 @@
 ---
 title: Custom Items & Heads
 order: 1540
-description: Anywhere uxmEssentials asks for a material — menu icons, and the same
-  shared icon resolution used for kits and hologram displays — you aren't limited
-  to vanilla items. A short provider:id prefix lets you drop in custom items from
-  ItemsAdder, Oraxen, Nexo, MMOItems or ExecutableItems, and custom heads from HeadDatabase,
-  base64 textures or player skins.
+description: 'Anywhere uxmEssentials asks for a material: menu icons, and the same
+  shared icon resolution used for kits and hologram displays; you aren''t limited to
+  vanilla items. A short provider:id prefix lets you drop in custom items from
+  ItemsAdder, Oraxen, Nexo, MMOItems or ExecutableItems, and custom heads from
+  HeadDatabase, base64 textures or player skins.'
 ---
 
 ---
@@ -45,7 +45,7 @@ Custom-head sources use the same prefixed syntax:
 | `basehead:` | A base64 texture value | `basehead:eyJ0ZXh0dXJlcyI6...` |
 | `skull:` | A player's head | `skull:Notch` |
 
-HeadDatabase is guarded strictly — the `hdb:` source only resolves when the plugin
+HeadDatabase is guarded strictly: the `hdb:` source only resolves when the plugin
 is enabled **and** its API loads. Base64 and player heads are native and need no
 extra plugin.
 
@@ -75,7 +75,7 @@ items {
 
 Custom-item resolution **fails soft**. If a prefix points at a plugin that isn't
 installed (or an id that doesn't exist), the lookup silently misses and the renderer
-falls back to a plain material — the menu, kit or hologram still opens, just with a
+falls back to a plain material: the menu, kit or hologram still opens, just with a
 default icon.
 
 | Situation | Behavior |
@@ -88,7 +88,7 @@ default icon.
 
 For the rare tag that native Paper data-components can't express, uxmEssentials
 will use **NBT-API** if it's installed. Item meta is built from native
-components first; without NBT-API that raw-NBT path is simply skipped — no
+components first; without NBT-API that raw-NBT path is simply skipped: no
 `de.tr7zw` classes are touched.
 
 </Callout>
@@ -98,7 +98,7 @@ components first; without NBT-API that raw-NBT path is simply skipped — no
 ## Setup Checklist
 
 1. Install whichever item providers you use (**ItemsAdder**, **Oraxen**, **Nexo**,
-   **MMOItems**, **ExecutableItems**) and/or **HeadDatabase** — no uxmEssentials config
+   **MMOItems**, **ExecutableItems**) and/or **HeadDatabase**: no uxmEssentials config
    needed.
 2. Reference items with `provider:id` in menu specs, kit editors and hologram head
    displays.
@@ -109,6 +109,6 @@ components first; without NBT-API that raw-NBT path is simply skipped — no
 
 ## Next Steps
 
-- [🎛️ The Custom Menu Engine](../menus/engine.md) — the full item-spec reference
-- [🎁 Kits](../features/kits.md) — custom icons on kit entries
-- [🖼️ Holograms](../features/holograms.md) — item and head displays
+- [🎛️ The Custom Menu Engine](../menus/engine.md): the full item-spec reference
+- [🎁 Kits](../features/kits.md): custom icons on kit entries
+- [🖼️ Holograms](../features/holograms.md): item and head displays

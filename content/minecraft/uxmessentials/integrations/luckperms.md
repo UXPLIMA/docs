@@ -12,11 +12,11 @@ description: 'uxmEssentials never hard-depends on a permission plugin. Every per
 
 ## What LuckPerms Adds
 
-Most permissions are plain on/off nodes — those resolve through Bukkit exactly the
+Most permissions are plain on/off nodes: those resolve through Bukkit exactly the
 same whether or not LuckPerms is present. Boolean `has()` checks **always** delegate
 to Bukkit.
 
-The difference is the **value-bearing quota nodes** — the ones with a number baked
+The difference is the **value-bearing quota nodes**: the ones with a number baked
 into them:
 
 | Node | Meaning |
@@ -29,7 +29,7 @@ into them:
 
 Without LuckPerms these resolve from Bukkit **numbered permission nodes** (the
 highest matching `<n>` wins). With LuckPerms present, uxmEssentials can *also* read
-the same quota from a LuckPerms **meta** value — which many admins find tidier than
+the same quota from a LuckPerms **meta** value, which many admins find tidier than
 juggling dozens of numbered nodes.
 
 ---
@@ -89,7 +89,7 @@ Two extra conveniences when LuckPerms is around:
 
 | Situation | Behavior |
 |-----------|----------|
-| No permission plugin | Bukkit defaults apply — self-service verbs work, staff verbs need `op`. |
+| No permission plugin | Bukkit defaults apply: self-service verbs work, staff verbs need `op`. |
 | No LuckPerms specifically | Quotas resolve from numbered permission nodes; the meta source is `none()`. |
 | `has-group:` used without LuckPerms | The condition fails closed (item hidden / denied). |
 
@@ -97,7 +97,7 @@ Two extra conveniences when LuckPerms is around:
 
 ## Setup Checklist
 
-1. Install **LuckPerms** (optional — the plugin runs fine without it).
+1. Install **LuckPerms** (optional: the plugin runs fine without it).
 2. Grant quotas either as numbered nodes (`uxmessentials.home.limit.<n>`) or as
    LuckPerms meta.
 3. (Optional) Install PlaceholderAPI to surface `%luckperms_prefix%` in the HUD.
@@ -107,6 +107,6 @@ Two extra conveniences when LuckPerms is around:
 
 ## Next Steps
 
-- [🧭 Core Concepts — Permissions](../getting-started/concepts.md) — the tiered / quota model
-- [📊 Scoreboard, Tablist & Nametags](../features/hud.md) — showing rank prefixes
-- [🔤 PlaceholderAPI](placeholderapi.md) — how prefix placeholders reach the HUD
+- [🧭 Core Concepts: Permissions](../getting-started/concepts.md): the tiered / quota model
+- [📊 Scoreboard, Tablist & Nametags](../features/hud.md): showing rank prefixes
+- [🔤 PlaceholderAPI](placeholderapi.md): how prefix placeholders reach the HUD

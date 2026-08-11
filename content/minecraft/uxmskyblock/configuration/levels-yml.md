@@ -40,7 +40,7 @@ points meet that threshold. Values are cumulative totals, not per-level deltas.
 
 ---
 
-## `auto` — endless levels
+## `auto`: endless levels
 
 Hand-writing hundreds of levels is tedious, so anything past the last defined
 threshold is generated:
@@ -52,7 +52,7 @@ threshold is generated:
 | `multiplier` | `step` is multiplied by this each level (1.0 = constant, >1 = curve) |
 
 With `step: 8000` and `multiplier: 1.15`, each level past 10 costs ~15% more than
-the previous gap — a smooth difficulty curve that never ends.
+the previous gap: a smooth difficulty curve that never ends.
 
 <Callout type="tip">
 

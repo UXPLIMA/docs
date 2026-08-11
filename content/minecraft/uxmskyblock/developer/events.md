@@ -21,7 +21,7 @@ finalized); `IslandDeleteEvent` fires during deletion.
 
 ## Listening for Them
 
-These are ordinary Bukkit events — register a listener as usual:
+These are ordinary Bukkit events: register a listener as usual:
 
 ```java
 public class MyListener implements Listener {
@@ -47,7 +47,7 @@ getServer().getPluginManager().registerEvents(new MyListener(), this);
 ```
 
 …or, from a module, via the `ModuleContext` (so it's cleaned up automatically on
-disable) — see [Writing a Module](modules.md).
+disable): see [Writing a Module](modules.md).
 
 ---
 

@@ -3,7 +3,7 @@ title: config.conf (Globals)
 order: 1150
 ---
 
-`plugins/uxmEssentials/config.conf` holds the **global** settings only — the database
+`plugins/uxmEssentials/config.conf` holds the **global** settings only: the database
 connection, the default language, cross-server sync, native server links, the update
 checker, and web-map markers. Everything that belongs to a feature lives in that
 feature's own folder (see [Per-Module Config](per-module.md)), so this file stays
@@ -14,7 +14,7 @@ small.
 1. Open `plugins/uxmEssentials/config.conf` in a plain-text editor.
 2. Change the values you need, keeping braces `{ }` and quotes balanced.
 3. Save.
-4. Reload — most of these are re-read on `/uxmess reload`; the `network` block is
+4. Reload: most of these are re-read on `/uxmess reload`; the `network` block is
    **restart-only** (noted below).
 
 <Callout type="warning" title="HOCON, not YAML">
@@ -29,7 +29,7 @@ Comments start with `#`, keys are kebab-case, strings are quoted (`backend =
 
 ## `storage`
 
-Where uxmEssentials keeps its data. The default is an embedded SQLite file — zero
+Where uxmEssentials keeps its data. The default is an embedded SQLite file: zero
 setup, no external service.
 
 ```hocon
@@ -58,7 +58,7 @@ storage {
 
 **Default:** `sqlite`. Choose a network backend only when you run more than one server
 against one dataset (or want central backups). It is a topology decision, not a
-capability one — every backend is a first-class, fully tested path.
+capability one: every backend is a first-class, fully tested path.
 
 #### file
 
@@ -152,7 +152,7 @@ texture value still render, only lookups by name stop resolving. See
 
 ## `network`
 
-Cross-server sync. **Off by default** — a single server needs none of it and runs
+Cross-server sync. **Off by default**: a single server needs none of it and runs
 purely local. Turn it on to keep homes, warps, economy, vaults and more in step across a
 network of backends.
 
@@ -196,7 +196,7 @@ Two backends sharing a `server-id` corrupt sync routing. Give every server its o
 | Value | Effect |
 |---|---|
 | `velocity` | Plugin messages relayed through a Velocity proxy (no extra service). |
-| `redis` | Redis pub/sub — no proxy needed; every backend shares one Redis. |
+| `redis` | Redis pub/sub: no proxy needed; every backend shares one Redis. |
 | `both` | Fan out over both carriers for a mixed network. |
 
 The `redis { }` block applies when `transport` is `redis` or `both`.
@@ -231,7 +231,7 @@ A malformed or empty entry is skipped with a warning.
 ## `update-check`
 
 An optional update checker. **Off by default** because it makes an outbound network
-call — opt in explicitly.
+call: opt in explicitly.
 
 ```hocon
 update-check {
@@ -267,7 +267,7 @@ map-markers {
 #### enabled / warps / spawns / homes
 
 **What they do:** `enabled` is the master switch; `warps`, `spawns` and `homes` toggle
-which categories are published. `homes` defaults **off** — a public map of everyone's
+which categories are published. `homes` defaults **off**: a public map of everyone's
 homes is a privacy choice you opt into.
 
 #### layer-name / warp-icon / spawn-icon / home-icon / tooltip
@@ -288,7 +288,7 @@ them would give every marker a broken image instead.
 
 ## Next Steps
 
-- [Per-Module Config](per-module.md) — enable/disable and tune each feature.
-- [SQLite (Default)](../database/sqlite.md) — the zero-setup database.
-- [Velocity & Redis](../cross-server/overview.md) — turning on the `network` block.
-- [Config Overview](overview.md) — the whole layout at a glance.
+- [Per-Module Config](per-module.md): enable/disable and tune each feature.
+- [SQLite (Default)](../database/sqlite.md): the zero-setup database.
+- [Velocity & Redis](../cross-server/overview.md): turning on the `network` block.
+- [Config Overview](overview.md): the whole layout at a glance.

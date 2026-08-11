@@ -17,7 +17,7 @@ description: Chunklock is a module, so installing it means dropping a jar into u
 
 ---
 
-## Step 1 — Drop In the Module
+## Step 1: Drop In the Module
 
 Place the jar in the core's **modules** folder:
 
@@ -28,7 +28,7 @@ plugins/
         └── Chunklock-1.0.0.jar   ← here
 ```
 
-## Step 2 — Set the Core Options
+## Step 2: Set the Core Options
 
 In `plugins/uxmSkyblock/config.yml`:
 
@@ -47,7 +47,7 @@ on the same player at once. Always set it to `false` when Chunklock is active.
 
 </Callout>
 
-## Step 3 — Restart
+## Step 3: Restart
 
 Restart the server. The core loads the module after its own startup; you'll see
 Chunklock's config generated at:
@@ -58,7 +58,7 @@ plugins/uxmSkyblock/modules/Chunklock/config.yml
 
 ---
 
-## Optional — A Pure Chunklock Server
+## Optional: A Pure Chunklock Server
 
 To run a server that hosts **only** Chunklock (no normal `/ada` islands menu),
 set in the core config:
@@ -74,7 +74,7 @@ block values, storage, proxy, module loader) keep running so Chunklock still wor
 <Callout type="note">
 
 Even with `island.enabled: false`, Chunklock still creates uxmSkyblock islands
-under the hood — that's how it reuses teams, roles, and warps. The flag only
+under the hood: that's how it reuses teams, roles, and warps. The flag only
 controls whether the standalone island UI/world is registered.
 
 </Callout>

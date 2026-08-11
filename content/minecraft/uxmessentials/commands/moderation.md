@@ -11,7 +11,7 @@ Punishments are stored in the database (never in world data), so they survive ro
 
 <Callout type="tip" title="The `/mod` GUI and picker → confirm flows">
 
-You rarely need to memorise flags. `/mod` opens the moderation management GUI, and **many bare commands open a picker → confirm GUI** — run `/ban Steve` with no reason and you get a reason picker followed by a confirmation screen before anything is written. Type the full command with a reason to skip straight to the action.
+You rarely need to memorise flags. `/mod` opens the moderation management GUI, and **many bare commands open a picker → confirm GUI**: run `/ban Steve` with no reason and you get a reason picker followed by a confirmation screen before anything is written. Type the full command with a reason to skip straight to the action.
 
 </Callout>
 
@@ -19,7 +19,7 @@ You rarely need to memorise flags. `/mod` opens the moderation management GUI, a
 
 ## Duration & the silent flag
 
-Timed punishments take a **duration** as a compact time token — for example `30m`, `2h`, `1d`, or `7d`. `/mute` and `/warn` treat the duration as optional (omit it for a permanent action); `/tempmute`, `/tempban`, `/tempbanip`, and `/tempwarn` require one.
+Timed punishments take a **duration** as a compact time token, for example `30m`, `2h`, `1d`, or `7d`. `/mute` and `/warn` treat the duration as optional (omit it for a permanent action); `/tempmute`, `/tempban`, `/tempbanip`, and `/tempwarn` require one.
 
 The **`-s` silent flag** suppresses the public broadcast so only staff see the action. It is parsed as the **leading token inside the reason**, so it comes right before the reason text:
 
@@ -31,7 +31,7 @@ The **`-s` silent flag** suppresses the public broadcast so only staff see the a
 
 <Callout type="info" title="Duration caps and exemptions">
 
-A staff member can be limited in how long a punishment they may issue via the numbered nodes `uxmessentials.moderation.ban.maxduration.<seconds>` and `uxmessentials.moderation.mute.maxduration.<seconds>` — the highest granted tier wins, and no node means no cap. Players holding `uxmessentials.moderation.exempt` cannot be targeted, and staff with `uxmessentials.moderation.broadcast.receive` see silent actions.
+A staff member can be limited in how long a punishment they may issue via the numbered nodes `uxmessentials.moderation.ban.maxduration.<seconds>` and `uxmessentials.moderation.mute.maxduration.<seconds>`: the highest granted tier wins, and no node means no cap. Players holding `uxmessentials.moderation.exempt` cannot be targeted, and staff with `uxmessentials.moderation.broadcast.receive` see silent actions.
 
 </Callout>
 
@@ -113,7 +113,7 @@ Read-only lookups for building a case before you act.
 | `/sudo <player> <command>` | Run a command as another player | `uxmessentials.moderation.sudo` |
 | `/staffhistory <staff>` | Sanctions a staff member has issued | `uxmessentials.moderation.staffhistory` |
 | `/staffrollback <staff> [limit]` | Revoke a staff member's active sanctions | `uxmessentials.moderation.staffrollback` |
-| `/modstats [staff] [days]` | Staff punishment analytics — leaderboard or per-staff breakdown | `uxmessentials.moderation.stats` |
+| `/modstats [staff] [days]` | Staff punishment analytics: leaderboard or per-staff breakdown | `uxmessentials.moderation.stats` |
 | `/punish <player> <template>` | Apply a configured punishment template | `uxmessentials.moderation.templates` |
 | `/mod` | Open the moderation management GUI | `uxmessentials.moderation.gui` |
 
@@ -155,7 +155,7 @@ While lockdown is on, only players holding `uxmessentials.moderation.lockdown.by
 
 <Callout type="note" title="Rename or disable any of these">
 
-Every command literal above can be renamed, re-aliased, or switched off in `commands/commands.conf` without touching permissions — see [Renaming Commands](../config/commands-conf.md). The permission nodes are keyed to each command's stable id, so grants keep working after a rename.
+Every command literal above can be renamed, re-aliased, or switched off in `commands/commands.conf` without touching permissions, see [Renaming Commands](../config/commands-conf.md). The permission nodes are keyed to each command's stable id, so grants keep working after a rename.
 
 </Callout>
 

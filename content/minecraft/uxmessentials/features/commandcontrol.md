@@ -1,17 +1,17 @@
 ---
 title: Command Control
 order: 1340
-description: Command Control decides which commands each player may run — and hides
-  the rest. A denied command is cancelled before it reaches its handler and the player
-  is shown a custom deny line, so a hidden command can be made to read as though it
-  never existed. On top of the gate it filters tab-completion, hides the plugin-listing
-  and help commands from prying players, and closes the /minecraft:gamemode namespace
-  escape. It is the PlHidePro and CommandWhitelist feature set, built in with no separate
-  plugin.
+description: 'Command Control decides which commands each player may run, and hides the
+  rest. A denied command is cancelled before it reaches its handler and the player is
+  shown a custom deny line, so a hidden command can be made to read as though it never
+  existed. On top of the gate it filters tab-completion, hides the plugin-listing and
+  help commands from prying players, and closes the /minecraft:gamemode namespace
+  escape. It is the PlHidePro and CommandWhitelist feature set, built in with no
+  separate plugin.'
 ---
 
-Command Control is its own **`commandcontrol`** module. It persists nothing — the rule
-set and the hide policy are derived straight from config — so it owns no database table
+Command Control is its own **`commandcontrol`** module. It persists nothing: the rule
+set and the hide policy are derived straight from config, so it owns no database table
 and no migrations.
 
 The module ships **enabled**, with the command gate inert and the plugin-hide already
@@ -30,14 +30,14 @@ One `mode` chooses how every command list is read, and it is the same for every 
 
 | `mode` | How the lists read | Use it to |
 |--------|--------------------|-----------|
-| `blacklist` *(default)* | The listed commands are **denied**; everything else is allowed. | Hide a handful of commands — name only the few to block. |
-| `whitelist` | Only the listed commands are **allowed**; everything else is denied. | Lock a group down — name the full list of what it *may* run. |
+| `blacklist` *(default)* | The listed commands are **denied**; everything else is allowed. | Hide a handful of commands: name only the few to block. |
+| `whitelist` | Only the listed commands are **allowed**; everything else is denied. | Lock a group down: name the full list of what it *may* run. |
 
 <Callout type="warning" title="An empty whitelist denies everything">
 
 Because a whitelist allows only what is listed, an *empty* whitelist denies every
-command — a deliberate, total lock-down. Populate the list before you flip `mode` to
-`whitelist`. (A blank *blacklist*, by contrast, blocks nothing — which is why the
+command: a deliberate, total lock-down. Populate the list before you flip `mode` to
+`whitelist`. (A blank *blacklist*, by contrast, blocks nothing, which is why the
 module ships that way.)
 
 </Callout>
@@ -57,8 +57,8 @@ commands {
 - A player's **primary permission group** selects its own list. Group resolution reads
   LuckPerms when it is installed; the read is non-blocking (it uses the same cached
   snapshot the platform resolves permission checks against).
-- A player whose group has **no list here**, or who is in no group — and *every* player
-  when LuckPerms is not installed — falls back to the **`default`** list.
+- A player whose group has **no list here**, or who is in no group, and *every* player
+  when LuckPerms is not installed: falls back to the **`default`** list.
 - List a command by its **root label without a leading slash** (`gamemode`, not
   `/gamemode op`). The match is on the root only and is **case-insensitive**, so `/Home`,
   `home`, and a config entry of `"/HOME"` all compare equal.
@@ -73,11 +73,11 @@ When a command is blocked, `use-unknown-command-message` picks the line the play
 
 | `use-unknown-command-message` | Line shown | Message key |
 |-------------------------------|------------|-------------|
-| `true` *(default)* | The vanilla-style *"Unknown command."* — the command reads as though it doesn't exist. | `commandcontrol.unknown-command` |
+| `true` *(default)* | The vanilla-style *"Unknown command."*: the command reads as though it doesn't exist. | `commandcontrol.unknown-command` |
 | `false` | An honest *"You don't have permission to use that command."* | `commandcontrol.no-permission` |
 
 Both lines live in the [message catalog](../config/messages.md)
-(`messages_<lang>.conf`), so they are per-locale — edit them there.
+(`messages_<lang>.conf`), so they are per-locale: edit them there.
 
 <Callout type="note" title="The console is never gated">
 
@@ -88,7 +88,7 @@ observe the event.
 
 </Callout>
 
-### Worked example — locking players to a short list
+### Worked example: locking players to a short list
 
 Say you want regular players to reach only a survival-essentials set, while staff keep
 everything. Set a whitelist and give the `default` group the allowed roots:
@@ -105,7 +105,7 @@ commands {
 Now:
 
 - A **regular player** (group `default`) may run only the ten listed commands; anything
-  else — `/gamemode`, `/give`, an unknown plugin command — is cancelled and reads as
+  else (`/gamemode`, `/give`, an unknown plugin command) is cancelled and reads as
   *"Unknown command."*
 - **Staff** who hold `uxmessentials.commandcontrol.bypass` are never gated at all, so
   their `staff` list above is moot; the `.bypass` node is the clean way to exempt a rank
@@ -121,7 +121,7 @@ tab-completion { enabled = true }
 
 With the filter on, every command a player may not run is removed from the command list
 the server sends the client, so a disallowed command **neither autocompletes nor appears
-in the client command graph**. A command's own vanilla permission is respected too — a
+in the client command graph**. A command's own vanilla permission is respected too: a
 command the player couldn't see anyway stays hidden. If the player starts typing a
 filtered command's arguments, its **argument suggestions are dropped** as well, so the
 arguments of a command they can't run never leak through completion.
@@ -148,17 +148,17 @@ permission. Set `enabled = false` to restore the vanilla behaviour.
 
 | Key | What it does |
 |-----|--------------|
-| `hidden-commands` | The command roots to hide from a player who lacks the view permission. The `bukkit:` / `minecraft:` / `paper:` namespaced forms are matched automatically, so `/bukkit:pl` is hidden by the `pl` entry — you never list every namespace. |
+| `hidden-commands` | The command roots to hide from a player who lacks the view permission. The `bukkit:` / `minecraft:` / `paper:` namespaced forms are matched automatically, so `/bukkit:pl` is hidden by the `pl` entry; you never list every namespace. |
 | `deny-list-commands` | Also **blocks** those commands from executing for a player who may not see them, so a `/help` or `/plugins` can't leak plugin names through its *output* (not just its tab entry). The deny line is `commandcontrol.plugin-hidden`, which mirrors the vanilla "unknown command" wording. |
 
 Who sees the hidden commands is decided by **`uxmessentials.commandcontrol.viewplugins`**:
 a holder sees and runs them normally; everyone else has them scrubbed from the sent
-command list, from tab completion, and — when `deny-list-commands` is on — blocked from
+command list, from tab completion, and (when `deny-list-commands` is on) blocked from
 running.
 
 <Callout type="info" title="Hide the list, or hide the whole command">
 
-Set `deny-list-commands = false` and the commands still *run* for everyone — they are
+Set `deny-list-commands = false` and the commands still *run* for everyone; they are
 only removed from the client's command graph and completion, so a player who already
 knows to type `/plugins` still gets its output. It ships `true`, so the output itself
 is withheld as well and the command reads as nonexistent.
@@ -181,14 +181,14 @@ list, or grant `uxmessentials.commandcontrol.viewplugins` to everyone.
 block-namespace-bypass = true
 ```
 
-A player could otherwise dodge the lists by prefixing a command with its namespace —
+A player could otherwise dodge the lists by prefixing a command with its namespace:
 `/minecraft:gamemode`, `/bukkit:pl`, `/someplugin:cmd` all reach the same handler as the
 bare form but read as a *different* root, which the rule set (matching on the raw root)
 would let through. With the block on, the `namespace:command` form of any command whose
 **bare form is denied** is blocked too, so `/minecraft:gamemode` is treated exactly like
 `/gamemode`.
 
-Holders of `uxmessentials.commandcontrol.bypass` may still use namespaced forms — the
+Holders of `uxmessentials.commandcontrol.bypass` may still use namespaced forms: the
 bypass short-circuits the whole gate. Leave the block on unless a plugin of yours
 legitimately relies on namespaced command input. The plugin-hide half of the namespace
 escape needs no separate switch: the hide already folds the `namespace:` prefix, so
@@ -294,7 +294,7 @@ creative world.
 
 The gate and every filter are **client-agnostic**. A Bedrock player routed through
 Geyser/Floodgate arrives as an ordinary player, so they are gated, tab-filtered, and
-plugin-hidden exactly like a Java client — with **no Geyser dependency** and no client
+plugin-hidden exactly like a Java client, with **no Geyser dependency** and no client
 probe.
 
 On a network the gate runs **per backend**: a command a proxy forwards to a server is
@@ -440,14 +440,14 @@ worlds {
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.commandcontrol.bypass` | `op` | Exempt from the whitelist/blacklist gate **and** the tab-completion / plugin-hide scrub — every command runs and is visible, namespaced forms included |
-| `uxmessentials.commandcontrol.channelhide.bypass` | `op` | Exempt from the plugin-channel hider — the full channel list is sent to this player |
-| `uxmessentials.commandcontrol.spam.bypass` | `op` | Exempt from the command-spam rate limiter — commands are never counted and no action fires |
+| `uxmessentials.commandcontrol.bypass` | `op` | Exempt from the whitelist/blacklist gate **and** the tab-completion / plugin-hide scrub: every command runs and is visible, namespaced forms included |
+| `uxmessentials.commandcontrol.channelhide.bypass` | `op` | Exempt from the plugin-channel hider: the full channel list is sent to this player |
+| `uxmessentials.commandcontrol.spam.bypass` | `op` | Exempt from the command-spam rate limiter: commands are never counted and no action fires |
 | `uxmessentials.commandcontrol.viewplugins` | `op` | See the plugin-listing / help commands (`/plugins`, `/pl`, `/help`, ...) hidden by plugin-hide |
 | `uxmessentials.module.commandcontrol` | `op` | Reload / inspect the module (`/uxmess reload commandcontrol`) |
 
 Both `.bypass` and `.viewplugins` default to `op`, so a fresh install gates and hides
-nobody who is an operator — you grant the two nodes to the staff ranks that should keep
+nobody who is an operator; you grant the two nodes to the staff ranks that should keep
 seeing everything, then name the commands (or switch the hide on) that everyone else
 loses.
 
@@ -455,8 +455,8 @@ loses.
 
 ## Next Steps
 
-- [🔑 Permission Reference](../permissions/reference.md) — the full `uxmessentials.commandcontrol.*` node list
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/commandcontrol/config.conf` lives and how it's loaded
-- [💬 Messages & Languages](../config/messages.md) — the deny lines (`commandcontrol.unknown-command`, `.no-permission`, `.plugin-hidden`)
-- [🔌 LuckPerms](../integrations/luckperms.md) — how per-group command lists resolve a player's primary group
-- [🌐 Cross-Server: Velocity & Redis](../cross-server/overview.md) — why command-control is configured per backend
+- [🔑 Permission Reference](../permissions/reference.md): the full `uxmessentials.commandcontrol.*` node list
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/commandcontrol/config.conf` lives and how it's loaded
+- [💬 Messages & Languages](../config/messages.md): the deny lines (`commandcontrol.unknown-command`, `.no-permission`, `.plugin-hidden`)
+- [🔌 LuckPerms](../integrations/luckperms.md): how per-group command lists resolve a player's primary group
+- [🌐 Cross-Server: Velocity & Redis](../cross-server/overview.md): why command-control is configured per backend

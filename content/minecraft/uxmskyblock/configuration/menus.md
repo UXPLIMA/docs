@@ -12,12 +12,12 @@ description: Every GUI in uxmSkyblock is defined in a YAML file under plugins/ux
 
 | File | Menu |
 |------|------|
-| `main.yml` | Main menu (`/is`) — see [Main Menu](../menus/main-menu.md) |
-| `settings.yml` | Settings / flags — see [Settings](../menus/settings.md) |
-| `upgrades.yml` | Upgrades — see [Upgrades](../menus/upgrades.md) |
-| `warp.yml` | Public warps — see [Warps](../menus/warps.md) |
-| `blocks.yml` | Block values (`/is block`) — see [Block Values](../menus/blocks.md) |
-| `create.yml` | Island type picker (`/is create`) — see [Island Type](../menus/island-type.md) |
+| `main.yml` | Main menu (`/is`): see [Main Menu](../menus/main-menu.md) |
+| `settings.yml` | Settings / flags, see [Settings](../menus/settings.md) |
+| `upgrades.yml` | Upgrades, see [Upgrades](../menus/upgrades.md) |
+| `warp.yml` | Public warps, see [Warps](../menus/warps.md) |
+| `blocks.yml` | Block values (`/is block`): see [Block Values](../menus/blocks.md) |
+| `create.yml` | Island type picker (`/is create`): see [Island Type](../menus/island-type.md) |
 | `help.yml` | Command/help list |
 | `delete-confirm.yml` | Delete confirmation |
 
@@ -50,7 +50,7 @@ items:
 | `items.<id>.slot` | Slot index (0-based) |
 | `items.<id>.material` | Item material |
 | `items.<id>.amount` | Stack size (default `1`) |
-| `items.<id>.custom-model-data` | Optional — see [Custom Model Data](#custom-model-data) |
+| `items.<id>.custom-model-data` | Optional, see [Custom Model Data](#custom-model-data) |
 | `items.<id>.name` / `lore` | Display text |
 | `items.<id>.action` | What clicking does |
 

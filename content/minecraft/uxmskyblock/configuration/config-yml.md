@@ -77,7 +77,7 @@ end:
 
 Every island gets its **own** Nether and End plot, placed at the same grid cell as
 the overworld island but in dedicated void worlds. Players reach them with **real
-portals** — light the Nether portal in your Nether plot to dive in, then step
+portals**: light the Nether portal in your Nether plot to dive in, then step
 through the ready-made End portal that waits there to reach your End plot.
 
 | Key | Meaning |
@@ -172,7 +172,7 @@ command:
 ```
 
 The left key is the **internal** name; the list is what players may type. There is
-no command in `plugin.yml` — they're registered dynamically.
+no command in `plugin.yml`: they're registered dynamically.
 
 ---
 
@@ -228,7 +228,7 @@ top:
     empty: "&7No islands yet."
 ```
 
-Leaderboard and the following hologram — see [Leaderboard](../commands/leaderboard.md).
+Leaderboard and the following hologram, see [Leaderboard](../commands/leaderboard.md).
 
 ---
 
@@ -261,7 +261,7 @@ The island types offered by `/is create [type]`. Each points to a `.schem` file
 | `home-offset` | Where the player lands on the pasted island |
 
 When a player runs `/is create` with **no type**, a selection menu lists every
-entry here as its own icon — see [Island Type menu](../menus/island-type.md). Add a
+entry here as its own icon, see [Island Type menu](../menus/island-type.md). Add a
 new entry and it appears in the menu automatically.
 
 ---

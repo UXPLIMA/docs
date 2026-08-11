@@ -4,8 +4,8 @@ order: 610
 ---
 
 `/is upgrade` opens the **Upgrades menu**. Items are filled **automatically** from
-[upgrades.yml](../configuration/upgrades-yml.md) — each upgrade's slot and icon are
-defined there — so the menu always matches your configured upgrades.
+[upgrades.yml](../configuration/upgrades-yml.md): each upgrade's slot and icon are
+defined there, so the menu always matches your configured upgrades.
 
 ---
 
@@ -52,7 +52,7 @@ Clicking a tier checks two requirements:
 
 1. **Island level** ≥ the tier's `required-level`
 2. **Bank/economy** has the tier's `required-money` (only when Vault economy is
-   enabled — see [economy](../configuration/config-yml.md))
+   enabled, see [economy](../configuration/config-yml.md))
 
 If both pass, the upgrade is purchased and applied immediately (the size upgrade,
 for instance, instantly refreshes the island border).

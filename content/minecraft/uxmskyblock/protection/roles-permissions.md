@@ -17,7 +17,7 @@ change their permissions freely.
 
 | Role | Display | What they can do |
 |------|---------|------------------|
-| **visitor** | `&7Visitor` | Nothing — look only |
+| **visitor** | `&7Visitor` | Nothing: look only |
 | **farmer** | `&aFarmer` | Farm and interact |
 | **member** | `&fMember` | Build, break, containers, mobs, fly, bank |
 | **architect** | `&bArchitect` | Member + set home & warps |

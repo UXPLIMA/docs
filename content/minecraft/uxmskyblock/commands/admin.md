@@ -45,7 +45,7 @@ jar update are merged in automatically on load.
 
 ## `/is anaspawn`
 
-Saves the **global return spawn** — where players are teleported after their
+Saves the **global return spawn**: where players are teleported after their
 island is deleted (and on spawn return). Stand where you want the spawn and run it.
 
 ```

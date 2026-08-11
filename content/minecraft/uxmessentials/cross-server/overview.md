@@ -1,10 +1,10 @@
 ---
 title: Velocity & Redis
 order: 1590
-description: Cross-server sync keeps player data in step across a network of backend
-  servers — so a home set on survival-1, a /pay made on survival-2, and a vault filled
-  on the lobby all agree the moment a player switches servers. It is off by default
-  (network.enabled = false); a single server needs none of it and runs purely local.
+description: 'Cross-server sync keeps player data in step across a network of backend
+  servers, so a home set on survival-1, a /pay made on survival-2, and a vault filled on
+  the lobby all agree the moment a player switches servers. It is off by default
+  (network.enabled = false); a single server needs none of it and runs purely local.'
 ---
 
 ---
@@ -13,14 +13,14 @@ description: Cross-server sync keeps player data in step across a network of bac
 
 The shared database is the single source of truth. Sync is a lightweight
 **cache-invalidation bus**: when one backend changes something, it publishes a small
-notification — "this player's homes/balance/vault changed, drop your cached copy" — and the
+notification ("this player's homes/balance/vault changed, drop your cached copy") and the
 other backends re-read the fresh row from the database. A message is never a full record written
 blindly, so the economy's double-spend guard (an atomic, guarded `UPDATE` at the database) holds
 across the whole cluster.
 
 Two things make this work, and both are required:
 
-1. A **shared networked database** — MySQL/MariaDB or PostgreSQL — that every backend points at.
+1. A **shared networked database** (MySQL/MariaDB or PostgreSQL) that every backend points at.
    SQLite cannot be shared; see [MySQL / MariaDB](../database/mysql.md).
 2. A **transport** to carry the notifications between backends: a Velocity proxy broker, a Redis
    bus, or both.
@@ -60,7 +60,7 @@ online.
 ## The `network` Block
 
 Cross-server settings live in the `network` block of `plugins/uxmEssentials/config.conf`. These
-are **restart-only** — a `/uxmess reload` does not rewire the bus.
+are **restart-only**: a `/uxmess reload` does not rewire the bus.
 
 ```hocon
 network {
@@ -83,7 +83,7 @@ network {
 | Key | Meaning |
 |-----|---------|
 | `enabled` | Turns the shared bus on |
-| `server-id` | This backend's name on the bus — **must differ on every backend** |
+| `server-id` | This backend's name on the bus: **must differ on every backend** |
 | `bus-channel` | Plugin-messaging channel for the Velocity path; must match the proxy broker |
 | `heartbeat-seconds` | How often this backend announces its presence (feeds the doctor peer count) |
 | `transport` | How notifications travel: `velocity`, `redis`, or `both` |
@@ -99,7 +99,7 @@ network {
 | `redis` | A Redis server and the `uxmEssentials-redis` companion jar on each backend | You want proxy-independent sync (works behind any proxy) |
 | `both` | Both of the above | A mixed network fanning out over both carriers |
 
-If the transport is unavailable, the plugin degrades to local-only with a single warning — the
+If the transport is unavailable, the plugin degrades to local-only with a single warning: the
 individual server keeps working, it just does not sync.
 
 ---
@@ -133,7 +133,7 @@ number of peers seen.
 
 All backends must point at the **same shared database** and use **identical economy /
 currency configuration**. A backend on its own SQLite file, or one with a different set of
-currencies, will not sync correctly — balances and other data can diverge or be rejected.
+currencies, will not sync correctly: balances and other data can diverge or be rejected.
 Give every backend a **unique** `server-id`; two backends sharing one corrupts sync routing.
 
 </Callout>
@@ -206,7 +206,7 @@ set it. Use the backend module's plugin-channel hider instead.
 
 ## Next Steps
 
-- [MySQL / MariaDB Setup](../database/mysql.md) — the shared database every backend requires.
-- [PostgreSQL Setup](../database/postgresql.md) — the alternative shared backend.
-- [config.conf (Globals)](../config/global-config.md) — the `network` block in full.
-- [Economy](../features/economy.md) — how balances stay consistent (and double-spend-safe) across the cluster.
+- [MySQL / MariaDB Setup](../database/mysql.md): the shared database every backend requires.
+- [PostgreSQL Setup](../database/postgresql.md): the alternative shared backend.
+- [config.conf (Globals)](../config/global-config.md): the `network` block in full.
+- [Economy](../features/economy.md): how balances stay consistent (and double-spend-safe) across the cluster.

@@ -1,16 +1,16 @@
 ---
 title: Holograms
 order: 1370
-description: Holograms are floating displays you place in the world — a welcome sign
-  at spawn, a live leaderboard by the arena, a rotating rules board, or a nameplate
-  hovering over an NPC. uxmEssentials builds them from native Display entities (the
-  same text/item/block display entities Minecraft ships), not from a packet trick,
-  so they survive restarts, render for everyone the server chooses, and stay perfectly
-  in sync without a client mod.
+description: 'Holograms are floating displays you place in the world: a welcome sign at
+  spawn, a live leaderboard by the arena, a rotating rules board, or a nameplate
+  hovering over an NPC. uxmEssentials builds them from native Display entities (the same
+  text/item/block display entities Minecraft ships), not from a packet trick, so they
+  survive restarts, render for everyone the server chooses, and stay perfectly in sync
+  without a client mod.'
 ---
 
 Everything about a hologram is edited live from `/hologram` (or the management GUI)
-and stored in the database — no config file to hand-write, no reload to see a
+and stored in the database: no config file to hand-write, no reload to see a
 change.
 
 ---
@@ -21,7 +21,7 @@ A single hologram is a stack of **lines**, and each line can be one of five kind
 
 | Type | Subcommand | What it shows |
 |------|-----------|---------------|
-| Text | `addline <text>` | A MiniMessage line — colours, gradients, PAPI placeholders |
+| Text | `addline <text>` | A MiniMessage line: colours, gradients, PAPI placeholders |
 | Item | `item <material>` | A floating, slowly spinning item |
 | Block | `block <blockdata>` | A small floating block (any block state) |
 | Head | `head <source>` | A player head from a name, URL or texture |
@@ -33,7 +33,7 @@ legacy `&` codes anywhere.
 
 <Callout type="tip" title="Mixing line types">
 
-A hologram can freely mix types — an item on top, a bold title, two body
+A hologram can freely mix types: an item on top, a bold title, two body
 lines, and a block underneath. Line indices are **1-based**, so
 `/hologram setline 2 <text>` edits the second line.
 
@@ -52,7 +52,7 @@ Lines are managed one at a time:
 | `setline <n> <text>` | Rewrite line `n` |
 | `removeline <n>` | Delete line `n` |
 
-For content that changes on a schedule — a tip of the day, an event countdown —
+For content that changes on a schedule: a tip of the day, an event countdown:
 group lines into **pages** with `page add | remove | list`. The hologram cycles
 through its pages automatically on its refresh interval.
 
@@ -92,7 +92,7 @@ existing hologram with all its meta intact.
 
 Text lines are re-rendered on a fixed cadence set by `refreshinterval`. On each
 refresh, any **PlaceholderAPI** tokens in the line (`%uxmessentials_economy_balance%`,
-`%server_online%`, and so on) are re-evaluated — so a hologram can show a live player
+`%server_online%`, and so on) are re-evaluated, so a hologram can show a live player
 count, TPS, or a scoreboard-style stat that ticks up as you watch.
 
 The `holograms.conf` file adds a small `symbols {}` block for reusable glyphs and an
@@ -101,8 +101,8 @@ numbers above entities.
 
 ### Leaderboards
 
-`leaderboard <provider> [limit]` turns a hologram into a live top-N board — top
-balances, most playtime, top voters — fed by a named provider and capped at `limit`
+`leaderboard <provider> [limit]` turns a hologram into a live top-N board: top
+balances, most playtime, top voters: fed by a named provider and capped at `limit`
 rows. It refreshes on the same interval, so the standings stay current on their own.
 
 ---
@@ -136,9 +136,9 @@ reward that a player only sees once you `show` it to them (`MANUAL`).
 Holograms are interactive. Each one carries an ordered **action chain** that runs
 when a player clicks it, keyed by trigger:
 
-- `left` — runs on a left-click
-- `right` — runs on a right-click
-- `any` — runs on either
+- `left`: runs on a left-click
+- `right`: runs on a right-click
+- `any`: runs on either
 
 You build the chain step by step with the `action` subtree, and the steps run in
 order top to bottom:
@@ -153,12 +153,12 @@ order top to bottom:
 `action add | add_before | add_after | set | move_up | move_down | list | remove | clear`
 give you full control over the sequence; `clickcommand` remains as a quick shortcut
 when you only need a single command. This is the same idea used by the
-[NPC action chains](npcs.md) — a click becomes a small, ordered script.
+[NPC action chains](npcs.md): a click becomes a small, ordered script.
 
 <Callout type="tip" title="A hologram is a clickable button">
 
 Because the chain can run commands, send messages, and play sounds, a
-text hologram doubles as a menu-style button — "click to open the shop", "click
+text hologram doubles as a menu-style button: "click to open the shop", "click
 to claim your daily", "click for the rules".
 
 </Callout>
@@ -191,7 +191,7 @@ Like every module, holograms can be reloaded on their own with
 
 ## Next Steps
 
-- [🤖 NPCs](npcs.md) — attach a hologram nameplate to a fake-player NPC
-- [🎛️ Custom Menu Engine](../menus/engine.md) — turn a hologram click into a full GUI
-- [🧩 Per-Module Config](../config/per-module.md) — `holograms.conf` symbols and damage indicators
-- [🔑 Permission Reference](../permissions/reference.md) — the `uxmessentials.hologram.*` nodes
+- [🤖 NPCs](npcs.md): attach a hologram nameplate to a fake-player NPC
+- [🎛️ Custom Menu Engine](../menus/engine.md): turn a hologram click into a full GUI
+- [🧩 Per-Module Config](../config/per-module.md): `holograms.conf` symbols and damage indicators
+- [🔑 Permission Reference](../permissions/reference.md): the `uxmessentials.hologram.*` nodes

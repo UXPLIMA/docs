@@ -1,16 +1,16 @@
 ---
 title: Vault & Treasury
 order: 1490
-description: 'uxmEssentials ships its own DB-backed economy — a multi-currency wallet
-  that survives world rollbacks. Vault and Treasury don''t power that economy; they
-  are the bridges that let every other plugin on your server (shops, jobs, crates,
-  ...) read and write those balances. This page explains the two sides of that relationship:
-  the economy uxmEssentials serves, and the currencies it can read from other plugins.'
+description: 'uxmEssentials ships its own DB-backed economy: a multi-currency wallet
+  that survives world rollbacks. Vault and Treasury don''t power that economy; they are
+  the bridges that let every other plugin on your server (shops, jobs, crates, ...) read
+  and write those balances. This page explains the two sides of that relationship: the
+  economy uxmEssentials serves, and the currencies it can read from other plugins.'
 ---
 
 ---
 
-## Provider vs. Consumer — the important distinction
+## Provider vs. Consumer: the important distinction
 
 There are two completely separate things going on, and mixing them up is the usual
 source of confusion:
@@ -30,7 +30,7 @@ Paper server with no economy plugin at all.
 On enable, the economy module runs a **register-or-defer** handshake through the
 Bukkit `ServicesManager`:
 
-1. It looks for a foreign economy already registered — **Treasury first, then
+1. It looks for a foreign economy already registered: **Treasury first, then
    Vault**.
 2. If one is found, uxmEssentials **defers** to it (it won't fight another plugin
    for the economy slot).
@@ -38,7 +38,7 @@ Bukkit `ServicesManager`:
    `ServicePriority.Normal`.
 
 Once registered, plugins that speak Vault or Treasury transparently read balances,
-charge for purchases and pay out rewards against the uxmEssentials wallet — no extra
+charge for purchases and pay out rewards against the uxmEssentials wallet: no extra
 glue needed.
 
 <Callout type="note" title="Vault is single-currency">
@@ -82,7 +82,7 @@ spends XP:
 | `zessentials[:name]` | zEssentials (optionally a named currency) | Yes |
 
 An unknown or absent backend simply resolves to a provider that never reports
-itself `available()`, logging a single warning — the menu still opens, that one
+itself `available()`, logging a single warning: the menu still opens, that one
 currency check just fails closed.
 
 ---
@@ -104,15 +104,15 @@ a plugin-present guard, so a missing bridge loads none of their code.
 
 1. Keep the **economy** module enabled (it is, by default).
 2. To let shops and other plugins use your balances, install **Vault** (or
-   **Treasury**) — no further config needed; uxmEssentials registers automatically.
+   **Treasury**): no further config needed; uxmEssentials registers automatically.
 3. If another plugin should own the economy slot, install *its* provider first and
    set `provider.register = false`.
-4. Restart and run `/uxmess doctor` — it reports which economy provider is active.
+4. Restart and run `/uxmess doctor`: it reports which economy provider is active.
 
 ---
 
 ## Next Steps
 
-- [💰 Economy Feature Guide](../features/economy.md) — wallets, banks, loans and currencies
-- [🎛️ Menu Actions & Requirements](../menus/actions-requirements.md) — the currency backends in menus
-- [👨‍💻 Developer Overview](../developer/overview.md) — consuming the `EconomyProvider` at runtime
+- [💰 Economy Feature Guide](../features/economy.md): wallets, banks, loans and currencies
+- [🎛️ Menu Actions & Requirements](../menus/actions-requirements.md): the currency backends in menus
+- [👨‍💻 Developer Overview](../developer/overview.md): consuming the `EconomyProvider` at runtime

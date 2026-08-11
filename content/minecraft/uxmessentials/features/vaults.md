@@ -7,7 +7,7 @@ description: Vaults are personal, chest-style item storage that each player carr
 ---
 
 The defining property: vault contents are **stored in the database**, not on the
-player. They survive relogs, server restarts, and — critically — **world rollbacks**.
+player. They survive relogs, server restarts, and (critically) **world rollbacks**.
 Vaults are never PDC-backed.
 
 The whole feature lives in the **`vaults`** module.
@@ -28,14 +28,14 @@ Both are granted through numbered permission nodes (below), so a rank can be giv
 more vaults and bigger vaults simply by adding permissions.
 
 `/vault` opens your default vault. With several vaults, `/vault` opens a **selector
-GUI** — a grid of your vaults (each showing its name and icon) that you click to
+GUI**: a grid of your vaults (each showing its name and icon) that you click to
 open. `/vault <n>` jumps straight to vault *n*.
 
 <Callout type="info" title="DB-backed, rollback-safe">
 
 Vault contents are written to the database (SQLite by default, or your networked
 MySQL/MariaDB/PostgreSQL). Rolling back a world's region files does **not** touch
-vault contents — this is the whole point of vaults over a placed chest.
+vault contents: this is the whole point of vaults over a placed chest.
 
 </Callout>
 
@@ -71,9 +71,9 @@ icons to donors. The bounds live in the config's `appearance` block
 
 If the vault module's economy block is enabled, vaults can cost money:
 
-- **`cost-to-create`** — charged when a player first opens a vault slot they don't own yet.
-- **`cost-to-open`** — a per-open charge (usually left at zero).
-- **`refund-on-delete`** — when a player runs `/vault delete <n>`, the create cost is refunded.
+- **`cost-to-create`**: charged when a player first opens a vault slot they don't own yet.
+- **`cost-to-open`**: a per-open charge (usually left at zero).
+- **`refund-on-delete`**: when a player runs `/vault delete <n>`, the create cost is refunded.
 
 Deleting **another player's** vault (`/vault delete <player> <n>`) is an admin action:
 it is audited and **never** refunds.
@@ -91,15 +91,15 @@ create/open cost, regardless of the economy settings.
 
 Two safeguards protect the system:
 
-- **Material blacklist** — items listed in `blacklist-materials` cannot be stored in a vault. Attempting to deposit one is blocked (holders of `uxmessentials.vault.bypass-blacklist` are exempt).
-- **Overflow rescue** — if a player's effective vault *size* shrinks (a rank change, a config edit) so that stored items no longer fit, those items aren't silently deleted; they are rescued back to the player rather than lost.
+- **Material blacklist**: items listed in `blacklist-materials` cannot be stored in a vault. Attempting to deposit one is blocked (holders of `uxmessentials.vault.bypass-blacklist` are exempt).
+- **Overflow rescue**: if a player's effective vault *size* shrinks (a rank change, a config edit) so that stored items no longer fit, those items aren't silently deleted; they are rescued back to the player rather than lost.
 
 ---
 
 ## Admin & Audit Access
 
 `/vault <player> [n]` opens another player's vault for inspection, and the access is
-recorded to the audit log — so opening a player's vault is a traceable action, not a
+recorded to the audit log, so opening a player's vault is a traceable action, not a
 silent peek. Deleting another player's vault is likewise audited.
 
 | Node | Default | Grants |
@@ -122,7 +122,7 @@ silent peek. Deleting another player's vault is likewise audited.
 | `uxmessentials.vault.bypass-blacklist` | Store blacklisted materials |
 | `uxmessentials.module.vaults` | Reload / inspect the vaults module |
 
-The two `<n>`/`<rows>` nodes are open-ended numbered tiers — grant
+The two `<n>`/`<rows>` nodes are open-ended numbered tiers: grant
 `uxmessentials.vault.amount.5` and `uxmessentials.vault.size.6` to a rank and its
 members get five vaults of six rows each. The module's `default-amount` and
 `default-size` set the baseline before any permission tier applies.
@@ -156,14 +156,14 @@ economy { enabled = false, cost-to-create = 0, cost-to-open = 0, refund-on-delet
 
 <Callout type="warning" title="EssentialsX has no vaults to import">
 
-The EssentialsX importer brings homes, balances, warps, kits and more — but
+The EssentialsX importer brings homes, balances, warps, kits and more, but
 EssentialsX stores no player-vault data, so **no vaults are produced** by a
 migration. Vaults start empty.
 
 </Callout>
 
 - **Cleanup is off by default.** Turn on `cleanup.enabled` only if you want inactive players' vaults pruned; it's irreversible.
-- Shrinking `default-size` or a rank's size tier triggers overflow rescue — plan quota reductions carefully.
+- Shrinking `default-size` or a rank's size tier triggers overflow rescue: plan quota reductions carefully.
 - On a network, point every backend at the same MySQL/MariaDB/PostgreSQL database and vaults follow the player across servers.
 
 ---

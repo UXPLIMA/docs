@@ -1,20 +1,20 @@
 ---
 title: Built-in Menu Guide
 order: 1080
-description: 'Almost every GUI you open in uxmEssentials — the home grid, the warp
+description: 'Almost every GUI you open in uxmEssentials: the home grid, the warp
   browser, the kit list, the vault selector, the /eco and /mod admin panels, the module
-  hub behind /uxmess gui — is drawn by one shared menu engine. There is no separate
-  "GUI system" bolted onto each feature: the same code that loads your own menus/.conf
-  files loads and renders the built-in menus too.'
+  hub behind /uxmess gui: is drawn by one shared menu engine. There is no separate "GUI
+  system" bolted onto each feature: the same code that loads your own menus/.conf files
+  loads and renders the built-in menus too.'
 ---
 
 That has two practical consequences worth knowing before you touch anything:
 
 - **They all behave the same way.** Pagination, click gestures, refresh-on-change,
-  Bedrock form fallback, sounds — a habit you learn on one menu carries to every menu.
+  Bedrock form fallback, sounds: a habit you learn on one menu carries to every menu.
 - **They are all themeable.** Because the built-ins run on the engine, the same
-  vocabulary you use for a [custom menu](engine.md) — materials, MiniMessage names and
-  lore, [actions and requirements](actions-requirements.md) — is what shapes them. You
+  vocabulary you use for a [custom menu](engine.md): materials, MiniMessage names and
+  lore, [actions and requirements](actions-requirements.md): is what shapes them. You
   are never stuck with the shipped look.
 
 ---
@@ -22,7 +22,7 @@ That has two practical consequences worth knowing before you touch anything:
 ## The menus you already have
 
 These open from commands (or from clicking through another menu). You do not create or
-enable them — they ship with their module and appear as soon as that module is on.
+enable them; they ship with their module and appear as soon as that module is on.
 
 | Menu | Opens with | What it does |
 |---|---|---|
@@ -32,7 +32,7 @@ enable them — they ship with their module and appear as soon as that module is
 | **Kit browser** | `/kit`, `/kit list` | Claimable kits with their cooldown state shown live. Click a ready kit to claim it; click a locked one to see why. |
 | **Vault selector** | `/vault` (with several) | A picker across your vaults when you own more than one; each tile shows its name and icon. Click to open that vault. |
 | **Player-warp list** | `/pwarp` | Manage and browse player-owned warps. |
-| **Economy admin** | `/eco` | The staff economy hub — give / take / set balances, history and logs, notes and backups — routed to the matching sub-panels. |
+| **Economy admin** | `/eco` | The staff economy hub (give / take / set balances, history and logs, notes and backups) routed to the matching sub-panels. |
 | **Moderation panel** | `/mod` | The staff moderation hub; many bare commands (`/ban`, `/mute`, …) also open a picker → confirm flow built on the engine. |
 | **Module hub** | `/uxmess gui` | The management hub: a tile per module leading into that module's own settings panels. |
 | **Per-module settings** | `/tpsettings`, `/msgsettings`, `/presencesettings`, `/scoreboard gui`, … | The personal and admin settings panels each module exposes. |
@@ -65,7 +65,7 @@ A few modules are deliberately absent:
 
 The built-in panels live in each module's `modules/<module>/gui/` folder as their own
 `.conf` files. They are loaded by the always-on `management` framework and styled with
-the same engine grammar as your `menus/*.conf` files — but they are wired to
+the same engine grammar as your `menus/*.conf` files, but they are wired to
 type-safe feature handlers, so a click there does real work (charging a balance,
 issuing a ban) that a plain custom menu could not do on its own.
 
@@ -87,8 +87,8 @@ same tile, its lore says so.
 
 ### Live refresh
 
-Tiles that show a changing value — a kit's remaining cooldown, your balance in the
-economy panel, a home's occupancy — re-render on their own while the menu is open. You do
+Tiles that show a changing value: a kit's remaining cooldown, your balance in the
+economy panel, a home's occupancy: re-render on their own while the menu is open. You do
 not need to close and reopen to see the current number.
 
 ### Pagination
@@ -98,7 +98,7 @@ tiles. The page controls sit on pinned slots so they never move as the contents 
 
 ### Bedrock players get a native form
 
-A player joining through Floodgate/Geyser does not see a chest GUI — the same menu is
+A player joining through Floodgate/Geyser does not see a chest GUI: the same menu is
 rendered as a **native Bedrock form**. Storage-style menus that show real item stacks
 (the vault, the inventory viewer) stay as a chest even on Bedrock, because a form cannot
 hold item stacks. See [Bedrock Forms](bedrock.md).
@@ -107,7 +107,7 @@ hold item stacks. See [Bedrock Forms](bedrock.md).
 
 ## Re-theming a built-in menu
 
-You theme a built-in the same way you author a custom one — you just edit the file the
+You theme a built-in the same way you author a custom one; you just edit the file the
 module already ships instead of creating a new one.
 
 1. Find the panel under `plugins/uxmEssentials/modules/<module>/gui/<menu>.conf`.
@@ -118,8 +118,8 @@ module already ships instead of creating a new one.
 <Callout type="warning" title="Change the look, keep the wiring">
 
 In a built-in panel, the item **ids** and their `click` bindings are what connect a
-tile to real behaviour (charging a balance, teleporting home). Re-skin freely —
-material, name, lore, slot, glow — but do not rename or delete the bound ids unless
+tile to real behaviour (charging a balance, teleporting home). Re-skin freely:
+material, name, lore, slot, glow, but do not rename or delete the bound ids unless
 you mean to remove that button. If a file fails to load after an edit, only that one
 panel refuses; the log names the file and line.
 
@@ -200,8 +200,8 @@ of something that belongs to someone else.
 
 ## Next Steps
 
-- [Custom Menu Engine](engine.md) — build your own menu in `menus/<name>.conf`.
-- [Actions & Requirements](actions-requirements.md) — the click and visibility vocabulary
+- [Custom Menu Engine](engine.md): build your own menu in `menus/<name>.conf`.
+- [Actions & Requirements](actions-requirements.md): the click and visibility vocabulary
   every menu, built-in or custom, is made of.
-- [Bedrock Forms](bedrock.md) — how a menu renders for Floodgate players.
-- [Per-Module Config](../config/per-module.md) — where each module's `gui/` panels live.
+- [Bedrock Forms](bedrock.md): how a menu renders for Floodgate players.
+- [Per-Module Config](../config/per-module.md): where each module's `gui/` panels live.

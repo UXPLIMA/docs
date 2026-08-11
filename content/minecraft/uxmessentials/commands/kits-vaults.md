@@ -24,12 +24,12 @@ Single root `/kit` (default aliases `k`, `kits`). Running it bare opens the brow
 
 ### Per-kit access & cooldowns
 
-Beyond `uxmessentials.kit.use`, each kit carries its own gate node. A player must hold `uxmessentials.kit.<id>` — where `<id>` is the kit's name — to claim it.
+Beyond `uxmessentials.kit.use`, each kit carries its own gate node. A player must hold `uxmessentials.kit.<id>` (where `<id>` is the kit's name) to claim it.
 
 | Node | Meaning |
 |------|---------|
 | `uxmessentials.kit.<id>` | Per-kit access gate (e.g. `uxmessentials.kit.starter`) |
-| `uxmessentials.kit.cooldown.<seconds>` | Cooldown tier — the matching value replaces the kit's default wait |
+| `uxmessentials.kit.cooldown.<seconds>` | Cooldown tier: the matching value replaces the kit's default wait |
 | `uxmessentials.kit.cooldown.bypass` | Skip the cooldown entirely |
 
 <Callout type="tip" title="Cooldown tiers stack with rank">
@@ -52,7 +52,7 @@ Grant `uxmessentials.kit.cooldown.30` to a donor rank and their `/kit` wait drop
 
 ## Vaults
 
-Single root `/vault`. A player's vaults are stored in the database (never in the item — they survive world rollbacks). When a player owns several vaults, `/vault` opens a selector GUI; `/vault <n>` jumps straight to one.
+Single root `/vault`. A player's vaults are stored in the database (never in the item; they survive world rollbacks). When a player owns several vaults, `/vault` opens a selector GUI; `/vault <n>` jumps straight to one.
 
 | Command | Description | Permission |
 |---------|-------------|------------|
@@ -97,7 +97,7 @@ Certain items can be barred from vaults in the module config. Players without `u
 
 ## Next Steps
 
-- [🎒 Kits Feature Guide](../features/kits.md) — cooldowns, first-join kits, and the editor GUI
-- [🗄️ Vaults Feature Guide](../features/vaults.md) — quotas, pricing, and blacklist setup
-- [🔐 Permissions Reference](../permissions/reference.md) — full node list, including numbered quota tiers
-- [⚙️ Renaming Commands](../config/commands-conf.md) — change any command name, alias, or toggle
+- [🎒 Kits Feature Guide](../features/kits.md): cooldowns, first-join kits, and the editor GUI
+- [🗄️ Vaults Feature Guide](../features/vaults.md): quotas, pricing, and blacklist setup
+- [🔐 Permissions Reference](../permissions/reference.md): full node list, including numbered quota tiers
+- [⚙️ Renaming Commands](../config/commands-conf.md): change any command name, alias, or toggle

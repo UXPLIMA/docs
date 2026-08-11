@@ -5,7 +5,7 @@ order: 1040
 
 ## Staff & Presence Commands
 
-Two modules cover "who is around and what they're doing." **Presence** is the everyday awareness layer — AFK, `/list`, nicknames, `/whois`, server health — most of which players use themselves. **Staff** is a dedicated, staff-mode-only toolkit that turns a moderator into a patrol loadout with a single command.
+Two modules cover "who is around and what they're doing." **Presence** is the everyday awareness layer (AFK, `/list`, nicknames, `/whois`, server health) most of which players use themselves. **Staff** is a dedicated, staff-mode-only toolkit that turns a moderator into a patrol loadout with a single command.
 
 All output is **MiniMessage**-formatted, and every command is registered through **Brigadier** with permission-filtered tab completion.
 
@@ -13,7 +13,7 @@ All output is **MiniMessage**-formatted, and every command is registered through
 
 ## Presence
 
-Awareness and identity commands. The read-only verbs default to everyone; nicknames are staff-gated. (Vanish moved to its own [`vanish`](#vanish) module — see below.)
+Awareness and identity commands. The read-only verbs default to everyone; nicknames are staff-gated. (Vanish moved to its own [`vanish`](#vanish) module, see below.)
 
 | Command | Description | Permission |
 |---------|-------------|------------|
@@ -31,8 +31,8 @@ Awareness and identity commands. The read-only verbs default to everyone; nickna
 
 A couple of marker nodes shape how presence behaves:
 
-- `uxmessentials.afk.kick.exempt` — never auto-kicked for being AFK.
-- `uxmessentials.staff.member` — marks an account as staff, so it shows in `/staff` and staff-only broadcasts.
+- `uxmessentials.afk.kick.exempt`: never auto-kicked for being AFK.
+- `uxmessentials.staff.member`: marks an account as staff, so it shows in `/staff` and staff-only broadcasts.
 
 </Callout>
 
@@ -40,7 +40,7 @@ A couple of marker nodes shape how presence behaves:
 
 ## Vanish
 
-The `vanish` module owns `/vanish` — PremiumVanish-class invisibility with layered see/use levels, buffs, fake join/quit messages, and cross-server sync. It is the single vanish authority the whole plugin reads (messaging, nametags, and staff mode all defer to it). Full details in the [Vanish feature guide](../features/vanish.md).
+The `vanish` module owns `/vanish`: PremiumVanish-class invisibility with layered see/use levels, buffs, fake join/quit messages, and cross-server sync. It is the single vanish authority the whole plugin reads (messaging, nametags, and staff mode all defer to it). Full details in the [Vanish feature guide](../features/vanish.md).
 
 | Command | Description | Permission |
 |---------|-------------|------------|
@@ -48,13 +48,13 @@ The `vanish` module owns `/vanish` — PremiumVanish-class invisibility with lay
 | `/vanish <player>` | Toggle another player's vanish (console-usable) | `uxmessentials.vanish.others` |
 | `/vanish list` | List the hidden players you may see (scoped to your see level) | `uxmessentials.vanish.list` |
 | `/vanish pickup [on\|off]` | Flip whether you pick up items while vanished | `uxmessentials.vanish.use` |
-| `/vanish -s` | Vanish or reappear **silently** — no fake join/quit broadcast | `uxmessentials.vanish.silent` |
+| `/vanish -s` | Vanish or reappear **silently**: no fake join/quit broadcast | `uxmessentials.vanish.silent` |
 
 <Callout type="info" title="See and persist nodes">
 
-- `uxmessentials.vanish.see` — see vanished players (other staff) and `/tp` to them.
-- `uxmessentials.vanish.persist` — rejoin already vanished across a relog.
-- The layered families `uxmessentials.vanish.use.level<N>` / `.see.level<N>` tier who can see whom — a viewer sees a vanished player only when their see level is at least the target's use level.
+- `uxmessentials.vanish.see`: see vanished players (other staff) and `/tp` to them.
+- `uxmessentials.vanish.persist`: rejoin already vanished across a relog.
+- The layered families `uxmessentials.vanish.use.level<N>` / `.see.level<N>` tier who can see whom: a viewer sees a vanished player only when their see level is at least the target's use level.
 
 </Callout>
 
@@ -66,7 +66,7 @@ The `staff` module is **staff-mode-only**: entering staff mode swaps your surviv
 
 | Command | Description | Permission |
 |---------|-------------|------------|
-| `/staffmode [player]` | Flip yourself (or a target) into staff mode — loadout swap, gadget hotbar, and vanish | `uxmessentials.staff.mode` |
+| `/staffmode [player]` | Flip yourself (or a target) into staff mode: loadout swap, gadget hotbar, and vanish | `uxmessentials.staff.mode` |
 | `/staffchat <message>` (`sc`) | Post to the staff-only chat channel | `uxmessentials.staff.chat` |
 | `/stafflist` | Online-staff GUI (vanish-aware; click a head to teleport) | `uxmessentials.staff.list` |
 
@@ -102,7 +102,7 @@ The `staff` module is **staff-mode-only**: entering staff mode swaps your surviv
 
 <Callout type="note" title="Rename or disable any of these">
 
-Every command literal above can be renamed, re-aliased, or switched off in `commands/commands.conf` without touching permissions — see [Renaming Commands](../config/commands-conf.md).
+Every command literal above can be renamed, re-aliased, or switched off in `commands/commands.conf` without touching permissions, see [Renaming Commands](../config/commands-conf.md).
 
 </Callout>
 

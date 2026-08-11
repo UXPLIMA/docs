@@ -1,15 +1,15 @@
 ---
 title: Custom Menu Engine
 order: 1090
-description: 'A custom menu is a single HOCON file in plugins/uxmEssentials/menus/.
-  The file name (without .conf) is the menu''s name: menus/shop.conf is opened with
-  /menu open shop. uxmEssentials ships menus/example.conf as a starting point — copy
-  it, rename it, and edit.'
+description: 'A custom menu is a single HOCON file in plugins/uxmEssentials/menus/. The
+  file name (without .conf) is the menu''s name: menus/shop.conf is opened with /menu
+  open shop. uxmEssentials ships menus/example.conf as a starting point: copy it, rename
+  it, and edit.'
 ---
 
 The same engine that draws every [built-in menu](built-in.md) loads your files, so
 everything on this page applies equally to both. A menu that fails to parse is skipped
-with a warning in the log — one bad file never hides the rest.
+with a warning in the log: one bad file never hides the rest.
 
 ---
 
@@ -35,7 +35,7 @@ items {
 Save it as `menus/hello.conf`, run `/menu reload`, then `/menu open hello`. That is the
 whole loop.
 
-<Callout type="warning" title="Titles and text are verbatim MiniMessage — not catalog keys">
+<Callout type="warning" title="Titles and text are verbatim MiniMessage, not catalog keys">
 
 Names, lore and titles in a custom menu are written as **MiniMessage** and rendered
 exactly as you type them. They are **not** run through the message catalogs, so style
@@ -55,7 +55,7 @@ These sit at the top of the file, outside `items { }`.
 | `title` | The window title (MiniMessage; may hold `%placeholders%`). |
 | `rows` | Chest height, `1`–`6`. |
 | `inventory-type` | Optional non-chest shape (`hopper`, `dispenser`, …). Falls back to a `rows` chest if the shape rejects the window. |
-| `items { }` | The item map — each key is an item id. |
+| `items { }` | The item map: each key is an item id. |
 | `open-requirement` | Conditions that must pass before the menu opens at all (see below). |
 | `open-actions` / `close-actions` | Action lists run when the menu opens / closes. |
 | `refresh { enabled, interval-ticks }` | Auto re-render on a timer. `update-interval` is the shorthand. |
@@ -76,14 +76,14 @@ Each entry under `items { }` is one tile, keyed by an id you choose.
 | Key | Meaning |
 |---|---|
 | `material` | The icon. A literal (`DIAMOND_SWORD`), a `%placeholder%`, or a prefixed icon spec (`skull:`, `basehead:`, `hdb:`, `itemsadder:`, `oraxen:`, `nexo:`, `mmoitems:`). |
-| `slot` / `slots` | Where it sits — a single slot, a list, or ranges. |
+| `slot` / `slots` | Where it sits: a single slot, a list, or ranges. |
 | `priority` | Tie-break when two items claim the same slot; higher wins. |
 | `name` | Display name (MiniMessage). |
 | `lore` | Lore lines (a list of MiniMessage strings). |
 | `lore-mode` | How this lore combines with the base icon's own lore (`REPLACE` is the default). |
 | `amount` | Stack size shown on the icon. |
 | `decor { }` | Rich extras: `model-data`, `glow`, item flags, enchantments, potion/banner/trim, damage, data-components. |
-| `view` | Visibility gate — hide the tile unless conditions pass (see below). |
+| `view` | Visibility gate: hide the tile unless conditions pass (see below). |
 | `update` | `true` to re-render this tile on every refresh tick. |
 | `type` | Pagination role: `NONE`, `NEXT`, `PREVIOUS`, `JUMP`. |
 | `list { }` | Expand one template tile across a data source (online players, worlds, …). See below. |
@@ -220,7 +220,7 @@ lives on the [Actions & Requirements](actions-requirements.md) page.
 ## A complete worked example
 
 A three-row VIP shop tile: it only shows to players with a permission, charges money on
-click, and gives a diamond block — with a fallback message when they cannot afford it.
+click, and gives a diamond block, with a fallback message when they cannot afford it.
 
 ```hocon
 # menus/shop.conf   →   /menu open shop   (or /shop, see the command block)
@@ -281,7 +281,7 @@ items {
 
 <Callout type="tip" title="Bare `id:value`, never brackets">
 
-Every action, condition and placeholder is a **bare `id:value` reference** —
+Every action, condition and placeholder is a **bare `id:value` reference**:
 `message:hi`, `perm:vip`, `has-money:500`, `open:shop`. uxmEssentials does **not** use
 the bracketed `[message] hi` style some other menu plugins use. If you are converting
 an old file, this is the single most common thing to fix (the
@@ -294,7 +294,7 @@ an old file, this is the single most common thing to fix (the
 ## Giving a menu its own command
 
 Add a top-level `command { }` block and the menu registers its own open-command. Now
-`/shop` opens `menus/shop.conf` directly — no `/menu open` needed.
+`/shop` opens `menus/shop.conf` directly: no `/menu open` needed.
 
 ```hocon
 command {
@@ -310,7 +310,7 @@ command {
 `name` must be a single lowercase word. A malformed or duplicate alias is dropped rather
 than aborting the command, and the menu still opens through `/menu open shop` even if the
 command block is invalid. You can also declare typed positional `arguments` here for
-commands like `/gift <target> <amount>` — the argument values become placeholders the
+commands like `/gift <target> <amount>`: the argument values become placeholders the
 menu can read.
 
 ---
@@ -332,7 +332,7 @@ everyone (`uxmessentials.menu.use`); the rest are admin-gated with
 
 <Callout type="note" title="Reload after every edit">
 
-Menu files are read on load and on `/menu reload`, never on a hot path — so nothing
+Menu files are read on load and on `/menu reload`, never on a hot path, so nothing
 you type takes effect until you reload. `/menu reload shop` re-reads one file and
 tells you in the log exactly where a syntax error is; a bad file is skipped and the
 others keep working.
@@ -347,8 +347,8 @@ for a player, admin-only).
 
 ## Next Steps
 
-- [Actions & Requirements](actions-requirements.md) — the full click/condition vocabulary.
-- [Bedrock Forms](bedrock.md) — how your menu renders for Floodgate players.
-- [Converting Other Menus](converters.md) — bring DeluxeMenus/zMenu/OGUI/GUIPlus files across.
-- [Menu API](../developer/menu-api.md) — register your own actions, conditions and placeholders in code.
-- [Config Overview](../config/overview.md) — where `menus/` sits in the config tree.
+- [Actions & Requirements](actions-requirements.md): the full click/condition vocabulary.
+- [Bedrock Forms](bedrock.md): how your menu renders for Floodgate players.
+- [Converting Other Menus](converters.md): bring DeluxeMenus/zMenu/OGUI/GUIPlus files across.
+- [Menu API](../developer/menu-api.md): register your own actions, conditions and placeholders in code.
+- [Config Overview](../config/overview.md): where `menus/` sits in the config tree.

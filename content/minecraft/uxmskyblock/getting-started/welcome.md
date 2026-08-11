@@ -10,8 +10,8 @@ It gives every player their own island floating in the void (or sitting on real
 terrain), a team to build it with, levels to grind, upgrades to buy, and a
 leaderboard to climb.
 
-Almost everything a player ever sees — **commands, messages, menus, roles,
-upgrades, block values, levels** — lives in YAML files. That means you can rename,
+Almost everything a player ever sees: **commands, messages, menus, roles,
+upgrades, block values, levels**: lives in YAML files. That means you can rename,
 re-theme, or fully translate the plugin without touching a single line of code.
 
 ---
@@ -46,7 +46,7 @@ MySQL database and Redis. See [Cross-Server Setup](../proxy/cross-server.md).
 ## Built to Be Extended
 
 uxmSkyblock ships with a lightweight **module loader**. Drop an add-on jar into
-`plugins/uxmSkyblock/modules/` and it gets full access to the island API — no forking,
+`plugins/uxmSkyblock/modules/` and it gets full access to the island API: no forking,
 no second standalone plugin.
 
 The first module built on this is **[Chunklock](../../chunklock/overview.md)**, which
@@ -67,6 +67,6 @@ turns the world into a shared grid where players expand their island chunk by ch
 
 ## Where Should I Start?
 
-- [🔧 Installation](installation.md) — get the plugin running in 2 minutes
-- [🏝️ Your First Island](first-island.md) — create and grow an island step by step
-- [🧠 Core Concepts](concepts.md) — the ideas behind islands, points, and roles
+- [🔧 Installation](installation.md): get the plugin running in 2 minutes
+- [🏝️ Your First Island](first-island.md): create and grow an island step by step
+- [🧠 Core Concepts](concepts.md): the ideas behind islands, points, and roles

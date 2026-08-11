@@ -70,5 +70,5 @@ See [Cross-Server Setup](../proxy/cross-server.md) for the full network guide.
 | Symptom | Likely cause |
 |---------|--------------|
 | "Connection failed" on start | Wrong host/port/credentials, or DB doesn't exist |
-| Tables missing | The plugin couldn't connect — fix the connection first |
+| Tables missing | The plugin couldn't connect: fix the connection first |
 | Islands not syncing across servers | Servers point at different databases, or Redis is down |

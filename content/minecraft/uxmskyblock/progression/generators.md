@@ -1,9 +1,9 @@
 ---
 title: Generators
 order: 660
-description: The generator upgrade controls what a player's cobblestone generator
-  produces. Each tier is a set of weighted block chances — higher tiers swap plain
-  cobble for ores, and the top tier produces real obsidian.
+description: 'The generator upgrade controls what a player''s cobblestone generator
+  produces. Each tier is a set of weighted block chances: higher tiers swap plain cobble
+  for ores, and the top tier produces real obsidian.'
 ---
 
 Tiers are defined under `upgrades.generator` in
@@ -74,7 +74,7 @@ obsidian (and a touch of ancient debris) instead of plain cobblestone.
 
 ## How Weighting Works
 
-`chances` are **weights**, not strict percentages — when a generator block forms,
+`chances` are **weights**, not strict percentages: when a generator block forms,
 one entry is rolled in proportion to its weight. Weights don't have to sum to 100,
 but using values that add to 100 makes them easy to read as percentages.
 
@@ -97,7 +97,7 @@ generator:
 
 When lava meets water it can form **obsidian**, and the lava would normally be
 lost. With `obsidian.bucket-to-lava: true` (default), right-clicking an obsidian
-block with an **empty bucket** breaks it and hands the lava back as a lava bucket —
+block with an **empty bucket** breaks it and hands the lava back as a lava bucket,
 so an obsidian farm never wastes a drop.
 
 ```yaml

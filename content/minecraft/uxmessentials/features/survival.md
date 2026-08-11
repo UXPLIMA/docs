@@ -1,11 +1,11 @@
 ---
 title: Survival Mechanics
 order: 1460
-description: The survival module is a grab-bag of opt-in gameplay conveniences — tree-feller,
-  veinminer, auto-pickup, one-player sleep and more — that most servers reach for
-  a separate plugin (or three) to get. Each mechanic is an independent switch, so
-  you turn on only the ones your server wants and leave the rest dark. It's driven
-  by a single HOCON file, modules/survival/config.conf.
+description: 'The survival module is a grab-bag of opt-in gameplay conveniences
+  (tree-feller, veinminer, auto-pickup, one-player sleep and more) that most servers
+  reach for a separate plugin (or three) to get. Each mechanic is an independent switch,
+  so you turn on only the ones your server wants and leave the rest dark. It''s driven
+  by a single HOCON file, modules/survival/config.conf.'
 ---
 
 The module ships **disabled**, because every mechanic in it changes how vanilla blocks
@@ -20,13 +20,13 @@ follow their own switches under their own blocks.
 
 Most mechanics answer to up to three layers, and it helps to keep them straight:
 
-1. **The config switch** (`<mechanic> { enabled = ... }`) — the server operator's
+1. **The config switch** (`<mechanic> { enabled = ... }`): the server operator's
    master on/off for that mechanic. Off here and the mechanic does nothing for anyone.
-2. **A personal `/command` toggle** — seven of the mechanics let each player opt
+2. **A personal `/command` toggle**: seven of the mechanics let each player opt
    themselves out with a command (for example `/treefeller`). These default **on**, so
    a player who never touches the command has the mechanic active; running it once
    turns it off, again on. The choice is remembered per player.
-3. **A permission node** — `uxmessentials.survival.<mechanic>` decides whether the
+3. **A permission node**: `uxmessentials.survival.<mechanic>` decides whether the
    mechanic acts for a player at all, and `.toggle` decides whether they may flip their
    personal switch. Everything is self-service (`default: true`), so the mechanics work
    out of the box and a player (or a group) opts out.
@@ -34,7 +34,7 @@ Most mechanics answer to up to three layers, and it helps to keep them straight:
 <Callout type="tip" title="One panel for every toggle">
 
 `/survival` opens a settings panel that gathers all seven personal toggles in one
-place — the same switches as the individual commands, laid out as a GUI. It's gated
+place: the same switches as the individual commands, laid out as a GUI. It's gated
 by `uxmessentials.survival.gui`.
 
 </Callout>
@@ -75,7 +75,7 @@ tree-feller {
 | `sneak-required` | Doubles as the "shift to fell" switch. On: a normal break chops one log and a shift-break fells the tree. Off (default): any log break fells. |
 | `replant-saplings` | Replant a matching sapling at the base when the block below is soil. Species without a plantable sapling (the nether stems) replant nothing. |
 
-**Command:** `/treefeller` — flip your personal tree-feller on or off.
+**Command:** `/treefeller`: flip your personal tree-feller on or off.
 
 **Permissions:** `uxmessentials.survival.treefeller` (the mechanic acts for you),
 `uxmessentials.survival.treefeller.toggle` (you may switch it). Both `default: true`.
@@ -118,7 +118,7 @@ veinminer {
 | `hunger-cost` | Food exhaustion added per extra block mined. `0.0` disables the hunger cost. |
 | `sneak-required` | The "shift to vein" switch. On (default): a plain break takes one ore and a shift-break takes the vein. Off: any break of a listed block veins it. |
 
-**Command:** `/veinminer` — flip your personal veinminer on or off.
+**Command:** `/veinminer`: flip your personal veinminer on or off.
 
 **Permissions:** `uxmessentials.survival.veinminer`,
 `uxmessentials.survival.veinminer.toggle`. Both `default: true`.
@@ -142,12 +142,12 @@ leaf-decay {
 | Key | What it does |
 |-----|--------------|
 | `enabled` | Master switch for the mechanic. Default `true`. |
-| `radius` | How far from the broken log to look for leaves, as the half-width of a cube. Larger clears a bigger canopy but costs more to sweep — keep it modest. |
+| `radius` | How far from the broken log to look for leaves, as the half-width of a cube. Larger clears a bigger canopy but costs more to sweep: keep it modest. |
 | `delay-ticks` | Ticks to wait after the log breaks before decaying the leaves (20 ticks = 1 second). A small delay lets the cascade read as a gentle ripple rather than the whole canopy vanishing at once. |
 
 <Callout type="info" title="No player toggle">
 
-Fast leaf decay is a world-side effect — there is no `/command` toggle and no
+Fast leaf decay is a world-side effect: there is no `/command` toggle and no
 permission node. It's on or off for the whole server via `enabled`.
 
 </Callout>
@@ -165,7 +165,7 @@ farmprotect {
 }
 ```
 
-**Command:** `/farmprotect` — switch your personal farmland protection on or off.
+**Command:** `/farmprotect`: switch your personal farmland protection on or off.
 
 **Permissions:** `uxmessentials.survival.farmprotect`,
 `uxmessentials.survival.farmprotect.toggle`. Both `default: true`.
@@ -195,7 +195,7 @@ farmassist {
 <Callout type="info" title="Permission-gated, no toggle command">
 
 Farm assist has **no** personal toggle command. It acts for any player holding
-`uxmessentials.survival.farmassist` (`default: true`) — negate that node to deny it
+`uxmessentials.survival.farmassist` (`default: true`): negate that node to deny it
 to a player or group.
 
 </Callout>
@@ -223,7 +223,7 @@ anvilunlocker {
 
 <Callout type="info" title="Applies to every anvil">
 
-There is no per-player toggle or permission — while enabled, the unlock applies to
+There is no per-player toggle or permission, while enabled, the unlock applies to
 every anvil on the server.
 
 </Callout>
@@ -248,7 +248,7 @@ oneplayersleep {
 |-----|--------------|
 | `enabled` | Master switch for the mechanic. Default `true`. |
 | `required-percent` | The percentage of eligible players that must be sleeping to skip the night, rounded up to a whole player. Only used when `required-count` is `0`. |
-| `required-count` | A fixed number of sleeping players that skips the night. Above `0` this takes precedence over `required-percent` entirely — the default of `1` is the classic one-player sleep. Set to `0` to fall back to the percentage instead. |
+| `required-count` | A fixed number of sleeping players that skips the night. Above `0` this takes precedence over `required-percent` entirely: the default of `1` is the classic one-player sleep. Set to `0` to fall back to the percentage instead. |
 
 ---
 
@@ -302,7 +302,7 @@ autopickup {
 | `enabled` | Master switch for the mechanic. Default `true`. |
 | `transfer-xp` | Grant the block's dropped experience straight to the player instead of spawning XP orbs. **Off** by default, so mining still drops the usual orbs. |
 
-**Command:** `/autopickup` — flip your personal auto-pickup on or off.
+**Command:** `/autopickup`: flip your personal auto-pickup on or off.
 
 **Permissions:** `uxmessentials.survival.autopickup`,
 `uxmessentials.survival.autopickup.toggle`. Both `default: true`.
@@ -354,7 +354,7 @@ autosmelt {
 | `enabled` | Master switch for the mechanic. Ships `true`. Setting it to `false` removes the mechanic **and** the `/autosmelt` command from the server. |
 | `smelt` | The drop → smelted-result map, keyed by the **drop** material (raw iron, not the ore block) using Bukkit material names. Delete an entry to stop smelting that drop; add your own to smelt more. The shipped set is ores only. |
 
-**Command:** `/autosmelt` — flip your personal auto-smelt on or off.
+**Command:** `/autosmelt`: flip your personal auto-smelt on or off.
 
 **Permissions:** `uxmessentials.survival.autosmelt`,
 `uxmessentials.survival.autosmelt.toggle`. Both `default: true`.
@@ -411,7 +411,7 @@ paid, pooled over the window: `12x Iron Ingot, 3x Coal for $102`. Item names com
 client, so each player reads them in their own language, and the money figure is formatted
 by the economy exactly as `/balance` prints it.
 
-**Command:** `/autosell` — flip your personal auto-sell on or off.
+**Command:** `/autosell`: flip your personal auto-sell on or off.
 
 **Permissions:** `uxmessentials.survival.autosell`,
 `uxmessentials.survival.autosell.toggle`. Both `default: true`.
@@ -429,7 +429,7 @@ a wallet to credit. Price the materials you want sellable, and tell players to r
 ## Auto-Tool
 
 As you start breaking a block, your held hotbar slot swaps to the strongest tool of the
-family that block needs — a pickaxe for stone, an axe for a log. It only ever swaps
+family that block needs: a pickaxe for stone, an axe for a log. It only ever swaps
 between hotbar slots you **already** carry.
 
 ```hocon
@@ -442,7 +442,7 @@ autotool {
 |-----|--------------|
 | `enabled` | Master switch for the mechanic. Ships `true`. Setting it to `false` removes the mechanic **and** the `/autotool` command from the server. |
 
-**Command:** `/autotool` — flip your personal auto-tool on or off.
+**Command:** `/autotool`: flip your personal auto-tool on or off.
 
 **Permissions:** `uxmessentials.survival.autotool`,
 `uxmessentials.survival.autotool.toggle`. Both `default: true`.
@@ -455,12 +455,12 @@ autotool {
 |----------|--------------|---------|----------|-------------|
 | Tree-feller | `tree-feller` | `/treefeller` | `uxmessentials.survival.treefeller` | `.treefeller.toggle` |
 | Veinminer | `veinminer` | `/veinminer` | `uxmessentials.survival.veinminer` | `.veinminer.toggle` |
-| Fast leaf decay | `leaf-decay` | — | — | — |
+| Fast leaf decay | `leaf-decay` | - | - | - |
 | Farmland protection | `farmprotect` | `/farmprotect` | `uxmessentials.survival.farmprotect` | `.farmprotect.toggle` |
-| Farm assist | `farmassist` | — | `uxmessentials.survival.farmassist` | — |
-| Anvil unlocker | `anvilunlocker` | — | — | — |
-| One-player sleep | `oneplayersleep` | — | — | — |
-| Head drops | `headdrop` | — | — | — |
+| Farm assist | `farmassist` | - | `uxmessentials.survival.farmassist` | - |
+| Anvil unlocker | `anvilunlocker` | - | - | - |
+| One-player sleep | `oneplayersleep` | - | - | - |
+| Head drops | `headdrop` | - | - | - |
 | Auto-pickup | `autopickup` | `/autopickup` | `uxmessentials.survival.autopickup` | `.autopickup.toggle` |
 | Auto-smelt | `autosmelt` | `/autosmelt` | `uxmessentials.survival.autosmelt` | `.autosmelt.toggle` |
 | Auto-sell | `autosell` | `/autosell` | `uxmessentials.survival.autosell` | `.autosell.toggle` |
@@ -484,6 +484,6 @@ inspect the module via `/uxmess reload survival`.
 
 ## Next Steps
 
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/survival/config.conf` lives and how it's loaded
-- [💰 Economy](economy.md) — the wallet auto-sell credits into
-- [🔑 Permission Reference](../permissions/reference.md) — the full `uxmessentials.survival.*` node list
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/survival/config.conf` lives and how it's loaded
+- [💰 Economy](economy.md): the wallet auto-sell credits into
+- [🔑 Permission Reference](../permissions/reference.md): the full `uxmessentials.survival.*` node list

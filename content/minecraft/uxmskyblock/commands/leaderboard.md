@@ -58,4 +58,4 @@ top:
 ## How Ranking Works
 
 Islands are ordered by **level**, with **points** breaking ties. Points come from
-the blocks placed on the island — see [Points & Levels](../progression/points-levels.md).
+the blocks placed on the island, see [Points & Levels](../progression/points-levels.md).

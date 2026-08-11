@@ -1,8 +1,8 @@
 ---
 title: Team & Roles
 order: 530
-description: Everything for building and running your island team — members, invites,
-  bans, and roles.
+description: 'Everything for building and running your island team: members, invites,
+  bans, and roles.'
 ---
 
 ---
@@ -25,7 +25,7 @@ a pending invite. On accept they join with the default **member** role.
 
 ### `/is leave`
 
-Leave the island team. Owners can't leave — transfer or delete the island instead.
+Leave the island team. Owners can't leave: transfer or delete the island instead.
 
 <Callout type="info" title="Leaving and inventories">
 
@@ -48,7 +48,7 @@ Lists every member and their role.
 
 ### `/is ban <player>`
 
-Bans a player from the island — they can't visit or be invited. Requires the `BAN`
+Bans a player from the island; they can't visit or be invited. Requires the `BAN`
 permission.
 
 ### `/is unban <player>`
@@ -80,7 +80,7 @@ Requires the `TRANSFER` permission (owner only by default).
 
 ## Roles
 
-Every member has a **role** — a bundle of permissions. Built-in roles live in
+Every member has a **role**: a bundle of permissions. Built-in roles live in
 [roles.yml](../configuration/roles-yml.md); owners can also create custom roles on
 the fly.
 

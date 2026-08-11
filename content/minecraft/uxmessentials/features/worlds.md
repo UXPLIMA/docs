@@ -3,17 +3,16 @@ title: Worlds
 order: 1390
 description: 'The worlds module is a full multi-world manager: create, import, load,
   unload and delete worlds, tune their properties and gamerules, set per-world spawns,
-  and move players between them — all in-game, no bukkit.yml edits and no restart.
-  It''s built for a server that runs more than the vanilla overworld/nether/end: a
-  creative plot world, a resource world you reset on a cycle, a minigame lobby, an
-  event map.'
+  and move players between them: all in-game, no bukkit.yml edits and no restart. It''s
+  built for a server that runs more than the vanilla overworld/nether/end: a creative
+  plot world, a resource world you reset on a cycle, a minigame lobby, an event map.'
 ---
 
 <Callout type="note" title="`/worlds` (plural) vs `/world` (singular)">
 
 Management lives under **`/worlds`** (plural), with nodes under
 `uxmessentials.world.*`. The singular **`/world`** is a small player-state
-*info* command that just tells you which world you're standing in — a different
+*info* command that just tells you which world you're standing in: a different
 module entirely.
 
 </Callout>
@@ -28,7 +27,7 @@ cases:
 
 | Generator | Result |
 |-----------|--------|
-| `void` | An empty world — nothing but the spawn platform you build |
+| `void` | An empty world; nothing but the spawn platform you build |
 | `flat` | A superflat world |
 
 Already have a world folder on disk (a downloaded map, or one from another plugin)?
@@ -67,7 +66,7 @@ Deletion is deliberately **two-step**: `delete` stages the removal and
 
 `auto-adopt-loaded` picks up worlds other plugins loaded, and
 `auto-load-registered` re-loads the worlds you've registered when the server
-starts — so your world roster comes back exactly as you left it.
+starts, so your world roster comes back exactly as you left it.
 
 </Callout>
 
@@ -77,13 +76,13 @@ starts — so your world roster comes back exactly as you left it.
 
 Two commands cover per-world tuning:
 
-- `set <name> <property> <value…>` — world properties (difficulty, PvP, spawn
+- `set <name> <property> <value…>`: world properties (difficulty, PvP, spawn
   behaviour, keep-spawn-loaded, and so on).
-- `gamerule <name> <rule> <value>` — any vanilla gamerule (`doDaylightCycle`,
+- `gamerule <name> <rule> <value>`: any vanilla gamerule (`doDaylightCycle`,
   `keepInventory`, `mobGriefing`, …), applied to that world alone.
 
 Set `keepInventory` on the arena world without touching survival, or turn off mob
-spawning in the lobby — each world carries its own rules.
+spawning in the lobby: each world carries its own rules.
 
 ---
 
@@ -97,7 +96,7 @@ anchor `tp` and portals land players on.
 
 ## Teleport, Access & Entry Fee
 
-`tp <name> [player]` sends you — or another player — into a world. Access isn't
+`tp <name> [player]` sends you (or another player) into a world. Access isn't
 automatically open: the `access {}` block in `worlds.conf` can gate a world behind a
 **permission** and charge an **entry fee** through the economy, so a premium world
 or a paid event map is a config change, not a plugin.
@@ -106,7 +105,7 @@ or a paid event map is a config change, not a plugin.
 
 ## Portals
 
-Worlds can be wired together with **portals** — frames that drop a player into a
+Worlds can be wired together with **portals**: frames that drop a player into a
 target world (and spawn) when they step through. Combined with per-world access
 gates and entry fees, portals turn your world roster into a navigable hub without
 anyone typing a command.
@@ -117,7 +116,7 @@ anyone typing a command.
 
 `gui [name]` opens the world manager as a menu: the bare form lists every world with
 its state, and picking one opens a per-world editor for properties, gamerules,
-spawn, and teleport — the same actions as the commands, point-and-click. It runs on
+spawn, and teleport: the same actions as the commands, point-and-click. It runs on
 the shared [menu engine](../menus/engine.md), so it's config-skinnable like every
 other panel.
 
@@ -127,8 +126,8 @@ other panel.
 
 Pre-generating chunks ahead of time stops the lag spikes that hit when players
 explore fresh terrain. `pregen <name> <radius>` walks the world outward to `radius`,
-and `pregen cancel <name>` stops it. The job is paced by `worlds.conf` —
-`pregen { max-radius, max-concurrent-chunks, tick-period-ticks }` — so it fills in
+and `pregen cancel <name>` stops it. The job is paced by `worlds.conf`:
+`pregen { max-radius, max-concurrent-chunks, tick-period-ticks }`: so it fills in
 the background without dragging down TPS.
 
 ---
@@ -158,14 +157,14 @@ someone's actually mining it.
 ## Placeholders
 
 The current world's stats are exposed through **PlaceholderAPI**
-(`%uxmessentials_*%` families) for use in scoreboards, tablists and holograms — so a
+(`%uxmessentials_*%` families) for use in scoreboards, tablists and holograms, so a
 world name, player count, or spawn can appear on your HUD without extra plumbing.
 
 ---
 
 ## Next Steps
 
-- [🗺️ Worlds Commands](../commands/worlds.md) — the full `/worlds` command reference
-- [🎛️ Custom Menu Engine](../menus/engine.md) — how the world editor GUI is built
-- [🧩 Per-Module Config](../config/per-module.md) — `worlds.conf` defaults, pregen, backups, auto-unload
-- [🔑 Permission Reference](../permissions/reference.md) — the `uxmessentials.world.*` nodes
+- [🗺️ Worlds Commands](../commands/worlds.md): the full `/worlds` command reference
+- [🎛️ Custom Menu Engine](../menus/engine.md): how the world editor GUI is built
+- [🧩 Per-Module Config](../config/per-module.md): `worlds.conf` defaults, pregen, backups, auto-unload
+- [🔑 Permission Reference](../permissions/reference.md): the `uxmessentials.world.*` nodes

@@ -1,10 +1,10 @@
 ---
 title: Kits
 order: 1260
-description: Kits are pre-defined bundles of items (and, optionally, commands) that
+description: 'Kits are pre-defined bundles of items (and, optionally, commands) that
   players claim with a single command. uxmEssentials kits are fully operator-authored,
   gated by permission, rate-limited by cooldown, previewable before claiming, and
-  editable from an in-game GUI — no restart, no code.
+  editable from an in-game GUI: no restart, no code.'
 ---
 
 The whole feature lives in the **`kits`** module. Turn the module off and it wires
@@ -30,15 +30,15 @@ runs three checks, in order:
 ```
 
 Kits are **GUI-first**. `/kit` with no arguments opens the browse menu, where
-players see the kits they can claim, their cooldown state, and — for buy-to-unlock
-kits — the price. Everything a player does day-to-day happens through that menu; the
+players see the kits they can claim, their cooldown state, and, for buy-to-unlock
+kits: the price. Everything a player does day-to-day happens through that menu; the
 raw subcommands exist for muscle memory and scripts.
 
 <Callout type="info" title="Kit claim &amp; cooldown stamps are PDC-backed">
 
 Unlike vaults or the economy, a player's per-kit claim and cooldown stamps are
 stored in **PDC** (per-holder transient state), not the database. This is the one
-place uxmEssentials deliberately keeps state on the player rather than in the DB —
+place uxmEssentials deliberately keeps state on the player rather than in the DB:
 a rolled-back world could reset a kit cooldown, which is acceptable.
 
 </Callout>
@@ -68,19 +68,19 @@ before spending a cooldown or currency. It never consumes anything.
 `/kit create <name>` and `/kit editor <name>` open the editor GUI, which is the
 intended way to build and tune a kit. From the editor you set:
 
-- **Contents** — drag the items (and their full meta: names, lore, enchantments, model data) straight into the grid.
-- **Cooldown** — how long before the same player can claim again.
-- **Cost / buy-to-unlock** — an economy price to claim, or a one-time unlock purchase.
-- **First-join / starter behaviour** — mark a kit to be handed out automatically the first time a player joins.
-- **Deny-on-full** — whether a claim is refused (nothing consumed) when the player's inventory is full, versus dropping the overflow.
+- **Contents**: drag the items (and their full meta: names, lore, enchantments, model data) straight into the grid.
+- **Cooldown**: how long before the same player can claim again.
+- **Cost / buy-to-unlock**: an economy price to claim, or a one-time unlock purchase.
+- **First-join / starter behaviour**: mark a kit to be handed out automatically the first time a player joins.
+- **Deny-on-full**: whether a claim is refused (nothing consumed) when the player's inventory is full, versus dropping the overflow.
 
-Kit definitions are **operator-created and persisted** — nothing ships out of the
+Kit definitions are **operator-created and persisted**: nothing ships out of the
 box, so a fresh install has an empty kit list until you build one.
 
 <Callout type="tip" title="Editing is live">
 
 Saving in the editor updates the kit immediately for everyone. There's no reload
-step for kit *contents* — `/uxmess reload kits` is only needed if you change the
+step for kit *contents*: `/uxmess reload kits` is only needed if you change the
 module's own `config.conf`.
 
 </Callout>
@@ -112,7 +112,7 @@ cooldown, while `uxmessentials.kit.cooldown.bypass` lets staff test kits freely.
 | `uxmessentials.kit.others` | `op` | Give a kit to another player |
 | `uxmessentials.kit.edit` | `op` | Create / delete / edit kits |
 | `uxmessentials.kit.reset` | `op` | Clear another player's claim & cooldown stamps |
-| `uxmessentials.kit.<id>` | — | **Per-kit gate**: access to the kit whose id is `<id>` |
+| `uxmessentials.kit.<id>` | - | **Per-kit gate**: access to the kit whose id is `<id>` |
 | `uxmessentials.module.kits` | `op` | Reload / inspect the kits module |
 
 The **per-kit gate** `uxmessentials.kit.<id>` is the key to rank-locked kits: create
@@ -134,7 +134,7 @@ showkit-display = "gui"   # how /kit show previews a kit
 ```
 
 Per-kit properties (contents, cooldown, cost, deny-on-full, starter flag) are **not**
-in this file — they belong to each kit definition and are edited through the GUI.
+in this file; they belong to each kit definition and are edited through the GUI.
 
 ---
 
@@ -143,7 +143,7 @@ in this file — they belong to each kit definition and are edited through the G
 <Callout type="warning" title="Deny-on-full protects the claim">
 
 With deny-on-full enabled, a player whose inventory is full has their claim
-**refused** and nothing is consumed — the cooldown is not stamped and any cost is
+**refused** and nothing is consumed: the cooldown is not stamped and any cost is
 not charged. Make sure players know to clear space before claiming a paid kit.
 
 </Callout>

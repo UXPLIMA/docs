@@ -4,7 +4,7 @@ order: 760
 ---
 
 `upgrades.yml` defines every upgrade, its tiers, and what each tier costs. Add,
-remove, or retune tiers freely — the [Upgrades menu](../menus/upgrades.md) is built
+remove, or retune tiers freely: the [Upgrades menu](../menus/upgrades.md) is built
 from this file automatically.
 
 For the default tier tables in friendly form, see [Upgrades](../progression/upgrades.md)
@@ -16,7 +16,7 @@ and [Generators](../progression/generators.md).
 
 | `type` | Meaning |
 |--------|---------|
-| `value` | The level holds a single number — a limit, multiplier, or size |
+| `value` | The level holds a single number: a limit, multiplier, or size |
 | `generator` | The level holds weighted block `chances` |
 
 ---
@@ -82,7 +82,7 @@ generator:
         IRON_ORE: 5
 ```
 
-`chances` are **weights** — a block is rolled in proportion to its weight when the
+`chances` are **weights**: a block is rolled in proportion to its weight when the
 generator forms. See [Generators](../progression/generators.md).
 
 ---

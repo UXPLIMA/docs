@@ -1,9 +1,9 @@
 ---
 title: Main Menu (/is)
 order: 580
-description: Opening /is brings up the main menu — the hub for everything an island
+description: 'Opening /is brings up the main menu: the hub for everything an island
   owner does. Every slot, icon, name, and action is editable in menus/main.yml; this
-  page describes the default layout.
+  page describes the default layout.'
 ---
 
 ---

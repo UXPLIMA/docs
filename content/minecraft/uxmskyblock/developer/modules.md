@@ -22,7 +22,7 @@ dependencies {
 }
 ```
 
-Build a **plain jar** (not a shaded plugin) — the core loads it as a module, not a
+Build a **plain jar** (not a shaded plugin): the core loads it as a module, not a
 Bukkit plugin.
 
 ---
@@ -93,7 +93,7 @@ public class MyModule implements UxmSkyblockModule {
 | Your own `config.yml` + data folder | separate from the main plugin |
 
 Because you run in the core's classloader, you also share its **database
-connection** and **proxy/Redis messaging** — store and sync your data through the
+connection** and **proxy/Redis messaging**: store and sync your data through the
 same pipes the core uses.
 
 ---
@@ -103,7 +103,7 @@ same pipes the core uses.
 - Use the shared SQLite/MySQL connection to add your own tables (Chunklock adds a
   `chunklock_*` table in the same database).
 - For cross-server sync, reuse the core's proxy classes (`RedisMessenger`,
-  `ProxyManager`) on **your own channel** — the same approach Chunklock uses.
+  `ProxyManager`) on **your own channel**: the same approach Chunklock uses.
 
 ---
 
@@ -123,4 +123,4 @@ it cleanly on shutdown.
 ## Reference Implementation
 
 [Chunklock](../../chunklock/overview.md) is a full, real module built exactly this
-way — read its pages to see the pattern end to end.
+way: read its pages to see the pattern end to end.

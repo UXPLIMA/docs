@@ -16,7 +16,7 @@ Every block type has a point value in
 - **Place** a block → its points are **added** to the island.
 - **Break** a block → the same points are **removed**.
 
-Blocks not listed are worth `default-value` (0 by default — they give nothing).
+Blocks not listed are worth `default-value` (0 by default; they give nothing).
 
 ```yaml
 values:
@@ -59,7 +59,7 @@ auto:
   multiplier: 1.15    # step grows by this each level
 ```
 
-This means the curve keeps climbing smoothly forever — you don't have to hand-write
+This means the curve keeps climbing smoothly forever; you don't have to hand-write
 hundreds of levels.
 
 ---
@@ -80,5 +80,5 @@ Placeholders `%skyblock_level%` and `%skyblock_points%` are available through
 ## How Tracking Works
 
 Block placement and breaking are tracked live as players build, so points update
-in real time. Generators and crops that produce blocks count too — which is why
+in real time. Generators and crops that produce blocks count too, which is why
 the [generator upgrade](generators.md) is such a powerful way to level.

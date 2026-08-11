@@ -24,7 +24,7 @@ you leave off.
 
 The context **persists nothing relational**. The per-villager last-restock stamp, the
 disable flag, the follow-owner mark, and a manager-edited villager's custom trade set all
-live in the villager's own **PDC** on the entity — so the module owns no database table
+live in the villager's own **PDC** on the entity, so the module owns no database table
 and runs no migrations, and a manager's edits survive a chunk reload or restart because
 they ride on the villager itself.
 
@@ -38,14 +38,14 @@ they ride on the villager itself.
 | **Restock timer** | `restock` | **on** | A scheduled sweep restocks loaded villagers on an interval | *(no permission)* |
 | **Instant restock** | `instant-restock` | off | The trade a player just used restocks at once | *(no permission)* |
 | **Disable trades** | `disable-trades` | off | Every villager refuses to open its trade window | *(no permission)* |
-| **Trade manager** | `trade-manager` | **on** | `/villager manager` — a staff GUI to edit a villager's trades | `uxmessentials.villagers.manager` |
+| **Trade manager** | `trade-manager` | **on** | `/villager manager`: a staff GUI to edit a villager's trades | `uxmessentials.villagers.manager` |
 | **Click-to-trade** | `click-to-trade` | **on** | Right-click a villager to open its trade window directly | `uxmessentials.villagers.trade` |
 | **Protection (saver)** | `protect` | **on** | A villager that can't die and won't despawn | `uxmessentials.villagers.protect` |
 | **Villager-in-a-bucket** | `bucket` | off | Sneak-pick a villager into an item and place it back | `uxmessentials.villagers.bucket` |
-| **Follow** | `follow` | **on** | `/villager follow` — the villager pathfinds after you | `uxmessentials.villagers.follow` |
+| **Follow** | `follow` | **on** | `/villager follow`: the villager pathfinds after you | `uxmessentials.villagers.follow` |
 | **Leash** | `leash` | off | Right-click a villager with a lead to leash it | `uxmessentials.villagers.leash` |
 
-The first four are entity-mechanics only — they act on their own with no command and no
+The first four are entity-mechanics only; they act on their own with no command and no
 permission, gated purely by their config switch. The last six carry a command or a
 right-click gesture behind one of the `uxmessentials.villagers.*` nodes.
 
@@ -63,7 +63,7 @@ its feature switched on, so the verbs you see are the ones you turned on.
 | `/villager protect` | Toggle whether that villager is protected from death and despawn | `uxmessentials.villagers.protect` |
 | `/villager follow` | Toggle whether that villager follows you | `uxmessentials.villagers.follow` |
 
-Every subcommand acts on **the villager you are looking at** — or, if you aren't aiming
+Every subcommand acts on **the villager you are looking at**: or, if you aren't aiming
 directly at one, the **nearest villager within five blocks**. A sender who isn't a player,
 or who has no villager in reach, gets a feedback line instead of an action.
 
@@ -111,7 +111,7 @@ instant-restock { enabled = false }
 ```
 
 The trade a player just used **restocks immediately**, with no cooldown. It composes with
-the restock timer — the used trade is available again at once regardless of the timer, so
+the restock timer: the used trade is available again at once regardless of the timer, so
 it effectively wins for the recipe a player just took.
 
 ### Disable trades
@@ -123,7 +123,7 @@ disable-trades { enabled = false }
 With it on, **every** villager refuses to open its trade window: the right-click is
 cancelled and the player is shown the `villagers.trades-disabled` line. The same listener
 also honours a **per-villager** disable flag the trade manager sets, so an individual
-villager can be turned off even while this global switch is off — which is why the listener
+villager can be turned off even while this global switch is off, which is why the listener
 always registers when the module is on (with the global switch off and no flag set, it
 cancels nothing).
 
@@ -145,15 +145,15 @@ The window is a **six-row chest**:
 
 - The **top five rows** are recipe rows. Each has two editable **buy** slots, a decorative
   arrow, an editable **sell** slot, and a **remove** button. Editing a trade means dragging
-  its buy/sell stacks into the row — *the stack amounts are the trade amounts*. Filling an
+  its buy/sell stacks into the row: *the stack amounts are the trade amounts*. Filling an
   empty row **adds** a trade; clearing a row (the remove button, or emptying it) **drops**
   that trade.
 - The **sixth row** is a control bar: a **disable toggle** (flips this villager's
   per-villager trade-disable flag) and a **help** item.
 
 A librarian's deeper trade list is safe: any trade beyond the five visible rows is carried
-through untouched, so the editor never truncates it. The window is a definition surface —
-its stacks are trade templates, not deposited items — and the villager's recipes are
+through untouched, so the editor never truncates it. The window is a definition surface;
+its stacks are trade templates, not deposited items, and the villager's recipes are
 replaced wholesale on close, never appended, so nothing dupes.
 
 ---
@@ -165,7 +165,7 @@ click-to-trade { enabled = true }
 ```
 
 With it on, a player holding **`uxmessentials.villagers.trade`** who right-clicks a villager
-opens its trade window **directly**, even where the vanilla gate would refuse it — a
+opens its trade window **directly**, even where the vanilla gate would refuse it: a
 professionless villager, or one already busy with another trader. A **disabled** villager
 (globally, or by its per-villager flag) still never opens. It ships **on**; set
 `enabled = false` to leave villager access to the vanilla gate.
@@ -202,7 +202,7 @@ to, and is kept loaded so it never despawns. Mark an individual villager with
 <Callout type="note" title="The four gates ship on">
 
 The per-threat gates default to `true`, so a protected villager is shielded from
-**everything** until you narrow it — turn a gate off to let that one end through (for
+**everything** until you narrow it: turn a gate off to let that one end through (for
 example `from-zombies = false` to protect a villager yet still allow zombie
 conversions).
 
@@ -225,8 +225,8 @@ villager to pick it up into a captured-villager item that stores the villager's
 the villager back, spawning it with the same trades it had when captured (not a re-rolled
 vanilla set). A gameplay change, so it ships off.
 
-Both directions cancel the vanilla interaction they'd otherwise trigger — the trade window
-on pickup, the spawn-egg spawn on placement — and the captured item is consumed on
+Both directions cancel the vanilla interaction they'd otherwise trigger: the trade window
+on pickup, the spawn-egg spawn on placement, and the captured item is consumed on
 placement (except in creative). The item carries the `villagers.bucket.name` display name.
 
 ---
@@ -265,9 +265,9 @@ leash { enabled = false }
 ```
 
 With it on, a player holding **`uxmessentials.villagers.leash`** right-clicks a villager
-with a **lead** in hand to leash it — something vanilla never allows. The lead is consumed,
+with a **lead** in hand to leash it; something vanilla never allows. The lead is consumed,
 and the trade window that click would otherwise open is suppressed. Leashing is silent,
-like vanilla leashing — there's no confirmation line. A gameplay change, so it ships off.
+like vanilla leashing: there's no confirmation line. A gameplay change, so it ships off.
 
 ---
 
@@ -387,7 +387,7 @@ to the shipped default above.
 ## Permissions
 
 Every node defaults to `op`, so a fresh install hands the villager **tools** to operators
-and nobody else — grant the specific node to the staff or donor rank that should have it.
+and nobody else: grant the specific node to the staff or donor rank that should have it.
 
 The four trade-availability switches take no permission at all; they're config-only. That
 is the practical difference on a fresh install: infinite trading and the restock timer
@@ -397,12 +397,12 @@ nodes.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.villagers.use` | `op` | `/villager` — the root command's base node; each subcommand gates further below |
-| `uxmessentials.villagers.manager` | `op` | `/villager manager` — open and edit the trades of the villager you're looking at |
+| `uxmessentials.villagers.use` | `op` | `/villager`: the root command's base node; each subcommand gates further below |
+| `uxmessentials.villagers.manager` | `op` | `/villager manager`: open and edit the trades of the villager you're looking at |
 | `uxmessentials.villagers.trade` | `op` | Open a villager's trade window directly on right-click, when click-to-trade is enabled |
-| `uxmessentials.villagers.protect` | `op` | `/villager protect` — toggle whether the villager you're looking at is protected from death and despawn |
+| `uxmessentials.villagers.protect` | `op` | `/villager protect`: toggle whether the villager you're looking at is protected from death and despawn |
 | `uxmessentials.villagers.bucket` | `op` | Sneak-right-click a villager to pick it up into a captured-villager item, and place it back later |
-| `uxmessentials.villagers.follow` | `op` | `/villager follow` — toggle whether the villager you're looking at pathfinds after you |
+| `uxmessentials.villagers.follow` | `op` | `/villager follow`: toggle whether the villager you're looking at pathfinds after you |
 | `uxmessentials.villagers.leash` | `op` | Right-click a villager with a lead to leash it, when leashing is enabled |
 | `uxmessentials.module.villagers` | `op` | Reload / inspect the module (`/uxmess reload villagers`) |
 
@@ -410,7 +410,7 @@ nodes.
 
 ## Next Steps
 
-- [🔑 Permission Reference](../permissions/reference.md) — the full `uxmessentials.villagers.*` node list
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/villagers/config.conf` lives and how it's loaded
-- [💬 Messages & Languages](../config/messages.md) — the `villagers.*` lines (the disabled-trade refusal, the protect/follow confirmations, the manager labels, the bucket item name)
-- [🛒 Trade](trade.md) — player-to-player trading (a separate module from villager trade management)
+- [🔑 Permission Reference](../permissions/reference.md): the full `uxmessentials.villagers.*` node list
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/villagers/config.conf` lives and how it's loaded
+- [💬 Messages & Languages](../config/messages.md): the `villagers.*` lines (the disabled-trade refusal, the protect/follow confirmations, the manager labels, the bucket item name)
+- [🛒 Trade](trade.md): player-to-player trading (a separate module from villager trade management)

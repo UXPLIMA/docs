@@ -5,9 +5,9 @@ order: 1010
 
 ## Item & World
 
-The **Item & World** module is the largest in uxmEssentials — roughly 65 verbs covering item editing, virtual workstations, inventory cleanup, powertools, mob/entity control, time/weather shortcuts, and admin fun. Internally it splits into **seven sub-feature groups** that can be toggled independently, and on top of that every single command can be switched off in `itemworld.conf`. Everything is Brigadier, so all of it is renameable and re-aliasable in [`commands/commands.conf`](../config/commands-conf.md).
+The **Item & World** module is the largest in uxmEssentials: roughly 65 verbs covering item editing, virtual workstations, inventory cleanup, powertools, mob/entity control, time/weather shortcuts, and admin fun. Internally it splits into **seven sub-feature groups** that can be toggled independently, and on top of that every single command can be switched off in `itemworld.conf`. Everything is Brigadier, so all of it is renameable and re-aliasable in [`commands/commands.conf`](../config/commands-conf.md).
 
-<Callout type="warning" title="These verbs are gated twice — and some are logged">
+<Callout type="warning" title="These verbs are gated twice, and some are logged">
 
 A command runs only when **both** its sub-feature group and its own `enabled` flag are on in `itemworld.conf`. The abusable, purge, and admin-fun verbs (`/nuke`, `/killall`, `/remove`, `/butcher`, `/kittycannon`, `/antioch`, and friends) are **audit-logged** every time they fire, so there is always a record of who blew up what.
 
@@ -15,7 +15,7 @@ A command runs only when **both** its sub-feature group and its own `enabled` fl
 
 <Callout type="note" title="Per-type opt-out nodes">
 
-`/give`, `/enchant`, and `/spawnmob` layer a per-type sub-node on top of the base permission — `uxmessentials.itemworld.give.<material>`, `uxmessentials.itemworld.enchant.<enchant>`, and `uxmessentials.itemworld.spawnmob.<mob>`. The wildcard parents default to `true`, so grant is the norm; set a specific one to `false` to block, say, `/give` of bedrock without touching the rest of the command.
+`/give`, `/enchant`, and `/spawnmob` layer a per-type sub-node on top of the base permission: `uxmessentials.itemworld.give.<material>`, `uxmessentials.itemworld.enchant.<enchant>`, and `uxmessentials.itemworld.spawnmob.<mob>`. The wildcard parents default to `true`, so grant is the norm; set a specific one to `false` to block, say, `/give` of bedrock without touching the rest of the command.
 
 </Callout>
 
@@ -28,35 +28,35 @@ Editing, generating, and inspecting held items. Item names and lore accept MiniM
 | Command | Aliases | Permission |
 |---------|---------|------------|
 | `/give <player> <item> [amount]` | `i` | `uxmessentials.give.use` |
-| `/giveall <item> [amount]` | — | `uxmessentials.giveall.use` |
-| `/item <item> [amount]` | — | `uxmessentials.item.use` |
+| `/giveall <item> [amount]` | - | `uxmessentials.giveall.use` |
+| `/item <item> [amount]` | - | `uxmessentials.item.use` |
 | `/itemname [name]` | `iname` | `uxmessentials.itemname.use` |
 | `/itemlore <set\|add> <text>` · `/itemlore clear` | `lore` | `uxmessentials.itemlore.use` |
 | `/itemflag <flag> <on\|off>` | `iflag` | `uxmessentials.itemflag.use` |
-| `/skull [player]` | — | `uxmessentials.skull.use` |
-| `/firework …` | — | `uxmessentials.firework.use` |
-| `/potion <effect> [duration] [amplifier]` | — | `uxmessentials.potion.use` |
-| `/book` | — | `uxmessentials.book.use` |
-| `/more` | — | `uxmessentials.more.use` |
+| `/skull [player]` | - | `uxmessentials.skull.use` |
+| `/firework …` | - | `uxmessentials.firework.use` |
+| `/potion <effect> [duration] [amplifier]` | - | `uxmessentials.potion.use` |
+| `/book` | - | `uxmessentials.book.use` |
+| `/more` | - | `uxmessentials.more.use` |
 | `/itemamount <n>` | `amount` | `uxmessentials.itemamount.use` |
 | `/itemdamage <n>` | `durability` | `uxmessentials.itemdamage.use` |
-| `/repair` · `/repairall` | — | `uxmessentials.repair.itemworld` |
-| `/enchant <enchant> [level]` | — | `uxmessentials.enchant.use` |
-| `/disenchant [all\|<enchant>]` | — | `uxmessentials.disenchant.use` |
-| `/hat` | — | `uxmessentials.hat.use` |
+| `/repair` · `/repairall` | - | `uxmessentials.repair.itemworld` |
+| `/enchant <enchant> [level]` | - | `uxmessentials.enchant.use` |
+| `/disenchant [all\|<enchant>]` | - | `uxmessentials.disenchant.use` |
+| `/hat` | - | `uxmessentials.hat.use` |
 | `/itemdb [item]` | `idb` | `uxmessentials.itemdb.use` |
-| `/iteminfo` | — | `uxmessentials.iteminfo.use` |
-| `/recipe [item]` | — | `uxmessentials.recipe.use` |
-| `/showitem` | — | `uxmessentials.showitem.use` |
-| `/unbreakable [true\|false]` | — | `uxmessentials.unbreakable.use` |
+| `/iteminfo` | - | `uxmessentials.iteminfo.use` |
+| `/recipe [item]` | - | `uxmessentials.recipe.use` |
+| `/showitem` | - | `uxmessentials.showitem.use` |
+| `/unbreakable [true\|false]` | - | `uxmessentials.unbreakable.use` |
 | `/itemmodel <id>\|clear` | `custommodeldata` | `uxmessentials.itemmodel.use` |
-| `/editsign` | — | `uxmessentials.editsign.use` |
-| `/copyinv <player>` | — | `uxmessentials.copyinv.use` |
-| `/endercopy <player>` | — | `uxmessentials.endercopy.use` |
+| `/editsign` | - | `uxmessentials.editsign.use` |
+| `/copyinv <player>` | - | `uxmessentials.copyinv.use` |
+| `/endercopy <player>` | - | `uxmessentials.endercopy.use` |
 
 ### The held-item editor: `/itemedit`
 
-`/itemedit` is a single command that edits the item in your main hand in place — the jobs `/itemname`, `/itemlore`, `/enchant`, `/itemflag` and `/unbreakable` do, plus attributes, durability and custom model data, under one verb. Names and lore lines accept MiniMessage, and a rename strips the default italic so your formatting is what shows. A bare `/itemedit` opens a GUI panel that does the same edits by clicking, with a live preview of the held item. It sits in its own `item-edit` sub-feature (`item-edit { enabled }` in `itemworld.conf`) behind `uxmessentials.itemworld.itemedit` (default `op`).
+`/itemedit` is a single command that edits the item in your main hand in place: the jobs `/itemname`, `/itemlore`, `/enchant`, `/itemflag` and `/unbreakable` do, plus attributes, durability and custom model data, under one verb. Names and lore lines accept MiniMessage, and a rename strips the default italic so your formatting is what shows. A bare `/itemedit` opens a GUI panel that does the same edits by clicking, with a live preview of the held item. It sits in its own `item-edit` sub-feature (`item-edit { enabled }` in `itemworld.conf`) behind `uxmessentials.itemworld.itemedit` (default `op`).
 
 | Subcommand | What it does |
 |------------|--------------|
@@ -69,7 +69,7 @@ Editing, generating, and inspecting held items. Item names and lore accept MiniM
 | `lore clear` | Remove all lore. |
 | `enchant <enchant> <level>` | Add an enchantment; a flag lets `<level>` exceed the vanilla maximum. |
 | `enchant <enchant> remove` | Take an enchantment off. |
-| `flag <ItemFlag> [on\|off]` | Toggle an item flag — `HIDE_ENCHANTS`, `HIDE_ATTRIBUTES`, and the rest. |
+| `flag <ItemFlag> [on\|off]` | Toggle an item flag: `HIDE_ENCHANTS`, `HIDE_ATTRIBUTES`, and the rest. |
 | `attribute add <attribute> <amount> <slot>` | Add an attribute modifier bound to an equipment slot. |
 | `attribute remove <attribute>` | Remove an attribute modifier. |
 | `durability <value>` | Set the item's remaining durability. |
@@ -79,7 +79,7 @@ Editing, generating, and inspecting held items. Item names and lore accept MiniM
 
 <Callout type="tip" title="Editing a shulker without placing it">
 
-Sneak-right-click a shulker box **item** in your inventory to open its 27 contents and edit them in place — no command, no placing the box. See the [feature guide](../features/item-world.md#the-held-item-editor-in-inventory-shulker-editing) for the safety rules and the `shulkers { }` switch.
+Sneak-right-click a shulker box **item** in your inventory to open its 27 contents and edit them in place: no command, no placing the box. See the [feature guide](../features/item-world.md#the-held-item-editor-in-inventory-shulker-editing) for the safety rules and the `shulkers { }` switch.
 
 </Callout>
 
@@ -92,14 +92,14 @@ Open a crafting UI anywhere, no block required. Add `uxmessentials.workstation.o
 | Command | Aliases | Permission |
 |---------|---------|------------|
 | `/workbench` | `craft` | `uxmessentials.workstation.workbench` |
-| `/anvil` | — | `uxmessentials.workstation.anvil` |
+| `/anvil` | - | `uxmessentials.workstation.anvil` |
 | `/enderchest` | `echest` | `uxmessentials.workstation.enderchest` |
-| `/grindstone` | — | `uxmessentials.workstation.grindstone` |
-| `/cartography` | — | `uxmessentials.workstation.cartography` |
-| `/loom` | — | `uxmessentials.workstation.loom` |
-| `/smithingtable` | — | `uxmessentials.workstation.smithingtable` |
-| `/stonecutter` | — | `uxmessentials.workstation.stonecutter` |
-| `/furnace [player]` | — | `uxmessentials.workstation.furnace` |
+| `/grindstone` | - | `uxmessentials.workstation.grindstone` |
+| `/cartography` | - | `uxmessentials.workstation.cartography` |
+| `/loom` | - | `uxmessentials.workstation.loom` |
+| `/smithingtable` | - | `uxmessentials.workstation.smithingtable` |
+| `/stonecutter` | - | `uxmessentials.workstation.stonecutter` |
+| `/furnace [player]` | - | `uxmessentials.workstation.furnace` |
 
 ---
 
@@ -122,8 +122,8 @@ Bind a command to the item in your hand, then trigger it by using that item.
 | Command | Aliases | Permission |
 |---------|---------|------------|
 | `/powertool [command…]` | `pt` | `uxmessentials.powertool.use` |
-| `/powertoollist` | — | `uxmessentials.powertool.use` |
-| `/powertooltoggle` | — | `uxmessentials.powertool.toggle` |
+| `/powertoollist` | - | `uxmessentials.powertool.use` |
+| `/powertooltoggle` | - | `uxmessentials.powertool.toggle` |
 
 ---
 
@@ -165,13 +165,13 @@ The joke/chaos verbs. **All of these are audit-logged.**
 |---------|---------|------------|
 | `/lightning [player]` | `smite` | `uxmessentials.lightning.use` |
 | `/fireball` | `grenade` | `uxmessentials.fireball.use` |
-| `/kittycannon` | — | `uxmessentials.kittycannon.use` |
-| `/antioch` | — | `uxmessentials.antioch.use` |
+| `/kittycannon` | - | `uxmessentials.kittycannon.use` |
+| `/antioch` | - | `uxmessentials.antioch.use` |
 | `/beezooka` | `beecannon` | `uxmessentials.beezooka.use` |
-| `/break` | — | `uxmessentials.break.use` |
-| `/tree <type>` | — | `uxmessentials.tree.use` |
+| `/break` | - | `uxmessentials.break.use` |
+| `/tree <type>` | - | `uxmessentials.tree.use` |
 | `/bigtree <type>` | `largetree` | `uxmessentials.tree.use` |
-| `/nuke [player]` | — | `uxmessentials.nuke.use` |
+| `/nuke [player]` | - | `uxmessentials.nuke.use` |
 
 ---
 
@@ -206,6 +206,6 @@ The module also answers to the reload/inspect tier `uxmessentials.module.itemwor
 
 ## Next Steps
 
-- [🧱 Item & World Feature Guide](../features/item-world.md) — sub-feature groups, config flags, and audit log
-- [🔐 Permissions Reference](../permissions/reference.md) — base nodes plus the per-type opt-out tiers
-- [⚙️ Renaming Commands](../config/commands-conf.md) — rename or disable any of these verbs
+- [🧱 Item & World Feature Guide](../features/item-world.md): sub-feature groups, config flags, and audit log
+- [🔐 Permissions Reference](../permissions/reference.md): base nodes plus the per-type opt-out tiers
+- [⚙️ Renaming Commands](../config/commands-conf.md): rename or disable any of these verbs

@@ -1,17 +1,17 @@
 ---
 title: Items & World
 order: 1290
-description: The Item & World module (itemworld) is uxmEssentials' toolbox of item,
-  block, entity and environment utilities — roughly the entire EssentialsX "everything
+description: 'The Item & World module (itemworld) is uxmEssentials'' toolbox of item,
+  block, entity and environment utilities: roughly the entire EssentialsX "everything
   else" surface, around 65 commands, in one module. It is the largest module in the
-  plugin.
+  plugin.'
 ---
 
 Because it is so broad, it is built to be **carved up**: seven independent
 sub-feature groups you can enable or disable individually, per-command switches
 inside each group, and per-type permission opt-outs on the sharpest verbs. Two
-further sub-features — the held-item editor (`/itemedit`) and in-inventory shulker
-editing — sit alongside the seven groups with switches of their own.
+further sub-features: the held-item editor (`/itemedit`) and in-inventory shulker
+editing: sit alongside the seven groups with switches of their own.
 
 ---
 
@@ -84,7 +84,7 @@ item run that command when you use it. `/powertoollist` shows your bindings and
 Two sub-features round out the item side of the module. Each carries its own switch in
 `itemworld.conf` and its own permission, independent of the seven command groups.
 
-### `/itemedit` — the all-in-one held-item editor
+### `/itemedit`: the all-in-one held-item editor
 
 `/itemedit` edits whatever is in your main hand, in place. It gathers the jobs the
 separate `/itemname`, `/itemlore`, `/enchant`, `/itemflag` and `/unbreakable` verbs do
@@ -97,13 +97,13 @@ is the styling that shows.
 | Name | `rename <name>`, `resetname` |
 | Lore | `lore add <line>`, `lore set <index> <line>`, `lore insert <index> <line>`, `lore remove <index>`, `lore clear` |
 | Enchants | `enchant <enchant> <level>` (a flag lets the level pass the vanilla ceiling), `enchant <enchant> remove` |
-| Flags | `flag <ItemFlag> [on\|off]` — hide enchants, hide attributes, and the rest |
+| Flags | `flag <ItemFlag> [on\|off]`: hide enchants, hide attributes, and the rest |
 | Attributes | `attribute add <attribute> <amount> <slot>`, `attribute remove <attribute>` |
 | Durability | `durability <value>`, `repair`, `unbreakable [on\|off]` |
 | Model | `custom-model-data <int>` |
 
 **A bare `/itemedit` opens a panel** instead: a live preview slot shows the held item and
-a row of controls covers every edit the subcommands expose — rename and reset, lore add /
+a row of controls covers every edit the subcommands expose: rename and reset, lore add /
 remove / clear, enchants through a picker, item-flag toggles, unbreakable, custom model
 data, durability and repair. Both routes apply the same changes and report the same
 feedback, so use whichever suits: the panel for a quick tweak, the subcommands for a
@@ -119,12 +119,12 @@ Gate it with `item-edit { enabled = true }` and the permission
 ### Editing a shulker box from the inventory
 
 Sneak-right-click a shulker box **item** in your inventory and its 27 slots open as an
-editable menu — drop items in, take items out, rearrange them — and everything is written
+editable menu (drop items in, take items out, rearrange them) and everything is written
 back into the box when you close the menu. It's the AxShulkers-style "peek inside without
 placing it" convenience, kept safe on two counts:
 
 - The source box is **locked in place while the menu is open**, so it can't be moved or
-  dropped from another slot mid-edit — there is no dupe window.
+  dropped from another slot mid-edit: there is no dupe window.
 - **Nesting is refused**: you can't drop a shulker box inside a shulker box.
 
 Set `require-sneak = false` to open on any right-click instead of a sneak-right-click.
@@ -215,7 +215,7 @@ reference for the full list). Most are staff-default (`op`); the read-only inspe
 verbs (`/itemdb`, `/iteminfo`, `/recipe`) are self-service. Workstations add a
 `.workstation.others` node to open a station *for* someone else. The held-item editor
 uses `uxmessentials.itemworld.itemedit`, and opening a shulker box from the inventory
-uses `uxmessentials.itemworld.shulker` — both default `op`. The module's reload tier is
+uses `uxmessentials.itemworld.shulker`: both default `op`. The module's reload tier is
 `uxmessentials.module.itemworld`.
 
 ---
@@ -230,7 +230,7 @@ best used with a radius rather than server-wide on very large worlds.
 
 </Callout>
 
-- **Turn `admin-fun` off** on survival/economy servers — those verbs (`/nuke`, `/kittycannon`, `/antioch`) are spectacle tools, not gameplay.
+- **Turn `admin-fun` off** on survival/economy servers: those verbs (`/nuke`, `/kittycannon`, `/antioch`) are spectacle tools, not gameplay.
 - Per-type opt-outs are the clean way to hand `/give` to junior staff without the risk of spawn eggs, bedrock, or command blocks.
 - The `time-weather` group also ships short aliases (`/day`, `/night`, `/sun`, `/rain`) gated by `.time.alias` / `.weather.alias`.
 

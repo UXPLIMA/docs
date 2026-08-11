@@ -1,9 +1,9 @@
 ---
 title: messages.yml
 order: 740
-description: messages.yml holds every player-facing string the plugin sends — chat
+description: 'messages.yml holds every player-facing string the plugin sends: chat
   messages, errors, usage hints, status words. Edit it to reword, restyle, or fully
-  translate the plugin.
+  translate the plugin.'
 ---
 
 ---
@@ -34,7 +34,7 @@ Messages use `{...}` placeholders that the plugin fills in, for example:
 | `{level}` / `{points}` | Island level / points |
 | `{amount}` | A number (bank, etc.) |
 
-The exact placeholders available depend on the message — keep the ones already in
+The exact placeholders available depend on the message: keep the ones already in
 the default string when you reword it.
 
 ---
@@ -58,10 +58,10 @@ Changing these updates them everywhere they appear.
 
 To translate the plugin, you only need to edit:
 
-1. **`messages.yml`** — all chat text
-2. **`menus/*.yml`** — menu titles, item names, lore
-3. **`config.yml` → `command.subcommands`** — the words players type
-4. **`roles.yml`** — role display names
+1. **`messages.yml`**: all chat text
+2. **`menus/*.yml`**: menu titles, item names, lore
+3. **`config.yml` → `command.subcommands`**: the words players type
+4. **`roles.yml`**: role display names
 
 No code changes are ever required.
 

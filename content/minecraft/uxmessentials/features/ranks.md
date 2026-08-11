@@ -1,17 +1,17 @@
 ---
 title: Ranks & Prestige
 order: 1250
-description: 'The ranks module is the server''s progression ladder: a chain of ranks
-  a player climbs with /rankup, an optional /prestige reset at the very top, and an
-  optional autorank scan that promotes eligible players automatically. The plugin
-  tracks each player''s current rank itself — a DB-backed pointer that survives a
-  world rollback — so rankup does not depend on a permission plugin. A rank''s rankup
-  actions can set a LuckPerms group, run any command, or do nothing at all; that is
-  entirely up to you.'
+description: 'The ranks module is the server''s progression ladder: a chain of ranks a
+  player climbs with /rankup, an optional /prestige reset at the very top, and an
+  optional autorank scan that promotes eligible players automatically. The plugin tracks
+  each player''s current rank itself (a DB-backed pointer that survives a world
+  rollback) so rankup does not depend on a permission plugin. A rank''s rankup actions
+  can set a LuckPerms group, run any command, or do nothing at all; that is entirely up
+  to you.'
 ---
 
 The module ships **enabled but inert**: nothing happens until you author a ladder in
-`ranks.conf`. It is driven by three files under `modules/ranks/` — `config.conf`
+`ranks.conf`. It is driven by three files under `modules/ranks/`: `config.conf`
 (the module toggle plus the prestige, autorank and GUI switches), `ranks.conf` (the
 ladder itself), and `gui/ranks-panel.conf` (the `/ranks` panel layout).
 
@@ -20,7 +20,7 @@ ladder itself), and `gui/ranks-panel.conf` (the `/ranks` panel layout).
 ## The Rank Ladder
 
 The ladder lives in `ranks.conf`. Each top-level section is one rank; the **section
-name is the rank's id** — the value stored against the player and referenced by other
+name is the rank's id**: the value stored against the player and referenced by other
 ranks. Ranks are ordered by their `order` number, lowest first, so a player on
 `first` ranks up to `citizen`, then to `vip`.
 
@@ -70,7 +70,7 @@ the server announces it in chat.
 
 | Key | What it does |
 |-----|--------------|
-| `order` | The ladder position, ascending — lower ranks up to higher. Leave gaps (`10`, `20`, `30`) so you can insert a rank later without renumbering the rest. |
+| `order` | The ladder position, ascending: lower ranks up to higher. Leave gaps (`10`, `20`, `30`) so you can insert a rank later without renumbering the rest. |
 | `display-name` | How the rank is shown in messages and the GUI. MiniMessage / legacy colour codes are allowed. |
 | `cost` | How much is charged through the economy when the player ranks up (`0` for a free rank). |
 | `requirements` | What the player must satisfy to rank up (each entry `"<type> <value>"`, checked on `/rankup`). |
@@ -78,7 +78,7 @@ the server announces it in chat.
 
 <Callout type="info" title="The ladder is unambiguous and gap-tolerant">
 
-Rank ids are unique — a duplicate id is rejected on load. The ladder may be
+Rank ids are unique: a duplicate id is rejected on load. The ladder may be
 empty (an operator who cleared `ranks.conf`), in which case `/rankup` and the
 placeholders simply degrade rather than erroring.
 
@@ -89,25 +89,25 @@ placeholders simply degrade rather than erroring.
 Each `requirements` entry is `"<type> <value>"`, checked when the player runs
 `/rankup`. An **unmet** requirement blocks the rankup; an **unknown** type (a typo,
 or a value-less entry) is simply not enforced rather than failing the whole rank.
-Any requirement that can't be verified — an offline player for an inventory or
+Any requirement that can't be verified: an offline player for an inventory or
 placeholder check, a malformed number, an unknown material, or a money check with no
-economy installed — **fails closed**, so a rankup never slips through on a condition
+economy installed: **fails closed**, so a rankup never slips through on a condition
 that couldn't be checked.
 
 | Type | Form | Passes when |
 |------|------|-------------|
-| `money` | `money <amount>` | The player can **afford** the amount in the default currency (a balance check, not a charge — the charge is the rank's `cost`). |
+| `money` | `money <amount>` | The player can **afford** the amount in the default currency (a balance check, not a charge: the charge is the rank's `cost`). |
 | `playtime` | `playtime <seconds>` | Tracked playtime is at least this many whole seconds. |
 | `permission` | `permission <node>` | The player holds the permission node. |
 | `previous-rank` | `previous-rank <id>` | The player is currently on that rank (the previous rung). Aliases: `prev-rank`, `prevrank`. |
 | `item` | `item <material> [n]` | The player's inventory holds `n` of the material (default `1`). |
-| `placeholder` | `placeholder <a> <op> <b>` | A `%placeholder%` comparison — `op` is one of `== != > < >= <=`. Needs PlaceholderAPI. |
+| `placeholder` | `placeholder <a> <op> <b>` | A `%placeholder%` comparison: `op` is one of `== != > < >= <=`. Needs PlaceholderAPI. |
 
 ### Actions
 
 Each `actions` entry is `"<type> <value>"` and runs, in order, once the rankup is
-durable. Actions use the **shared click-action grammar** — the same one NPCs and
-holograms run their interaction chains through — so anything you can do on a click,
+durable. Actions use the **shared click-action grammar**: the same one NPCs and
+holograms run their interaction chains through, so anything you can do on a click,
 you can do on a rankup. Use `{player}` for the player's name. A line whose type word
 is unknown, or that carries no value, is logged and skipped so one typo never aborts
 the rest of the rank's actions.
@@ -124,7 +124,7 @@ the rest of the rank's actions.
 | `connect <server>` | Send the player to another server through the proxy. |
 
 The grammar's flow-control and gate types (`delay`, `random`, `chance`,
-`permission`, `condition`, `give`) work here too — see
+`permission`, `condition`, `give`) work here too, see
 [Actions & Requirements](../menus/actions-requirements.md) for the full list.
 
 <Callout type="tip" title="Set a permission-plugin group on rankup">
@@ -139,7 +139,7 @@ actions = [
 ```
 
 This is left out of the shipped example ranks so a fresh server without LuckPerms
-stays quiet — add it once your groups are set up.
+stays quiet: add it once your groups are set up.
 
 </Callout>
 
@@ -158,15 +158,15 @@ field, which is debited before the pointer advances.
 `/rankup` advances the invoking player one rung up the ladder. The steps run in a
 deliberate order so a refused rankup leaves no trace:
 
-1. **Requirements** — every parsed requirement of the next rank is checked first. A
+1. **Requirements**: every parsed requirement of the next rank is checked first. A
    single failure refuses with nothing charged and the pointer unmoved.
-2. **Charge** — only once the requirements pass is the rank's `cost` charged through
+2. **Charge**: only once the requirements pass is the rank's `cost` charged through
    the economy. A short balance refuses; no money moves and the pointer does not
    advance. With no economy provider wired, or a zero cost, the charge is skipped and
    the rankup is free.
-3. **Advance** — the rank pointer is saved (the prestige level is carried over
+3. **Advance**: the rank pointer is saved (the prestige level is carried over
    unchanged).
-4. **Actions** — the rank's actions run last, only after the advance is durable.
+4. **Actions**: the rank's actions run last, only after the advance is durable.
 
 The feedback the player sees maps to the outcome: ranked up (naming the new rank),
 already at the highest rank, requirements not met, or can't afford.
@@ -197,8 +197,8 @@ prestige {
 `/prestige` mirrors the rankup pipeline: the player must be at the top rank, below
 the `max-level` cap, and past the configured `requirements`; then the `cost` is
 charged, the pointer is reset to the first rank, the prestige level is incremented,
-and the `actions` run. A refused prestige — not yet at the top, at the cap,
-requirements unmet, or unaffordable — leaves the level and pointer untouched.
+and the `actions` run. A refused prestige, not yet at the top, at the cap,
+requirements unmet, or unaffordable: leaves the level and pointer untouched.
 
 The `reward-multiplier` is applied **linearly per level**: `1.0` grants no bonus,
 `1.5` gives a 1.5× multiplier at prestige 1, `2.0`× at prestige 2, and so on. It is
@@ -223,7 +223,7 @@ autorank {
 ```
 
 When on, a scheduled scan checks every online player on the interval and advances
-each eligible player **one rank per scan** — a player who qualifies for several ranks
+each eligible player **one rank per scan**: a player who qualifies for several ranks
 at once climbs one per interval, so shorten the interval if you want faster climbing.
 The scan reuses the very same `/rankup` pipeline, so requirements and (unless
 `charge-cost = false`) the cost apply exactly as a manual rankup would.
@@ -246,7 +246,7 @@ cost and requirements, and a **rank-up button** that runs the same pipeline as
 `/rankup`. It ships **on** (`gui.enabled = true`).
 
 The rank-up button routes through the identical `/rankup` use case, so the panel and
-the command always agree — a refused rankup leaves the standing unmoved, and the
+the command always agree: a refused rankup leaves the standing unmoved, and the
 panel redraws with the new standing after each click.
 
 ```hocon
@@ -267,7 +267,7 @@ resolves from the message catalog. Opening the panel is gated on the self-servic
 Inside `gui/ranks-panel.conf` the display items read the viewer's standing
 through five menu placeholders, computed when the panel opens:
 `{ranks_current}`, `{ranks_prestige}`, `{ranks_next}`, `{ranks_next_cost}` and
-`{ranks_next_requirements}`. These are the panel's own tokens — distinct from the
+`{ranks_next_requirements}`. These are the panel's own tokens: distinct from the
 server-wide PlaceholderAPI placeholders below.
 
 </Callout>
@@ -278,13 +278,13 @@ server-wide PlaceholderAPI placeholders below.
 
 With PlaceholderAPI installed, three server-wide placeholders expose a player's
 standing. All read the **DB-backed pointer**, so they resolve for an offline player
-too. When the ranks module is disabled — or the ladder holds no ranks — each degrades
+too. When the ranks module is disabled (or the ladder holds no ranks) each degrades
 to a dash (`-`).
 
 | Placeholder | Resolves to |
 |-------------|-------------|
 | `%uxmessentials_rank%` | The player's current rank display name |
-| `%uxmessentials_rank_next%` | The next rank's display name — `max` when the player is already at the highest rank |
+| `%uxmessentials_rank_next%` | The next rank's display name: `max` when the player is already at the highest rank |
 | `%uxmessentials_prestige%` | The player's prestige level (an integer) |
 
 ---
@@ -301,7 +301,7 @@ to a dash (`-`).
 
 <Callout type="warning" title="`setrank` is the escape hatch">
 
-`setrank` writes the pointer straight to the named rank — no requirement check, no
+`setrank` writes the pointer straight to the named rank: no requirement check, no
 cost, no actions. It is the deliberate tool for corrections and grants. A rank id
 that isn't on the ladder is refused and nothing is written.
 
@@ -317,10 +317,10 @@ rename or disable it on its own in `commands.conf` without touching `/ranks`.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.ranks.rankup` | `true` | `/rankup` — advance to the next rank |
-| `uxmessentials.ranks.prestige` | `true` | `/prestige` — reset to the first rank for a prestige level |
-| `uxmessentials.ranks.gui` | `true` | `/ranks` — open the self-service ladder panel |
-| `uxmessentials.ranks.admin` | `op` | `/ranks setrank <player> <rank>` — set a player's rank directly |
+| `uxmessentials.ranks.rankup` | `true` | `/rankup`: advance to the next rank |
+| `uxmessentials.ranks.prestige` | `true` | `/prestige`: reset to the first rank for a prestige level |
+| `uxmessentials.ranks.gui` | `true` | `/ranks`: open the self-service ladder panel |
+| `uxmessentials.ranks.admin` | `op` | `/ranks setrank <player> <rank>`: set a player's rank directly |
 
 The administrative node `uxmessentials.module.ranks` (`op`) governs who may hot-reload
 or inspect the module via `/uxmess reload ranks`.
@@ -332,14 +332,14 @@ or inspect the module via `/uxmess reload ranks`.
 | File | Owns |
 |------|------|
 | `config.conf` | The module toggle plus the `gui`, `prestige` and `autorank` switches |
-| `ranks.conf` | The ladder — each rank's `order`, `display-name`, `cost`, `requirements` and `actions` |
+| `ranks.conf` | The ladder: each rank's `order`, `display-name`, `cost`, `requirements` and `actions` |
 | `gui/ranks-panel.conf` | The `/ranks` panel geometry and icons |
 
 ---
 
 ## Next Steps
 
-- [🎛️ Actions & Requirements](../menus/actions-requirements.md) — the full click-action grammar rank actions use
-- [💰 Economy](economy.md) — the wallet a rank's `cost` is charged against
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/ranks/` lives and how it's loaded
-- [🔑 Permission Reference](../permissions/reference.md) — the `uxmessentials.ranks.*` nodes
+- [🎛️ Actions & Requirements](../menus/actions-requirements.md): the full click-action grammar rank actions use
+- [💰 Economy](economy.md): the wallet a rank's `cost` is charged against
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/ranks/` lives and how it's loaded
+- [🔑 Permission Reference](../permissions/reference.md): the `uxmessentials.ranks.*` nodes

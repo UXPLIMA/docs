@@ -99,7 +99,7 @@ The floating marker over a locked frontier chunk.
 | `y-offset` | Height above ground (blocks) |
 | `locked-title` | Top line |
 | `free-line` | Shown when the chunk is free |
-| `requirement-line` | Per-item line — `{item}` `{have}` `{amount}` |
+| `requirement-line` | Per-item line: `{item}` `{have}` `{amount}` |
 | `footer` | Bottom line |
 
 Leave a line as `""` to hide it. `&` color codes are supported.
@@ -133,7 +133,7 @@ unlock:
 
 Played when a chunk unlocks. `type` is any Bukkit `Sound` enum name.
 
-### `items` — cost by ring
+### `items`: cost by ring
 
 A list of **bands**. For a chunk at ring R, the **first** band whose `max-ring >= R`
 is used. `require` is a list of items the player must drop, in one of two forms:
@@ -143,7 +143,7 @@ is used. `require` is a list of items the player must drop, in one of two forms:
 | `MATERIAL:amount` | Any item of that material (e.g. `DIAMOND:4`) |
 | `MATERIAL:custom-model-data:amount` | Only items carrying **exactly** that `CustomModelData` (e.g. `PAPER:1001:1`) |
 
-The 3-part form is for **resource pack / ItemsAdder / Oraxen** custom items — a
+The 3-part form is for **resource pack / ItemsAdder / Oraxen** custom items: a
 plain paper won't count toward a `PAPER:1001:1` requirement, only the modelled
 one will.
 

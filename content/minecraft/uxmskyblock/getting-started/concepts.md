@@ -27,7 +27,7 @@ The world is generated one of two ways, set by `world.generator`:
 
 | Generator | Result |
 |-----------|--------|
-| `void` | Classic empty uxmSkyblock — a void world; islands are pasted from a schematic |
+| `void` | Classic empty uxmSkyblock: a void world; islands are pasted from a schematic |
 | `normal` | Real, naturally-generated terrain; islands sit on the ground (used by Chunklock) |
 
 Each island also owns a private **Nether** and **End** plot in their own void
@@ -51,7 +51,7 @@ leaderboard. See [Points & Levels](../progression/points-levels.md).
 
 ## Roles & Permissions
 
-Every team member has a **role**. A role is a bundle of **permissions** —
+Every team member has a **role**. A role is a bundle of **permissions**:
 `BLOCK_PLACE`, `CONTAINER`, `INVITE`, `BANK`, and so on.
 
 - **Built-in roles** (visitor, farmer, member, architect, moderator, owner) are
@@ -77,12 +77,12 @@ See [Island Flags](../protection/flags.md).
 **Upgrades** improve an island over time. Each has tiers with a **level
 requirement** and (optionally) a **money cost**:
 
-- **team-limit** — max members
-- **size** — protected area size
-- **crop-growth** — chance to double crops
-- **mob-drops** — drop multiplier
-- **spawner-rates** — spawner speed
-- **generator** — what the cobble generator produces
+- **team-limit**: max members
+- **size**: protected area size
+- **crop-growth**: chance to double crops
+- **mob-drops**: drop multiplier
+- **spawner-rates**: spawner speed
+- **generator**: what the cobble generator produces
 
 See [Upgrades](../progression/upgrades.md).
 

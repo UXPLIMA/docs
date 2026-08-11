@@ -33,10 +33,10 @@ what "two factor" has always meant. See
 </Callout>
 
 Everything a player enrols is **DB-backed and never stored in plaintext**. A PIN is a
-salted one-way PBKDF2 hash — the plugin can *check* a PIN but never *read* one back. A
+salted one-way PBKDF2 hash: the plugin can *check* a PIN but never *read* one back. A
 TOTP secret has to be recoverable (the server recomputes the expected code every 30
 seconds), so it is **AES-256-GCM encrypted** at rest under a server-held key-file, not
-hashed. An IP address is never stored at all — only a one-way SHA-256 token of it. There
+hashed. An IP address is never stored at all, only a one-way SHA-256 token of it. There
 is no GeoIP and nothing reversible anywhere in the module.
 
 ---
@@ -45,20 +45,20 @@ is no GeoIP and nothing reversible anywhere in the module.
 
 | Capability | What it does | Who it's for |
 |------------|--------------|--------------|
-| **Two-factor enrolment** | `/2fa` (authenticator app) and `/pin` (numeric PIN) — one command per factor, each managing only its own | every player, self-service |
+| **Two-factor enrolment** | `/2fa` (authenticator app) and `/pin` (numeric PIN): one command per factor, each managing only its own | every player, self-service |
 | **Join verification** | An enrolled player joining from an unrecognised device is frozen and must prove their factor on a keypad before they can play | enrolled players |
 | **Op-command protection** | Dangerous commands (`op`, `stop`, `ban`, …) are held behind a fresh second-factor proof | operators / staff |
 | **IP / alt + ClientID guard** | Records same-IP account links and the client brand each player reports, so staff can spot alts and cheat clients | staff (`/ipalts`, `/clientinfo`) |
 
 ---
 
-## Setting up 2FA — a player's walkthrough
+## Setting up 2FA: a player's walkthrough
 
 Any player can protect their own account; the two self-service nodes ship `true`. A
-player may enrol **either** an authenticator app, **or** a PIN, **or both** — either one
+player may enrol **either** an authenticator app, **or** a PIN, **or both**: either one
 counts as a valid second factor.
 
-### Option A — an authenticator app (TOTP)
+### Option A: an authenticator app (TOTP)
 
 Works with Google Authenticator, Aegis, Authy, or any other RFC 6238 TOTP app.
 
@@ -70,16 +70,16 @@ Works with Google Authenticator, Aegis, Authy, or any other RFC 6238 TOTP app.
    6-digit code that rolls over every 30 seconds, under the heading
    `uxmEssentials (YourName)` (the label is the configurable `issuer`).
 3. **Confirm with `/2fa confirm <code>`.** Type the current 6-digit code from your app.
-   Only a correct code enables the factor — until you confirm, nothing is active, so a
+   Only a correct code enables the factor, until you confirm, nothing is active, so a
    half-finished setup never locks you out.
 
 That's it. `/2fa` on its own tells you whether you're enrolled.
 
-### Option B — a numeric PIN
+### Option B: a numeric PIN
 
 1. **Run `/pin set <pin>`.** The PIN is digits only (the verification screen is a numeric
-   keypad) and must be **4–8 digits** by default. It's validated, then hashed and stored
-   — the plaintext never touches the database or a log.
+   keypad) and must be **4–8 digits** by default. It's validated, then hashed and stored:
+   the plaintext never touches the database or a log.
 
 A length rule cannot catch `1234`: it is a perfectly valid four-digit PIN and also the
 first thing anybody guessing would try. So the module also ships a **blocked list** of
@@ -146,7 +146,7 @@ working.
 
 | Command | What it does | Permission |
 |---------|--------------|------------|
-**Your own authenticator** — `/2fa`:
+**Your own authenticator**: `/2fa`:
 
 | Command | What it does | Permission |
 |---------|--------------|------------|
@@ -155,7 +155,7 @@ working.
 | `/2fa confirm <code>` | Prove a code to enable it | `uxmessentials.security.2fa` |
 | `/2fa disable <code>` | Remove it (needs a current code) | `uxmessentials.security.2fa` |
 
-**Your own PIN** — `/pin`:
+**Your own PIN**: `/pin`:
 
 | Command | What it does | Permission |
 |---------|--------------|------------|
@@ -165,7 +165,7 @@ working.
 | `/pin remove <pin>` | Remove it (needs the current PIN) | `uxmessentials.security.pin` |
 | `/pin lock` | Lock your own session before you step away | `uxmessentials.security.pin` |
 
-**Other players** — `/security` and the two guard reads, all operator-only:
+**Other players**: `/security` and the two guard reads, all operator-only:
 
 | Command | What it does | Permission |
 |---------|--------------|------------|
@@ -192,7 +192,7 @@ colour codes in the copied text, so it can be pasted into an authenticator app a
 `/2fa` is registered under that literal, with **`/twofactor`** as an alias. `/ipalts` and
 `/clientinfo` resolve their target online-first and otherwise from the profile cache, so
 an offline account is still checkable. All of the crypto and database work runs off the
-tick thread — no command blocks the server.
+tick thread: no command blocks the server.
 
 ---
 
@@ -208,7 +208,7 @@ The freeze presents a chest-window **numeric keypad**: ten numbered player heads
 per digit typed, and clear / submit on the bottom row. The player taps their PIN in and
 submits; if they enrolled an authenticator, a "type a code" button hands off to a text
 prompt where they enter their 6-digit code instead. On success the freeze lifts, the
-window closes, and — because a fresh proof also opens the op-command re-auth window — they
+window closes, and (because a fresh proof also opens the op-command re-auth window) they
 aren't immediately re-asked to verify a protected command.
 
 <Callout type="tip" title="The keypad is a menu spec you can re-skin">
@@ -239,11 +239,11 @@ join-verification {
 
 | Key | Default | What it does |
 |-----|---------|--------------|
-| `enabled` | `true` | Master switch for the join freeze. Off, and enrolment still works but nobody is frozen on join — useful if you only want the second factor for op-command protection. |
+| `enabled` | `true` | Master switch for the join freeze. Off, and enrolment still works but nobody is frozen on join: useful if you only want the second factor for op-command protection. |
 | `trust-devices` | `true` | After a successful verification, remember the device so the **next** join from the same address skips the keypad until the trust lapses. The address is stored only as a one-way hash, never in the clear. |
 | `trust-duration-hours` | `24` | How long a remembered device skips the keypad. `0` disables the trust window entirely (same as `trust-devices = false`). |
 | `max-attempts` | `3` | How many wrong PINs/codes a player may enter before they're kicked. |
-| `lockout-seconds` | `300` | How long a locked-out player is kept out — a rejoin inside this window is refused immediately. |
+| `lockout-seconds` | `300` | How long a locked-out player is kept out: a rejoin inside this window is refused immediately. |
 | `lockout-bans` | `true` | Make that lockout a **real tempban** on the server's own ban list rather than an in-memory cooldown a restart would clear. See [Lockouts are real bans](#lockouts-are-real-bans). |
 | `lockout-ban-reason` | `Too many failed verification attempts` | The reason recorded against that ban, shown to the player and in the punishment history. |
 | `entry-timeout-seconds` | `60` | How long a frozen player has to prove their factor before they're kicked. Without a limit, someone who walks away mid-prompt sits at the keypad forever, holding a slot on a full server and leaving their account signed in. `0` removes the limit. |
@@ -291,7 +291,7 @@ object. (The module's own two moves, into and out of a holding area, are exempt.
 With `lockout-bans = true`, running out of attempts is a **tempban through the moderation
 module**, not a private list this module keeps to itself. That means it lands in the same
 ban table and punishment history as every other ban, staff see it in `/history`, and
-`/unban` lifts it — there is no second ban system to learn and no `/security unban` to
+`/unban` lifts it: there is no second ban system to learn and no `/security unban` to
 remember.
 
 With the moderation module disabled there is nothing to write to, so the lockout stays the
@@ -319,7 +319,7 @@ The node ships `false`, so this is entirely opt-in; grant it to a rank, to your 
 to everyone.
 
 The point is that requiring a factor is only half a feature if the player then has to find
-a command and read its syntax to comply — especially since they're frozen and can't use
+a command and read its syntax to comply: especially since they're frozen and can't use
 commands. So a player who holds the node and has no factor is shown a **create pad**: the
 same keypad they'll use every day, but asking them to set the PIN rather than prove it.
 Tap it, submit, tap it again to confirm, submit. Asking twice is not ceremony; it is the
@@ -344,7 +344,7 @@ Two optional moves, both blank by default, for servers whose layout wants them.
 of the freeze. The freeze already stops a player acting, but they're still standing
 wherever they logged out, in view of whoever walks past, in a world whose mobs and players
 carry on around them. Name a spot as `world,x,y,z` (or `world,x,y,z,yaw,pitch`) and they go
-there while they verify and come back to **exactly where they were** the moment they do —
+there while they verify and come back to **exactly where they were** the moment they do,
 including on a disconnect mid-verification, so nobody is left logged out inside the holding
 room. A destination that can't be reached is a logged no-op: losing the move must never
 cost anyone their verification.
@@ -365,7 +365,7 @@ freeze stand down until an installed login plugin reports the player authenticat
 
 The ordering is the whole point. Until the login plugin says so, the name is only what the
 client typed, and asking that stranger for the account holder's PIN is both wrong and
-useless — wrong because they're not the account holder, useless because the login plugin
+useless: wrong because they're not the account holder, useless because the login plugin
 has them frozen for its own prompt anyway and the two would fight over the same screen.
 
 Detection is automatic and needs no configuration. These are recognised:
@@ -420,8 +420,8 @@ before it runs** and they're shown the same keypad to prove their PIN or authent
 code; on success the command is retried. A burst of protected commands only prompts once,
 because a successful proof stamps the re-auth window.
 
-Only players who have **enrolled a factor** are gated — a re-auth needs something to prove
-against — a holder of `uxmessentials.security.bypass` is exempt, and the **console is
+Only players who have **enrolled a factor** are gated: a re-auth needs something to prove
+against: a holder of `uxmessentials.security.bypass` is exempt, and the **console is
 never gated**.
 
 ```hocon
@@ -439,14 +439,14 @@ op-protection {
 |-----|---------|--------------|
 | `enabled` | `true` | Master switch. Off, and protected commands run with no re-auth check. |
 | `reauth-window-seconds` | `60` | How long a successful verification (a join proof or an earlier re-auth) counts as recent. `0` forces a fresh proof for **every** protected command. |
-| `protected-commands` | the 11 shown | The commands to protect, by root name. Matching ignores a leading slash, any arguments, and a namespace prefix — so `op` also catches `/op Steve` and `minecraft:op`. Add your server's own dangerous commands here. |
+| `protected-commands` | the 11 shown | The commands to protect, by root name. Matching ignores a leading slash, any arguments, and a namespace prefix, so `op` also catches `/op Steve` and `minecraft:op`. Add your server's own dangerous commands here. |
 
 ---
 
 ## IP / alt guard
 
-On join, the player's address is recorded as a one-way SHA-256 token — **the raw IP is
-never stored**, there is no GeoIP, and nothing is reversible — so staff can spot accounts
+On join, the player's address is recorded as a one-way SHA-256 token: **the raw IP is
+never stored**, there is no GeoIP, and nothing is reversible, so staff can spot accounts
 that share an address. `/ipalts <player>` lists the accounts linked to a target by a shared
 address.
 
@@ -461,15 +461,15 @@ ip-guard {
 | Key | Default | What it does |
 |-----|---------|--------------|
 | `enabled` | `true` | Master switch. Off, and nothing is recorded and `/ipalts` has nothing to show. |
-| `max-accounts-per-ip` | `0` | The most distinct accounts allowed from one address; a join that would exceed it is kicked. `0` means **no cap** — the guard only observes and notifies. Set it to, say, `3` to hold each household to three accounts. |
-| `notify-staff` | `true` | Notify online staff (holders of `uxmessentials.security.alts.notify`) when a joining player shares an address with other accounts. The notice carries the account names and a count — never the address itself. |
+| `max-accounts-per-ip` | `0` | The most distinct accounts allowed from one address; a join that would exceed it is kicked. `0` means **no cap**: the guard only observes and notifies. Set it to, say, `3` to hold each household to three accounts. |
+| `notify-staff` | `true` | Notify online staff (holders of `uxmessentials.security.alts.notify`) when a joining player shares an address with other accounts. The notice carries the account names and a count, never the address itself. |
 
 ---
 
 ## ClientID
 
 On join the module reads the client brand a player reports (the `minecraft:brand`
-channel — `vanilla`, `fabric`, a known cheat client, …) and acts on it.
+channel: `vanilla`, `fabric`, a known cheat client, …) and acts on it.
 `/clientinfo <player>` shows the recorded brand for the current session.
 
 ```hocon
@@ -490,9 +490,9 @@ The three modes:
 
 | `mode` | Behaviour |
 |--------|-----------|
-| `block-list` | Deny the listed brands, allow everything else — keep known cheat clients out. |
-| `allow-list` | Allow **only** the listed brands, deny everything else — admit a fixed set of approved clients. |
-| `flag` | Never deny; a listed brand is only flagged to staff and logged — observe before you enforce. |
+| `block-list` | Deny the listed brands, allow everything else: keep known cheat clients out. |
+| `allow-list` | Allow **only** the listed brands, deny everything else: admit a fixed set of approved clients. |
+| `flag` | Never deny; a listed brand is only flagged to staff and logged: observe before you enforce. |
 
 ---
 
@@ -504,13 +504,13 @@ Nothing sensitive in this module is stored in the clear.
 |--------|-----------------|
 | **PIN** | A salted, one-way **PBKDF2** hash in the `security_2fa` table, serialised as `algorithm:salt:hash`. The plugin verifies against it with a constant-time compare and can never reconstruct the PIN. |
 | **TOTP secret** | **AES-256-GCM** encrypted at rest, keyed by a random key-file the module creates on first run at `modules/security/secret.key` (owner-only permissions on POSIX). It's authenticated encryption, so a tampered column fails to decrypt rather than mis-verifying. |
-| **Device trust** | The address is a **SHA-256** token, never the raw IP — enough to make two connections from the same address collide, but nothing reversible. A trust match only *skips the keypad*; it's never treated as proof of identity on its own. |
+| **Device trust** | The address is a **SHA-256** token, never the raw IP: enough to make two connections from the same address collide, but nothing reversible. A trust match only *skips the keypad*; it's never treated as proof of identity on its own. |
 | **Alt links** | Same one-way IP token; account UUIDs keyed by it. No address, no GeoIP. |
 
 <Callout type="tip" title="Back up the key-file separately">
 
-`modules/security/secret.key` decrypts every stored TOTP secret. It lives in a file —
-not the config or the database — precisely so you can back it up and permission it
+`modules/security/secret.key` decrypts every stored TOTP secret. It lives in a file,
+not the config or the database: precisely so you can back it up and permission it
 apart from the world data a rollback would touch. Lose it and enrolled players re-run
 `/2fa setup`; leak it and TOTP secrets become readable, so treat it like a private key.
 
@@ -703,27 +703,27 @@ line and it falls back to the shipped default above.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.security.2fa` | `true` | `/2fa` — set up, confirm or disable the authenticator second factor on your own account |
-| `uxmessentials.security.pin` | `true` | `/pin` — set, change, remove or lock the numeric PIN second factor on your own account |
+| `uxmessentials.security.2fa` | `true` | `/2fa`: set up, confirm or disable the authenticator second factor on your own account |
+| `uxmessentials.security.pin` | `true` | `/pin`: set, change, remove or lock the numeric PIN second factor on your own account |
 | `uxmessentials.security.pin.required` | `false` | Holders **must** have a PIN: a holder with no factor is shown the create pad on join and cannot play until they set one |
-| `uxmessentials.security.admin` | `op` | `/security` — inspect and manage another player's second factors. Gates the whole tree |
+| `uxmessentials.security.admin` | `op` | `/security`: inspect and manage another player's second factors. Gates the whole tree |
 | `uxmessentials.security.bypass` | `op` | Exempt from the join-verification freeze and the op-command re-auth checks |
-| `uxmessentials.security.force` | `op` | `/security force <player>` — make a player re-verify their second factor |
-| `uxmessentials.security.reset` | `op` | `/security reset <player> [totp\|pin\|all]` — clear a factor a player can no longer prove |
-| `uxmessentials.security.alts` | `op` | `/ipalts` — list the accounts that share an IP with a player |
-| `uxmessentials.security.clientinfo` | `op` | `/clientinfo` — show the client brand a player reported |
+| `uxmessentials.security.force` | `op` | `/security force <player>`: make a player re-verify their second factor |
+| `uxmessentials.security.reset` | `op` | `/security reset <player> [totp\|pin\|all]`: clear a factor a player can no longer prove |
+| `uxmessentials.security.alts` | `op` | `/ipalts`: list the accounts that share an IP with a player |
+| `uxmessentials.security.clientinfo` | `op` | `/clientinfo`: show the client brand a player reported |
 | `uxmessentials.security.alts.notify` | `op` | Receive the staff notice when a join shares an IP with other accounts or reports a flagged client |
 | `uxmessentials.module.security` | `op` | Reload / inspect the module (`/uxmess reload security`) |
 
 The two self-service nodes ship `true` so every player can protect their own account; the
 staff reads and the bypass default to `op`. `pin.required` ships `false` and is entirely
-opt-in — grant it to a rank, to your staff, or to everyone.
+opt-in: grant it to a rank, to your staff, or to everyone.
 
 ---
 
 ## Next Steps
 
-- [🔑 Permission Reference](../permissions/reference.md) — the full `uxmessentials.security.*` node list
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/security/config.conf` lives and how it's loaded
-- [🕵️ Staff Mode](staff-mode.md) — the on-duty toolkit for the staff who hold the bypass node
-- [🛡️ Moderation](moderation.md) — bans, mutes and warnings, several of which are protected commands
+- [🔑 Permission Reference](../permissions/reference.md): the full `uxmessentials.security.*` node list
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/security/config.conf` lives and how it's loaded
+- [🕵️ Staff Mode](staff-mode.md): the on-duty toolkit for the staff who hold the bypass node
+- [🛡️ Moderation](moderation.md): bans, mutes and warnings, several of which are protected commands

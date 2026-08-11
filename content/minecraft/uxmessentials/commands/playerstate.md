@@ -9,7 +9,7 @@ The **Player State** module bundles the everyday self-and-target verbs: healing,
 
 <Callout type="info" title="Targeting another player">
 
-Most verbs accept an optional `[player]`. Running one on yourself needs only the command's own node — but the moment you pass a target, you **also** need `uxmessentials.playerstate.others`. Without it, the `[player]` argument is refused.
+Most verbs accept an optional `[player]`. Running one on yourself needs only the command's own node, but the moment you pass a target, you **also** need `uxmessentials.playerstate.others`. Without it, the `[player]` argument is refused.
 
 </Callout>
 
@@ -20,19 +20,19 @@ Most verbs accept an optional `[player]`. Running one on yourself needs only the
 | Command | Aliases | Permission |
 |---------|---------|------------|
 | `/god [player]` | `godmode` | `uxmessentials.god.use` |
-| `/fly [player]` | — | `uxmessentials.fly.use` |
-| `/heal [player]` | — | `uxmessentials.heal.use` |
+| `/fly [player]` | - | `uxmessentials.fly.use` |
+| `/heal [player]` | - | `uxmessentials.heal.use` |
 | `/feed [player]` | `eat` | `uxmessentials.feed.use` |
-| `/foodlevel <amount> [player]` | — | `uxmessentials.foodlevel.use` |
-| `/health <amount> [player]` | — | `uxmessentials.health.use` |
+| `/foodlevel <amount> [player]` | - | `uxmessentials.foodlevel.use` |
+| `/health <amount> [player]` | - | `uxmessentials.health.use` |
 | `/ext [player]` | `extinguish` | `uxmessentials.extinguish.use` |
 | `/nightvision` | `nv` | `uxmessentials.nightvision.use` |
-| `/glow` | — | `uxmessentials.glow.use` |
-| `/air <seconds> [player]` | — | `uxmessentials.air.use` |
-| `/burn <seconds> [player]` | — | `uxmessentials.burn.use` |
-| `/ice [player] [seconds]` | — | `uxmessentials.ice.use` |
-| `/suicide` | — | `uxmessentials.suicide.use` |
-| `/rest [player]` | — | `uxmessentials.rest.use` |
+| `/glow` | - | `uxmessentials.glow.use` |
+| `/air <seconds> [player]` | - | `uxmessentials.air.use` |
+| `/burn <seconds> [player]` | - | `uxmessentials.burn.use` |
+| `/ice [player] [seconds]` | - | `uxmessentials.ice.use` |
+| `/suicide` | - | `uxmessentials.suicide.use` |
+| `/rest [player]` | - | `uxmessentials.rest.use` |
 
 ---
 
@@ -41,11 +41,11 @@ Most verbs accept an optional `[player]`. Running one on yourself needs only the
 | Command | Aliases | Permission |
 |---------|---------|------------|
 | `/gamemode <mode> [player]` | `gm` | `uxmessentials.gamemode.use` |
-| `/gmc` · `/gms` · `/gma` · `/gmsp [player]` | — | `uxmessentials.gamemode.use` |
-| `/speed <value> [player]` | — | `uxmessentials.speed.use` |
-| `/walkspeed <value>` · `/flyspeed <value>` | — | `uxmessentials.speed.use` |
+| `/gmc` · `/gms` · `/gma` · `/gmsp [player]` | - | `uxmessentials.gamemode.use` |
+| `/speed <value> [player]` | - | `uxmessentials.speed.use` |
+| `/walkspeed <value>` · `/flyspeed <value>` | - | `uxmessentials.speed.use` |
 
-`/gmc`, `/gms`, `/gma`, `/gmsp` are shorthands for creative, survival, adventure, and spectator — the same node as `/gamemode`.
+`/gmc`, `/gms`, `/gma`, `/gmsp` are shorthands for creative, survival, adventure, and spectator: the same node as `/gamemode`.
 
 ---
 
@@ -55,8 +55,8 @@ Most verbs accept an optional `[player]`. Running one on yourself needs only the
 |---------|---------|------------|
 | `/clearinventory [player]` | `ci`, `clear` | `uxmessentials.clearinventory.use` |
 | `/clearinventoryconfirmtoggle` | `citoggle` | `uxmessentials.clearinventory.confirmtoggle` |
-| `/invsee [player]` | — | `uxmessentials.invsee.use` |
-| `/endersee [player]` | — | `uxmessentials.endersee.use` |
+| `/invsee [player]` | - | `uxmessentials.invsee.use` |
+| `/endersee [player]` | - | `uxmessentials.endersee.use` |
 
 <Callout type="note" title="Editing what you open">
 
@@ -68,7 +68,7 @@ Most verbs accept an optional `[player]`. Running one on yourself needs only the
 
 ## Personal time & weather
 
-These change what **you** see client-side — they never touch the world for other players.
+These change what **you** see client-side; they never touch the world for other players.
 
 | Command | Permission |
 |---------|------------|
@@ -95,15 +95,15 @@ Read-only lookups. Each has its own node so you can hand them out individually.
 |---------|---------|------------|
 | `/near [radius]` | `nearby` | `uxmessentials.near.use` |
 | `/getpos [player]` | `coords`, `whereami` | `uxmessentials.getpos.use` |
-| `/depth` | — | `uxmessentials.depth.use` |
-| `/biome` | — | `uxmessentials.biome.use` |
-| `/seed` | — | `uxmessentials.seed.use` |
-| `/compass` | — | `uxmessentials.compass.use` |
-| `/world` | — | `uxmessentials.world.use` |
+| `/depth` | - | `uxmessentials.depth.use` |
+| `/biome` | - | `uxmessentials.biome.use` |
+| `/seed` | - | `uxmessentials.seed.use` |
+| `/compass` | - | `uxmessentials.compass.use` |
+| `/world` | - | `uxmessentials.world.use` |
 | `/dimension` | `dim` | `uxmessentials.dimension.use` |
-| `/ping [player]` | — | `uxmessentials.ping.use` |
-| `/playtime [player]` | — | `uxmessentials.playtime.use` |
-| `/playtime reset\|resetall [player]` | — | `uxmessentials.playtime.reset` |
+| `/ping [player]` | - | `uxmessentials.ping.use` |
+| `/playtime [player]` | - | `uxmessentials.playtime.use` |
+| `/playtime reset\|resetall [player]` | - | `uxmessentials.playtime.reset` |
 
 <Callout type="tip" title="`/world` vs `/worlds`">
 
@@ -132,7 +132,7 @@ Read-only lookups. Each has its own node so you can hand them out individually.
 
 ## Next Steps
 
-- [📖 Command Overview](overview.md) — how every uxmEssentials command is organised
-- [🧰 Item & World Commands](items-world.md) — the related item/entity/admin verbs
-- [🔐 Permissions Reference](../permissions/reference.md) — the full `uxmessentials.*` node list
-- [⚙️ Renaming Commands](../config/commands-conf.md) — rename, re-alias, or disable any verb
+- [📖 Command Overview](overview.md): how every uxmEssentials command is organised
+- [🧰 Item & World Commands](items-world.md): the related item/entity/admin verbs
+- [🔐 Permissions Reference](../permissions/reference.md): the full `uxmessentials.*` node list
+- [⚙️ Renaming Commands](../config/commands-conf.md): rename, re-alias, or disable any verb

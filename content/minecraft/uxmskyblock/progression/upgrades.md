@@ -6,11 +6,11 @@ description: 'Upgrades are how an island grows over time. Each upgrade has a ser
 ---
 
 1. A minimum **island level** (`required-level`)
-2. A **money cost** (`required-money`, via Vault — only when economy is enabled)
+2. A **money cost** (`required-money`, via Vault, only when economy is enabled)
 
 Players buy them in the [Upgrades menu](../menus/upgrades.md) (`/is upgrade`).
 Everything below is the **default** `upgrades.yml`; you can add or remove tiers
-freely — see [upgrades.yml](../configuration/upgrades-yml.md).
+freely, see [upgrades.yml](../configuration/upgrades-yml.md).
 
 ---
 
@@ -69,7 +69,7 @@ Multiplier applied to mob drops.
 
 ## Spawner Rates
 
-Delay multiplier — lower is faster.
+Delay multiplier: lower is faster.
 
 | Tier | Speed | Req. Level | Cost |
 |------|-------|-----------|------|
@@ -81,7 +81,7 @@ Delay multiplier — lower is faster.
 
 ## Generator
 
-A weighted cobble generator — see the [Generators](generators.md) page for the
+A weighted cobble generator, see the [Generators](generators.md) page for the
 full tier-by-tier block tables, including the top-tier **obsidian** generator.
 
 ---

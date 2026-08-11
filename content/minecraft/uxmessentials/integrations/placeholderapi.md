@@ -1,10 +1,11 @@
 ---
 title: PlaceholderAPI
 order: 1500
-description: uxmEssentials works with placeholders in both directions. It publishes
-  its own data as placeholders other plugins can display, and it resolves PlaceholderAPI
-  tokens inside its own text — menus, holograms, scoreboards and more. If you run
-  PlaceholderAPI (and optionally MiniPlaceholders), all of this lights up automatically.
+description: 'uxmEssentials works with placeholders in both directions. It publishes its
+  own data as placeholders other plugins can display, and it resolves PlaceholderAPI
+  tokens inside its own text: menus, holograms, scoreboards and more. If you run
+  PlaceholderAPI (and optionally MiniPlaceholders), all of this lights up
+  automatically.'
 ---
 
 ---
@@ -23,7 +24,7 @@ Both are optional soft-depends.
 ## Placeholders uxmEssentials Provides
 
 When PlaceholderAPI is installed, uxmEssentials registers a
-`%uxmessentials_<key>%` expansion covering roughly **25 families** of values — one
+`%uxmessentials_<key>%` expansion covering roughly **25 families** of values: one
 per feature area:
 
 | Family | Examples of what it exposes |
@@ -47,7 +48,7 @@ A few confirmed identifiers to show the shape:
 <Callout type="tip" title="Discover the full list in-game">
 
 The expansion ships with the plugin, so there is no separate download. The
-complete, current identifier list is best read live — the placeholders resolve
+complete, current identifier list is best read live: the placeholders resolve
 as soon as PlaceholderAPI is present. Test any of them with
 `/papi parse me %uxmessentials_...%`.
 
@@ -61,11 +62,11 @@ The reverse direction is just as useful: uxmEssentials resolves **any** installe
 PlaceholderAPI expansion inside its own operator-authored text. That means a menu,
 hologram or scoreboard can show data from *other* plugins.
 
-- **In menus** — reference a PAPI value with the built-in `%papi_<name>%` token, or
+- **In menus**: reference a PAPI value with the built-in `%papi_<name>%` token, or
   gate an item with the `papi-compare:` requirement.
-- **In holograms & the HUD** — drop `%luckperms_prefix%`, `%server_ram_used%` or any
+- **In holograms & the HUD**: drop `%luckperms_prefix%`, `%server_ram_used%` or any
   other expansion straight into a hologram line, scoreboard row or tablist entry.
-- **In the chat format** — the communication module's `chat.conf` format expands
+- **In the chat format**: the communication module's `chat.conf` format expands
   `%...%` placeholders per speaker, so a rank prefix or balance can sit in the line.
 
 ```
@@ -86,7 +87,7 @@ MiniPlaceholders global tags directly:
 <server_online> players online right now
 ```
 
-uxmEssentials does **not** register its own MiniPlaceholders expansion — it only
+uxmEssentials does **not** register its own MiniPlaceholders expansion; it only
 *consumes* the global tags MiniPlaceholders publishes.
 
 ---
@@ -103,7 +104,7 @@ uxmEssentials does **not** register its own MiniPlaceholders expansion — it on
 
 ## Setup Checklist
 
-1. Install **PlaceholderAPI** — the `%uxmessentials_%` expansion registers itself on
+1. Install **PlaceholderAPI**: the `%uxmessentials_%` expansion registers itself on
    startup, no config required.
 2. (Optional) Install **MiniPlaceholders** for `<global_tags>` in your own content.
 3. Use `%uxmessentials_...%` in any PAPI-aware plugin, and `%papi_<name>%` /
@@ -113,6 +114,6 @@ uxmEssentials does **not** register its own MiniPlaceholders expansion — it on
 
 ## Next Steps
 
-- [📊 Scoreboard, Tablist & Nametags](../features/hud.md) — where placeholders show up most
-- [🎛️ Menu Actions & Requirements](../menus/actions-requirements.md) — `%papi_%` tokens and `papi-compare:`
-- [🖼️ Holograms](../features/holograms.md) — live placeholder lines
+- [📊 Scoreboard, Tablist & Nametags](../features/hud.md): where placeholders show up most
+- [🎛️ Menu Actions & Requirements](../menus/actions-requirements.md): `%papi_%` tokens and `papi-compare:`
+- [🖼️ Holograms](../features/holograms.md): live placeholder lines

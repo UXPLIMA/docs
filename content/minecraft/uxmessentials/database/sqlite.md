@@ -22,7 +22,7 @@ it ships and never think about databases again.
 
 | Pros                              | Cons                                            |
 |-----------------------------------|-------------------------------------------------|
-| ✅ Zero setup — works immediately  | ❌ Not suited to a multi-server network          |
+| ✅ Zero setup: works immediately  | ❌ Not suited to a multi-server network          |
 | ✅ No external software to run     | ❌ A single file, awkward to back up while live  |
 | ✅ Fast for small–medium servers   | ❌ No remote access                              |
 | ✅ Survives world rollbacks        | ❌ Writes are serialized (one at a time)         |
@@ -59,7 +59,7 @@ The database is created inside the plugin's data folder:
 plugins/uxmEssentials/data/uxmessentials.db
 ```
 
-That single file holds all of your persisted data — economy wallets, homes, warps, vaults,
+That single file holds all of your persisted data: economy wallets, homes, warps, vaults,
 moderation records, and more. It runs in **WAL (write-ahead logging)** mode, so you will see
 two sidecar files appear next to it:
 
@@ -84,13 +84,13 @@ of read connections serves lookups concurrently. You never have to tune this.
 Because SQLite serializes writes, an extremely write-heavy server (large networks, a shop
 economy processing constant transactions) can eventually feel it. This is the point at
 which you move to [MySQL / MariaDB](mysql.md) or [PostgreSQL](postgresql.md), which use
-real row-level locking. It is a topology decision, not a bug — SQLite is not a "degraded"
+real row-level locking. It is a topology decision, not a bug: SQLite is not a "degraded"
 mode.
 
 </Callout>
 
 What is stored in the database survives world rollbacks. Economy balances in particular are
-**always** DB-backed and never written to entity/player data — a rolled-back world can never
+**always** DB-backed and never written to entity/player data: a rolled-back world can never
 give someone their money back. Only throwaway state such as cooldown and kit-claim stamps
 lives outside the database.
 
@@ -103,10 +103,10 @@ lives outside the database.
 | One server, any typical player count          | ✅ Yes       |
 | A quiet or medium economy                     | ✅ Yes       |
 | You do not want to run a database server      | ✅ Yes       |
-| Several backends sharing one player base      | ❌ No — see below |
+| Several backends sharing one player base      | ❌ No, see below |
 | Constant, heavy concurrent writes             | ❌ Consider a network backend |
 
-A network of servers **cannot** share a SQLite file — each server would hold its own copy.
+A network of servers **cannot** share a SQLite file: each server would hold its own copy.
 Cross-server sync requires a shared MySQL/MariaDB or PostgreSQL database. See
 [Cross-Server](../cross-server/overview.md).
 
@@ -122,7 +122,7 @@ The cleanest backup is taken while the server is stopped:
 
 <Callout type="warning" title="Back up before switching backends">
 
-Moving from SQLite to a network backend starts a **fresh** schema on the new database —
+Moving from SQLite to a network backend starts a **fresh** schema on the new database;
 it does not copy your existing data across. Back up `uxmessentials.db` first, and plan how
 you will carry data over (or accept a clean slate) before you change `backend`.
 
@@ -132,7 +132,7 @@ you will carry data over (or accept a clean slate) before you change `backend`.
 
 ## Next Steps
 
-- [config.conf (Globals)](../config/global-config.md) — the full `storage` block and every other global setting.
-- [MySQL / MariaDB Setup](mysql.md) — when a single server outgrows SQLite.
-- [PostgreSQL Setup](postgresql.md) — the same shape on Postgres.
-- [Cross-Server](../cross-server/overview.md) — running multiple backends off one shared database.
+- [config.conf (Globals)](../config/global-config.md): the full `storage` block and every other global setting.
+- [MySQL / MariaDB Setup](mysql.md): when a single server outgrows SQLite.
+- [PostgreSQL Setup](postgresql.md): the same shape on Postgres.
+- [Cross-Server](../cross-server/overview.md): running multiple backends off one shared database.

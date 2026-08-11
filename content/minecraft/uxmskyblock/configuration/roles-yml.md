@@ -70,7 +70,7 @@ Anyone on the team can **deposit** into the bank. `BANK` controls who can
 ## Built-in vs. Custom Roles
 
 `roles.yml` seeds the **built-in** roles every island starts with. Owners can also
-create **custom roles per-island** at runtime with `/is role create` — those are
+create **custom roles per-island** at runtime with `/is role create`: those are
 stored on the island, not in this file. See
 [Team & Roles](../commands/team-roles.md).
 

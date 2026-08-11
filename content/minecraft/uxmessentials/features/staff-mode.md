@@ -1,11 +1,11 @@
 ---
 title: Staff Mode
 order: 1310
-description: Staff Mode is a dedicated moderation state, not a single toggle. When
-  a staff member enters it with /staffmode, their survival inventory is swapped out
-  for a hotbar of moderation gadgets, they go invisible, and — depending on config
-  — they gain flight and night vision. Leaving staff mode restores their normal inventory
-  and state exactly as it was.
+description: 'Staff Mode is a dedicated moderation state, not a single toggle. When a
+  staff member enters it with /staffmode, their survival inventory is swapped out for a
+  hotbar of moderation gadgets, they go invisible, and (depending on config) they gain
+  flight and night vision. Leaving staff mode restores their normal inventory and state
+  exactly as it was.'
 ---
 
 The whole feature lives in the **`staff`** module. It is a **staff-mode-only** module:
@@ -34,7 +34,7 @@ relogs and restarts and can't be lost by fumbling the gadget bar.
 <Callout type="info" title="Loadouts are DB-backed">
 
 The inventory saved when you enter staff mode is persisted in the database, so it
-is safe across restarts and world rollbacks — you always get your real items back.
+is safe across restarts and world rollbacks; you always get your real items back.
 
 </Callout>
 
@@ -73,7 +73,7 @@ it from the hotbar.
 
 **Staff chat** is a private channel for the team. Who *receives* it is set by the
 `staff-chat.receive-node` config key, so you can point it at your existing staff
-permission group. **`/stafflist`** shows who's on duty — it is vanish-aware (so hidden
+permission group. **`/stafflist`** shows who's on duty; it is vanish-aware (so hidden
 staff still appear to other staff) and each head is clickable to teleport straight to
 that person.
 
@@ -81,14 +81,14 @@ that person.
 
 ## Alerts & Flight
 
-- **Flight** — `flight-on-enter` grants creative flight the moment you go on duty, so you can move freely while moderating.
-- **Alerts** — the module surfaces staff-relevant notifications to on-duty moderators, keeping the team aware of events worth a look.
+- **Flight**: `flight-on-enter` grants creative flight the moment you go on duty, so you can move freely while moderating.
+- **Alerts**: the module surfaces staff-relevant notifications to on-duty moderators, keeping the team aware of events worth a look.
 
 ---
 
 ## How This Differs From `/vanish`
 
-The [`vanish`](vanish.md) module owns `/vanish` (`uxmessentials.vanish.use`) — a
+The [`vanish`](vanish.md) module owns `/vanish` (`uxmessentials.vanish.use`): a
 standalone, PremiumVanish-class invisibility toggle with its own buffs, fake join/quit
 messages, and layered see/use levels. Staff mode is a whole on-duty *mode* on top of
 that same vanish:
@@ -96,10 +96,10 @@ that same vanish:
 | | `/vanish` (vanish) | `/staffmode` (staff) |
 |--|--------------------|----------------------|
 | Invisibility | Yes | Yes (on enter) |
-| Swaps your inventory | No | Yes — gadget loadout |
+| Swaps your inventory | No | Yes: gadget loadout |
 | Restores inventory on exit | n/a | Yes |
 | Gadget hotbar | No | Yes |
-| Flight / night vision | Yes — per `vanish` config (on by default) | Optional per staff config |
+| Flight / night vision | Yes: per `vanish` config (on by default) | Optional per staff config |
 | Intended for | Quick hide | Full on-duty moderation |
 
 Use `/vanish` to slip out of sight for a moment; use `/staffmode` to actually go on
@@ -149,13 +149,13 @@ staff-chat { receive-node = "..." }   # permission that receives staff chat
 
 Leaving staff mode restores your saved inventory. Don't rely on `/vanish` (which
 doesn't touch your inventory) when you mean to go fully on duty, and don't stack
-the two carelessly — enter staff mode to moderate, exit it to play.
+the two carelessly: enter staff mode to moderate, exit it to play.
 
 </Callout>
 
 - The gadget hotbar replaces whatever you were holding; that's why the real inventory is saved first. Always exit staff mode (don't just log out mid-session) to be sure your items come back cleanly.
 - Point `staff-chat.receive-node` at your existing staff group so new moderators get the channel automatically when they're added to the group.
-- Turn off gadgets your team shouldn't have (e.g. leave `follow` off if you don't want silent shadowing) — the hotbar only shows enabled gadgets.
+- Turn off gadgets your team shouldn't have (e.g. leave `follow` off if you don't want silent shadowing): the hotbar only shows enabled gadgets.
 
 ---
 

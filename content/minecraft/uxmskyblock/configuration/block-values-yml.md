@@ -4,7 +4,7 @@ order: 770
 ---
 
 `block-values.yml` sets how many **points** each block is worth. Points drive
-island levels and the leaderboard — see [Points & Levels](../progression/points-levels.md).
+island levels and the leaderboard, see [Points & Levels](../progression/points-levels.md).
 
 ---
 

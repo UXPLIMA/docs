@@ -1,14 +1,14 @@
 ---
 title: Server Tweaks
 order: 1470
-description: Server Tweaks is a small grab-bag of server-side infrastructure adjustments
-  — the handful of low-level behaviours that don't belong to any one feature but that
-  most servers eventually want to change. It bundles a custom F3 brand, a console-log
-  filter, an unsigned-chat option, and a SignedVelocity backend companion, so you
-  don't reach for a separate single-purpose plugin for each.
+description: 'Server Tweaks is a small grab-bag of server-side infrastructure
+  adjustments: the handful of low-level behaviours that don''t belong to any one feature
+  but that most servers eventually want to change. It bundles a custom F3 brand, a
+  console-log filter, an unsigned-chat option, and a SignedVelocity backend companion,
+  so you don''t reach for a separate single-purpose plugin for each.'
 ---
 
-There are **no player commands here** — every tweak is a silent, server-side effect. You
+There are **no player commands here**: every tweak is a silent, server-side effect. You
 turn each one on in `modules/servertweaks/config.conf` and it simply takes effect.
 
 The module is its own **`servertweaks`** module and ships **enabled**. Every tweak inside
@@ -30,7 +30,7 @@ here happens until you ask for it.
 ## Custom F3 Brand
 
 The **server brand** is the small identifier a client shows on its F3 debug screen next to
-the frame-time graph — by default *"Paper"*. This tweak re-sends the `minecraft:brand`
+the frame-time graph, by default *"Paper"*. This tweak re-sends the `minecraft:brand`
 string on join so it reads whatever you like:
 
 ```hocon
@@ -42,7 +42,7 @@ f3-brand {
 
 This one ships **on**, with `uxmEssentials` as the brand, so change `brand` to your
 server's name (or set `enabled = false` to leave the client's default alone). It is
-**plain text only** — no MiniMessage, no colour codes. What you type is what appears.
+**plain text only**: no MiniMessage, no colour codes. What you type is what appears.
 Some clients render legacy section-sign colour codes here, but that is not guaranteed, so
 plain text is the safe choice.
 
@@ -79,7 +79,7 @@ nothing.
 
 <Callout type="warning" title="You are hiding lines, not fixing them">
 
-The filter suppresses whatever matches — including warnings and errors you may need to
+The filter suppresses whatever matches, including warnings and errors you may need to
 see. Keep the substrings **narrow and specific** so you catch only the noise you mean
 to. A pattern like `"error"` or `"WARN"` would swallow genuine problems. When something
 stops logging that you expected, check this list first.
@@ -93,7 +93,7 @@ stops logging that you expected, check this list first.
 Public chat messages a modern client sends are cryptographically **signed**, which is what
 lets a player report them to Mojang. This tweak re-delivers each public chat message as an
 **unsigned** copy, so the delivered message carries no signature to report. Formatting is
-preserved — the message reads exactly as it otherwise would.
+preserved: the message reads exactly as it otherwise would.
 
 ```hocon
 no-chat-reports {
@@ -103,12 +103,12 @@ no-chat-reports {
 
 <Callout type="warning" title="What this does and, importantly, does not do">
 
-This is an **API-only** implementation — it uses no packets and no NMS — and that
+This is an **API-only** implementation (it uses no packets and no NMS) and that
 bounds what it can honestly claim:
 
 - It **cannot** stop the client from *signing its own outgoing messages*; it only
   strips the signature from the copy the server re-broadcasts to others.
-- It **cannot** change `enforce-secure-profile` — that is a `server.properties` boot
+- It **cannot** change `enforce-secure-profile`: that is a `server.properties` boot
   setting, unrelated to this tweak.
 - It does **not** touch private messages (`/msg`), command feedback, or anything but
   public chat.
@@ -139,7 +139,7 @@ signed-velocity {
 
 <Callout type="warning" title="This needs the SignedVelocity plugin on your proxy">
 
-This tweak is **one half of a pair**. It does nothing on its own — it only
+This tweak is **one half of a pair**. It does nothing on its own; it only
 interoperates with the real **SignedVelocity** plugin running on your Velocity proxy.
 With no SignedVelocity plugin on the proxy, enabling this here is completely **inert**:
 no channel traffic, no effect.
@@ -223,7 +223,7 @@ picture.
 
 ## Permissions
 
-Server Tweaks is **config-only** — it registers no commands, so it has **no action
+Server Tweaks is **config-only**: it registers no commands, so it has **no action
 permission nodes** for players to hold. The only node is the standard per-module
 administrative gate:
 
@@ -237,7 +237,7 @@ Everything else about the module is decided entirely by the `config.conf` above.
 
 ## Next Steps
 
-- [🧩 Per-Module Config](../config/per-module.md) — where `modules/servertweaks/config.conf` lives and how it's loaded
-- [🧩 The Module System](../modules/overview.md) — turn modules on and off
-- [🌐 Cross-Server: Velocity & Redis](../cross-server/overview.md) — how uxmEssentials fits a proxied network
-- [🔑 Permission Reference](../permissions/reference.md) — every node
+- [🧩 Per-Module Config](../config/per-module.md): where `modules/servertweaks/config.conf` lives and how it's loaded
+- [🧩 The Module System](../modules/overview.md): turn modules on and off
+- [🌐 Cross-Server: Velocity & Redis](../cross-server/overview.md): how uxmEssentials fits a proxied network
+- [🔑 Permission Reference](../permissions/reference.md): every node

@@ -10,7 +10,7 @@ description: Every feature in uxmEssentials is a module with its own folder unde
 ## How to Edit
 
 1. Open `plugins/uxmEssentials/modules/<module>/config.conf`.
-2. Change the values you need — keep braces `{ }` and quotes balanced.
+2. Change the values you need: keep braces `{ }` and quotes balanced.
 3. Save.
 4. Apply it with a **targeted** reload:
 
@@ -28,7 +28,7 @@ quotes are load-bearing.
 
 <Callout type="danger" title="There is no `modules.conf`">
 
-Modules are **not** enabled from a central file — that file does not exist. Each
+Modules are **not** enabled from a central file: that file does not exist. Each
 module is toggled by the `enabled` key at the top of its own
 `modules/<module>/config.conf`. Older notes that mention a `modules.conf`
 switchboard are stale.
@@ -50,7 +50,7 @@ default-limit = 3
 
 - Set `enabled = false` to switch the whole module off. A disabled module registers
   **no commands, no listeners, runs no database migrations, and holds no runtime
-  state** — it is genuinely inert, not just hidden.
+  state**: it is genuinely inert, not just hidden.
 - Set it back to `true` and `/uxmess reload <module>` to bring it up live.
 - Disabling a module **never deletes stored data.** Its rows stay in the database and
   return untouched when you re-enable it.
@@ -187,15 +187,15 @@ defined in `modules/economy/currencies.conf`.
 
 ## Reload per module
 
-`/uxmess reload <module>` re-reads **only** that module's subtree — its `config.conf`
-plus any sub-files — restarts just that module off-thread, and re-publishes its commands.
+`/uxmess reload <module>` re-reads **only** that module's subtree; its `config.conf`
+plus any sub-files: restarts just that module off-thread, and re-publishes its commands.
 It is faster and safer than a full reload: if you introduce a syntax error, only that one
 module refuses to reload and the log points at the file.
 
 <Callout type="tip" title="Deep tuning lives in the feature guides">
 
 This page covers how the files are laid out. For what each key actually does per
-feature, jump to the matching Feature Guide — for example
+feature, jump to the matching Feature Guide, for example
 [Homes](../features/homes.md), [Teleport & RTP](../features/teleport-rtp.md),
 [Economy](../features/economy.md), [Kits](../features/kits.md), or
 [Moderation](../features/moderation.md).
@@ -206,7 +206,7 @@ feature, jump to the matching Feature Guide — for example
 
 ## Next Steps
 
-- [Modules & Reloading](../modules/overview.md) — the module roster and reload model.
-- [config.conf (Globals)](global-config.md) — the settings that are *not* per-module.
-- [Renaming Commands](commands-conf.md) — rename or disable any command per install.
-- [Permission Reference](../permissions/reference.md) — the nodes each module reads.
+- [Modules & Reloading](../modules/overview.md): the module roster and reload model.
+- [config.conf (Globals)](global-config.md): the settings that are *not* per-module.
+- [Renaming Commands](commands-conf.md): rename or disable any command per install.
+- [Permission Reference](../permissions/reference.md): the nodes each module reads.

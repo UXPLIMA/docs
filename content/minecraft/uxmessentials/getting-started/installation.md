@@ -15,24 +15,23 @@ Before you start, make sure you have:
 
 <Callout type="warning" title="Paper 26.1.2 / Java 25 only">
 
-uxmEssentials is built for **modern Paper on Java 25**. It is **Folia-ready**
-— the whole plugin schedules work through Folia-safe schedulers — so it runs
+uxmEssentials is built for **modern Paper on Java 25**. It is **Folia-ready**: the whole plugin schedules work through Folia-safe schedulers, so it runs
 on both Paper and Folia. It is not built for older Bukkit/Spigot versions.
 
 </Callout>
 
 ---
 
-## Step 1 — Download
+## Step 1: Download
 
 Download the latest **`uxmEssentials`** jar (the main, all-in-one plugin).
 
 This one jar is everything you need for a single server. The extra companion jars
-below are **optional** and only matter for networks — you can ignore them to start.
+below are **optional** and only matter for networks; you can ignore them to start.
 
 ---
 
-## Step 2 — Drop It In
+## Step 2: Drop It In
 
 Put the jar in your server's `plugins` folder:
 
@@ -47,7 +46,7 @@ your-server/
 
 ---
 
-## Step 3 — Start the Server
+## Step 3: Start the Server
 
 Start (or restart) the server once. On first launch the plugin creates its data
 folder, sets up its **embedded SQLite database**, and writes out every config file.
@@ -63,14 +62,14 @@ folder, sets up its **embedded SQLite database**, and writes out every config fi
 
 Out of the box, uxmEssentials stores everything in a local **SQLite** file
 (`plugins/uxmEssentials/data/`). There is nothing to install and nothing to
-configure — it just works. You only need MySQL/MariaDB or PostgreSQL if you
+configure; it just works. You only need MySQL/MariaDB or PostgreSQL if you
 run a multi-server network. See [Database](../database/sqlite.md).
 
 </Callout>
 
 ---
 
-## Step 4 — Check the Files
+## Step 4: Check the Files
 
 After the first start, uxmEssentials generates its config tree:
 
@@ -86,12 +85,12 @@ plugins/
 ```
 
 Everything is **HOCON `.conf`** (not YAML). Your edits survive restarts and
-updates — new keys from an update are added, your values are kept, and deleting a
+updates: new keys from an update are added, your values are kept, and deleting a
 key falls back to its default. Read more in [Core Concepts](concepts.md).
 
 ---
 
-## Step 5 — Verify It Works
+## Step 5: Verify It Works
 
 Log in as an operator and run:
 
@@ -100,7 +99,7 @@ Log in as an operator and run:
 | `/uxmess status` | Lists all 34 modules and whether each is enabled |
 | `/uxmess doctor` | Runs health checks (database, economy provider, soft-depends, threading) |
 
-The admin root is `/uxmess` — aliases `/uxmessentials` and `/uxe` do the same thing.
+The admin root is `/uxmess`: aliases `/uxmessentials` and `/uxe` do the same thing.
 
 If `/uxmess doctor` comes back clean, you're ready to go.
 
@@ -150,8 +149,8 @@ start using `/home`, `/warp`, `/balance`, `/kit`, `/tpa` and more right away.
 
 ## Next Steps
 
-- [🧠 Core Concepts](concepts.md) — the ideas that make everything click
-- [🧩 The Module System](../modules/overview.md) — turn features on and off
-- [📟 Commands Overview](../commands/overview.md) — what you can type in-game
-- [📦 Migrating from EssentialsX](migration.md) — bring your old data across
-- [💾 Database](../database/sqlite.md) — SQLite by default, MySQL/PostgreSQL for networks
+- [🧠 Core Concepts](concepts.md): the ideas that make everything click
+- [🧩 The Module System](../modules/overview.md): turn features on and off
+- [📟 Commands Overview](../commands/overview.md): what you can type in-game
+- [📦 Migrating from EssentialsX](migration.md): bring your old data across
+- [💾 Database](../database/sqlite.md): SQLite by default, MySQL/PostgreSQL for networks

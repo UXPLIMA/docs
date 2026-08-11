@@ -1,9 +1,9 @@
 ---
 title: Proxy Setup
 order: 820
-description: The proxy layer keeps islands in sync across multiple backend servers
-  behind Velocity/BungeeCord. It's optional and off by default — enable it only when
-  you run a network.
+description: 'The proxy layer keeps islands in sync across multiple backend servers
+  behind Velocity/BungeeCord. It''s optional and off by default: enable it only when you
+  run a network.'
 ---
 
 ---
@@ -11,7 +11,7 @@ description: The proxy layer keeps islands in sync across multiple backend serve
 ## How It Works
 
 - All backends share **one MySQL database** ([MySQL](../database/mysql.md) required).
-- Each island physically lives on **one** backend — the server it was created on
+- Each island physically lives on **one** backend: the server it was created on
   (tracked by a `server` column).
 - `/is home` and `/is visit <player>` **route** the player to the right server when
   the island lives elsewhere, then teleport them in.
@@ -62,7 +62,7 @@ proxy:
 | Key | Meaning |
 |-----|---------|
 | `enabled` | Turn the proxy layer on |
-| `server-name` | This server's name in your Velocity/BungeeCord config — **must differ on every backend** |
+| `server-name` | This server's name in your Velocity/BungeeCord config: **must differ on every backend** |
 | `spawn-server` | The lobby/spawn server for return routing |
 | `create-servers` | Servers where new islands may be created (balanced). Empty = create locally |
 | `pending-teleport-seconds` | How long a pending cross-server teleport/create stays valid |
@@ -100,7 +100,7 @@ server's name, the create-server list, and which server a given island lives on.
 | `/is visit` doesn't switch servers | Island's `server` column is NULL, or server names don't match the proxy |
 | Changes don't appear on other servers | Redis is down or the `channel` differs between servers |
 | New islands all land on one server | `create-servers` only lists one server |
-| Player not teleported after switch | The pending record expired — raise `pending-teleport-seconds` |
+| Player not teleported after switch | The pending record expired: raise `pending-teleport-seconds` |
 
 Turn on `proxy.debug: true` to log the routing decisions.
 
@@ -108,6 +108,6 @@ Turn on `proxy.debug: true` to log the routing decisions.
 
 ## Module Sync
 
-Modules like [Chunklock](../../chunklock/overview.md) reuse this same proxy layer —
+Modules like [Chunklock](../../chunklock/overview.md) reuse this same proxy layer;
 they ride the same database connection and Redis channel, so add-on data stays in
 sync across the network for free.

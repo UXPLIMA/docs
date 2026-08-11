@@ -29,11 +29,11 @@ render `%skyblock_...%` placeholders internally.
 
 ---
 
-## Step 1 — Download
+## Step 1: Download
 
 Download the latest `uxmSkyblock-x.x.x.jar`.
 
-## Step 2 — Drop It In
+## Step 2: Drop It In
 
 Put the jar in your server's `plugins` folder:
 
@@ -46,12 +46,12 @@ your-server/
 └── paper.jar
 ```
 
-## Step 3 — Start the Server
+## Step 3: Start the Server
 
 Start (or restart) the server. On first launch the plugin generates its config
 files and the island world.
 
-## Step 4 — Check the Config Files
+## Step 4: Check the Config Files
 
 ```
 plugins/
@@ -69,7 +69,7 @@ plugins/
 <Callout type="tip" title="Updates never wipe your settings">
 
 When you update the jar, **new keys** from the update are merged into your
-existing files automatically — your edited values are kept.
+existing files automatically; your edited values are kept.
 
 </Callout>
 
@@ -99,7 +99,7 @@ menu and `/is create` to make their first island.
 
 **Cause:** The world generator setting.
 **Fix:** Set `world.generator` to `void` (classic empty uxmSkyblock) or `normal`
-(real terrain — required by the Chunklock module). See
+(real terrain: required by the Chunklock module). See
 [config.yml](../configuration/config-yml.md).
 
 ---

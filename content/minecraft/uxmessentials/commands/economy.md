@@ -7,7 +7,7 @@ order: 980
 
 The `economy` module is a DB-backed, **multi-currency** wallet system. Balances live in the database (never in player data), so they survive world rollbacks. Out of the box it ships a single default currency, but it can run several side by side.
 
-The core commands — `/balance`, `/pay`, `/baltop`, and the base `/eco` admin verbs — are always available. A second tier of features is **gated behind flags in `economy.conf`** and marked with a **†** below: they only register when the matching flag is switched on.
+The core commands (`/balance`, `/pay`, `/baltop`, and the base `/eco` admin verbs) are always available. A second tier of features is **gated behind flags in `economy.conf`** and marked with a **†** below: they only register when the matching flag is switched on.
 
 <Callout type="info" title="Multi-currency">
 
@@ -22,12 +22,12 @@ Where a command accepts a trailing `[currency]` argument, you can target any con
 | Command | Aliases | Description | Permission |
 |---------|---------|-------------|------------|
 | `/balance [player] [currency]` | `bal`, `money` | Show your own or another player's balance | `uxmessentials.economy.balance` / `.balance.others` |
-| `/pay <player> <amount> [currency]` | — | Transfer funds to a player | `uxmessentials.economy.pay` |
-| `/payconfirm` | — | Confirm a large `/pay` above the threshold | `uxmessentials.economy.pay` |
-| `/payall <amount> [currency]` | — | Pay every online player | `uxmessentials.economy.payall` |
-| `/paytoggle` | — | Refuse incoming `/pay` transfers | `uxmessentials.economy.pay.toggle` |
+| `/pay <player> <amount> [currency]` | - | Transfer funds to a player | `uxmessentials.economy.pay` |
+| `/payconfirm` | - | Confirm a large `/pay` above the threshold | `uxmessentials.economy.pay` |
+| `/payall <amount> [currency]` | - | Pay every online player | `uxmessentials.economy.payall` |
+| `/paytoggle` | - | Refuse incoming `/pay` transfers | `uxmessentials.economy.pay.toggle` |
 | `/baltop [currency] [page]` | `balancetop` | View the top balances | `uxmessentials.economy.baltop` |
-| `/wallet [currency]` † | — | Visual wallet dashboard | `uxmessentials.economy.wallet` |
+| `/wallet [currency]` † | - | Visual wallet dashboard | `uxmessentials.economy.wallet` |
 
 ### Examples
 
@@ -131,7 +131,7 @@ These convert virtual balance to physical notes, manage shared accounts, and mov
 
 <Callout type="note" title="† Flag-gated commands">
 
-Commands marked **†** — `/wallet`, `/sellall`, `/withdraw`, `/deposit`, `/bank`, `/loan`, `/exchange`, and the extra `/eco` subcommands (`note`, `backup`, `export`, `restore`) — register only when their feature flag is enabled in `economy.conf`. On a fresh install some may not appear until you turn them on.
+Commands marked **†**: `/wallet`, `/sellall`, `/withdraw`, `/deposit`, `/bank`, `/loan`, `/exchange`, and the extra `/eco` subcommands (`note`, `backup`, `export`, `restore`): register only when their feature flag is enabled in `economy.conf`. On a fresh install some may not appear until you turn them on.
 
 </Callout>
 
