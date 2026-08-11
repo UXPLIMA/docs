@@ -105,6 +105,21 @@ lowering the count changes what the next warning triggers.
 `/staffrollback` is the accountability tool: if a staffer goes rogue or makes a batch
 of bad calls, it lifts their still-active punishments in one sweep.
 
+### Alt detection
+
+`/alts` walks a player's **whole** connection history, not just their latest address:
+an account that shared an address the target used months ago still shows up, even if
+both have since moved. The history is recorded once per join, server-wide, and shared
+with the security module's `/ipalts`, so the two commands can never disagree about who
+is linked to whom.
+
+The link itself is a one-way keyed token of the address, never the address, so the
+matching happens without anything reversible. The raw address is kept alongside it only
+while this module is enabled, because `/seenip` renders it and `address-strictness =
+"STRICT"` needs it to IP-ban every address a banned player is known to have used. Turn
+the module off and the server keeps tokens alone. `censor-ip-addresses` still governs
+whether staff see an address in command output.
+
 ---
 
 ## Punishment Analytics

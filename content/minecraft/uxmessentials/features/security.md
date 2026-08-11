@@ -36,9 +36,9 @@ Everything a player enrols is **DB-backed and never stored in plaintext**. A PIN
 salted one-way PBKDF2 hash: the plugin can *check* a PIN but never *read* one back. A
 TOTP secret has to be recoverable (the server recomputes the expected code every 30
 seconds), so it is **AES-256-GCM encrypted** at rest under a server-held key-file, not
-hashed. An IP address is never stored at all, only a one-way token of it, keyed by that
-same key-file so nobody can work backwards from the token to the address. There is no
-GeoIP and nothing reversible anywhere in the module.
+hashed. This module never handles an IP address: it works only with a one-way token of
+one, keyed by that same key-file so nobody can work backwards from the token to the
+address. There is no GeoIP and nothing reversible anywhere in the module.
 
 ---
 
@@ -456,10 +456,16 @@ op-protection {
 
 ## IP / alt guard
 
-On join, the player's address is recorded as a one-way HMAC-SHA-256 token keyed by the
-server's own `secret.key`: **the raw IP is never stored**, there is no GeoIP, and nothing
-is reversible, so staff can spot accounts that share an address. `/ipalts <player>` lists the accounts linked to a target by a shared
-address.
+On join, the player's address is turned into a one-way HMAC-SHA-256 token keyed by the
+server's own `secret.key`, and the account is linked to that token: **the link this guard
+reads is the token, never the address**, there is no GeoIP, and nothing is reversible, so
+staff can spot accounts that share an address without the module ever handling one.
+`/ipalts <player>` lists the accounts linked to a target by a shared address.
+
+That join history is recorded once and shared with the moderation module's `/alts`, so
+the two commands always agree. The address itself is kept next to the token only while
+**moderation** is enabled, because that module renders it in `/seenip` and needs it for a
+STRICT IP ban; a server without moderation stores tokens alone.
 
 ```hocon
 ip-guard {
@@ -471,7 +477,7 @@ ip-guard {
 
 | Key | Default | What it does |
 |-----|---------|--------------|
-| `enabled` | `true` | Master switch. Off, and nothing is recorded and `/ipalts` has nothing to show. |
+| `enabled` | `true` | Master switch for the cap and the staff notice. The join history behind `/ipalts` is shared with moderation's `/alts`, so it keeps being recorded either way; to record nothing at all, disable both the `security` and `moderation` modules. |
 | `max-accounts-per-ip` | `0` | The most distinct accounts allowed from one address; a join that would exceed it is kicked. `0` means **no cap**: the guard only observes and notifies. Set it to, say, `3` to hold each household to three accounts. |
 | `notify-staff` | `true` | Notify online staff (holders of `uxmessentials.security.alts.notify`) when a joining player shares an address with other accounts. The notice carries the account names and a count, never the address itself. |
 
@@ -516,7 +522,7 @@ Nothing sensitive in this module is stored in the clear.
 | **PIN** | A salted, one-way **PBKDF2** hash in the `security_2fa` table, serialised as `algorithm:salt:hash`. The plugin verifies against it with a constant-time compare and can never reconstruct the PIN. |
 | **TOTP secret** | **AES-256-GCM** encrypted at rest, keyed by a random key-file the module creates on first run at `modules/security/secret.key` (owner-only permissions on POSIX). It's authenticated encryption, so a tampered column fails to decrypt rather than mis-verifying. |
 | **Device trust** | The address is an **HMAC-SHA-256** token keyed by `secret.key`, never the raw IP: enough to make two connections from the same address collide, but nothing reversible. Keying it matters, because the whole IPv4 space is small enough that a plain digest could be swept back to the address; without the key-file, a stolen database cannot be. A trust match only *skips the keypad*; it's never treated as proof of identity on its own. |
-| **Alt links** | Same one-way IP token; account UUIDs keyed by it. No address, no GeoIP. |
+| **Alt links** | Same one-way IP token; account UUIDs keyed by it, in the server-wide `ip_history` table both `/ipalts` and moderation's `/alts` read. No GeoIP. The raw address sits in that table only while the `moderation` module is enabled, which is the only thing that consumes one. |
 
 <Callout type="warning" title="One upgrade clears trusted devices">
 
@@ -685,12 +691,13 @@ op-protection {
   ]
 }
 
-# IP / alt guard. On join the address is recorded as a one-way token (the raw IP is NEVER
-# stored — no GeoIP, nothing reversible). /ipalts <player> lists same-IP accounts.
+# IP / alt guard. On join the account is linked to a one-way keyed token of its address
+# (no GeoIP, nothing reversible; the address itself is kept only while the moderation
+# module needs it). /ipalts <player> lists same-IP accounts.
 ip-guard {
   enabled = true
 
-  # The greatest number of distinct accounts allowed from one address. 0 means no cap —
+  # The greatest number of distinct accounts allowed from one address. 0 means no cap:
   # the guard only observes and notifies, never kicks.
   max-accounts-per-ip = 0
 
