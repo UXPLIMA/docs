@@ -87,12 +87,13 @@ create/open cost, regardless of the economy settings.
 
 ---
 
-## Blacklist & Overflow Rescue
+## Blacklist, Overflow Rescue & the Single-Window Rule
 
-Two safeguards protect the system:
+Three safeguards protect the system:
 
 - **Material blacklist**: items listed in `blacklist-materials` cannot be stored in a vault. Attempting to deposit one is blocked (holders of `uxmessentials.vault.bypass-blacklist` are exempt).
 - **Overflow rescue**: if a player's effective vault *size* shrinks (a rank change, a config edit) so that stored items no longer fit, those items aren't silently deleted; they are rescued back to the player rather than lost.
+- **One window per vault**: a vault can only be open in one window at a time. If a staff member tries to open a vault its owner is already using (or the other way round), the second opener is told to try again once it is closed. Without this, both windows would write their own copy back on close and the later close would restore items the other viewer had already taken out.
 
 ---
 
@@ -100,7 +101,9 @@ Two safeguards protect the system:
 
 `/vault <player> [n]` opens another player's vault for inspection, and the access is
 recorded to the audit log, so opening a player's vault is a traceable action, not a
-silent peek. Deleting another player's vault is likewise audited.
+silent peek. Deleting another player's vault is likewise audited. If the owner has that
+vault open at that moment, the inspection is refused until they close it (see the
+single-window rule above).
 
 | Node | Default | Grants |
 |------|---------|--------|
