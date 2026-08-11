@@ -36,8 +36,9 @@ Everything a player enrols is **DB-backed and never stored in plaintext**. A PIN
 salted one-way PBKDF2 hash: the plugin can *check* a PIN but never *read* one back. A
 TOTP secret has to be recoverable (the server recomputes the expected code every 30
 seconds), so it is **AES-256-GCM encrypted** at rest under a server-held key-file, not
-hashed. An IP address is never stored at all, only a one-way SHA-256 token of it. There
-is no GeoIP and nothing reversible anywhere in the module.
+hashed. An IP address is never stored at all, only a one-way token of it, keyed by that
+same key-file so nobody can work backwards from the token to the address. There is no
+GeoIP and nothing reversible anywhere in the module.
 
 ---
 
@@ -74,6 +75,16 @@ Works with Google Authenticator, Aegis, Authy, or any other RFC 6238 TOTP app.
    half-finished setup never locks you out.
 
 That's it. `/2fa` on its own tells you whether you're enrolled.
+
+<Callout type="info" title="Each code works once">
+
+A code is spent the moment it gets you in. If somebody read the six digits over your
+shoulder, saw them in a screen share, or pulled them out of a recording, they are already
+useless: the server remembers the 30-second step it accepted and refuses it again, so the
+onlooker has to wait for a code only your phone will show. A refused replay counts as a
+failed attempt like any other wrong code.
+
+</Callout>
 
 ### Option B: a numeric PIN
 
@@ -445,9 +456,9 @@ op-protection {
 
 ## IP / alt guard
 
-On join, the player's address is recorded as a one-way SHA-256 token: **the raw IP is
-never stored**, there is no GeoIP, and nothing is reversible, so staff can spot accounts
-that share an address. `/ipalts <player>` lists the accounts linked to a target by a shared
+On join, the player's address is recorded as a one-way HMAC-SHA-256 token keyed by the
+server's own `secret.key`: **the raw IP is never stored**, there is no GeoIP, and nothing
+is reversible, so staff can spot accounts that share an address. `/ipalts <player>` lists the accounts linked to a target by a shared
 address.
 
 ```hocon
@@ -504,8 +515,19 @@ Nothing sensitive in this module is stored in the clear.
 |--------|-----------------|
 | **PIN** | A salted, one-way **PBKDF2** hash in the `security_2fa` table, serialised as `algorithm:salt:hash`. The plugin verifies against it with a constant-time compare and can never reconstruct the PIN. |
 | **TOTP secret** | **AES-256-GCM** encrypted at rest, keyed by a random key-file the module creates on first run at `modules/security/secret.key` (owner-only permissions on POSIX). It's authenticated encryption, so a tampered column fails to decrypt rather than mis-verifying. |
-| **Device trust** | The address is a **SHA-256** token, never the raw IP: enough to make two connections from the same address collide, but nothing reversible. A trust match only *skips the keypad*; it's never treated as proof of identity on its own. |
+| **Device trust** | The address is an **HMAC-SHA-256** token keyed by `secret.key`, never the raw IP: enough to make two connections from the same address collide, but nothing reversible. Keying it matters, because the whole IPv4 space is small enough that a plain digest could be swept back to the address; without the key-file, a stolen database cannot be. A trust match only *skips the keypad*; it's never treated as proof of identity on its own. |
 | **Alt links** | Same one-way IP token; account UUIDs keyed by it. No address, no GeoIP. |
+
+<Callout type="warning" title="One upgrade clears trusted devices">
+
+The IP token used to be an unkeyed digest, which the small IPv4 space made reversible in
+practice. Re-keying it under `secret.key` fixes that, but a token written the old way
+cannot match one written the new way, and leaving the old ones in place would keep exactly
+the data this change removes. The upgrade therefore clears both tables: every player
+verifies once more on their next join, and alt links start from the upgrade rather than
+carrying older ones. It happens once, automatically.
+
+</Callout>
 
 <Callout type="tip" title="Back up the key-file separately">
 
@@ -541,8 +563,9 @@ two-factor {
   # code. 1 (±30s) absorbs modest clock drift; 0 is strictest. Capped at 5.
   code-window = 1
 
-  # The allowed PIN length range, in digits. A PIN is always digits only.
-  pin-min-length = 4
+  # The allowed PIN length range, in digits. A PIN is always digits only. Six is the
+  # shipped minimum, because a four-digit PIN is only ten thousand guesses.
+  pin-min-length = 6
   pin-max-length = 8
 
   # PINs refused outright, however well-formed they are. Add your own, or [] to refuse none.
