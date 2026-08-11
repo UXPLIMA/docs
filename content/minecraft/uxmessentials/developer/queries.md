@@ -301,6 +301,26 @@ only, and reserves nothing, so a world one place from full can still fill betwee
 
 Reading a return point does not spend it: the next `/back` still works.
 
+## Trade
+
+`api.trade()` &rarr; `UxmTradeQuery`. Answers straight away.
+
+| Method | Answers |
+|---|---|
+| `isTrading(playerId)` | whether they have a trade window open |
+| `of(playerId)` | the trade they are in, or empty |
+| `open()` | every trade open on this server |
+
+A trade lives in memory for as long as its window is open, so nothing here waits on a database. What is in the two
+offers is not published: it changes several times a second and is the participants' business. Listen for
+`UxmTradeCompleteEvent` if you need to know what changed hands, which carries the totals once they are final.
+
+The confirmation flags do not stick. Changing an offer clears both, which is the anti-scam rule the window
+enforces, so a snapshot read a moment before a change reports the state as it was.
+
+Only trades on this server are visible. A cross-server trade's other half lives on the backend the partner is
+connected to.
+
 ## Ranks
 
 `api.ranks()` &rarr; `UxmRanksQuery`

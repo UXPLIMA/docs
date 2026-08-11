@@ -241,6 +241,17 @@ too and it has no UUID.
 | `UxmNpcMoveEvent` | an NPC was re-anchored | npc name, `getLocation()` |
 | `UxmNpcDeleteEvent` | an NPC was deleted | npc name |
 
+### Trade
+
+| Event | Fires when | Carries |
+|---|---|---|
+| `UxmTradeCompleteEvent` | both sides confirmed and the swap settled | `getInitiatorItems()`, `getPartnerItems()`, `getInitiatorMoney()`, `getPartnerMoney()`, `getInitiatorExperience()`, `getPartnerExperience()` |
+| `UxmTradeCancelEvent` | a trade ended without a swap | `getTradeId()`, both sides' ids and names |
+
+Both name two players rather than one, so they extend `UxmEvent` and not the player event. A cancel covers a
+cancel, a closed window and a disconnect alike: which of the three it was is not carried, because all three reach
+the same path. The completion event fires whether or not the operator has the trade audit switched on.
+
 ### Ranks
 
 | Event | Fires when | Carries |

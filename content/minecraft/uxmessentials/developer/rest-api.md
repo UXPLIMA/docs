@@ -196,6 +196,15 @@ worse item format that this project would then have to keep in step with Minecra
 | `GET /players/{uuid}/vanish` | Whether they are hidden, and at what level |
 | `GET /vanish` | Everybody hidden |
 
+### Trade
+
+| Route | Answers |
+|---|---|
+| `GET /trades` | Every trade open on this server |
+| `GET /players/{uuid}/trade` | The trade they are in, or `null` |
+
+Not being in a trade is an answer rather than a miss, so it is `null` in the envelope's `data` and not a `404`.
+
 ### Ranks
 
 | Route | Answers |
@@ -330,9 +339,9 @@ is not something a single answer can say honestly.
 Mail without a `from` comes from the server: it waits in the mailbox rather than being lost to an offline player,
 and no mute or ignore applies to it, because neither can be about a plugin.
 
-<Callout type="note" title="Player warps and vaults are read-only">
+<Callout type="note" title="Player warps, vaults and trade are read-only">
 
-Both publish a query surface and no action surface, so over HTTP they are readable and nothing more. That is
+All three publish a query surface and no action surface, so over HTTP they are readable and nothing more. That is
 the published API's shape showing through rather than a decision taken in the add-on.
 
 </Callout>
@@ -385,7 +394,7 @@ money is a money whichever way it arrived.
 
 ### What is carried
 
-Seventy-seven events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
+Seventy-nine events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
 
 | Context | Names |
 |---|---|
@@ -402,6 +411,7 @@ Seventy-seven events, named `context.thing`. Every notification event uxmEssenti
 | `playerwarp` | `create`, `delete` |
 | `pose` | `pose` |
 | `presence` | `afk` |
+| `trade` | `complete`, `cancel` |
 | `rank` | `up`, `set`, `prestige` |
 | `scoreboard` | `visibility` |
 | `staff` | `chat`, `mode` |
