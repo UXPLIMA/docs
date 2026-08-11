@@ -579,6 +579,55 @@ exactly that makes the rule impossible to trip over. Add the rest with `addLine`
 Text is stored as given, MiniMessage and placeholders included, both resolved per viewer at render time. A
 hologram carrying a placeholder needs a refresh interval to keep up with it, which is set with `/hologram refresh`.
 
+## Sidebar
+
+`actions.scoreboard()` &rarr; `UxmScoreboardActions`
+
+| Method | Does |
+|---|---|
+| `refresh(playerId)` | redraw their sidebar now rather than at the next refresh |
+| `hide(playerId)` | put it away, as `/scoreboard` does |
+| `show(playerId)` | bring it back |
+
+The sidebar is redrawn on a timer, so anything that changes what it should say shows up within one refresh interval
+without asking for anything here. `refresh` is for when that wait is too long: a rank change, a balance the player
+just earned, a placeholder your own plugin owns and has just moved.
+
+Hiding and showing write the same durable preference `/scoreboard` flips, so a player who is put away stays that way
+across a relog until somebody brings it back. Both go through the same use case the command does, which means the
+player is told what happened and the visibility event fires exactly as it would have. Asking for the state they are
+already in is `already-in-state` rather than a silent flip to the opposite.
+
+## Tab list
+
+`actions.tablist()` &rarr; `UxmTablistActions`
+
+| Method | Does |
+|---|---|
+| `refresh(playerId)` | repaint their tab list now rather than at the next refresh |
+
+One verb, because there is only one honest one. The header, footer, list names and ordering are all authored in the
+module's config and repainted on a timer; nothing outside the module owns a row it could set or take away, and
+anything that cleared the list here would be repainted a tick later.
+
+## Nametags
+
+`actions.nametags()` &rarr; `UxmNametagActions`
+
+| Method | Does |
+|---|---|
+| `refresh(playerId)` | re-select and redraw the nametag above their head |
+
+Which format a player wears is decided by the module from their permissions, world and state, and a reconcile pass
+re-applies that decision for everybody on a timer. `refresh` runs that pass for one player immediately, which is
+what you want after giving somebody a rank or changing a placeholder the nametag reads. It re-selects as well as
+redraws, so a player who should now wear a different format does; a player no format applies to any more has their
+nametag removed, which is the correct outcome and still reported as success.
+
+Taking a nametag away from outside is not offered, for the same reason the tab list cannot be cleared: it would last
+until the next reconcile pass.
+
+
 ## Next steps
 
 - [Query API](queries.md) for reading what is true

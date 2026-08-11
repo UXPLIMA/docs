@@ -269,6 +269,24 @@ Hologram text comes back as stored, before MiniMessage and before placeholders: 
 differently for every viewer, so there is no one rendered answer to send. The powertool routes read a live
 inventory, so an offline player answers empty rather than `404`.
 
+### The command gate and the sidebar
+
+| Route | Answers |
+|---|---|
+| `GET /players/{uuid}/command-check?command=` | What the gate would do with that command, and which rule settled it |
+| `GET /players/{uuid}/scoreboard` | Whether they have put their sidebar away |
+
+The command is a query parameter rather than a path segment, because a command root can carry a `namespace:` prefix
+and a colon in a path is a fight nobody needs to have. It is required: there is no useful default.
+
+The answer carries `command`, `allowed`, `rule` (one of `BYPASS`, `WHITELISTED`, `NOT_WHITELISTED`, `BLACKLISTED`,
+`NOT_BLACKLISTED`), `group` and `world`. The last two name what decided: the permission group whose own list was
+read, and the world whose override applied, each null when the server-wide default did instead.
+
+Both depend on the live player, so an offline one is a `404` for the command check and a null `hidden` for the
+sidebar. The sidebar preference does survive their relog; it simply cannot be read while they are away.
+
+
 ## Writing
 
 Every write is a `POST` with a JSON body, and every one of them maps onto a verb the Action API already has. There
@@ -460,15 +478,39 @@ The one line route says all three edits. No `line` number adds `text` to the bot
 replaces that line, and a `line` number without it removes that line. Numbers count from one. Removing the last
 remaining line is refused: delete the hologram instead.
 
-<Callout type="note" title="Trade, regions, staff and powertools are read-only">
+### The sidebar, tab list and nametags
+
+| Route | Body |
+|---|---|
+| `POST /players/{uuid}/scoreboard` | `hidden` (defaults to true) |
+| `POST /players/{uuid}/scoreboard/refresh` | none |
+| `POST /players/{uuid}/tablist/refresh` | none |
+| `POST /players/{uuid}/nametag/refresh` | none |
+
+All three displays repaint on their own timer, so a panel that has just changed a rank or a placeholder does not
+have to do anything for the change to show up. The refresh routes are for when that wait is too long. The nametag
+refresh re-selects which format the player wears before redrawing, so a player who should now wear a different one
+does.
+
+Putting the sidebar away writes the same durable preference `/scoreboard` flips, and asking for the state the player
+is already in comes back as `already-in-state`. The tab list and nametags have no equivalent: what they say is
+authored in config, nothing outside the module owns a row or a tag to set, and anything cleared from here would be
+repainted on the next pass.
+
+<Callout type="note" title="Trade, regions, staff, powertools and the command gate are read-only">
 
 Each publishes a query surface and no action surface, so over HTTP they are readable and nothing more. That is
-the published API's shape showing through rather than a decision taken in the add-on. For regions the reason is
+the published API's shape showing through rather than a decision taken in the add-on. The command gate is the
+plainest of them: the rules are the operator's config file, and a panel that wanted to change them would be
+editing that file rather than posting here. For regions the reason is
 worth saying out loud: editing a protection is an operator act with its own command and its own audit trail, and a
 protection changed by a plugin would leave staff looking at something nobody in the logs ever did. Staff mode is
 the same kind of case: entering it swaps a real inventory for a loadout, and only the module can be trusted to put
 the real one back. A powertool binding is stamped onto the item a player is holding, and there is no held item in
 an HTTP request.
+
+The tab list and nametags go the other way: they publish a verb and nothing to read, so over HTTP they can be
+refreshed and not queried.
 
 </Callout>
 

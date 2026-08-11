@@ -510,6 +510,50 @@ The binding lives on the item, not on the player, so it travels with the item: d
 it in a chest takes the binding along. Both reads reach into a live inventory, so an offline player answers empty.
 
 
+## Command gate
+
+`api.commandControl()` &rarr; `UxmCommandControlQuery`
+
+| Method | Answers |
+|---|---|
+| `check(playerId, command)` | what the gate would do with that command, and why, or empty when they are offline |
+| `isBlocked(playerId, command)` | the same answer with everything but the yes or no dropped |
+
+For anything that shows a player what they can run: a help menu that hides what is blocked, a GUI that greys out a
+button, a companion plugin deciding whether to offer a shortcut. Asking here means agreeing with the gate rather
+than reimplementing it, which matters because the rules are per group and per world and the two interact.
+
+The command may be given with or without its leading slash and with or without its arguments; only the root is read,
+exactly as the gate reads it. A namespaced form such as `minecraft:gamemode` is answered about the bare command when
+the module is set to close that bypass, and about the namespaced root otherwise, again matching the gate.
+
+`UxmCommandCheck` carries the answer and the reason for it:
+
+| Field | Meaning |
+|---|---|
+| `command()` | the root the answer is about, lowercase and without its slash |
+| `allowed()` / `blocked()` | whether it would run |
+| `rule()` | `BYPASS`, `WHITELISTED`, `NOT_WHITELISTED`, `BLACKLISTED` or `NOT_BLACKLISTED` |
+| `group()` | the permission group whose own list decided, or empty when the `default` list did |
+| `world()` | the world whose per-world override decided, or empty when the server-wide rules did |
+
+Both answers need the live player: the rules that apply depend on the world they are standing in and the
+permissions they hold, and neither is knowable for somebody who is away. An offline player is an empty answer.
+
+## Sidebar
+
+`api.scoreboard()` &rarr; `UxmScoreboardQuery`
+
+| Method | Answers |
+|---|---|
+| `hidden(playerId)` | whether they have put their sidebar away, or empty when they are offline |
+
+The same durable preference `/scoreboard` flips and the render loop consults, so a panel showing a "sidebar: on /
+off" control agrees with what the player actually sees. The preference survives a relog, but it is stored on the
+player and only readable while they are here, which is why somebody who is away is an empty answer rather than a
+default.
+
+
 ---
 
 ## A worked example
