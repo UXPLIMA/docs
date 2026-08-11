@@ -301,6 +301,24 @@ only, and reserves nothing, so a world one place from full can still fill betwee
 
 Reading a return point does not spend it: the next `/back` still works.
 
+## Ranks
+
+`api.ranks()` &rarr; `UxmRanksQuery`
+
+| Method | Answers | Waits |
+|---|---|---|
+| `ladder()` | every rank, in ladder order | no |
+| `standingOf(playerId)` | the rank they are on, the one above it, and their prestige level | yes |
+| `canRankUp(playerId)` | whether the rung above is within reach right now | yes |
+
+The ladder is parsed configuration held in memory, so it answers on the calling thread. A player who has never
+ranked up stands on the first rung: the answer is their standing, not an empty one.
+
+`canRankUp` is the one to read carefully. A rank requirement can name the player's inventory or a placeholder, so
+the check runs on the player's own thread and answers `false` for a player who is offline. That is the evaluator's
+own rule rather than a shortcut here: a condition that cannot be verified fails closed instead of passing on a
+guess.
+
 ## Vote
 
 `api.vote()` &rarr; `UxmVoteQuery`

@@ -241,6 +241,17 @@ too and it has no UUID.
 | `UxmNpcMoveEvent` | an NPC was re-anchored | npc name, `getLocation()` |
 | `UxmNpcDeleteEvent` | an NPC was deleted | npc name |
 
+### Ranks
+
+| Event | Fires when | Carries |
+|---|---|---|
+| `UxmRankUpEvent` | a player moved up a rung | `getFromRank()`, `getToRank()` |
+| `UxmRankSetEvent` | an administrator set a rank directly | `getPreviousRank()`, `getRank()` |
+| `UxmPrestigeEvent` | a player prestiged | `getLevel()`, `getRewardMultiplier()` |
+
+A rankup fires after the new rank is stored and its actions have run. `UxmRankSetEvent` may be about a player who
+is offline, and `getPreviousRank()` is empty for one who had never been ranked before.
+
 ### Voting and item or world utilities
 
 | Event | Fires when | Carries |

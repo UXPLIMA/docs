@@ -65,8 +65,8 @@ absent, still loading, or shutting down. Nothing here throws merely because the 
 | Events, for everything the plugin does | Available | [Events](events.md) |
 | Veto (cancellable pre-events) for the operations that can be refused cleanly | Available | [Events](events.md#what-you-can-cancel) |
 | Menu extension: actions, requirements, placeholders, list sources, icons | Available | [Menu API](menu-api.md) |
-| Reading data directly, across fourteen contexts | Available | [Query API](queries.md) |
-| Performing operations directly, across twelve contexts | Available | [Action API](actions.md) |
+| Reading data directly, across fifteen contexts | Available | [Query API](queries.md) |
+| Performing operations directly, across thirteen contexts | Available | [Action API](actions.md) |
 | HTTP and WebSocket access for programs that are not plugins | Available as a separate add-on jar | [REST API](rest-api.md) |
 | Economy | Available through Vault and Treasury | [Vault and Treasury](../integrations/vault-treasury.md) |
 

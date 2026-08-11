@@ -334,6 +334,28 @@ every round wants and what nothing else does.
 
 A world name that could leave the worlds folder is a malformed call and throws where you are standing.
 
+## Ranks
+
+`actions.ranks()` &rarr; `UxmRanksActions`
+
+| Method | Does |
+|---|---|
+| `rankUp(playerId)` | promote them one rung, as `/rankup` does |
+| `setRank(playerId, rankId)` | put them on a named rung, as `/setrank` does |
+| `prestige(playerId)` | reset them to the first rung one prestige level higher |
+
+`rankUp` and `prestige` are the player-facing verbs and run everything those verbs run: the requirements are
+checked, the cost is charged, and the rank's own actions fire. Each refusal comes back as a code rather than an
+exception: `refused` for an unmet requirement, `insufficient-funds` for a cost the wallet would not cover,
+`already-in-state` for a player already on the top rung or at the prestige cap. Both need the player online,
+because a requirement may read their inventory, and answer `player-offline` when they are not.
+
+`setRank` is the administrative one. No requirements, no cost, and an offline account is fine, which is the case
+it exists for. A rank id that is not on the ladder answers `not-found` rather than storing a pointer to nothing.
+
+Prestige is a module switch. With `prestige.enabled` off the server publishes no `/prestige` verb, and this action
+answers `refused` rather than pretending a switched-off mechanic ran.
+
 ## Vote
 
 `actions.vote()` &rarr; `UxmVoteActions`

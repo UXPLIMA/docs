@@ -196,6 +196,16 @@ worse item format that this project would then have to keep in step with Minecra
 | `GET /players/{uuid}/vanish` | Whether they are hidden, and at what level |
 | `GET /vanish` | Everybody hidden |
 
+### Ranks
+
+| Route | Answers |
+|---|---|
+| `GET /ranks` | The ladder, in order |
+| `GET /players/{uuid}/rank` | Their standing, the rung above it, and whether it is in reach |
+
+`can-rank-up` is `false` for a player who is offline, because a rank requirement may read their inventory. The
+`standing` key is `null` rather than missing when the ranks module holds nothing for them.
+
 ### Teleport, worlds, votes and messaging
 
 | Route | Answers |
@@ -293,6 +303,17 @@ somebody's record with no reason on it is not worth writing.
 One route per switch rather than one that takes them all, because "god mode on, flight refused, speed out of range"
 is not something a single answer can say honestly.
 
+### Ranks
+
+| Route | Body |
+|---|---|
+| `POST /players/{uuid}/rank/rankup` | none |
+| `POST /players/{uuid}/rank/set` | `rank` |
+| `POST /players/{uuid}/rank/prestige` | none |
+
+`rankup` and `prestige` charge the cost and check the requirements the same way the commands do, and answer
+`player-offline` for somebody who is not there. `set` does neither and works for an offline account.
+
 ### Teleport, worlds, votes and messaging
 
 | Route | Body |
@@ -364,7 +385,7 @@ money is a money whichever way it arrived.
 
 ### What is carried
 
-Seventy-four events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
+Seventy-seven events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
 
 | Context | Names |
 |---|---|
@@ -381,6 +402,7 @@ Seventy-four events, named `context.thing`. Every notification event uxmEssentia
 | `playerwarp` | `create`, `delete` |
 | `pose` | `pose` |
 | `presence` | `afk` |
+| `rank` | `up`, `set`, `prestige` |
 | `scoreboard` | `visibility` |
 | `staff` | `chat`, `mode` |
 | `teleport` | `player-teleport`, `back-location-capture`, `warmup-start`, `warmup-cancel`, `request-send`, `request-accept`, `request-deny`, `request-cancel`, `request-expire` |
