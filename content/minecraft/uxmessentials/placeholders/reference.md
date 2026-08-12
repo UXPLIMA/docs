@@ -6,7 +6,7 @@ description: Every %uxmessentials_% placeholder this build answers, area by area
 
 ## Overview
 
-With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 236 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
+With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 243 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
 
 Every key is declared once inside the plugin, in a single catalogue that a build-time guard resolves against the resolver in both directions. That is what this page is generated from, so a key listed here is a key this build answers.
 
@@ -23,10 +23,13 @@ Every key is declared once inside the plugin, in a single catalogue that a build
 | `player` | durable, answers for an offline player too |
 | `session` | live, reads the dash while the player is offline |
 | `global` | server-wide, the requesting player is ignored |
+| `relational` | about two players at once, written with the `rel_` prefix |
 
 A key whose module is **disabled** renders `-` rather than failing, and so does a key whose data is absent (a home that is not set, a ban that is not held). A key that does not exist at all is left as the raw token, which is how you tell a typo from an empty value.
 
 Keys written with an open segment, like `%uxmessentials_kit_cost_<kit>%`, are families: replace the segment with the id you mean.
+
+Keys marked `relational` are the two-player form: `%rel_uxmessentials_<key>%` reads the relation between the player a line is rendered *for* and the player it is *about*, so they only answer on a surface that renders per viewer (a chat format, a tab or nametag line). Elsewhere the raw token is left in place.
 
 ---
 
@@ -39,6 +42,7 @@ Always answered, whatever is enabled: the kernel owns these. The account, sessio
 | `%uxmessentials_cooldown_<label>%` | player | How long the player still waits on one cooldown label, in whole seconds; 0 when it is open. |
 | `%uxmessentials_cooldown_<label>_formatted%` | player | The same wait in the compact 1h2m3s form; 0s when it is open. |
 | `%uxmessentials_cooldown_active_<label>%` | player | Whether a cooldown is running on that label at all (yes/no). |
+| `%rel_uxmessentials_distance%` | relational | How far apart the two players stand, in blocks; the dash across worlds or when either is offline. |
 | `%uxmessentials_format_compact_<n>%` | global | The number shortened to k, M, B or T, so 1234567 reads 1.23M. |
 | `%uxmessentials_format_number_<n>%` | global | The number with its thousands grouped, so 1234567 reads 1,234,567. |
 | `%uxmessentials_format_time_<n>%` | global | A count of seconds spelled in the compact 1h2m3s form. |
@@ -89,6 +93,7 @@ Always answered, whatever is enabled: the kernel owns these. The account, sessio
 | `%uxmessentials_player_world_time_formatted%` | session | The time of day in the player's world as a 24-hour clock, where tick 0 is 06:00. |
 | `%uxmessentials_player_world_weather%` | session | The sky in the player's world: clear, rain or thunder. |
 | `%uxmessentials_progressbar_<now>_<total>%` | global | A twenty-character bar filled to now out of total; append a third segment to set the width. |
+| `%rel_uxmessentials_same_world%` | relational | Whether the two players stand in the same world (yes/no). |
 | `%uxmessentials_server_max_players%` | global | The server's player slot count. |
 | `%uxmessentials_server_online%` | global | How many players are connected. |
 | `%uxmessentials_server_ram_free%` | global | Heap still free, in whole megabytes. |
@@ -225,6 +230,8 @@ Mail, ignores, and the private-message session.
 
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
+| `%rel_uxmessentials_ignored_by%` | relational | Whether the player the line is about ignores the viewer (yes/no). |
+| `%rel_uxmessentials_ignoring%` | relational | Whether the viewer's ignore list holds the player the line is about (yes/no). |
 | `%uxmessentials_messaging_ignoring_count%` | player | How many players this player is ignoring. |
 | `%uxmessentials_messaging_mail_total%` | player | How much mail the player holds. |
 | `%uxmessentials_messaging_mail_unread%` | player | How much mail the player has not read. |
@@ -399,6 +406,27 @@ Cooldown, warmup, requests, and the /back location.
 | `%uxmessentials_teleport_tpa_pending%` | session | How many teleport requests the player has sent and not had answered. |
 | `%uxmessentials_teleport_warmup_remaining%` | session | The stand-still countdown left on the teleport in progress. |
 | `%uxmessentials_teleport_warmup_remaining_formatted%` | session | The same remaining warmup, under the spelling a config may prefer. |
+
+---
+
+## Trade
+
+Whether two players are in a live exchange.
+
+| Placeholder | Reads | What it renders |
+|-------------|-------|-----------------|
+| `%rel_uxmessentials_trading%` | relational | Whether the two are the sides of the same live trade (yes/no). |
+
+---
+
+## Vanish
+
+Whether one player can see another.
+
+| Placeholder | Reads | What it renders |
+|-------------|-------|-----------------|
+| `%rel_uxmessentials_cansee%` | relational | Whether the viewer can see the player the line is about, or vanish hides them (yes/no). |
+| `%rel_uxmessentials_hidden%` | relational | The same read the other way round: whether vanish hides them from the viewer (yes/no). |
 
 ---
 

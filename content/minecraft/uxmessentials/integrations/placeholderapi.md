@@ -41,6 +41,23 @@ Every key, with what it renders and whether it answers for an offline player, is
 catalogue inside the plugin, and a build-time guard resolves the catalogue against the
 resolver in both directions, so it cannot name a key this build does not answer.
 
+### The Two-Player Form
+
+A handful of keys read the relation between two players rather than one player's own
+state: whether the viewer can see the other, ignores them, is trading with them, and how
+far apart they stand. These carry PlaceholderAPI's `rel_` prefix and only answer on a
+surface that renders per viewer, such as a chat format, a tab line or a nametag.
+
+```
+%rel_uxmessentials_cansee%
+%rel_uxmessentials_ignoring%
+%rel_uxmessentials_distance%
+%rel_uxmessentials_trading%
+```
+
+Anywhere else, PlaceholderAPI has only one player to work with and leaves the raw token
+in place, which is how you tell "no relation" from "wrong surface".
+
 <Callout type="tip" title="Read the list from the running server">
 
 `/uxmess placeholders` lists the areas in game and `/uxmess placeholders <area>` reads
