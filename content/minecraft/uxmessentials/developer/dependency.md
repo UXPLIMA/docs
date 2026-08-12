@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.uxplima.uxmessentials:uxmessentials-bukkit-api:0.6.0")
+    compileOnly("com.uxplima.uxmessentials:uxmessentials-bukkit-api:0.7.0")
 }
 ```
 
@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.uxplima.uxmessentials:uxmessentials-bukkit-api:0.6.0'
+    compileOnly 'com.uxplima.uxmessentials:uxmessentials-bukkit-api:0.7.0'
 }
 ```
 
@@ -52,7 +52,7 @@ dependencies {
     <dependency>
         <groupId>com.uxplima.uxmessentials</groupId>
         <artifactId>uxmessentials-bukkit-api</artifactId>
-        <version>0.6.0</version>
+        <version>0.7.0</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
@@ -61,7 +61,7 @@ dependencies {
 </Tab>
 </Tabs>
 
-`0.6.0` is the first release that carries the API. Build against the version you target: `/uxmess version` prints
+`0.6.0` is the first release that carries the API, and `0.7.0` is the current one. Build against the version you target: `/uxmess version` prints
 what a server is running, and `UxmEssentialsApi.version()` gives you the same string at runtime.
 
 <Callout type="info" title="Which versions are in the repository">
