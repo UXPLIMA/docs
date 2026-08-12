@@ -211,5 +211,5 @@ anything reported `[OK]`, apply immediately.
 
 - [config.conf (Globals)](global-config.md): storage, locale, and network settings.
 - [Per-Module Config](per-module.md): enable/disable and tune each feature.
-- [Modules & Reloading](../modules/overview.md): the full module roster and reload model.
+- [Modules & Reloading](../modules/index.md): the full module roster and reload model.
 - [Permission Reference](../permissions/reference.md): the nodes that gate every feature.

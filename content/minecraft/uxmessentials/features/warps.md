@@ -3,7 +3,7 @@ title: Warps
 order: 1210
 ---
 
-Warps are **server-wide destinations**: a spawn hub, a PvP arena, a market, an event stage. Unlike [homes](homes.md) (private, per-player) or [player warps](player-warps.md) (owned by individual players), a warp is created by staff and, by default, usable by everyone. The single root command `/warp` (aliases `wp`, `warps`) covers both using and managing them; older standalone commands like `/setwarp`, `/delwarp`, and `/warpinfo` are folded in as subcommands.
+Warps are **server-wide destinations**: a spawn hub, a PvP arena, a market, an event stage. Unlike [homes](../modules/homes.md) (private, per-player) or [player warps](player-warps.md) (owned by individual players), a warp is created by staff and, by default, usable by everyone. The single root command `/warp` (aliases `wp`, `warps`) covers both using and managing them; older standalone commands like `/setwarp`, `/delwarp`, and `/warpinfo` are folded in as subcommands.
 
 Warps are **DB-backed**, so they survive world rollbacks and restarts, and each carries a small pile of metadata: an owner, a creation time, an optional cost, lock/password state, a rating, and a **visitor counter** that tracks how many times it has been used.
 
@@ -48,7 +48,7 @@ Warps can be gated three complementary ways:
 | **Lock**: closed to everyone | `/warp lock <name>` | `uxmessentials.warp.bypass.lock` |
 | **Password**: must be entered | `/warp password <name> [pw]` | `uxmessentials.warp.bypass.password` |
 
-Costs draw through the DB-backed [economy](economy.md). Locking is the quickest way to take a warp offline (for an event that hasn't started) without deleting it. Passwords let you share a semi-private destination with people you hand the password to. Running `/warp password <name>` with no password clears it.
+Costs draw through the DB-backed [economy](../modules/economy.md). Locking is the quickest way to take a warp offline (for an event that hasn't started) without deleting it. Passwords let you share a semi-private destination with people you hand the password to. Running `/warp password <name>` with no password clears it.
 
 <Callout type="info" title="Safety bypass">
 
@@ -152,6 +152,6 @@ The interesting per-warp settings (cost, effects, welcome, icon, gates) live on 
 
 - [🏠 Homes & Warps Commands](../commands/homes-warps.md) - The full command reference
 - [🌐 Player Warps](player-warps.md) - The player-owned counterpart
-- [💰 Economy](economy.md) - The currency behind warp costs
+- [💰 Economy](../modules/economy.md) - The currency behind warp costs
 - [🔐 Permission Reference](../permissions/reference.md) - Per-warp gates, cooldown tiers, and bypasses
 - [⚙️ Per-Module Config](../config/per-module.md) - The `modules/warps/config.conf` keys

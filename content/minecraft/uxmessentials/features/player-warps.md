@@ -4,7 +4,7 @@ order: 1220
 ---
 
 Player warps let ordinary players publish their own destinations for others to visit: a
-shop, a farm, a build worth showing off. They sit between [homes](homes.md) (fully
+shop, a farm, a build worth showing off. They sit between [homes](../modules/homes.md) (fully
 private) and [server warps](warps.md) (staff-owned, server-wide). A player warp is
 **owned by the player who created it**, counts against that player's personal quota, and
 carries its own access rules, price, category, rating and staff list.
@@ -135,7 +135,7 @@ payout {
 
 `auto-payout` only works for currencies that can be written to an offline player.
 Otherwise the takings **bank on the warp** and the owner collects with `/pwarp withdraw`.
-Everything here needs the [economy](economy.md) module; without a provider a priced warp
+Everything here needs the [economy](../modules/economy.md) module; without a provider a priced warp
 simply cannot be charged for.
 
 ---
@@ -387,6 +387,6 @@ warp is still decided by the role matrix above.
 
 - [🏠 Homes & Warps Commands](../commands/homes-warps.md) - The full command reference
 - [📍 Warps](warps.md) - The staff-owned, server-wide counterpart
-- [🏠 Homes](homes.md) - The fully-private counterpart
-- [💰 Economy](economy.md) - What entry fees, rent and sponsorship charge through
+- [🏠 Homes](../modules/homes.md) - The fully-private counterpart
+- [💰 Economy](../modules/economy.md) - What entry fees, rent and sponsorship charge through
 - [🔐 Permission Reference](../permissions/reference.md) - Quota tiers and bypass nodes

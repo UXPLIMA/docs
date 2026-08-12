@@ -110,5 +110,5 @@ components first; without NBT-API that raw-NBT path is simply skipped: no
 ## Next Steps
 
 - [🎛️ The Custom Menu Engine](../menus/engine.md): the full item-spec reference
-- [🎁 Kits](../features/kits.md): custom icons on kit entries
+- [🎁 Kits](../modules/kits.md): custom icons on kit entries
 - [🖼️ Holograms](../features/holograms.md): item and head displays

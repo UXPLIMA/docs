@@ -418,7 +418,7 @@ by the economy exactly as `/balance` prints it.
 
 <Callout type="warning" title="Needs the economy module">
 
-Auto-sell does nothing unless the [economy](economy.md) module is present: it needs
+Auto-sell does nothing unless the [economy](../modules/economy.md) module is present: it needs
 a wallet to credit. Price the materials you want sellable, and tell players to run
 `/autosell` to switch it on for themselves.
 
@@ -485,5 +485,5 @@ inspect the module via `/uxmess reload survival`.
 ## Next Steps
 
 - [🧩 Per-Module Config](../config/per-module.md): where `modules/survival/config.conf` lives and how it's loaded
-- [💰 Economy](economy.md): the wallet auto-sell credits into
+- [💰 Economy](../modules/economy.md): the wallet auto-sell credits into
 - [🔑 Permission Reference](../permissions/reference.md): the full `uxmessentials.survival.*` node list

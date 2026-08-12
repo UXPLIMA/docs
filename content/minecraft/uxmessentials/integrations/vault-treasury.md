@@ -113,6 +113,6 @@ a plugin-present guard, so a missing bridge loads none of their code.
 
 ## Next Steps
 
-- [💰 Economy Feature Guide](../features/economy.md): wallets, banks, loans and currencies
+- [💰 Economy Feature Guide](../modules/economy.md): wallets, banks, loans and currencies
 - [🎛️ Menu Actions & Requirements](../menus/actions-requirements.md): the currency backends in menus
 - [👨‍💻 Developer Overview](../developer/overview.md): consuming the `EconomyProvider` at runtime

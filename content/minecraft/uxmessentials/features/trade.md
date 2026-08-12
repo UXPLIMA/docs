@@ -264,7 +264,7 @@ it for a group to bar them.
 
 ## Next Steps
 
-- [💰 Economy](economy.md): the currencies and provider that back staked money
+- [💰 Economy](../modules/economy.md): the currencies and provider that back staked money
 - [🌐 Velocity & Redis](../cross-server/overview.md): the proxy and bus cross-server trading rides on
 - [🧩 Per-Module Config](../config/per-module.md): how `modules/trade/config.conf` fits the layout
 - [🔑 Permission Reference](../permissions/reference.md): the full node list

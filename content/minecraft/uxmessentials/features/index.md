@@ -1,20 +1,16 @@
 ---
 title: Feature Guides
 order: 120
-description: Homes, Warps, Player Warps, Teleport & RTP, Economy, Ranks & Prestige,
-  Kits, Vaults, Trade, Items & World, Moderation, Staff Mode, Vanish, Account Security,
+description: Warps, Player Warps, Teleport & RTP, Ranks & Prestige, Vaults, Trade, Items & World, Moderation, Staff Mode, Vanish, Account Security,
   Command Control, Villagers, Inventory Rollback, Holograms, NPCs, Worlds, Regions
   (WorldGuard), Scoreboard, Tablist & Nametags, Vote, Discord Link, Communication,
   Sitting & Poses, Survival Mechanics and Server Tweaks.
 ---
 
-- [Homes](homes.md): Homes are private teleport points that each player saves for themselves. In uxmEssentials they are deliberately GUI-first: instead of memorising /sethome, /delhome, and a pile of subcommands, a player types /home and manages everything from a slot grid. The single root command /home (aliases h, homes) is the whole surface: creating, deleting, renaming, re-iconing, and teleporting all happen inside the menu.
 - [Warps](warps.md)
 - [Player Warps](player-warps.md)
 - [Teleport & RTP](teleport-rtp.md): The teleport module is the busiest part of uxmEssentials. It bundles everything that moves a player around: player-to-player teleport requests, return-to-last-spot, random wilderness teleports, spawns, and the direct staff teleports: all governed by one shared warmup and cooldown system so the rules feel consistent no matter which command a player uses.
-- [Economy](economy.md): The economy module is the money backbone of the server: balances, /pay, the /baltop leaderboard, and an admin surface for adjusting it, plus optional banking, loans, banknotes, an item marketplace, and currency exchange. It is a multi-currency economy modelled the DDD way: a player owns a Wallet aggregate that holds one balance per Currency, and one currency ships as the default.
 - [Ranks & Prestige](ranks.md): The ranks module is the server's progression ladder: a chain of ranks a player climbs with /rankup, an optional /prestige reset at the very top, and an optional autorank scan that promotes eligible players automatically. The plugin tracks each player's current rank itself (a DB-backed pointer that survives a world rollback) so rankup does not depend on a permission plugin. A rank's rankup actions can set a LuckPerms group, run any command, or do nothing at all; that is entirely up to you.
-- [Kits](kits.md): Kits are pre-defined bundles of items (and, optionally, commands) that players claim with a single command. uxmEssentials kits are fully operator-authored, gated by permission, rate-limited by cooldown, previewable before claiming, and editable from an in-game GUI: no restart, no code.
 - [Vaults](vaults.md): Vaults are personal, chest-style item storage that each player carries with them. A player can own several vaults, name and re-icon them, and open them from anywhere.
 - [Trade](trade.md): The trade module is a safe way for two players to swap goods face to face: /trade \<player> opens a shared window where each side lays out items (and, with an economy wired, stakes money), and nothing changes hands until both players confirm. It replaces the old "drop it on the ground and hope" ritual, and can even move goods between two players on different backend servers behind a proxy. It's driven by a single HOCON file, modules/trade/config.conf.
 - [Items & World](item-world.md): The Item & World module (itemworld) is uxmEssentials' toolbox of item, block, entity and environment utilities: roughly the entire EssentialsX "everything else" surface, around 65 commands, in one module. It is the largest module in the plugin.

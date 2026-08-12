@@ -138,4 +138,4 @@ empty database it will treat that as the source of truth. A backup is your only 
 - [PostgreSQL Setup](postgresql.md): the same shape on Postgres.
 - [Cross-Server](../cross-server/overview.md): share this database across a network of backends.
 - [config.conf (Globals)](../config/global-config.md): every global setting alongside `storage`.
-- [Economy](../features/economy.md): the most write-sensitive module, and why balances are always DB-backed.
+- [Economy](../modules/economy.md): the most write-sensitive module, and why balances are always DB-backed.

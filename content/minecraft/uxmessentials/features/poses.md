@@ -249,5 +249,5 @@ With PlaceholderAPI installed:
 ## Next Steps
 
 - ⚙️ [Configuration](../config/overview.md): how uxmEssentials config works
-- 🧩 [The Module System](../modules/overview.md): turn modules on and off
+- 🧩 [The Module System](../modules/index.md): turn modules on and off
 - 🔑 [Permission Reference](../permissions/reference.md): every node

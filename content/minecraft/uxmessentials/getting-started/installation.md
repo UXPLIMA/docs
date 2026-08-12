@@ -143,14 +143,14 @@ start using `/home`, `/warp`, `/balance`, `/kit`, `/tpa` and more right away.
 
 **Cause:** Its module may be disabled.
 **Fix:** Run `/uxmess status`, then enable the module and reload it. See
-[Modules & Reloading](../modules/overview.md).
+[Modules & Reloading](../modules/index.md).
 
 ---
 
 ## Next Steps
 
 - [🧠 Core Concepts](concepts.md): the ideas that make everything click
-- [🧩 The Module System](../modules/overview.md): turn features on and off
+- [🧩 The Module System](../modules/index.md): turn features on and off
 - [📟 Commands Overview](../commands/overview.md): what you can type in-game
 - [📦 Migrating from EssentialsX](migration.md): bring your old data across
 - [💾 Database](../database/sqlite.md): SQLite by default, MySQL/PostgreSQL for networks

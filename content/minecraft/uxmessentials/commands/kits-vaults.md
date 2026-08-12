@@ -97,7 +97,7 @@ Certain items can be barred from vaults in the module config. Players without `u
 
 ## Next Steps
 
-- [🎒 Kits Feature Guide](../features/kits.md): cooldowns, first-join kits, and the editor GUI
+- [🎒 Kits Feature Guide](../modules/kits.md): cooldowns, first-join kits, and the editor GUI
 - [🗄️ Vaults Feature Guide](../features/vaults.md): quotas, pricing, and blacklist setup
 - [🔐 Permissions Reference](../permissions/reference.md): full node list, including numbered quota tiers
 - [⚙️ Renaming Commands](../config/commands-conf.md): change any command name, alias, or toggle

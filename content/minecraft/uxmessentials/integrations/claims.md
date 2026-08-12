@@ -171,7 +171,7 @@ claim plugin and never touch this key.
 
 ## Next Steps
 
-- [🏠 Homes](../features/homes.md) - Where the claim rules apply to `/sethome`
+- [🏠 Homes](../modules/homes.md) - Where the claim rules apply to `/sethome`
 - [🎲 Teleport & RTP](../features/teleport-rtp.md) - Safe-landing and the `/rtp` search
 - [🪑 Poses](../features/poses.md) - The sit/lay gating
 - [🗺️ Regions](../features/regions.md) - The WorldGuard region GUI

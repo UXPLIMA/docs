@@ -229,4 +229,4 @@ should hold it.
 - [🗺️ Regions Commands](../commands/regions.md): the full `/regions` command reference
 - [🔑 Permission Reference](../permissions/reference.md): the `uxmessentials.regions.*` nodes
 - [🧩 Per-Module Config](../config/per-module.md): where `modules/regions/config.conf` lives and how it's loaded
-- [🧩 The Module System](../modules/overview.md): turn modules on and off
+- [🧩 The Module System](../modules/index.md): turn modules on and off

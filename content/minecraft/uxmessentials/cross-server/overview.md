@@ -209,4 +209,4 @@ set it. Use the backend module's plugin-channel hider instead.
 - [MySQL / MariaDB Setup](../database/mysql.md): the shared database every backend requires.
 - [PostgreSQL Setup](../database/postgresql.md): the alternative shared backend.
 - [config.conf (Globals)](../config/global-config.md): the `network` block in full.
-- [Economy](../features/economy.md): how balances stay consistent (and double-spend-safe) across the cluster.
+- [Economy](../modules/economy.md): how balances stay consistent (and double-spend-safe) across the cluster.

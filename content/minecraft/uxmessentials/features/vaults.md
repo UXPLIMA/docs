@@ -176,4 +176,4 @@ migration. Vaults start empty.
 - [📟 Kits & Vaults Commands](../commands/kits-vaults.md) - Full command reference
 - [🔐 Permission Reference](../permissions/reference.md) - Vault quota tiers and bypass nodes
 - [⚙️ Per-Module Config](../config/per-module.md) - The `vaults` module block
-- [💰 Economy](economy.md) - Enable paid vault creation and refunds
+- [💰 Economy](../modules/economy.md) - Enable paid vault creation and refunds

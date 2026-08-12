@@ -226,6 +226,6 @@ Two files:
 
 - [🌀 Teleport & RTP Commands](../commands/teleport.md) - The full command reference
 - [📍 Warps](warps.md) - Fixed staff destinations
-- [🏠 Homes](homes.md) - Personal teleport points
+- [🏠 Homes](../modules/homes.md) - Personal teleport points
 - [🔐 Permission Reference](../permissions/reference.md) - Warmup/cooldown tiers and bypass nodes
 - [⚙️ Per-Module Config](../config/per-module.md) - Every `config.conf` and `rtp.conf` key

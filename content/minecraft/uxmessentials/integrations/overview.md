@@ -35,7 +35,7 @@ See [LuckPerms](luckperms.md) for the node reference.
 | EconomyShopGUI-Premium | The premium edition of the same shop, under its own plugin name. |
 
 With none of these installed the built-in economy runs on its own database. See
-[Vault & Treasury](vault-treasury.md), and [Economy](../features/economy.md) for the
+[Vault & Treasury](vault-treasury.md), and [Economy](../modules/economy.md) for the
 EconomyShopGUI price fallback.
 
 ---

@@ -131,7 +131,7 @@ holding state a consumer would read or offering an operation one would drive.
 ## Modules that are switched off
 
 uxmEssentials is a set of modules an operator can turn off one at a time, and [nine of them ship switched
-off](../modules/overview.md). A disabled module fires no events and holds no state, which from the outside looks
+off](../modules/index.md). A disabled module fires no events and holds no state, which from the outside looks
 exactly like a module that is simply idle.
 
 Ask, rather than infer:

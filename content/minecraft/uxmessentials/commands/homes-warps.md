@@ -140,7 +140,7 @@ Player warps are public destinations owned by individual players. Warps are keye
 
 ## Next Steps
 
-- [🏠 Homes](../features/homes.md) - Slot GUI, invites, and quotas explained
+- [🏠 Homes](../modules/homes.md) - Slot GUI, invites, and quotas explained
 - [📍 Warps](../features/warps.md) - Costs, locks, ratings, and the editor
 - [🌐 Player Warps](../features/player-warps.md) - Player-owned public destinations
 - [🔐 Permission Reference](../permissions/reference.md) - Quota tiers and bypass nodes

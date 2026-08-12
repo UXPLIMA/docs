@@ -56,6 +56,49 @@ Anything inside is ordinary Markdown.
 
 Raw HTML is refused, and so is any component outside the published set.
 
+## Writing standard
+
+Pages are reference material, not essays. A reader arrives with a question and leaves with an answer.
+
+1. **One page per thing.** A module is documented on its own page and nowhere else. No second page repeats its
+   commands, and no overview page restates what its page already says.
+2. **Fixed order on a module page:** the lead paragraph, `## Commands`, `## Permissions`, `## Settings`,
+   `## Placeholders`, `## Notes`, then a single `Related:` line. A section with nothing to say is left out
+   rather than filled.
+3. **600 words of hand-written prose per module page**, 900 on any other page. Generated tables do not count.
+4. **Tables before sentences.** Anything enumerable is a table. A sentence explains a rule a table cannot.
+5. **One `Callout` per page at most**, and only where the reader would otherwise make a costly mistake.
+6. **No decoration.** No `---` between sections, no marketing adjectives ("powerful", "cohesive",
+   "deliberately"), no analogies, no em dash. Second person, present tense.
+7. **Generated blocks are not edited by hand.** The text between `{/* generated:x */}` and
+   `{/* /generated */}` comes from the plugin's own catalogues, through `tools/docs/generate.py` in the plugin
+   repository. Editing it there is editing something that gets overwritten.
+
+A module page looks like this:
+
+```markdown
+---
+title: Homes
+order: 9070
+description: Private teleport points each player saves in a slot grid.
+---
+
+Two or three sentences: what the module does and what a player types to reach it.
+
+Module `homes` · enabled by default · `modules/homes/config.conf`
+
+## Commands
+
+{/* generated:commands */}
+{/* /generated */}
+
+## Notes
+
+- Three to six bullets: quotas, traps, integrations.
+
+Related: [Teleport](teleport.md), [Warps](warps.md)
+```
+
 ## Links
 
 Link to another page by its file, the way the repository is laid out:

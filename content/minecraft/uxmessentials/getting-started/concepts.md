@@ -41,7 +41,7 @@ command) need a restart, and the reload output says so rather than pretending
 otherwise. Message edits and the modules listed as `[OK]` apply immediately.
 
 Your data is **never** deleted by disabling a module. See
-[The Module System](../modules/overview.md).
+[The Module System](../modules/index.md).
 
 ---
 
@@ -146,7 +146,7 @@ database, by default, is a **zero-setup embedded SQLite** file. See
 
 ## Next Steps
 
-- [🧩 The Module System](../modules/overview.md): the full 23-module list and how to toggle them
+- [🧩 The Module System](../modules/index.md): the full 23-module list and how to toggle them
 - [📟 Commands Overview](../commands/overview.md): everything you can type in-game
 - [⚙️ Configuration Overview](../config/overview.md): a deeper look at the config tree
 - [🔑 Permission Reference](../permissions/reference.md): every node and quota

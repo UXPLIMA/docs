@@ -139,6 +139,6 @@ Commands marked **†**: `/wallet`, `/sellall`, `/withdraw`, `/deposit`, `/bank`
 
 ## Next Steps
 
-- [💰 Economy](../features/economy.md) - Currencies, banks, loans, worth, and provider integration
+- [💰 Economy](../modules/economy.md) - Currencies, banks, loans, worth, and provider integration
 - [🔐 Permission Reference](../permissions/reference.md) - Per-currency gates and bypass nodes
 - [⚙️ Command Configuration](../config/commands-conf.md) - Rename or disable economy commands

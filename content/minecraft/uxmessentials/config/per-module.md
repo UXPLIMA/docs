@@ -61,7 +61,7 @@ Most modules start `enabled = true`. Ten start `enabled = false`: the HUD trio
 `regions`), the snapshot-writing `invrollback`, and the one-shot EssentialsX
 importer (`migration`). Each one says why in the comment at the top of its own file.
 `/uxmess status` prints the live state of every module, and
-[Modules & Reloading](../modules/overview.md) has the full roster with the reasons.
+[Modules & Reloading](../modules/index.md) has the full roster with the reasons.
 
 ---
 
@@ -196,8 +196,8 @@ module refuses to reload and the log points at the file.
 
 This page covers how the files are laid out. For what each key actually does per
 feature, jump to the matching Feature Guide, for example
-[Homes](../features/homes.md), [Teleport & RTP](../features/teleport-rtp.md),
-[Economy](../features/economy.md), [Kits](../features/kits.md), or
+[Homes](../modules/homes.md), [Teleport & RTP](../features/teleport-rtp.md),
+[Economy](../modules/economy.md), [Kits](../modules/kits.md), or
 [Moderation](../features/moderation.md).
 
 </Callout>
@@ -206,7 +206,7 @@ feature, jump to the matching Feature Guide, for example
 
 ## Next Steps
 
-- [Modules & Reloading](../modules/overview.md): the module roster and reload model.
+- [Modules & Reloading](../modules/index.md): the module roster and reload model.
 - [config.conf (Globals)](global-config.md): the settings that are *not* per-module.
 - [Renaming Commands](commands-conf.md): rename or disable any command per install.
 - [Permission Reference](../permissions/reference.md): the nodes each module reads.

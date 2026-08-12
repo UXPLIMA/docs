@@ -238,6 +238,6 @@ Everything else about the module is decided entirely by the `config.conf` above.
 ## Next Steps
 
 - [🧩 Per-Module Config](../config/per-module.md): where `modules/servertweaks/config.conf` lives and how it's loaded
-- [🧩 The Module System](../modules/overview.md): turn modules on and off
+- [🧩 The Module System](../modules/index.md): turn modules on and off
 - [🌐 Cross-Server: Velocity & Redis](../cross-server/overview.md): how uxmEssentials fits a proxied network
 - [🔑 Permission Reference](../permissions/reference.md): every node

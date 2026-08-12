@@ -340,6 +340,6 @@ or inspect the module via `/uxmess reload ranks`.
 ## Next Steps
 
 - [🎛️ Actions & Requirements](../menus/actions-requirements.md): the full click-action grammar rank actions use
-- [💰 Economy](economy.md): the wallet a rank's `cost` is charged against
+- [💰 Economy](../modules/economy.md): the wallet a rank's `cost` is charged against
 - [🧩 Per-Module Config](../config/per-module.md): where `modules/ranks/` lives and how it's loaded
 - [🔑 Permission Reference](../permissions/reference.md): the `uxmessentials.ranks.*` nodes
