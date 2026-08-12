@@ -69,7 +69,7 @@ Each entry under `items { }` is one tile, keyed by an id you choose.
 
 | Key | Meaning |
 |---|---|
-| `material` | The icon. A literal (`DIAMOND_SWORD`), a `%placeholder%`, or a prefixed icon spec (`skull:`, `basehead:`, `hdb:`, `itemsadder:`, `oraxen:`, `nexo:`, `mmoitems:`). |
+| `material` | The icon. A literal (`DIAMOND_SWORD`), a `%placeholder%`, or a prefixed icon spec (`skull:`, `basehead:`, `hdb:`, `itemsadder:`, `oraxen:`, `nexo:`, `craftengine:`, `mmoitems:`). |
 | `slot` / `slots` | Where it sits: a single slot, a list, or ranges. |
 | `priority` | Tie-break when two items claim the same slot; higher wins. |
 | `name` | Display name (MiniMessage). |

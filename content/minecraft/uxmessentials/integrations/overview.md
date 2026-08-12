@@ -4,7 +4,7 @@ order: 1480
 description: Every plugin uxmEssentials detects, by family, and what each one turns on.
 ---
 
-uxmEssentials detects 50 other plugins. Every one is optional and none is switched on by hand.
+uxmEssentials detects 51 other plugins. Every one is optional and none is switched on by hand.
 
 Land claim plugins are the one family where several can run at once. All of them are consulted
 and their answers combined; see [Land Claims](claims.md) for the combine modes.
@@ -50,6 +50,7 @@ See [PlaceholderAPI](placeholderapi.md) for the full placeholder list we publish
 | ItemsAdder | ItemsAdder custom items as menu icons. |
 | Oraxen | Oraxen custom items as menu icons. |
 | Nexo | Nexo custom items as menu icons. |
+| CraftEngine | CraftEngine custom items as menu icons. |
 | MMOItems | MMOItems items as menu icons. |
 | ExecutableItems | ExecutableItems items as menu icons. |
 
@@ -161,7 +162,7 @@ same way as this page:
 
 ```
 [OK] soft-dependencies
-     3/50 integrations present (economy: Vault; placeholders: PlaceholderAPI; land claims: Lands)
+     3/51 integrations present (economy: Vault; placeholders: PlaceholderAPI; land claims: Lands)
 ```
 
 If a plugin you installed is missing from that line, it either failed its own startup (check

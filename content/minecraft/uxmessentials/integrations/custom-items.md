@@ -1,12 +1,12 @@
 ---
 title: Custom Items & Heads
 order: 1540
-description: Using ItemsAdder, Oraxen, Nexo, MMOItems, ExecutableItems and custom heads as icons.
+description: Using ItemsAdder, Oraxen, Nexo, CraftEngine, MMOItems, ExecutableItems and custom heads as icons.
 ---
 
 Anywhere uxmEssentials asks for a material you are not limited to vanilla items. A `provider:id` prefix
-pulls in custom items from ItemsAdder, Oraxen, Nexo, MMOItems or ExecutableItems, and custom heads from
-HeadDatabase, base64 textures or player skins.
+pulls in custom items from ItemsAdder, Oraxen, Nexo, CraftEngine, MMOItems or ExecutableItems, and custom heads
+from HeadDatabase, base64 textures or player skins.
 
 ## Custom Item Providers
 
@@ -17,6 +17,7 @@ Prefix the material with the provider name and the item's id:
 | `itemsadder:` | ItemsAdder | `itemsadder:ruby_sword` |
 | `oraxen:` | Oraxen | `oraxen:emerald_pickaxe` |
 | `nexo:` | Nexo | `nexo:amethyst_axe` |
+| `craftengine:` | CraftEngine | `craftengine:default:topaz` |
 | `mmoitems:` | MMOItems | `mmoitems:SWORD:cutlass` |
 | `ei:` | ExecutableItems | `ei:magic_wand` |
 
@@ -27,7 +28,9 @@ that plugin is actually present.
 
 The prefix vocabulary above is fixed, but the part *after* the colon is whatever
 id the source plugin expects (ItemsAdder namespaced ids, MMOItems type/id pairs,
-...). Copy the id from that plugin's own catalog.
+...). Copy the id from that plugin's own catalog. CraftEngine takes either form:
+`craftengine:default:topaz` names the namespace, `craftengine:topaz` lets
+CraftEngine find the path in whichever pack defines it.
 
 </Callout>
 
@@ -84,8 +87,8 @@ components first; without NBT-API that raw-NBT path is simply skipped: no
 ## Setup Checklist
 
 1. Install whichever item providers you use (**ItemsAdder**, **Oraxen**, **Nexo**,
-   **MMOItems**, **ExecutableItems**) and/or **HeadDatabase**: no uxmEssentials config
-   needed.
+   **CraftEngine**, **MMOItems**, **ExecutableItems**) and/or **HeadDatabase**: no uxmEssentials
+   config needed.
 2. Reference items with `provider:id` in menu specs, kit editors and hologram head
    displays.
 3. Missing providers degrade gracefully to plain materials, so a menu is never
