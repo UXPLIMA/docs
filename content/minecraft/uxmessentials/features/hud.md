@@ -102,6 +102,11 @@ All three modules share the same content grammar:
 - **Condition-selected formats**: a module can carry several formats and pick one
   per player by condition, so staff, VIPs and default players each see a tailored
   HUD.
+- **Which format won**: `%uxmessentials_scoreboard_board%`,
+  `%uxmessentials_tablist_format%` and `%uxmessentials_nametags_format%` each name
+  the format the player is actually being drawn from right now, so a chat prefix or
+  a hologram line can agree with what they see. A player matching no format reads a
+  dash, and `tablist_shown` / `nametags_shown` answer the same question as yes/no.
 
 <Callout type="tip" title="Start from the shipped defaults">
 

@@ -166,6 +166,7 @@ Player-owned warps are keyed by `(owner, name)`: two players may each keep a `ba
 | `uxmessentials.pwarp.bypass.cost` | `op` | Use a priced player warp without paying its entry cost (skips the charge on `/pwarp`). |
 | `uxmessentials.pwarp.bypass.safety` | `op` | Use a player warp whose destination is unsafe (skips the safe-landing check on `/pwarp`). |
 | `uxmessentials.pwarp.favourite` | `true` | `/pwarp` favourite\|unfavourite `<name>` to star or un-star a player warp. |
+| `uxmessentials.pwarp.edit` | `true` | `/pwarp` edit `<name>` to open one warp's property editor, the click-driven form of the typed verbs. Held by default alongside the use node. |
 | `uxmessentials.pwarp.gui` | `op` | Manage every player's warps in the `/pwarp` GUI (a player without it edits only their own). |
 | `uxmessentials.pwarp.info` | `true` | `/pwarp` info `<name>` to show a player warp's owner, access, price, visits, and rating. |
 | `uxmessentials.pwarp.list` | `true` | `/pwarps [player]` to list your warps or a player's public warps. |
@@ -192,11 +193,16 @@ Balances are DB-backed and routed through the shared `EconomyProvider` port; eco
 | `uxmessentials.economy.baltop` | `true` | `/baltop [currency] [page]` to view the top balances. |
 | `uxmessentials.economy.baltop.exempt` | `false` | Marks the holder as hidden from every `/baltop` leaderboard. |
 | `uxmessentials.economy.bank` | `true` | `/bank`: open the bank panel to move money between your wallet and your bank balance. |
+| `uxmessentials.economy.bank.create` | `true` | `/bank` create `<name>`: open a new shared bank account. Held by default alongside the bank node. |
+| `uxmessentials.economy.bank.deposit` | `true` | `/bank` deposit: pay into a shared bank account. Held by default alongside the bank node. |
+| `uxmessentials.economy.bank.withdraw` | `true` | `/bank` withdraw: take money out of a shared bank account; the capability worth withholding from junior members. |
+| `uxmessentials.economy.bank.members` | `true` | `/bank` addmember and removemember: change who may use a shared bank account. |
 | `uxmessentials.economy.bypasscmdcost` | `op` | Skip the configured per-command economy charge (command-costs in economy.conf). |
 | `uxmessentials.economy.currency.<currency>` | `label` | Use one currency that is configured to require a permission. |
 | `uxmessentials.economy.deposit` | `true` | `/deposit <amount> [currency]`: move money from your wallet into your bank balance. |
 | `uxmessentials.economy.exchange` | `true` | `/exchange <amount> <from> <to>`: convert between two currencies at the configured rate. |
 | `uxmessentials.economy.loan` | `false` | `/loan`: take, review and repay a loan against the configured limit and interest. |
+| `uxmessentials.economy.loan.take` | `true` | `/loan` take: borrow. Held by default alongside the loan node, so negating it leaves a borrower able to check and repay what they already owe but not to take more. |
 | `uxmessentials.economy.pay` | `true` | `/pay <player> <amount> [currency]` and `/payconfirm` to transfer funds. |
 | `uxmessentials.economy.pay.toggle` | `true` | `/paytoggle` to refuse all incoming `/pay` transfers. |
 | `uxmessentials.economy.payall` | `op` | `/payall <amount> [currency]`: pay every online player from your own wallet. |
@@ -324,6 +330,26 @@ Toggleable flags and apply-once effects. Every `[player]` target form additional
 | `uxmessentials.clearinventory.use` | `op` | `/clearinventory` (`/ci /clear`) `[player]` to empty a player's inventory. |
 | `uxmessentials.compass.use` | `true` | `/compass` to show the direction you are facing. |
 | `uxmessentials.module.playerstate` | `op` | Hot-reload / inspect the playerstate module (flight, god mode, speed, health and the rest). |
+| `uxmessentials.air.others` | `op` | `/air` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.burn.others` | `op` | `/burn` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.clearinventory.others` | `op` | `/clearinventory` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.endersee.others` | `op` | `/endersee` to open another player ender chest. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.exp.others` | `op` | `/exp` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.extinguish.others` | `op` | `/extinguish` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.feed.others` | `op` | `/feed` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.fly.others` | `op` | `/fly` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.foodlevel.others` | `op` | `/foodlevel` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.gamemode.others` | `op` | `/gamemode` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.getpos.others` | `op` | `/getpos` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.god.others` | `op` | `/god` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.heal.others` | `op` | `/heal` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.health.others` | `op` | `/health` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.ice.others` | `op` | `/ice` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.invsee.others` | `op` | `/invsee` to open another player inventory. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.ping.others` | `op` | `/ping` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.playtime.others` | `op` | `/playtime` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.rest.others` | `op` | `/rest` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.speed.others` | `op` | `/speed` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.playerstate.others` | `op` | Use any playerstate command with a `[player]` target other than yourself. |
 
 ---
@@ -357,6 +383,11 @@ Connection-message policies, the rotating announcer, and info pages. Operator-au
 | Node | Default | What it grants |
 |------|---------|----------------|
 | `uxmessentials.announce.admin` | `op` | `/announce` reload\|list\|preview\|toggle to manage the rotating announcer. |
+| `uxmessentials.announce.admin.editor` | `true` | `/announce` editor to author announcements in the GUI. |
+| `uxmessentials.announce.admin.reload` | `true` | `/announce` reload to re-read announcer.conf and re-arm the rotation. |
+| `uxmessentials.announce.admin.list` | `true` | `/announce` list to read the rotation and the channels each announcement pushes to. |
+| `uxmessentials.announce.admin.preview` | `true` | `/announce` preview `<id>` to show one announcement to yourself alone. |
+| `uxmessentials.announce.admin.toggle` | `true` | `/announce` toggle to stop or resume receiving the rotating announcements. |
 | `uxmessentials.communication.broadcast` | `op` | `/broadcast` to send a one-off announcement to all online players. |
 | `uxmessentials.communication.broadcasttoggle` | `true` | `/broadcasttoggle` to stop or resume receiving the rotating server announcements. |
 | `uxmessentials.communication.broadcastworld` | `op` | `/broadcastworld` (alias `/bcw`) to send a one-off announcement only to players in your world. |
@@ -529,6 +560,15 @@ The item/world toolbox carries roughly 65 verbs, each with its own node; the ful
 | `uxmessentials.itemworld.give.<item>` | `label` | Give one specific item through `/give`, when per-item gating is switched on. |
 | `uxmessentials.itemworld.gui` | `op` | Open the itemworld utilities hub (`/itemworld` gui and on the `/uxmess` gui hub). |
 | `uxmessentials.itemworld.itemedit` | `op` | `/itemedit <rename\|resetname\|lore\|enchant\|unenchant\|flag\|attribute\|durability\|repair\|unbreakable\|custommodeldata>`: edit the held item's name, lore and meta (item-edit.enabled). |
+| `uxmessentials.itemworld.itemedit.rename` | `true` | `/itemedit` rename and resetname. Defaults on for anyone who already holds the editor node; negate it to withhold just this verb. |
+| `uxmessentials.itemworld.itemedit.lore` | `true` | `/itemedit` lore add\|set\|insert\|remove\|clear. Defaults on for an editor-node holder; negate it to withhold just this verb. |
+| `uxmessentials.itemworld.itemedit.enchant` | `true` | `/itemedit` enchant and unenchant. Defaults on for an editor-node holder; negate it to withhold just this verb. |
+| `uxmessentials.itemworld.itemedit.flag` | `true` | `/itemedit` flag: toggle an item flag such as HIDE_ENCHANTS. Defaults on for an editor-node holder. |
+| `uxmessentials.itemworld.itemedit.attribute` | `true` | `/itemedit` attribute add\|remove: edit attribute modifiers. Defaults on for an editor-node holder; the verb most worth withholding on a survival server. |
+| `uxmessentials.itemworld.itemedit.durability` | `true` | `/itemedit` durability and repair. Defaults on for an editor-node holder; negate it to withhold just this verb. |
+| `uxmessentials.itemworld.itemedit.unbreakable` | `true` | `/itemedit` unbreakable: mark the held item unbreakable. Defaults on for an editor-node holder. |
+| `uxmessentials.itemworld.itemedit.model` | `true` | `/itemedit` custommodeldata: set or clear the resource-pack model selector. Defaults on for an editor-node holder. |
+| `uxmessentials.itemworld.itemedit.gui` | `true` | A bare `/itemedit`, which opens the click-driven editor. Defaults on for an editor-node holder; negate it to leave only the typed verbs. |
 | `uxmessentials.itemworld.shulker` | `op` | Right-click a shulker box in the inventory to open its contents in place (shulkers.enabled). |
 | `uxmessentials.itemworld.spawnmob.<mob>` | `label` | Spawn one specific mob through `/spawnmob`, when per-mob gating is switched on. |
 | `uxmessentials.module.itemworld` | `op` | Hot-reload / inspect the itemworld module and its sub-feature groups. |
@@ -587,6 +627,14 @@ Named, world-placed native-Display holograms. The whole `/hologram` surface is g
 | Node | Default | What it grants |
 |------|---------|----------------|
 | `uxmessentials.hologram.use` | `op` | `/hologram` to create, edit, move, list and delete native-Display holograms. |
+| `uxmessentials.hologram.create` | `true` | `/hologram` create and copy. Held by default alongside the base node; negate it to leave an operator editing only the holograms that already exist. |
+| `uxmessentials.hologram.delete` | `true` | `/hologram` delete. Held by default alongside the base node; the capability most worth negating for build staff. |
+| `uxmessentials.hologram.move` | `true` | `/hologram` movehere, moveto, center, teleport and rotate: change where a hologram sits. |
+| `uxmessentials.hologram.appearance` | `true` | `/hologram` billboard, background, glow, opacity, shadow, linewidth, viewrange, alignment, seethrough, growup, item, block, head and entity: change how a hologram looks. |
+| `uxmessentials.hologram.visibility` | `true` | `/hologram` visibility, visibilitydistance, show, hide, blacklist and unblacklist: change who sees a hologram. |
+| `uxmessentials.hologram.action` | `true` | `/hologram` action and clickcommand: change what a hologram runs when clicked. |
+| `uxmessentials.hologram.view` | `true` | `/hologram` list, info and nearby: read-only inspection. |
+| `uxmessentials.hologram.edit` | `true` | The line and page content of a hologram (addline, setline, insertline, removeline, page, leaderboard, linknpc, unlinknpc). |
 | `uxmessentials.holograms.gui` | `op` | `/hologram` (no args) opens the holograms management GUI. |
 | `uxmessentials.module.holograms` | `op` | Hot-reload / inspect the holograms module (native-Display holograms behind `/hologram`). |
 
@@ -602,6 +650,13 @@ Server-wide packet fake-player/entity NPCs. The `/npc` command is an operator su
 |------|---------|----------------|
 | `uxmessentials.module.npc` | `op` | Hot-reload / inspect the npc module (server-wide fake-player NPCs behind `/npc`). |
 | `uxmessentials.npc.admin` | `op` | `/npc` to create, delete, list, move, re-skin, and bind the click command of fake-player NPCs. |
+| `uxmessentials.npc.create` | `true` | `/npc` create and `/npc` copy. Held by default alongside the admin node; negate it to leave an operator editing only the NPCs that already exist. |
+| `uxmessentials.npc.delete` | `true` | `/npc` delete. Held by default alongside the admin node; the capability most worth negating for build staff. |
+| `uxmessentials.npc.move` | `true` | `/npc` movehere, moveto, teleport, center and fix: change where an NPC stands. |
+| `uxmessentials.npc.appearance` | `true` | `/npc` skin, skinslim, type, equip, glow, pose, scale and displayname: change how an NPC looks. |
+| `uxmessentials.npc.action` | `true` | `/npc` command and `/npc` action: change what an NPC runs when clicked. |
+| `uxmessentials.npc.view` | `true` | `/npc` list, info, nearby and help: read-only inspection. |
+| `uxmessentials.npc.edit` | `true` | Every remaining `/npc` setting (data, state, cooldown, mirror, collidable, showintab, view and turn distance). |
 | `uxmessentials.npc.gui` | `op` | `/npc` (no args) opens the NPC management GUI. |
 | `uxmessentials.npc.limit.<n>` | `quota` | How many NPCs you may own; the largest tier held wins. |
 
