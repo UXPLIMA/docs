@@ -24,10 +24,8 @@ quotes are load-bearing.
 
 <Callout type="danger" title="There is no `modules.conf`">
 
-Modules are **not** enabled from a central file: that file does not exist. Each
-module is toggled by the `enabled` key at the top of its own
-`modules/<module>/config.conf`. Older notes that mention a `modules.conf`
-switchboard are stale.
+There is no central switchboard file. A module is toggled by the `enabled` key at the top of its own
+`modules/<module>/config.conf`.
 
 </Callout>
 

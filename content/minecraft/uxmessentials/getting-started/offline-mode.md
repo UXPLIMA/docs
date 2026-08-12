@@ -27,7 +27,7 @@ behaviour, not something a plugin chooses.
 
 ## Resolving a Name to an Account
 
-This is the part that used to bite. When a command takes a player name, the server can
+When a command takes a player name, the server can
 normally translate it through its own name cache, so `/ban steve` finds `Steve`. But the
 server only consults that cache **in online mode**. In offline mode it skips the cache
 and derives a UUID from exactly what was typed, so `/ban steve` would have pointed at an
