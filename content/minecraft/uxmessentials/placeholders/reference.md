@@ -6,7 +6,7 @@ description: Every %uxmessentials_% placeholder this build answers, area by area
 
 ## Overview
 
-With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 223 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
+With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 236 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
 
 Every key is declared once inside the plugin, in a single catalogue that a build-time guard resolves against the resolver in both directions. That is what this page is generated from, so a key listed here is a key this build answers.
 
@@ -102,6 +102,9 @@ Always answered, whatever is enabled: the kernel owns these. The account, sessio
 | `%uxmessentials_server_uptime_formatted%` | global | How long the server has been up, in the compact 1h30m form. |
 | `%uxmessentials_server_version%` | global | The Minecraft version the server runs. |
 | `%uxmessentials_server_world_players_<world>%` | global | How many players are in one named world; the dash when no such world is loaded. |
+| `%uxmessentials_server_world_time_<world>%` | global | The time of day in one named world, in ticks; the dash when no such world is loaded. |
+| `%uxmessentials_server_world_time_formatted_<world>%` | global | The same time as a 24-hour clock, where tick 0 is 06:00. |
+| `%uxmessentials_server_world_weather_<world>%` | global | The sky over one named world: clear, rain or thunder. |
 
 ---
 
@@ -244,6 +247,12 @@ Sanctions: whether they are held, why, by whom, and for how long.
 | `%uxmessentials_moderation_ban_remaining_formatted%` | player | The same remaining ban, under the spelling a config may prefer. |
 | `%uxmessentials_moderation_banned%` | player | Whether the player is banned (yes/no). |
 | `%uxmessentials_moderation_frozen%` | session | Whether the player is frozen in place by staff (yes/no). |
+| `%uxmessentials_moderation_jail_issuer%` | player | Who jailed the player. |
+| `%uxmessentials_moderation_jail_name%` | player | The named jail the player is held in. |
+| `%uxmessentials_moderation_jail_online_only%` | player | Whether the jail counts down on online time rather than the wall clock (yes/no). |
+| `%uxmessentials_moderation_jail_reason%` | player | Why the player was jailed. |
+| `%uxmessentials_moderation_jail_remaining%` | player | How long is left on the jail, in whole seconds; permanent when only an unjail lifts it. |
+| `%uxmessentials_moderation_jail_remaining_formatted%` | player | The same remaining jail, in the compact 1d2h form. |
 | `%uxmessentials_moderation_jailed%` | player | Whether the player is jailed (yes/no). |
 | `%uxmessentials_moderation_mute_issuer%` | player | Who muted the player. |
 | `%uxmessentials_moderation_mute_reason%` | player | Why the player was muted. |
@@ -343,6 +352,10 @@ Where the player stands on the ladder.
 | `%uxmessentials_prestige%` | player | How many times the player has prestiged. |
 | `%uxmessentials_rank%` | player | The player's current rank. |
 | `%uxmessentials_rank_next%` | player | The rank above the player's, or max when they are at the top of the ladder. |
+| `%uxmessentials_rank_next_cost%` | player | What the next rankup charges, or the dash at the top of the ladder. |
+| `%uxmessentials_rank_position%` | player | Which rung of the ladder the player stands on, counting from one. |
+| `%uxmessentials_rank_progress%` | player | How far up the ladder the player stands, as a whole percentage. |
+| `%uxmessentials_rank_total%` | player | How many rungs the ladder holds. |
 
 ---
 
