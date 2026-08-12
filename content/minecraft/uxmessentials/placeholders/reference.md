@@ -6,7 +6,7 @@ description: Every %uxmessentials_% placeholder this build answers, area by area
 
 ## Overview
 
-With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 170 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
+With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 216 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
 
 Every key is declared once inside the plugin, in a single catalogue that a build-time guard resolves against the resolver in both directions. That is what this page is generated from, so a key listed here is a key this build answers.
 
@@ -30,12 +30,58 @@ Keys written with an open segment, like `%uxmessentials_kit_cost_<kit>%`, are fa
 
 ---
 
-## Server
+## Player & Server
 
-Always answered, whatever is enabled: the kernel owns these.
+Always answered, whatever is enabled: the kernel owns these. The account, session, held-item and server keys need no feature module at all.
 
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
+| `%uxmessentials_hand_amount%` | session | How many are in the main-hand stack. |
+| `%uxmessentials_hand_damage%` | session | How much durability the main-hand item has spent. |
+| `%uxmessentials_hand_durability%` | session | How much durability the main-hand item has left. |
+| `%uxmessentials_hand_durability_max%` | session | The main-hand item's durability ceiling. |
+| `%uxmessentials_hand_enchants%` | session | The enchantments on the main-hand item, each as name and level, comma separated. |
+| `%uxmessentials_hand_enchants_count%` | session | How many enchantments the main-hand item carries. |
+| `%uxmessentials_hand_lore%` | session | The lore of the main-hand item, joined into one line. |
+| `%uxmessentials_hand_model%` | session | The custom model data on the main-hand item. |
+| `%uxmessentials_hand_name%` | session | The display name of the item in the main hand, or its material when it carries none. |
+| `%uxmessentials_hand_type%` | session | The material of the item in the main hand. |
+| `%uxmessentials_itemcount_<material>%` | session | How many of one material the player carries, counting every stack in their inventory. |
+| `%uxmessentials_offhand_amount%` | session | How many are in the off-hand stack. |
+| `%uxmessentials_offhand_damage%` | session | How much durability the off-hand item has spent. |
+| `%uxmessentials_offhand_durability%` | session | How much durability the off-hand item has left. |
+| `%uxmessentials_offhand_durability_max%` | session | The off-hand item's durability ceiling. |
+| `%uxmessentials_offhand_enchants%` | session | The enchantments on the off-hand item, each as name and level, comma separated. |
+| `%uxmessentials_offhand_enchants_count%` | session | How many enchantments the off-hand item carries. |
+| `%uxmessentials_offhand_lore%` | session | The lore of the off-hand item, joined into one line. |
+| `%uxmessentials_offhand_model%` | session | The custom model data on the off-hand item. |
+| `%uxmessentials_offhand_name%` | session | The display name of the item in the off hand, or its material when it carries none. |
+| `%uxmessentials_offhand_type%` | session | The material of the item in the off hand. |
+| `%uxmessentials_p_<name>_<key>%` | player | Any other key on this page, answered about the named player instead of the one reading it; the name is resolved the same way a command resolves it, so it works offline and on a cracked server. |
+| `%uxmessentials_player_banned%` | player | Whether the server's own ban list holds the account (yes/no); the moderation keys read the plugin's. |
+| `%uxmessentials_player_exp_percent%` | session | How far through the current experience level the player is, as a whole percentage. |
+| `%uxmessentials_player_exp_progress%` | session | How far through the current experience level the player is, from 0 to 1. |
+| `%uxmessentials_player_exp_to_next%` | session | How many experience points remain before the next level. |
+| `%uxmessentials_player_exp_total%` | session | The experience points the player holds in total. |
+| `%uxmessentials_player_first_join%` | player | When the account first joined, as a date and time. |
+| `%uxmessentials_player_first_join_date%` | player | The same first-join stamp, under the spelling a config may prefer. |
+| `%uxmessentials_player_last_seen%` | player | When the account was last connected; empty while it is connected now. |
+| `%uxmessentials_player_last_seen_date%` | player | The same last-seen stamp, under the spelling a config may prefer. |
+| `%uxmessentials_player_level%` | session | The player's experience level. |
+| `%uxmessentials_player_op%` | session | Whether the server treats the player as an operator (yes/no). |
+| `%uxmessentials_player_ping%` | session | The player's round-trip time, in milliseconds. |
+| `%uxmessentials_player_playtime%` | player | How long the account has played, in whole hours. |
+| `%uxmessentials_player_playtime_days%` | player | How long the account has played, in whole days. |
+| `%uxmessentials_player_playtime_formatted%` | player | How long the account has played, in the compact 1d2h form. |
+| `%uxmessentials_player_playtime_hours%` | player | How long the account has played, in whole hours. |
+| `%uxmessentials_player_playtime_minutes%` | player | How long the account has played, in whole minutes. |
+| `%uxmessentials_player_playtime_seconds%` | player | How long the account has played, in whole seconds. |
+| `%uxmessentials_player_sneaking%` | session | Whether the player is crouching (yes/no). |
+| `%uxmessentials_player_sprinting%` | session | Whether the player is running (yes/no). |
+| `%uxmessentials_player_world%` | session | The world the player stands in. |
+| `%uxmessentials_player_world_time%` | session | The time of day in the player's world, in ticks. |
+| `%uxmessentials_player_world_time_formatted%` | session | The time of day in the player's world as a 24-hour clock, where tick 0 is 06:00. |
+| `%uxmessentials_player_world_weather%` | session | The sky in the player's world: clear, rain or thunder. |
 | `%uxmessentials_server_max_players%` | global | The server's player slot count. |
 | `%uxmessentials_server_online%` | global | How many players are connected. |
 | `%uxmessentials_server_ram_free%` | global | Heap still free, in whole megabytes. |
