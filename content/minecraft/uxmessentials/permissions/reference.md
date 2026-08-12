@@ -273,12 +273,13 @@ Toggleable flags and apply-once effects. Every `[player]` target form additional
 | `uxmessentials.fly.use` | `op` | `/fly [player]` to toggle flight. |
 | `uxmessentials.foodlevel.use` | `op` | `/foodlevel <amount> [player]` to set a player's food level. |
 | `uxmessentials.gamemode.use` | `op` | `/gamemode <mode> [player]` and the `/gmc /gms /gma /gmsp` aliases. |
-| `uxmessentials.glow.use` | `op` | `/glow` to toggle a glowing outline on yourself. |
+| `uxmessentials.glow.color` | `op` | `/glow <color>` to pick the colour of the outline. Without it, `/glow` still toggles the plain one. |
+| `uxmessentials.glow.use` | `op` | `/glow [color] [player]` to toggle a glowing outline. |
 | `uxmessentials.god.use` | `op` | `/god [player]` to toggle damage immunity. |
 | `uxmessentials.heal.use` | `op` | `/heal [player]` to restore health. |
 | `uxmessentials.health.use` | `op` | `/health <amount> [player]` to set a player's health. |
-| `uxmessentials.ice.use` | `op` | `/ice [player] [seconds]` to freeze a player (inverse of `/burn`). |
-| `uxmessentials.nightvision.use` | `op` | `/nightvision` (`/nv`) to toggle a night-vision effect on yourself. |
+| `uxmessentials.ice.use` | `op` | `/ice [seconds] [player]` to freeze a player (inverse of `/burn`). |
+| `uxmessentials.nightvision.use` | `op` | `/nightvision` (`/nv`) `[player]` to toggle a night-vision effect. |
 | `uxmessentials.playerstate.fly.allworlds` | `op` | Keep flight in worlds where flying is switched off. |
 | `uxmessentials.ptime.use` | `op` | `/ptime <value\|reset>` to set a per-player client-side time. |
 | `uxmessentials.pweather.use` | `op` | `/pweather <clear\|rain\|reset>` to set a per-player client-side weather. |
@@ -314,11 +315,13 @@ Toggleable flags and apply-once effects. Every `[player]` target form additional
 | `uxmessentials.foodlevel.others` | `op` | `/foodlevel` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.gamemode.others` | `op` | `/gamemode` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.getpos.others` | `op` | `/getpos` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.glow.others` | `op` | `/glow` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.god.others` | `op` | `/god` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.heal.others` | `op` | `/heal` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.health.others` | `op` | `/health` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.ice.others` | `op` | `/ice` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.invsee.others` | `op` | `/invsee` to open another player inventory. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.nightvision.others` | `op` | `/nightvision` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.ping.others` | `op` | `/ping` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.playtime.others` | `op` | `/playtime` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.rest.others` | `op` | `/rest` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |

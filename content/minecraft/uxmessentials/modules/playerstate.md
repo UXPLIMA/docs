@@ -32,7 +32,7 @@ Module `playerstate` · enabled by default · `modules/playerstate/config.conf`
 | `/foodlevel` | Set a player's food level. | `uxmessentials.foodlevel.use` |
 | `/gamemode` (`/gm`) | Set game mode. | `uxmessentials.gamemode.use` |
 | `/getpos` (`/coords`, `/whereami`) | Show a player's coordinates. | `uxmessentials.getpos.use` |
-| `/glow` | Toggle a glowing outline. | `uxmessentials.glow.use` |
+| `/glow` | Toggle a glowing outline, in a colour of your choice. | `uxmessentials.glow.use` |
 | `/god` (`/godmode`) | Toggle damage immunity. | `uxmessentials.god.use` |
 | `/heal` | Restore health. | `uxmessentials.heal.use` |
 | `/health` | Set a player's health. | `uxmessentials.health.use` |
@@ -84,7 +84,9 @@ Module `playerstate` · enabled by default · `modules/playerstate/config.conf`
 | `uxmessentials.gamemode.use` | op | /gamemode \<mode> [player] and the /gmc /gms /gma /gmsp aliases. |
 | `uxmessentials.getpos.others` | op | /getpos on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.getpos.use` | op | /getpos (/coords /whereami) to show a player's coordinates. |
-| `uxmessentials.glow.use` | op | /glow to toggle a glowing outline on yourself. |
+| `uxmessentials.glow.color` | op | /glow \<color> to pick the colour of the outline. Without it, /glow still toggles the plain one. |
+| `uxmessentials.glow.others` | op | /glow on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.glow.use` | op | /glow [color] [player] to toggle a glowing outline. |
 | `uxmessentials.god.others` | op | /god on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.god.use` | op | /god [player] to toggle damage immunity. |
 | `uxmessentials.heal.others` | op | /heal on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
@@ -92,13 +94,14 @@ Module `playerstate` · enabled by default · `modules/playerstate/config.conf`
 | `uxmessentials.health.others` | op | /health on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.health.use` | op | /health \<amount> [player] to set a player's health. |
 | `uxmessentials.ice.others` | op | /ice on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
-| `uxmessentials.ice.use` | op | /ice [player] [seconds] to freeze a player (inverse of /burn). |
+| `uxmessentials.ice.use` | op | /ice [seconds] [player] to freeze a player (inverse of /burn). |
 | `uxmessentials.invsee.modify` | op | Edit a player's inventory through the /invsee menu (without this it is view-only). |
 | `uxmessentials.invsee.others` | op | /invsee to open another player inventory. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.invsee.use` | op | /invsee [player] to view a player's inventory. |
 | `uxmessentials.module.playerstate` | op | Hot-reload / inspect the playerstate module (flight, god mode, speed, health and the rest). |
 | `uxmessentials.near.use` | op | /near [radius] to list nearby players. |
-| `uxmessentials.nightvision.use` | op | /nightvision (/nv) to toggle a night-vision effect on yourself. |
+| `uxmessentials.nightvision.others` | op | /nightvision on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
+| `uxmessentials.nightvision.use` | op | /nightvision (/nv) [player] to toggle a night-vision effect. |
 | `uxmessentials.ping.others` | op | /ping on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.ping.use` | everyone | /ping to show a player's round-trip latency. |
 | `uxmessentials.playerstate.fly.allworlds` | op | Keep flight in worlds where flying is switched off. |
@@ -163,6 +166,10 @@ Module `playerstate` · enabled by default · `modules/playerstate/config.conf`
 - **`/invsee` opens read-only by default.** Editing another player's inventory is a separate node, so watching
   and changing are different grants.
 - **`/world` reports, `/worlds` manages.** This module owns the read-only one.
+- **`/glow` takes a colour.** `/glow` on its own toggles the plain outline; `/glow red` turns it on in one of the
+  sixteen vanilla colours, and `/glow red Steve` does it to somebody else. Turning the outline off drops the
+  colour with it, so the next bare `/glow` starts plain again. The colour is carried by a scoreboard team, which
+  is also how a hidden nametag works, so a player whose name this plugin hides can still glow in a colour.
 - **A command renamed in `commands.conf` keeps its permission node,** because nodes are keyed to the command id
   rather than to the name you give it.
 - **Flight granted here and flight granted by staff mode are different things.** Leaving staff mode restores the
