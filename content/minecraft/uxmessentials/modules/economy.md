@@ -15,23 +15,23 @@ Module `economy` · enabled by default · `modules/economy/config.conf` and `cur
 {/* generated:commands */}
 | Command | What it does | Permission |
 |---|---|---|
-| `/balance` (`/bal`, `/money`) | See your own balance. | `uxmessentials.economy.balance` |
+| `/balance` (`/bal`, `/money`) | Show a wallet balance. | `uxmessentials.economy.balance` |
 | `/baltop` (`/balancetop`) | View the top balances. | `uxmessentials.economy.baltop` |
-| `/bank` | Open the bank panel to move money between your wallet and your bank balance. | `uxmessentials.economy.bank` |
-| `/deposit` | Move money from your wallet into your bank balance. | `uxmessentials.economy.deposit` |
-| `/eco` (`/economy`) | Umbrella for eco-admin mutations (/eco give, take, set). | `uxmessentials.economy.admin` |
-| `/exchange` | Convert between two currencies at the configured rate. | `uxmessentials.economy.exchange` |
-| `/loan` | Take, review and repay a loan against the configured limit and interest. | `uxmessentials.economy.loan` |
-| `/pay` | Transfer funds. | `uxmessentials.economy.pay` |
-| `/payall` | Pay every online player from your own wallet. | `uxmessentials.economy.payall` |
-| `/payconfirm` | Transfer funds. | `uxmessentials.economy.pay` |
-| `/paytoggle` | Refuse all incoming /pay transfers. | `uxmessentials.economy.pay.toggle` |
+| `/bank` | Shared bank accounts management. | `uxmessentials.economy.bank` |
+| `/deposit` | Deposit physical banknotes into virtual balance. | `uxmessentials.economy.deposit` |
+| `/eco` (`/economy`) | Eco-admin balance mutations. | `uxmessentials.economy.admin` |
+| `/exchange` | Exchange currencies or open the conversion GUI. | `uxmessentials.economy.exchange` |
+| `/loan` | Debtor loans and credit rating. | `uxmessentials.economy.loan` |
+| `/pay` | Transfer funds to another player. | `uxmessentials.economy.pay` |
+| `/payall` | Pay every online player at once. | `uxmessentials.economy.payall` |
+| `/payconfirm` | Confirm a large pending pay. | `uxmessentials.economy.pay` |
+| `/paytoggle` | Toggle accepting incoming pay. | `uxmessentials.economy.pay.toggle` |
 | `/sell` | Sell held items at their configured worth. | `uxmessentials.economy.sell` |
-| `/sellall` | Sell held items at their configured worth. | `uxmessentials.economy.sell` |
-| `/setworth` | Set or clear an item's sell worth override. | `uxmessentials.economy.setworth` |
-| `/wallet` | Open your own wallet panel listing every currency you hold. | `uxmessentials.economy.wallet` |
-| `/withdraw` | Move money from your bank balance back into your wallet. | `uxmessentials.economy.withdraw` |
-| `/worth` | Report an item's configured sell value. | `uxmessentials.economy.worth` |
+| `/sellall` | Sell every sellable item in your inventory. | `uxmessentials.economy.sell` |
+| `/setworth` | Set an item's sell worth. | `uxmessentials.economy.setworth` |
+| `/wallet` | Open your visual wallet dashboard. | `uxmessentials.economy.wallet` |
+| `/withdraw` | Withdraw virtual money into a physical banknote item. | `uxmessentials.economy.withdraw` |
+| `/worth` | Report a held item's configured sell value. | `uxmessentials.economy.worth` |
 {/* /generated */}
 
 ## Permissions
@@ -116,13 +116,13 @@ Module `economy` · enabled by default · `modules/economy/config.conf` and `cur
 | `baltop.min-balance` | `"0"` | hide rows below this balance (0 = show everyone) |
 | `provider.register` | `true` | register the native economy with Vault/Treasury via ServicesManager |
 | `provider.priority` | `"Normal"` | Lowest \| Low \| Normal \| High \| Highest |
-| `allow-nonatomic-recurring` | `false` |  |
+| `allow-nonatomic-recurring` | `false` | A backend that cannot guard its take (anything but the built-in ledger) may double-charge a scheduled sweep, because a debit that reports failure might in fact have succeeded. A player clicking "buy" sees a wrong charge and complains; a nightly sweep cannot. So a module that bills on a timer refuses a foreign-backed currency at startup, naming it, unless you set this to true and accept the risk. No shipped module bills on a timer yet; salary and bank interest pay out rather than charge, and loans are already limited to the built-in ledger. This setting starts having an effect when player-warp rent lands. |
 | `persistence.write-debounce-ms` | `250` | coalesce rapid balance writes |
 | `persistence.batch-flush-ms` | `1000` | transaction-telemetry flush interval |
 | `worth.enabled` | `true` |  |
-| `worth.economyshopgui-fallback` | `true` |  |
+| `worth.economyshopgui-fallback` | `true` | When EconomyShopGUI is installed, an item with no /setworth override and no price in the list below falls back to the shop's own sell price, so a priced shop does not have to be priced twice. Your own prices always win, and with the plugin absent this setting does nothing. |
 | `worth.items` | `[...]` |  |
-| `command-costs-enabled` | `true` |  |
+| `command-costs-enabled` | `true` | Charge players to execute configured commands. Format is "COMMAND:cost" (without slash, case-insensitive). Bypass with permission node: uxmessentials.economy.bypasscmdcost |
 | `command-costs` | `[...]` |  |
 | `exchange.enabled` | `true` |  |
 | `exchange.rates` | `[...]` |  |
@@ -192,4 +192,4 @@ Module `economy` · enabled by default · `modules/economy/config.conf` and `cur
 - **On a server that already has a Vault economy**, uxmEssentials defers to the existing provider. Set
   `provider.register` and its priority deliberately if you want it to take over.
 
-Related: [Homes](homes.md), [Kits](kits.md), [Ranks](../features/ranks.md)
+Related: [Homes](homes.md), [Kits](kits.md), [Ranks](ranks.md)

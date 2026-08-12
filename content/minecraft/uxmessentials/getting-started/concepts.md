@@ -147,6 +147,6 @@ database, by default, is a **zero-setup embedded SQLite** file. See
 ## Next Steps
 
 - [🧩 The Module System](../modules/index.md): the full 23-module list and how to toggle them
-- [📟 Commands Overview](../commands/overview.md): everything you can type in-game
+- [📟 Commands Overview](../modules/index.md): everything you can type in-game
 - [⚙️ Configuration Overview](../config/overview.md): a deeper look at the config tree
 - [🔑 Permission Reference](../permissions/reference.md): every node and quota

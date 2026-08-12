@@ -172,7 +172,7 @@ claim plugin and never touch this key.
 ## Next Steps
 
 - [🏠 Homes](../modules/homes.md) - Where the claim rules apply to `/sethome`
-- [🎲 Teleport & RTP](../features/teleport-rtp.md) - Safe-landing and the `/rtp` search
-- [🪑 Poses](../features/poses.md) - The sit/lay gating
-- [🗺️ Regions](../features/regions.md) - The WorldGuard region GUI
+- [🎲 Teleport & RTP](../modules/teleport.md) - Safe-landing and the `/rtp` search
+- [🪑 Poses](../modules/poses.md) - The sit/lay gating
+- [🗺️ Regions](../modules/regions.md) - The WorldGuard region GUI
 - [⚙️ Global Config](../config/global-config.md) - The root `config.conf` this block lives in

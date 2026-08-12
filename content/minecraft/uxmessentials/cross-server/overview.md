@@ -142,7 +142,7 @@ Give every backend a **unique** `server-id`; two backends sharing one corrupts s
 
 ## Proxy-Side Command Control
 
-The backend [`commandcontrol`](../features/commandcontrol.md) module gates the commands a
+The backend [`commandcontrol`](../modules/commandcontrol.md) module gates the commands a
 **backend** owns. It cannot touch the proxy's own commands: `/server`, `/glist`, `/send`,
 `/find` and any proxy plugin's commands never reach a backend at all.
 

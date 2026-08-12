@@ -141,7 +141,7 @@ See [Bedrock (Floodgate)](floodgate.md).
 
 Without one of these installed nothing waits: our own prompts open as soon as the player
 joins. With one installed the player logs in first and only then sees ours, so two prompts
-never fight over the same screen. See [Security](../features/security.md).
+never fight over the same screen. See [Security](../modules/security.md).
 
 ---
 
@@ -152,7 +152,7 @@ never fight over the same screen. See [Security](../features/security.md).
 | SuperVanish | Players SuperVanish has hidden are vanished for our tab list, nametags and `/msg` too. |
 | PremiumVanish | Players PremiumVanish has hidden are vanished for our tab list, nametags and `/msg` too. |
 
-See [Vanish](../features/vanish.md).
+See [Vanish](../modules/vanish.md).
 
 ---
 
@@ -164,7 +164,7 @@ See [Vanish](../features/vanish.md).
 | PvPManager | A PvPManager combat tag blocks self-teleports out of a fight. |
 
 We keep no combat timer of our own, so with neither installed nothing is ever blocked. See
-[Teleport & RTP](../features/teleport-rtp.md).
+[Teleport & RTP](../modules/teleport.md).
 
 ---
 

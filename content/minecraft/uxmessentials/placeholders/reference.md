@@ -689,5 +689,5 @@ How many worlds are managed and loaded.
 ## Next Steps
 
 - [PlaceholderAPI](../integrations/placeholderapi.md): both directions, and what happens without it
-- [Scoreboard, Tablist & Nametags](../features/hud.md): where these show up most
-- [Holograms](../features/holograms.md): live placeholder lines
+- [Scoreboard, Tablist & Nametags](../modules/scoreboard.md): where these show up most
+- [Holograms](../modules/holograms.md): live placeholder lines

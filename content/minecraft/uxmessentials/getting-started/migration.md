@@ -111,7 +111,7 @@ importer auto-detects a local H2 file under the source plugin's folder and opens
 ```
 
 This reads `plugins/Multiverse-Core/worlds.yml` and registers every world it lists in our
-own [worlds module](../features/worlds.md): name, alias, auto-load, environment, seed,
+own [worlds module](../modules/worlds.md): name, alias, auto-load, environment, seed,
 generator, per-world spawn, and the difficulty, PvP, forced gamemode, player-limit and
 entry-fee settings. Both on-disk layouts are read, so it does not matter whether you are on
 Multiverse 4 or 5.
@@ -203,5 +203,5 @@ your per-group **quotas still apply** to migrated data.
 
 - [🔧 Installation](installation.md): if you haven't installed the plugin yet
 - [🧠 Core Concepts](concepts.md): how modules, config and permissions fit together
-- [📟 Commands Overview](../commands/overview.md): the full command set
+- [📟 Commands Overview](../modules/index.md): the full command set
 - [🔑 Permission Reference](../permissions/reference.md): quotas and node families

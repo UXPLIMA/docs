@@ -108,5 +108,5 @@ Two extra conveniences when LuckPerms is around:
 ## Next Steps
 
 - [🧭 Core Concepts: Permissions](../getting-started/concepts.md): the tiered / quota model
-- [📊 Scoreboard, Tablist & Nametags](../features/hud.md): showing rank prefixes
+- [📊 Scoreboard, Tablist & Nametags](../modules/scoreboard.md): showing rank prefixes
 - [🔤 PlaceholderAPI](placeholderapi.md): how prefix placeholders reach the HUD

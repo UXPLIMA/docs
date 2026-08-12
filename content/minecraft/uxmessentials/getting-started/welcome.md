@@ -74,7 +74,7 @@ re-theme messages, or fully translate the plugin without touching a line of code
 
 - [🔧 Installation](installation.md): get the plugin running in a couple of minutes
 - [🧠 Core Concepts](concepts.md): modules, config, permissions and messages
-- [📟 Commands Overview](../commands/overview.md): everything you can type in-game
+- [📟 Commands Overview](../modules/index.md): everything you can type in-game
 - [🧩 The Module System](../modules/index.md): turn features on and off
 
 ---

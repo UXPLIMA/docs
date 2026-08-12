@@ -126,7 +126,7 @@ uxmEssentials does **not** register its own MiniPlaceholders expansion; it only
 
 ## Next Steps
 
-- [📊 Scoreboard, Tablist & Nametags](../features/hud.md): where placeholders show up most
+- [📊 Scoreboard, Tablist & Nametags](../modules/scoreboard.md): where placeholders show up most
 - [🎛️ Menu Actions & Requirements](../menus/actions-requirements.md): `%papi_%` tokens and `papi-compare:`
-- [🖼️ Holograms](../features/holograms.md): live placeholder lines
+- [🖼️ Holograms](../modules/holograms.md): live placeholder lines
 - [🔤 Placeholder Reference](../placeholders/reference.md): every key this build answers

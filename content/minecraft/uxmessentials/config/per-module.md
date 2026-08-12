@@ -42,7 +42,7 @@ switchboard are stale.
 Open any module's `config.conf` and the very first key is `enabled`:
 
 ```hocon
-# Homes — /home opens the slot-based GUI.
+# Homes: /home opens the slot-based GUI.
 enabled = true
 default-limit = 3
 # … the rest of the homes settings …
@@ -196,9 +196,9 @@ module refuses to reload and the log points at the file.
 
 This page covers how the files are laid out. For what each key actually does per
 feature, jump to the matching Feature Guide, for example
-[Homes](../modules/homes.md), [Teleport & RTP](../features/teleport-rtp.md),
+[Homes](../modules/homes.md), [Teleport & RTP](../modules/teleport.md),
 [Economy](../modules/economy.md), [Kits](../modules/kits.md), or
-[Moderation](../features/moderation.md).
+[Moderation](../modules/moderation.md).
 
 </Callout>
 

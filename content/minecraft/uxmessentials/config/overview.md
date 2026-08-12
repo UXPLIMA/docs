@@ -51,7 +51,7 @@ On first run uxmEssentials extracts its default configuration into
 
 ```text
 plugins/uxmEssentials/
-├── config.conf                     # globals only — storage, locale, network, claims, links…
+├── config.conf                     # globals only: storage, locale, network, claims, links…
 ├── text-input.conf                 # how every "type something" prompt captures your answer
 ├── modules/
 │   ├── teleport/

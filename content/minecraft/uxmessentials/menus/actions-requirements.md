@@ -165,10 +165,10 @@ The same block gates a tile's **visibility**. A flat list is an all-must-pass AN
 block form lets you use `minimum` and inversion.
 
 ```hocon
-# Flat form — hide unless BOTH hold.
+# Flat form: hide unless BOTH hold.
 view = ["perm:uxmessentials.vip", "!world:spawn"]
 
-# Block form — show if the player meets ANY one of the three.
+# Block form: show if the player meets ANY one of the three.
 view {
   requirements = ["perm:uxmessentials.tier1", "perm:uxmessentials.tier2", "has-money:1000"]
   minimum = 1

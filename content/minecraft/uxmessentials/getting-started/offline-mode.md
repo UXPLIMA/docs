@@ -107,5 +107,5 @@ then the proxy's, identical on every backend, and uxmEssentials's cross-server s
 ## Next Steps
 
 - [Core Concepts](concepts.md) for modules, config layout and reloading
-- [Moderation](../features/moderation.md) for how punishment targets are named
+- [Moderation](../modules/moderation.md) for how punishment targets are named
 - [Velocity & Redis](../cross-server/overview.md) for network setups

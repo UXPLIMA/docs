@@ -135,7 +135,7 @@ Per-warp gates are data-driven in `warps.conf`: a warp with `permission: true` r
 
 ## Player Warps
 
-Player-owned warps are keyed by `(owner, name)`: two players may each keep a `base`. The base nodes are self-service: holding one lets a player *run* the verb, while whether they may run it on a **particular** warp is decided by the owner/co-owner/manager role matrix inside the module. See [Player Warps](../features/player-warps.md).
+Player-owned warps are keyed by `(owner, name)`: two players may each keep a `base`. The base nodes are self-service: holding one lets a player *run* the verb, while whether they may run it on a **particular** warp is decided by the owner/co-owner/manager role matrix inside the module. See [Player Warps](../modules/playerwarps.md).
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -462,7 +462,7 @@ STAFF-MODE ONLY: a loadout swap and a gadget hotbar. It issues no sanctions of i
 
 ## Vanish
 
-PremiumVanish-class invisibility with layered see/use levels. Its own `vanish` module: the single authority every other context reads for vanish state. See the [Vanish](../features/vanish.md) guide for the level rules.
+PremiumVanish-class invisibility with layered see/use levels. Its own `vanish` module: the single authority every other context reads for vanish state. See the [Vanish](../modules/vanish.md) guide for the level rules.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -534,7 +534,7 @@ Per-world entry uses `uxmessentials.world.<name>.enter` (a world with access res
 
 ## Item & World
 
-The item/world toolbox carries roughly 65 verbs, each with its own node; the full per-command list lives on the [Items, Blocks & World](../commands/items-world.md) command page. They default `op`, except the read-only inspection verbs (`/itemdb`, `/iteminfo`, `/recipe`) which are self-service. Two nodes are worth calling out here: the held-item editor, and the in-inventory shulker editor, which has no command of its own.
+The item/world toolbox carries roughly 65 verbs, each with its own node; the full per-command list lives on the [Items, Blocks & World](../modules/itemworld.md) command page. They default `op`, except the read-only inspection verbs (`/itemdb`, `/iteminfo`, `/recipe`) which are self-service. Two nodes are worth calling out here: the held-item editor, and the in-inventory shulker editor, which has no command of its own.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -730,7 +730,7 @@ The `/link` redemption itself runs in the optional Discord bridge jar; the in-ga
 | `uxmessentials.sit.use` | `true` | `/sit` and right-click-to-sit: sit down where you stand or on a sittable block. |
 | `uxmessentials.spin.use` | `true` | `/spin`: sit and spin in place. |
 
-The optional numbered node `uxmessentials.poses.cooldown.<seconds>` sets an anti-spam wait between starting poses (an open value space, like `kit.cooldown.<seconds>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes)). See the [Sitting & Poses](../features/poses.md) guide for how each pose works.
+The optional numbered node `uxmessentials.poses.cooldown.<seconds>` sets an anti-spam wait between starting poses (an open value space, like `kit.cooldown.<seconds>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes)). See the [Sitting & Poses](../modules/poses.md) guide for how each pose works.
 
 ---
 
@@ -758,13 +758,13 @@ Opt-in gameplay mechanics, each an independently toggleable sub-feature. A mecha
 | `uxmessentials.survival.veinminer` | `true` | Veinminer acts for you: break one block to mine the connected vein. |
 | `uxmessentials.survival.veinminer.toggle` | `true` | `/veinminer`: switch your personal veinminer on or off. |
 
-Fast leaf decay, the anvil unlocker, one-player sleep and head drops are world-side effects with no permission node: they're governed only by their config blocks. See the [Survival Mechanics](../features/survival.md) guide for what each mechanic does.
+Fast leaf decay, the anvil unlocker, one-player sleep and head drops are world-side effects with no permission node: they're governed only by their config blocks. See the [Survival Mechanics](../modules/survival.md) guide for what each mechanic does.
 
 ---
 
 ## Security
 
-Account security: an optional second factor a player enrols themselves, join verification, op-command protection, and a same-IP alt / ClientID guard. **Not** a login system: there's no password or first-join gate, and on an offline-mode server it waits for your login plugin rather than replacing it. The two self-service nodes ship `true`; the staff reads and the bypass default to `op`. See the [Account Security](../features/security.md) guide for the flows.
+Account security: an optional second factor a player enrols themselves, join verification, op-command protection, and a same-IP alt / ClientID guard. **Not** a login system: there's no password or first-join gate, and on an offline-mode server it waits for your login plugin rather than replacing it. The two self-service nodes ship `true`; the staff reads and the bypass default to `op`. See the [Account Security](../modules/security.md) guide for the flows.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -784,7 +784,7 @@ Account security: an optional second factor a player enrols themselves, join ver
 
 ## Command Control
 
-Command whitelist / blacklist gating, tab-completion filtering, plugin-hide, and the namespace-bypass block: the PlHidePro / CommandWhitelist feature set. It ships enabled but inert (a blacklist with empty lists, plugin-hide off), so both nodes default to `op` and gate nobody until you name commands. See the [Command Control](../features/commandcontrol.md) guide.
+Command whitelist / blacklist gating, tab-completion filtering, plugin-hide, and the namespace-bypass block: the PlHidePro / CommandWhitelist feature set. It ships enabled but inert (a blacklist with empty lists, plugin-hide off), so both nodes default to `op` and gate nobody until you name commands. See the [Command Control](../modules/commandcontrol.md) guide.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -798,7 +798,7 @@ Command whitelist / blacklist gating, tab-completion filtering, plugin-hide, and
 
 ## Villagers
 
-Villager trade management: trades that never lock out, a restock timer, a staff trade editor, click-to-trade, a villager saver, pickup, follow, and leashing. The module ships **disabled**, so all six action nodes default to `op` and grant nothing until you turn the module on and then the matching feature with it. The four trade-availability switches (infinite trading, restock, instant restock, disable trades) take no permission: they're config-only. See the [Villagers](../features/villagers.md) guide.
+Villager trade management: trades that never lock out, a restock timer, a staff trade editor, click-to-trade, a villager saver, pickup, follow, and leashing. The module ships **disabled**, so all six action nodes default to `op` and grant nothing until you turn the module on and then the matching feature with it. The four trade-availability switches (infinite trading, restock, instant restock, disable trades) take no permission: they're config-only. See the [Villagers](../modules/villagers.md) guide.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -815,7 +815,7 @@ Villager trade management: trades that never lock out, a restock timer, a staff 
 
 ## Inventory Rollback
 
-Inventory snapshot and restore: the plugin freezes a player's inventory on death and (by config) on logout, keeps a bounded history of those snapshots in the database (never PDC, so they survive a world rollback), and lets staff browse and restore them from a GUI. The module ships **disabled**; turn it on and it captures on death and logout straight away. A restore acts on a live inventory, so the target must be online. See the [Inventory Rollback](../features/invrollback.md) guide.
+Inventory snapshot and restore: the plugin freezes a player's inventory on death and (by config) on logout, keeps a bounded history of those snapshots in the database (never PDC, so they survive a world rollback), and lets staff browse and restore them from a GUI. The module ships **disabled**; turn it on and it captures on death and logout straight away. A restore acts on a live inventory, so the target must be online. See the [Inventory Rollback](../modules/invrollback.md) guide.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -833,7 +833,7 @@ define cuboids, cycle their state flags, and edit their member/owner rosters. Wo
 a **soft-dependency**: with it absent the module is inert and every command answers
 *"WorldGuard not installed"* (WorldEdit is a further optional soft-depend, used only for
 selection-based `/regions create`). Region management is staff work, so all five action
-nodes default to `op`. See the [Regions](../features/regions.md) guide.
+nodes default to `op`. See the [Regions](../modules/regions.md) guide.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -852,7 +852,7 @@ A grab-bag of silent server-side infrastructure tweaks: a custom F3 brand, a con
 filter, an unsigned-chat option, and a SignedVelocity backend companion. The module is
 **config-only**: it registers no commands, so it has **no action permission nodes**. Every
 tweak defaults off and is switched entirely from `modules/servertweaks/config.conf`. See
-the [Server Tweaks](../features/server-tweaks.md) guide. The module's reload tier is
+the [Server Tweaks](../modules/servertweaks.md) guide. The module's reload tier is
 `uxmessentials.module.servertweaks`.
 
 | Node | Default | What it grants |
@@ -1038,6 +1038,6 @@ Or express a quota as meta instead of a numbered node:
 
 ## Next Steps
 
-- [Command Overview](../commands/overview.md): how commands are registered, aliased, renamed, and disabled
+- [Command Overview](../modules/index.md): how commands are registered, aliased, renamed, and disabled
 - [LuckPerms Integration](../integrations/luckperms.md): meta-based quotas and group resolution
 - [Developer API](../developer/overview.md): integrate with uxmEssentials at runtime

@@ -15,7 +15,7 @@ Module `homes` · enabled by default · `modules/homes/config.conf`
 {/* generated:commands */}
 | Command | What it does | Permission |
 |---|---|---|
-| `/home` (`/h`, `/homes`) | Open and manage your slot-based home grid. | `uxmessentials.home.use` |
+| `/home` (`/h`, `/homes`) | Open and manage your homes. | `uxmessentials.home.use` |
 {/* /generated */}
 
 ## Permissions
@@ -95,4 +95,4 @@ Module `homes` · enabled by default · `modules/homes/config.conf`
 - **Unsafe spots are refused** rather than dropping a player into lava, and a home that has become unsafe since
   it was saved asks for confirmation. `uxmessentials.home.bypass.unsafe` skips both.
 
-Related: [Warps](../features/warps.md), [Teleport](../features/teleport-rtp.md), [Economy](economy.md)
+Related: [Warps](warps.md), [Teleport](teleport.md), [Economy](economy.md)

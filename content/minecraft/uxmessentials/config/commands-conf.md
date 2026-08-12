@@ -140,7 +140,7 @@ immediately.
 
 ## Next Steps
 
-- [Commands Overview](../commands/overview.md): every command and its default aliases.
+- [Commands Overview](../modules/index.md): every command and its default aliases.
 - [Per-Module Config](per-module.md): disable a whole feature instead of one command.
 - [Permission Reference](../permissions/reference.md): the id-keyed nodes that stay
   stable across renames.

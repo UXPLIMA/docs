@@ -74,4 +74,4 @@ Module `kits` · enabled by default · `modules/kits/config.conf`
   losing a balance would not be.
 - Kits imported with `/uxmess import essentialsx` land in the same catalogue as hand-built ones.
 
-Related: [Economy](economy.md), [Menus](../menus/engine.md), [Ranks](../features/ranks.md)
+Related: [Economy](economy.md), [Menus](../menus/engine.md), [Ranks](ranks.md)

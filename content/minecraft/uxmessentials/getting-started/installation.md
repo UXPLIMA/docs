@@ -151,6 +151,6 @@ start using `/home`, `/warp`, `/balance`, `/kit`, `/tpa` and more right away.
 
 - [🧠 Core Concepts](concepts.md): the ideas that make everything click
 - [🧩 The Module System](../modules/index.md): turn features on and off
-- [📟 Commands Overview](../commands/overview.md): what you can type in-game
+- [📟 Commands Overview](../modules/index.md): what you can type in-game
 - [📦 Migrating from EssentialsX](migration.md): bring your old data across
 - [💾 Database](../database/sqlite.md): SQLite by default, MySQL/PostgreSQL for networks

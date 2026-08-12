@@ -160,7 +160,7 @@ network of backends.
 network {
   enabled = false               # opt every backend into the shared bus
   server-id = "server-1"        # MUST be unique per backend
-  bus-channel = "uxmessentials:bus_v1"   # must match the proxy broker — leave as-is
+  bus-channel = "uxmessentials:bus_v1"   # must match the proxy broker, leave as-is
   heartbeat-seconds = 30        # how often this backend announces itself
   transport = "velocity"        # velocity | redis | both
 

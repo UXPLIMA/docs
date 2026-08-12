@@ -90,5 +90,5 @@ is completely unaffected:
 
 ## Next Steps
 
-- [🔗 Discord Link Feature](../features/discord-link.md): the in-game linking flow in full
+- [🔗 Discord Link Feature](../modules/discordlink.md): the in-game linking flow in full
 - [👨‍💻 Developer Overview](../developer/overview.md): the linking service seam shared over `ServicesManager`
