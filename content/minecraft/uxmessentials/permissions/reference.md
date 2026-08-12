@@ -816,6 +816,7 @@ The kernel owns no feature commands, but carries two cross-cutting self-service 
 | `uxmessentials.admin.backup` | `op` | `/backup` to snapshot the plugin data directory on demand. |
 | `uxmessentials.admin.import` | `op` | `/uxmess` import `<plugin>`: run the one-shot data import from another essentials plugin. |
 | `uxmessentials.admin.permissions` | `op` | `/uxmess` permissions `[area] [page]` and `/uxmess` permissions export: read the permission catalogue in game or write it to a file. |
+| `uxmessentials.admin.placeholders` | `op` | `/uxmess` placeholders `[area] [page]` and `/uxmess` placeholders export: read the placeholder catalogue in game or write it to a file. |
 | `uxmessentials.admin.reload` | `op` | Reload all modules via `/uxmess` reload. |
 | `uxmessentials.cooldown.<feature>.<seconds>` | `tier` | The wait between uses of one rate-limited feature, in seconds; the shortest tier held wins and 0 removes the wait. |
 | `uxmessentials.cooldown.bypass.<feature>` | `label` | Skip the cooldown on one rate-limited feature entirely (tp, rtp, kit, poses). |

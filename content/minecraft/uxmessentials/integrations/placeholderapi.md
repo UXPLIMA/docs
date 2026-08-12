@@ -23,34 +23,29 @@ Both are optional soft-depends.
 
 ## Placeholders uxmEssentials Provides
 
-When PlaceholderAPI is installed, uxmEssentials registers a
-`%uxmessentials_<key>%` expansion covering roughly **25 families** of values: one
-per feature area:
-
-| Family | Examples of what it exposes |
-|--------|------------------------------|
-| economy | balances, formatted amounts, baltop positions |
-| homes / warps / vaults | counts and limits |
-| teleport | cooldown / warmup state |
-| presence / player state | AFK, vanish, playtime, flight, ... |
-| moderation | mute / ban status |
-| messaging, kits, vote | reply state, kit cooldowns, vote totals |
-| server / HUD | TPS, online counts, uptime |
-
-A few confirmed identifiers to show the shape:
+When PlaceholderAPI is installed, uxmEssentials registers a `%uxmessentials_<key>%`
+expansion carrying **170 keys** across 22 areas: economy, homes, warps, player warps,
+worlds, teleport, kits, vaults, vote, presence, player state, messaging, communication,
+moderation, staff, Discord linking, ranks, poses, holograms, menus, the scoreboard and
+the server metrics.
 
 ```
 %uxmessentials_economy_balance%
 %uxmessentials_homes_count%
+%uxmessentials_presence_afk%
 %uxmessentials_server_tps%
 ```
 
-<Callout type="tip" title="Discover the full list in-game">
+Every key, with what it renders and whether it answers for an offline player, is on the
+[Placeholder Reference](../placeholders/reference.md). That page is generated from the
+catalogue inside the plugin, and a build-time guard resolves the catalogue against the
+resolver in both directions, so it cannot name a key this build does not answer.
 
-The expansion ships with the plugin, so there is no separate download. The
-complete, current identifier list is best read live: the placeholders resolve
-as soon as PlaceholderAPI is present. Test any of them with
-`/papi parse me %uxmessentials_...%`.
+<Callout type="tip" title="Read the list from the running server">
+
+`/uxmess placeholders` lists the areas in game and `/uxmess placeholders <area>` reads
+one; `/uxmess placeholders export` writes the whole catalogue to `placeholders.md` in
+the plugin folder. Test any single key with `/papi parse me %uxmessentials_...%`.
 
 </Callout>
 
@@ -117,3 +112,4 @@ uxmEssentials does **not** register its own MiniPlaceholders expansion; it only
 - [📊 Scoreboard, Tablist & Nametags](../features/hud.md): where placeholders show up most
 - [🎛️ Menu Actions & Requirements](../menus/actions-requirements.md): `%papi_%` tokens and `papi-compare:`
 - [🖼️ Holograms](../features/holograms.md): live placeholder lines
+- [🔤 Placeholder Reference](../placeholders/reference.md): every key this build answers

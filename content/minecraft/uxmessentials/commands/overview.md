@@ -36,6 +36,8 @@ Server-wide administration lives under a single root command: `/uxmess` (aliases
 | `/uxmess import --list` | List the built-in import sources | `uxmessentials.admin.import` |
 | `/uxmess permissions [area] [page]` | Read the permission catalogue in game, one area at a time | `uxmessentials.admin.permissions` |
 | `/uxmess permissions export` | Write the whole catalogue to `permissions.md` in the plugin folder | `uxmessentials.admin.permissions` |
+| `/uxmess placeholders [area] [page]` | Read the placeholder catalogue in game, one area at a time | `uxmessentials.admin.placeholders` |
+| `/uxmess placeholders export` | Write the whole catalogue to `placeholders.md` in the plugin folder | `uxmessentials.admin.placeholders` |
 | `/backup` | Snapshot the plugin data directory on demand (off-tick) | `uxmessentials.admin.backup` |
 | `/help [page-or-query]` | List/search the commands you can use (per-line permission-filtered) | `uxmessentials.help` |
 | `/lang [code\|reset]` | Show / set / clear your personal language override | `uxmessentials.lang.use` |
@@ -61,6 +63,7 @@ Run `/uxmess import <source> --dry-run` before the real thing. The dry run repor
 /uxmess permissions
 /uxmess permissions homes
 /uxmess permissions export
+/uxmess placeholders economy
 /uxmess import essentialsx --dry-run
 /lang tr
 /lang reset
