@@ -1,35 +1,26 @@
 ---
 title: SQLite (Default)
 order: 1560
-description: uxmEssentials ships with an embedded SQLite database and uses it out
-  of the box. There is nothing to install, nothing to run alongside your server, and
-  no credentials to manage. The first time the plugin starts it creates the database
-  file and builds its own schema. For the large majority of single servers this is
-  all you will ever need.
+description: 'The default backend: no setup, one file, and when it stops being enough.'
 ---
 
-<Callout type="tip" title="It just works">
+uxmEssentials ships with an embedded SQLite database and uses it out of the box: nothing to install,
+nothing to run alongside the server, no credentials to manage.
 
-A fresh install is already storing everything in SQLite. Unless you run a network of
+**It just works.** A fresh install is already storing everything in SQLite. Unless you run a network of
 backend servers or a very busy economy, you can leave the `storage` block exactly as
 it ships and never think about databases again.
-
-</Callout>
-
----
 
 ## Why SQLite?
 
 | Pros                              | Cons                                            |
 |-----------------------------------|-------------------------------------------------|
-| ✅ Zero setup: works immediately  | ❌ Not suited to a multi-server network          |
-| ✅ No external software to run     | ❌ A single file, awkward to back up while live  |
-| ✅ Fast for small–medium servers   | ❌ No remote access                              |
-| ✅ Survives world rollbacks        | ❌ Writes are serialized (one at a time)         |
+| Zero setup: works immediately  | Not suited to a multi-server network          |
+| No external software to run     | A single file, awkward to back up while live  |
+| Fast for small to medium servers   | No remote access                              |
+| Survives world rollbacks        | Writes are serialized (one at a time)         |
 
 **Recommended for:** most single servers, especially under ~100 concurrent players.
-
----
 
 ## Configuration
 
@@ -48,8 +39,6 @@ storage {
 
 For SQLite only two keys matter: `backend = "sqlite"` and `file`, the name of the database
 file. The remaining keys are read only when you switch to a network backend.
-
----
 
 ## Where the File Lives
 
@@ -71,46 +60,36 @@ plugins/uxmEssentials/data/uxmessentials.db-shm
 These are normal. WAL keeps reads fast while a write is in progress and is cleaned up by
 SQLite automatically.
 
----
-
 ## Single-Writer Behaviour
 
 SQLite allows many readers but only **one writer at a time**. uxmEssentials handles this for
 you: the write connection is pinned so writes are serialized into a queue, while a small pool
 of read connections serves lookups concurrently. You never have to tune this.
 
-<Callout type="note" title="One writer, on purpose">
-
-Because SQLite serializes writes, an extremely write-heavy server (large networks, a shop
+**One writer, on purpose.** Because SQLite serializes writes, an extremely write-heavy server (large networks, a shop
 economy processing constant transactions) can eventually feel it. This is the point at
 which you move to [MySQL / MariaDB](mysql.md) or [PostgreSQL](postgresql.md), which use
 real row-level locking. It is a topology decision, not a bug: SQLite is not a "degraded"
 mode.
-
-</Callout>
 
 What is stored in the database survives world rollbacks. Economy balances in particular are
 **always** DB-backed and never written to entity/player data: a rolled-back world can never
 give someone their money back. Only throwaway state such as cooldown and kit-claim stamps
 lives outside the database.
 
----
-
 ## When SQLite Is Enough
 
 | Your situation                                | Use SQLite? |
 |-----------------------------------------------|-------------|
-| One server, any typical player count          | ✅ Yes       |
-| A quiet or medium economy                     | ✅ Yes       |
-| You do not want to run a database server      | ✅ Yes       |
-| Several backends sharing one player base      | ❌ No, see below |
-| Constant, heavy concurrent writes             | ❌ Consider a network backend |
+| One server, any typical player count          | Yes       |
+| A quiet or medium economy                     | Yes       |
+| You do not want to run a database server      | Yes       |
+| Several backends sharing one player base      | No, see below |
+| Constant, heavy concurrent writes             | Consider a network backend |
 
 A network of servers **cannot** share a SQLite file: each server would hold its own copy.
 Cross-server sync requires a shared MySQL/MariaDB or PostgreSQL database. See
 [Cross-Server](../cross-server/overview.md).
-
----
 
 ## Backing Up
 
@@ -128,11 +107,4 @@ you will carry data over (or accept a clean slate) before you change `backend`.
 
 </Callout>
 
----
-
-## Next Steps
-
-- [config.conf (Globals)](../config/global-config.md): the full `storage` block and every other global setting.
-- [MySQL / MariaDB Setup](mysql.md): when a single server outgrows SQLite.
-- [PostgreSQL Setup](postgresql.md): the same shape on Postgres.
-- [Cross-Server](../cross-server/overview.md): running multiple backends off one shared database.
+Related: [config.conf (Globals)](../config/global-config.md), [MySQL / MariaDB Setup](mysql.md), [PostgreSQL Setup](postgresql.md), [Cross-Server](../cross-server/overview.md)

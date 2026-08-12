@@ -66,11 +66,15 @@ Pages are reference material, not essays. A reader arrives with a question and l
    `## Placeholders`, `## Notes`, then a single `Related:` line. A section with nothing to say is left out
    rather than filled.
 3. **600 words of hand-written prose per module page**, 900 on any other page. Generated tables do not count.
-4. **Tables before sentences.** Anything enumerable is a table. A sentence explains a rule a table cannot.
-5. **One `Callout` per page at most**, and only where the reader would otherwise make a costly mistake.
-6. **No decoration.** No `---` between sections, no marketing adjectives ("powerful", "cohesive",
-   "deliberately"), no analogies, no em dash. Second person, present tense.
-7. **Generated blocks are not edited by hand.** The text between `{/* generated:x */}` and
+   A reference page that enumerates an API or a catalogue is bounded per entry instead: three sentences each,
+   and no page-level budget.
+4. **The description is one line.** It renders as the lead under the title, so the page's own first paragraph
+   says something else.
+5. **Tables before sentences.** Anything enumerable is a table. A sentence explains a rule a table cannot.
+6. **One `Callout` per page at most**, and only where the reader would otherwise make a costly mistake.
+7. **No decoration.** No `---` between sections, no emoji, no marketing adjectives ("powerful", "seamless",
+   "comprehensive"), no analogies, no em dash. Second person, present tense.
+8. **Generated blocks are not edited by hand.** The text between `{/* generated:x */}` and
    `{/* /generated */}` comes from the plugin's own catalogues, through `tools/docs/generate.py` in the plugin
    repository. Editing it there is editing something that gets overwritten.
 

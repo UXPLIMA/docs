@@ -1,16 +1,11 @@
 ---
 title: Overview
 order: 1140
-description: 'uxmEssentials keeps its settings in HOCON files (.conf), not YAML. If you
-  have configured other plugins with config.yml, the ideas are the same (keys, values,
-  lists) but the syntax is a little friendlier and the layout is split by module rather
-  than piled into one giant file.'
+description: How the config tree is organised, and how to edit and reload it safely.
 ---
 
-This page explains how the config system is organised, where each file lives, and how
-to edit and reload it safely.
-
----
+Settings live in HOCON `.conf` files, not YAML. The ideas are the ones you know from `config.yml` (keys,
+values, lists); the layout is split per module rather than piled into one file.
 
 ## Why HOCON, not YAML
 
@@ -27,8 +22,7 @@ loaded with Configurate. That gives us a few practical wins over YAML:
 
 <Callout type="warning" title="HOCON syntax rules">
 
-HOCON is forgiving about **whitespace and indentation** but strict about
-**structure**:
+HOCON is forgiving about whitespace and indentation, and strict about structure:
 
 - Blocks open and close with **braces**: `storage { … }`. Every `{` needs a `}`.
 - **Comments start with `#`** and run to the end of the line.
@@ -37,12 +31,10 @@ HOCON is forgiving about **whitespace and indentation** but strict about
 - Lists use square brackets: `disabled-worlds = ["arena", "spawn"]`.
 - Keys are **kebab-case** (`read-pool-size`, `default-locale`): never camelCase.
 
-If a file won't load after an edit, you almost always have a missing `}` or a stray
-quote. The server log names the file and line.
+If a file will not load after an edit, it is almost always a missing `}` or a stray quote. The server log
+names the file and the line.
 
 </Callout>
-
----
 
 ## Where everything lives
 
@@ -93,15 +85,8 @@ The shape is the whole design: **global settings live in one small file, and eac
 feature module owns its own folder.** You never wade through unrelated settings to
 tune one feature.
 
-<Callout type="danger" title="There is no `modules.conf` file">
-
-A common misconception (carried over from older notes) is that a central
-`modules.conf` switchboard turns modules on and off. **It does not exist.** It is
-not shipped and never created. Each module is enabled or disabled by the
-**`enabled` key at the top of its own `modules/<module>/config.conf`**. See
-[Per-Module Config](per-module.md).
-
-</Callout>
+There is no `modules.conf` switchboard. A module is enabled or disabled by the `enabled` key at the top of
+its own `modules/<module>/config.conf`. See [Per-Module Config](per-module.md).
 
 ### The sub-files inside a module folder
 
@@ -116,8 +101,6 @@ into a sibling file so the main file stays readable:
 The `gui/` sub-folder holds one file per management GUI panel: the in-game editors you
 reach through `/uxmess gui`. You rarely edit these by hand; they are styled the same way
 as [custom menus](../menus/engine.md).
-
----
 
 ## First-run extraction and edits
 
@@ -154,14 +137,8 @@ defaults it last shipped you in a hidden `.defaults/` folder inside the plugin f
 and compares against that, which is how it tells "new in this version" from "the admin
 removed this". Leave that folder alone; it is bookkeeping, not something to edit.
 
-<Callout type="note" title="The first update after 0.5.1">
-
-`.defaults/` is created the first time you run 0.5.1 or newer. That run records
+**The first update after 0.5.1.** `.defaults/` is created the first time you run 0.5.1 or newer. That run records
 what you have and merges nothing, so the appending starts from the update after it.
-
-</Callout>
-
----
 
 ## How to edit and reload
 
@@ -183,16 +160,10 @@ is swapped atomically, so players in-flight are never left half-configured.
 **Reloading never deletes stored data**: disabling a module leaves its database rows
 intact.
 
-<Callout type="tip" title="Some edits need a restart, and reload says so">
-
-Turning a module or a mechanic on or off changes **what is wired**, and wiring
+**Some edits need a restart, and reload says so.** Turning a module or a mechanic on or off changes **what is wired**, and wiring
 happens once when the server starts. Those edits show up as `[RESTART]` in the
 reload output rather than quietly doing nothing. Message and text edits, and
 anything reported `[OK]`, apply immediately.
-
-</Callout>
-
----
 
 ## Which page covers what
 
@@ -205,11 +176,4 @@ anything reported `[OK]`, apply immediately.
 | Colours, glyphs and tone of chat/GUI text | catalogs + `menus/*.conf` | [UI Style](ui-style.md) |
 | Custom GUIs | `menus/*.conf` | [Custom Menu Engine](../menus/engine.md) |
 
----
-
-## Next Steps
-
-- [config.conf (Globals)](global-config.md): storage, locale, and network settings.
-- [Per-Module Config](per-module.md): enable/disable and tune each feature.
-- [Modules & Reloading](../modules/index.md): the full module roster and reload model.
-- [Permission Reference](../permissions/reference.md): the nodes that gate every feature.
+Related: [config.conf (Globals)](global-config.md), [Per-Module Config](per-module.md), [Modules & Reloading](../modules/index.md), [Permission Reference](../permissions/reference.md)

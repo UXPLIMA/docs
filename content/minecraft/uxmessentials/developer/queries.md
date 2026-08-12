@@ -1,10 +1,11 @@
 ---
 title: Query API
 order: 1640
-description: 'Events tell you what uxmEssentials did. Queries answer what is true
-  right now: how many homes a player owns, what they hold, whether they are banned,
-  who is away, which worlds are loaded.'
+description: 'Reading uxmEssentials state: homes, balances, punishments, presence, worlds.'
 ---
+
+Events tell you what uxmEssentials did. Queries answer what is true now: how many homes a player owns, what
+they hold, whether they are banned, who is away, which worlds are loaded.
 
 Every surface hangs off the front door, and every one arrives as an `Optional`:
 
@@ -80,8 +81,6 @@ online, because nobody is at that keyboard to be away from it.
 
 Players are named by UUID throughout. A name is not an identity: it changes, and on an offline-mode server it is not
 unique. Resolve a name to a UUID with Bukkit before you ask.
-
----
 
 ## Homes
 
@@ -234,13 +233,9 @@ moved, chatted or ran a command.
 | `levelOf(playerId)` | the level they are hidden at, or zero |
 | `canSee(viewerId, targetId)` | whether the viewer may see the target |
 
-<Callout type="tip" title="Filtering a list? Use `canSee`">
-
-Vanish has levels: a player is hidden *at* a level, and a viewer sees them when their own level reaches it. On a
+**Filtering a list? Use `canSee`.** Vanish has levels: a player is hidden *at* a level, and a viewer sees them when their own level reaches it. On a
 server that layers the tiers, `isVanished` alone would hide staff from each other. `canSee` is the question the
 tab list, the join messages and the staff tools all ask, and asking it too keeps your list agreeing with theirs.
-
-</Callout>
 
 ## Playtime
 
@@ -553,8 +548,6 @@ off" control agrees with what the player actually sees. The preference survives 
 player and only readable while they are here, which is why somebody who is away is an empty answer rather than a
 default.
 
-
----
 
 ## A worked example
 

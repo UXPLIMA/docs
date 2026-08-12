@@ -1,10 +1,11 @@
 ---
 title: Events
 order: 1630
-description: 'Everything uxmEssentials does is published as an ordinary Bukkit event,
-  and the operations that can be refused cleanly are published twice: once as a question
-  you may cancel, once as the fact afterwards.'
+description: The events uxmEssentials publishes, and the ones you can cancel.
 ---
+
+Everything uxmEssentials does is published as an ordinary Bukkit event. What can be refused cleanly is
+published twice: once as a question you may cancel, once as the fact afterwards.
 
 All of them live under `com.uxplima.uxmessentials.api.bukkit.event`, one package per context. You listen to them the
 way you listen to anything else:
@@ -77,13 +78,9 @@ event fires on whichever thread the operation is on, which is usually a database
 
 Read the event, decide, return. If you need to do something afterwards, schedule it.
 
-<Callout type="note" title="Nothing costs anything when nobody is listening">
-
-Both paths check for listeners before they build anything, so on a server with no plugin listening the whole
+**Nothing costs anything when nobody is listening.** Both paths check for listeners before they build anything, so on a server with no plugin listening the whole
 mechanism is a map lookup: about 7 ns, no allocation, nothing scheduled. You never need to worry that adding a
 listener for one event makes the rest of the plugin slower.
-
-</Callout>
 
 ## Shared shapes
 

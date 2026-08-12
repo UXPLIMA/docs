@@ -1,6 +1,7 @@
 ---
 title: UI Style
 order: 1190
+description: The palette, glyphs and text formats the built-in messages and menus follow.
 ---
 
 uxmEssentials ships with one consistent look across chat, command feedback, GUIs and the
@@ -8,14 +9,8 @@ HUD. When you edit [messages](messages.md) or build [custom menus](../menus/engi
 following the same conventions keeps your server looking like one plugin instead of a
 patchwork. This page is the practical summary for operators.
 
-<Callout type="warning" title="HOCON, not YAML">
-
-Message catalogs and menu files are HOCON: quoted `"key" = "value"` lines and
+**HOCON, not YAML.** Message catalogs and menu files are HOCON: quoted `"key" = "value"` lines and
 `{ … }` blocks. The styling below is written in MiniMessage tags inside those values.
-
-</Callout>
-
----
 
 ## Style tokens, not raw colours
 
@@ -52,8 +47,6 @@ outside the argument: `<h:'Home'> <value>{home}</value>`.
 
 </Callout>
 
----
-
 ## The line shapes
 
 **Chat / feedback.** Lead with a prefix, colour the parts by role, end with a status
@@ -81,8 +74,6 @@ value, and a matching glyph:
 "<muted>|</muted> <body>Balance:</body> <money>{bal}</money> 💰"
 ```
 
----
-
 ## Glyph legend
 
 These are plain Unicode characters (no resource pack). Use each for its meaning:
@@ -100,8 +91,6 @@ These are plain Unicode characters (no resource pack). Use each for its meaning:
 | `📅` | A date or time |
 | `👥` | People / members |
 | `✓` / `✗` | Success / denial |
-
----
 
 ## Styling menus
 
@@ -128,8 +117,6 @@ items {
 The built-in module GUIs (the `modules/<m>/gui/*.conf` panels) already follow these
 conventions: treat them as worked examples if you are building your own.
 
----
-
 ## A few rules of thumb
 
 - **Do** reference colours by token, use `<h:'…'>` for headers, and end chat lines with
@@ -140,10 +127,4 @@ conventions: treat them as worked examples if you are building your own.
 - Styling is language-independent: when you restyle a key in one language, apply the same
   token edit to the matching key in every other language file.
 
----
-
-## Next Steps
-
-- [Messages & Languages](messages.md): editing the text these tokens style.
-- [Custom Menu Engine](../menus/engine.md): building your own GUIs.
-- [Built-in Menu Guide](../menus/built-in.md): the panels that already follow this style.
+Related: [Messages & Languages](messages.md), [Custom Menu Engine](../menus/engine.md), [Built-in Menu Guide](../menus/built-in.md)

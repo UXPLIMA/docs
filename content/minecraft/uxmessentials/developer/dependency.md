@@ -1,10 +1,11 @@
 ---
 title: Adding Dependency
 order: 1620
-description: The uxmEssentials developer API is published as an ordinary Maven artifact.
-  You add one repository and one coordinate, and your IDE gives you the event classes,
-  the front door, and the value types with full javadoc.
+description: The repository and coordinate to compile against, for Maven and Gradle.
 ---
+
+The developer API is an ordinary Maven artifact. Add one repository and one coordinate, and your IDE has
+the event classes, the front door and the value types with their javadoc.
 
 ## The coordinate
 
@@ -64,13 +65,9 @@ dependencies {
 `0.6.0` is the first release that carries the API, and `0.7.0` is the current one. Build against the version you target: `/uxmess version` prints
 what a server is running, and `UxmEssentialsApi.version()` gives you the same string at runtime.
 
-<Callout type="info" title="Which versions are in the repository">
-
-The repository carries the API from the first release that shipped it onward. Older versions of uxmEssentials
+**Which versions are in the repository.** The repository carries the API from the first release that shipped it onward. Older versions of uxmEssentials
 have no artifact and no API classes inside the plugin jar, so a coordinate that resolves is also a promise that
 the classes are there at runtime.
-
-</Callout>
 
 `compileOnly` (Maven: `provided`) is the right scope, and the only correct one. The classes live inside the
 uxmEssentials plugin jar on the server; shading them into your own jar would give you a second copy of every event

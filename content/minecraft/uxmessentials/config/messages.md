@@ -1,11 +1,11 @@
 ---
 title: Messages & Languages
 order: 1180
-description: 'Every player-facing line in uxmEssentials (command feedback, GUI titles,
-  cooldown notices, everything) comes from a per-language message catalog under
-  plugins/uxmEssentials/messages/. No user-visible text is hardcoded, so you can rewrite
-  any line and translate the whole plugin.'
+description: Editing player-facing text, per language, in MiniMessage.
 ---
+
+Every player-facing line comes from a per-language catalog under `plugins/uxmEssentials/messages/`. No
+user-visible text is hardcoded, so any line can be rewritten and the whole plugin translated.
 
 ## How to Edit
 
@@ -14,15 +14,8 @@ description: 'Every player-facing line in uxmEssentials (command feedback, GUI t
 3. Save.
 4. Run `/uxmess reload`: catalogs are swapped atomically on reload.
 
-<Callout type="warning" title="HOCON, not YAML">
-
-Catalogs are HOCON. Each line is `"key" = "value"`. Keep the quotes around both the
-key and the value, and keep the `{placeholder}` tokens exactly as they are; they
-are filled in by the plugin.
-
-</Callout>
-
----
+Catalogs are HOCON. Each line is `"key" = "value"`. Keep the quotes around both the key and the value, and
+keep the `{placeholder}` tokens exactly as they are; the plugin fills them in.
 
 ## One key per line
 
@@ -38,8 +31,6 @@ across every language file. You edit the **values**, never the keys.
 The `{locale}`, `{player}`, `{amount}` and similar tokens are **literal placeholders**
 substituted before MiniMessage parses the line. Keep their names exactly; only the text
 and styling around them are yours to change.
-
----
 
 ## MiniMessage formatting
 
@@ -66,15 +57,12 @@ raw hex code. The `<prefix>` tag is injected automatically by the plugin; **don'
 into a line yourself.** These tags and the tone behind them are covered on the
 [UI Style](ui-style.md) page.
 
-<Callout type="tip" title="Don't use legacy `&amp;` codes">
+<Callout type="warning" title="Legacy codes do not work">
 
-MiniMessage replaces the old `&a`/`§a` colour codes and `ChatColor`. Writing `&a` or
-a `§` code in a catalog will show up literally, not as a colour. Always use
-MiniMessage tags.
+MiniMessage replaces the old `&a` and `§a` colour codes. A legacy code written into a catalog shows up
+literally instead of colouring the line.
 
 </Callout>
-
----
 
 ## Languages that ship
 
@@ -98,8 +86,6 @@ messages {
 }
 ```
 
----
-
 ## Which language a player sees
 
 uxmEssentials resolves a player's language through a fallback chain, first match wins:
@@ -122,10 +108,4 @@ including deferred and asynchronous messages, so a line always renders in the re
 language. The Adventure `GlobalTranslator` handles the translatable-key path so vanilla
 translatable components resolve too.
 
----
-
-## Next Steps
-
-- [UI Style](ui-style.md): the colour tokens, glyphs and tone the catalogs follow.
-- [Config Overview](overview.md): where the catalogs sit in the file layout.
-- [config.conf (Globals)](global-config.md): setting the `default-locale`.
+Related: [UI Style](ui-style.md), [Config Overview](overview.md), [config.conf (Globals)](global-config.md)

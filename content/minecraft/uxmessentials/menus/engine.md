@@ -1,17 +1,15 @@
 ---
 title: Custom Menu Engine
 order: 1090
-description: 'A custom menu is a single HOCON file in plugins/uxmEssentials/menus/. The
-  file name (without .conf) is the menu''s name: menus/shop.conf is opened with /menu
-  open shop. uxmEssentials ships menus/example.conf as a starting point: copy it, rename
-  it, and edit.'
+description: 'Writing a menu file: layout, items, sources, pagination and input.'
 ---
+
+A custom menu is a single HOCON file in `plugins/uxmEssentials/menus/`. The file name is the menu's name:
+`menus/shop.conf` opens with `/menu open shop`.
 
 The same engine that draws every [built-in menu](built-in.md) loads your files, so
 everything on this page applies equally to both. A menu that fails to parse is skipped
 with a warning in the log: one bad file never hides the rest.
-
----
 
 ## The smallest menu
 
@@ -44,8 +42,6 @@ place in the plugin where inline text is expected rather than a `@catalog.key`.
 
 </Callout>
 
----
-
 ## Menu-level keys
 
 These sit at the top of the file, outside `items { }`.
@@ -53,7 +49,7 @@ These sit at the top of the file, outside `items { }`.
 | Key | Meaning |
 |---|---|
 | `title` | The window title (MiniMessage; may hold `%placeholders%`). |
-| `rows` | Chest height, `1`–`6`. |
+| `rows` | Chest height, `1` to `6`. |
 | `inventory-type` | Optional non-chest shape (`hopper`, `dispenser`, …). Falls back to a `rows` chest if the shape rejects the window. |
 | `items { }` | The item map: each key is an item id. |
 | `open-requirement` | Conditions that must pass before the menu opens at all (see below). |
@@ -66,8 +62,6 @@ These sit at the top of the file, outside `items { }`.
 | `chest-only` | Keep this menu on the chest path even for Bedrock viewers (see [Bedrock Forms](bedrock.md)). |
 | `bedrock { }` | An explicit native Bedrock form for this menu. |
 | `command { }` | Give the menu its own open-command (see below). |
-
----
 
 ## Item keys
 
@@ -88,8 +82,6 @@ Each entry under `items { }` is one tile, keyed by an id you choose.
 | `type` | Pagination role: `NONE`, `NEXT`, `PREVIOUS`, `JUMP`. |
 | `list { }` | Expand one template tile across a data source (online players, worlds, …). See below. |
 | `click { }` | What each click gesture does (see below). |
-
----
 
 ## List-backed items
 
@@ -134,13 +126,9 @@ viewer's current page, sort and filters pushed down to whatever holds the data. 
 page comes back, so a browse over ten thousand rows costs the same as a browse over ten.
 `playerwarps:browse` (behind `/pwarp`) is the reference example.
 
-<Callout type="warning" title="`page-size` and `sorts` are paged-only">
-
-Set either on a plain in-memory source and the spec is **rejected at load** with a
+**`page-size` and `sorts` are paged-only.** Set either on a plain in-memory source and the spec is **rejected at load** with a
 message naming the item. That is deliberate: a knob that silently does nothing is
 worse than a loud error.
-
-</Callout>
 
 ### Sorting, filtering and searching
 
@@ -165,8 +153,6 @@ all    { click { left = ["list-filter:playerwarps:browse:scope="] } }
 
 State is per viewer and per open menu, so two players browsing the same menu sort and
 filter independently.
-
----
 
 ## Asking the player to type something
 
@@ -194,8 +180,6 @@ Every prompt works in every mode, so switching one is always safe. `dialog` on a
 server falls back to `sign` (or `anvil`), logged once so the substitution is not silent.
 Bedrock viewers always get a native form regardless of the mode.
 
----
-
 ## Click blocks
 
 `click { }` binds behaviour to gestures. Each gesture is either a **bare action list**
@@ -215,15 +199,13 @@ gesture was used). The underscore forms (`shift_left`, `double_click`) are accep
 The full grammar of actions, conditions, per-gesture requirements and `else` ladders
 lives on the [Actions & Requirements](actions-requirements.md) page.
 
----
-
 ## A complete worked example
 
 A three-row VIP shop tile: it only shows to players with a permission, charges money on
 click, and gives a diamond block, with a fallback message when they cannot afford it.
 
 ```hocon
-# menus/shop.conf   →   /menu open shop   (or /shop, see the command block)
+# menus/shop.conf   to   /menu open shop   (or /shop, see the command block)
 
 title = "<gradient:#ffd700:#ff8c00>VIP Shop</gradient>"
 rows = 3
@@ -279,17 +261,11 @@ items {
 }
 ```
 
-<Callout type="tip" title="Bare `id:value`, never brackets">
-
-Every action, condition and placeholder is a **bare `id:value` reference**:
+**Bare `id:value`, never brackets.** Every action, condition and placeholder is a **bare `id:value` reference**:
 `message:hi`, `perm:vip`, `has-money:500`, `open:shop`. uxmEssentials does **not** use
 the bracketed `[message] hi` style some other menu plugins use. If you are converting
 an old file, this is the single most common thing to fix (the
 [converters](converters.md) do it for you).
-
-</Callout>
-
----
 
 ## Giving a menu its own command
 
@@ -313,8 +289,6 @@ command block is invalid. You can also declare typed positional `arguments` here
 commands like `/gift <target> <amount>`: the argument values become placeholders the
 menu can read.
 
----
-
 ## The `/menu` command
 
 `/menu` is the operator surface over the engine. `open` and `list`/`last` are for
@@ -330,25 +304,13 @@ everyone (`uxmessentials.menu.use`); the rest are admin-gated with
 | `/menu dump <menu>` | Print a menu's parsed structure (items, slots, clicks) | `.menu.admin` |
 | `/menu meta <menu>` | Print a menu's metadata summary | `.menu.admin` |
 
-<Callout type="note" title="Reload after every edit">
-
-Menu files are read on load and on `/menu reload`, never on a hot path, so nothing
+**Reload after every edit.** Menu files are read on load and on `/menu reload`, never on a hot path, so nothing
 you type takes effect until you reload. `/menu reload shop` re-reads one file and
 tells you in the log exactly where a syntax error is; a bad file is skipped and the
 others keep working.
-
-</Callout>
 
 There are two more `/menu` subcommands covered elsewhere: `/menu convert` (see
 [Converting Other Menus](converters.md)) and `/menu execute` (run a single menu action
 for a player, admin-only).
 
----
-
-## Next Steps
-
-- [Actions & Requirements](actions-requirements.md): the full click/condition vocabulary.
-- [Bedrock Forms](bedrock.md): how your menu renders for Floodgate players.
-- [Converting Other Menus](converters.md): bring DeluxeMenus/zMenu/OGUI/GUIPlus files across.
-- [Menu API](../developer/menu-api.md): register your own actions, conditions and placeholders in code.
-- [Config Overview](../config/overview.md): where `menus/` sits in the config tree.
+Related: [Actions & Requirements](actions-requirements.md), [Bedrock Forms](bedrock.md), [Converting Other Menus](converters.md), [Menu API](../developer/menu-api.md)

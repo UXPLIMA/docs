@@ -1,13 +1,11 @@
 ---
 title: Discord
 order: 1550
-description: 'uxmEssentials can reach into Discord through a small companion jar built
-  on JDA (the Java Discord API). It mirrors server events into your Discord channels and
-  hosts the Discord side of account linking. It''s entirely optional: a separate
-  download that sits dormant until you give it a bot token.'
+description: The companion jar, what it mirrors into Discord, and account linking.
 ---
 
----
+uxmEssentials reaches Discord through a companion jar built on JDA. It mirrors server events into your
+channels and hosts the Discord side of account linking.
 
 ## What It Is
 
@@ -21,8 +19,6 @@ It does two things:
   watches.
 - **Account linking**: hosts the Discord-side `/link` slash command that redeems
   the code a player generates in-game.
-
----
 
 ## How Linking Works
 
@@ -44,8 +40,6 @@ step** needs the companion jar to be online and connected.
 | `/discordunlink` | In-game | `uxmessentials.discord.link` |
 | `/link <code>` | Discord | (Discord role gating) |
 
----
-
 ## Setup (High Level)
 
 1. Create a Discord **application + bot** in the Discord Developer Portal and copy
@@ -63,8 +57,6 @@ Portal if it leaks.
 
 </Callout>
 
----
-
 ## When the Bridge Is Absent
 
 Because it's a distinct jar that stays dormant until configured, a server without it
@@ -76,8 +68,6 @@ is completely unaffected:
 | Bridge installed, no token | Dormant: no connection, no notifications. |
 | Bridge connected | Notifications flow and `/link` redeems codes. |
 
----
-
 ## Setup Checklist
 
 1. Keep the **Discord Link** module enabled for the in-game commands.
@@ -86,9 +76,4 @@ is completely unaffected:
 3. Configure a bot token in `discord.conf`.
 4. Restart and confirm the bot comes online in your Discord server.
 
----
-
-## Next Steps
-
-- [🔗 Discord Link Feature](../modules/discordlink.md): the in-game linking flow in full
-- [👨‍💻 Developer Overview](../developer/overview.md): the linking service seam shared over `ServicesManager`
+Related: [Discord Link Feature](../modules/discordlink.md), [‍ Developer Overview](../developer/overview.md)

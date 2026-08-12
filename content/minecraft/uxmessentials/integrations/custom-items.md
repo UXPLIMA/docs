@@ -1,14 +1,12 @@
 ---
 title: Custom Items & Heads
 order: 1540
-description: 'Anywhere uxmEssentials asks for a material: menu icons, and the same
-  shared icon resolution used for kits and hologram displays; you aren''t limited to
-  vanilla items. A short provider:id prefix lets you drop in custom items from
-  ItemsAdder, Oraxen, Nexo, MMOItems or ExecutableItems, and custom heads from
-  HeadDatabase, base64 textures or player skins.'
+description: Using ItemsAdder, Oraxen, Nexo, MMOItems, ExecutableItems and custom heads as icons.
 ---
 
----
+Anywhere uxmEssentials asks for a material you are not limited to vanilla items. A `provider:id` prefix
+pulls in custom items from ItemsAdder, Oraxen, Nexo, MMOItems or ExecutableItems, and custom heads from
+HeadDatabase, base64 textures or player skins.
 
 ## Custom Item Providers
 
@@ -33,8 +31,6 @@ id the source plugin expects (ItemsAdder namespaced ids, MMOItems type/id pairs,
 
 </Callout>
 
----
-
 ## Heads
 
 Custom-head sources use the same prefixed syntax:
@@ -48,8 +44,6 @@ Custom-head sources use the same prefixed syntax:
 HeadDatabase is guarded strictly: the `hdb:` source only resolves when the plugin
 is enabled **and** its API loads. Base64 and player heads are native and need no
 extra plugin.
-
----
 
 ## Where These Work
 
@@ -69,8 +63,6 @@ items {
 }
 ```
 
----
-
 ## When a Provider Is Absent
 
 Custom-item resolution **fails soft**. If a prefix points at a plugin that isn't
@@ -84,16 +76,10 @@ default icon.
 | Provider absent or id unknown | Silent fallback to a plain material. |
 | HeadDatabase not enabled | `hdb:` is a no-op; `basehead:` / `skull:` still work. |
 
-<Callout type="tip" title="Advanced item meta with NBT-API">
-
-For the rare tag that native Paper data-components can't express, uxmEssentials
+**Advanced item meta with NBT-API.** For the rare tag that native Paper data-components can't express, uxmEssentials
 will use **NBT-API** if it's installed. Item meta is built from native
 components first; without NBT-API that raw-NBT path is simply skipped: no
 `de.tr7zw` classes are touched.
-
-</Callout>
-
----
 
 ## Setup Checklist
 
@@ -105,10 +91,4 @@ components first; without NBT-API that raw-NBT path is simply skipped: no
 3. Missing providers degrade gracefully to plain materials, so a menu is never
    broken by an item you haven't installed yet.
 
----
-
-## Next Steps
-
-- [🎛️ The Custom Menu Engine](../menus/engine.md): the full item-spec reference
-- [🎁 Kits](../modules/kits.md): custom icons on kit entries
-- [🖼️ Holograms](../modules/holograms.md): item and head displays
+Related: [The Custom Menu Engine](../menus/engine.md), [Kits](../modules/kits.md), [Holograms](../modules/holograms.md)

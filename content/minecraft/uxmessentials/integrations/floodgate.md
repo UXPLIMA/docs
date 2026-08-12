@@ -1,14 +1,12 @@
 ---
 title: Bedrock (Floodgate)
 order: 1530
-description: 'Running a cross-platform server that accepts Bedrock Edition players
-  through Geyser? uxmEssentials detects those players and, instead of showing them a
-  chest GUI, renders native Cumulus forms: the tidy list-and-button dialogs Bedrock
-  players expect. It all keys off Floodgate, and there is nothing to configure beyond
-  installing the Bedrock stack itself.'
+description: What Bedrock players get, and what Floodgate has to be installed for.
 ---
 
----
+On a server that accepts Bedrock players through Geyser, uxmEssentials detects them and renders native
+Cumulus forms instead of chest GUIs. It keys off Floodgate, and there is nothing to configure beyond the
+Bedrock stack itself.
 
 ## What Floodgate Is
 
@@ -29,8 +27,6 @@ Floodgate wins whenever both are installed: it is the richer source, and it is t
 a Bedrock link account behind it. The line the plugin logs on enable names which one answered,
 `floodgate`, `geyser` or `none`.
 
----
-
 ## What uxmEssentials Uses It For
 
 When a Bedrock player opens a menu, the [menu engine](../menus/bedrock.md)
@@ -44,8 +40,6 @@ auto-redirects them away from the chest inventory to a native Cumulus form:
 Java players on the same server keep getting the normal chest GUI. Both audiences
 are served from the same menu definition; you don't maintain two versions.
 
----
-
 ## Forcing the Chest Path
 
 Some menus rely on real inventory slots (item grids, drag-and-drop). For those, set
@@ -56,8 +50,6 @@ chest inventory instead of a form.
 # in a menu spec: keep this one as a chest for everyone
 chest-only = true
 ```
-
----
 
 ## When Floodgate Is Absent
 
@@ -71,8 +63,6 @@ viewer and the plugin behaves exactly as it would on any vanilla Paper install.
 | Floodgate installed, Java player | Normal chest GUI. |
 | No Floodgate (Java-only) | Everyone gets the chest GUI; nothing changes. |
 
----
-
 ## Setup Checklist
 
 1. Install **Geyser** and **Floodgate** the way you normally would for Bedrock
@@ -80,9 +70,4 @@ viewer and the plugin behaves exactly as it would on any vanilla Paper install.
 2. No uxmEssentials config is required; form rendering activates on its own.
 3. Add `chest-only = true` to any menu that must use real inventory slots.
 
----
-
-## Next Steps
-
-- [📱 Bedrock Forms](../menus/bedrock.md): SimpleForm degradation and the `bedrock {}` block
-- [🎛️ The Custom Menu Engine](../menus/engine.md): how menus are defined
+Related: [Bedrock Forms](../menus/bedrock.md), [The Custom Menu Engine](../menus/engine.md)

@@ -1,13 +1,12 @@
 ---
 title: Velocity & Redis
 order: 1590
-description: 'Cross-server sync keeps player data in step across a network of backend
-  servers, so a home set on survival-1, a /pay made on survival-2, and a vault filled on
-  the lobby all agree the moment a player switches servers. It is off by default
-  (network.enabled = false); a single server needs none of it and runs purely local.'
+description: What syncs across backends, the two transports, and how to turn it on.
 ---
 
----
+Cross-server sync keeps player data in step across backends, so a home set on survival-1, a `/pay` made on
+survival-2 and a vault filled on the lobby agree the moment a player switches servers. It is off until you
+turn it on, and a single server needs none of it.
 
 ## How It Works
 
@@ -38,8 +37,6 @@ Two things make this work, and both are required:
                                                           └──────────────┘
 ```
 
----
-
 ## What Syncs
 
 The following stay consistent across every backend:
@@ -54,8 +51,6 @@ The following stay consistent across every backend:
 
 Each backend also sends a presence heartbeat so `/uxmess doctor` can report how many peers are
 online.
-
----
 
 ## The `network` Block
 
@@ -89,8 +84,6 @@ network {
 | `transport` | How notifications travel: `velocity`, `redis`, or `both` |
 | `redis.*` | Redis connection; the `channel` must be identical on every backend |
 
----
-
 ## Choosing a Transport
 
 | Transport | You need | Best when |
@@ -101,8 +94,6 @@ network {
 
 If the transport is unavailable, the plugin degrades to local-only with a single warning: the
 individual server keeps working, it just does not sync.
-
----
 
 ## Setup Outline
 
@@ -137,8 +128,6 @@ currencies, will not sync correctly: balances and other data can diverge or be r
 Give every backend a **unique** `server-id`; two backends sharing one corrupts sync routing.
 
 </Callout>
-
----
 
 ## Proxy-Side Command Control
 
@@ -185,28 +174,13 @@ Groups resolve through **LuckPerms-Velocity** when it is installed; without it, 
 | `uxmessentials.commandcontrol.viewproxycommands` | See the hidden proxy-native commands |
 | `uxmessentials.commandcontrol.spam.bypass` | Exempt from the proxy spam guard |
 
-<Callout type="note" title="Two layers, configured separately">
-
-Turning this on at the proxy does **not** configure your backends, and vice versa. A
+**Two layers, configured separately.** Turning this on at the proxy does **not** configure your backends, and vice versa. A
 network that wants both hidden runs command-control in two places: the proxy section
 here for proxy-native commands, and the `commandcontrol` module on each backend for
 that backend's commands.
 
-</Callout>
-
-<Callout type="warning" title="`plugin-channel-hide` is not enforced at the proxy">
-
-Velocity's API does not expose the client-facing channel-advertisement packets, so
+**`plugin-channel-hide` is not enforced at the proxy.** Velocity's API does not expose the client-facing channel-advertisement packets, so
 that setting is read and validated but never applied, and a warning is logged if you
 set it. Use the backend module's plugin-channel hider instead.
 
-</Callout>
-
----
-
-## Next Steps
-
-- [MySQL / MariaDB Setup](../database/mysql.md): the shared database every backend requires.
-- [PostgreSQL Setup](../database/postgresql.md): the alternative shared backend.
-- [config.conf (Globals)](../config/global-config.md): the `network` block in full.
-- [Economy](../modules/economy.md): how balances stay consistent (and double-spend-safe) across the cluster.
+Related: [MySQL / MariaDB Setup](../database/mysql.md), [PostgreSQL Setup](../database/postgresql.md), [config.conf (Globals)](../config/global-config.md), [Economy](../modules/economy.md)

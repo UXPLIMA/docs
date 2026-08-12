@@ -1,9 +1,8 @@
 ---
 title: Permission Reference
 order: 1600
+description: Every permission node, its default, and what it grants, by module.
 ---
-
-## Overview
 
 Every uxmEssentials permission lives under the root `uxmessentials.*`. The plugin ships with defaults that make a fresh install playable the moment it starts, so you only grant permissions to *change* the defaults, never to switch the plugin on.
 
@@ -22,17 +21,11 @@ uxmEssentials never imports LuckPerms directly. Every check goes through the sha
 
 To override a default for a group, configure the node in your permission plugin. uxmEssentials does not own group state.
 
-<Callout type="info" title="The plugin can print this page for you">
-
-Every node below is declared once inside the plugin, in a single catalogue. The server is told about
+**The plugin can print this page for you.** Every node below is declared once inside the plugin, in a single catalogue. The server is told about
 the fixed nodes from that catalogue on enable, and the same catalogue answers `/uxmess permissions`
 in game. `/uxmess permissions export` writes the whole thing to `permissions.md` in the plugin
 folder, so the reference always matches the build you are running. Both need
 `uxmessentials.admin.permissions`.
-
-</Callout>
-
----
 
 ## How nodes are organised
 
@@ -46,8 +39,6 @@ Permissions split along four axes:
 | **Numbered / tiered** | `uxmessentials.home.limit.<n>`, `uxmessentials.tp.warmup.<seconds>` | *(value-bearing, no boolean default)* |
 
 A staff member usually holds the relevant admin node *and* the matching bypass node, so they keep operating through a gate (a cooldown, a warmup, a cost, a quota) that would otherwise reject them.
-
----
 
 ## Teleport
 
@@ -85,8 +76,6 @@ The `teleport` context owns all movement orchestration and the shared cooldown/w
 | `uxmessentials.tp.warmup.<seconds>` | `tier` | The stand-still countdown before a teleport runs, in seconds; the shortest tier held wins and 0 removes it. |
 | `uxmessentials.tp.warmup.bypass` | `op` | Start teleports with no warmup, immune to move-cancel. |
 
----
-
 ## Homes
 
 All home actions live under the single `/home` command; the no-arg call opens the slot grid and the rest are subcommands, each gated by its own node.
@@ -102,8 +91,6 @@ All home actions live under the single `/home` command; the no-arg call opens th
 | `uxmessentials.home.use` | `true` | `/home` to open and manage your slot-based home grid. |
 | `uxmessentials.home.visit` | `true` | `/visit` to teleport to another player's public home or one you were invited to. |
 | `uxmessentials.module.homes` | `op` | Hot-reload / inspect the homes module (per-player homes and the slot grid). |
-
----
 
 ## Warps
 
@@ -130,8 +117,6 @@ Single root `/warp`; create/move/delete/lock and the editor are subcommands.
 | `uxmessentials.warp.use.<warp>` | `label` | Use one warp, when that warp is configured to require a permission. |
 
 Per-warp gates are data-driven in `warps.conf`: a warp with `permission: true` requires the family node `uxmessentials.warp.use.<warp>` (`<warp>` is the warp id, lower-cased); a warp with a `cost` charges through the economy provider.
-
----
 
 ## Player Warps
 
@@ -175,8 +160,6 @@ Player-owned warps are keyed by `(owner, name)`: two players may each keep a `ba
 
 The five bypasses (`uxmessentials.pwarp.bypass.ban`, `.password`, `.whitelist`, `.safety`, `.cost`) each default `op` and are listed under [Bypass Nodes](#bypass-nodes). The per-player cap is the tier `uxmessentials.pwarp.limit.<n>`, optionally scoped per world.
 
----
-
 ## Economy
 
 Balances are DB-backed and routed through the shared `EconomyProvider` port; eco-admin mutations are always audit-logged.
@@ -217,8 +200,6 @@ Balances are DB-backed and routed through the shared `EconomyProvider` port; eco
 
 `/bank`, `/deposit`, `/withdraw`, `/loan`, `/wallet`, `/exchange`, `/sellall`, and the extra `/eco` subcommands carry their own nodes but are only active when the matching feature flag is on in `economy.conf`. Per-currency gating uses the tier node `uxmessentials.economy.currency.<id>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes).
 
----
-
 ## Ranks
 
 Rankup, prestige and the ladder panel. The plugin tracks each player's rank with a DB-backed pointer of its own; a rank's rankup actions may set a permission-plugin group, run any command, or nothing at all. The ladder (ranks, order, cost, requirements, actions) is data-driven in `modules/ranks/ranks.conf`.
@@ -232,8 +213,6 @@ Rankup, prestige and the ladder panel. The plugin tracks each player's rank with
 | `uxmessentials.ranks.rankup` | `true` | `/rankup` to advance to the next rank when you meet its requirements. |
 
 A rank's `cost` is charged through the economy provider, and a `placeholder` requirement uses an operator-chosen `%placeholder%` comparison: neither is a plugin-declared node.
-
----
 
 ## Kits
 
@@ -252,8 +231,6 @@ A rank's `cost` is charged through the economy provider, and a `placeholder` req
 
 Per-kit gating is data-driven: a kit with `permission: true` requires `uxmessentials.kit.<id>`.
 
----
-
 ## Vaults
 
 DB-persisted, player-owned item storage. Vault count and per-vault size are numbered quota tiers.
@@ -271,8 +248,6 @@ DB-persisted, player-owned item storage. Vault count and per-vault size are numb
 | `uxmessentials.vault.size.<rows>` | `quota` | How many rows each of your vaults holds; the largest tier held wins. |
 | `uxmessentials.vault.use` | `true` | `/vault` to open your default vault (or list them), `/vault <n>` to open the Nth, and `/vault` delete `<n>` to delete your own. |
 
----
-
 ## Trade
 
 Player-to-player trading through a shared, both-confirm window. `/trade` is the whole surface; the accept/deny answers and the (optional) cross-server escrow all ride on the one node.
@@ -284,11 +259,9 @@ Player-to-player trading through a shared, both-confirm window. `/trade` is the 
 
 The item blacklist, request distance, cooldown, staked currencies, audit, and cross-server escrow are config-driven in `modules/trade/config.conf`, not permission nodes.
 
----
-
 ## Player State
 
-Toggleable flags and apply-once effects. Every `[player]` target form additionally requires `uxmessentials.playerstate.others`. These default to `op` because they are powerful self/other buffs: loosen the specific ones a donor rank should get.
+Toggleable flags and apply-once effects. Every `[player]` target form additionally requires `uxmessentials.playerstate.others`. These default to `op` because they are self and other buffs: loosen the specific ones a donor rank should get.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
@@ -352,8 +325,6 @@ Toggleable flags and apply-once effects. Every `[player]` target form additional
 | `uxmessentials.speed.others` | `op` | `/speed` on another player. Granted on its own, or by the cross-cutting uxmessentials.playerstate.others. |
 | `uxmessentials.playerstate.others` | `op` | Use any playerstate command with a `[player]` target other than yourself. |
 
----
-
 ## Messaging
 
 Private messages and persistent mail only (not public chat). Delivery is ignore-aware and respects a `moderation` mute.
@@ -373,8 +344,6 @@ Private messages and persistent mail only (not public chat). Delivery is ignore-
 | `uxmessentials.msg.toggle` | `true` | `/msgtoggle` to refuse incoming `/msg` / `/reply`; `/rtoggle` to refuse only incoming `/reply` routing (mail still delivers). |
 | `uxmessentials.msg.use` | `true` | `/msg <player> <text>` to send a private message. |
 | `uxmessentials.msgsettings.use` | `true` | `/msgsettings` opens your personal messaging settings panel (accept-messages, social spy). |
-
----
 
 ## Communication
 
@@ -403,8 +372,6 @@ Connection-message policies, the rotating announcer, and info pages. Operator-au
 | `uxmessentials.communication.me` | `true` | `/me` to broadcast a third-person action message to all online players. |
 | `uxmessentials.communication.togglechat` | `op` | `/togglechat` (alias `/mutechat`) to lock or unlock public chat for non-staff. |
 | `uxmessentials.module.communication` | `op` | Hot-reload / inspect the communication module (connection messages, announcer, info pages). |
-
----
 
 ## Moderation
 
@@ -445,8 +412,6 @@ Every action is audit-logged and permission-gated. A mute blocks outbound messag
 
 Ban and mute durations can be capped per rank with the numbered families `uxmessentials.moderation.ban.maxduration.<seconds>` and `.mute.maxduration.<seconds>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes).
 
----
-
 ## Staff
 
 STAFF-MODE ONLY: a loadout swap and a gadget hotbar. It issues no sanctions of its own; the FREEZE and COMPASS gadgets orchestrate the moderation and teleport use cases. The `/staff` text roster and the `uxmessentials.staff.member` marker live under [Presence](#presence).
@@ -457,8 +422,6 @@ STAFF-MODE ONLY: a loadout swap and a gadget hotbar. It issues no sanctions of i
 | `uxmessentials.staff.chat` | `op` | `/staffchat` (alias `/sc`) to send and receive lines on the staff-only chat channel. |
 | `uxmessentials.staff.list` | `op` | `/stafflist` to open the online-staff GUI (vanish-aware) and click a head to teleport to that staff member. |
 | `uxmessentials.staff.mode` | `op` | `/staffmode [player]` to flip into staff mode: your real loadout is saved and swapped for the gadget hotbar (and you vanish); leaving restores it. The EXAMINE gadget opens a player's inventory. |
-
----
 
 ## Vanish
 
@@ -478,8 +441,6 @@ PremiumVanish-class invisibility with layered see/use levels. Its own `vanish` m
 
 The optional layered families `uxmessentials.vanish.use.level<N>` (vanish at use level `N`) and `uxmessentials.vanish.see.level<N>` (see up to level `N`) tier the see/use model: a viewer sees a vanished player only when their see level is at least the target's use level. Plain `.use` / `.see` are level 1; see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes).
 
----
-
 ## Presence
 
 | Node | Default | What it grants |
@@ -496,8 +457,6 @@ The optional layered families `uxmessentials.vanish.use.level<N>` (vanish at use
 | `uxmessentials.staff.member` | `op` | Marks a player as staff so they appear in `/staff`. |
 | `uxmessentials.staff.use` | `op` | `/staff` to list online staff members. |
 | `uxmessentials.whois.use` | `op` | `/whois <player>` to view an online player's account, identity and status. |
-
----
 
 ## Worlds
 
@@ -529,8 +488,6 @@ Multi-world management. Nodes use the `uxmessentials.world.*` prefix (the plural
 | `uxmessentials.world.unregister` | `op` | `/world` unregister `<name>`: drop a world from the registry, leaving its folder on disk. |
 
 Per-world entry uses `uxmessentials.world.<name>.enter` (a world with access restrictions). Bypass nodes are listed under [Bypass Nodes](#bypass-nodes).
-
----
 
 ## Item & World
 
@@ -618,8 +575,6 @@ The item/world toolbox carries roughly 65 verbs, each with its own node; the ful
 
 `/give`, `/enchant` and `/spawnmob` also layer a per-type opt-out family: `uxmessentials.itemworld.give.<material>`, `.enchant.<enchant>`, `.spawnmob.<mob>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes). The module's reload tier is `uxmessentials.module.itemworld`.
 
----
-
 ## Holograms
 
 Named, world-placed native-Display holograms. The whole `/hologram` surface is gated as one operator tool.
@@ -640,8 +595,6 @@ Named, world-placed native-Display holograms. The whole `/hologram` surface is g
 
 A hologram gated with `visibility <name> PERMISSION <node>` uses an **operator-chosen** node (any node your permission plugin manages): it is not a plugin-declared node and has no fixed entry.
 
----
-
 ## NPC
 
 Server-wide packet fake-player/entity NPCs. The `/npc` command is an operator surface gated as a whole.
@@ -660,8 +613,6 @@ Server-wide packet fake-player/entity NPCs. The `/npc` command is an operator su
 | `uxmessentials.npc.gui` | `op` | `/npc` (no args) opens the NPC management GUI. |
 | `uxmessentials.npc.limit.<n>` | `quota` | How many NPCs you may own; the largest tier held wins. |
 
----
-
 ## Menus
 
 The operator surface over the built-in [menu engine](../menus/engine.md).
@@ -673,8 +624,6 @@ The operator surface over the built-in [menu engine](../menus/engine.md).
 | `uxmessentials.menu.open.others` | `op` | `/menu` open `<menu> <player>`: open a custom menu for somebody else. |
 | `uxmessentials.menu.use` | `true` | `/menu` open `<name>` to open an operator custom menu, and `/menu` list to see the loaded menus. |
 | `uxmessentials.module.custommenus` | `op` | Hot-reload / inspect the custommenus module (operator custom menus behind `/menu`). |
-
----
 
 ## Vote
 
@@ -688,8 +637,6 @@ The operator surface over the built-in [menu engine](../menus/engine.md).
 | `uxmessentials.voteparty.admin` | `op` | `/voteparty` force\|set\|add: force the party or adjust the party counter. |
 | `uxmessentials.voteparty.use` | `true` | `/voteparty` to see progress towards the next vote party. |
 
----
-
 ## Scoreboard, Tablist & Nametags
 
 The **tablist** and **nametags** modules register no commands: both are packet/config-driven.
@@ -702,8 +649,6 @@ The **tablist** and **nametags** modules register no commands: both are packet/c
 | `uxmessentials.module.tablist` | `op` | Hot-reload / inspect the tablist module (the player list header, footer and rows). |
 | `uxmessentials.module.nametags` | `op` | Hot-reload / inspect the nametags module (the name shown above a player). |
 
----
-
 ## Discord Linking
 
 | Node | Default | What it grants |
@@ -713,8 +658,6 @@ The **tablist** and **nametags** modules register no commands: both are packet/c
 | `uxmessentials.module.discordlink` | `op` | Hot-reload / inspect the discordlink module (account linking and Discord notifications). |
 
 The `/link` redemption itself runs in the optional Discord bridge jar; the in-game commands work whether or not the bridge is installed.
-
----
 
 ## Sitting & Poses
 
@@ -731,8 +674,6 @@ The `/link` redemption itself runs in the optional Discord bridge jar; the in-ga
 | `uxmessentials.spin.use` | `true` | `/spin`: sit and spin in place. |
 
 The optional numbered node `uxmessentials.poses.cooldown.<seconds>` sets an anti-spam wait between starting poses (an open value space, like `kit.cooldown.<seconds>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes)). See the [Sitting & Poses](../modules/poses.md) guide for how each pose works.
-
----
 
 ## Survival
 
@@ -760,8 +701,6 @@ Opt-in gameplay mechanics, each an independently toggleable sub-feature. A mecha
 
 Fast leaf decay, the anvil unlocker, one-player sleep and head drops are world-side effects with no permission node: they're governed only by their config blocks. See the [Survival Mechanics](../modules/survival.md) guide for what each mechanic does.
 
----
-
 ## Security
 
 Account security: an optional second factor a player enrols themselves, join verification, op-command protection, and a same-IP alt / ClientID guard. **Not** a login system: there's no password or first-join gate, and on an offline-mode server it waits for your login plugin rather than replacing it. The two self-service nodes ship `true`; the staff reads and the bypass default to `op`. See the [Account Security](../modules/security.md) guide for the flows.
@@ -780,8 +719,6 @@ Account security: an optional second factor a player enrols themselves, join ver
 | `uxmessentials.security.pin.required` | `false` | Must set a PIN before playing. |
 | `uxmessentials.security.reset` | `op` | `/security` reset `<player> [totp\|pin\|all]`: clear a factor a player can no longer prove. |
 
----
-
 ## Command Control
 
 Command whitelist / blacklist gating, tab-completion filtering, plugin-hide, and the namespace-bypass block: the PlHidePro / CommandWhitelist feature set. It ships enabled but inert (a blacklist with empty lists, plugin-hide off), so both nodes default to `op` and gate nobody until you name commands. See the [Command Control](../modules/commandcontrol.md) guide.
@@ -793,8 +730,6 @@ Command whitelist / blacklist gating, tab-completion filtering, plugin-hide, and
 | `uxmessentials.commandcontrol.spam.bypass` | `op` | Exempt from the command-spam rate limiter - commands are never counted and no spam action fires. |
 | `uxmessentials.commandcontrol.viewplugins` | `op` | See the plugin-listing / help commands (`/plugins`, `/pl`, `/help`, ...) hidden by the plugin-hide feature. |
 | `uxmessentials.module.commandcontrol` | `op` | Hot-reload / inspect the commandcontrol module (command whitelist, tab-completion filter, plugin-hide). |
-
----
 
 ## Villagers
 
@@ -811,8 +746,6 @@ Villager trade management: trades that never lock out, a restock timer, a staff 
 | `uxmessentials.villagers.trade` | `op` | Open a villager's trade window directly on right-click, when click-to-trade is enabled. |
 | `uxmessentials.villagers.use` | `op` | `/villager`: the root command's base node; its subcommands each gate further on their own node. |
 
----
-
 ## Inventory Rollback
 
 Inventory snapshot and restore: the plugin freezes a player's inventory on death and (by config) on logout, keeps a bounded history of those snapshots in the database (never PDC, so they survive a world rollback), and lets staff browse and restore them from a GUI. The module ships **disabled**; turn it on and it captures on death and logout straight away. A restore acts on a live inventory, so the target must be online. See the [Inventory Rollback](../modules/invrollback.md) guide.
@@ -823,8 +756,6 @@ Inventory snapshot and restore: the plugin freezes a player's inventory on death
 | `uxmessentials.invrollback.restore` | `op` | `/invrestore <player>` opens the inventory-snapshot restore GUI for a player. |
 | `uxmessentials.invrollback.teleport` | `op` | `/invrestore` tp `<player> <index>` teleports you to where the snapshot was captured. |
 | `uxmessentials.module.invrollback` | `op` | Hot-reload / inspect the invrollback module (inventory snapshots and restore). |
-
----
 
 ## Regions
 
@@ -844,8 +775,6 @@ nodes default to `op`. See the [Regions](../modules/regions.md) guide.
 | `uxmessentials.regions.list` | `op` | `/regions [world]`: open the WorldGuard region-list GUI for a world. |
 | `uxmessentials.regions.members` | `op` | `/regions` members `<id>` and `/regions` addmember\|addowner `<id> <player>`: manage a region roster. |
 
----
-
 ## Server Tweaks
 
 A grab-bag of silent server-side infrastructure tweaks: a custom F3 brand, a console-log
@@ -858,8 +787,6 @@ the [Server Tweaks](../modules/servertweaks.md) guide. The module's reload tier 
 | Node | Default | What it grants |
 |------|---------|----------------|
 | `uxmessentials.module.servertweaks` | `op` | Hot-reload / inspect the servertweaks module (the small server-behaviour switches). |
-
----
 
 ## Shared kernel
 
@@ -879,8 +806,6 @@ The kernel owns no feature commands, but carries two cross-cutting self-service 
 | `uxmessentials.help` | `true` | `/help` to list the commands you can use. |
 | `uxmessentials.lang.use` | `true` | `/lang` to set or clear your personal language override. |
 | `uxmessentials.update.notify` | `op` | Receive the join-time notice when a newer plugin version is available. |
-
----
 
 ## Numbered and Tiered Nodes
 
@@ -930,15 +855,9 @@ uxmessentials.cooldown.warp.nether.5
 
 The unscoped form applies everywhere; the world-scoped form applies only when that world is the one being resolved against. Matching scoped and unscoped nodes are simply folded into the same reducer.
 
-<Callout type="note" title="LuckPerms meta is an alternative, never a requirement">
-
-When LuckPerms is installed, these same quotas can also be expressed as LuckPerms **meta** (for example `meta.home-limit`, `meta.warp-cooldown`). A meta value takes precedence over the numbered node when present. With no permission plugin, only the numbered node and the config default apply: the numbered form is the portable baseline.
-
-</Callout>
+**LuckPerms meta is an alternative, never a requirement.** When LuckPerms is installed, these same quotas can also be expressed as LuckPerms **meta** (for example `meta.home-limit`, `meta.warp-cooldown`). A meta value takes precedence over the numbered node when present. With no permission plugin, only the numbered node and the config default apply: the numbered form is the portable baseline.
 
 Because the value spaces (`<n>`, `<seconds>`, `<rows>`, and so on) are open, a family is never registered with the server as a node of its own; operators grant the specific instances they need. The families themselves are listed above and by `/uxmess permissions`.
-
----
 
 ## Bypass Nodes
 
@@ -974,8 +893,6 @@ Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, 
 | `uxmessentials.communication.clearchat.exempt` *(default `false`)* | Keep your chat scrollback when staff run `/clearchat`. |
 | `uxmessentials.kit.cooldown.bypass` | Skip kit cooldowns and re-claim one-time kits. |
 
----
-
 ## Module Gates and Admin Roots
 
 ### `uxmessentials.module.<id>`: per-module reload tier
@@ -1008,9 +925,7 @@ villagers  vote  warps  worlds
 
 The management hub gathers each module's management GUI behind one menu. Each module registers its entry under `uxmessentials.<module>.gui` (for example `uxmessentials.holograms.gui`, `uxmessentials.npc.gui`, `uxmessentials.economy.admin`). Each defaults to `op`, the hub shows a viewer only the entries whose node they hold, and a module's own `/<module>` GUI entry point opens directly for a holder of the same node, so you can delegate one module's panel without granting the rest.
 
----
-
-<Callout type="tip" title="Granting with LuckPerms">
+**Granting with LuckPerms.**
 
 All of these are ordinary permission nodes. To hand a `donor` group extra homes and free flight, for example:
 
@@ -1032,12 +947,4 @@ Or express a quota as meta instead of a numbered node:
 /lp group donor meta set home-limit 10
 ```
 
-</Callout>
-
----
-
-## Next Steps
-
-- [Command Overview](../modules/index.md): how commands are registered, aliased, renamed, and disabled
-- [LuckPerms Integration](../integrations/luckperms.md): meta-based quotas and group resolution
-- [Developer API](../developer/overview.md): integrate with uxmEssentials at runtime
+Related: [Command Overview](../modules/index.md), [LuckPerms Integration](../integrations/luckperms.md), [Developer API](../developer/overview.md)

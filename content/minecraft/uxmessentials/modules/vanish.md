@@ -47,7 +47,7 @@ Module `vanish` · enabled by default · `modules/vanish/config.conf`
 | `no-damage` | `true` | Make a vanished player invulnerable; cancel all incoming damage while they are hidden. |
 | `mob-target` | `true` | Stop mobs targeting a vanished player, and drop any target a mob already has on them, so nothing paths to or attacks a hidden player. |
 | `fake-join-quit` | `true` | When a player vanishes, suppress their real quit line and broadcast a fake "left the game" instead; when they reappear, suppress the real join and broadcast a fake "joined the game". A vanished player who actually disconnects or reconnects also has their real connection line suppressed. The /vanish -s flag (uxmessentials.vanish.silent) skips the fake broadcast for a truly silent vanish. |
-| `fake-quit-message` | `"<yellow>{player} left the game"` | The fake lines, as MiniMessage. \{player} is replaced with the player's name. These mirror the vanilla connection format so the illusion is seamless; change them to match your server's real join/quit style. |
+| `fake-quit-message` | `"<yellow>{player} left the game"` | The fake lines, as MiniMessage. \{player} is replaced with the player's name. These mirror the vanilla connection format so the illusion holds; change them to match your server's real join/quit style. |
 | `fake-join-message` | `"<yellow>{player} joined the game"` |  |
 | `fake-quit-message-staff` | `""` | The lines shown instead to viewers who CAN see the vanishing player (staff). Leave blank to send them nothing (the default), so staff simply watch the player wink out without a misleading "left the game". |
 | `fake-join-message-staff` | `""` |  |

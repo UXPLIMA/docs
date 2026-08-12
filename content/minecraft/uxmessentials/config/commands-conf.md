@@ -1,10 +1,11 @@
 ---
 title: Renaming Commands
 order: 1170
-description: plugins/uxmEssentials/commands/commands.conf lets you rename, re-alias,
-  or disable any command without touching code or waiting for an update. It is one
-  global file, keyed by each command's stable id.
+description: Renaming, re-aliasing and disabling any command in commands.conf.
 ---
+
+`plugins/uxmEssentials/commands/commands.conf` renames, re-aliases or disables any command. It is one
+global file, keyed by each command's stable id.
 
 ## How to Edit
 
@@ -13,14 +14,8 @@ description: plugins/uxmEssentials/commands/commands.conf lets you rename, re-al
 3. Save.
 4. Reload (see the tip at the bottom).
 
-<Callout type="warning" title="HOCON, not YAML">
-
-This file is HOCON: `#` comments, quoted strings, `[ … ]` lists, `{ … }` blocks.
-Keep braces and quotes balanced.
-
-</Callout>
-
----
+This file is HOCON: `#` comments, quoted strings, `[ … ]` lists, `{ … }` blocks. Keep braces and quotes
+balanced.
 
 ## How the file is built
 
@@ -49,8 +44,6 @@ commands {
 | `name` | The primary literal players type. Edit it to rename the command. |
 | `aliases` | Extra literals that map to the same command. |
 
----
-
 ## Renaming a command
 
 Change `name` to the word you want players to type. The id (the block key) stays the
@@ -66,16 +59,13 @@ commands {
 }
 ```
 
-<Callout type="info" title="Permission nodes never change on rename">
+<Callout type="warning" title="Permission nodes never change on rename">
 
-Permission nodes are keyed to the **command id**, not to the name players type.
-Renaming `tpaccept` to `accept` does not change `uxmessentials.tpa.use`: your
-permission setup keeps working. Renaming is purely cosmetic. Do **not** rename the
-block key (`tpaccept`); only edit `name` and `aliases` inside it.
+Nodes are keyed to the command id, not to the name players type. Renaming `tpaccept` to `accept` leaves
+`uxmessentials.tpa.use` alone, so your permission setup keeps working. Do not rename the block key
+(`tpaccept`); edit only `name` and `aliases` inside it.
 
 </Callout>
-
----
 
 ## Adding or replacing aliases
 
@@ -105,8 +95,6 @@ commands {
 Avoid giving two commands the same name or alias: the first one registered wins and the
 other silently loses that literal.
 
----
-
 ## Disabling a command
 
 Set `enabled = false` to remove a command completely. It registers nothing: no literal,
@@ -126,21 +114,8 @@ Disabling a single command is different from disabling its whole module: the res
 module keeps working. To turn off an entire feature, use the module's `enabled` key
 instead, see [Per-Module Config](per-module.md).
 
----
-
-<Callout type="tip" title="Reload after editing">
-
-Apply your changes with `/uxmess reload` (or restart). The command surface is
+**Reload after editing.** Apply your changes with `/uxmess reload` (or restart). The command surface is
 re-published on reload, so renames, new aliases and disabled commands take effect
 immediately.
 
-</Callout>
-
----
-
-## Next Steps
-
-- [Commands Overview](../modules/index.md): every command and its default aliases.
-- [Per-Module Config](per-module.md): disable a whole feature instead of one command.
-- [Permission Reference](../permissions/reference.md): the id-keyed nodes that stay
-  stable across renames.
+Related: [Commands Overview](../modules/index.md), [Per-Module Config](per-module.md), [Permission Reference](../permissions/reference.md)

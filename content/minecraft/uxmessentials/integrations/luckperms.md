@@ -1,14 +1,11 @@
 ---
 title: LuckPerms
 order: 1510
-description: 'uxmEssentials never hard-depends on a permission plugin. Every permission
-  check goes through an internal Permissions port that sits on top of Bukkit''s ordinary
-  hasPermission, so the sensible defaults work on a bare server. When LuckPerms is
-  installed, one extra capability unlocks: numbered quota nodes can also be read from
-  LuckPerms meta.'
+description: What LuckPerms adds, and why a permission plugin stays optional.
 ---
 
----
+uxmEssentials never hard-depends on a permission plugin. Every check goes through an internal port on top
+of Bukkit's `hasPermission`, so the defaults work on a bare server.
 
 ## What LuckPerms Adds
 
@@ -31,8 +28,6 @@ Without LuckPerms these resolve from Bukkit **numbered permission nodes** (the
 highest matching `<n>` wins). With LuckPerms present, uxmEssentials can *also* read
 the same quota from a LuckPerms **meta** value, which many admins find tidier than
 juggling dozens of numbered nodes.
-
----
 
 ## Granting a Quota
 
@@ -62,8 +57,6 @@ in doubt, the numbered permission node above is the guaranteed path.
 When LuckPerms is absent, the meta source is simply empty and quotas fall back to
 numbered nodes with no change in behavior.
 
----
-
 ## Prefixes, Suffixes and Groups
 
 Two extra conveniences when LuckPerms is around:
@@ -83,8 +76,6 @@ Two extra conveniences when LuckPerms is around:
   gate items with a `has-group:` requirement, so a GUI can show or hide options per
   rank.
 
----
-
 ## When It's Absent
 
 | Situation | Behavior |
@@ -92,8 +83,6 @@ Two extra conveniences when LuckPerms is around:
 | No permission plugin | Bukkit defaults apply: self-service verbs work, staff verbs need `op`. |
 | No LuckPerms specifically | Quotas resolve from numbered permission nodes; the meta source is `none()`. |
 | `has-group:` used without LuckPerms | The condition fails closed (item hidden / denied). |
-
----
 
 ## Setup Checklist
 
@@ -103,10 +92,4 @@ Two extra conveniences when LuckPerms is around:
 3. (Optional) Install PlaceholderAPI to surface `%luckperms_prefix%` in the HUD.
 4. Verify limits with `/uxmess doctor`.
 
----
-
-## Next Steps
-
-- [🧭 Core Concepts: Permissions](../getting-started/concepts.md): the tiered / quota model
-- [📊 Scoreboard, Tablist & Nametags](../modules/scoreboard.md): showing rank prefixes
-- [🔤 PlaceholderAPI](placeholderapi.md): how prefix placeholders reach the HUD
+Related: [Core Concepts: Permissions](../getting-started/concepts.md), [Scoreboard, Tablist & Nametags](../modules/scoreboard.md), [PlaceholderAPI](placeholderapi.md)

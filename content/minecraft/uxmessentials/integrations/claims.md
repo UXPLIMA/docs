@@ -1,16 +1,15 @@
 ---
 title: Land Claims
 order: 1520
-description: If your server runs a land-claim plugin, uxmEssentials respects it. Homes
-  will not be set inside somebody else's claim, /rtp will not drop a player into claimed
-  land, and sitting down is gated the same way building is.
+description: How land-claim plugins gate homes, the RTP search and poses.
 ---
+
+If your server runs a land-claim plugin, uxmEssentials respects it. Homes are not set inside somebody
+else's claim, `/rtp` does not land in claimed ground, and sitting down is gated the way building is.
 
 You do not have to configure anything. Whatever supported claim plugin is installed is
 detected on enable and consulted from then on. With none installed, none of this does
 anything and every location is treated as free.
-
----
 
 ## Supported plugins
 
@@ -55,8 +54,6 @@ A GriefPrevention **admin claim** has no owner, so it is treated as somebody els
 land: players cannot `/sethome` inside one.
 
 </Callout>
-
----
 
 ## What actually uses claims
 
@@ -105,8 +102,6 @@ respect-claims = true
 With it on, `/sit`, `/lay` and the rest require build or interact permission where the
 player is standing, so a visitor cannot park themselves inside your base.
 
----
-
 ## Turning a provider off
 
 Each plugin has its own switch and every one defaults **on**, so you only need a line to
@@ -152,8 +147,6 @@ answers are merged:
 A **ban in any covering claim always wins**, whichever mode you pick. Most servers run one
 claim plugin and never touch this key.
 
----
-
 ## Tips and gotchas
 
 - **No claim plugin means no restrictions.** Everything short-circuits to "allowed", which
@@ -167,12 +160,4 @@ claim plugin and never touch this key.
 - **Homes, `/rtp` and poses are independent.** Turning claims off for homes does not turn
   them off for random teleport.
 
----
-
-## Next Steps
-
-- [🏠 Homes](../modules/homes.md) - Where the claim rules apply to `/sethome`
-- [🎲 Teleport & RTP](../modules/teleport.md) - Safe-landing and the `/rtp` search
-- [🪑 Poses](../modules/poses.md) - The sit/lay gating
-- [🗺️ Regions](../modules/regions.md) - The WorldGuard region GUI
-- [⚙️ Global Config](../config/global-config.md) - The root `config.conf` this block lives in
+Related: [Homes](../modules/homes.md), [Teleport & RTP](../modules/teleport.md), [Poses](../modules/poses.md), [Regions](../modules/regions.md)

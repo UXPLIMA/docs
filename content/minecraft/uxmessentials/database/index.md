@@ -1,9 +1,14 @@
 ---
 title: Database
 order: 156
-description: SQLite (Default), MySQL / MariaDB and PostgreSQL.
+description: SQLite by default, MySQL or MariaDB and PostgreSQL for networks.
 ---
 
-- [SQLite (Default)](sqlite.md): uxmEssentials ships with an embedded SQLite database and uses it out of the box. There is nothing to install, nothing to run alongside your server, and no credentials to manage. The first time the plugin starts it creates the database file and builds its own schema. For the large majority of single servers this is all you will ever need.
-- [MySQL / MariaDB](mysql.md): When one server outgrows SQLite (or when you want several servers to share the same data) switch the storage backend to MySQL or MariaDB. Both speak the MySQL wire protocol, so a single backend = "mysql" setting drives either one. This is a first-class, fully tested path (the same queries and migrations run on every backend), not a fallback.
-- [PostgreSQL](postgresql.md)
+Storage is embedded SQLite unless you point it elsewhere. Every backend runs the same schema and the same
+migrations.
+
+| Page | What it covers |
+|---|---|
+| [SQLite](sqlite.md) | The default: no setup, one file, when it stops being enough |
+| [MySQL and MariaDB](mysql.md) | Connecting a shared database, pool sizing, backups |
+| [PostgreSQL](postgresql.md) | The same, on Postgres |

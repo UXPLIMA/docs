@@ -1,23 +1,16 @@
 ---
 title: Built-in Menu Guide
 order: 1080
-description: 'Almost every GUI you open in uxmEssentials: the home grid, the warp
-  browser, the kit list, the vault selector, the /eco and /mod admin panels, the module
-  hub behind /uxmess gui: is drawn by one shared menu engine. There is no separate "GUI
-  system" bolted onto each feature: the same code that loads your own menus/.conf files
-  loads and renders the built-in menus too.'
+description: Which screens are menus, what they all share, and how to re-theme them.
 ---
 
-That has two practical consequences worth knowing before you touch anything:
+Almost every GUI in uxmEssentials, from the home grid to the `/eco` panels to the `/uxmess gui` hub, is
+drawn by the same engine that loads your own `menus/*.conf` files.
 
-- **They all behave the same way.** Pagination, click gestures, refresh-on-change,
-  Bedrock form fallback, sounds: a habit you learn on one menu carries to every menu.
-- **They are all themeable.** Because the built-ins run on the engine, the same
-  vocabulary you use for a [custom menu](engine.md): materials, MiniMessage names and
-  lore, [actions and requirements](actions-requirements.md): is what shapes them. You
-  are never stuck with the shipped look.
-
----
+Two things follow. Every menu behaves the same way, so pagination, click gestures, live refresh, the Bedrock
+fallback and sounds are one habit rather than twelve. And every menu is themeable with the same vocabulary a
+[custom menu](engine.md) uses: materials, MiniMessage names and lore,
+[actions and requirements](actions-requirements.md).
 
 ## The menus you already have
 
@@ -33,7 +26,7 @@ enable them; they ship with their module and appear as soon as that module is on
 | **Vault selector** | `/vault` (with several) | A picker across your vaults when you own more than one; each tile shows its name and icon. Click to open that vault. |
 | **Player-warp list** | `/pwarp` | Manage and browse player-owned warps. |
 | **Economy admin** | `/eco` | The staff economy hub (give / take / set balances, history and logs, notes and backups) routed to the matching sub-panels. |
-| **Moderation panel** | `/mod` | The staff moderation hub; many bare commands (`/ban`, `/mute`, …) also open a picker → confirm flow built on the engine. |
+| **Moderation panel** | `/mod` | The staff moderation hub; many bare commands (`/ban`, `/mute`, …) also open a picker to confirm flow built on the engine. |
 | **Module hub** | `/uxmess gui` | The management hub: a tile per module leading into that module's own settings panels. |
 | **Per-module settings** | `/tpsettings`, `/msgsettings`, `/presencesettings`, `/scoreboard gui`, … | The personal and admin settings panels each module exposes. |
 
@@ -61,54 +54,24 @@ A few modules are deliberately absent:
   `/invrestore Bob`), the villager you clicked, the partner who accepted your trade, or
   your own PIN prompt. There is nothing for a hub tile to open.
 
-<Callout type="info" title="These are `management` GUIs, not custom menus">
-
-The built-in panels live in each module's `modules/<module>/gui/` folder as their own
+**These are `management` GUIs, not custom menus.** The built-in panels live in each module's `modules/<module>/gui/` folder as their own
 `.conf` files. They are loaded by the always-on `management` framework and styled with
 the same engine grammar as your `menus/*.conf` files, but they are wired to
 type-safe feature handlers, so a click there does real work (charging a balance,
 issuing a ban) that a plain custom menu could not do on its own.
 
-</Callout>
-
----
-
 ## What every built-in menu shares
 
-Because they all run on the one engine, the following is true of the home grid, the kit
-browser, the `/eco` panels and every other built-in alike.
-
-### Click gestures
-
-Menus react differently to different clicks. A left-click usually performs the primary
-action; a right-click, shift-click or middle-click may do something secondary (preview
-instead of claim, delete instead of open). Where a menu uses more than one gesture on the
-same tile, its lore says so.
-
-### Live refresh
-
-Tiles that show a changing value: a kit's remaining cooldown, your balance in the
-economy panel, a home's occupancy: re-render on their own while the menu is open. You do
-not need to close and reopen to see the current number.
-
-### Pagination
-
-Lists longer than one page (many warps, a long transaction history) page with the arrow
-tiles. The page controls sit on pinned slots so they never move as the contents scroll.
-
-### Bedrock players get a native form
-
-A player joining through Floodgate/Geyser does not see a chest GUI: the same menu is
-rendered as a **native Bedrock form**. Storage-style menus that show real item stacks
-(the vault, the inventory viewer) stay as a chest even on Bedrock, because a form cannot
-hold item stacks. See [Bedrock Forms](bedrock.md).
-
----
+| Behaviour | What it means |
+|---|---|
+| Click gestures | Left-click performs the primary action; right, shift and middle clicks may do something secondary (preview instead of claim, delete instead of open). A tile that uses more than one gesture says so in its lore |
+| Live refresh | Tiles showing a changing value (a kit cooldown, your balance) re-render while the menu is open |
+| Pagination | Longer lists page with the arrow tiles, on pinned slots that do not move as the contents scroll |
+| Bedrock forms | A Floodgate player gets the same menu as a native form. Menus holding real item stacks stay a chest, because a form cannot hold stacks. See [Bedrock Forms](bedrock.md) |
 
 ## Re-theming a built-in menu
 
-You theme a built-in the same way you author a custom one; you just edit the file the
-module already ships instead of creating a new one.
+Theming a built-in works like authoring a custom one, except you edit the file the module already ships.
 
 1. Find the panel under `plugins/uxmEssentials/modules/<module>/gui/<menu>.conf`.
 2. Change what you want: an item's `material`, its `name` and `lore` (verbatim
@@ -127,8 +90,6 @@ panel refuses; the log names the file and line.
 
 Delete a key to fall back to its shipped default; delete the whole file to regenerate it
 from defaults on next load.
-
----
 
 ## Windows that hold real items
 
@@ -187,21 +148,9 @@ Three things are not yours to change:
   numbered from 1 in region order, so a remove button that moves rows is renumbered rather
   than guessed from where it sits.
 
-<Callout type="info" title="Read-only means read-only">
-
-A region marked `editable = false` (the trade mirror, the snapshot preview) refuses
+**Read-only means read-only.** A region marked `editable = false` (the trade mirror, the snapshot preview) refuses
 every movement: clicks, drags, shift-clicks, hotbar swaps and double-clicks alike. You
 cannot make it editable from the file, and that is deliberate: those stacks are a view
 of something that belongs to someone else.
 
-</Callout>
-
----
-
-## Next Steps
-
-- [Custom Menu Engine](engine.md): build your own menu in `menus/<name>.conf`.
-- [Actions & Requirements](actions-requirements.md): the click and visibility vocabulary
-  every menu, built-in or custom, is made of.
-- [Bedrock Forms](bedrock.md): how a menu renders for Floodgate players.
-- [Per-Module Config](../config/per-module.md): where each module's `gui/` panels live.
+Related: [Custom Menu Engine](engine.md), [Actions & Requirements](actions-requirements.md), [Bedrock Forms](bedrock.md), [Per-Module Config](../config/per-module.md)

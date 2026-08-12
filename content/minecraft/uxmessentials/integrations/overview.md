@@ -1,16 +1,13 @@
 ---
 title: Overview
 order: 1480
-description: 'uxmEssentials integrates with 50 other plugins. Every one of them is
-  optional and none of them needs turning on. uxmEssentials detects the plugin at
-  startup, and when it is not installed no class from it is ever loaded: an absent
-  integration is a silent no-op, not an error in your console.'
+description: Every plugin uxmEssentials detects, by family, and what each one turns on.
 ---
+
+uxmEssentials detects 50 other plugins. Every one is optional and none is switched on by hand.
 
 Land claim plugins are the one family where several can run at once. All of them are consulted
 and their answers combined; see [Land Claims](claims.md) for the combine modes.
-
----
 
 ## Permissions
 
@@ -19,8 +16,6 @@ and their answers combined; see [Land Claims](claims.md) for the combine modes.
 | LuckPerms | Group and meta lookups behind the quota and tier permission nodes. |
 
 See [LuckPerms](luckperms.md) for the node reference.
-
----
 
 ## Economy
 
@@ -38,8 +33,6 @@ With none of these installed the built-in economy runs on its own database. See
 [Vault & Treasury](vault-treasury.md), and [Economy](../modules/economy.md) for the
 EconomyShopGUI price fallback.
 
----
-
 ## Placeholders
 
 | Plugin | What it turns on |
@@ -48,8 +41,6 @@ EconomyShopGUI price fallback.
 | MiniPlaceholders | MiniMessage-native global tags inside our message catalog lines. |
 
 See [PlaceholderAPI](placeholderapi.md) for the full placeholder list we publish.
-
----
 
 ## Custom items
 
@@ -63,8 +54,6 @@ See [PlaceholderAPI](placeholderapi.md) for the full placeholder list we publish
 | ExecutableItems | ExecutableItems items as menu icons. |
 
 See [Custom Items & Heads](custom-items.md) for the icon syntax.
-
----
 
 ## Land claims
 
@@ -92,16 +81,12 @@ Every installed one is consulted, not just the first.
 
 uxmClaims, our own claim plugin, is detected too and needs no declaration.
 
----
-
 ## Regions
 
 | Plugin | What it turns on |
 |---|---|
 | WorldGuard | Region membership and flags gate teleports, poses and menu requirements. |
 | WorldEdit | Defines a region from your current WorldEdit selection. |
-
----
 
 ## Web maps
 
@@ -111,15 +96,11 @@ uxmClaims, our own claim plugin, is detected too and needs no declaration.
 | squaremap | Publishes spawn and warp markers to the squaremap web map. |
 | BlueMap | Publishes spawn and warp markers to the BlueMap web map. |
 
----
-
 ## Voting
 
 | Plugin | What it turns on |
 |---|---|
 | Votifier | Feeds votes from vote sites into the vote module. NuVotifier works too. |
-
----
 
 ## Bedrock
 
@@ -129,8 +110,6 @@ uxmClaims, our own claim plugin, is detected too and needs no declaration.
 | Geyser-Spigot | Names Bedrock players on networks running Geyser without Floodgate. |
 
 See [Bedrock (Floodgate)](floodgate.md).
-
----
 
 ## Login
 
@@ -143,8 +122,6 @@ Without one of these installed nothing waits: our own prompts open as soon as th
 joins. With one installed the player logs in first and only then sees ours, so two prompts
 never fight over the same screen. See [Security](../modules/security.md).
 
----
-
 ## Vanish
 
 | Plugin | What it turns on |
@@ -153,8 +130,6 @@ never fight over the same screen. See [Security](../modules/security.md).
 | PremiumVanish | Players PremiumVanish has hidden are vanished for our tab list, nametags and `/msg` too. |
 
 See [Vanish](../modules/vanish.md).
-
----
 
 ## Combat
 
@@ -166,15 +141,11 @@ See [Vanish](../modules/vanish.md).
 We keep no combat timer of our own, so with neither installed nothing is ever blocked. See
 [Teleport & RTP](../modules/teleport.md).
 
----
-
 ## Client protocol
 
 | Plugin | What it turns on |
 |---|---|
 | ViaVersion | Reports what protocol version a translated client actually speaks. |
-
----
 
 ## Menu conditions
 
@@ -182,8 +153,6 @@ We keep no combat timer of our own, so with neither installed nothing is ever bl
 |---|---|
 | Jobs | Job and level conditions in menu requirements. JobsReborn is the plugin. |
 | mcMMO | Skill-level and power-level conditions in menu requirements. |
-
----
 
 ## Checking what bound
 

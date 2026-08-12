@@ -1,7 +1,9 @@
 ---
 title: Placeholders
 order: 162
-description: Placeholder Reference.
+description: Every placeholder uxmEssentials publishes, by module.
 ---
 
-- [Placeholder Reference](reference.md)
+| Page | What it covers |
+|---|---|
+| [Placeholder Reference](reference.md) | Every placeholder and what it renders |

@@ -1,7 +1,11 @@
 ---
 title: Cross-Server
 order: 159
-description: Velocity & Redis.
+description: Keeping homes, warps, economy and vaults in step across a network.
 ---
 
-- [Velocity & Redis](overview.md): Cross-server sync keeps player data in step across a network of backend servers, so a home set on survival-1, a /pay made on survival-2, and a vault filled on the lobby all agree the moment a player switches servers. It is off by default (network.enabled = false); a single server needs none of it and runs purely local.
+Cross-server sync is off until you enable it. A single server needs none of it.
+
+| Page | What it covers |
+|---|---|
+| [Velocity and Redis](overview.md) | The two transports, what syncs, and how to turn it on |

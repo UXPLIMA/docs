@@ -1,10 +1,11 @@
 ---
 title: Overview
 order: 1610
-description: uxmEssentials is built to be a good neighbour. Your plugin can watch
-  what it does, refuse the things it is about to do, extend its menus, and read its
-  economy, through a published API you compile against like any other library.
+description: What the API covers, and which part to reach for.
 ---
+
+Your plugin can watch what uxmEssentials does, refuse some of it, read its state, drive its use cases and
+extend its menus, through an API you compile against like any other library.
 
 - **[Adding the dependency](dependency.md)** gives you the coordinate.
 - **[Events](events.md)** is the reference for the ninety-odd events, and the handful you can cancel.

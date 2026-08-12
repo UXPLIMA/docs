@@ -1,7 +1,7 @@
 ---
 title: uxmEssentials
 order: 89
-description: Getting Started, Modules, Menus, Configuration, Integrations, Database, Cross-Server, Permissions and Developer API.
+description: An all-in-one Paper suite, 34 modules in one jar.
 section: true
 ---
 
@@ -13,4 +13,5 @@ section: true
 - [Database](database/)
 - [Cross-Server](cross-server/)
 - [Permissions](permissions/)
+- [Placeholders](placeholders/)
 - [Developer API](developer/)

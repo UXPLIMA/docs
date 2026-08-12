@@ -1,11 +1,11 @@
 ---
 title: Per-Module Config
 order: 1160
-description: Every feature in uxmEssentials is a module with its own folder under
-  plugins/uxmEssentials/modules/. All of a feature's tunables live in that folder,
-  and the module is switched on or off by the first key in its own config.conf. There
-  is no central switchboard file (see the warning below).
+description: The per-module folders, the enabled key, and what lives in each one.
 ---
+
+Every feature is a module with its own folder under `plugins/uxmEssentials/modules/`. A feature's tunables
+all live in that folder, and the module is switched by the first key in its `config.conf`.
 
 ## How to Edit
 
@@ -18,13 +18,9 @@ description: Every feature in uxmEssentials is a module with its own folder unde
 /uxmess reload <module>     # e.g. /uxmess reload homes
 ```
 
-<Callout type="warning" title="HOCON, not YAML">
-
-These files are HOCON: `#` comments, kebab-case keys, quoted strings, bare numbers
+**HOCON, not YAML.** These files are HOCON: `#` comments, kebab-case keys, quoted strings, bare numbers
 and booleans, `[ … ]` lists, `{ … }` blocks. Indentation is cosmetic; braces and
 quotes are load-bearing.
-
-</Callout>
 
 <Callout type="danger" title="There is no `modules.conf`">
 
@@ -34,8 +30,6 @@ module is toggled by the `enabled` key at the top of its own
 switchboard are stale.
 
 </Callout>
-
----
 
 ## The `enabled` first key
 
@@ -63,8 +57,6 @@ importer (`migration`). Each one says why in the comment at the top of its own f
 `/uxmess status` prints the live state of every module, and
 [Modules & Reloading](../modules/index.md) has the full roster with the reasons.
 
----
-
 ## Big-block sub-files
 
 A few modules lift a large section out of `config.conf` into a sibling file in the same
@@ -87,8 +79,6 @@ so a panel's height, backdrop, icons and wording are yours to change without tou
 code. A few of them also hand a block of slots to the module for real item stacks; see
 [Built-in Menus](../menus/built-in.md#windows-that-hold-real-items) before you rearrange
 one of those.
-
----
 
 ## Example: `modules/homes/config.conf`
 
@@ -119,8 +109,6 @@ claims {
 
 The pattern repeats everywhere: `enabled` first, then flat tunables, then grouped blocks
 for optional sub-systems (economy charges, claim integration, and so on).
-
----
 
 ## Example: `modules/teleport/config.conf`
 
@@ -156,8 +144,6 @@ excluded-biomes = ["ocean", "deep_ocean", "river"]
 avoid-blocks = ["lava", "magma_block", "fire", "cactus"]
 ```
 
----
-
 ## Example: `modules/economy/config.conf`
 
 ```hocon
@@ -183,8 +169,6 @@ pay {
 Individual currencies (symbol, precision, starting balance, per-currency flags) are
 defined in `modules/economy/currencies.conf`.
 
----
-
 ## Reload per module
 
 `/uxmess reload <module>` re-reads **only** that module's subtree; its `config.conf`
@@ -192,21 +176,10 @@ plus any sub-files: restarts just that module off-thread, and re-publishes its c
 It is faster and safer than a full reload: if you introduce a syntax error, only that one
 module refuses to reload and the log points at the file.
 
-<Callout type="tip" title="Deep tuning lives in the feature guides">
-
-This page covers how the files are laid out. For what each key actually does per
+**Deep tuning lives in the feature guides.** This page covers how the files are laid out. For what each key actually does per
 feature, jump to the matching Feature Guide, for example
 [Homes](../modules/homes.md), [Teleport & RTP](../modules/teleport.md),
 [Economy](../modules/economy.md), [Kits](../modules/kits.md), or
 [Moderation](../modules/moderation.md).
 
-</Callout>
-
----
-
-## Next Steps
-
-- [Modules & Reloading](../modules/index.md): the module roster and reload model.
-- [config.conf (Globals)](global-config.md): the settings that are *not* per-module.
-- [Renaming Commands](commands-conf.md): rename or disable any command per install.
-- [Permission Reference](../permissions/reference.md): the nodes each module reads.
+Related: [Modules & Reloading](../modules/index.md), [config.conf (Globals)](global-config.md), [Renaming Commands](commands-conf.md), [Permission Reference](../permissions/reference.md)

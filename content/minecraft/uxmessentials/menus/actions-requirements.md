@@ -1,10 +1,11 @@
 ---
 title: Actions & Requirements
 order: 1100
-description: 'Everything a menu does is an action; everything it checks is a requirement
-  (also called a condition). Both are written the same way (a bare id:value reference)
-  and both are shared by the built-in menus and your own.'
+description: What a click does, and what has to be true before it draws.
 ---
+
+Everything a menu does is an action, and everything it checks is a requirement. Both are written the same
+way, a bare `id:value` reference, and both are shared by the built-in menus and your own.
 
 <Callout type="warning" title="Bare references, never brackets">
 
@@ -14,8 +15,6 @@ no value is just its id: `close`, `back`, `has-next`. A leading `!` on a **condi
 inverts it: `!perm:uxmessentials.vip`.
 
 </Callout>
-
----
 
 ## Actions
 
@@ -62,17 +61,11 @@ more. Use `/menu dump <menu>` to see exactly what a menu resolves.
 | `input:<key>` | Ask the player to type something, then continue the chain with it. |
 | `confirm:<key>` | Ask for a yes/no before the rest of the chain runs. |
 
-<Callout type="warning" title="`input:` and `confirm:` are top-level steps only">
-
-They pause the chain and resume on a later callback, so they only work as a direct
+**`input:` and `confirm:` are top-level steps only.** They pause the chain and resume on a later callback, so they only work as a direct
 step of a gesture. Put one inside an `else`, a `deny` or a per-requirement list and
 there is nothing for it to resume: it is skipped with a console warning. The three
 `list-*` actions and the prompt modes are covered on the
 [engine page](engine.md).
-
-</Callout>
-
----
 
 ## Requirements
 
@@ -101,7 +94,7 @@ Every requirement is a condition reference; a leading `!` inverts it.
 | `mcmmo-level:<skill>:<n>` · `mcmmo-power:<n>` | The player's mcMMO skill level / power level is at least N. |
 | `client-version:<protocol>` · `protocol:<protocol>` | The player's client speaks at least that protocol version (read through ViaVersion). |
 
-<Callout type="info" title="Integration conditions fail closed">
+**Integration conditions fail closed.**
 
 A condition that needs a plugin you do not run (`job:`, `worldguard-region:`,
 `mcmmo-level:`, `has-group:` without LuckPerms) can't be evaluated, so it is treated
@@ -114,14 +107,10 @@ translation layer installed at all: every player is then on the server's own ver
 so the check passes. Without that exception every menu using it would empty out on
 the ordinary server that has no ViaVersion.
 
-</Callout>
-
 **mcMMO levels.** `mcmmo-level:` takes the skill name mcMMO itself uses (`mining`,
 `woodcutting`, `axes`, ...) then the level: `mcmmo-level:mining:50` shows the tile only
 to players who have reached mining 50. `mcmmo-power:1000` checks the power level, the sum
 across every skill. An unknown skill name is false, not an error.
-
----
 
 ## Per-gesture click blocks
 
@@ -157,8 +146,6 @@ flag:
 | `1` | **Any one** may pass (OR). |
 | `N` (between) | At least **N of the M** must pass. |
 
----
-
 ## View requirements
 
 The same block gates a tile's **visibility**. A flat list is an all-must-pass AND; the
@@ -178,11 +165,4 @@ view {
 A tile whose `view` fails is not drawn at all; it does not appear greyed-out, it simply
 isn't there.
 
----
-
-## Next Steps
-
-- [Custom Menu Engine](engine.md): the full spec and a worked example.
-- [Menu API](../developer/menu-api.md): register your own actions, conditions and placeholders.
-- [Permission Reference](../permissions/reference.md): nodes for `perm:` conditions.
-- [Bedrock Forms](bedrock.md): how these menus render for Floodgate players.
+Related: [Custom Menu Engine](engine.md), [Menu API](../developer/menu-api.md), [Permission Reference](../permissions/reference.md), [Bedrock Forms](bedrock.md)

@@ -1,14 +1,11 @@
 ---
 title: Offline Mode (Cracked)
 order: 930
-description: uxmEssentials runs fully on offline-mode servers (online-mode=false in
-  server.properties, often called cracked). Every module works the same; nothing is
-  gated behind a premium account check. This page explains the one place where an
-  offline-mode server behaves differently from an online-mode one, and what the plugin
-  does about it.
+description: How accounts, name lookups and skins behave on a cracked server.
 ---
 
----
+uxmEssentials runs fully on offline-mode servers (`online-mode=false`, often called cracked). Every module
+works the same, and nothing is gated behind a premium account check.
 
 ## How Accounts Are Identified
 
@@ -27,8 +24,6 @@ Where the UUID comes from depends on the server mode:
 On an offline-mode server the derivation is **case-sensitive**: `Steve` and `steve` are
 two different UUIDs, so they are two different accounts. That is vanilla server
 behaviour, not something a plugin chooses.
-
----
 
 ## Resolving a Name to an Account
 
@@ -64,8 +59,6 @@ on absent players keep working when the player is offline.
 Nothing about this is offline-mode-only: online-mode servers use the same index and get
 the same case-insensitive resolution without a Mojang round-trip.
 
----
-
 ## A Player Who Has Never Joined
 
 A name the plugin has never seen has no account to point at. Commands that must act on
@@ -73,8 +66,6 @@ someone anyway (a vote arriving for a player who has not yet connected, for exam
 fall back to the UUID the server would derive, so the reward or record is waiting for
 them when they arrive. Commands that need an existing account (punishments, payments)
 report that the player is unknown rather than inventing one.
-
----
 
 ## Skins
 
@@ -92,8 +83,6 @@ A player's *own* skin on a cracked server is a different matter: it comes from w
 skin plugin you run, and uxmEssentials reads the live profile first, so whatever that
 plugin put there is what renders.
 
----
-
 ## Networks
 
 If your backends sit behind Velocity or BungeeCord, put the proxy in charge of identity
@@ -102,10 +91,4 @@ then the proxy's, identical on every backend, and uxmEssentials's cross-server s
 (homes, economy, vaults, punishments) lines up as expected. See
 [Velocity & Redis](../cross-server/overview.md).
 
----
-
-## Next Steps
-
-- [Core Concepts](concepts.md) for modules, config layout and reloading
-- [Moderation](../modules/moderation.md) for how punishment targets are named
-- [Velocity & Redis](../cross-server/overview.md) for network setups
+Related: [Core Concepts](concepts.md), [Moderation](../modules/moderation.md), [Velocity & Redis](../cross-server/overview.md)

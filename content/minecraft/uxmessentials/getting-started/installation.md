@@ -1,156 +1,71 @@
 ---
 title: Installation
 order: 900
+description: Requirements, the first start, the files you get, and how to verify the install.
 ---
 
-## Requirements
+uxmEssentials needs Paper 26.1.2 or newer on Java 25. Folia is supported: every scheduled task goes through
+Folia-safe schedulers. Older Bukkit and Spigot builds are not supported.
 
-Before you start, make sure you have:
+## Install
 
-| Requirement | Minimum |
-|-------------|---------|
-| **Server** | Paper **26.1.2 or newer** (Folia also supported) |
-| **Minecraft API** | 1.21 |
-| **Java** | Java 25 |
-
-<Callout type="warning" title="Paper 26.1.2 / Java 25 only">
-
-uxmEssentials is built for **modern Paper on Java 25**. It is **Folia-ready**: the whole plugin schedules work through Folia-safe schedulers, so it runs
-on both Paper and Folia. It is not built for older Bukkit/Spigot versions.
-
-</Callout>
-
----
-
-## Step 1: Download
-
-Download the latest **`uxmEssentials`** jar (the main, all-in-one plugin).
-
-This one jar is everything you need for a single server. The extra companion jars
-below are **optional** and only matter for networks; you can ignore them to start.
-
----
-
-## Step 2: Drop It In
-
-Put the jar in your server's `plugins` folder:
-
-```
-your-server/
-├── plugins/
-│   ├── uxmEssentials.jar   ← put it here
-│   └── (other plugins)
-├── server.properties
-└── paper.jar
-```
-
----
-
-## Step 3: Start the Server
-
-Start (or restart) the server once. On first launch the plugin creates its data
-folder, sets up its **embedded SQLite database**, and writes out every config file.
+1. Download the `uxmEssentials` jar. That one jar is the whole plugin.
+2. Put it in `plugins/`.
+3. Start the server once. The first start creates the data folder, applies the database migrations and
+   writes every config file.
 
 ```
 [uxmEssentials] Enabling uxmEssentials...
 [uxmEssentials] Database migrations applied
-[uxmEssentials] 34 of 34 feature modules enabled
+[uxmEssentials] 25 of 34 feature modules enabled
 [uxmEssentials] uxmEssentials enabled!
 ```
 
-<Callout type="tip" title="No database setup needed">
+Storage is SQLite by default, in `plugins/uxmEssentials/data/`. There is nothing to install and nothing to
+configure. MySQL, MariaDB and PostgreSQL are for networks; see [Database](../database/sqlite.md).
 
-Out of the box, uxmEssentials stores everything in a local **SQLite** file
-(`plugins/uxmEssentials/data/`). There is nothing to install and nothing to
-configure; it just works. You only need MySQL/MariaDB or PostgreSQL if you
-run a multi-server network. See [Database](../database/sqlite.md).
-
-</Callout>
-
----
-
-## Step 4: Check the Files
-
-After the first start, uxmEssentials generates its config tree:
+## What the first start writes
 
 ```
-plugins/
-└── uxmEssentials/
-    ├── config.conf        ← global settings (storage, messages, network...)
-    ├── modules/           ← one folder per module, each with its own config.conf
-    ├── messages/          ← player-facing text per language (MiniMessage)
-    ├── commands/          ← rename, alias or disable any command
-    ├── menus/             ← your own custom GUI menus
-    └── data/              ← the SQLite database lives here
+plugins/uxmEssentials/
+├── config.conf     globals: storage, locale, network, claims, links
+├── modules/        one folder per module, each with its own config.conf
+├── messages/       player-facing text per language, in MiniMessage
+├── commands/       rename, alias or disable any command
+├── menus/          your own menus
+└── data/           the SQLite database
 ```
 
-Everything is **HOCON `.conf`** (not YAML). Your edits survive restarts and
-updates: new keys from an update are added, your values are kept, and deleting a
-key falls back to its default. Read more in [Core Concepts](concepts.md).
+Files are HOCON, not YAML. An update adds its new keys and keeps your values, and a key you delete falls
+back to its default. See [Core Concepts](concepts.md).
 
----
-
-## Step 5: Verify It Works
-
-Log in as an operator and run:
+## Verify
 
 | Command | What it tells you |
-|---------|-------------------|
-| `/uxmess status` | Lists all 34 modules and whether each is enabled |
-| `/uxmess doctor` | Runs health checks (database, economy provider, soft-depends, threading) |
+|---|---|
+| `/uxmess status` | Every module and whether it is enabled |
+| `/uxmess doctor` | Health checks: database, economy provider, soft-depends, threading |
+| `/uxmess help` | The admin subcommands |
 
-The admin root is `/uxmess`: aliases `/uxmessentials` and `/uxe` do the same thing.
+The admin root is `/uxmess`, with the aliases `/uxmessentials` and `/uxe`. A clean `/uxmess doctor` means the
+install is done.
 
-If `/uxmess doctor` comes back clean, you're ready to go.
+## Companion jars
 
----
-
-## Optional Companion Jars (Advanced)
-
-These are for **networks and integrations** and are entirely optional. Skip them on
-a single server.
+These are optional and only matter on a network.
 
 | Jar | Install on | What it adds |
-|-----|-----------|--------------|
-| `uxmessentials-velocity` | Your Velocity proxy | Cross-server sync of homes, warps, economy and more |
-| `uxmEssentials-redis` | Backend servers | Redis-based cross-server sync (an alternative to the Velocity path) |
-| `uxmessentials-discord` | A backend server | A Discord bridge for audit/economy notifications and `/link` |
+|---|---|---|
+| `uxmessentials-velocity` | The Velocity proxy | Cross-server sync of homes, warps, economy and more |
+| `uxmEssentials-redis` | Backend servers | The Redis transport for the same sync |
+| `uxmessentials-discord` | One backend server | The Discord bridge for notifications and `/link` |
 
-<Callout type="info" title="Cross-server is off by default">
+Installing one changes nothing on its own. Cross-server sync stays off until you enable it in `config.conf`;
+see [Cross-Server](../cross-server/overview.md).
 
-Even with a companion jar installed, cross-server sync stays disabled until you
-turn it on in `config.conf`. See [Velocity & Redis](../cross-server/overview.md).
+## If something is missing
 
-</Callout>
+A command that does nothing usually belongs to a disabled module. Run `/uxmess status`, set `enabled = true`
+in that module's `config.conf`, then `/uxmess reload <module>`.
 
----
-
-## That's It! 🎉
-
-The plugin is running with sensible defaults and all modules enabled. Players can
-start using `/home`, `/warp`, `/balance`, `/kit`, `/tpa` and more right away.
-
----
-
-## Common Problems
-
-### "Plugin failed to load"
-
-**Cause:** Your Java version is too old.
-**Fix:** Install **Java 25**. Check with `java -version`.
-
-### A feature isn't there
-
-**Cause:** Its module may be disabled.
-**Fix:** Run `/uxmess status`, then enable the module and reload it. See
-[Modules & Reloading](../modules/index.md).
-
----
-
-## Next Steps
-
-- [🧠 Core Concepts](concepts.md): the ideas that make everything click
-- [🧩 The Module System](../modules/index.md): turn features on and off
-- [📟 Commands Overview](../modules/index.md): what you can type in-game
-- [📦 Migrating from EssentialsX](migration.md): bring your old data across
-- [💾 Database](../database/sqlite.md): SQLite by default, MySQL/PostgreSQL for networks
+A plugin that fails to load is almost always a Java version below 25. Check with `java -version`.

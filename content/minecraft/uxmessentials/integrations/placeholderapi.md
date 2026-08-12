@@ -1,14 +1,11 @@
 ---
 title: PlaceholderAPI
 order: 1500
-description: 'uxmEssentials works with placeholders in both directions. It publishes its
-  own data as placeholders other plugins can display, and it resolves PlaceholderAPI
-  tokens inside its own text: menus, holograms, scoreboards and more. If you run
-  PlaceholderAPI (and optionally MiniPlaceholders), all of this lights up
-  automatically.'
+description: Publishing our placeholders, and resolving other plugins' inside our text.
 ---
 
----
+Placeholders work in both directions: uxmEssentials publishes its own data for other plugins to display,
+and resolves PlaceholderAPI tokens inside its own menus, holograms, scoreboards and messages.
 
 ## What They Are
 
@@ -18,8 +15,6 @@ description: 'uxmEssentials works with placeholders in both directions. It publi
   on server-global values.
 
 Both are optional soft-depends.
-
----
 
 ## Placeholders uxmEssentials Provides
 
@@ -66,8 +61,6 @@ the plugin folder. Test any single key with `/papi parse me %uxmessentials_...%`
 
 </Callout>
 
----
-
 ## Using PAPI Inside uxmEssentials
 
 The reverse direction is just as useful: uxmEssentials resolves **any** installed
@@ -87,8 +80,6 @@ Balance: %uxmessentials_economy_balance%
 Rank: %luckperms_prefix%
 ```
 
----
-
 ## MiniPlaceholders
 
 If **MiniPlaceholders** is installed, uxmEssentials folds its **server-global**
@@ -102,8 +93,6 @@ MiniPlaceholders global tags directly:
 uxmEssentials does **not** register its own MiniPlaceholders expansion; it only
 *consumes* the global tags MiniPlaceholders publishes.
 
----
-
 ## When They're Absent
 
 | Missing plugin | Behavior |
@@ -111,8 +100,6 @@ uxmEssentials does **not** register its own MiniPlaceholders expansion; it only
 | PlaceholderAPI | The `%uxmessentials_%` expansion is never registered; unknown `%tokens%` are left as raw text. HUD keeps working thanks to its **built-in** `{server_*}` tokens, which need no PAPI. |
 | A disabled module | Its placeholders degrade to `"-"` rather than erroring. |
 | MiniPlaceholders | The global resolver is empty; MiniMessage parses exactly as it would without it. |
-
----
 
 ## Setup Checklist
 
@@ -122,11 +109,4 @@ uxmEssentials does **not** register its own MiniPlaceholders expansion; it only
 3. Use `%uxmessentials_...%` in any PAPI-aware plugin, and `%papi_<name>%` /
    `%other_plugin_...%` inside uxmEssentials menus, holograms and the HUD.
 
----
-
-## Next Steps
-
-- [📊 Scoreboard, Tablist & Nametags](../modules/scoreboard.md): where placeholders show up most
-- [🎛️ Menu Actions & Requirements](../menus/actions-requirements.md): `%papi_%` tokens and `papi-compare:`
-- [🖼️ Holograms](../modules/holograms.md): live placeholder lines
-- [🔤 Placeholder Reference](../placeholders/reference.md): every key this build answers
+Related: [Scoreboard, Tablist & Nametags](../modules/scoreboard.md), [Menu Actions & Requirements](../menus/actions-requirements.md), [Holograms](../modules/holograms.md), [Placeholder Reference](../placeholders/reference.md)

@@ -1,6 +1,7 @@
 ---
 title: config.conf (Globals)
 order: 1150
+description: Storage, locale, lookup, claims, links and every other setting in the root config file.
 ---
 
 `plugins/uxmEssentials/config.conf` holds the **global** settings only: the database
@@ -17,15 +18,9 @@ small.
 4. Reload: most of these are re-read on `/uxmess reload`; the `network` block is
    **restart-only** (noted below).
 
-<Callout type="warning" title="HOCON, not YAML">
-
-This file is HOCON. Indentation is cosmetic, but braces and quotes are not.
+**HOCON, not YAML.** This file is HOCON. Indentation is cosmetic, but braces and quotes are not.
 Comments start with `#`, keys are kebab-case, strings are quoted (`backend =
 "sqlite"`), numbers and booleans are bare (`port = 3306`, `enabled = true`).
-
-</Callout>
-
----
 
 ## `storage`
 
@@ -80,8 +75,6 @@ connection before giving up.
 [SQLite](../database/sqlite.md), [MySQL / MariaDB](../database/mysql.md), and
 [PostgreSQL](../database/postgresql.md) for full setup.
 
----
-
 ## `messages`
 
 The fallback language.
@@ -99,8 +92,6 @@ matching catalog and they have not chosen one with `/lang`.
 
 **Default:** `en`. Two catalogs ship: `en` and `tr`. See
 [Messages & Languages](messages.md) to add or edit locales.
-
----
 
 ## `lookup`
 
@@ -124,8 +115,6 @@ a server that has actually seen that many players. This matters most on offline-
 (cracked) servers, where the server itself cannot resolve a name whose case differs.
 See [Offline Mode](../getting-started/offline-mode.md).
 
----
-
 ## `skins`
 
 Whether a player name may be resolved to the skin that account wears.
@@ -147,8 +136,6 @@ offline-mode servers, and the whole server shares one hour-long cache.
 **Default:** `true`. Turn it off on a server with no outbound network: skins given as a raw
 texture value still render, only lookups by name stop resolving. See
 [Offline Mode](../getting-started/offline-mode.md).
-
----
 
 ## `network`
 
@@ -201,14 +188,8 @@ Two backends sharing a `server-id` corrupt sync routing. Give every server its o
 
 The `redis { }` block applies when `transport` is `redis` or `both`.
 
-<Callout type="note" title="Restart-only">
-
-The `network` block is read at startup, not on `/uxmess reload`. Restart the server
+**Restart-only.** The `network` block is read at startup, not on `/uxmess reload`. Restart the server
 after changing it. Full walkthrough: [Velocity & Redis](../cross-server/overview.md).
-
-</Callout>
-
----
 
 ## `server-links`
 
@@ -226,8 +207,6 @@ Built-in `type` values include `REPORT_BUG`, `SUPPORT`, `STATUS`, `FEEDBACK`,
 `COMMUNITY`, `WEBSITE`, `FORUMS`, `NEWS`, `ANNOUNCEMENTS`, and `COMMUNITY_GUIDELINES`.
 A malformed or empty entry is skipped with a warning.
 
----
-
 ## `update-check`
 
 An optional update checker. **Off by default** because it makes an outbound network
@@ -241,8 +220,6 @@ update-check {
   interval-hours = 12           # re-check cadence; 0 = check once on enable only
 }
 ```
-
----
 
 ## `map-markers`
 
@@ -275,20 +252,9 @@ homes is a privacy choice you opt into.
 **What they do:** The map layer name, the icon keys used per category, and the marker
 tooltip template. `<name>` in `tooltip` expands to the warp or spawn name.
 
-<Callout type="note" title="BlueMap ignores the icon keys">
-
-BlueMap addresses marker icons by asset URL, while `*-icon` holds the short keys Dynmap
+**BlueMap ignores the icon keys.** BlueMap addresses marker icons by asset URL, while `*-icon` holds the short keys Dynmap
 and squaremap use (`portal`, `house`). Those keys mean nothing to BlueMap, so they are
 deliberately not passed through and its markers use BlueMap's own default icon. Passing
 them would give every marker a broken image instead.
 
-</Callout>
-
----
-
-## Next Steps
-
-- [Per-Module Config](per-module.md): enable/disable and tune each feature.
-- [SQLite (Default)](../database/sqlite.md): the zero-setup database.
-- [Velocity & Redis](../cross-server/overview.md): turning on the `network` block.
-- [Config Overview](overview.md): the whole layout at a glance.
+Related: [Per-Module Config](per-module.md), [SQLite (Default)](../database/sqlite.md), [Velocity & Redis](../cross-server/overview.md), [Config Overview](overview.md)

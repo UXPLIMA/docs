@@ -1,9 +1,11 @@
 ---
 title: Action API
 order: 1650
-description: 'Queries answer what is true. Actions change it: set a home, pay a player, hand
-  over a kit, ban somebody, each running the same use case the matching command runs.'
+description: 'Driving uxmEssentials from your plugin: homes, money, kits, punishments.'
 ---
+
+Queries answer what is true. Actions change it: set a home, pay a player, hand over a kit, ban somebody,
+each running the same use case the matching command runs.
 
 Queries answer what is true. Actions change it: set a home, pay a player, hand over a kit, ban somebody. Every one
 of them runs the same use case the matching command runs, so what your plugin does and what a player types are the
@@ -93,8 +95,6 @@ economy.withdraw(playerId, cost).thenAccept(result ->
         }
     }));
 ```
-
----
 
 ## Economy
 

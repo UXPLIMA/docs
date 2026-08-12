@@ -1,13 +1,16 @@
 ---
 title: Menus
 order: 108
-description: Built-in Menu Guide, Custom Menu Engine, Actions & Requirements, Bedrock
-  Forms, Converting Other Menus and In-Game Editor.
+description: The menu engine behind every GUI, and how to write, convert and edit your own.
 ---
 
-- [Built-in Menu Guide](built-in.md): Almost every GUI you open in uxmEssentials: the home grid, the warp browser, the kit list, the vault selector, the /eco and /mod admin panels, the module hub behind /uxmess gui: is drawn by one shared menu engine. There is no separate "GUI system" bolted onto each feature: the same code that loads your own menus/.conf files loads and renders the built-in menus too.
-- [Custom Menu Engine](engine.md): A custom menu is a single HOCON file in plugins/uxmEssentials/menus/. The file name (without .conf) is the menu's name: menus/shop.conf is opened with /menu open shop. uxmEssentials ships menus/example.conf as a starting point: copy it, rename it, and edit.
-- [Actions & Requirements](actions-requirements.md): Everything a menu does is an action; everything it checks is a requirement (also called a condition). Both are written the same way (a bare id:value reference) and both are shared by the built-in menus and your own.
-- [Bedrock Forms](bedrock.md): Bedrock players (those joining a Java server through Geyser with Floodgate installed) do not see chest GUIs the way Java players do. A chest menu is clunky on a touch screen. So when uxmEssentials detects a Bedrock viewer, it renders the very same menu as a native Bedrock form instead: the clean, scrollable, tappable UI Bedrock players already know.
-- [Converting Other Menus](converters.md)
-- [In-Game Editor](editor.md)
+Every GUI in uxmEssentials is drawn by one engine, and that engine also loads the menus you write.
+
+| Page | What it covers |
+|---|---|
+| [Built-in Menus](built-in.md) | Which screens are menus, and how to change them |
+| [Menu Engine](engine.md) | Writing a menu file: layout, items, sources |
+| [Actions and Requirements](actions-requirements.md) | What a click does, and what has to be true first |
+| [Bedrock Forms](bedrock.md) | The same menus rendered natively for Bedrock players |
+| [Converting Other Menus](converters.md) | Importing DeluxeMenus, zMenu, OGUI and GUIPlus files |
+| [In-Game Editor](editor.md) | Building and editing menus without leaving the game |

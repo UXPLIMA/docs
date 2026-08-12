@@ -1,10 +1,11 @@
 ---
 title: Menu API
 order: 1660
-description: 'The menu engine behind every GUI in uxmEssentials is extensible: teach
-  it your own actions, requirements, placeholders, list sources and icons, and operators
-  can write your ids in their own menu files.'
+description: Teaching the menu engine your own actions, requirements, sources and icons.
 ---
+
+The menu engine is extensible: teach it your own actions, requirements, placeholders, list sources and
+icons, and operators can write your ids in their own menu files.
 
 The [menu engine](../menus/engine.md) behind every GUI in uxmEssentials is extensible. Through `MenuApi` you teach it
 your own actions, requirements, placeholders, list sources and icons, and operators can then write your ids in their
@@ -77,13 +78,9 @@ second handler quietly win. Register inside `whenReady` and nowhere else.
 
 </Callout>
 
-<Callout type="warning" title="A menu is validated when it loads">
-
-A spec that names an id the engine does not know is a loud load-time failure, not a broken menu a player
+**A menu is validated when it loads.** A spec that names an id the engine does not know is a loud load-time failure, not a broken menu a player
 discovers. That is the right behaviour, but it means a menu already loaded when your plugin enables has to be
 re-validated: run `/uxmess reload` or `/menu reload` once your registrations are in place.
-
-</Callout>
 
 ## Threading
 

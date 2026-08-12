@@ -31,8 +31,6 @@ Keys written with an open segment, like `%uxmessentials_kit_cost_<kit>%`, are fa
 
 Keys marked `relational` are the two-player form: `%rel_uxmessentials_<key>%` reads the relation between the player a line is rendered *for* and the player it is *about*, so they only answer on a surface that renders per viewer (a chat format, a tab or nametag line). Elsewhere the raw token is left in place.
 
----
-
 ## Player & Server
 
 Always answered, whatever is enabled: the kernel owns these. The account, session, held-item and server keys need no feature module at all.
@@ -161,8 +159,6 @@ Always answered, whatever is enabled: the kernel owns these. The account, sessio
 | `%uxmessentials_server_worlds%` | global | How many worlds are loaded. |
 | `%uxmessentials_stat_<statistic>%` | player | Any vanilla statistic by name, as stat_jump or stat_damage_dealt; a statistic that counts per block, item or entity takes it on the end, as stat_mine_block_diamond_ore or stat_kill_entity_zombie. |
 
----
-
 ## Command Control
 
 Whether the player may run a given command where they stand.
@@ -170,8 +166,6 @@ Whether the player may run a given command where they stand.
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
 | `%uxmessentials_commandcontrol_allowed_<command>%` | session | Whether the player may run that command where they stand (yes/no), answered from the rules the gate uses. |
-
----
 
 ## Communication
 
@@ -181,8 +175,6 @@ The chat lock and the rotating announcer.
 |-------------|-------|-----------------|
 | `%uxmessentials_communication_broadcasts%` | session | Whether the player receives the rotating announcements (yes/no). |
 | `%uxmessentials_communication_chat_enabled%` | global | Whether public chat is open rather than locked by `/togglechat` (yes/no). |
-
----
 
 ## Menus
 
@@ -197,8 +189,6 @@ What the menu engine has open for this player.
 | `%uxmessentials_menu_page%` | session | The page the open menu is showing, counting from 1. |
 | `%uxmessentials_menu_rows%` | session | How many rows the open menu has. |
 
----
-
 ## Discord Linking
 
 Whether the account is bound, and to whom.
@@ -207,8 +197,6 @@ Whether the account is bound, and to whom.
 |-------------|-------|-----------------|
 | `%uxmessentials_discordlink_id%` | player | The bound Discord user id. |
 | `%uxmessentials_discordlink_linked%` | player | Whether the account is bound to a Discord user (yes/no). |
-
----
 
 ## Economy
 
@@ -237,8 +225,6 @@ Balances in every currency, and the leaderboard.
 | `%uxmessentials_economy_currency_name%` | global | The plural name of the default currency. |
 | `%uxmessentials_economy_currency_symbol%` | global | The symbol of the default currency. |
 
----
-
 ## Holograms
 
 How many holograms are placed.
@@ -246,8 +232,6 @@ How many holograms are placed.
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
 | `%uxmessentials_holograms_count%` | global | How many holograms are placed. |
-
----
 
 ## Homes
 
@@ -266,8 +250,6 @@ Counts, the quota, and each home by its position in the grid.
 | `%uxmessentials_homes_limit%` | player | How many homes the player may keep; the infinity marker when the quota is unlimited. |
 | `%uxmessentials_homes_list%` | player | The player's home names, comma separated. |
 
----
-
 ## Inventory Rollback
 
 When this server last snapshotted the player's inventory, since the last restart.
@@ -277,8 +259,6 @@ When this server last snapshotted the player's inventory, since the last restart
 | `%uxmessentials_invrollback_captured%` | session | Whether any snapshot has been taken for the player since the last restart (yes/no). |
 | `%uxmessentials_invrollback_last_capture%` | session | How long ago this server last snapshotted the player's inventory, since the last restart. |
 | `%uxmessentials_invrollback_last_cause%` | session | What caused that snapshot: death or logout. |
-
----
 
 ## Item Utilities
 
@@ -291,8 +271,6 @@ The commands bound to the held item, and the two personal switches.
 | `%uxmessentials_itemworld_powertool_count%` | session | How many commands the held item is bound to. |
 | `%uxmessentials_itemworld_powertool_enabled%` | player | Whether the player currently lets their powertool bindings fire (yes/no). |
 | `%uxmessentials_itemworld_unlimited%` | player | Whether the player is placing blocks without consuming them (yes/no). |
-
----
 
 ## Kits
 
@@ -308,8 +286,6 @@ Per-kit availability, cooldown, price and claims left.
 | `%uxmessentials_kit_has_<kit>%` | player | Whether the player holds one kit's permission (yes/no). |
 | `%uxmessentials_kits_list%` | player | The ids of the kits the player may claim, comma separated. |
 
----
-
 ## Messaging
 
 Mail, ignores, and the private-message session.
@@ -324,8 +300,6 @@ Mail, ignores, and the private-message session.
 | `%uxmessentials_messaging_msgtoggle%` | session | Whether the player accepts private messages (yes/no). |
 | `%uxmessentials_messaging_reply_target%` | session | Who `/r` would answer: the last player this one talked to. |
 | `%uxmessentials_messaging_socialspy%` | session | Whether the player is watching other players' messages (yes/no). |
-
----
 
 ## Moderation
 
@@ -355,8 +329,6 @@ Sanctions: whether they are held, why, by whom, and for how long.
 | `%uxmessentials_moderation_warns%` | player | How many warnings the player carries. |
 | `%uxmessentials_muted%` | player | Whether the player is muted (yes/no). |
 
----
-
 ## Nametags
 
 Which authored format the player wears above their head.
@@ -365,8 +337,6 @@ Which authored format the player wears above their head.
 |-------------|-------|-----------------|
 | `%uxmessentials_nametags_format%` | session | The nametag format the player wears, or a dash when they wear none. |
 | `%uxmessentials_nametags_shown%` | session | Whether the player wears a nametag at all (yes/no). |
-
----
 
 ## NPCs
 
@@ -378,8 +348,6 @@ How many NPCs stand on the server, and what one player has left of their quota.
 | `%uxmessentials_npc_owned%` | player | How many NPCs the player owns. |
 | `%uxmessentials_npc_remaining%` | player | How many more NPCs the player may create, or unlimited. |
 | `%uxmessentials_npc_total%` | global | How many NPCs the server holds. |
-
----
 
 ## Player State
 
@@ -407,8 +375,6 @@ The live session: mode, health, position, playtime.
 | `%uxmessentials_playerstate_y%` | session | The player's block y. |
 | `%uxmessentials_playerstate_z%` | session | The player's block z. |
 
----
-
 ## Player Warps
 
 The warps this player owns.
@@ -426,8 +392,6 @@ The warps this player owns.
 | `%uxmessentials_playerwarps_limit%` | player | How many player warps the player may own; the infinity marker when unlimited. |
 | `%uxmessentials_playerwarps_list%` | player | The names of the player warps the player owns, comma separated. |
 
----
-
 ## Sitting & Poses
 
 What pose the player holds.
@@ -438,8 +402,6 @@ What pose the player holds.
 | `%uxmessentials_poses_posing%` | session | Whether the player holds a free pose: lay, bellyflop or spin (yes/no). |
 | `%uxmessentials_poses_sitting%` | session | Whether the player is sitting (yes/no). |
 | `%uxmessentials_poses_toggle%` | session | Whether the player lets others sit on them: allow or refuse. |
-
----
 
 ## Presence
 
@@ -458,8 +420,6 @@ Away, vanished, and what name they wear.
 | `%uxmessentials_presence_vanished%` | session | Whether the player is vanished (yes/no). |
 | `%uxmessentials_vanished%` | session | Whether the player is vanished (yes/no). |
 
----
-
 ## Ranks
 
 Where the player stands on the ladder.
@@ -473,8 +433,6 @@ Where the player stands on the ladder.
 | `%uxmessentials_rank_position%` | player | Which rung of the ladder the player stands on, counting from one. |
 | `%uxmessentials_rank_progress%` | player | How far up the ladder the player stands, as a whole percentage. |
 | `%uxmessentials_rank_total%` | player | How many rungs the ladder holds. |
-
----
 
 ## Regions
 
@@ -491,8 +449,6 @@ The protected region under the player, its roster, and how many cover them.
 | `%uxmessentials_regions_inside%` | session | Whether the player is standing in a protected region (yes/no). |
 | `%uxmessentials_regions_world_count%` | session | How many regions are defined in the world the player is in. |
 
----
-
 ## Scoreboard
 
 Whether the sidebar is showing.
@@ -501,8 +457,6 @@ Whether the sidebar is showing.
 |-------------|-------|-----------------|
 | `%uxmessentials_scoreboard_board%` | session | The board the player's sidebar is drawn from, or a dash when they are shown none. |
 | `%uxmessentials_scoreboard_visible%` | session | Whether the player has the sidebar showing (yes/no). |
-
----
 
 ## Security
 
@@ -513,8 +467,6 @@ The live verification challenge. Nothing about what an account has enrolled.
 | `%uxmessentials_security_enforced%` | global | Whether the server asks players to verify on join at all (yes/no). |
 | `%uxmessentials_security_verifying%` | session | Whether the player has an open verification challenge they have not answered (yes/no). |
 
----
-
 ## Server Tweaks
 
 The brand this server reports to its clients.
@@ -522,8 +474,6 @@ The brand this server reports to its clients.
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
 | `%uxmessentials_servertweaks_brand%` | global | The server brand reported to clients on the F3 screen, or a dash when the tweak is off. |
-
----
 
 ## Staff
 
@@ -534,8 +484,6 @@ Staff mode, and how many staff are on.
 | `%uxmessentials_staff_count%` | global | The same connected-staff count, under the spelling a config may prefer. |
 | `%uxmessentials_staff_mode%` | session | Whether the player is in staff mode (yes/no). |
 | `%uxmessentials_staff_online%` | global | How many staff members are connected. |
-
----
 
 ## Survival Mechanics
 
@@ -558,8 +506,6 @@ Each auto-mechanic, read twice: the player's own switch and whether the server r
 | `%uxmessentials_survival_veinminer%` | player | Whether the player has veinminer switched on (yes/no), the mechanic that follows an ore vein. |
 | `%uxmessentials_survival_veinminer_enabled%` | global | Whether this server runs veinminer at all (yes/no), the mechanic that follows an ore vein. |
 
----
-
 ## Tablist
 
 Which authored format the player's tab is being drawn from.
@@ -568,8 +514,6 @@ Which authored format the player's tab is being drawn from.
 |-------------|-------|-----------------|
 | `%uxmessentials_tablist_format%` | session | The tablist format the player's tab is drawn from, or a dash when they are drawn none. |
 | `%uxmessentials_tablist_shown%` | session | Whether the player's tab is being drawn from a format at all (yes/no). |
-
----
 
 ## Teleport
 
@@ -590,8 +534,6 @@ Cooldown, warmup, requests, and the /back location.
 | `%uxmessentials_teleport_warmup_remaining%` | session | The stand-still countdown left on the teleport in progress. |
 | `%uxmessentials_teleport_warmup_remaining_formatted%` | session | The same remaining warmup, under the spelling a config may prefer. |
 
----
-
 ## Trade
 
 Whether two players are in a live exchange.
@@ -599,8 +541,6 @@ Whether two players are in a live exchange.
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
 | `%rel_uxmessentials_trading%` | relational | Whether the two are the sides of the same live trade (yes/no). |
-
----
 
 ## Vanish
 
@@ -610,8 +550,6 @@ Whether one player can see another.
 |-------------|-------|-----------------|
 | `%rel_uxmessentials_cansee%` | relational | Whether the viewer can see the player the line is about, or vanish hides them (yes/no). |
 | `%rel_uxmessentials_hidden%` | relational | The same read the other way round: whether vanish hides them from the viewer (yes/no). |
-
----
 
 ## Vaults
 
@@ -624,8 +562,6 @@ Vault count, quota and size.
 | `%uxmessentials_vaults_max%` | player | How many vaults the player may open; the infinity marker when unlimited. |
 | `%uxmessentials_vaults_size%` | player | How many rows each of the player's vaults holds. |
 
----
-
 ## Villagers
 
 How many villagers are walking after the player.
@@ -634,8 +570,6 @@ How many villagers are walking after the player.
 |-------------|-------|-----------------|
 | `%uxmessentials_villagers_following%` | session | How many villagers are walking after the player right now. |
 | `%uxmessentials_villagers_has_follower%` | session | Whether any villager is following the player (yes/no). |
-
----
 
 ## Vote
 
@@ -653,8 +587,6 @@ Vote counts, streaks, leaderboards and the party.
 | `%uxmessentials_votes_top_<period>_<n>_name%` | global | The name of the player ranked nth on one period's vote leaderboard. |
 | `%uxmessentials_votes_top_<period>_<n>_votes%` | global | The vote count of the player ranked nth on one period's leaderboard. |
 
----
-
 ## Warps
 
 The server warps this player may use.
@@ -671,8 +603,6 @@ The server warps this player may use.
 | `%uxmessentials_warps_count%` | player | How many warps the player may use. |
 | `%uxmessentials_warps_list%` | player | The names of the warps the player may use, comma separated. |
 
----
-
 ## Worlds
 
 How many worlds are managed and loaded.
@@ -684,10 +614,4 @@ How many worlds are managed and loaded.
 | `%uxmessentials_worlds_loaded_count%` | global | How many worlds are loaded right now. |
 | `%uxmessentials_worlds_managed_count%` | global | How many worlds the plugin's registry holds. |
 
----
-
-## Next Steps
-
-- [PlaceholderAPI](../integrations/placeholderapi.md): both directions, and what happens without it
-- [Scoreboard, Tablist & Nametags](../modules/scoreboard.md): where these show up most
-- [Holograms](../modules/holograms.md): live placeholder lines
+Related: [PlaceholderAPI](../integrations/placeholderapi.md), [Scoreboard, Tablist & Nametags](../modules/scoreboard.md), [Holograms](../modules/holograms.md)

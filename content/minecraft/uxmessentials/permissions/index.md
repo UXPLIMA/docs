@@ -1,7 +1,9 @@
 ---
 title: Permissions
 order: 160
-description: Permission Reference.
+description: Every permission node uxmEssentials registers, by module.
 ---
 
-- [Permission Reference](reference.md)
+| Page | What it covers |
+|---|---|
+| [Permission Reference](reference.md) | Every node, its default, and what it grants |

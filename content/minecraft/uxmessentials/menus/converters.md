@@ -1,6 +1,7 @@
 ---
 title: Converting Other Menus
 order: 1120
+description: Importing DeluxeMenus, zMenu, OGUI and GUIPlus files into the menu engine.
 ---
 
 If you are moving to uxmEssentials from another menu plugin, you don't have to rebuild
@@ -12,8 +13,6 @@ It is a **best-effort** tool: expect it to carry roughly three-quarters of a typ
 menu across cleanly and to flag the rest for you to finish. It never crashes on a bad
 file and it never overwrites your work silently: you review the output and reload when
 you're happy.
-
----
 
 ## Supported sources
 
@@ -27,8 +26,6 @@ you're happy.
 `<path>` may point at a single file or a directory; a directory converts every file in
 it, and one unparsable file never aborts the rest of the batch. Each converted file is
 written as `menus/<original-basename>.conf`.
-
----
 
 ## What you get back
 
@@ -49,8 +46,6 @@ the output first. Once you're happy, run `/menu reload` to load the new menus, o
 `/menu reload <name>` for one.
 
 </Callout>
-
----
 
 ## What maps, and what to watch for
 
@@ -78,18 +73,8 @@ source used.
 - **Per-action delays and modifiers** (DeluxeMenus `<delay=…>`, GUIPlus `executionDelay`)
   are stripped with a warning, not converted.
 
-<Callout type="tip" title="Review, then reload">
-
-Treat the output as a strong first draft. Skim each new file for warned lines: the
+**Review, then reload.** Treat the output as a strong first draft. Skim each new file for warned lines: the
 legacy colour codes and the dropped conditions are where the ~20% that didn't map
 lives: fix those, then `/menu reload`. Everything else is usually ready to open.
 
-</Callout>
-
----
-
-## Next Steps
-
-- [Custom Menu Engine](engine.md): edit and extend the files convert produced.
-- [Actions & Requirements](actions-requirements.md): the vocabulary convert maps onto.
-- [Migrating from EssentialsX](../getting-started/migration.md): the wider data import path.
+Related: [Custom Menu Engine](engine.md), [Actions & Requirements](actions-requirements.md), [Migrating from EssentialsX](../getting-started/migration.md)

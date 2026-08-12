@@ -1,13 +1,14 @@
 ---
 title: REST API
 order: 1670
-description: 'HTTP and WebSocket access to uxmEssentials for the programs that are not
-  plugins: a panel, a bot, a store webhook, a script.'
+description: HTTP and WebSocket access for panels, bots, webhooks and scripts.
 ---
 
-Everything the [Query API](queries.md) and the [Action API](actions.md) offer a plugin, the REST add-on offers a
-program that is not a plugin: a panel, a Discord bot, a store webhook, a dashboard, a script. It is a separate jar,
-`uxmEssentials-rest`, and it ships switched off.
+HTTP and WebSocket access for the programs that are not plugins: a panel, a bot, a store webhook, a
+script.
+
+Everything the [Query API](queries.md) and the [Action API](actions.md) offer a plugin, the REST add-on
+offers over HTTP. It is a separate jar, `uxmEssentials-rest`, and it ships switched off.
 
 It is built on the published API and nothing else. Every endpoint below is one call to a surface a plugin could
 make itself, which is the rule that keeps the two from drifting: if an endpoint cannot be written without reaching
@@ -176,12 +177,8 @@ Slots in a path count from one, the way a player counts them.
 | `GET /players/{uuid}/vaults` | The vaults, with the count, the limit and the row size |
 | `GET /players/{uuid}/vaults/{index}` | One vault |
 
-<Callout type="note" title="Vault contents are not here">
-
-Item stacks are a Bukkit type with no published form, and an inventory rendered as JSON would be a second,
+**Vault contents are not here.** Item stacks are a Bukkit type with no published form, and an inventory rendered as JSON would be a second,
 worse item format that this project would then have to keep in step with Minecraft's own.
-
-</Callout>
 
 ### Moderation
 
@@ -513,7 +510,7 @@ is already in comes back as `already-in-state`. The tab list and nametags have n
 authored in config, nothing outside the module owns a row or a tag to set, and anything cleared from here would be
 repainted on the next pass.
 
-<Callout type="note" title="Trade, regions, staff, powertools and the command gate are read-only">
+**Trade, regions, staff, powertools and the command gate are read-only.**
 
 Each publishes a query surface and no action surface, so over HTTP they are readable and nothing more. That is
 the published API's shape showing through rather than a decision taken in the add-on. The command gate is the
@@ -527,8 +524,6 @@ an HTTP request.
 
 The tab list and nametags go the other way: they publish a verb and nothing to read, so over HTTP they can be
 refreshed and not queried.
-
-</Callout>
 
 ## The event stream
 

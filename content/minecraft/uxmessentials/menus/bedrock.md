@@ -1,18 +1,15 @@
 ---
 title: Bedrock Forms
 order: 1110
-description: 'Bedrock players (those joining a Java server through Geyser with Floodgate
-  installed) do not see chest GUIs the way Java players do. A chest menu is clunky on a
-  touch screen. So when uxmEssentials detects a Bedrock viewer, it renders the very same
-  menu as a native Bedrock form instead: the clean, scrollable, tappable UI Bedrock
-  players already know.'
+description: How a menu renders as a native Bedrock form, and where it stays a chest.
 ---
+
+Bedrock players joining through Geyser with Floodgate installed do not get chest GUIs, which are clumsy on
+a touch screen. They get the same menu as a native form.
 
 This is automatic. You author one menu; Java players get the chest, Bedrock players get
 the form. You only reach for the options below when you want to tune what the form looks
 like.
-
----
 
 ## How a menu becomes a form
 
@@ -39,8 +36,6 @@ takes the chest path. See [Bedrock (Floodgate)](../integrations/floodgate.md).
 
 </Callout>
 
----
-
 ## When the chest is kept anyway: `chest-only`
 
 Some menus can't be a form. A form is a flat list of buttons; it cannot display or edit
@@ -57,8 +52,6 @@ chest-only = true
 With `chest-only`, a Bedrock viewer gets the chest GUI instead of a form. A menu that
 uses `bottom-inventory` is chest-only automatically, since its raw-slot geometry only
 makes sense in a chest.
-
----
 
 ## An explicit form: the `bedrock { }` block
 
@@ -111,24 +104,16 @@ action list runs with those values in scope.
 Widget labels, the form title and `content` are verbatim MiniMessage (or `@catalog.key`),
 just like item names; they may hold placeholders and are resolved per open.
 
----
-
 ## Graceful fallback
 
 Everything degrades to something sensible:
 
-- **No Floodgate** → the form path never engages; everyone gets the chest.
-- **`chest-only`** → this menu is a chest for Bedrock viewers too.
-- **No `bedrock { }` block** → the automatic SimpleForm/ModalForm degradation is used.
-- **A `bedrock { }` block** → Bedrock viewers get that CustomForm; Java viewers ignore it.
+- **No Floodgate** to the form path never engages; everyone gets the chest.
+- **`chest-only`** to this menu is a chest for Bedrock viewers too.
+- **No `bedrock { }` block** to the automatic SimpleForm/ModalForm degradation is used.
+- **A `bedrock { }` block** to Bedrock viewers get that CustomForm; Java viewers ignore it.
 
 You never end up with a broken menu: the worst case is a Bedrock player seeing the same
 chest a Java player would.
 
----
-
-## Next Steps
-
-- [Bedrock (Floodgate)](../integrations/floodgate.md): enabling Floodgate detection.
-- [Custom Menu Engine](engine.md): the `chest-only` and `bedrock` keys in context.
-- [Actions & Requirements](actions-requirements.md): what `on-submit` actions can do.
+Related: [Bedrock (Floodgate)](../integrations/floodgate.md), [Custom Menu Engine](engine.md), [Actions & Requirements](actions-requirements.md)
