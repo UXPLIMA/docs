@@ -6,7 +6,7 @@ description: Every %uxmessentials_% placeholder this build answers, area by area
 
 ## Overview
 
-With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 216 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
+With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 223 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
 
 Every key is declared once inside the plugin, in a single catalogue that a build-time guard resolves against the resolver in both directions. That is what this page is generated from, so a key listed here is a key this build answers.
 
@@ -36,6 +36,12 @@ Always answered, whatever is enabled: the kernel owns these. The account, sessio
 
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
+| `%uxmessentials_cooldown_<label>%` | player | How long the player still waits on one cooldown label, in whole seconds; 0 when it is open. |
+| `%uxmessentials_cooldown_<label>_formatted%` | player | The same wait in the compact 1h2m3s form; 0s when it is open. |
+| `%uxmessentials_cooldown_active_<label>%` | player | Whether a cooldown is running on that label at all (yes/no). |
+| `%uxmessentials_format_compact_<n>%` | global | The number shortened to k, M, B or T, so 1234567 reads 1.23M. |
+| `%uxmessentials_format_number_<n>%` | global | The number with its thousands grouped, so 1234567 reads 1,234,567. |
+| `%uxmessentials_format_time_<n>%` | global | A count of seconds spelled in the compact 1h2m3s form. |
 | `%uxmessentials_hand_amount%` | session | How many are in the main-hand stack. |
 | `%uxmessentials_hand_damage%` | session | How much durability the main-hand item has spent. |
 | `%uxmessentials_hand_durability%` | session | How much durability the main-hand item has left. |
@@ -82,6 +88,7 @@ Always answered, whatever is enabled: the kernel owns these. The account, sessio
 | `%uxmessentials_player_world_time%` | session | The time of day in the player's world, in ticks. |
 | `%uxmessentials_player_world_time_formatted%` | session | The time of day in the player's world as a 24-hour clock, where tick 0 is 06:00. |
 | `%uxmessentials_player_world_weather%` | session | The sky in the player's world: clear, rain or thunder. |
+| `%uxmessentials_progressbar_<now>_<total>%` | global | A twenty-character bar filled to now out of total; append a third segment to set the width. |
 | `%uxmessentials_server_max_players%` | global | The server's player slot count. |
 | `%uxmessentials_server_online%` | global | How many players are connected. |
 | `%uxmessentials_server_ram_free%` | global | Heap still free, in whole megabytes. |
