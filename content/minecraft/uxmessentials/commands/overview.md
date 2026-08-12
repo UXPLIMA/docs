@@ -23,7 +23,7 @@ All player-facing text is **MiniMessage**-formatted and resolved from a per-loca
 
 ## The `/uxmess` Admin Root
 
-Server-wide administration lives under a single root command: `/uxmess` (aliases `/uxmessentials`, `/uxe`). It manages the 23 feature modules, runs diagnostics, and imports legacy data.
+Server-wide administration lives under a single root command: `/uxmess` (aliases `/uxmessentials`, `/uxe`). It manages the 34 feature modules, runs diagnostics, publishes the permission catalogue, and imports legacy data.
 
 | Command | Description | Permission |
 |---------|-------------|------------|
@@ -34,6 +34,8 @@ Server-wide administration lives under a single root command: `/uxmess` (aliases
 | `/uxmess reload [module]` | Reload all modules, or one by id | `uxmessentials.admin.reload` |
 | `/uxmess import <source> [--dry-run\|dry-run]` | Import legacy data (e.g. from EssentialsX) | `uxmessentials.admin.import` |
 | `/uxmess import --list` | List the built-in import sources | `uxmessentials.admin.import` |
+| `/uxmess permissions [area] [page]` | Read the permission catalogue in game, one area at a time | `uxmessentials.admin.permissions` |
+| `/uxmess permissions export` | Write the whole catalogue to `permissions.md` in the plugin folder | `uxmessentials.admin.permissions` |
 | `/backup` | Snapshot the plugin data directory on demand (off-tick) | `uxmessentials.admin.backup` |
 | `/help [page-or-query]` | List/search the commands you can use (per-line permission-filtered) | `uxmessentials.help` |
 | `/lang [code\|reset]` | Show / set / clear your personal language override | `uxmessentials.lang.use` |
@@ -56,6 +58,9 @@ Run `/uxmess import <source> --dry-run` before the real thing. The dry run repor
 /uxmess status
 /uxmess doctor
 /uxmess reload economy
+/uxmess permissions
+/uxmess permissions homes
+/uxmess permissions export
 /uxmess import essentialsx --dry-run
 /lang tr
 /lang reset

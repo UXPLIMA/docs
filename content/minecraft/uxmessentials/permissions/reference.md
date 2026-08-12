@@ -22,6 +22,16 @@ uxmEssentials never imports LuckPerms directly. Every check goes through the sha
 
 To override a default for a group, configure the node in your permission plugin. uxmEssentials does not own group state.
 
+<Callout type="info" title="The plugin can print this page for you">
+
+Every node below is declared once inside the plugin, in a single catalogue. The server is told about
+the fixed nodes from that catalogue on enable, and the same catalogue answers `/uxmess permissions`
+in game. `/uxmess permissions export` writes the whole thing to `permissions.md` in the plugin
+folder, so the reference always matches the build you are running. Both need
+`uxmessentials.admin.permissions`.
+
+</Callout>
+
 ---
 
 ## How nodes are organised
@@ -45,34 +55,35 @@ The `teleport` context owns all movement orchestration and the shared cooldown/w
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.tpa.use` | `true` | `/tpa`, `/tpaccept`, `/tpdeny`, `/tpalist`: request and resolve teleports |
-| `uxmessentials.tpahere.use` | `true` | `/tpahere <player>`: ask a player to come to you |
-| `uxmessentials.tpa.cancel` | `true` | `/tpcancel`: withdraw your outgoing request |
-| `uxmessentials.tpa.toggle` | `true` | `/tptoggle`, `/tpon`, `/tpoff`: refuse or accept incoming requests |
-| `uxmessentials.tpa.auto` | `true` | `/tpauto`: auto-accept incoming requests |
-| `uxmessentials.tpa.block` | `true` | `/tpblock` / `/tpunblock <player>` |
-| `uxmessentials.tpa.all` | `op` | `/tpaall`: request every online player |
-| `uxmessentials.tpsettings.use` | `true` | `/tpsettings`: your teleport settings panel |
-| `uxmessentials.back.use` | `true` | `/back`, `/deathback`: return to your last location |
-| `uxmessentials.back.ondeath` | `true` | Allow `/back`/`/deathback` to return to a **death** location |
-| `uxmessentials.back.others` | `op` | `/back <player>` (staff) |
-| `uxmessentials.rtp.use` | `true` | `/rtp`: random teleport from the pre-warmed safe queue |
-| `uxmessentials.rtp.biome` | `true` | `/rtp biome <biome>`: random teleport into a chosen biome |
-| `uxmessentials.rtp.gui` | `true` | `/rtp gui`: open the RTP menu |
-| `uxmessentials.rtp.others` | `op` | `/rtp <player>` (staff) |
-| `uxmessentials.rtp.cooldown.<seconds>` | - | Per-rank RTP cooldown (grant the number of seconds; highest wins) |
-| `uxmessentials.rtp.radius.<n>` | - | Per-rank max RTP search radius (grant the number of blocks; highest wins) |
-| `uxmessentials.teleport.settpr` | `op` | `/settpr <min> <max>`: set the live `/rtp` search zone |
-| `uxmessentials.spawn.use` | `true` | `/spawn`: go to server spawn |
-| `uxmessentials.spawn.named` | `true` | `/spawn <name>`: go to a named spawn |
-| `uxmessentials.spawn.set` | `op` | `/setspawn`, `/setmainspawn`, `/removespawn`, `/mirrorspawn` |
-| `uxmessentials.tp.use` | `op` | `/tp`, `/tphere`, `/goto`, `/bring`: direct staff teleport |
-| `uxmessentials.tp.position` | `op` | `/tppos`, coordinate teleport |
-| `uxmessentials.tp.offline` | `op` | `/tpoffline`, `/tpofflinehere` |
-| `uxmessentials.tp.vertical` | `op` | `/top`, `/bottom`, `/jump`, `/up`, `/down`, `/ascend`, `/descend`, `/thru` |
-| `uxmessentials.tp.all` | `op` | `/tpall`: pull every online player to you |
-| `uxmessentials.tp.others` | `op` | Umbrella for the `[player]` form of staff teleport verbs |
-| `uxmessentials.teleport.gui` | `op` | Teleport settings panel on the `/uxmess gui` hub |
+| `uxmessentials.tpa.all` | `op` | `/tpaall` to request every online player to teleport to you. |
+| `uxmessentials.tpa.auto` | `true` | `/tpauto` to auto-accept incoming teleport requests. |
+| `uxmessentials.tpa.block` | `true` | `/tpblock` / `/tpunblock` to block a player's requests. |
+| `uxmessentials.tpa.cancel` | `true` | `/tpcancel` / `/tpacancel` to withdraw your outgoing request. |
+| `uxmessentials.tpa.toggle` | `true` | `/tptoggle` to refuse all incoming teleport requests. |
+| `uxmessentials.tpa.use` | `true` | `/tpa`, `/tpaccept`, `/tpdeny` to request and resolve a teleport. |
+| `uxmessentials.tpahere.use` | `true` | `/tpahere` to ask a player to come to you. |
+| `uxmessentials.tpsettings.use` | `true` | `/tpsettings` opens your personal teleport settings panel. |
+| `uxmessentials.back.ondeath` | `true` | Allow `/back` and `/deathback` to return to a death location. |
+| `uxmessentials.back.use` | `true` | `/back` to return to your last captured location; `/deathback` (alias `/dback`) to return to your last death location. |
+| `uxmessentials.module.teleport` | `op` | Hot-reload / inspect the teleport module (`/tp`, `/tpa`, `/back`, `/spawn` and `/rtp`). |
+| `uxmessentials.rtp.biome` | `true` | `/rtp` biome `<biome>` to random teleport into a specific biome. |
+| `uxmessentials.rtp.gui` | `true` | `/rtp` gui to open the random-teleport world picker. |
+| `uxmessentials.rtp.others` | `op` | `/rtp <player>` to force another online player to random teleport (staff). |
+| `uxmessentials.rtp.radius.<blocks>` | `quota` | How far from the world centre `/rtp` may drop you; the largest tier held wins. |
+| `uxmessentials.rtp.use` | `true` | `/rtp` random teleport from the pre-warmed safe-location queue. |
+| `uxmessentials.spawn.named` | `true` | `/spawn <name>` to teleport to a named spawn. |
+| `uxmessentials.spawn.set` | `op` | `/setspawn`, `/setmainspawn`, `/removespawn` and `/mirrorspawn` to define and manage spawns. |
+| `uxmessentials.spawn.use` | `true` | `/spawn` to teleport to the resolved server spawn. |
+| `uxmessentials.teleport.gui` | `op` | Show the teleport settings panel on the `/uxmess` gui hub. |
+| `uxmessentials.teleport.settpr` | `op` | `/settpr <minRange> <maxRange>` to set the `/rtp` search zone at runtime. |
+| `uxmessentials.tp.all` | `op` | `/tpall` to pull every online player to you. |
+| `uxmessentials.tp.offline` | `op` | `/tpoffline` / `/tpofflinehere` to a player's logout location. |
+| `uxmessentials.tp.others` | `op` | `/tpo` and `/tpohere` to teleport overriding no-tp flags. |
+| `uxmessentials.tp.position` | `op` | `/tppos` to teleport to raw coordinates. |
+| `uxmessentials.tp.use` | `op` | `/tp`, `/tphere`, `/goto`, `/bring` and `/tprandomplayer` (`/tprp`) direct staff teleport. |
+| `uxmessentials.tp.vertical` | `op` | `/top`, `/bottom`, `/jump`, `/up`, `/down`, `/ascend`, `/descend`, `/thru` vertical teleports. |
+| `uxmessentials.tp.warmup.<seconds>` | `tier` | The stand-still countdown before a teleport runs, in seconds; the shortest tier held wins and 0 removes it. |
+| `uxmessentials.tp.warmup.bypass` | `op` | Start teleports with no warmup, immune to move-cancel. |
 
 ---
 
@@ -82,11 +93,15 @@ All home actions live under the single `/home` command; the no-arg call opens th
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.home.use` | `true` | `/home`: open and manage your home grid |
-| `uxmessentials.home.icon` | `true` | Pick a custom GUI icon for a home |
-| `uxmessentials.home.visit` | `true` | `/home visit <player> [slot]` |
-| `uxmessentials.home.invite` | `true` | `/home invite` / `/home uninvite` |
-| `uxmessentials.home.admin` | `op` | `/home admin <player> …`: manage another player's homes (audited) |
+| `uxmessentials.home.admin` | `op` | `/homeadmin` to manage another player's homes. |
+| `uxmessentials.home.bypass.cost` | `op` | Skip the per-action economy cost for home create, relocate, and teleport actions. |
+| `uxmessentials.home.bypass.unsafe` | `op` | Skip the unsafe-destination confirm when teleporting to a home via the GUI. |
+| `uxmessentials.home.icon` | `true` | Pick a custom GUI icon for one of your homes from the grid. |
+| `uxmessentials.home.invite` | `true` | `/invite` and `/uninvite` to grant or revoke another player's access to one of your homes. |
+| `uxmessentials.home.limit.<n>` | `quota` | How many homes you may keep; the largest tier held wins. |
+| `uxmessentials.home.use` | `true` | `/home` to open and manage your slot-based home grid. |
+| `uxmessentials.home.visit` | `true` | `/visit` to teleport to another player's public home or one you were invited to. |
+| `uxmessentials.module.homes` | `op` | Hot-reload / inspect the homes module (per-player homes and the slot grid). |
 
 ---
 
@@ -96,18 +111,23 @@ Single root `/warp`; create/move/delete/lock and the editor are subcommands.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.warp.use` | `true` | `/warp <name>`: teleport to a warp |
-| `uxmessentials.warp.others` | `op` | `/warp <name> <player>`: send another player |
-| `uxmessentials.warp.list` | `true` | `/warp list` |
-| `uxmessentials.warp.info` | `true` | `/warp info <name>` |
-| `uxmessentials.warp.set` | `op` | `/warp create` (alias `set`) |
-| `uxmessentials.warp.move` | `op` | `/warp move <name>` |
-| `uxmessentials.warp.delete` | `op` | `/warp del <name>` |
-| `uxmessentials.warp.lock` | `op` | `/warp lock <name>` |
-| `uxmessentials.warp.password` | `op` | `/warp password <name>` |
-| `uxmessentials.warp.edit` | `op` | `/warp editor <name>` |
-| `uxmessentials.warp.sign.create` | `op` | Create a `[warp]` sign |
-| `uxmessentials.warp.sign.use` | `true` | Use a `[warp]` sign |
+| `uxmessentials.module.warps` | `op` | Hot-reload / inspect the warps module (server warps and their access rules). |
+| `uxmessentials.warp.bypass.lock` | `op` | Use a locked warp regardless of its lock state. |
+| `uxmessentials.warp.bypass.password` | `op` | Use a password-protected warp without entering its password. |
+| `uxmessentials.warp.bypass.safety` | `op` | Use a warp whose destination fails the safety check. |
+| `uxmessentials.warp.delete` | `op` | `/delwarp <name>` to remove a warp. |
+| `uxmessentials.warp.edit` | `op` | `/warp` editor `<name>` to open the warp editor (cost, gates, effects, welcome message, icon). |
+| `uxmessentials.warp.info` | `true` | `/warpinfo <name>` to show a warp's owner, creation time and cost. |
+| `uxmessentials.warp.list` | `true` | `/warps` to list the warps you may use. |
+| `uxmessentials.warp.lock` | `op` | `/warp` lock `<name>` to lock or unlock a warp against use. |
+| `uxmessentials.warp.move` | `op` | `/movewarp <name>` to move an existing warp to your current location. |
+| `uxmessentials.warp.others` | `op` | `/warp <name> <player>` to send another player to a warp. |
+| `uxmessentials.warp.password` | `op` | `/warp` password `<name>` to set or clear a warp's access password. |
+| `uxmessentials.warp.set` | `op` | `/setwarp <name>` to create or move a server-wide warp. |
+| `uxmessentials.warp.sign.create` | `op` | Create a `[warp]` sign that teleports players to a warp on click. |
+| `uxmessentials.warp.sign.use` | `true` | Use a `[warp]` sign to teleport to its warp. |
+| `uxmessentials.warp.use` | `true` | `/warp <name>` to teleport to a server warp. |
+| `uxmessentials.warp.use.<warp>` | `label` | Use one warp, when that warp is configured to require a permission. |
 
 Per-warp gates are data-driven in `warps.conf`: a warp with `permission: true` requires the family node `uxmessentials.warp.use.<warp>` (`<warp>` is the warp id, lower-cased); a warp with a `cost` charges through the economy provider.
 
@@ -119,31 +139,38 @@ Player-owned warps are keyed by `(owner, name)`: two players may each keep a `ba
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.pwarp.use` | `true` | `/pwarp <name> [password]` and the browse GUI |
-| `uxmessentials.pwarp.set` | `true` | `/setpwarp <name>`: create/re-anchor (capped by the limit tier) |
-| `uxmessentials.pwarp.delete` | `true` | `/pwarp del <name>` |
-| `uxmessentials.pwarp.list` | `true` | `/pwarps [player]` |
-| `uxmessentials.pwarp.public` | `true` | `/pwarp visibility public\|private <name>` |
-| `uxmessentials.pwarp.move` | `true` | `/pwarp move <name>` |
-| `uxmessentials.pwarp.rename` | `true` | `/pwarp rename <name> <newName>` |
-| `uxmessentials.pwarp.displayname` | `true` | `/pwarp displayname` |
-| `uxmessentials.pwarp.description` | `true` | `/pwarp description` |
-| `uxmessentials.pwarp.icon` | `true` | `/pwarp icon` |
-| `uxmessentials.pwarp.category` | `true` | `/pwarp category` |
-| `uxmessentials.pwarp.access` | `true` | `/pwarp access <name> PUBLIC\|PASSWORD\|WHITELIST\|PRIVATE` |
-| `uxmessentials.pwarp.password` | `true` | `/pwarp password <name> <pw>\|clear` |
-| `uxmessentials.pwarp.price` | `true` | `/pwarp price <name> <amount> [currency]` |
-| `uxmessentials.pwarp.withdraw` | `true` | `/pwarp withdraw <name>`: collect banked entry fees |
-| `uxmessentials.pwarp.info` | `true` | `/pwarp info <name>` |
-| `uxmessentials.pwarp.rate` | `true` | `/pwarp rate <name> <1-5>` |
-| `uxmessentials.pwarp.favourite` | `true` | `/pwarp favourite`, `/pwarp unfavourite` |
-| `uxmessentials.pwarp.transfer` | `true` | `/pwarp transfer <name> <player>` |
-| `uxmessentials.pwarp.members` | `true` | `/pwarp members <name> add\|remove` |
-| `uxmessentials.pwarp.whitelist` | `true` | `/pwarp whitelist <name> add\|remove <player>` |
-| `uxmessentials.pwarp.ban` | `true` | `/pwarp ban`, `/pwarp unban` |
-| `uxmessentials.pwarp.sponsor` | `true` | `/pwarp sponsor <name> [days]` (also needs the sub-group enabled) |
-| `uxmessentials.pwarp.admin` | `op` | The whole `/pwarp admin` group (restore, purge, delete, setowner, reload) |
-| `uxmessentials.pwarp.gui` | `op` | Manage *every* player's warps in the `/pwarp` GUI |
+| `uxmessentials.pwarp.ban` | `true` | `/pwarp` ban\|unban `<name> <player>` to bar a player from one of your warps or lift that bar. |
+| `uxmessentials.pwarp.bypass.ban` | `op` | Enter a player warp you are banned from (skips the ban check on `/pwarp`). |
+| `uxmessentials.pwarp.bypass.password` | `op` | Enter a password-protected player warp without the password (skips the check on `/pwarp`). |
+| `uxmessentials.pwarp.bypass.whitelist` | `op` | Enter a whitelist-only player warp without being on the whitelist (skips the check on `/pwarp`). |
+| `uxmessentials.pwarp.category` | `true` | `/pwarp` category `<name> [categoryId]` to file a player warp under a browse category. |
+| `uxmessentials.pwarp.delete` | `true` | `/pwarp` del `<name>` to remove one of your player warps. |
+| `uxmessentials.pwarp.description` | `true` | `/pwarp` description `<name> [text]` to set or clear a player warp's description. |
+| `uxmessentials.pwarp.displayname` | `true` | `/pwarp` displayname `<name> [text]` to set or clear a player warp's display name. |
+| `uxmessentials.pwarp.icon` | `true` | `/pwarp` icon `<name> [icon]` to set or clear a player warp's browse icon. |
+| `uxmessentials.pwarp.limit.<n>` | `quota` | How many player warps you may own; the largest tier held wins. |
+| `uxmessentials.pwarp.members` | `true` | `/pwarp` members `<name>` add\|remove `<player>` to grant or revoke a co-owner or manager on one of your warps. |
+| `uxmessentials.pwarp.move` | `true` | `/pwarp` move `<name>` to re-anchor one of your player warps at your location. |
+| `uxmessentials.pwarp.password` | `true` | `/pwarp` password `<name> <password>`\|clear to set or clear a player warp's password. |
+| `uxmessentials.pwarp.price` | `true` | `/pwarp` price `<name> <amount> [currency]` to set a player warp's entry price. |
+| `uxmessentials.pwarp.public` | `true` | `/pwarp` visibility public\|private `<name>` to toggle a player warp's visibility. |
+| `uxmessentials.pwarp.rename` | `true` | `/pwarp` rename `<name> <newName>` to rename one of your player warps. |
+| `uxmessentials.pwarp.set` | `true` | `/setpwarp <name>` to create or move a player-owned warp at your location. |
+| `uxmessentials.pwarp.sponsor` | `true` | `/pwarp` sponsor `<name> [days]` to buy a paid, time-limited pinned browse slot for one of your warps. |
+| `uxmessentials.pwarp.transfer` | `true` | `/pwarp` transfer `<name> <player>` to hand ownership of one of your warps to another player. |
+| `uxmessentials.pwarp.whitelist` | `true` | `/pwarp` whitelist `<name>` add\|remove `<player>` to manage a whitelist-access warp's guest list. |
+| `uxmessentials.pwarp.withdraw` | `true` | `/pwarp` withdraw `<name>` to pay one of your warps' accrued earnings out to its owner. |
+| `uxmessentials.module.playerwarps` | `op` | Hot-reload / inspect the playerwarps module (player-owned warps behind `/pwarp`). |
+| `uxmessentials.pwarp.access` | `true` | `/pwarp` access `<name> <PUBLIC\|PASSWORD\|WHITELIST\|PRIVATE>` to set a player warp's access axis. |
+| `uxmessentials.pwarp.admin` | `op` | `/pwarp` admin restore\|purge\|setowner\|reload to manage any player's warp by its id. |
+| `uxmessentials.pwarp.bypass.cost` | `op` | Use a priced player warp without paying its entry cost (skips the charge on `/pwarp`). |
+| `uxmessentials.pwarp.bypass.safety` | `op` | Use a player warp whose destination is unsafe (skips the safe-landing check on `/pwarp`). |
+| `uxmessentials.pwarp.favourite` | `true` | `/pwarp` favourite\|unfavourite `<name>` to star or un-star a player warp. |
+| `uxmessentials.pwarp.gui` | `op` | Manage every player's warps in the `/pwarp` GUI (a player without it edits only their own). |
+| `uxmessentials.pwarp.info` | `true` | `/pwarp` info `<name>` to show a player warp's owner, access, price, visits, and rating. |
+| `uxmessentials.pwarp.list` | `true` | `/pwarps [player]` to list your warps or a player's public warps. |
+| `uxmessentials.pwarp.rate` | `true` | `/pwarp` rate `<name> <1-5>` to award a player warp a star rating. |
+| `uxmessentials.pwarp.use` | `true` | `/pwarp <name> [owner]` to teleport to your own or a player's public warp. |
 
 The five bypasses (`uxmessentials.pwarp.bypass.ban`, `.password`, `.whitelist`, `.safety`, `.cost`) each default `op` and are listed under [Bypass Nodes](#bypass-nodes). The per-player cap is the tier `uxmessentials.pwarp.limit.<n>`, optionally scoped per world.
 
@@ -155,21 +182,32 @@ Balances are DB-backed and routed through the shared `EconomyProvider` port; eco
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.economy.balance` | `true` | `/balance [currency]` |
-| `uxmessentials.economy.balance.others` | `op` | `/balance <player>` |
-| `uxmessentials.economy.pay` | `true` | `/pay <player> <amount>` |
-| `uxmessentials.economy.pay.toggle` | `true` | `/paytoggle` |
-| `uxmessentials.economy.payall` | `op` | `/payall <amount>` |
-| `uxmessentials.economy.baltop` | `true` | `/baltop` |
-| `uxmessentials.economy.baltop.exempt` | `false` | Hide the holder from `/baltop` (admin / system accounts) |
-| `uxmessentials.economy.worth` | `true` | `/worth [item]` |
-| `uxmessentials.economy.sell` | `true` | `/sell`, `/sellall` |
-| `uxmessentials.economy.setworth` | `op` | `/setworth [item] <price>\|clear` |
-| `uxmessentials.economy.admin` | `op` | Umbrella for `/eco give`/`take`/`set` (audited) |
-| `uxmessentials.economy.admin.give` | `op` | `/eco give` only |
-| `uxmessentials.economy.admin.take` | `op` | `/eco take` only |
-| `uxmessentials.economy.admin.set` | `op` | `/eco set` only |
-| `uxmessentials.economy.admin.bulk` | `op` | `/eco giveall`, `/eco giverandom`, `/eco resetall` |
+| `uxmessentials.economy.admin` | `op` | Umbrella for eco-admin mutations (`/eco` give, take, set). |
+| `uxmessentials.economy.admin.bulk` | `op` | `/eco` giveall, `/eco` giverandom, `/eco` resetall server-wide bulk mutations. |
+| `uxmessentials.economy.admin.give` | `op` | `/eco` give `<player> <amount> [currency]` only. |
+| `uxmessentials.economy.admin.set` | `op` | `/eco` set `<player> <amount> [currency]` and `/eco` reset only. |
+| `uxmessentials.economy.admin.take` | `op` | `/eco` take `<player> <amount> [currency]` only. |
+| `uxmessentials.economy.balance` | `true` | `/balance [currency]` to see your own balance. |
+| `uxmessentials.economy.balance.others` | `op` | `/balance <player> [currency]` to view another player's balance. |
+| `uxmessentials.economy.baltop` | `true` | `/baltop [currency] [page]` to view the top balances. |
+| `uxmessentials.economy.baltop.exempt` | `false` | Marks the holder as hidden from every `/baltop` leaderboard. |
+| `uxmessentials.economy.bank` | `true` | `/bank`: open the bank panel to move money between your wallet and your bank balance. |
+| `uxmessentials.economy.bypasscmdcost` | `op` | Skip the configured per-command economy charge (command-costs in economy.conf). |
+| `uxmessentials.economy.currency.<currency>` | `label` | Use one currency that is configured to require a permission. |
+| `uxmessentials.economy.deposit` | `true` | `/deposit <amount> [currency]`: move money from your wallet into your bank balance. |
+| `uxmessentials.economy.exchange` | `true` | `/exchange <amount> <from> <to>`: convert between two currencies at the configured rate. |
+| `uxmessentials.economy.loan` | `false` | `/loan`: take, review and repay a loan against the configured limit and interest. |
+| `uxmessentials.economy.pay` | `true` | `/pay <player> <amount> [currency]` and `/payconfirm` to transfer funds. |
+| `uxmessentials.economy.pay.toggle` | `true` | `/paytoggle` to refuse all incoming `/pay` transfers. |
+| `uxmessentials.economy.payall` | `op` | `/payall <amount> [currency]`: pay every online player from your own wallet. |
+| `uxmessentials.economy.salary.amount.<amount>` | `quota` | The periodic salary you are paid; the largest tier held wins. |
+| `uxmessentials.economy.sell` | `true` | `/sell [amount]` to sell held items at their configured worth. |
+| `uxmessentials.economy.setworth` | `op` | `/setworth [item] <price>`\|clear to set or clear an item's sell worth override. |
+| `uxmessentials.economy.tax.bypass` | `op` | Send a `/pay` without the configured transfer tax being deducted. |
+| `uxmessentials.economy.wallet` | `true` | `/wallet`: open your own wallet panel listing every currency you hold. |
+| `uxmessentials.economy.withdraw` | `true` | `/withdraw <amount> [currency]`: move money from your bank balance back into your wallet. |
+| `uxmessentials.economy.worth` | `true` | `/worth [item]` to report an item's configured sell value. |
+| `uxmessentials.module.economy` | `op` | Hot-reload / inspect the economy module (wallets, banks, currencies and the provider bridge). |
 
 `/bank`, `/deposit`, `/withdraw`, `/loan`, `/wallet`, `/exchange`, `/sellall`, and the extra `/eco` subcommands carry their own nodes but are only active when the matching feature flag is on in `economy.conf`. Per-currency gating uses the tier node `uxmessentials.economy.currency.<id>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes).
 
@@ -181,10 +219,11 @@ Rankup, prestige and the ladder panel. The plugin tracks each player's rank with
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.ranks.rankup` | `true` | `/rankup`: advance to the next rank when you meet its requirements |
-| `uxmessentials.ranks.prestige` | `true` | `/prestige`: reset to the first rank for a prestige level (registered while prestige is enabled) |
-| `uxmessentials.ranks.gui` | `true` | `/ranks`: open the self-service ladder panel (registered only when the GUI is enabled) |
-| `uxmessentials.ranks.admin` | `op` | `/ranks setrank <player> <rank>` and the top-level `/setrank <player> <rank>`: set a player's rank directly (bypasses requirements, cost and actions) |
+| `uxmessentials.module.ranks` | `op` | Hot-reload / inspect the ranks module (rank ladders, prestige and rank-up costs). |
+| `uxmessentials.ranks.admin` | `op` | `/ranks` setrank `<player> <rank>` to set a player's rank directly. |
+| `uxmessentials.ranks.gui` | `true` | `/ranks` to open the ladder panel (config-gated; registered only when the GUI is enabled). |
+| `uxmessentials.ranks.prestige` | `true` | `/prestige` to reset to the first rank for a prestige level once you reach the top rank. |
+| `uxmessentials.ranks.rankup` | `true` | `/rankup` to advance to the next rank when you meet its requirements. |
 
 A rank's `cost` is charged through the economy provider, and a `placeholder` requirement uses an operator-chosen `%placeholder%` comparison: neither is a plugin-declared node.
 
@@ -194,11 +233,16 @@ A rank's `cost` is charged through the economy provider, and a `placeholder` req
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.kit.use` | `true` | `/kit`, `/kit list`, `/kit <name>`: claim kits |
-| `uxmessentials.kit.preview` | `true` | `/kit show <name>` |
-| `uxmessentials.kit.others` | `op` | `/kit <name> <player>` |
-| `uxmessentials.kit.edit` | `op` | `/kit create`/`del`/`editor` |
-| `uxmessentials.kit.reset` | `op` | `/kit reset <player> [kit]` |
+| `uxmessentials.kit.<kit>` | `label` | Claim one kit. |
+| `uxmessentials.kit.cooldown.<kit>.<seconds>` | `tier` | The wait between claims of one kit, in seconds; the shortest tier held wins. |
+| `uxmessentials.kit.cooldown.bypass` | `op` | Skip kit cooldowns and re-claim one-time kits. |
+| `uxmessentials.kit.edit` | `op` | `/kit` create, `/kit` del, `/kit` editor to define, remove and edit kit contents. |
+| `uxmessentials.kit.others` | `op` | `/kit <name> <player>` to give a kit to another player. |
+| `uxmessentials.kit.preview` | `true` | `/kit` show `<name>` to preview a kit's contents without claiming it. |
+| `uxmessentials.kit.reset` | `op` | `/kit` reset `<player> [kit]` to clear a player's claim/cooldown stamps. |
+| `uxmessentials.kit.use` | `true` | `/kit <name>` to claim a kit and `/kit` list to list the kits you may claim. |
+| `uxmessentials.module.kits` | `op` | Hot-reload / inspect the kits module (kit definitions, cooldowns and claims). |
+| `uxmessentials.oversizedstacks` | `op` | Receive kit items in stacks larger than the material normally allows. |
 
 Per-kit gating is data-driven: a kit with `permission: true` requires `uxmessentials.kit.<id>`.
 
@@ -210,12 +254,16 @@ DB-persisted, player-owned item storage. Vault count and per-vault size are numb
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.vault.use` | `true` | `/vault`, `/vault <n>`, `/vault info`, `/vault delete <n>` (own) |
-| `uxmessentials.vault.rename` | `true` | `/vault rename <n> [name]` |
-| `uxmessentials.vault.icon` | `true` | `/vault icon <n> [material]` |
-| `uxmessentials.vault.others` | `op` | `/vault <player> [n]`: open and audit another player's vault |
-| `uxmessentials.vault.admin.delete` | `op` | `/vault delete <player> <n>` (audited, no refund) |
-| `uxmessentials.vault.free` | `false` | Bypass every vault economy fee (no refund on delete) |
+| `uxmessentials.module.vaults` | `op` | Hot-reload / inspect the vaults module (DB-persisted player vault storage). |
+| `uxmessentials.vault.admin.delete` | `op` | `/vault` delete `<player> <n>`: delete another player's vault (audit-logged, no refund). |
+| `uxmessentials.vault.amount.<n>` | `quota` | How many vaults you may open; the largest tier held wins. |
+| `uxmessentials.vault.bypass-blacklist` | `op` | Store any item in a vault, ignoring the blacklist-materials list (items are not returned). |
+| `uxmessentials.vault.free` | `false` | Bypass every vault economy fee (create/open); no refund is paid on delete. |
+| `uxmessentials.vault.icon` | `true` | `/vault` icon `<n> [material]`: set or clear the icon of your own vault (held item if omitted). |
+| `uxmessentials.vault.others` | `op` | `/vault <player> [n]`: open and audit another player's vault (audit-logged). |
+| `uxmessentials.vault.rename` | `true` | `/vault` rename `<n> [name]`: set or clear the display name of your own vault. |
+| `uxmessentials.vault.size.<rows>` | `quota` | How many rows each of your vaults holds; the largest tier held wins. |
+| `uxmessentials.vault.use` | `true` | `/vault` to open your default vault (or list them), `/vault <n>` to open the Nth, and `/vault` delete `<n>` to delete your own. |
 
 ---
 
@@ -225,7 +273,8 @@ Player-to-player trading through a shared, both-confirm window. `/trade` is the 
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.trade.use` | `true` | `/trade <player>` (request a trade; `/trade accept\|deny [player]`) answer a pending request |
+| `uxmessentials.module.trade` | `op` | Hot-reload / inspect the trade module. |
+| `uxmessentials.trade.use` | `true` | `/trade`: request a trade with another player and accept or deny requests. |
 
 The item blacklist, request distance, cooldown, staked currencies, audit, and cross-server escrow are config-driven in `modules/trade/config.conf`, not permission nodes.
 
@@ -237,29 +286,45 @@ Toggleable flags and apply-once effects. Every `[player]` target form additional
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.god.use` | `op` | `/god` |
-| `uxmessentials.fly.use` | `op` | `/fly` |
-| `uxmessentials.gamemode.use` | `op` | `/gamemode`, `/gmc`/`gms`/`gma`/`gmsp` |
-| `uxmessentials.speed.use` | `op` | `/speed`, `/walkspeed`, `/flyspeed` |
-| `uxmessentials.heal.use` / `.feed.use` | `op` | `/heal` / `/feed` |
-| `uxmessentials.foodlevel.use` / `.health.use` | `op` | `/foodlevel` / `/health`: set a specific value |
-| `uxmessentials.repair.use` / `.repair.all` | `op` | `/repair` / `/repairall` |
-| `uxmessentials.extinguish.use` | `op` | `/ext` |
-| `uxmessentials.clearinventory.use` | `op` | `/clearinventory` (`/ci`, `/clear`) |
-| `uxmessentials.clearinventory.confirmtoggle` | `true` | `/citoggle`: self-clear confirmation toggle |
-| `uxmessentials.invsee.use` (+`.invsee.modify`) | `op` | `/invsee` (modify unlocks editing) |
-| `uxmessentials.endersee.use` | `op` | `/endersee` |
-| `uxmessentials.suicide.use` | `true` | `/suicide` (self only) |
-| `uxmessentials.near.use` | `op` | `/near [radius]` |
-| `uxmessentials.nightvision.use` / `.glow.use` | `op` | `/nightvision` / `/glow` |
-| `uxmessentials.ptime.use` / `.pweather.use` | `op` | Per-player time / weather |
-| `uxmessentials.exp.use` | `op` | `/exp` (`/xp`) |
-| `uxmessentials.air.use` / `.burn.use` / `.ice.use` | `op` | Air / fire / freeze |
-| `uxmessentials.getpos.use` | `op` | `/getpos` (`/coords`, `/whereami`) |
-| `uxmessentials.depth.use` `.biome.use` `.seed.use` `.compass.use` `.world.use` `.dimension.use` `.ping.use` | `true` | Read-only info verbs |
-| `uxmessentials.playtime.use` / `.playtime.reset` | `op` | `/playtime` / reset |
-| `uxmessentials.rest.use` | `op` | `/rest` |
-| `uxmessentials.playerstate.others` | `op` | Use any of the above against a `[player]` target |
+| `uxmessentials.air.use` | `op` | `/air <seconds>` to set a player's remaining air. |
+| `uxmessentials.burn.use` | `op` | `/burn <seconds>` to set a player on fire. |
+| `uxmessentials.exp.use` | `op` | `/exp` (`/xp`) get\|set\|give\|take\|reset to read or change experience. |
+| `uxmessentials.extinguish.use` | `op` | `/ext` (`/extinguish`) `[player]` to put out a burning player. |
+| `uxmessentials.feed.use` | `op` | `/feed [player]` to restore hunger. |
+| `uxmessentials.fly.use` | `op` | `/fly [player]` to toggle flight. |
+| `uxmessentials.foodlevel.use` | `op` | `/foodlevel <amount> [player]` to set a player's food level. |
+| `uxmessentials.gamemode.use` | `op` | `/gamemode <mode> [player]` and the `/gmc /gms /gma /gmsp` aliases. |
+| `uxmessentials.glow.use` | `op` | `/glow` to toggle a glowing outline on yourself. |
+| `uxmessentials.god.use` | `op` | `/god [player]` to toggle damage immunity. |
+| `uxmessentials.heal.use` | `op` | `/heal [player]` to restore health. |
+| `uxmessentials.health.use` | `op` | `/health <amount> [player]` to set a player's health. |
+| `uxmessentials.ice.use` | `op` | `/ice [player] [seconds]` to freeze a player (inverse of `/burn`). |
+| `uxmessentials.nightvision.use` | `op` | `/nightvision` (`/nv`) to toggle a night-vision effect on yourself. |
+| `uxmessentials.playerstate.fly.allworlds` | `op` | Keep flight in worlds where flying is switched off. |
+| `uxmessentials.ptime.use` | `op` | `/ptime <value\|reset>` to set a per-player client-side time. |
+| `uxmessentials.pweather.use` | `op` | `/pweather <clear\|rain\|reset>` to set a per-player client-side weather. |
+| `uxmessentials.rest.use` | `op` | `/rest` to reset a player's time-since-rest so phantoms stop. |
+| `uxmessentials.speed.use` | `op` | `/speed`, `/walkspeed` and `/flyspeed` to set walk/fly speed. |
+| `uxmessentials.suicide.use` | `true` | `/suicide` to kill yourself. |
+| `uxmessentials.biome.use` | `true` | `/biome` to show the biome you are standing in. |
+| `uxmessentials.depth.use` | `true` | `/depth` to show your height relative to sea level. |
+| `uxmessentials.dimension.use` | `true` | `/dimension` to show the dimension you are standing in. |
+| `uxmessentials.endersee.use` | `op` | `/endersee [player]` to view a player's ender chest. |
+| `uxmessentials.getpos.use` | `op` | `/getpos` (`/coords /whereami`) to show a player's coordinates. |
+| `uxmessentials.invsee.modify` | `op` | Edit a player's inventory through the `/invsee` menu (without this it is view-only). |
+| `uxmessentials.invsee.use` | `op` | `/invsee [player]` to view a player's inventory. |
+| `uxmessentials.near.use` | `op` | `/near [radius]` to list nearby players. |
+| `uxmessentials.ping.use` | `true` | `/ping` to show a player's round-trip latency. |
+| `uxmessentials.playtime.reset` | `op` | `/playtime` reset `[player]` to wipe a player's tracked playtime (resetting others also needs uxmessentials.playerstate.others). |
+| `uxmessentials.playtime.use` | `op` | `/playtime [player]` to show a player's playtime breakdown (active/afk, today/week/month/all-time). |
+| `uxmessentials.seed.use` | `true` | `/seed` to show the seed of the world you are standing in. |
+| `uxmessentials.world.command-bypass` | `op` | Run commands a world blocks through its per-world command list. |
+| `uxmessentials.world.use` | `true` | `/world` to show the world you are standing in. |
+| `uxmessentials.clearinventory.confirmtoggle` | `true` | `/clearinventoryconfirmtoggle` (`/citoggle`) to require a confirmation before `/clearinventory` clears your own inventory. |
+| `uxmessentials.clearinventory.use` | `op` | `/clearinventory` (`/ci /clear`) `[player]` to empty a player's inventory. |
+| `uxmessentials.compass.use` | `true` | `/compass` to show the direction you are facing. |
+| `uxmessentials.module.playerstate` | `op` | Hot-reload / inspect the playerstate module (flight, god mode, speed, health and the rest). |
+| `uxmessentials.playerstate.others` | `op` | Use any playerstate command with a `[player]` target other than yourself. |
 
 ---
 
@@ -269,18 +334,19 @@ Private messages and persistent mail only (not public chat). Delivery is ignore-
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.msg.use` | `true` | `/msg <player> <text>` |
-| `uxmessentials.msg.reply` | `true` | `/reply <text>` |
-| `uxmessentials.msg.toggle` | `true` | `/msgtoggle`, `/rtoggle` |
-| `uxmessentials.msg.ignore` | `true` | `/ignore`, `/unignore`, `/ignorelist` |
-| `uxmessentials.mail.use` | `true` | `/mail read\|send\|clear` |
-| `uxmessentials.mail.sendall` | `op` | `/mail sendall <text>` (staff) |
-| `uxmessentials.helpop.use` | `true` | `/helpop <text>` |
-| `uxmessentials.helpop.receive` | `op` | Receive `/helpop` (staff side) |
-| `uxmessentials.msg.color` | `op` | Render MiniMessage in PM/mail bodies |
-| `uxmessentials.msg.socialspy` | `op` | `/socialspy`: observe others' PMs and mail |
-| `uxmessentials.msgsettings.use` | `true` | `/msgsettings` |
-| `uxmessentials.messaging.gui` | `op` | Messaging panel on the `/uxmess gui` hub |
+| `uxmessentials.helpop.receive` | `op` | Receive `/helpop` requests (staff side). |
+| `uxmessentials.helpop.use` | `true` | `/helpop <text>` to open a player-to-staff support request. |
+| `uxmessentials.mail.sendall` | `op` | `/mail` sendall `<text>` to broadcast mail to every online player (staff). |
+| `uxmessentials.mail.use` | `true` | `/mail` read / `/mail` send `<player> <text>` / `/mail` clear (`/mailclear`): persistent offline mail. |
+| `uxmessentials.messaging.gui` | `op` | See and open the messaging settings panel and mailbox on the `/uxmess` gui management hub. |
+| `uxmessentials.module.messaging` | `op` | Hot-reload / inspect the messaging module (private messages, mail and social spy). |
+| `uxmessentials.msg.color` | `op` | Render MiniMessage tags in PM/mail bodies (default plain text). |
+| `uxmessentials.msg.ignore` | `true` | `/ignore <player>` / `/unignore <player>` / `/ignorelist` to manage and view your own ignore list. |
+| `uxmessentials.msg.reply` | `true` | `/reply <text>` to answer your last conversation (reply-TTL bounded). |
+| `uxmessentials.msg.socialspy` | `op` | `/socialspy` to observe other players' private messages (staff). |
+| `uxmessentials.msg.toggle` | `true` | `/msgtoggle` to refuse incoming `/msg` / `/reply`; `/rtoggle` to refuse only incoming `/reply` routing (mail still delivers). |
+| `uxmessentials.msg.use` | `true` | `/msg <player> <text>` to send a private message. |
+| `uxmessentials.msgsettings.use` | `true` | `/msgsettings` opens your personal messaging settings panel (accept-messages, social spy). |
 
 ---
 
@@ -290,17 +356,22 @@ Connection-message policies, the rotating announcer, and info pages. Operator-au
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.communication.broadcast` | `op` | `/broadcast <message>` |
-| `uxmessentials.communication.broadcastworld` | `op` | `/broadcastworld` (`/bcw`) |
-| `uxmessentials.communication.broadcasttoggle` | `true` | `/broadcasttoggle`: opt out of rotating announcements |
-| `uxmessentials.communication.me` | `true` | `/me <action>` |
-| `uxmessentials.communication.clearchat` | `op` | `/clearchat` (`/chatclear`) |
-| `uxmessentials.communication.clearchat.exempt` | `false` | Keep your scrollback when staff run `/clearchat` |
-| `uxmessentials.communication.togglechat` | `op` | `/togglechat` (`/mutechat`) |
-| `uxmessentials.communication.chat.format` | `false` | Use MiniMessage formatting in your own public chat messages (only when `allow-player-format` is on) |
-| `uxmessentials.announce.admin` | `op` | `/announce reload\|list\|preview\|toggle` |
-| `uxmessentials.communication.gui` | `op` | Communication admin panel |
-| `uxmessentials.communication.info.<name>` | `true` for shipped pages, `op` for custom | One node per info page: `/info`, `/rules`, `/motd`, and any operator-added page |
+| `uxmessentials.announce.admin` | `op` | `/announce` reload\|list\|preview\|toggle to manage the rotating announcer. |
+| `uxmessentials.communication.broadcast` | `op` | `/broadcast` to send a one-off announcement to all online players. |
+| `uxmessentials.communication.broadcasttoggle` | `true` | `/broadcasttoggle` to stop or resume receiving the rotating server announcements. |
+| `uxmessentials.communication.broadcastworld` | `op` | `/broadcastworld` (alias `/bcw`) to send a one-off announcement only to players in your world. |
+| `uxmessentials.communication.chat.bypass` | `op` | Keep chatting while public chat is locked by `/togglechat`. |
+| `uxmessentials.communication.chat.format` | `false` | Use MiniMessage formatting in your own public chat messages (when allow-player-format is on). |
+| `uxmessentials.communication.clearchat` | `op` | `/clearchat` (alias `/chatclear`) to flush the chat for online players. |
+| `uxmessentials.communication.clearchat.exempt` | `false` | Keep your chat scrollback when staff run `/clearchat`. |
+| `uxmessentials.communication.gui` | `op` | Open the communication admin panel (`/communication` gui and on the `/uxmess` gui hub). |
+| `uxmessentials.communication.info.<page>` | `label` | Read one information page, such as `/motd` or `/rules`. |
+| `uxmessentials.communication.info.info` | `true` | `/info` to read the shipped welcome / quick-start info page. |
+| `uxmessentials.communication.info.motd` | `true` | `/motd` to read the shipped message-of-the-day info page. |
+| `uxmessentials.communication.info.rules` | `true` | `/rules` to read the shipped server-rules info page. |
+| `uxmessentials.communication.me` | `true` | `/me` to broadcast a third-person action message to all online players. |
+| `uxmessentials.communication.togglechat` | `op` | `/togglechat` (alias `/mutechat`) to lock or unlock public chat for non-staff. |
+| `uxmessentials.module.communication` | `op` | Hot-reload / inspect the communication module (connection messages, announcer, info pages). |
 
 ---
 
@@ -310,33 +381,36 @@ Every action is audit-logged and permission-gated. A mute blocks outbound messag
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.moderation.mute` | `op` | `/mute`, `/tempmute`, `/mutehistory` |
-| `uxmessentials.moderation.unmute` | `op` | `/unmute` |
-| `uxmessentials.moderation.mutelist` | `op` | `/mutelist` |
-| `uxmessentials.moderation.jail` | `op` | `/jail`, `/jails`, `/jailedplayers`, `/setjail`, `/jail del` |
-| `uxmessentials.moderation.unjail` | `op` | `/unjail` |
-| `uxmessentials.moderation.togglejail` | `op` | `/togglejail <player>` |
-| `uxmessentials.moderation.ban` | `op` | `/ban`, `/unban`, `/banhistory` |
-| `uxmessentials.moderation.banlist` | `op` | `/banlist` |
-| `uxmessentials.moderation.tempban` | `op` | `/tempban` |
-| `uxmessentials.moderation.banip` | `op` | `/banip`, `/tempbanip`, `/unbanip` |
-| `uxmessentials.moderation.kick` | `op` | `/kick`, `/kickall` |
-| `uxmessentials.moderation.warn` | `op` | `/warn`, `/tempwarn`, `/unwarn`, `/warns` |
-| `uxmessentials.moderation.history` | `op` | `/history <player>`: unified disciplinary record |
-| `uxmessentials.moderation.staffhistory` | `op` | `/staffhistory <staff>` |
-| `uxmessentials.moderation.staffrollback` | `op` | `/staffrollback <staff> [limit]` |
-| `uxmessentials.moderation.stats` | `op` | `/modstats [staff] [days]`: staff punishment analytics |
-| `uxmessentials.moderation.templates` | `op` | `/punish <player> <template>`: apply a configured template |
-| `uxmessentials.moderation.check` | `op` | `/checkban`, `/checkmute` |
-| `uxmessentials.moderation.sanction` | `op` | `/sanction <player>`: read-only summary |
-| `uxmessentials.moderation.freeze` | `op` | `/freeze`, `/unfreeze` |
-| `uxmessentials.moderation.seen` | `op` | `/seen`, `/seenip`, `/alts` |
-| `uxmessentials.moderation.commandspy` | `op` | `/commandspy` (`/cspy`) |
-| `uxmessentials.moderation.lockdown` | `op` | `/lockdown [on\|off]` |
-| `uxmessentials.moderation.sudo` | `op` | `/sudo <player> <command>` |
-| `uxmessentials.moderation.gui` | `op` | `/mod`: moderation management GUI |
-| `uxmessentials.moderation.exempt` | `op` | Target-side immunity from lower staff |
-| `uxmessentials.moderation.broadcast.receive` | `op` | Receive the staff sanction broadcast |
+| `uxmessentials.moderation.<sanction>.maxduration.<seconds>` | `tier` | The longest ban, mute or jail you may hand out, in seconds; the largest tier held wins. |
+| `uxmessentials.moderation.ban` | `op` | `/ban <player> [reason]` and `/unban <player>`: permanent UUID ban and its lift; `/banhistory <player>` reviews a player's full ban/unban history. |
+| `uxmessentials.moderation.banip` | `op` | `/banip <player\|ip> [reason]` / `/unbanip <ip>`: IP ban with stored-IP alt detection. |
+| `uxmessentials.moderation.banlist` | `op` | `/banlist` to review the players currently banned. |
+| `uxmessentials.moderation.freeze` | `op` | `/freeze <player>` / `/unfreeze <player>`: pin a player in place pending review. |
+| `uxmessentials.moderation.jail` | `op` | `/jail <player> <jail> [duration] [reason]`; `/jails` lists configured jails; `/jailedplayers` lists who is jailed; `/setjail <name>` defines a jail at your location; `/jail` del `<name>` removes a defined jail. |
+| `uxmessentials.moderation.kick` | `op` | `/kick <player> [reason]`; `/kickall [reason]` to clear non-exempt players. |
+| `uxmessentials.moderation.lockdown` | `op` | `/lockdown [on\|off]`: refuse every login except holders of the lockdown bypass; the flag survives restart. |
+| `uxmessentials.moderation.lockdown.bypass` | `op` | Join the server while it is locked down (`/lockdown`). Held by staff who must stay reachable during a lockdown. |
+| `uxmessentials.moderation.mute` | `op` | `/mute <player> [duration] [reason]` (`/tempmute` is the explicit duration alias); `/mutehistory <player>` reviews a player's full mute/unmute history. |
+| `uxmessentials.moderation.mutelist` | `op` | `/mutelist` to review the players currently muted. |
+| `uxmessentials.moderation.sanction` | `op` | `/sanction <player>`: aggregated read-only punishment summary: current mute, jail, ban state and active warning count. |
+| `uxmessentials.moderation.sudo` | `op` | `/sudo <player> <command>`: run a command as another player. |
+| `uxmessentials.moderation.tempban` | `op` | `/tempban <player> <duration> [reason]`. |
+| `uxmessentials.moderation.templates` | `op` | `/punish <player> <template>`: apply a configured punishment template (a preset reason + optional duration) as a ban or tempban. |
+| `uxmessentials.moderation.togglejail` | `op` | `/togglejail <player> [jail] [reason]`: release the target if jailed, otherwise jail them in the named jail (or the first configured jail). |
+| `uxmessentials.moderation.unjail` | `op` | `/unjail <player>`. |
+| `uxmessentials.moderation.unmute` | `op` | `/unmute <player>`. |
+| `uxmessentials.moderation.warn` | `op` | `/warn <player> [reason]`, `/tempwarn <player> <duration> [reason]`, `/warns <player>` and `/unwarn <player>`: issue (standing or timed), review and clear warning history. |
+| `uxmessentials.moderation.broadcast.receive` | `op` | Receive the staff sanction broadcast: the one-line announcement a non-silent `/ban /mute /kick /warn` emits. The -s flag (or broadcast.silent-by-default) suppresses it. Duration tiers ride numbered nodes: uxmessentials.moderation.ban.maxduration.`<seconds>` and uxmessentials.moderation.mute.maxduration.`<seconds>` cap how long a ban/mute that holder may issue (highest held wins; no node = unlimited). |
+| `uxmessentials.moderation.check` | `op` | `/checkban <player>` and `/checkmute <player>`: report whether a player is currently banned or muted. |
+| `uxmessentials.moderation.commandspy` | `op` | `/commandspy` (`/cspy`) to watch the commands other players run. |
+| `uxmessentials.moderation.exempt` | `op` | Cannot be muted/jailed/tempbanned/kicked/warned/IP-banned/frozen by lower staff. |
+| `uxmessentials.moderation.gui` | `op` | `/mod` opens the moderation management GUI (active punishments + per-player history). |
+| `uxmessentials.moderation.history` | `op` | `/history <player>`: review a player's full disciplinary record (ban/mute/warn/kick) newest-first. |
+| `uxmessentials.moderation.seen` | `op` | `/seen`, `/seenip` and `/alts <player>`: last-seen / last-IP lookup, surfaces alts. |
+| `uxmessentials.moderation.staffhistory` | `op` | `/staffhistory <staff>`: review the sanctions a staff member has issued, newest-first. |
+| `uxmessentials.moderation.staffrollback` | `op` | `/staffrollback <staff> [limit]`: revoke a staff member's still-active sanctions (un-ban/un-mute/clear-warns the targets they sanctioned). |
+| `uxmessentials.moderation.stats` | `op` | `/modstats [staff] [days]`: staff punishment analytics: a most-active-staff leaderboard or a single staff member's breakdown, optionally over the last N days. |
+| `uxmessentials.module.moderation` | `op` | Hot-reload / inspect the moderation module (bans, mutes, jails, warnings and history). |
 
 Ban and mute durations can be capped per rank with the numbered families `uxmessentials.moderation.ban.maxduration.<seconds>` and `.mute.maxduration.<seconds>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes).
 
@@ -348,9 +422,10 @@ STAFF-MODE ONLY: a loadout swap and a gadget hotbar. It issues no sanctions of i
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.staff.mode` | `op` | `/staffmode [player]`: enter staff mode (loadout swap + gadgets + vanish) |
-| `uxmessentials.staff.chat` | `op` | `/staffchat` (`/sc`): staff-only channel |
-| `uxmessentials.staff.list` | `op` | `/stafflist`: online-staff GUI |
+| `uxmessentials.module.staff` | `op` | Hot-reload / inspect the staff module (staff mode, its loadout and staff chat). |
+| `uxmessentials.staff.chat` | `op` | `/staffchat` (alias `/sc`) to send and receive lines on the staff-only chat channel. |
+| `uxmessentials.staff.list` | `op` | `/stafflist` to open the online-staff GUI (vanish-aware) and click a head to teleport to that staff member. |
+| `uxmessentials.staff.mode` | `op` | `/staffmode [player]` to flip into staff mode: your real loadout is saved and swapped for the gadget hotbar (and you vanish); leaving restores it. The EXAMINE gadget opens a player's inventory. |
 
 ---
 
@@ -360,12 +435,15 @@ PremiumVanish-class invisibility with layered see/use levels. Its own `vanish` m
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.vanish.use` | `op` | `/vanish` (and `on`/`off`, `/vanish pickup`): become invisible |
-| `uxmessentials.vanish.others` | `op` | `/vanish <player>`: toggle another player's vanish |
-| `uxmessentials.vanish.list` | `op` | `/vanish list`: the hidden players you may see (scoped to your see level) |
-| `uxmessentials.vanish.see` | `op` | See vanished players (staff-among-staff) and `/tp` to them |
-| `uxmessentials.vanish.silent` | `op` | `/vanish -s`: vanish or reappear with no fake join/quit broadcast |
-| `uxmessentials.vanish.persist` | `op` | Rejoin already vanished across a relog |
+| `uxmessentials.module.vanish` | `op` | Hot-reload / inspect the vanish module. |
+| `uxmessentials.vanish.list` | `op` | `/vanish` list to see the hidden players you are permitted to see (scoped to your see level). |
+| `uxmessentials.vanish.others` | `op` | `/vanish <player>` to toggle another player's vanish. |
+| `uxmessentials.vanish.persist` | `op` | Remain vanished across a relog instead of reappearing on join. |
+| `uxmessentials.vanish.see` | `op` | See other vanished players (staff-among-staff visibility) and target them with `/tp`. |
+| `uxmessentials.vanish.see.level<n>` | `quota` | How deeply you see: a viewer sees a vanished player when their see level reaches that player's use level; the largest level held wins and plain .see is level 1. |
+| `uxmessentials.vanish.use.level<n>` | `quota` | How deeply you vanish: only a viewer whose see level reaches this level finds you; the largest level held wins and plain .use is level 1. |
+| `uxmessentials.vanish.silent` | `op` | `/vanish` -s to vanish or reappear without the fake join/quit broadcast. |
+| `uxmessentials.vanish.use` | `op` | `/vanish` to become invisible to other players; suppresses fake join/quit. |
 
 The optional layered families `uxmessentials.vanish.use.level<N>` (vanish at use level `N`) and `uxmessentials.vanish.see.level<N>` (see up to level `N`) tier the see/use model: a viewer sees a vanished player only when their see level is at least the target's use level. Plain `.use` / `.see` are level 1; see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes).
 
@@ -375,18 +453,18 @@ The optional layered families `uxmessentials.vanish.use.level<N>` (vanish at use
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.afk.use` | `true` | `/afk [reason]` |
-| `uxmessentials.list.use` | `true` | `/list` |
-| `uxmessentials.realname.use` | `true` | `/realname <player>` |
-| `uxmessentials.nick.use` | `true` | `/nick <name>\|off` |
-| `uxmessentials.nick.others` | `op` | `/nick <player> <name>` |
-| `uxmessentials.whois.use` | `op` | `/whois <player>` |
-| `uxmessentials.gc.use` | `op` | `/gc` (`/lag`, `/tps`, `/mem`) |
-| `uxmessentials.staff.use` | `op` | `/staff`: list online staff |
-| `uxmessentials.staff.member` | `op` | Marks a player as staff for `/staff` (a marker, not a command) |
-| `uxmessentials.afk.kick.exempt` | `op` | Never auto-kicked for being AFK |
-| `uxmessentials.presencesettings.use` | `true` | `/presencesettings` |
-| `uxmessentials.presence.gui` | `op` | Presence panel on the `/uxmess gui` hub |
+| `uxmessentials.afk.use` | `true` | `/afk [reason]` to toggle your AFK state (auto-AFK also applies on idle). |
+| `uxmessentials.gc.use` | `op` | `/gc` to show server health: TPS, uptime, memory and loaded chunks. |
+| `uxmessentials.list.use` | `true` | `/list` to see who is online. |
+| `uxmessentials.module.presence` | `op` | Hot-reload / inspect the presence module (AFK, nicknames and vanish state). |
+| `uxmessentials.nick.others` | `op` | `/nick <player> <name>` to set another player's display name. |
+| `uxmessentials.nick.use` | `true` | `/nick <name>` \| off to set or clear your display name. |
+| `uxmessentials.presence.gui` | `op` | Show the presence settings panel on the `/uxmess` gui hub. |
+| `uxmessentials.presencesettings.use` | `true` | `/presencesettings` opens your personal presence settings panel. |
+| `uxmessentials.realname.use` | `true` | `/realname <player>` to look up a player's real account name. |
+| `uxmessentials.staff.member` | `op` | Marks a player as staff so they appear in `/staff`. |
+| `uxmessentials.staff.use` | `op` | `/staff` to list online staff members. |
+| `uxmessentials.whois.use` | `op` | `/whois <player>` to view an online player's account, identity and status. |
 
 ---
 
@@ -396,18 +474,28 @@ Multi-world management. Nodes use the `uxmessentials.world.*` prefix (the plural
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.world.use` | `true` | `/worlds` |
-| `uxmessentials.world.list` / `.info` | `op` | `/worlds list` / `info` |
-| `uxmessentials.world.create` / `.import` | `op` | `/worlds create` / `import` |
-| `uxmessentials.world.load` / `.unload` / `.unregister` | `op` | Load / unload / unregister |
-| `uxmessentials.world.delete` | `op` | `/worlds delete` + `/worlds confirm` |
-| `uxmessentials.world.set` / `.gamerule` | `op` | Properties / gamerules |
-| `uxmessentials.world.setspawn` | `op` | `/worlds setspawn` |
-| `uxmessentials.world.spawn` | `true` | `/worlds spawn [name]` |
-| `uxmessentials.world.tp` (+`.tp.others`) | `op` | Teleport self / another to a world |
-| `uxmessentials.world.gui` | `op` | `/worlds gui` |
-| `uxmessentials.world.pregen` | `op` | `/worlds pregen` |
-| `uxmessentials.world.backup` / `.restore` | `op` | Backup / restore |
+| `uxmessentials.module.worlds` | `op` | Hot-reload / inspect the worlds module (world creation, properties and access). |
+| `uxmessentials.world.<world>` | `label` | Enter one world that is configured as restricted. |
+| `uxmessentials.world.access.bypass` | `op` | Enter a restricted world without holding that world's own entry node. |
+| `uxmessentials.world.backup` | `op` | `/world` backup `<name>`: snapshot a world's folder. |
+| `uxmessentials.world.create` | `op` | `/world` create `<name>`: generate and register a new world. |
+| `uxmessentials.world.delete` | `op` | `/world` delete `<name>`: unregister a world and delete its folder from disk. |
+| `uxmessentials.world.gamemode.bypass` | `op` | Keep your own game mode in a world that forces one on entry. |
+| `uxmessentials.world.gamerule` | `op` | `/world` gamerule `<name> <rule> <value>`: change one gamerule on a world. |
+| `uxmessentials.world.gui` | `op` | `/world`: open the world management GUI. |
+| `uxmessentials.world.import` | `op` | `/world` import `<folder>`: adopt an existing world folder into the registry. |
+| `uxmessentials.world.info` | `op` | `/world` info `<name>`: read one world's generator, properties, gamerules and spawn. |
+| `uxmessentials.world.list` | `op` | `/world` list: list every registered world with its load state and player count. |
+| `uxmessentials.world.load` | `op` | `/world` load `<name>`: load a registered world that is currently unloaded. |
+| `uxmessentials.world.pregen` | `op` | `/world` pregen `<name> <radius>`: pre-generate a world's chunks in the background. |
+| `uxmessentials.world.restore` | `op` | `/world` restore `<name> <backup>`: restore a world from one of its snapshots. |
+| `uxmessentials.world.set` | `op` | `/world` set `<name> <property> <value>`: change a world property such as difficulty or PvP. |
+| `uxmessentials.world.setspawn` | `op` | `/world` setspawn `[name]`: set a world's spawn point to where you are standing. |
+| `uxmessentials.world.spawn` | `true` | `/worlds` spawn to teleport to a world's spawn (subject to per-world access rules). |
+| `uxmessentials.world.tp` | `op` | `/world` tp `<name>`: teleport yourself to a world's spawn. |
+| `uxmessentials.world.tp.others` | `op` | `/world` tp `<name> <player>`: teleport somebody else to a world's spawn. |
+| `uxmessentials.world.unload` | `op` | `/world` unload `<name>`: unload a loaded world, moving anybody inside to spawn. |
+| `uxmessentials.world.unregister` | `op` | `/world` unregister `<name>`: drop a world from the registry, leaving its folder on disk. |
 
 Per-world entry uses `uxmessentials.world.<name>.enter` (a world with access restrictions). Bypass nodes are listed under [Bypass Nodes](#bypass-nodes).
 
@@ -419,8 +507,74 @@ The item/world toolbox carries roughly 65 verbs, each with its own node; the ful
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.itemworld.itemedit` | `op` | `/itemedit`: rename, re-lore, enchant, flag, attribute, durability, unbreakable and custom-model-data edits on the held item |
-| `uxmessentials.itemworld.shulker` | `op` | Sneak-right-click a shulker box in the inventory to open and edit its contents in place |
+| `uxmessentials.book.use` | `op` | `/book`: unlock a written book for editing. |
+| `uxmessentials.condense.use` | `op` | `/condense` (alias `/compact`) `[all]`: recipe-stack inventory items. |
+| `uxmessentials.disenchant.use` | `op` | `/disenchant [all\|<enchant>]`: remove all or one enchantment from the held item. |
+| `uxmessentials.editsign.use` | `op` | `/editsign`: edit the sign you are looking at (respects build access). |
+| `uxmessentials.enchant.use` | `op` | `/enchant <enchant> [level]`: enchant the held item (level clamped at the boundary). |
+| `uxmessentials.firework.use` | `op` | `/firework <color\|clear\|power>`: style or power the held firework rocket. |
+| `uxmessentials.give.use` | `op` | `/give <player> <item> [amount]` (alias `/i`): give an item to a player; bulk gives are audited. |
+| `uxmessentials.giveall.use` | `op` | `/giveall <item> [amount]`: give an item to every online player; bulk gives are audited per recipient. |
+| `uxmessentials.hat.use` | `op` | `/hat`: wear the held item as a helmet (itemworld-owned; playerstate defers it). |
+| `uxmessentials.item.use` | `op` | `/item <item> [amount]`: give an item to yourself. |
+| `uxmessentials.itemamount.use` | `op` | `/itemamount <amount>` (`/amount`): set the held stack amount, clamped to the give cap. |
+| `uxmessentials.itemdamage.use` | `op` | `/itemdamage <damage>` (`/durability`): set the held item's durability damage. |
+| `uxmessentials.itemdb.use` | `op` | `/itemdb [item]`: look up an item's id / data. |
+| `uxmessentials.itemflag.use` | `op` | `/itemflag <flag> <on\|off>`: toggle an item meta flag. |
+| `uxmessentials.iteminfo.use` | `op` | `/iteminfo`: inspect the metadata of the item in your hand. |
+| `uxmessentials.itemlore.use` | `op` | `/itemlore <set\|add\|clear> [text]`: edit the held item's lore. |
+| `uxmessentials.itemmodel.use` | `op` | `/itemmodel <id\|clear>` (alias `/custommodeldata`): set or clear the held item's custom model data. |
+| `uxmessentials.itemname.use` | `op` | `/itemname <name>`: rename the held item. |
+| `uxmessentials.itemworld.enchant.<enchantment>` | `label` | Apply one specific enchantment through `/enchant`, when per-enchantment gating is switched on. |
+| `uxmessentials.itemworld.give.<item>` | `label` | Give one specific item through `/give`, when per-item gating is switched on. |
+| `uxmessentials.itemworld.gui` | `op` | Open the itemworld utilities hub (`/itemworld` gui and on the `/uxmess` gui hub). |
+| `uxmessentials.itemworld.itemedit` | `op` | `/itemedit <rename\|resetname\|lore\|enchant\|unenchant\|flag\|attribute\|durability\|repair\|unbreakable\|custommodeldata>`: edit the held item's name, lore and meta (item-edit.enabled). |
+| `uxmessentials.itemworld.shulker` | `op` | Right-click a shulker box in the inventory to open its contents in place (shulkers.enabled). |
+| `uxmessentials.itemworld.spawnmob.<mob>` | `label` | Spawn one specific mob through `/spawnmob`, when per-mob gating is switched on. |
+| `uxmessentials.module.itemworld` | `op` | Hot-reload / inspect the itemworld module and its sub-feature groups. |
+| `uxmessentials.more.use` | `op` | `/more`: fill the held stack to max (itemworld-owned; playerstate defers it). |
+| `uxmessentials.potion.use` | `op` | `/potion <effect> [duration] [amplifier]`: add a potion effect to the held potion. |
+| `uxmessentials.recipe.use` | `op` | `/recipe [item]`: show an item's crafting recipe. |
+| `uxmessentials.repair.itemworld` | `op` | `/repair` and `/repairall` in the itemworld surface (itemworld-owned; playerstate defers them). |
+| `uxmessentials.showitem.use` | `true` | `/showitem`: broadcast the held item to chat for everyone online. |
+| `uxmessentials.skull.use` | `op` | `/skull [player]`: get a player-head skull. |
+| `uxmessentials.unbreakable.use` | `op` | `/unbreakable [true\|false]`: toggle or set the held item's unbreakable flag. |
+| `uxmessentials.unlimited.use` | `op` | `/unlimited`: toggle unlimited placement of held blocks. |
+| `uxmessentials.butcher.use` | `op` | `/butcher [radius]`: purge nearby mobs (audit-logged). |
+| `uxmessentials.entitycount.use` | `op` | `/entitycount [radius]`: tally nearby entities by type for lag diagnosis. |
+| `uxmessentials.kill.use` | `op` | `/kill [player\|entity]`: kill a target (audit-logged). |
+| `uxmessentials.killall.use` | `op` | `/killall [type]`: purge entities world-wide (audit-logged). |
+| `uxmessentials.kittycannon.use` | `op` | `/kittycannon`: launch an exploding cat (audit-logged). |
+| `uxmessentials.remove.use` | `op` | `/remove <type> [radius]`: remove entities by type (audit-logged). |
+| `uxmessentials.spawner.use` | `op` | `/spawner <type>`: set a spawner's mob type (audit-logged). |
+| `uxmessentials.spawnmob.use` | `op` | `/spawnmob <type> [amount]`: spawn mobs (audit-logged). |
+| `uxmessentials.copyinv.use` | `op` | `/copyinv <player>`: copy a player's inventory into yours. |
+| `uxmessentials.disposal.use` | `op` | `/disposal` (alias `/trash`): open a throwaway GUI. |
+| `uxmessentials.enderclear.use` | `op` | `/enderclear` (alias `/clearec`) `[player]`: clear an ender chest. |
+| `uxmessentials.endercopy.use` | `op` | `/endercopy <player>`: copy a player's ender chest into yours. |
+| `uxmessentials.workstation.anvil` | `op` | `/anvil`: open a virtual anvil. |
+| `uxmessentials.workstation.cartography` | `op` | `/cartography`: open a virtual cartography table. |
+| `uxmessentials.workstation.enderchest` | `op` | `/enderchest` (alias `/echest`): open your ender chest. |
+| `uxmessentials.workstation.furnace` | `op` | `/furnace`: open a virtual furnace. |
+| `uxmessentials.workstation.grindstone` | `op` | `/grindstone`: open a virtual grindstone. |
+| `uxmessentials.workstation.loom` | `op` | `/loom`: open a virtual loom. |
+| `uxmessentials.workstation.others` | `op` | Open any virtual workstation on another player with the `[player]` target form. |
+| `uxmessentials.workstation.smithingtable` | `op` | `/smithingtable`: open a virtual smithing table. |
+| `uxmessentials.workstation.stonecutter` | `op` | `/stonecutter`: open a virtual stonecutter. |
+| `uxmessentials.workstation.workbench` | `op` | `/workbench` (alias `/craft`): open a virtual crafting table. |
+| `uxmessentials.antioch.use` | `op` | `/antioch` (alias `/grenade`): throw a primed TNT grenade (audit-logged). |
+| `uxmessentials.beezooka.use` | `op` | `/beezooka` (alias `/beecannon`): launch an angry bee (audit-logged). |
+| `uxmessentials.break.use` | `op` | `/break`: instantly break the block you are looking at (audit-logged). |
+| `uxmessentials.fireball.use` | `op` | `/fireball`: launch a fireball (audit-logged). |
+| `uxmessentials.lightning.use` | `op` | `/lightning` (alias `/smite`) `[player]`: strike lightning (audit-logged). |
+| `uxmessentials.nuke.use` | `op` | `/nuke [player]`: rain lightning over an area (audit-logged). |
+| `uxmessentials.tree.use` | `op` | `/tree <type>`: generate a tree of the given type where you are looking (audit-logged). |
+| `uxmessentials.powertool.toggle` | `op` | `/powertooltoggle`: enable/disable your powertool bindings. |
+| `uxmessentials.powertool.use` | `op` | `/powertool <command>` (alias `/pt`): bind a command to the held item. |
+| `uxmessentials.time.alias` | `op` | `/day` / `/night` quick time aliases. |
+| `uxmessentials.time.use` | `op` | `/time <set\|add> <value>`: per-world time. |
+| `uxmessentials.weather.alias` | `op` | `/sun` / `/rain` / `/thunder` quick weather aliases. |
+| `uxmessentials.weather.use` | `op` | `/weather <clear\|rain\|thunder> [duration]`. |
 
 `/give`, `/enchant` and `/spawnmob` also layer a per-type opt-out family: `uxmessentials.itemworld.give.<material>`, `.enchant.<enchant>`, `.spawnmob.<mob>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes). The module's reload tier is `uxmessentials.module.itemworld`.
 
@@ -432,8 +586,9 @@ Named, world-placed native-Display holograms. The whole `/hologram` surface is g
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.hologram.use` | `op` | `/hologram`: create, edit, move, style, restrict, and delete holograms |
-| `uxmessentials.holograms.gui` | `op` | `/hologram` (no args) opens the management GUI; the holograms entry on the `/uxmess gui` hub |
+| `uxmessentials.hologram.use` | `op` | `/hologram` to create, edit, move, list and delete native-Display holograms. |
+| `uxmessentials.holograms.gui` | `op` | `/hologram` (no args) opens the holograms management GUI. |
+| `uxmessentials.module.holograms` | `op` | Hot-reload / inspect the holograms module (native-Display holograms behind `/hologram`). |
 
 A hologram gated with `visibility <name> PERMISSION <node>` uses an **operator-chosen** node (any node your permission plugin manages): it is not a plugin-declared node and has no fixed entry.
 
@@ -445,9 +600,10 @@ Server-wide packet fake-player/entity NPCs. The `/npc` command is an operator su
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.npc.admin` | `op` | `/npc`: create, skin, equip, pose, bind actions, and manage NPCs |
-| `uxmessentials.npc.use` | `true` | Interact with (click) an NPC. Reserved for a future per-NPC gate; the click currently runs for everyone |
-| `uxmessentials.npc.gui` | `op` | `/npc` (no args) opens the management GUI; the npc entry on the `/uxmess gui` hub |
+| `uxmessentials.module.npc` | `op` | Hot-reload / inspect the npc module (server-wide fake-player NPCs behind `/npc`). |
+| `uxmessentials.npc.admin` | `op` | `/npc` to create, delete, list, move, re-skin, and bind the click command of fake-player NPCs. |
+| `uxmessentials.npc.gui` | `op` | `/npc` (no args) opens the NPC management GUI. |
+| `uxmessentials.npc.limit.<n>` | `quota` | How many NPCs you may own; the largest tier held wins. |
 
 ---
 
@@ -457,10 +613,11 @@ The operator surface over the built-in [menu engine](../menus/engine.md).
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.menu.use` | `true` | `/menu open <name>`, `/menu list`, `/menu last` |
-| `uxmessentials.menu.open.others` | `op` | `/menu open <name> <target>`: open a menu for another player |
-| `uxmessentials.menu.admin` | `op` | `/menu reload`, `/menu execute`, `/menu dump`, `/menu meta`, `/menu convert`, `/menu save` |
-| `uxmessentials.menu.editor` | `op` | `/menu editor`: build and edit menus in-game |
+| `uxmessentials.menu.admin` | `op` | `/menu` reload to re-read the menus/ folder from disk. |
+| `uxmessentials.menu.editor` | `op` | `/menu` editor (and the `/uxmess` gui hub entry) to create, duplicate, rename and delete custom menus in-game. |
+| `uxmessentials.menu.open.others` | `op` | `/menu` open `<menu> <player>`: open a custom menu for somebody else. |
+| `uxmessentials.menu.use` | `true` | `/menu` open `<name>` to open an operator custom menu, and `/menu` list to see the loaded menus. |
+| `uxmessentials.module.custommenus` | `op` | Hot-reload / inspect the custommenus module (operator custom menus behind `/menu`). |
 
 ---
 
@@ -468,12 +625,13 @@ The operator surface over the built-in [menu engine](../menus/engine.md).
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.vote.use` | `true` | `/vote`, `/vote claim`, `/vote total\|streak`, reminders |
-| `uxmessentials.voteparty.use` | `true` | `/voteparty`: progress to the next party |
-| `uxmessentials.vote.top` | `true` | `/vote top [period]` |
-| `uxmessentials.vote.testreward` | `op` | `/vote testreward` |
-| `uxmessentials.vote.admin` | `op` | `/vote admin givevote\|reset` |
-| `uxmessentials.voteparty.admin` | `op` | `/voteparty force\|set\|add` |
+| `uxmessentials.module.vote` | `op` | Hot-reload / inspect the vote module (Votifier vote rewards and vote party). |
+| `uxmessentials.vote.admin` | `op` | `/vote` admin givevote `<player> [amount]` and `/vote` admin reset `<player>`: inject or clear votes for any player. |
+| `uxmessentials.vote.testreward` | `op` | `/vote` testreward to simulate a vote for yourself and verify the configured rewards. |
+| `uxmessentials.vote.top` | `true` | `/vote` top `[period]` to see the vote leaderboard for the given period. |
+| `uxmessentials.vote.use` | `true` | `/vote` to see the server's vote links. |
+| `uxmessentials.voteparty.admin` | `op` | `/voteparty` force\|set\|add: force the party or adjust the party counter. |
+| `uxmessentials.voteparty.use` | `true` | `/voteparty` to see progress towards the next vote party. |
 
 ---
 
@@ -483,8 +641,11 @@ The **tablist** and **nametags** modules register no commands: both are packet/c
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.scoreboard.use` | `true` | `/scoreboard` (`/sb`): toggle whether you see the sidebar |
-| `uxmessentials.scoreboard.gui` | `true` | `/scoreboard gui`: per-player settings panel |
+| `uxmessentials.module.scoreboard` | `op` | Hot-reload / inspect the scoreboard module (per-player sidebar and tablist on uxmlib-hud). |
+| `uxmessentials.scoreboard.gui` | `true` | `/scoreboard` gui (and the scoreboard entry on the `/uxmess` gui hub) to open the per-player scoreboard settings panel: the show/hide toggle. |
+| `uxmessentials.scoreboard.use` | `true` | `/scoreboard` (alias `/sb`) to toggle whether you see the scoreboard display. |
+| `uxmessentials.module.tablist` | `op` | Hot-reload / inspect the tablist module (the player list header, footer and rows). |
+| `uxmessentials.module.nametags` | `op` | Hot-reload / inspect the nametags module (the name shown above a player). |
 
 ---
 
@@ -492,8 +653,9 @@ The **tablist** and **nametags** modules register no commands: both are packet/c
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.discord.link` | `true` | `/discordlink`, `/discordlink status`, `/discordunlink` (own account only) |
-| `uxmessentials.discord.gui` | `true` | `/discordlink gui`: per-player link-status panel |
+| `uxmessentials.discord.gui` | `true` | `/discordlink` gui (and the discordlink entry on the `/uxmess` gui hub) to open the link-status panel: your binding, a generate-code button, and a confirm-gated unlink. |
+| `uxmessentials.discord.link` | `true` | `/discordlink` (issue a code), `/discordlink` status (show your binding), and `/discordunlink` (remove it): all act only on your own account. |
+| `uxmessentials.module.discordlink` | `op` | Hot-reload / inspect the discordlink module (account linking and Discord notifications). |
 
 The `/link` redemption itself runs in the optional Discord bridge jar; the in-game commands work whether or not the bridge is installed.
 
@@ -503,15 +665,15 @@ The `/link` redemption itself runs in the optional Discord bridge jar; the in-ga
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.sit.use` | `true` | `/sit` and right-clicking a seat block to sit |
-| `uxmessentials.playersit.use` | `true` | Right-click another player to sit on them (feature is off by default in config) |
-| `uxmessentials.lay.use` | `true` | `/lay` |
-| `uxmessentials.bellyflop.use` | `true` | `/bellyflop` |
-| `uxmessentials.spin.use` | `true` | `/spin` |
-| `uxmessentials.crawl.use` | `true` | `/crawl` |
-| `uxmessentials.poses.toggle` | `true` | `/poses toggle`: allow or refuse other players sitting on you |
-| `uxmessentials.poses.gui` | `true` | Open the `/poses` settings panel |
-| `uxmessentials.poses.cooldown.bypass` | `op` | Skip the pose cooldown |
+| `uxmessentials.bellyflop.use` | `true` | `/bellyflop`: flop onto your front where you stand. |
+| `uxmessentials.crawl.use` | `true` | `/crawl`: crawl through a one-block gap; run again to stand up. |
+| `uxmessentials.lay.use` | `true` | `/lay`: lie down on your back where you stand. |
+| `uxmessentials.module.poses` | `op` | Hot-reload / inspect the poses module (built-in GSit-parity sitting and posing). |
+| `uxmessentials.playersit.use` | `true` | Right-click another player to sit on them (the stacking pose), when player-sit is enabled. |
+| `uxmessentials.poses.gui` | `true` | `/poses` (or `/poses` gui): open your personal poses settings & status panel. |
+| `uxmessentials.poses.toggle` | `true` | `/poses` toggle: allow or refuse other players sitting on you. |
+| `uxmessentials.sit.use` | `true` | `/sit` and right-click-to-sit: sit down where you stand or on a sittable block. |
+| `uxmessentials.spin.use` | `true` | `/spin`: sit and spin in place. |
 
 The optional numbered node `uxmessentials.poses.cooldown.<seconds>` sets an anti-spam wait between starting poses (an open value space, like `kit.cooldown.<seconds>`: see [Numbered and Tiered Nodes](#numbered-and-tiered-nodes)). See the [Sitting & Poses](../features/poses.md) guide for how each pose works.
 
@@ -523,22 +685,23 @@ Opt-in gameplay mechanics, each an independently toggleable sub-feature. A mecha
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.survival.treefeller` | `true` | Tree-feller acts for you: break one log to fell the whole trunk |
-| `uxmessentials.survival.treefeller.toggle` | `true` | `/treefeller`: switch your personal tree-feller on or off |
-| `uxmessentials.survival.veinminer` | `true` | Veinminer acts for you: break one block to mine the connected vein |
-| `uxmessentials.survival.veinminer.toggle` | `true` | `/veinminer`: switch your personal veinminer on or off |
-| `uxmessentials.survival.farmprotect` | `true` | Farmland protection acts for you; you won't trample your crops |
-| `uxmessentials.survival.farmprotect.toggle` | `true` | `/farmprotect`: switch your personal farmland protection on or off |
-| `uxmessentials.survival.farmassist` | `true` | Right-click a mature crop to harvest and replant it, spending one seed |
-| `uxmessentials.survival.autopickup` | `true` | Auto-pickup acts for you: mined drops go straight to your inventory |
-| `uxmessentials.survival.autopickup.toggle` | `true` | `/autopickup`: switch your personal auto-pickup on or off |
-| `uxmessentials.survival.autosmelt` | `true` | Auto-smelt acts for you: ores are smelted as you mine them |
-| `uxmessentials.survival.autosmelt.toggle` | `true` | `/autosmelt`: switch your personal auto-smelt on or off |
-| `uxmessentials.survival.autosell` | `true` | Auto-sell acts for you: priced drops are sold for coin as you mine |
-| `uxmessentials.survival.autosell.toggle` | `true` | `/autosell`: switch your personal auto-sell on or off |
-| `uxmessentials.survival.autotool` | `true` | Auto-tool acts for you: the best tool swaps to hand as you mine |
-| `uxmessentials.survival.autotool.toggle` | `true` | `/autotool`: switch your personal auto-tool on or off |
-| `uxmessentials.survival.gui` | `true` | `/survival`: open your personal survival mechanics settings panel |
+| `uxmessentials.module.survival` | `op` | Hot-reload / inspect the survival module (opt-in gameplay mechanics). |
+| `uxmessentials.survival.autopickup` | `true` | Auto-pickup acts for you: mined drops go straight to your inventory. |
+| `uxmessentials.survival.autopickup.toggle` | `true` | `/autopickup`: switch your personal auto-pickup on or off. |
+| `uxmessentials.survival.autosell` | `true` | Auto-sell acts for you: priced drops are sold for coin as you mine. |
+| `uxmessentials.survival.autosell.toggle` | `true` | `/autosell`: switch your personal auto-sell on or off. |
+| `uxmessentials.survival.autosmelt` | `true` | Auto-smelt acts for you: ores are smelted as you mine them. |
+| `uxmessentials.survival.autosmelt.toggle` | `true` | `/autosmelt`: switch your personal auto-smelt on or off. |
+| `uxmessentials.survival.autotool` | `true` | Auto-tool acts for you: the best tool swaps to hand as you mine. |
+| `uxmessentials.survival.autotool.toggle` | `true` | `/autotool`: switch your personal auto-tool on or off. |
+| `uxmessentials.survival.farmassist` | `true` | Right-click a mature crop to harvest and replant it, spending one seed. |
+| `uxmessentials.survival.farmprotect` | `true` | Farmland protection acts for you: you will not trample your crops. |
+| `uxmessentials.survival.farmprotect.toggle` | `true` | `/farmprotect`: switch your personal farmland protection on or off. |
+| `uxmessentials.survival.gui` | `true` | `/survival`: open your personal survival mechanics settings panel. |
+| `uxmessentials.survival.treefeller` | `true` | Tree-feller acts for you: break one log to fell the whole trunk. |
+| `uxmessentials.survival.treefeller.toggle` | `true` | `/treefeller`: switch your personal tree-feller on or off. |
+| `uxmessentials.survival.veinminer` | `true` | Veinminer acts for you: break one block to mine the connected vein. |
+| `uxmessentials.survival.veinminer.toggle` | `true` | `/veinminer`: switch your personal veinminer on or off. |
 
 Fast leaf decay, the anvil unlocker, one-player sleep and head drops are world-side effects with no permission node: they're governed only by their config blocks. See the [Survival Mechanics](../features/survival.md) guide for what each mechanic does.
 
@@ -550,16 +713,17 @@ Account security: an optional second factor a player enrols themselves, join ver
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.security.2fa` | `true` | `/2fa`: set up, confirm or disable the authenticator second factor on your own account |
-| `uxmessentials.security.pin` | `true` | `/pin`: set, change, remove or lock the numeric PIN second factor on your own account |
-| `uxmessentials.security.pin.required` | `false` | Holders **must** have a PIN: a holder with no factor is shown the create pad on join and cannot play until they set one |
-| `uxmessentials.security.admin` | `op` | `/security`: inspect and manage another player's second factors. Gates the whole tree |
-| `uxmessentials.security.bypass` | `op` | Exempt from the join-verification freeze and the op-command re-auth checks |
-| `uxmessentials.security.force` | `op` | `/security force <player>`: make a player re-verify their second factor on their next action or join |
-| `uxmessentials.security.reset` | `op` | `/security reset <player> [totp\|pin\|all]`: clear a factor a player can no longer prove |
-| `uxmessentials.security.alts` | `op` | `/ipalts <player>`: list the accounts that share an IP with a player |
-| `uxmessentials.security.clientinfo` | `op` | `/clientinfo <player>`: show the client brand a player reported |
-| `uxmessentials.security.alts.notify` | `op` | Receive the staff notice when a join shares an IP with other accounts or reports a flagged client |
+| `uxmessentials.module.security` | `op` | Hot-reload / inspect the security module (2FA, op-protection, IP/alt guard). |
+| `uxmessentials.security.2fa` | `true` | /2fa: set up, confirm or disable an authenticator second factor on your own account. |
+| `uxmessentials.security.admin` | `op` | `/security`: inspect and manage another player's second factors. |
+| `uxmessentials.security.alts` | `op` | `/ipalts`: list the accounts that share an IP with a player. |
+| `uxmessentials.security.alts.notify` | `op` | Receive the staff notice when a join shares an IP with other accounts or reports a flagged client. |
+| `uxmessentials.security.bypass` | `op` | Exempt from the two-factor join verification and op-command re-auth checks. |
+| `uxmessentials.security.clientinfo` | `op` | `/clientinfo`: show the client brand a player reported. |
+| `uxmessentials.security.force` | `op` | `/security` force `<player>`: force a player to re-verify their second factor on their next action or join. |
+| `uxmessentials.security.pin` | `true` | `/pin`: set, change or remove a numeric PIN second factor on your own account. |
+| `uxmessentials.security.pin.required` | `false` | Must set a PIN before playing. |
+| `uxmessentials.security.reset` | `op` | `/security` reset `<player> [totp\|pin\|all]`: clear a factor a player can no longer prove. |
 
 ---
 
@@ -569,10 +733,11 @@ Command whitelist / blacklist gating, tab-completion filtering, plugin-hide, and
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.commandcontrol.bypass` | `op` | Exempt from the whitelist/blacklist gate and the tab-completion / plugin-hide scrub (namespaced forms included) |
-| `uxmessentials.commandcontrol.viewplugins` | `op` | See the plugin-listing / help commands (`/plugins`, `/pl`, `/help`, ...) hidden by plugin-hide |
-| `uxmessentials.commandcontrol.channelhide.bypass` | `op` | Exempt from the plugin-channel hider: the full channel-registration list is sent to this player |
-| `uxmessentials.commandcontrol.spam.bypass` | `op` | Exempt from the command-spam rate limiter: commands are never counted and no spam action fires |
+| `uxmessentials.commandcontrol.bypass` | `op` | Exempt from the command whitelist/blacklist gate and the tab-completion / plugin-hide scrub. |
+| `uxmessentials.commandcontrol.channelhide.bypass` | `op` | Exempt from the plugin-channel hider - the full channel-registration list is sent to this player. |
+| `uxmessentials.commandcontrol.spam.bypass` | `op` | Exempt from the command-spam rate limiter - commands are never counted and no spam action fires. |
+| `uxmessentials.commandcontrol.viewplugins` | `op` | See the plugin-listing / help commands (`/plugins`, `/pl`, `/help`, ...) hidden by the plugin-hide feature. |
+| `uxmessentials.module.commandcontrol` | `op` | Hot-reload / inspect the commandcontrol module (command whitelist, tab-completion filter, plugin-hide). |
 
 ---
 
@@ -582,13 +747,14 @@ Villager trade management: trades that never lock out, a restock timer, a staff 
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.villagers.use` | `op` | `/villager`: the root command's base node; each subcommand gates further on its own node below |
-| `uxmessentials.villagers.manager` | `op` | `/villager manager`: open and edit the trades of the villager you're looking at |
-| `uxmessentials.villagers.trade` | `op` | Open a villager's trade window directly on right-click, when click-to-trade is enabled |
-| `uxmessentials.villagers.protect` | `op` | `/villager protect`: toggle whether the villager you're looking at is protected from death and despawn |
-| `uxmessentials.villagers.bucket` | `op` | Sneak-right-click a villager to pick it up into a captured-villager item, and place it back later |
-| `uxmessentials.villagers.follow` | `op` | `/villager follow`: toggle whether the villager you're looking at pathfinds after you |
-| `uxmessentials.villagers.leash` | `op` | Right-click a villager with a lead to leash it, when leashing is enabled |
+| `uxmessentials.module.villagers` | `op` | Hot-reload / inspect the villagers module (villager trade management). |
+| `uxmessentials.villagers.bucket` | `op` | Sneak-right-click a villager to pick it up into a captured-villager item, and place it back later. |
+| `uxmessentials.villagers.follow` | `op` | `/villager` follow: toggle whether the villager you are looking at pathfinds after you. |
+| `uxmessentials.villagers.leash` | `op` | Right-click a villager with a lead to leash it, when leashing is enabled. |
+| `uxmessentials.villagers.manager` | `op` | `/villager` manager: open and edit the trades of the villager you are looking at. |
+| `uxmessentials.villagers.protect` | `op` | `/villager` protect: toggle whether the villager you are looking at is protected from death and despawn. |
+| `uxmessentials.villagers.trade` | `op` | Open a villager's trade window directly on right-click, when click-to-trade is enabled. |
+| `uxmessentials.villagers.use` | `op` | `/villager`: the root command's base node; its subcommands each gate further on their own node. |
 
 ---
 
@@ -598,9 +764,10 @@ Inventory snapshot and restore: the plugin freezes a player's inventory on death
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.invrollback.restore` | `op` | `/invrestore <player>`: open the inventory-snapshot restore GUI, then preview and restore one of that player's snapshots |
-| `uxmessentials.invrollback.export` | `op` | `/invrestore export <player> <index>`: pack a snapshot into shulker boxes and hand them to you |
-| `uxmessentials.invrollback.teleport` | `op` | `/invrestore tp <player> <index>`: teleport to where the snapshot was captured |
+| `uxmessentials.invrollback.export` | `op` | `/invrestore` export `<player> <index>` packs a snapshot into shulker boxes and gives them to you. |
+| `uxmessentials.invrollback.restore` | `op` | `/invrestore <player>` opens the inventory-snapshot restore GUI for a player. |
+| `uxmessentials.invrollback.teleport` | `op` | `/invrestore` tp `<player> <index>` teleports you to where the snapshot was captured. |
+| `uxmessentials.module.invrollback` | `op` | Hot-reload / inspect the invrollback module (inventory snapshots and restore). |
 
 ---
 
@@ -615,11 +782,12 @@ nodes default to `op`. See the [Regions](../features/regions.md) guide.
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.regions.list` | `op` | `/regions [world]`: browse a world's regions and open a region's detail panel |
-| `uxmessentials.regions.create` | `op` | `/regions create <id>`, `/regions pos1`, `/regions pos2`: define a new cuboid region |
-| `uxmessentials.regions.flags` | `op` | The flag editor (`/regions flags <id>`): cycle a region's state flags `UNSET → ALLOW → DENY` |
-| `uxmessentials.regions.members` | `op` | The member/owner roster (`/regions members <id>`), plus `/regions addmember` / `addowner` |
-| `uxmessentials.regions.admin` | `op` | `/regions priority <id> <value>`: set a region's priority |
+| `uxmessentials.module.regions` | `op` | Hot-reload / inspect the regions module (WorldGuard region management). |
+| `uxmessentials.regions.admin` | `op` | `/regions` priority `<id> <value>`: set a WorldGuard region priority. |
+| `uxmessentials.regions.create` | `op` | `/regions` create `<id>` (and `/regions` pos1\|pos2): define a cuboid WorldGuard region. |
+| `uxmessentials.regions.flags` | `op` | `/regions` flags `<id>`: open the per-region flag editor GUI. |
+| `uxmessentials.regions.list` | `op` | `/regions [world]`: open the WorldGuard region-list GUI for a world. |
+| `uxmessentials.regions.members` | `op` | `/regions` members `<id>` and `/regions` addmember\|addowner `<id> <player>`: manage a region roster. |
 
 ---
 
@@ -632,6 +800,10 @@ tweak defaults off and is switched entirely from `modules/servertweaks/config.co
 the [Server Tweaks](../features/server-tweaks.md) guide. The module's reload tier is
 `uxmessentials.module.servertweaks`.
 
+| Node | Default | What it grants |
+|------|---------|----------------|
+| `uxmessentials.module.servertweaks` | `op` | Hot-reload / inspect the servertweaks module (the small server-behaviour switches). |
+
 ---
 
 ## Shared kernel
@@ -640,8 +812,17 @@ The kernel owns no feature commands, but carries two cross-cutting self-service 
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.lang.use` | `true` | `/lang [code\|reset]`: your personal language override |
-| `uxmessentials.help` | `true` | `/help [page\|query]`: list the commands you can run (per-line permission-filtered) |
+| `uxmessentials.admin` | `op` | Access to the `/uxmess` administration root. |
+| `uxmessentials.admin.backup` | `op` | `/backup` to snapshot the plugin data directory on demand. |
+| `uxmessentials.admin.import` | `op` | `/uxmess` import `<plugin>`: run the one-shot data import from another essentials plugin. |
+| `uxmessentials.admin.permissions` | `op` | `/uxmess` permissions `[area] [page]` and `/uxmess` permissions export: read the permission catalogue in game or write it to a file. |
+| `uxmessentials.admin.reload` | `op` | Reload all modules via `/uxmess` reload. |
+| `uxmessentials.cooldown.<feature>.<seconds>` | `tier` | The wait between uses of one rate-limited feature, in seconds; the shortest tier held wins and 0 removes the wait. |
+| `uxmessentials.cooldown.bypass.<feature>` | `label` | Skip the cooldown on one rate-limited feature entirely (tp, rtp, kit, poses). |
+| `uxmessentials.gui` | `op` | `/uxmess` gui to open the module management hub. |
+| `uxmessentials.help` | `true` | `/help` to list the commands you can use. |
+| `uxmessentials.lang.use` | `true` | `/lang` to set or clear your personal language override. |
+| `uxmessentials.update.notify` | `op` | Receive the join-time notice when a newer plugin version is available. |
 
 ---
 
@@ -649,30 +830,37 @@ The kernel owns no feature commands, but carries two cross-cutting self-service 
 
 Some limits are *values*, not yes/no flags: how many homes a player may own, how long their teleport cooldown is. Instead of hard-coding these per group, uxmEssentials encodes the value **in the node** and reads the best-matching one the player holds, falling back to a config default.
 
-| Node family | Meaning | Reduction rule |
-|-------------|---------|----------------|
-| `uxmessentials.home.limit.<n>` | Home quota | **max**: highest `<n>` wins |
-| `uxmessentials.vault.amount.<n>` | Vault count | **max** |
-| `uxmessentials.vault.size.<rows>` | Per-vault rows (1–6) | **max** |
-| `uxmessentials.pwarp.limit.<n>` | Player-warp quota | **max** |
-| `uxmessentials.tp.warmup.<seconds>` | Teleport warmup | **min**: lowest wins; `0` removes the warmup |
-| `uxmessentials.tp.cooldown.<seconds>` | Teleport cooldown | **min** |
-| `uxmessentials.warp.cooldown.<seconds>` | Warp cooldown | **min** |
-| `uxmessentials.kit.cooldown.<seconds>` | Per-kit cooldown | **min** |
-| `uxmessentials.warp.use.<warp>` | Per-warp gate (when the warp sets `permission: true`) | boolean |
-| `uxmessentials.kit.<id>` | Per-kit gate (when the kit sets `permission: true`) | boolean |
-| `uxmessentials.economy.currency.<id>` | Per-currency gate (when `permission-required = true`) | boolean |
-| `uxmessentials.itemworld.give.<material>` / `.enchant.<enchant>` / `.spawnmob.<mob>` | Per-type opt-out (wildcard parents default `true`) | boolean, opt-out |
-| `uxmessentials.moderation.ban.maxduration.<seconds>` / `.mute.maxduration.<seconds>` | Max sanction duration a holder may issue | **max**; none = unlimited |
-| `uxmessentials.vanish.use.level<N>` / `.see.level<N>` | Vanish use level / see level (a viewer sees a target when see ≥ use) | **max**: highest `<N>` wins |
-| `uxmessentials.communication.info.<name>` | Per info-page gate | boolean |
+| Node family | Kind | Meaning |
+|-------------|------|---------|
+| `uxmessentials.cooldown.<feature>.<seconds>` | value, see the rule | The wait between uses of one rate-limited feature, in seconds; the shortest tier held wins and 0 removes the wait. |
+| `uxmessentials.cooldown.bypass.<feature>` | boolean, per name | Skip the cooldown on one rate-limited feature entirely (tp, rtp, kit, poses). |
+| `uxmessentials.rtp.radius.<blocks>` | value, largest wins | How far from the world centre `/rtp` may drop you; the largest tier held wins. |
+| `uxmessentials.tp.warmup.<seconds>` | value, see the rule | The stand-still countdown before a teleport runs, in seconds; the shortest tier held wins and 0 removes it. |
+| `uxmessentials.home.limit.<n>` | value, largest wins | How many homes you may keep; the largest tier held wins. |
+| `uxmessentials.warp.use.<warp>` | boolean, per name | Use one warp, when that warp is configured to require a permission. |
+| `uxmessentials.pwarp.limit.<n>` | value, largest wins | How many player warps you may own; the largest tier held wins. |
+| `uxmessentials.world.<world>` | boolean, per name | Enter one world that is configured as restricted. |
+| `uxmessentials.vault.amount.<n>` | value, largest wins | How many vaults you may open; the largest tier held wins. |
+| `uxmessentials.vault.size.<rows>` | value, largest wins | How many rows each of your vaults holds; the largest tier held wins. |
+| `uxmessentials.economy.currency.<currency>` | boolean, per name | Use one currency that is configured to require a permission. |
+| `uxmessentials.economy.salary.amount.<amount>` | value, largest wins | The periodic salary you are paid; the largest tier held wins. |
+| `uxmessentials.moderation.<sanction>.maxduration.<seconds>` | value, see the rule | The longest ban, mute or jail you may hand out, in seconds; the largest tier held wins. |
+| `uxmessentials.vanish.see.level<n>` | value, largest wins | How deeply you see: a viewer sees a vanished player when their see level reaches that player's use level; the largest level held wins and plain .see is level 1. |
+| `uxmessentials.vanish.use.level<n>` | value, largest wins | How deeply you vanish: only a viewer whose see level reaches this level finds you; the largest level held wins and plain .use is level 1. |
+| `uxmessentials.communication.info.<page>` | boolean, per name | Read one information page, such as `/motd` or `/rules`. |
+| `uxmessentials.itemworld.enchant.<enchantment>` | boolean, per name | Apply one specific enchantment through `/enchant`, when per-enchantment gating is switched on. |
+| `uxmessentials.itemworld.give.<item>` | boolean, per name | Give one specific item through `/give`, when per-item gating is switched on. |
+| `uxmessentials.itemworld.spawnmob.<mob>` | boolean, per name | Spawn one specific mob through `/spawnmob`, when per-mob gating is switched on. |
+| `uxmessentials.npc.limit.<n>` | value, largest wins | How many NPCs you may own; the largest tier held wins. |
+| `uxmessentials.kit.<kit>` | boolean, per name | Claim one kit. |
+| `uxmessentials.kit.cooldown.<kit>.<seconds>` | value, see the rule | The wait between claims of one kit, in seconds; the shortest tier held wins. |
 
 ### How they resolve
 
 Every value-bearing node passes through the shared **`Permissions`** port and a single **`QuotaNodeReducer`**, so the semantics are identical across contexts:
 
 - **Quota families** (`home.limit`, `vault.amount`, `vault.size`, `pwarp.limit`, `*.maxduration`) reduce to the **maximum**: more is better, the most generous node wins.
-- **Cooldown / warmup families** (`*.cooldown`, `*.warmup`) reduce to the **minimum**: less is better; `0` means "no wait".
+- **Cooldown / warmup families** (`uxmessentials.cooldown.<feature>.<seconds>`, `uxmessentials.kit.cooldown.<kit>.<seconds>`, `uxmessentials.tp.warmup.<seconds>`) reduce to the **minimum**: less is better; `0` means "no wait".
 - **`-1` is the unlimited sentinel** for quota families (a `home.limit.-1` means no quota at all). It is never used for cooldown/warmup families, where `0` is "no wait".
 - A player with **no** numbered node and no meta falls back to the per-context **config default**: never to "unlimited".
 
@@ -681,7 +869,7 @@ A numbered node may carry an **optional `<world>` segment** between the family a
 ```
 uxmessentials.home.limit.creative.20
 uxmessentials.tp.warmup.nether.0
-uxmessentials.warp.cooldown.<world>.<seconds>
+uxmessentials.cooldown.warp.nether.5
 ```
 
 The unscoped form applies everywhere; the world-scoped form applies only when that world is the one being resolved against. Matching scoped and unscoped nodes are simply folded into the same reducer.
@@ -692,43 +880,43 @@ When LuckPerms is installed, these same quotas can also be expressed as LuckPerm
 
 </Callout>
 
-Because the value spaces (`<n>`, `<seconds>`, `<rows>`, and so on) are open, these nodes are **not** enumerated in `paper-plugin.yml`; operators grant the specific instances they need.
+Because the value spaces (`<n>`, `<seconds>`, `<rows>`, and so on) are open, a family is never registered with the server as a node of its own; operators grant the specific instances they need. The families themselves are listed above and by `/uxmess permissions`.
 
 ---
 
 ## Bypass Nodes
 
-Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, lock, or restriction) that would normally reject them. They all default to `op`, except the two vault/marker exempt nodes noted below.
+Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, lock, or restriction) that would normally reject them. They default to `op` unless the row says otherwise: the marker nodes that only *opt a holder out* of something default to `false`, so nobody holds them by accident.
 
-| Node | What it bypasses |
-|------|------------------|
-| `uxmessentials.tp.warmup.bypass` | Teleport warmup (immune to move-cancel) |
-| `uxmessentials.tp.cooldown.bypass` | The shared teleport cooldown |
-| `uxmessentials.home.bypass.unsafe` | The unsafe-destination confirm on a home teleport |
-| `uxmessentials.home.bypass.cost` | The per-action economy cost for home create/relocate/teleport |
-| `uxmessentials.warp.bypass.lock` | A locked warp |
-| `uxmessentials.warp.bypass.password` | A password-protected warp |
-| `uxmessentials.warp.bypass.safety` | A warp whose destination fails the safety check |
-| `uxmessentials.warp.cooldown.bypass` | The warp teleport cooldown |
-| `uxmessentials.warp.cost.bypass` | The optional per-warp cost |
-| `uxmessentials.pwarp.bypass.ban` | A player warp you are banned from |
-| `uxmessentials.pwarp.bypass.password` | A password-protected player warp |
-| `uxmessentials.pwarp.bypass.whitelist` | A whitelist-only player warp |
-| `uxmessentials.pwarp.bypass.safety` | An unsafe player-warp destination |
-| `uxmessentials.pwarp.bypass.cost` | A player warp's entry price |
-| `uxmessentials.economy.pay.confirm.bypass` | The `/payconfirm` prompt above the confirm threshold |
-| `uxmessentials.economy.tax.bypass` | The `/pay` tax cut (renameable via `pay.tax.bypass-permission`) |
-| `uxmessentials.economy.bypasscmdcost` | The configured per-command economy charge |
-| `uxmessentials.vault.bypass-blacklist` | The vault material blacklist |
-| `uxmessentials.vault.free` *(default `false`)* | Every vault economy fee (no refund on delete) |
-| `uxmessentials.msg.bypass.ignore` | A player who has ignored you |
-| `uxmessentials.moderation.lockdown.bypass` | The `/lockdown` login refusal |
-| `uxmessentials.communication.chat.bypass` | A `/togglechat` chat lock |
-| `uxmessentials.cooldown.bypass.<label>` | A generic per-command cooldown registered under `<label>` |
-| `uxmessentials.world.access.bypass` | Per-world entry restrictions on every world |
-| `uxmessentials.world.gamemode.bypass` | A world's forced gamemode |
-| `uxmessentials.world.command-bypass` | The per-world command blocker |
-| `uxmessentials.playerstate.fly.allworlds` | The no-fly-world restriction on `/fly` |
+| Node | What it lifts |
+|------|---------------|
+| `uxmessentials.cooldown.bypass.<feature>` *(a family, one node per name)* | Skip the cooldown on one rate-limited feature entirely (tp, rtp, kit, poses). |
+| `uxmessentials.tp.warmup.bypass` | Start teleports with no warmup, immune to move-cancel. |
+| `uxmessentials.home.bypass.cost` | Skip the per-action economy cost for home create, relocate, and teleport actions. |
+| `uxmessentials.home.bypass.unsafe` | Skip the unsafe-destination confirm when teleporting to a home via the GUI. |
+| `uxmessentials.warp.bypass.lock` | Use a locked warp regardless of its lock state. |
+| `uxmessentials.warp.bypass.password` | Use a password-protected warp without entering its password. |
+| `uxmessentials.warp.bypass.safety` | Use a warp whose destination fails the safety check. |
+| `uxmessentials.pwarp.bypass.ban` | Enter a player warp you are banned from (skips the ban check on `/pwarp`). |
+| `uxmessentials.pwarp.bypass.password` | Enter a password-protected player warp without the password (skips the check on `/pwarp`). |
+| `uxmessentials.pwarp.bypass.whitelist` | Enter a whitelist-only player warp without being on the whitelist (skips the check on `/pwarp`). |
+| `uxmessentials.pwarp.bypass.cost` | Use a priced player warp without paying its entry cost (skips the charge on `/pwarp`). |
+| `uxmessentials.pwarp.bypass.safety` | Use a player warp whose destination is unsafe (skips the safe-landing check on `/pwarp`). |
+| `uxmessentials.world.access.bypass` | Enter a restricted world without holding that world's own entry node. |
+| `uxmessentials.world.gamemode.bypass` | Keep your own game mode in a world that forces one on entry. |
+| `uxmessentials.vault.bypass-blacklist` | Store any item in a vault, ignoring the blacklist-materials list (items are not returned). |
+| `uxmessentials.economy.baltop.exempt` *(default `false`)* | Marks the holder as hidden from every `/baltop` leaderboard. |
+| `uxmessentials.economy.bypasscmdcost` | Skip the configured per-command economy charge (command-costs in economy.conf). |
+| `uxmessentials.economy.tax.bypass` | Send a `/pay` without the configured transfer tax being deducted. |
+| `uxmessentials.moderation.lockdown.bypass` | Join the server while it is locked down (`/lockdown`). Held by staff who must stay reachable during a lockdown. |
+| `uxmessentials.moderation.exempt` | Cannot be muted/jailed/tempbanned/kicked/warned/IP-banned/frozen by lower staff. |
+| `uxmessentials.security.bypass` | Exempt from the two-factor join verification and op-command re-auth checks. |
+| `uxmessentials.commandcontrol.bypass` | Exempt from the command whitelist/blacklist gate and the tab-completion / plugin-hide scrub. |
+| `uxmessentials.commandcontrol.channelhide.bypass` | Exempt from the plugin-channel hider - the full channel-registration list is sent to this player. |
+| `uxmessentials.commandcontrol.spam.bypass` | Exempt from the command-spam rate limiter - commands are never counted and no spam action fires. |
+| `uxmessentials.communication.chat.bypass` | Keep chatting while public chat is locked by `/togglechat`. |
+| `uxmessentials.communication.clearchat.exempt` *(default `false`)* | Keep your chat scrollback when staff run `/clearchat`. |
+| `uxmessentials.kit.cooldown.bypass` | Skip kit cooldowns and re-claim one-time kits. |
 
 ---
 
@@ -739,13 +927,12 @@ Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, 
 Every bounded context is a first-class feature module. Each owns a node tier `uxmessentials.module.<id>` (default `op`): **not** the feature's runtime permission, but the per-module **administrative** gate: who may inspect and hot-reload that one module via `/uxmess reload <id>` without holding the blanket `uxmessentials.admin.reload`. `<id>` is the module id used everywhere else (config path `modules.<id>`, the reload command, the tier node):
 
 ```
-teleport   worlds     homes       economy    warps      kits
-playerstate messaging presence    moderation itemworld  vaults
-communication holograms playerwarps scoreboard tablist  nametags
-vote       discordlink staff       npc        custommenus
-poses      survival    ranks       trade      vanish
-security   commandcontrol villagers   invrollback
-regions    servertweaks
+commandcontrol  communication  custommenus  discordlink  economy  holograms
+homes  invrollback  itemworld  kits  messaging  moderation
+nametags  npc  playerstate  playerwarps  poses  presence
+ranks  regions  scoreboard  security  servertweaks  staff
+survival  tablist  teleport  trade  vanish  vaults
+villagers  vote  warps  worlds
 ```
 
 `/uxmess reload <module>` accepts either `uxmessentials.admin.reload` (blanket) or the matching `uxmessentials.module.<id>` (delegated), so you can hand a junior staffer reload rights over one module without the keys to the whole plugin.
@@ -758,6 +945,7 @@ regions    servertweaks
 | `uxmessentials.admin.reload` | `op` | `/uxmess reload` (all or one module) |
 | `uxmessentials.admin.import` | `op` | `/uxmess import <source>`: the one-shot idempotent importer |
 | `uxmessentials.admin.backup` | `op` | `/backup`: snapshot the plugin data directory |
+| `uxmessentials.admin.permissions` | `op` | `/uxmess permissions [area] [page]` and `/uxmess permissions export`: read this page in game, or write it to `permissions.md` in the plugin folder |
 | `uxmessentials.gui` | `op` | `/uxmess gui`: the central management hub |
 
 ### Management-GUI nodes

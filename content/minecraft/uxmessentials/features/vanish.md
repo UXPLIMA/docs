@@ -294,8 +294,8 @@ line and it falls back to the shipped default above, never to `false`.
 | `uxmessentials.vanish.use.level<N>` | Vanish at use level `N` | highest `<N>` wins |
 | `uxmessentials.vanish.see.level<N>` | See vanished players up to level `N` | highest `<N>` wins |
 
-Because their value space is open, the numbered nodes are not enumerated in
-`paper-plugin.yml`: grant the specific `level<N>` instances your ranks need. See
+Because their value space is open, the numbered nodes are never registered as
+nodes of their own: grant the specific `level<N>` instances your ranks need. See
 [Numbered and Tiered Nodes](../permissions/reference.md#numbered-and-tiered-nodes).
 
 ---
