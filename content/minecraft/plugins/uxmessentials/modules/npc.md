@@ -2,6 +2,7 @@
 title: NPCs
 order: 9140
 description: Packet-rendered characters with skins, click action chains, nameplates and player ownership.
+icon: user-round
 ---
 
 An NPC is an interactive character you place around the server: a shopkeeper at spawn, a warp guide, a tutorial

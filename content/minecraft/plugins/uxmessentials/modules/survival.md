@@ -2,6 +2,7 @@
 title: Survival
 order: 9250
 description: Tree-feller, veinminer, auto-pickup, auto-smelt, auto-sell, one-player sleep and the rest, each its own switch.
+icon: heart
 ---
 
 Survival is a set of opt-in gameplay conveniences most servers reach for a separate plugin (or three) to get:

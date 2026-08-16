@@ -1,6 +1,7 @@
 ---
 title: Basic Concepts
 order: 50
+icon: lightbulb
 ---
 
 ## 🧱 Chunk

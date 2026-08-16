@@ -1,6 +1,7 @@
 ---
 title: Ability Permissions
 order: 330
+icon: key
 ---
 
 ## Overview

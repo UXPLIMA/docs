@@ -1,6 +1,7 @@
 ---
 title: Vault (Economy)
 order: 340
+icon: landmark
 ---
 
 ## What is Vault?

@@ -1,6 +1,7 @@
 ---
 title: levels.yml
 order: 780
+icon: file-cog
 ---
 
 `levels.yml` turns an island's total **points** into a **level**. See

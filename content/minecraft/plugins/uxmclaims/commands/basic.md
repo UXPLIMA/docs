@@ -1,6 +1,7 @@
 ---
 title: Basic Commands
 order: 70
+icon: terminal
 ---
 
 ## Available Commands

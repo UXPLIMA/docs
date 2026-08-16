@@ -2,6 +2,7 @@
 title: Homes
 order: 9070
 description: Private teleport points each player saves in a slot grid.
+icon: house
 ---
 
 A home is a private point a player saves for themselves. `/home` opens a grid of numbered slots: a filled slot

@@ -2,6 +2,7 @@
 title: Overview
 order: 1140
 description: How the config tree is organised, and how to edit and reload it safely.
+icon: book-open
 ---
 
 Settings live in HOCON `.conf` files, not YAML. The ideas are the ones you know from `config.yml` (keys,

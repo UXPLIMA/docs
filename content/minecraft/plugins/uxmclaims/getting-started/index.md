@@ -2,6 +2,7 @@
 title: Getting Started
 order: 2
 description: Welcome, Quick Installation, Your First Claim and Basic Concepts.
+icon: rocket
 ---
 
 - [Welcome](welcome.md)

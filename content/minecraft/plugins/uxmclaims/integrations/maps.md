@@ -1,6 +1,7 @@
 ---
 title: Map Plugins
 order: 370
+icon: map
 ---
 
 ## Supported Map Plugins

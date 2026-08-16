@@ -3,6 +3,7 @@ title: Menu Guide
 order: 58
 description: Main Menu (/is), Island Type (/is create), Settings, Upgrades, Warps
   and Block Values.
+icon: layout-grid
 ---
 
 - [Main Menu (/is)](main-menu.md): Opening /is brings up the main menu: the hub for everything an island owner does. Every slot, icon, name, and action is editable in menus/main.yml; this page describes the default layout.

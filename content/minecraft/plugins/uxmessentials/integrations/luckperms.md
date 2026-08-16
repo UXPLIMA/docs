@@ -2,6 +2,7 @@
 title: LuckPerms
 order: 1510
 description: What LuckPerms adds, and why a permission plugin stays optional.
+icon: key
 ---
 
 uxmEssentials never hard-depends on a permission plugin. Every check goes through an internal port on top

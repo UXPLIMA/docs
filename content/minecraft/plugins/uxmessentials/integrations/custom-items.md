@@ -2,6 +2,7 @@
 title: Custom Items & Heads
 order: 1540
 description: Using ItemsAdder, Oraxen, Nexo, CraftEngine, MMOItems, ExecutableItems and custom heads as icons.
+icon: sword
 ---
 
 Anywhere uxmEssentials asks for a material you are not limited to vanilla items. A `provider:id` prefix

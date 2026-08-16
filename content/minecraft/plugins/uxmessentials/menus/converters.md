@@ -2,6 +2,7 @@
 title: Converting Other Menus
 order: 1120
 description: Importing DeluxeMenus, zMenu, OGUI and GUIPlus files into the menu engine.
+icon: arrow-right-left
 ---
 
 If you are moving to uxmEssentials from another menu plugin, you don't have to rebuild

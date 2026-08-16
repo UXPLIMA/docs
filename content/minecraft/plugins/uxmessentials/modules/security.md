@@ -2,6 +2,7 @@
 title: Security
 order: 9220
 description: A self-service second factor, a join freeze, op-command protection and a same-IP alt guard.
+icon: lock
 ---
 
 Security hardens accounts against what a login alone cannot stop: a shared computer, a session left open, a

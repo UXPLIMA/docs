@@ -3,6 +3,7 @@ title: PlaceholderAPI
 order: 840
 description: uxmSkyblock registers a PlaceholderAPI expansion so other plugins (scoreboards,
   tab lists, chat) can show island data.
+icon: braces
 ---
 
 ---

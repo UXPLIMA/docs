@@ -2,6 +2,7 @@
 title: Overview
 order: 1610
 description: What the API covers, and which part to reach for.
+icon: book-open
 ---
 
 Your plugin can watch what uxmEssentials does, refuse some of it, read its state, drive its use cases and

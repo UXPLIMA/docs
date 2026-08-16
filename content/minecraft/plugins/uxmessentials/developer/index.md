@@ -2,6 +2,7 @@
 title: Developer API
 order: 163
 description: Events, queries, actions, the menu API and the REST add-on.
+icon: code
 ---
 
 The API is a published Maven artifact you compile against. Your plugin can watch what uxmEssentials does,

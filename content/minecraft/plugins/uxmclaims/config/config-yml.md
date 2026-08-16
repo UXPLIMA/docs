@@ -1,6 +1,7 @@
 ---
 title: config.yml
 order: 240
+icon: file-cog
 ---
 
 ## How to Edit

@@ -1,6 +1,7 @@
 ---
 title: Flag Commands
 order: 130
+icon: flag
 ---
 
 ## Available Commands

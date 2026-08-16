@@ -2,6 +2,7 @@
 title: Leaderboard
 order: 560
 description: Islands compete on a server-wide leaderboard, ranked by level (and points).
+icon: trophy
 ---
 
 ---

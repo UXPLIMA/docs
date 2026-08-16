@@ -2,6 +2,7 @@
 title: Welcome
 order: 890
 description: What uxmEssentials is, what it replaces, and where to go next.
+icon: door-open
 ---
 
 uxmEssentials is one jar that covers what a survival server usually installs a dozen plugins for: homes,

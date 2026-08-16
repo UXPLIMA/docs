@@ -2,6 +2,7 @@
 title: Land Claims
 order: 1520
 description: How land-claim plugins gate homes, the RTP search and poses.
+icon: land-plot
 ---
 
 If your server runs a land-claim plugin, uxmEssentials respects it. Homes are not set inside somebody

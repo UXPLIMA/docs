@@ -1,6 +1,7 @@
 ---
 title: Block Values
 order: 630
+icon: blocks
 ---
 
 `/is block` opens a paginated menu showing **what every block is worth** in

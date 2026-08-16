@@ -2,6 +2,7 @@
 title: Vault & Treasury
 order: 1490
 description: Serving our economy to other plugins, and running on somebody else's.
+icon: landmark
 ---
 
 uxmEssentials ships its own database-backed economy. Vault and Treasury do not power it; they are the

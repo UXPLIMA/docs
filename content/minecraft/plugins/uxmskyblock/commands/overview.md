@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 510
+icon: book-open
 ---
 
 ## The Command Is Fully Configurable

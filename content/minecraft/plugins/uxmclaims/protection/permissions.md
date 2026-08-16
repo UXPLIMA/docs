@@ -1,6 +1,7 @@
 ---
 title: All Role Permissions
 order: 320
+icon: key
 ---
 
 ## Overview

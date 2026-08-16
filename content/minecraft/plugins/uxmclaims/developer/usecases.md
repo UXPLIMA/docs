@@ -1,6 +1,7 @@
 ---
 title: Use Cases
 order: 450
+icon: workflow
 ---
 
 ## How It Works

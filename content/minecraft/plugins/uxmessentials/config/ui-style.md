@@ -2,6 +2,7 @@
 title: UI Style
 order: 1190
 description: The palette, glyphs and text formats the built-in messages and menus follow.
+icon: palette
 ---
 
 uxmEssentials ships with one consistent look across chat, command feedback, GUIs and the

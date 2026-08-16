@@ -1,6 +1,7 @@
 ---
 title: upgrades.yml
 order: 760
+icon: file-cog
 ---
 
 `upgrades.yml` defines every upgrade, its tiers, and what each tier costs. Add,

@@ -2,6 +2,7 @@
 title: Messaging
 order: 9110
 description: Private messages, offline mail, ignore lists, social spy and support requests.
+icon: mail
 ---
 
 Messaging covers what one player says to another rather than to the room: `/msg` and `/reply`, mail that waits

@@ -1,6 +1,7 @@
 ---
 title: Quick Installation
 order: 30
+icon: download
 ---
 
 ## Requirements

@@ -3,6 +3,7 @@ title: Core Concepts
 order: 500
 description: A quick tour of the ideas that make uxmSkyblock work. Once these click,
   the rest of the wiki is just detail.
+icon: lightbulb
 ---
 
 ---

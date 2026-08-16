@@ -4,6 +4,7 @@ order: 790
 description: Every GUI in uxmSkyblock is defined in a YAML file under plugins/uxmSkyblock/menus/.
   You can move buttons, swap icons, reword text, and re-theme the whole plugin without
   code.
+icon: layout-grid
 ---
 
 ---

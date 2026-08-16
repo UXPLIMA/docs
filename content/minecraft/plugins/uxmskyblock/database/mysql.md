@@ -1,6 +1,7 @@
 ---
 title: MySQL
 order: 810
+icon: database
 ---
 
 **MySQL** stores island data in a shared database. Use it when you run **multiple

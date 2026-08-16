@@ -2,6 +2,7 @@
 title: Migrating from EssentialsX
 order: 910
 description: 'The one-shot importer: sources, what comes across, conflict policy and the order to run it in.'
+icon: arrow-right-left
 ---
 
 `/uxmess import <source> [--dry-run]` reads another plugin's data and writes it into uxmEssentials. It runs

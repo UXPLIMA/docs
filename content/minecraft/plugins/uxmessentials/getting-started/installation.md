@@ -2,6 +2,7 @@
 title: Installation
 order: 900
 description: Requirements, the first start, the files you get, and how to verify the install.
+icon: download
 ---
 
 uxmEssentials needs Paper 26.1.2 or newer on Java 25. Folia is supported: every scheduled task goes through

@@ -2,6 +2,7 @@
 title: Command Control
 order: 9010
 description: Decide which commands each player may run, hide the rest, and close the namespace escape.
+icon: terminal
 ---
 
 Command Control decides which commands a player may run and hides the rest. A denied command is cancelled

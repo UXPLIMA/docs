@@ -2,6 +2,7 @@
 title: Ranks
 order: 9190
 description: A rankup ladder with requirements, costs, prestige and an optional automatic promotion scan.
+icon: crown
 ---
 
 Ranks are the server's progression ladder: a chain a player climbs with `/rankup`, an optional `/prestige` reset

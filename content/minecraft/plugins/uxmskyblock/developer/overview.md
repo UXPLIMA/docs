@@ -3,6 +3,7 @@ title: Overview
 order: 860
 description: uxmSkyblock exposes a clean API so other plugins and modules can read
   and modify islands. The core is published through JitPack.
+icon: book-open
 ---
 
 ---

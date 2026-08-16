@@ -2,6 +2,7 @@
 title: Trade
 order: 9280
 description: A shared window where two players swap items, money and experience, with nothing moving until both confirm.
+icon: handshake
 ---
 
 `/trade <player>` opens a window both players share: your four columns on the left, a read-only mirror of theirs

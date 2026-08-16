@@ -2,6 +2,7 @@
 title: Action API
 order: 1650
 description: 'Driving uxmEssentials from your plugin: homes, money, kits, punishments.'
+icon: play
 ---
 
 Queries answer what is true. Actions change it: set a home, pay a player, hand over a kit, ban somebody,

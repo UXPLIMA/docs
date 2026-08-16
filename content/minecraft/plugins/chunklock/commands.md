@@ -1,6 +1,7 @@
 ---
 title: Commands
 order: 1690
+icon: terminal
 ---
 
 Chunklock adds a single **informational** command. The actual unlocking is done by

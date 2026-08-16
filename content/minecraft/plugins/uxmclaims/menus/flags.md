@@ -1,6 +1,7 @@
 ---
 title: Flags
 order: 230
+icon: flag
 ---
 
 ## How to Open

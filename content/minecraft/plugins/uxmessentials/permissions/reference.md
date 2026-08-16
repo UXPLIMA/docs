@@ -2,6 +2,7 @@
 title: Permission Reference
 order: 1600
 description: Every permission node, its default, and what it grants, by module.
+icon: list
 ---
 
 Every uxmEssentials permission lives under the root `uxmessentials.*`. The plugin ships with defaults that make a fresh install playable the moment it starts, so you only grant permissions to *change* the defaults, never to switch the plugin on.

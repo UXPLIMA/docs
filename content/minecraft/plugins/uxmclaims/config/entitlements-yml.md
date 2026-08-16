@@ -1,6 +1,7 @@
 ---
 title: entitlements.yml
 order: 260
+icon: file-cog
 ---
 
 ## How This System Works

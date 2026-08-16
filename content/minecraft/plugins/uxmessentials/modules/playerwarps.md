@@ -2,6 +2,7 @@
 title: Player Warps
 order: 9160
 description: Player-owned public destinations with entry fees, ratings, rent and sponsored slots.
+icon: map-pin
 ---
 
 A player warp is a destination an ordinary player publishes for others to visit: a shop, a farm, a build worth

@@ -1,6 +1,7 @@
 ---
 title: Claim Map
 order: 200
+icon: map
 ---
 
 ## How to Open This Menu

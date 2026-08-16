@@ -1,6 +1,7 @@
 ---
 title: Events
 order: 440
+icon: zap
 ---
 
 ## Registering Event Listeners

@@ -3,6 +3,7 @@ title: Configuration
 order: 73
 description: config.yml, messages.yml, roles.yml, upgrades.yml, block-values.yml,
   levels.yml and Menu Customization.
+icon: settings
 ---
 
 - [config.yml](config-yml.md): config.yml is the master settings file: world, commands, storage, proxy, warps, generators, and more. This page walks through every section.

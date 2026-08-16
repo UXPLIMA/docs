@@ -4,6 +4,7 @@ order: 640
 description: 'An island''s level is the heart of progression: it gates upgrades and
   decides its rank on the leaderboard. Levels come from points, and points come from
   the blocks placed on the island.'
+icon: trending-up
 ---
 
 ---

@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 1660
+icon: book-open
 ---
 
 ## What Is Chunklock?

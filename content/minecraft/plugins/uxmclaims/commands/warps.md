@@ -1,6 +1,7 @@
 ---
 title: Warp Commands
 order: 100
+icon: map-pin
 ---
 
 ## Available Commands

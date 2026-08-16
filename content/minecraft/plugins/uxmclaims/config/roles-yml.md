@@ -1,6 +1,7 @@
 ---
 title: roles.yml
 order: 250
+icon: file-cog
 ---
 
 ## File Structure

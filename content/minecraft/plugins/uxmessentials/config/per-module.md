@@ -2,6 +2,7 @@
 title: Per-Module Config
 order: 1160
 description: The per-module folders, the enabled key, and what lives in each one.
+icon: file-cog
 ---
 
 Every feature is a module with its own folder under `plugins/uxmEssentials/modules/`. A feature's tunables

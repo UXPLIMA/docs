@@ -2,6 +2,7 @@
 title: Menu API
 order: 1660
 description: Teaching the menu engine your own actions, requirements, sources and icons.
+icon: layout-grid
 ---
 
 The menu engine is extensible: teach it your own actions, requirements, placeholders, list sources and

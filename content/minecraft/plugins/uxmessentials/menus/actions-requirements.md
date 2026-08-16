@@ -2,6 +2,7 @@
 title: Actions & Requirements
 order: 1100
 description: What a click does, and what has to be true before it draws.
+icon: play
 ---
 
 Everything a menu does is an action, and everything it checks is a requirement. Both are written the same

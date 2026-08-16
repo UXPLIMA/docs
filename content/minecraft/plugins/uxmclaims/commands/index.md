@@ -3,6 +3,7 @@ title: Commands
 order: 6
 description: Overview, Basic Commands, Member Commands, Role Commands, Warp Commands,
   Chunk Commands, Invite Commands, Flag Commands and Admin Commands.
+icon: terminal
 ---
 
 - [Overview](overview.md)

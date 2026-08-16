@@ -2,6 +2,7 @@
 title: Kits
 order: 9100
 description: Item bundles players claim on a cooldown, built and edited from a menu.
+icon: gift
 ---
 
 A kit is a named bundle of items, and optionally commands, that a player claims with `/kit`. The bare command

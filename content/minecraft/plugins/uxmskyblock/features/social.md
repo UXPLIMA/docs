@@ -2,6 +2,7 @@
 title: Coop & Rating
 order: 690
 description: 'Two social features for islands: temporary coop access and player ratings.'
+icon: users
 ---
 
 ## Coop access

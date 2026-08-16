@@ -4,6 +4,7 @@ order: 570
 description: 'Tools for server staff. Everything here needs the skyblock.admin permission
   (default: op). To players without it, these sub-commands are hidden from tab completion
   and respond as unknown commands.'
+icon: shield-user
 ---
 
 ---

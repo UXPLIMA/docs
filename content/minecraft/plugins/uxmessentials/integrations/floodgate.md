@@ -2,6 +2,7 @@
 title: Bedrock (Floodgate)
 order: 1530
 description: What Bedrock players get, and what Floodgate has to be installed for.
+icon: smartphone
 ---
 
 On a server that accepts Bedrock players through Geyser, uxmEssentials detects them and renders native

@@ -3,6 +3,7 @@ title: config.yml
 order: 730
 description: 'config.yml is the master settings file: world, commands, storage, proxy,
   warps, generators, and more. This page walks through every section.'
+icon: file-cog
 ---
 
 <Callout type="tip" title="Updates merge automatically">

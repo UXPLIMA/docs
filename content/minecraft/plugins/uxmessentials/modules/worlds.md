@@ -2,6 +2,7 @@
 title: Worlds
 order: 9340
 description: Create, import, load and delete worlds, tune their rules, and gate them behind a permission or a fee.
+icon: earth
 ---
 
 `/worlds` is a full multi-world manager: create a world, import one that is already on disk, load and unload it,

@@ -2,6 +2,7 @@
 title: Modules
 order: 94
 description: Every feature ships as a module you can switch off. One page each.
+icon: blocks
 ---
 
 uxmEssentials is 34 modules behind one jar. Each one owns its commands, its permission nodes, its placeholders

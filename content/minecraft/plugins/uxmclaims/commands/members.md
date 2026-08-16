@@ -1,6 +1,7 @@
 ---
 title: Member Commands
 order: 80
+icon: users
 ---
 
 ## Available Commands

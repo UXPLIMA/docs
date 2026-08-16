@@ -2,6 +2,7 @@
 title: Offline Mode (Cracked)
 order: 930
 description: How accounts, name lookups and skins behave on a cracked server.
+icon: wifi-off
 ---
 
 uxmEssentials runs fully on offline-mode servers (`online-mode=false`, often called cracked). Every module

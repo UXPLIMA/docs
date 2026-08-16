@@ -1,6 +1,7 @@
 ---
 title: webhooks.yml
 order: 280
+icon: webhook
 ---
 
 ## How It Works

@@ -2,6 +2,7 @@
 title: Regions
 order: 9200
 description: 'An in-game manager for WorldGuard regions: browse, create, edit flags, and manage rosters.'
+icon: land-plot
 ---
 
 Regions is a front end over an installed WorldGuard: browse a world's regions, carve out a new cuboid, cycle a

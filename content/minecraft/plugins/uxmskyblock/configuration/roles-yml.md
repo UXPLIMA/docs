@@ -3,6 +3,7 @@ title: roles.yml
 order: 750
 description: roles.yml defines the built-in island roles and the permissions each
   one grants. The owner always has every permission, no matter what's here.
+icon: file-cog
 ---
 
 For the gameplay meaning of roles and the full permission reference, see

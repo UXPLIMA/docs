@@ -2,6 +2,7 @@
 title: Island Basics
 order: 520
 description: The everyday commands for creating, reaching, and managing your own island.
+icon: terminal
 ---
 
 <Callout type="note" title="Default words">

@@ -3,6 +3,7 @@ title: Vault (Economy)
 order: 830
 description: 'Vault connects uxmSkyblock to your server''s economy. It''s optional, but
   without it, the money side of upgrades and the bank are disabled.'
+icon: landmark
 ---
 
 ---

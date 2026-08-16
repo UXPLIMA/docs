@@ -1,6 +1,7 @@
 ---
 title: Claim Management
 order: 160
+icon: square-pen
 ---
 
 ## How to Open This Menu

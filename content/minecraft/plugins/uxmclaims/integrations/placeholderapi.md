@@ -1,6 +1,7 @@
 ---
 title: PlaceholderAPI
 order: 350
+icon: braces
 ---
 
 ## Enabling

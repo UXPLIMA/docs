@@ -3,6 +3,7 @@ title: Upgrades
 order: 650
 description: 'Upgrades are how an island grows over time. Each upgrade has a series
   of tiers, and reaching a tier requires:'
+icon: chevrons-up
 ---
 
 1. A minimum **island level** (`required-level`)

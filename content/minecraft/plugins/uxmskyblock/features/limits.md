@@ -2,6 +2,7 @@
 title: Block & Entity Limits
 order: 720
 description: Cap how many of a given block or entity each island may have.
+icon: gauge
 ---
 
 - **Block limits** are counted as players place and break the block, stored on the island, and synced across the network.

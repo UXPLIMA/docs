@@ -2,6 +2,7 @@
 title: PlaceholderAPI
 order: 1500
 description: Publishing our placeholders, and resolving other plugins' inside our text.
+icon: braces
 ---
 
 Placeholders work in both directions: uxmEssentials publishes its own data for other plugins to display,

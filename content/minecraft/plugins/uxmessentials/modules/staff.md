@@ -2,6 +2,7 @@
 title: Staff
 order: 9240
 description: An on-duty mode that swaps a moderator's inventory for a gadget hotbar and hands it back on exit.
+icon: shield-user
 ---
 
 `/staffmode` flips a moderator between playing and being on duty. Entering saves their real inventory to the

@@ -1,6 +1,7 @@
 ---
 title: Menu Customization
 order: 290
+icon: layout-grid
 ---
 
 ## Menu Files

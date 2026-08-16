@@ -2,6 +2,7 @@
 title: In-Game Editor
 order: 1130
 description: Building and editing menus in-game, without touching a config file.
+icon: square-pen
 ---
 
 `/menu editor` builds and changes custom menus from inside the game. Everything the engine can express is

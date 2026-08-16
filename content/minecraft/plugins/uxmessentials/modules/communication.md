@@ -2,6 +2,7 @@
 title: Communication
 order: 9020
 description: The public chat format, join and quit lines, the rotating announcer, info pages and broadcasts.
+icon: megaphone
 ---
 
 Communication owns everything the server says to players that is not a private message: how public chat is

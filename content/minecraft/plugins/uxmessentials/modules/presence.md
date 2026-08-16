@@ -2,6 +2,7 @@
 title: Presence
 order: 9180
 description: AFK, the online list, nicknames, /whois and the server-health readout.
+icon: radio
 ---
 
 Presence is the awareness layer: who is around, what they are called, and how the server is holding up. It owns

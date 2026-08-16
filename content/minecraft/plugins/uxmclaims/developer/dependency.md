@@ -1,6 +1,7 @@
 ---
 title: Adding Dependency
 order: 420
+icon: package
 ---
 
 ## Bukkit API Module

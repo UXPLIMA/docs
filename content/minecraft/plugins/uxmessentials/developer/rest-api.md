@@ -2,6 +2,7 @@
 title: REST API
 order: 1670
 description: HTTP and WebSocket access for panels, bots, webhooks and scripts.
+icon: globe
 ---
 
 HTTP and WebSocket access for the programs that are not plugins: a panel, a bot, a store webhook, a

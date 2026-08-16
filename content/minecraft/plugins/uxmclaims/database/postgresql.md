@@ -1,6 +1,7 @@
 ---
 title: PostgreSQL
 order: 400
+icon: database
 ---
 
 ## Why PostgreSQL?

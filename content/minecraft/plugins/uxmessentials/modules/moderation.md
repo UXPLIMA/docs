@@ -2,6 +2,7 @@
 title: Moderation
 order: 9120
 description: Bans, mutes, jails, warnings with escalation, freeze, lockdown and the disciplinary history behind them.
+icon: gavel
 ---
 
 Moderation is the punishment toolkit: bans and tempbans, mutes, IP bans, jails, warnings that escalate, freezes,

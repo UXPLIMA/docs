@@ -2,6 +2,7 @@
 title: Discord
 order: 1550
 description: The companion jar, what it mirrors into Discord, and account linking.
+icon: message-circle
 ---
 
 uxmEssentials reaches Discord through a companion jar built on JDA. It mirrors server events into your

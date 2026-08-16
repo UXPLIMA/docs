@@ -2,6 +2,7 @@
 title: Events
 order: 1630
 description: The events uxmEssentials publishes, and the ones you can cancel.
+icon: zap
 ---
 
 Everything uxmEssentials does is published as an ordinary Bukkit event. What can be refused cleanly is

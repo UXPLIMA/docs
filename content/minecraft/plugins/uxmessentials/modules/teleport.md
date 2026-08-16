@@ -2,6 +2,7 @@
 title: Teleport
 order: 9270
 description: Requests, back, random teleport, spawns and staff teleports under one warmup and cooldown system.
+icon: move-3d
 ---
 
 The teleport module owns everything that moves a player: the `/tpa` request handshake, `/back`, the random

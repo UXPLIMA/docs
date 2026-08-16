@@ -1,6 +1,7 @@
 ---
 title: Query API
 order: 430
+icon: search
 ---
 
 ## Getting the Facade

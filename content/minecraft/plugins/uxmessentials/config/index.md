@@ -2,6 +2,7 @@
 title: Configuration
 order: 114
 description: The config tree, the global file, per-module files, command names and messages.
+icon: settings
 ---
 
 Settings are HOCON files under `plugins/uxmEssentials/`. Nothing player-facing is hardcoded.

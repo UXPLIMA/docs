@@ -2,6 +2,7 @@
 title: Items & World
 order: 9090
 description: 'The item, block, entity and environment toolbox: roughly 65 commands in seven switchable groups.'
+icon: sword
 ---
 
 Items & World is the toolbox: give and edit held items, portable workstations, inventory cleanup, powertools,

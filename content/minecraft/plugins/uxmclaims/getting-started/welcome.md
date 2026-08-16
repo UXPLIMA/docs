@@ -1,6 +1,7 @@
 ---
 title: Welcome
 order: 20
+icon: door-open
 ---
 
 ## What Does This Plugin Do?

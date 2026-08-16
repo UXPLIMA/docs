@@ -4,6 +4,7 @@ order: 590
 description: 'Running /is create with no type opens the Island Type menu: a one-click
   picker for the starter island you want. Choosing a type creates the island
   immediately.'
+icon: mountain
 ---
 
 ---

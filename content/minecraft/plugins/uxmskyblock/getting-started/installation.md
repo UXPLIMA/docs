@@ -1,6 +1,7 @@
 ---
 title: Installation
 order: 480
+icon: download
 ---
 
 ## Requirements

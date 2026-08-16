@@ -2,6 +2,7 @@
 title: PostgreSQL
 order: 1580
 description: Connecting uxmEssentials to PostgreSQL, and what changes when you do.
+icon: database
 ---
 
 **PostgreSQL** is the third first-class backend. It behaves exactly like the

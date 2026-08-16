@@ -2,6 +2,7 @@
 title: Getting Started
 order: 89
 description: Install uxmEssentials, learn how it is put together, and bring your old data across.
+icon: rocket
 ---
 
 Start here if the plugin is not on your server yet.

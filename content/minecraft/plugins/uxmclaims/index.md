@@ -3,6 +3,7 @@ title: uxmClaims
 order: 2
 description: Getting Started, Commands, Menu Guide, Configuration, Protection System,
   Integrations, Database Setup and Developer API.
+icon: land-plot
 ---
 
 - [Getting Started](getting-started/)

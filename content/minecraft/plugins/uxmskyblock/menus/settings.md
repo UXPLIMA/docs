@@ -4,6 +4,7 @@ order: 600
 description: '/is settings opens the Settings menu, where the owner (or anyone with the
   TOGGLESETTINGS permission) controls how the island behaves. The layout lives in
   menus/settings.yml.'
+icon: settings
 ---
 
 ---

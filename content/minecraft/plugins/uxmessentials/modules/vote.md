@@ -2,6 +2,7 @@
 title: Vote
 order: 9320
 description: Turn votes on listing sites into rewards, streaks, milestones and a server-wide vote party.
+icon: thumbs-up
 ---
 
 The vote module turns a vote on a server listing into something in game. A listing site confirms the vote

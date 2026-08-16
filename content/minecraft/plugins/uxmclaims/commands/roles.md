@@ -1,6 +1,7 @@
 ---
 title: Role Commands
 order: 90
+icon: user-cog
 ---
 
 ## Available Commands

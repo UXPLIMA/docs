@@ -2,6 +2,7 @@
 title: Custom Menu Engine
 order: 1090
 description: 'Writing a menu file: layout, items, sources, pagination and input.'
+icon: cog
 ---
 
 A custom menu is a single HOCON file in `plugins/uxmEssentials/menus/`. The file name is the menu's name:

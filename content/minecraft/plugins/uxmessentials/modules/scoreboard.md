@@ -2,6 +2,7 @@
 title: Scoreboard
 order: 9210
 description: A per-player sidebar drawn from packets, with animated lines and no vanilla objective conflicts.
+icon: list-ordered
 ---
 
 The scoreboard module draws the sidebar on the right of the screen. It is packet-based, so it is genuinely

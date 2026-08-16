@@ -3,6 +3,7 @@ title: Biome & Starter Chest
 order: 710
 description: 'Two ways to shape a fresh island: pick its biome and stock its starter
   chest.'
+icon: palette
 ---
 
 ## Island biome

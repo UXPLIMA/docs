@@ -1,6 +1,7 @@
 ---
 title: WorldGuard
 order: 360
+icon: shield
 ---
 
 ## What It Does

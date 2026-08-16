@@ -2,6 +2,7 @@
 title: Adding Dependency
 order: 1620
 description: The repository and coordinate to compile against, for Maven and Gradle.
+icon: package
 ---
 
 The developer API is an ordinary Maven artifact. Add one repository and one coordinate, and your IDE has

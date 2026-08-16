@@ -2,6 +2,7 @@
 title: Bedrock Forms
 order: 1110
 description: How a menu renders as a native Bedrock form, and where it stays a chest.
+icon: smartphone
 ---
 
 Bedrock players joining through Geyser with Floodgate installed do not get chest GUIs, which are clumsy on

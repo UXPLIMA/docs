@@ -2,6 +2,7 @@
 title: Query API
 order: 1640
 description: 'Reading uxmEssentials state: homes, balances, punishments, presence, worlds.'
+icon: search
 ---
 
 Events tell you what uxmEssentials did. Queries answer what is true now: how many homes a player owns, what

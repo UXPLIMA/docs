@@ -1,6 +1,7 @@
 ---
 title: All Claim Flags
 order: 310
+icon: flag
 ---
 
 ## Quick Reference Table

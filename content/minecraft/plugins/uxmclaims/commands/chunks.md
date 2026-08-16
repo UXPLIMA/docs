@@ -1,6 +1,7 @@
 ---
 title: Chunk Commands
 order: 110
+icon: grid-3x3
 ---
 
 ## Available Commands

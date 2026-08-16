@@ -1,6 +1,7 @@
 ---
 title: Invite Commands
 order: 120
+icon: user-plus
 ---
 
 ## Available Commands

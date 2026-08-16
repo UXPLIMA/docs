@@ -2,6 +2,7 @@
 title: Vaults
 order: 9300
 description: Personal chest-style storage kept in the database, so it survives a world rollback.
+icon: archive
 ---
 
 A vault is private, chest-style storage a player carries with them. `/vault` opens the default one, or a

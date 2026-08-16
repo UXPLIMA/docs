@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 410
+icon: book-open
 ---
 
 ## Architecture

@@ -3,6 +3,7 @@ title: Installation
 order: 1670
 description: Chunklock is a module, so installing it means dropping a jar into uxmSkyblock
   and setting a couple of core options.
+icon: download
 ---
 
 ---

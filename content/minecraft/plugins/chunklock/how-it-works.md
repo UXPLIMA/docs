@@ -3,6 +3,7 @@ title: How It Works
 order: 1680
 description: 'This page explains the mechanics: how chunks lock, how players unlock
   them, and how the two boundary layers behave.'
+icon: cog
 ---
 
 ---

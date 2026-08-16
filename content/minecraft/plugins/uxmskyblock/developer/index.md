@@ -2,6 +2,7 @@
 title: Developer API
 order: 86
 description: Overview, Events and Writing a Module.
+icon: code
 ---
 
 - [Overview](overview.md): uxmSkyblock exposes a clean API so other plugins and modules can read and modify islands. The core is published through JitPack.

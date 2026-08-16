@@ -2,6 +2,7 @@
 title: Menus
 order: 108
 description: The menu engine behind every GUI, and how to write, convert and edit your own.
+icon: layout-grid
 ---
 
 Every GUI in uxmEssentials is drawn by one engine, and that engine also loads the menus you write.

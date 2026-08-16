@@ -3,6 +3,7 @@ title: Menu Guide
 order: 15
 description: Main Menu (/claim), Claim Management, Members & Roles, Banned Players,
   Invitations, Claim Map, Vault (Storage), Warps and Flags.
+icon: layout-grid
 ---
 
 - [Main Menu (/claim)](main-menu.md)

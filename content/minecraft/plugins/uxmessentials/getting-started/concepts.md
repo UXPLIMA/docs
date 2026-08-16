@@ -2,6 +2,7 @@
 title: Core Concepts
 order: 920
 description: Modules, the config layout, permissions, messages and threading.
+icon: lightbulb
 ---
 
 Five ideas carry through the rest of the documentation.

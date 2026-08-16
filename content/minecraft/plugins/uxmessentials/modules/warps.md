@@ -2,6 +2,7 @@
 title: Warps
 order: 9330
 description: Server-wide destinations staff create, with costs, locks, passwords, ratings and signs.
+icon: map-pin
 ---
 
 A warp is a public destination staff create: a spawn hub, an arena, a market, an event stage. `/warp` is the

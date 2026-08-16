@@ -1,6 +1,7 @@
 ---
 title: messages.yml
 order: 270
+icon: message-square
 ---
 
 ## Message Structure

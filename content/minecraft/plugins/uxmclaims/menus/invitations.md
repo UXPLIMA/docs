@@ -1,6 +1,7 @@
 ---
 title: Invitations
 order: 190
+icon: user-plus
 ---
 
 ## How to Open

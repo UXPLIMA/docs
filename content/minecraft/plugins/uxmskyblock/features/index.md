@@ -3,6 +3,7 @@ title: Features
 order: 69
 description: Coop & Rating, Bank Interest & Log, Biome & Starter Chest and Block &
   Entity Limits.
+icon: sparkles
 ---
 
 - [Coop & Rating](social.md): Two social features for islands: temporary coop access and player ratings.

@@ -2,6 +2,7 @@
 title: Renaming Commands
 order: 1170
 description: Renaming, re-aliasing and disabling any command in commands.conf.
+icon: file-cog
 ---
 
 `plugins/uxmEssentials/commands/commands.conf` renames, re-aliases or disables any command. It is one

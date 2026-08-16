@@ -1,6 +1,7 @@
 ---
 title: Writing a Module
 order: 880
+icon: blocks
 ---
 
 A **module** is a drop-in jar that extends uxmSkyblock from inside its own

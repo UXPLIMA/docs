@@ -2,6 +2,7 @@
 title: Overview
 order: 1480
 description: Every plugin uxmEssentials detects, by family, and what each one turns on.
+icon: book-open
 ---
 
 uxmEssentials detects 51 other plugins. Every one is optional and none is switched on by hand.

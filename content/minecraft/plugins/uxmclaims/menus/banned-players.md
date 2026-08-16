@@ -1,6 +1,7 @@
 ---
 title: Banned Players
 order: 180
+icon: user-x
 ---
 
 ## How to Open

@@ -1,6 +1,7 @@
 ---
 title: SQLite (Easy)
 order: 380
+icon: database
 ---
 
 ## Why SQLite?

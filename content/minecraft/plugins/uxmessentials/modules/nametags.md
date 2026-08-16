@@ -2,6 +2,7 @@
 title: Nametags
 order: 9130
 description: 'The name above each player''s head: prefixes, suffixes, colours and distance-based hiding.'
+icon: tag
 ---
 
 The nametags module draws what floats above a player's head. Because it is packet-based it paints rank prefixes

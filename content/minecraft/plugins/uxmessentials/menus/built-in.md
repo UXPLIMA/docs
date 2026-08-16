@@ -2,6 +2,7 @@
 title: Built-in Menu Guide
 order: 1080
 description: Which screens are menus, what they all share, and how to re-theme them.
+icon: package-check
 ---
 
 Almost every GUI in uxmEssentials, from the home grid to the `/eco` panels to the `/uxmess gui` hub, is

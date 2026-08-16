@@ -1,6 +1,7 @@
 ---
 title: Welcome
 order: 470
+icon: door-open
 ---
 
 ## What Is uxmSkyblock?

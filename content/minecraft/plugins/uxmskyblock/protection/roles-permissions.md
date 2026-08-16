@@ -4,6 +4,7 @@ order: 670
 description: Protection in uxmSkyblock is role-based. Every team member holds a role,
   and a role is a set of permissions. If a member lacks a permission, the action is
   blocked inside the island.
+icon: user-cog
 ---
 
 The **owner always has every permission**, regardless of role config.

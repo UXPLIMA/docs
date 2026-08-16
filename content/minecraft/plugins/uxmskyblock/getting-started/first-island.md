@@ -1,6 +1,7 @@
 ---
 title: Your First Island
 order: 490
+icon: flag
 ---
 
 This page walks a player through creating an island and getting started, step by

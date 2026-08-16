@@ -2,6 +2,7 @@
 title: Poses
 order: 9170
 description: Sit, lay, belly-flop, spin and crawl, with claim and WorldGuard gating.
+icon: person-standing
 ---
 
 Poses lets players relax in the world: sit on the ground or on a block, sit on another player, lay down,

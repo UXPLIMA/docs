@@ -2,6 +2,7 @@
 title: Inventory Rollback
 order: 9080
 description: Snapshots of a player's inventory at death and logout, restorable from a menu.
+icon: undo-2
 ---
 
 Inventory Rollback is the answer to a player losing an inventory to a lag death, a bad restart or a bug. It

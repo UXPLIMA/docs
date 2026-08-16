@@ -2,6 +2,7 @@
 title: Player State
 order: 9150
 description: 'The everyday self-and-target verbs: heal, feed, fly, game mode, speed, personal time and weather.'
+icon: heart-pulse
 ---
 
 Player State bundles the verbs that act on a player rather than the world: healing and feeding, flight, game

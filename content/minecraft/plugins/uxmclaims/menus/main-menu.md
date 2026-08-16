@@ -1,6 +1,7 @@
 ---
 title: Main Menu (/claim)
 order: 150
+icon: layout-grid
 ---
 
 ## What Is This Menu For?

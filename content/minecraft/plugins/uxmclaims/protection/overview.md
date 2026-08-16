@@ -1,6 +1,7 @@
 ---
 title: How Protection Works
 order: 300
+icon: book-open
 ---
 
 ## The Three Layers

@@ -2,6 +2,7 @@
 title: Holograms
 order: 9060
 description: Floating displays built from native display entities, with pages, click actions and per-player visibility.
+icon: text-cursor
 ---
 
 A hologram is a floating display you place in the world: a welcome sign at spawn, a live leaderboard by the

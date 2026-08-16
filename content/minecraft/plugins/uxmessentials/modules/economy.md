@@ -2,6 +2,7 @@
 title: Economy
 order: 9050
 description: Balances, payments and the leaderboard, plus banks, loans, banknotes and a sell price per item.
+icon: coins
 ---
 
 Every player holds a wallet with a balance per currency. One currency ships (`coins`), `/balance` and `/pay` do

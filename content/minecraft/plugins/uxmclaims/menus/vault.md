@@ -1,6 +1,7 @@
 ---
 title: Vault (Storage)
 order: 210
+icon: landmark
 ---
 
 ## How to Open

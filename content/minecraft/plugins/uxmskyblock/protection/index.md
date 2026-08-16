@@ -2,6 +2,7 @@
 title: Roles & Protection
 order: 67
 description: Roles & Permissions and Island Flags.
+icon: shield
 ---
 
 - [Roles & Permissions](roles-permissions.md): Protection in uxmSkyblock is role-based. Every team member holds a role, and a role is a set of permissions. If a member lacks a permission, the action is blocked inside the island.

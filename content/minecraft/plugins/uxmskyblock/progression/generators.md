@@ -4,6 +4,7 @@ order: 660
 description: 'The generator upgrade controls what a player''s cobblestone generator
   produces. Each tier is a set of weighted block chances: higher tiers swap plain cobble
   for ores, and the top tier produces real obsidian.'
+icon: factory
 ---
 
 Tiers are defined under `upgrades.generator` in

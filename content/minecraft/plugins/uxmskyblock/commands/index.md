@@ -3,6 +3,7 @@ title: Commands
 order: 51
 description: Overview, Island Basics, Team & Roles, Warps, Bank & Economy, Leaderboard
   and Admin.
+icon: terminal
 ---
 
 - [Overview](overview.md)

@@ -2,6 +2,7 @@
 title: Progression
 order: 64
 description: Points & Levels, Upgrades and Generators.
+icon: trending-up
 ---
 
 - [Points & Levels](points-levels.md): An island's level is the heart of progression: it gates upgrades and decides its rank on the leaderboard. Levels come from points, and points come from the blocks placed on the island.

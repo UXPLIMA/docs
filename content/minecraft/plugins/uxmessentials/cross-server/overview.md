@@ -2,6 +2,7 @@
 title: Velocity & Redis
 order: 1590
 description: What syncs across backends, the two transports, and how to turn it on.
+icon: book-open
 ---
 
 Cross-server sync keeps player data in step across backends, so a home set on survival-1, a `/pay` made on

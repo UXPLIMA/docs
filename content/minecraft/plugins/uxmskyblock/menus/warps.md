@@ -3,6 +3,7 @@ title: Warps
 order: 620
 description: The Warp menu (opened from the main menu's Island Warps button) lets
   players browse and click public warps to teleport. Its layout is in menus/warp.yml.
+icon: map-pin
 ---
 
 ---

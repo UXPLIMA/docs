@@ -4,6 +4,7 @@ order: 680
 description: 'Flags are island-wide toggles that control what happens inside the
   protected area: separate from roles, which control what members may do. Flip them in
   /is settings (requires the TOGGLESETTINGS permission).'
+icon: flag
 ---
 
 ---

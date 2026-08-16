@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 60
+icon: book-open
 ---
 
 ## Command Overview

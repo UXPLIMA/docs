@@ -2,6 +2,7 @@
 title: Tablist
 order: 9260
 description: The tab-list header, footer, column layout and player skins, drawn from packets.
+icon: table
 ---
 
 The tablist module shapes the player list: the multi-line header and footer, how players are arranged into

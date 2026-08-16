@@ -2,6 +2,7 @@
 title: Database
 order: 156
 description: SQLite by default, MySQL or MariaDB and PostgreSQL for networks.
+icon: database
 ---
 
 Storage is embedded SQLite unless you point it elsewhere. Every backend runs the same schema and the same

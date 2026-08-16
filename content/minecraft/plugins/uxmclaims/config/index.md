@@ -3,6 +3,7 @@ title: Configuration
 order: 24
 description: config.yml, roles.yml, entitlements.yml, messages.yml, webhooks.yml and
   Menu Customization.
+icon: settings
 ---
 
 - [config.yml](config-yml.md)

@@ -2,6 +2,7 @@
 title: MySQL / MariaDB
 order: 1570
 description: Pointing uxmEssentials at MySQL or MariaDB, and what changes when you do.
+icon: database
 ---
 
 When one server outgrows SQLite, or several servers need the same data, point the storage backend at MySQL

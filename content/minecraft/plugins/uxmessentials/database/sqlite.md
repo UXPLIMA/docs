@@ -2,6 +2,7 @@
 title: SQLite (Default)
 order: 1560
 description: 'The default backend: no setup, one file, and when it stops being enough.'
+icon: database
 ---
 
 uxmEssentials ships with an embedded SQLite database and uses it out of the box: nothing to install,

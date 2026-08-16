@@ -1,6 +1,7 @@
 ---
 title: Domain Models
 order: 460
+icon: boxes
 ---
 
 ## Core Models

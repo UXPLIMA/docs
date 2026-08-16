@@ -2,6 +2,7 @@
 title: UXPLIMA Documentation
 order: 10
 description: Your central hub for all UXPLIMA products and services.
+icon: house
 ---
 
 ---

@@ -3,6 +3,7 @@ title: Developer API
 order: 41
 description: Overview, Adding Dependency, Query API, Events, Use Cases and Domain
   Models.
+icon: code
 ---
 
 - [Overview](overview.md)

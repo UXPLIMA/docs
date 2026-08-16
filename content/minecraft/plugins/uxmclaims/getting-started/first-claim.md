@@ -2,6 +2,7 @@
 title: Your First Claim
 order: 40
 description: Let's create your first claim! This guide walks you through every step.
+icon: flag
 ---
 
 ---

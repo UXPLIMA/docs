@@ -3,6 +3,7 @@ title: SQLite (Easy)
 order: 800
 description: 'SQLite is the default storage backend. It needs zero setup: no database
   server, no credentials. Perfect for a single server.'
+icon: database
 ---
 
 ---

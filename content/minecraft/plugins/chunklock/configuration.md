@@ -2,6 +2,7 @@
 title: Configuration
 order: 1700
 description: 'Chunklock''s settings live in its own config, separate from the core:'
+icon: settings
 ---
 
 ```

@@ -3,6 +3,7 @@ title: Team & Roles
 order: 530
 description: 'Everything for building and running your island team: members, invites,
   bans, and roles.'
+icon: users
 ---
 
 ---

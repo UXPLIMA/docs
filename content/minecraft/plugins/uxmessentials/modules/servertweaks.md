@@ -2,6 +2,7 @@
 title: Server Tweaks
 order: 9230
 description: 'Small server-side adjustments: the F3 brand, a console log filter, unsigned chat and SignedVelocity.'
+icon: wrench
 ---
 
 Server Tweaks is the handful of low-level behaviours that belong to no single feature but that most servers

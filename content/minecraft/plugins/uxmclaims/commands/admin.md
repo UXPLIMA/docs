@@ -1,6 +1,7 @@
 ---
 title: Admin Commands
 order: 140
+icon: shield-user
 ---
 
 ## Overview

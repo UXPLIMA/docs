@@ -2,6 +2,7 @@
 title: Placeholder Reference
 order: 1600
 description: Every %uxmessentials_% placeholder this build answers, area by area.
+icon: list
 ---
 
 ## Overview

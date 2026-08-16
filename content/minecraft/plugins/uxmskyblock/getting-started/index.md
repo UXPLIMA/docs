@@ -2,6 +2,7 @@
 title: Getting Started
 order: 47
 description: Welcome, Installation, Your First Island and Core Concepts.
+icon: rocket
 ---
 
 - [Welcome](welcome.md)

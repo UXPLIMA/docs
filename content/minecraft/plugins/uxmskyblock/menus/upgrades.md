@@ -1,6 +1,7 @@
 ---
 title: Upgrades
 order: 610
+icon: chevrons-up
 ---
 
 `/is upgrade` opens the **Upgrades menu**. Items are filled **automatically** from

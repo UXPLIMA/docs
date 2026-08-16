@@ -2,6 +2,7 @@
 title: Database Setup
 order: 38
 description: SQLite (Easy), MySQL and PostgreSQL.
+icon: database
 ---
 
 - [SQLite (Easy)](sqlite.md)

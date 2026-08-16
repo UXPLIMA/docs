@@ -2,6 +2,7 @@
 title: Discord Link
 order: 9040
 description: Let a player bind their Minecraft account to their Discord account with a one-time code.
+icon: message-circle
 ---
 
 Discord Link lets a player bind their own accounts without a staff ticket: they run `/discordlink`, copy the

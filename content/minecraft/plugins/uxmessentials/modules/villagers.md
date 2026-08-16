@@ -2,6 +2,7 @@
 title: Villagers
 order: 9310
 description: Trades that never lock out, a restock timer, a trade editor, protection, pickup, follow and leash.
+icon: user-round
 ---
 
 The villagers module hands you the trading and settlement knobs a survival or economy server usually reaches for

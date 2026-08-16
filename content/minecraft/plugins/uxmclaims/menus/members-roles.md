@@ -1,6 +1,7 @@
 ---
 title: Members & Roles
 order: 170
+icon: users
 ---
 
 ## Member List Menu

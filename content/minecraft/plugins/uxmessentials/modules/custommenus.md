@@ -2,6 +2,7 @@
 title: Custom Menus
 order: 9030
 description: 'The operator surface over the menu engine: your own menus, behind /menu.'
+icon: layout-grid
 ---
 
 Every GUI in uxmEssentials is drawn by one menu engine, and this module is the operator's door to it: your own

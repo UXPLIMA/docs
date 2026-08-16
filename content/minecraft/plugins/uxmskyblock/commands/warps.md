@@ -3,6 +3,7 @@ title: Warps
 order: 540
 description: 'Public warps let other players teleport to specific spots on your island:
   a shop, a farm, an arena. An island can have several named warps.'
+icon: map-pin
 ---
 
 ---

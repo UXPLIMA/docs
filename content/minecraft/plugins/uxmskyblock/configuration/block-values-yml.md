@@ -1,6 +1,7 @@
 ---
 title: block-values.yml
 order: 770
+icon: file-cog
 ---
 
 `block-values.yml` sets how many **points** each block is worth. Points drive

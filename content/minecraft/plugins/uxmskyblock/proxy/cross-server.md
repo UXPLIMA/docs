@@ -4,6 +4,7 @@ order: 820
 description: 'The proxy layer keeps islands in sync across multiple backend servers
   behind Velocity/BungeeCord. It''s optional and off by default: enable it only when you
   run a network.'
+icon: network
 ---
 
 ---

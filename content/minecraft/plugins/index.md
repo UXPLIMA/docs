@@ -2,6 +2,7 @@
 title: Plugins
 order: 3
 description: uxmEssentials, uxmClaims, uxmSkyblock and Chunklock.
+icon: puzzle
 ---
 
 | Plugin | What it is |

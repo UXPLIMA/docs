@@ -2,6 +2,7 @@
 title: Messages & Languages
 order: 1180
 description: Editing player-facing text, per language, in MiniMessage.
+icon: message-square
 ---
 
 Every player-facing line comes from a per-language catalog under `plugins/uxmEssentials/messages/`. No

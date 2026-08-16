@@ -3,6 +3,7 @@ title: Bank Interest & Log
 order: 700
 description: The island bank can pay periodic interest and keeps a full transaction
   log.
+icon: coins
 ---
 
 ## Interest

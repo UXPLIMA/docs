@@ -4,6 +4,7 @@ order: 740
 description: 'messages.yml holds every player-facing string the plugin sends: chat
   messages, errors, usage hints, status words. Edit it to reword, restyle, or fully
   translate the plugin.'
+icon: message-square
 ---
 
 ---

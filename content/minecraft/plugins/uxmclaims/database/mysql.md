@@ -1,6 +1,7 @@
 ---
 title: MySQL
 order: 390
+icon: database
 ---
 
 ## Why MySQL?

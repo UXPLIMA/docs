@@ -1,6 +1,7 @@
 ---
 title: Warps
 order: 220
+icon: map-pin
 ---
 
 ## How to Open

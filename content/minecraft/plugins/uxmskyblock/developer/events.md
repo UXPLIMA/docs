@@ -3,6 +3,7 @@ title: Events
 order: 870
 description: uxmSkyblock fires standard Bukkit events at key island lifecycle moments,
   so your plugin or module can react to them.
+icon: zap
 ---
 
 ---
