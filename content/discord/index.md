@@ -1,13 +1,10 @@
 ---
-title: Discord Bots
-order: 1730
-description: Custom Discord bot solutions.
+title: Discord
+order: 3000
+description: The UXD bots.
+section: true
 ---
 
----
-
-## Coming Soon
-
-Documentation for Discord bots is under development.
-
-Stay tuned for updates!
+- [UXD Support AI Bot](uxd-support-ai-bot/)
+- [UXD Core Bot](uxd-core-bot/)
+- [UXD Tickets Bot](uxd-tickets-bot/)

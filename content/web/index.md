@@ -1,13 +1,13 @@
 ---
-title: Web Platforms
-order: 1720
-description: Web-based tools and platforms.
+title: Websites
+order: 4000
+description: The uxw web platforms.
+section: true
 ---
 
----
-
-## Coming Soon
-
-Documentation for web platforms is under development.
-
-Stay tuned for updates!
+- [uxwPaste](uxwpaste/)
+- [uxwStatus](uxwstatus/)
+- [uxwDocs](uxwdocs/)
+- [uxwObfuscator](uxwobfuscator/)
+- [uxwLicense](uxwlicense/)
+- [uxwLinks](uxwlinks/)

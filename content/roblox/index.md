@@ -1,13 +1,10 @@
 ---
 title: Roblox
-order: 1710
-description: Roblox game development resources and systems.
+order: 2000
+description: Game setups, scripts, and graphic and UI work.
+section: true
 ---
 
----
-
-## Coming Soon
-
-Documentation for Roblox systems is under development.
-
-Stay tuned for updates!
+- [Setups](setups/)
+- [Scripts](scripts/)
+- [Graphic & UI](graphic-ui/)

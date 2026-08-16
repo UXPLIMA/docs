@@ -4,7 +4,6 @@ order: 47
 description: Getting Started, Commands, Menu Guide, Progression, Roles & Protection,
   Features, Configuration, Database, Cross-Server, Integrations, Modules and Developer
   API.
-section: true
 ---
 
 - [Getting Started](getting-started/)
