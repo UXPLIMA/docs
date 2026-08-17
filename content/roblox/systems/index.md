@@ -35,7 +35,7 @@ parts every system shares, so each product's own pages can stay on what makes it
 
 | System | What it does |
 |---|---|
-| [uxrVehicleSystemPack](uxrvehiclesystempack/) | Drivable vehicles with seats, ownership and a spawn menu |
+| [uxrVehicleSystemPack](uxrvehiclesystempack/) | A dealership economy: catalog, ownership, spawn pads, fuel, radar, trunks and auctions |
 | [uxrDoor](uxrdoor/) | Doors and gates with permissions, keys and animation |
 | [uxrHandcuff](uxrhandcuff/) | Cuffing, dragging and escaping, for police roleplay |
 | [uxrPet](uxrpet/) | Followers with eggs, rarity, hatching and equipping |
