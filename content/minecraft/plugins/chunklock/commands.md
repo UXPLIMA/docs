@@ -1,6 +1,7 @@
 ---
 title: Commands
 order: 1690
+description: The single informational command, and where the real island commands live.
 icon: terminal
 ---
 

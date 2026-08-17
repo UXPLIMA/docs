@@ -1,6 +1,7 @@
 ---
 title: advanced.yml
 order: 54
+description: Threads, caching, rate limits, retries and cleanup.
 icon: gauge
 ---
 

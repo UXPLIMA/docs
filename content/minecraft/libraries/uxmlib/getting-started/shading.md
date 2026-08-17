@@ -1,6 +1,7 @@
 ---
 title: Shading and relocation
 order: 12
+description: Relocating the library, and the minimize() setting that breaks config parsing.
 icon: box
 ---
 

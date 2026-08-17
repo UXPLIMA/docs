@@ -1,6 +1,7 @@
 ---
 title: How Protection Works
 order: 300
+description: The three layers a protected action passes through before it is allowed.
 icon: book-open
 ---
 

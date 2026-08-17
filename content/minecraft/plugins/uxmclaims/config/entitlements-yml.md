@@ -1,6 +1,7 @@
 ---
 title: entitlements.yml
 order: 260
+description: Per-permission limits and costs — how many claims, warps and members a rank gets.
 icon: file-cog
 ---
 

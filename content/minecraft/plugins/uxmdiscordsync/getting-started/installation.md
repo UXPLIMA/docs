@@ -1,6 +1,7 @@
 ---
 title: Installation
 order: 12
+description: Requirements, first run, and turning features on one at a time.
 icon: download
 ---
 

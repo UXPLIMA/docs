@@ -1,6 +1,7 @@
 ---
 title: Holograms
 order: 42
+description: The text above a spawner and what it can show.
 icon: text-cursor
 ---
 

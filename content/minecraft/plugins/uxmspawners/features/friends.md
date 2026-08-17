@@ -1,6 +1,7 @@
 ---
 title: Friends
 order: 38
+description: Letting other players use a spawner without giving them the block.
 icon: user-plus
 ---
 

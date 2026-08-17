@@ -1,6 +1,7 @@
 ---
 title: uxmlib-integration
 order: 26
+description: Present-guarded hooks, native holograms, toasts and Discord webhooks.
 icon: plug
 ---
 

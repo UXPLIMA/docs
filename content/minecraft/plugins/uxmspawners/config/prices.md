@@ -1,6 +1,7 @@
 ---
 title: Prices
 order: 60
+description: Where sale prices come from, and the four price providers.
 icon: coins
 ---
 

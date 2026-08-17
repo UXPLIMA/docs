@@ -1,6 +1,7 @@
 ---
 title: PostgreSQL
 order: 400
+description: Creating the database and role, and pointing the plugin at PostgreSQL.
 icon: database
 ---
 

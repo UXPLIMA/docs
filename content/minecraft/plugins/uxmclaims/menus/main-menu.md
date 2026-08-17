@@ -1,6 +1,7 @@
 ---
 title: Main Menu (/claim)
 order: 150
+description: "The /claim hub: claiming the chunk you stand on, your claims, and public warps."
 icon: layout-grid
 ---
 

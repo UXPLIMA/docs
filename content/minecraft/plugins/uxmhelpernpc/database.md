@@ -1,6 +1,7 @@
 ---
 title: Database
 order: 70
+description: SQLite, MySQL and the Redis layer that keeps several servers in step.
 icon: database
 ---
 

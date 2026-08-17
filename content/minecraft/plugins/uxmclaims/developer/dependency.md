@@ -1,6 +1,7 @@
 ---
 title: Adding Dependency
 order: 420
+description: The one Maven or Gradle dependency, and the repository it comes from.
 icon: package
 ---
 

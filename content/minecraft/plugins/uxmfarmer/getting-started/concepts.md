@@ -1,6 +1,7 @@
 ---
 title: Concepts
 order: 12
+description: Farmers, products, levels, storage, members and the five modules.
 icon: lightbulb
 ---
 

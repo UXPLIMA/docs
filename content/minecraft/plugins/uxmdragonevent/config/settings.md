@@ -1,6 +1,7 @@
 ---
 title: settings
 order: 51
+description: The settings block in full, and the command-blocking rules beside it.
 icon: sliders-horizontal
 ---
 

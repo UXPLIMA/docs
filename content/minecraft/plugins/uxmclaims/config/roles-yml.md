@@ -1,6 +1,7 @@
 ---
 title: roles.yml
 order: 250
+description: The three built-in roles, custom role defaults, and permission lists.
 icon: file-cog
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Breaking Rules
 order: 40
+description: "Break management: who may break a spawner, with what, and what drops."
 icon: pickaxe
 ---
 

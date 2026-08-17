@@ -1,6 +1,7 @@
 ---
 title: Database
 order: 52
+description: The five backends, connection pooling, and what multi-server requires.
 icon: database
 ---
 

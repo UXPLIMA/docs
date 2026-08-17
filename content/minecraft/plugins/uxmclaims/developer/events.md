@@ -1,6 +1,7 @@
 ---
 title: Events
 order: 440
+description: Every event the plugin fires, and why they may arrive off the main thread.
 icon: zap
 ---
 

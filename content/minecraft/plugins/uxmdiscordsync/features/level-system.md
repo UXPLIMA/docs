@@ -1,6 +1,7 @@
 ---
 title: Level system
 order: 34
+description: Text and voice XP, the level curve, and rewards paid in Minecraft.
 icon: trophy
 ---
 

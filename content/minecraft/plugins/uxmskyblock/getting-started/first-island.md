@@ -1,6 +1,7 @@
 ---
 title: Your First Island
 order: 490
+description: A player's first island, step by step, from /is to a working base.
 icon: flag
 ---
 

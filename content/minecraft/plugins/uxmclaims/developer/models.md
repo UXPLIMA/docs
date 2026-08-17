@@ -1,6 +1,7 @@
 ---
 title: Domain Models
 order: 460
+description: Claim, Member, Role and the rest of the domain types you will read.
 icon: boxes
 ---
 

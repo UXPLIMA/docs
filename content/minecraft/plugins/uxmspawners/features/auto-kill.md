@@ -1,6 +1,7 @@
 ---
 title: Auto-Kill
 order: 34
+description: Modern auto-kill, what it costs, and making it work with a stacker.
 icon: swords
 ---
 

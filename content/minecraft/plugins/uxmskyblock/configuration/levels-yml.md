@@ -1,6 +1,7 @@
 ---
 title: levels.yml
 order: 780
+description: Turning total points into a level, one requirement per tier.
 icon: file-cog
 ---
 

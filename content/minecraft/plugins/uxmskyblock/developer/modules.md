@@ -1,6 +1,7 @@
 ---
 title: Writing a Module
 order: 880
+description: Building a drop-in module jar against the island API.
 icon: blocks
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: The packet layer
 order: 31
+description: The clean-room packet foundation, why it exists, and why it is unstable.
 icon: flask-conical
 ---
 

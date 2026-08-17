@@ -1,6 +1,7 @@
 ---
 title: messages.yml
 order: 270
+description: Every message, its type — chat, title or action bar — and its placeholders.
 icon: message-square
 ---
 

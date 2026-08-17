@@ -1,6 +1,7 @@
 ---
 title: Installation
 order: 480
+description: Requirements, the optional dependencies, and the first start.
 icon: download
 ---
 

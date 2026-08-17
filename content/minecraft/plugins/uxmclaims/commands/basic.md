@@ -1,6 +1,7 @@
 ---
 title: Basic Commands
 order: 70
+description: "The everyday commands: claiming, trusting, flags, and the confirm step."
 icon: terminal
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: config.yml
 order: 51
+description: The bot, multi-server, linking, localization and the embed palette.
 icon: file-cog
 ---
 

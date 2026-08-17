@@ -1,6 +1,7 @@
 ---
 title: uxmlib-common
 order: 21
+description: Text, the Folia-ready scheduler, typed config, i18n and the utilities.
 icon: box
 ---
 

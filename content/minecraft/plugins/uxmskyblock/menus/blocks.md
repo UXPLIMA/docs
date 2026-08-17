@@ -1,6 +1,7 @@
 ---
 title: Block Values
 order: 630
+description: The in-game view of block-values.yml, paginated.
 icon: blocks
 ---
 

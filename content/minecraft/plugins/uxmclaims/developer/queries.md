@@ -1,6 +1,7 @@
 ---
 title: Query API
 order: 430
+description: Reading claim state through ClaimFacade without mutating anything.
 icon: search
 ---
 

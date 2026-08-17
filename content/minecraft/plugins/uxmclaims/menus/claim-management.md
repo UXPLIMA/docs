@@ -1,6 +1,7 @@
 ---
 title: Claim Management
 order: 160
+description: The settings panel for a single claim, and everything reachable from it.
 icon: square-pen
 ---
 

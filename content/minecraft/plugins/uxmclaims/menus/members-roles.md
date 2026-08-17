@@ -1,6 +1,7 @@
 ---
 title: Members & Roles
 order: 170
+description: The member list, assigning roles, and removing someone.
 icon: users
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Integrations
 order: 60
+description: Region, economy and interaction hooks, and the plugins uxmHelperNPC notices on its own.
 icon: plug
 ---
 

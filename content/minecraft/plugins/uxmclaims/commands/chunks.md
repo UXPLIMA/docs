@@ -1,6 +1,7 @@
 ---
 title: Chunk Commands
 order: 110
+description: Claiming, unclaiming and inspecting the 16x16 chunks a claim is made of.
 icon: grid-3x3
 ---
 

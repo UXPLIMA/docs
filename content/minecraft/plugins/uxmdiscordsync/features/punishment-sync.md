@@ -1,6 +1,7 @@
 ---
 title: Punishment sync
 order: 39
+description: Mapping bans, mutes and kicks between Minecraft and Discord, both ways.
 icon: gavel
 ---
 

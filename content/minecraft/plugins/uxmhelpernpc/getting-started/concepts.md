@@ -1,6 +1,7 @@
 ---
 title: Basic Concepts
 order: 14
+description: The NPC, its owner, menus, actions and the settings that follow it.
 icon: lightbulb
 ---
 

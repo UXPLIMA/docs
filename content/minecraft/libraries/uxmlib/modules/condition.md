@@ -1,6 +1,7 @@
 ---
 title: uxmlib-condition
 order: 28
+description: The condition operators and the bracketed action types, both parsed once.
 icon: git-branch
 ---
 

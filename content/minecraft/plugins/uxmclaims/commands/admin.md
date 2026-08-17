@@ -1,6 +1,7 @@
 ---
 title: Admin Commands
 order: 140
+description: Staff commands behind uxmclaims.admin for managing any claim on the server.
 icon: shield-user
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: uxmlib-item
 order: 22
+description: ItemBuilder, player heads, component-safe serialization and persistent data.
 icon: sword
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Discord announcements
 order: 38
+description: Countdown, start and result embeds, posted by the built-in bot.
 icon: megaphone
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 410
+description: The hexagonal, CQRS architecture and how the API layers fit together.
 icon: book-open
 ---
 

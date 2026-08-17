@@ -1,6 +1,7 @@
 ---
 title: Concepts
 order: 13
+description: The link, server names, link and reward modes, and webhooks versus the bot.
 icon: lightbulb
 ---
 

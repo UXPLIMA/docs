@@ -1,6 +1,7 @@
 ---
 title: config.yml
 order: 240
+description: "The main settings file: database, economy, visualizer, integrations and limits."
 icon: file-cog
 ---
 

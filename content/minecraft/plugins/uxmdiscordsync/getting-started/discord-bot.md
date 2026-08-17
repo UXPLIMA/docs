@@ -1,6 +1,7 @@
 ---
 title: Creating the bot
 order: 11
+description: Creating the application, the intents it needs, and where the IDs come from.
 icon: bot
 ---
 

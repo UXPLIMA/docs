@@ -1,6 +1,7 @@
 ---
 title: Warp Commands
 order: 100
+description: Creating, deleting and publishing warps inside a claim.
 icon: map-pin
 ---
 

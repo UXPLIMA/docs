@@ -1,6 +1,7 @@
 ---
 title: Languages
 order: 55
+description: The Minecraft message files, and the Discord text that lives elsewhere.
 icon: languages
 ---
 

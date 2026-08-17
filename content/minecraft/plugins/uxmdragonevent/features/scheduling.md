@@ -1,6 +1,7 @@
 ---
 title: Scheduling
 order: 32
+description: The weekly timetable, its timezone, and telling players when the next one is.
 icon: calendar-clock
 ---
 

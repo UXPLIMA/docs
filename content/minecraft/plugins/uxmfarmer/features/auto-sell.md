@@ -1,6 +1,7 @@
 ---
 title: Auto Sell
 order: 34
+description: Selling a product the moment its storage fills, and the tax that applies.
 icon: banknote
 ---
 

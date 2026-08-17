@@ -1,6 +1,7 @@
 ---
 title: Basic Concepts
 order: 50
+description: Chunks, claims, roles and flags — the four ideas everything else builds on.
 icon: lightbulb
 ---
 

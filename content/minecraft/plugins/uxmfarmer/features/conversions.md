@@ -1,6 +1,7 @@
 ---
 title: Conversions
 order: 38
+description: Turning stored products into other products inside the farmer.
 icon: refresh-cw
 ---
 

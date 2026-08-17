@@ -1,6 +1,7 @@
 ---
 title: Map Plugins
 order: 370
+description: Drawing claim borders on Dynmap, BlueMap and squaremap.
 icon: map
 ---
 

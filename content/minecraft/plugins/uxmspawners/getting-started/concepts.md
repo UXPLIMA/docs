@@ -1,6 +1,7 @@
 ---
 title: Basic Concepts
 order: 14
+description: Spawner types, storage, modules and how a spawner differs from a vanilla one.
 icon: lightbulb
 ---
 

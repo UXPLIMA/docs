@@ -1,6 +1,7 @@
 ---
 title: WorldGuard
 order: 360
+description: Refusing claims that overlap a WorldGuard region.
 icon: shield
 ---
 

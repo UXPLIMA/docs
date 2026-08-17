@@ -1,6 +1,7 @@
 ---
 title: Rank and nickname sync
 order: 32
+description: Mapping LuckPerms groups to Discord roles, and formatting nicknames.
 icon: users-round
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Integrations
 order: 60
+description: Shop, stacker and protection plugins, and the settings each one needs.
 icon: plug
 ---
 

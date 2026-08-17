@@ -1,6 +1,7 @@
 ---
 title: Installation
 order: 11
+description: Requirements, optional integrations, first run and the files it writes.
 icon: download
 ---
 

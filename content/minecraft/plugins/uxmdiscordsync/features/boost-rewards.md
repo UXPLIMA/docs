@@ -1,6 +1,7 @@
 ---
 title: Boost rewards
 order: 35
+description: Rewarding a Discord boost with a command in game.
 icon: rocket
 ---
 

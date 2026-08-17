@@ -1,6 +1,7 @@
 ---
 title: Welcome
 order: 20
+description: What uxmClaims protects, and what claiming a chunk actually does.
 icon: door-open
 ---
 

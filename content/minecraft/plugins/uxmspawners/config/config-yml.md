@@ -1,6 +1,7 @@
 ---
 title: config.yml
 order: 52
+description: Worlds, blocks, mob behaviour, auto-save and the spawner list.
 icon: file-cog
 ---
 

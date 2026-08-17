@@ -1,6 +1,7 @@
 ---
 title: Placeholders
 order: 60
+description: The event, both leaderboards and the schedule, as placeholders.
 icon: braces
 ---
 

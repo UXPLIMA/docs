@@ -1,6 +1,7 @@
 ---
 title: Loot Tables
 order: 58
+description: Writing a loot table, and what the chance and range fields mean.
 icon: list
 ---
 

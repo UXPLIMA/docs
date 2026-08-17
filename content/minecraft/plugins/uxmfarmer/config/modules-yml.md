@@ -1,6 +1,7 @@
 ---
 title: modules.yml
 order: 53
+description: The five modules, the farm manager, and why permissions check the owner.
 icon: toggle-right
 ---
 

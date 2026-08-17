@@ -1,6 +1,7 @@
 ---
 title: The dragon
 order: 31
+description: Health, damage, rebirths, glow, piñata mode and custom models.
 icon: flame
 ---
 

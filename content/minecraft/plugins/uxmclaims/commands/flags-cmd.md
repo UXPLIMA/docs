@@ -1,6 +1,7 @@
 ---
 title: Flag Commands
 order: 130
+description: Setting, toggling and listing claim flags from chat.
 icon: flag
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Auto Kill
 order: 33
+description: Killing configured mobs, and separating spawner output from breeding.
 icon: swords
 ---
 

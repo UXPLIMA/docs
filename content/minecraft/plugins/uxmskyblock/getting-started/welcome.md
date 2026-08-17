@@ -1,6 +1,7 @@
 ---
 title: Welcome
 order: 470
+description: A config-first skyblock for Paper 1.21.4, and what it gives every player.
 icon: door-open
 ---
 

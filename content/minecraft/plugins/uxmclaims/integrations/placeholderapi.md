@@ -1,6 +1,7 @@
 ---
 title: PlaceholderAPI
 order: 350
+description: Every placeholder the plugin exposes, and the fallback text when outside a claim.
 icon: braces
 ---
 

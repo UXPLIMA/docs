@@ -1,6 +1,7 @@
 ---
 title: First plugin
 order: 13
+description: A menu opened from a command, using common, item, gui and command.
 icon: play
 ---
 

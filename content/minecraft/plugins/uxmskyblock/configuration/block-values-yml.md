@@ -1,6 +1,7 @@
 ---
 title: block-values.yml
 order: 770
+description: What each block is worth in points, and how that drives island level.
 icon: file-cog
 ---
 

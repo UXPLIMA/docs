@@ -1,6 +1,7 @@
 ---
 title: All Claim Flags
 order: 310
+description: Every claim flag, what it affects, and its default value.
 icon: flag
 ---
 

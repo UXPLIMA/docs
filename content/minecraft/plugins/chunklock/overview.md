@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 1660
+description: A shared chunk grid where every island starts boxed in and unlocks outward.
 icon: book-open
 ---
 

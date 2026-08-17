@@ -1,6 +1,7 @@
 ---
 title: Permissions
 order: 70
+description: Admin nodes, the storage tiers and a working default group.
 icon: key
 ---
 

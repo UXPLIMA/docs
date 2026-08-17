@@ -1,6 +1,7 @@
 ---
 title: Permissions
 order: 70
+description: The seven permissions, and which of them are safe to give away.
 icon: shield-check
 ---
 

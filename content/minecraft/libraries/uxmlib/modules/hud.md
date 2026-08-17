@@ -1,6 +1,7 @@
 ---
 title: uxmlib-hud
 order: 27
+description: A flicker-free sidebar, titles, action bar, boss bars and tablist.
 icon: monitor
 ---
 

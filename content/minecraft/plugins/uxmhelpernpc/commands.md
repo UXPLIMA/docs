@@ -1,6 +1,7 @@
 ---
 title: Commands
 order: 20
+description: Every player and admin command, with the permission each one checks.
 icon: terminal
 ---
 

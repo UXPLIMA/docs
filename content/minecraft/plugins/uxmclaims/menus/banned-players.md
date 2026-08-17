@@ -1,6 +1,7 @@
 ---
 title: Banned Players
 order: 180
+description: "The ban list screen: who is barred from the claim, and unbanning them."
 icon: user-x
 ---
 

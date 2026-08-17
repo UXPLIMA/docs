@@ -1,6 +1,7 @@
 ---
 title: Installation
 order: 11
+description: Coordinates, Gradle and Maven, the BOM, and shading versus the standalone jar.
 icon: download
 ---
 

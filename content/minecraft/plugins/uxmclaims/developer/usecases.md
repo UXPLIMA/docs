@@ -1,6 +1,7 @@
 ---
 title: Use Cases
 order: 450
+description: Building a command object and running it through the facade.
 icon: workflow
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: XP Collector
 order: 35
+description: Collecting experience from nearby deaths, and pricing it.
 icon: sparkles
 ---
 

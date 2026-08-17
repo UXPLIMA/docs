@@ -1,6 +1,7 @@
 ---
 title: Role Commands
 order: 90
+description: Creating custom roles, setting priority, and granting role permissions.
 icon: user-cog
 ---
 

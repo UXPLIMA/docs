@@ -1,6 +1,7 @@
 ---
 title: Custom Discord commands
 order: 53
+description: "One file per Discord command: type, restrictions, embed and placeholders."
 icon: message-square-code
 ---
 

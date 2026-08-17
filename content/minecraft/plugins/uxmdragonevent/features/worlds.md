@@ -1,6 +1,7 @@
 ---
 title: Worlds and the border
 order: 34
+description: The arena, vanilla or custom, the world border and end crystals.
 icon: globe
 ---
 

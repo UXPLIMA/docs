@@ -1,6 +1,7 @@
 ---
 title: Rewards
 order: 36
+description: Static and randomized rewards for last hits, the top three and everyone else.
 icon: gift
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: SQLite (Easy)
 order: 380
+description: The zero-setup default backend, and when to move off it.
 icon: database
 ---
 

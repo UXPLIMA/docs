@@ -1,6 +1,7 @@
 ---
 title: Spawner Types
 order: 54
+description: Defining a spawner type in ENTITY or ITEM mode.
 icon: boxes
 ---
 

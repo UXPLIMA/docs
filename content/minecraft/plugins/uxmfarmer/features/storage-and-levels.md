@@ -1,6 +1,7 @@
 ---
 title: Storage and Levels
 order: 36
+description: Per-product levels, capacity, requirements and upgrading everything at once.
 icon: chart-no-axes-column-increasing
 ---
 

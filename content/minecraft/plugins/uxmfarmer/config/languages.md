@@ -1,6 +1,7 @@
 ---
 title: Languages and menus
 order: 56
+description: Messages, ranks, conversions and the menu files.
 icon: languages
 ---
 

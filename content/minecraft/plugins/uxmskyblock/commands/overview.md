@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 510
+description: The /island root, its configurable aliases, and how the tree is organised.
 icon: book-open
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: MySQL
 order: 390
+description: Creating the database and user, and pointing the plugin at MySQL.
 icon: database
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Data files
 order: 52
+description: The three files the plugin writes, and what to back up.
 icon: database
 ---
 

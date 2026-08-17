@@ -1,6 +1,7 @@
 ---
 title: Member Commands
 order: 80
+description: Advanced member management for owners who prefer commands to menus.
 icon: users
 ---
 

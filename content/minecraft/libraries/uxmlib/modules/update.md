@@ -1,6 +1,7 @@
 ---
 title: uxmlib-update
 order: 29
+description: A notify-only release checker that never downloads anything.
 icon: refresh-cw
 ---
 

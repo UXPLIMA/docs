@@ -1,6 +1,7 @@
 ---
 title: Setting up the event
 order: 12
+description: Setting the spawn points, building the portal, and testing before scheduling.
 icon: map-pin
 ---
 

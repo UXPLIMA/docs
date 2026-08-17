@@ -1,6 +1,7 @@
 ---
 title: Menu Customization
 order: 290
+description: The 27 menu files, their shared structure, and how to re-skin any screen.
 icon: layout-grid
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Account linking
 order: 31
+description: The link flow, its embeds, post-link commands and fixing a bad pairing.
 icon: link-2
 ---
 

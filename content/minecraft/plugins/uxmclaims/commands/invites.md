@@ -1,6 +1,7 @@
 ---
 title: Invite Commands
 order: 120
+description: Sending, accepting, declining and revoking invitations to a claim.
 icon: user-plus
 ---
 

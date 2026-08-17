@@ -1,6 +1,7 @@
 ---
 title: Permissions
 order: 80
+description: Module, command and tiered permissions, and a working default group.
 icon: shield-check
 ---
 

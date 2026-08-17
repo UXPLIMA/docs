@@ -1,6 +1,7 @@
 ---
 title: Leaderboards
 order: 37
+description: The event damage board, the all-time boards, and the statistics behind them.
 icon: trophy
 ---
 

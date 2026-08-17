@@ -1,6 +1,7 @@
 ---
 title: Modules
 order: 56
+description: The module files, and the switches every module shares.
 icon: blocks
 ---
 

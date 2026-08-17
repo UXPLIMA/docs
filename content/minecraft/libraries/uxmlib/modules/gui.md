@@ -1,6 +1,7 @@
 ---
 title: uxmlib-gui
 order: 23
+description: Menu types, per-viewer items, navigation, text input and menus from config.
 icon: layout-grid
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Products and levels
 order: 54
+description: collected-materials.yml, the default ladder, and the items the plugin gives out.
 icon: package
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Invitations
 order: 190
+description: Pending invitations, and cancelling one before it is answered.
 icon: user-plus
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Presentation
 order: 39
+description: Sounds, titles, the second boss bar, messages and start/end commands.
 icon: sparkles
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Joining
 order: 33
+description: The portal, the command, the entry fee, the IP limit and flight.
 icon: door-open
 ---
 

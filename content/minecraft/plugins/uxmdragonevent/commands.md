@@ -1,6 +1,7 @@
 ---
 title: Commands
 order: 20
+description: Player and admin commands, and what players may run during an event.
 icon: terminal
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Flags
 order: 230
+description: Toggling the claim-wide rules — PvP, explosions, fire, mob spawning.
 icon: flag
 ---
 

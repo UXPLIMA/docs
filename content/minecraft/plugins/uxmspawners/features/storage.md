@@ -1,6 +1,7 @@
 ---
 title: Storage & Selling
 order: 32
+description: Virtual and XP storage, capacity tiers and selling from the menu.
 icon: archive
 ---
 

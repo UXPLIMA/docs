@@ -1,6 +1,7 @@
 ---
 title: Quick Installation
 order: 30
+description: Requirements, supported server software, and the first start.
 icon: download
 ---
 

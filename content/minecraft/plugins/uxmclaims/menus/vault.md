@@ -1,6 +1,7 @@
 ---
 title: Vault (Storage)
 order: 210
+description: The shared storage every member with the permission can open.
 icon: landmark
 ---
 

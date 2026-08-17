@@ -1,6 +1,7 @@
 ---
 title: Architecture
 order: 30
+description: The rules uxmLib is written to, and what they mean for a plugin built on it.
 icon: blocks
 ---
 

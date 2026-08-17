@@ -1,6 +1,7 @@
 ---
 title: Installation
 order: 12
+description: Requirements, first run, and the settings to fix before opening the server.
 icon: download
 ---
 

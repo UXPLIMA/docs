@@ -1,6 +1,7 @@
 ---
 title: Permissions
 order: 60
+description: Command nodes, the two Discord-side authorisation lists, and suggested groups.
 icon: shield-check
 ---
 

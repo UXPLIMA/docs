@@ -1,6 +1,7 @@
 ---
 title: Warps
 order: 220
+description: Creating warps inside a claim and making them public.
 icon: map-pin
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Languages
 order: 56
+description: Message and menu files, and how to add a language of your own.
 icon: languages
 ---
 

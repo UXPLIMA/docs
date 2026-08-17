@@ -1,6 +1,7 @@
 ---
 title: Upgrades
 order: 610
+description: The upgrades screen, filled automatically from upgrades.yml.
 icon: chevrons-up
 ---
 

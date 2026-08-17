@@ -1,6 +1,7 @@
 ---
 title: uxmlib-storage
 order: 25
+description: Pooled JDBC, a safe query builder, migrations, caches and cross-server sync.
 icon: database
 ---
 

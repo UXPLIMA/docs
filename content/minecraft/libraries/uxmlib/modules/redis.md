@@ -1,6 +1,7 @@
 ---
 title: uxmlib-redis
 order: 30
+description: A binary pub/sub bus for the servers sharing one Redis.
 icon: radio
 ---
 

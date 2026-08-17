@@ -1,6 +1,7 @@
 ---
 title: Two-factor login
 order: 33
+description: "Approving a login from Discord: the freeze, GeoIP, denial and the IP whitelist."
 icon: shield-check
 ---
 

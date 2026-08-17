@@ -1,6 +1,7 @@
 ---
 title: All Role Permissions
 order: 320
+description: Every role permission a member can hold inside a claim.
 icon: key
 ---
 

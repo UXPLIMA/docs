@@ -1,6 +1,7 @@
 ---
 title: Commands
 order: 20
+description: The admin command and its subcommands, with tab completion and the one-way convert.
 icon: terminal
 ---
 

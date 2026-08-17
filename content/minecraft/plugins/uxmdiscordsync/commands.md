@@ -1,6 +1,7 @@
 ---
 title: Commands
 order: 20
+description: Minecraft commands from commands.yml, and the Discord slash commands.
 icon: terminal
 ---
 

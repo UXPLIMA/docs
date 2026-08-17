@@ -1,6 +1,7 @@
 ---
 title: Claim Map
 order: 200
+description: The chunk grid around your claim, colour-coded by owner.
 icon: map
 ---
 

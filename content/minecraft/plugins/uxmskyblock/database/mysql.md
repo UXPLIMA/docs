@@ -1,6 +1,7 @@
 ---
 title: MySQL
 order: 810
+description: The backend required for cross-server islands behind a proxy.
 icon: database
 ---
 

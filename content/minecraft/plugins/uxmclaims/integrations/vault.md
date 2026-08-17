@@ -1,6 +1,7 @@
 ---
 title: Vault (Economy)
 order: 340
+description: Charging for claims, warps and upgrades through any Vault economy.
 icon: landmark
 ---
 

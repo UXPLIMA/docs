@@ -1,6 +1,7 @@
 ---
 title: Server stats and presence
 order: 37
+description: The live stats embed, bot presence and the voice-channel presence.
 icon: activity
 ---
 

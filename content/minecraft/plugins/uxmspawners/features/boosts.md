@@ -1,6 +1,7 @@
 ---
 title: Boosts
 order: 36
+description: Spawn-amount and spawn-time boosts, as items players apply.
 icon: zap
 ---
 

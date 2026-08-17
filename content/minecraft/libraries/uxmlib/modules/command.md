@@ -1,6 +1,7 @@
 ---
 title: uxmlib-command
 order: 24
+description: The annotation DSL, the Brigadier facade, and the extension points.
 icon: terminal
 ---
 

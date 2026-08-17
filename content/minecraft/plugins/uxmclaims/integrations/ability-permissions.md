@@ -1,6 +1,7 @@
 ---
 title: Ability Permissions
 order: 330
+description: The Bukkit permissions that decide what a player may do with claims at all.
 icon: key
 ---
 

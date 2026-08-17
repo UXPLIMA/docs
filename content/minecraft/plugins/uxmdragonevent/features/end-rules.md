@@ -1,6 +1,7 @@
 ---
 title: End rules
 order: 35
+description: The twenty rules that decide what kind of fight happens inside.
 icon: scale
 ---
 

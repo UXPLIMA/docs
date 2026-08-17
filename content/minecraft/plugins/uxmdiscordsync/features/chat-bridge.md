@@ -1,6 +1,7 @@
 ---
 title: Chat bridge
 order: 36
+description: Carrying chat both ways between one Discord channel and Minecraft.
 icon: messages-square
 ---
 

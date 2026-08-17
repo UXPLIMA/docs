@@ -1,6 +1,7 @@
 ---
 title: Production
 order: 31
+description: Measuring output and income per minute, hour and day.
 icon: trending-up
 ---
 

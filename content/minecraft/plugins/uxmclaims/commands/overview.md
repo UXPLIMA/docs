@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 60
+description: How the command tree is organised, and when to use it instead of the menus.
 icon: book-open
 ---
 
