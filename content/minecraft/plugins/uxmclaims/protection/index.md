@@ -1,10 +1,10 @@
 ---
-title: Protection System
+title: Protection
 order: 30
-description: How Protection Works, All Claim Flags and All Role Permissions.
+description: How a protected action is decided, every flag, and every role permission.
 icon: shield
 ---
 
-- [How Protection Works](overview.md)
-- [All Claim Flags](flags.md)
-- [All Role Permissions](permissions.md)
+- [How protection works](overview.md)
+- [Flags](flags.md)
+- [Role permissions](permissions.md)

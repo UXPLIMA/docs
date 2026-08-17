@@ -1,189 +1,47 @@
 ---
-title: Claim Map
-order: 200
-description: The chunk grid around your claim, colour-coded by owner.
+title: The chunk map
+order: 404
+description: The grid of chunks around your claim, and buying land from it.
 icon: map
 ---
 
-## How to Open This Menu
+`menu/claim_map.yml`, opened from claim management or by `/claim chunk view`.
 
-1. Open claim management (`/claim` → My Claims → your claim)
-2. Click **Claim Map** (`claimMap`)
+A grid of glass panes centred on your claim. Each pane is one chunk, coloured by who owns it.
 
----
+| Colour | Meaning |
+|---|---|
+| Your claim's main chunk | The chunk holding the claim block, hologram and spawn |
+| Your claim's other chunks | Land you already own |
+| An ally's chunk | A claim you are a member of |
+| An enemy chunk | Someone else's claim |
+| Empty | Wilderness |
 
-## What Is This Menu For?
+Clicking a free chunk that touches your claim buys it. Clicking one of your own removes it — subject
+to the connectivity rule.
 
-The map shows a grid of chunks centered on your claim. Each chunk is displayed as a colored glass pane showing who owns
-it. You can:
+## Rules the map enforces
 
-- See which chunks you own
-- See which chunks belong to others
-- Buy new chunks to expand your claim
-- Remove chunks you no longer need
+- **New chunks must touch the claim.** A pane not adjacent to your land answers *"You can only claim
+  chunks connected to your claim."*
+- **A chunk holding the claim together cannot be removed.** *"Cannot delete this chunk! It connects
+  other chunks to the claim."*
+- **The main chunk cannot be removed at all.** Delete the claim instead.
+- **`claimSettings.minDistance` still applies.** Default `2` chunks of clearance from another player's
+  land.
 
----
+## Costs and limits
 
-## Chunk Types (Items)
+| | Node | Default |
+|---|---|---|
+| Price per chunk | `uxmclaims.cost.chunk.<count>.<price>` | `25.0` |
+| Chunks a player may hold | `uxmclaims.limit.chunk.<n>` | `10`, stacking |
 
-### `mainClaim` - Your Claim's Core Chunk
+The limit is across all of a player's claims, not per claim.
 
-**Icon:** Lime Stained Glass (glowing) 🟢✨
+<Callout type="tip" title="The map is also the fastest way to see what is around you">
 
-**What it is:** The original chunk where you created your claim. This is the "heart" of your claim.
+`/claim showborders` draws the same information in the world, but the map shows chunks you cannot see
+from where you stand — which is what you want before deciding where to expand.
 
-**Shows:**
-
-- Owner name
-- Claim name
-- Chunk coordinates
-
-**Important:** You cannot remove this chunk. To remove it, you must delete the entire claim.
-
----
-
-### `subClaim` - Claimed Chunk
-
-**Icon:** Green Stained Glass 🟩
-
-**What it is:** Additional chunks you've added to your claim (expansions).
-
-**Shows:**
-
-- Owner name
-- Claim name
-- Chunk coordinates
-
-**Click to:** Remove this chunk from your claim (returns to wilderness).
-
----
-
-### `allyMainClaim` - Ally Claim's Core Chunk
-
-**Icon:** Light Blue Stained Glass (glowing) 🔵✨
-
-**What it is:** The core chunk of a claim you're a member of.
-
-**Shows:**
-
-- Owner name (your ally)
-- Claim name
-- Chunk coordinates
-
----
-
-### `allySubClaim` - Ally Claimed Chunk
-
-**Icon:** Blue Stained Glass 🟦
-
-**What it is:** An expansion chunk of a claim you're a member of.
-
----
-
-### `enemyClaim` - Enemy Claim
-
-**Icon:** Red Stained Glass 🟥
-
-**What it is:** A chunk owned by someone you're not a member of (stranger).
-
-**Shows:**
-
-- Owner name
-- Claim name
-- Chunk coordinates
-
-You cannot interact with this chunk.
-
----
-
-### `empty` - Wilderness
-
-**Icon:** Gray Stained Glass ⬜
-
-**What it is:** An unclaimed chunk that nobody owns yet.
-
-**Shows:**
-
-- Chunk coordinates
-- Cost to claim
-
-**Click to:** Purchase this chunk and add it to your claim.
-
-**Requirements:**
-
-- The chunk must be adjacent to your existing claim (connected)
-- You must have chunk slots remaining
-- You must have enough money (if economy is enabled)
-
----
-
-## Navigation Items
-
-### `up` - Go Up
-
-**Icon:** Arrow ⬆️
-
-Scrolls the map view upward (north).
-
----
-
-### `down` - Go Down
-
-**Icon:** Arrow ⬇️
-
-Scrolls the map view downward (south).
-
----
-
-### `left` - Go Left
-
-**Icon:** Arrow ⬅️
-
-Scrolls the map view to the left (west).
-
----
-
-### `right` - Go Right
-
-**Icon:** Arrow ➡️
-
-Scrolls the map view to the right (east).
-
----
-
-## Action Items
-
-### `removeLatestChunk` - Remove Last Chunk
-
-**Icon:** Flint and Steel 🔥
-
-**What it does:** Removes the most recently added chunk from your claim.
-
-**Use this when:**
-
-- You made a mistake and claimed the wrong chunk
-- You want to quickly undo your last expansion
-
----
-
-### `back` - Close
-
-**Icon:** Barrier ❌
-
-Closes the map and returns to claim management.
-
----
-
-## Tips for Using the Map
-
-1. **Plan your shape** - Claims can be any shape, but connected squares work best
-2. **Expand strategically** - Claim the chunks you actually need
-3. **Watch your limits** - You have a maximum chunk count
-4. **Check the cost** - Each chunk may cost money
-
----
-
-## Next Steps
-
-- [📦 Vault](../menus/vault.md) - Shared storage for your claim
-- [📍 Warps](../menus/warps.md) - Create teleport points
+</Callout>

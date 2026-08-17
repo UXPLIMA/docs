@@ -1,16 +1,17 @@
 ---
 title: uxmClaims
 order: 2
-description: Getting Started, Commands, Menu Guide, Configuration, Protection System,
-  Integrations, Database Setup and Developer API.
+description: Chunk-based land protection with roles, flags and a GUI for everything.
 icon: land-plot
 ---
 
 - [Getting Started](getting-started/)
 - [Commands](commands/)
-- [Menu Guide](menus/)
+- [Menus](menus/)
+- [Protection](protection/)
 - [Configuration](config/)
-- [Protection System](protection/)
+- [Permissions](permissions/)
+- [Placeholders](placeholders/)
 - [Integrations](integrations/)
-- [Database Setup](database/)
+- [Database](database/)
 - [Developer API](developer/)

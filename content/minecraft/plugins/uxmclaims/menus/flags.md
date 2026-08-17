@@ -1,145 +1,43 @@
 ---
 title: Flags
-order: 230
-description: Toggling the claim-wide rules — PvP, explosions, fire, mob spawning.
+order: 405
+description: Turning the claim-wide rules on and off.
 icon: flag
 ---
 
-## How to Open
+`menu/claim_flags.yml`, opened from claim management.
 
-1. Open claim management
-2. Click **Claim Flags** (`changeFlag`)
+Every one of the 32 [flags](../protection/flags.md) appears as an item showing its current state.
+Clicking toggles it.
 
----
+A flag being **on** means the thing is permitted. Turning `FIRE_SPREAD` off stops fire spreading;
+turning it on lets it spread again.
 
-## What Is This Menu For?
+## What each toggle needs
 
-Flags are global rules that control the "physics" of your claim:
+`uxmclaims.ability.claim.flag.<FLAG>` for that specific flag, or `…flag.*` for all of them. Flags a
+player may not change are shown but refuse on click.
 
-- Whether explosions work
-- Whether fire spreads
-- Whether mobs spawn
-- Whether PvP is allowed
+This is per-flag on purpose. Granting `uxmclaims.ability.claim.flag.KEEP_INVENTORY` and
+`…flag.MOB_SPAWNING` lets players tune the things that affect only them, while PvP stays a server
+decision.
 
----
+## The groups on screen
 
-## How Flags Work
+| Group | Flags |
+|---|---|
+| Security and damage | `PVP`, `KEEP_INVENTORY`, `CREEPER_DAMAGE`, `WITHER_DAMAGE`, `FIRE_SPREAD`, `LIGHTNING_DAMAGE`, `MOB_GRIEFING` |
+| Explosions | `TNT_EXPLOSIONS`, `END_CRYSTAL_DAMAGE`, `BED_EXPLOSION`, `FIREBALL_DAMAGE`, `DRAGON_DAMAGE`, `RESPAWN_ANCHOR_EXPLOSION` |
+| World mechanics | `FLUID_FLOW`, `PISTON_PUSH`, `LEAF_DECAY`, `ICE_MELT`, `BLOCK_FADE`, `BLOCK_FORM`, `ENTITY_BLOCK_FORM`, `STRUCTURE_GROW`, `NATURE_SPREAD` |
+| Blocks | `CORAL_FADE`, `SCULK_SPREAD`, `REDSTONE` |
+| Spawning | `MOB_SPAWNING`, `SPAWN_ANIMALS`, `SPAWN_MONSTERS`, `SPAWN_PHANTOMS` |
+| Mob behaviour | `ENDERMAN_PICKUP`, `ZOMBIE_DOOR_BREAK`, `SILVERFISH_INFEST` |
 
-Each flag appears as an item in the menu:
+## Two that surprise people
 
-- **Green** = Flag is ON (behavior allowed)
-- **Red** = Flag is OFF (behavior blocked)
+- **`MOB_SPAWNING` is a master switch.** Off, nothing spawns naturally regardless of the three
+  specific spawn flags. A player turning it off to stop creepers also stops their cow farm.
+- **`REDSTONE` off breaks farms.** It stops redstone components firing entirely, which is heavier than
+  most players expect from the name.
 
-**Click to toggle** between enabled and disabled.
-
----
-
-## All 31 Flags
-
-### 💥 Security & Damage
-
-| Flag               | What It Controls         |
-|--------------------|--------------------------|
-| `PVP`              | Player vs player combat  |
-| `CREEPER_DAMAGE`   | Creeper explosion damage |
-| `WITHER_DAMAGE`    | Wither boss damage       |
-| `FIRE_SPREAD`      | Fire spreading to blocks |
-| `LIGHTNING_DAMAGE` | Lightning fire/damage    |
-| `MOB_GRIEFING`     | Mobs changing blocks     |
-
-### 🌍 World Mechanics
-
-| Flag                | What It Controls             |
-|---------------------|------------------------------|
-| `FLUID_FLOW`        | Water and lava spreading     |
-| `PISTON_PUSH`       | Pistons moving blocks        |
-| `LEAF_DECAY`        | Leaves disappearing          |
-| `ICE_MELT`          | Ice melting                  |
-| `BLOCK_FADE`        | Coral dying, farmland drying |
-| `BLOCK_FORM`        | Snow/ice forming naturally   |
-| `ENTITY_BLOCK_FORM` | Entities creating blocks     |
-| `STRUCTURE_GROW`    | Trees/mushrooms growing      |
-| `NATURE_SPREAD`     | Grass/vines spreading        |
-
-### 🐾 Mob Spawning
-
-| Flag             | What It Controls                 |
-|------------------|----------------------------------|
-| `MOB_SPAWNING`   | All mob spawning (master switch) |
-| `SPAWN_ANIMALS`  | Passive mob spawning             |
-| `SPAWN_MONSTERS` | Hostile mob spawning             |
-| `SPAWN_PHANTOMS` | Phantom spawning                 |
-
-### 🦴 Mob Behavior
-
-| Flag               | What It Controls         |
-|--------------------|--------------------------|
-| `ENDERMAN_PICKUP`  | Endermen picking blocks  |
-| `ZOMBIE_DOOR_BREAK`| Zombies breaking doors   |
-| `SILVERFISH_INFEST`| Silverfish infesting     |
-
-### 🧱 Block Mechanics
-
-| Flag          | What It Controls        |
-|---------------|-------------------------|
-| `CORAL_FADE`  | Coral dying out of water|
-| `SCULK_SPREAD`| Sculk spreading         |
-| `REDSTONE`    | Redstone mechanisms     |
-
-### 💣 Explosions
-
-| Flag                      | What It Controls            |
-|---------------------------|-----------------------------|
-| `TNT_EXPLOSIONS`          | TNT block damage            |
-| `END_CRYSTAL_DAMAGE`      | End crystal explosions      |
-| `BED_EXPLOSION`           | Bed explosions (Nether/End) |
-| `FIREBALL_DAMAGE`         | Ghast/Blaze fireballs       |
-| `DRAGON_DAMAGE`           | Ender Dragon destruction    |
-| `RESPAWN_ANCHOR_EXPLOSION`| Respawn anchor explosions   |
-
----
-
-## Recommended Settings
-
-### Safe Base
-
-Turn OFF:
-
-- `PVP`
-- `TNT_EXPLOSIONS`
-- `CREEPER_DAMAGE`
-- `FIRE_SPREAD`
-- `SPAWN_MONSTERS`
-- `ENDERMAN_PICKUP`
-- `BED_EXPLOSION`
-
-### PvP Arena
-
-Turn ON:
-
-- `PVP`
-
-Turn OFF everything else to prevent griefing.
-
-### Natural Farm
-
-Turn ON:
-
-- `SPAWN_ANIMALS`
-- `STRUCTURE_GROW`
-- `NATURE_SPREAD`
-- `REDSTONE`
-
----
-
-## Remember
-
-Flags affect **everyone** - including you, the owner. If you disable `SPAWN_MONSTERS`, you can't spawn mobs either!
-
----
-
-## Next Steps
-
-- [🛡️ Protection Overview](../protection/overview.md) - How protection works
-- [🚩 All Flags Reference](../protection/flags.md) - Detailed flag descriptions
-- [🔐 All Permissions](../protection/permissions.md) - Role-based access
+The state text comes from `statusActive` and `statusPassive` in `messages.yml`.

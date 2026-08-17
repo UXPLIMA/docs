@@ -1,367 +1,101 @@
 ---
-title: Menu Customization
-order: 290
-description: The 27 menu files, their shared structure, and how to re-skin any screen.
+title: Menu layouts
+order: 507
+description: The 28 menu files, their shared structure, and how to re-skin a screen.
 icon: layout-grid
 ---
 
-## Menu Files
+Every screen is a file in `menu/`. They share one structure, so learning one teaches you all 28.
 
-The plugin has 27 menu files:
-
-| File                      | What It Is           |
-|---------------------------|----------------------|
-| `common_main.yml`         | Main /claim menu     |
-| `common_list.yml`         | Claim list           |
-| `common_invite_inbox.yml` | Invite inbox         |
-| `claim_main.yml`          | Claim management     |
-| `claim_member_list.yml`   | Member list          |
-| `claim_member_manage.yml` | Member management    |
-| `claim_ban_list.yml`      | Ban list             |
-| `claim_ban_player.yml`    | Ban a player         |
-| `claim_invite_list.yml`   | Sent invites         |
-| `claim_invite_send.yml`   | Send invite          |
-| `claim_flags.yml`         | Flag settings        |
-| `claim_map.yml`           | Claim map            |
-| `claim_vault.yml`         | Vault screen         |
-| `claim_block.yml`         | Block selector       |
-| `claim_block_change.yml`  | Change block         |
-| `claim_time_adjust.yml`   | Time extension       |
-| `claim_rename.yml`        | Rename claim         |
-| `claim_role_list.yml`     | Role list            |
-| `claim_role_manage.yml`   | Role permissions     |
-| `claim_role_create.yml`   | Create role          |
-| `claim_role_rename.yml`   | Rename role          |
-| `claim_warp_list.yml`     | Warp list            |
-| `claim_warp_manage.yml`   | Warp management      |
-| `claim_warp_create.yml`   | Create warp          |
-| `claim_warp_rename.yml`   | Rename warp          |
-| `common_confirmation.yml` | Confirmation dialogs |
-| `common_warp_list.yml`    | Public warps         |
-
----
-
-## Menu Structure
-
-Every menu file has a similar structure:
+## The structure
 
 ```yaml
-title: '<dark_gray>Menu Title</dark_gray>'
-size: 3
+title: '<dark_gray>⚡ <white>%claim.name%</white></dark_gray>'
+size: 6
 type: 'CHEST'
 
 items:
-  buttonName:
-    type: 'MATERIAL_NAME'
-    name: '<color>Button Text</color>'
-    amount: 1
-    slot: 0
-    glow: false
-    lore:
-      - '<gray>Description line 1</gray>'
-      - '<gray>Description line 2</gray>'
-
-otherItems:
-  filler:
-    type: 'GRAY_STAINED_GLASS_PANE'
-    name: ' '
-    slots: [ 1, 2, 3, 4, 5 ]
-```
-
----
-
-## Main Settings
-
-### title
-
-The menu title shown at the top. We recommend using a **premium theme** with the ⚡ symbol:
-
-```yaml
-title: '<dark_gray>⚡ <white>Menu Name</white></dark_gray>'
-```
-
-Supports MiniMessage colors.
-
-### size
-
-Number of rows (1-6).
-
-```yaml
-size: 3  # 3 rows = 27 slots
-size: 6  # 6 rows = 54 slots
-```
-
-### type
-
-Always use `'CHEST'`.
-
----
-
-## Item Settings
-
-### type
-
-Minecraft material name (UPPERCASE).
-
-```yaml
-type: 'DIAMOND_SWORD'
-type: 'PLAYER_HEAD'
-type: 'GRASS_BLOCK'
-```
-
-### name
-
-Display name with colors.
-
-```yaml
-name: '<green><bold>Click Me!</bold></green>'
-```
-
-### amount
-
-Stack size shown.
-
-```yaml
-amount: 1
-amount: 64
-```
-
-### slot
-
-Position in the menu (0-indexed).
-
-```
-Row 1: 0  1  2  3  4  5  6  7  8
-Row 2: 9  10 11 12 13 14 15 16 17
-Row 3: 18 19 20 21 22 23 24 25 26
-...
-```
-
-### slots
-
-For items that appear in multiple locations:
-
-```yaml
-slots: [ 0, 1, 2, 3, 4 ]
-```
-
-### glow
-
-Enchantment glint effect.
-
-```yaml
-glow: true
-glow: false
-```
-
-### lore
-
-Description lines.
-
-```yaml
-lore:
-  - ''
-  - '<gray>Click to open</gray>'
-  - '<yellow>Cost: $100</yellow>'
-```
-
-### model
-
-Custom model data for resource packs.
-
-```yaml
-model: 0  # No custom model
-model: 1001  # Custom model ID
-```
-
----
-
-## Items vs OtherItems
-
-| Section      | Purpose                                 |
-|--------------|-----------------------------------------|
-| `items`      | Clickable buttons with actions          |
-| `otherItems` | Decoration (glass panes, info displays) |
-
----
-
-## Common Customizations
-
-### Changing Button Appearance
-
-```yaml
-items:
-  myButton:
-    type: 'EMERALD'  # Change material
-    name: '<green>Custom Name</green>'  # Change name
-    glow: true  # Add glow
-    lore:
-      - '<gray>New description</gray>'
-```
-
-### Moving Buttons
-
-Change the `slot` value:
-
-```yaml
-slot: 13  # Center of row 2
-```
-
-### Adding Filler
-
-```yaml
-otherItems:
-  border:
-    type: 'BLACK_STAINED_GLASS_PANE'
-    name: ' '
-    slots: [ 0, 1, 2, 6, 7, 8 ]
-```
-
-### Standard Back Button
-
-All menus use a **BARRIER** block for back/close buttons with consistent styling:
-
-```yaml
-items:
-  back:
-    type: 'BARRIER'
-    name: '<red>Back</red>'
+  changeFlag:
+    type: 'OAK_SIGN'
+    name: '<gold><bold>Flags</bold></gold>'
     glow: false
     amount: 1
-    lore: []
-    slot: 49
+    lore:
+      - ''
+      - '<gray>Configure claim settings</gray>'
+      - ''
+      - '<gold>▸ Click to configure</gold>'
+    model: 0
+    slot: 20
 ```
 
----
+| Key | Meaning |
+|---|---|
+| `title` | The window title. MiniMessage, with placeholders. |
+| `size` | Rows, not slots. `6` is a double chest. |
+| `type` | The inventory type — `CHEST`, `HOPPER`, `DISPENSER` and so on. |
+| `items` | The buttons, keyed by the name the plugin looks them up by. |
 
-## Using Placeholders
+Each item takes:
 
-Many items support placeholders:
+| Key | Meaning |
+|---|---|
+| `type` | Material |
+| `name` | Display name, MiniMessage |
+| `lore` | Lines below it |
+| `amount` | Stack size shown |
+| `glow` | Enchantment glint |
+| `model` | Custom model data |
+| `slot` | Where it sits, 0-indexed |
+
+## Paginated menus
+
+List screens carry an extra key:
 
 ```yaml
-lore:
-  - '<gray>Owner: %claim.owner.name%</gray>'
-  - '<gray>Size: %count:claim.chunks% chunks</gray>'
-  - '<gray>Created: %date:claim.creationDate%</gray>'
+itemSlots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34 ]
 ```
 
----
+`itemSlots` is where the generated entries go, in order. Everything not in that list is a fixed
+button. Shrinking the list is how you make a list screen denser or sparser without touching code.
 
-## Color Codes
+## State variants
 
-Use MiniMessage format:
-
-| Tag              | Color        |
-|------------------|--------------|
-| `<red>`          | Red          |
-| `<green>`        | Green        |
-| `<blue>`         | Blue         |
-| `<yellow>`       | Yellow       |
-| `<gold>`         | Gold         |
-| `<gray>`         | Gray         |
-| `<white>`        | White        |
-| `<dark_gray>`    | Dark Gray    |
-| `<aqua>`         | Aqua         |
-| `<light_purple>` | Light Purple |
-
-**Formatting:**
-
-- `<bold>` - Bold
-- `<italic>` - Italic
-- `<reset>` - Reset formatting
-
----
-
-## Tips
-
-1. **Backup first** - Copy files before editing
-2. **Validate YAML** - Use an online YAML validator
-3. **Test in-game** - Use `/claim reload` after changes
-4. **Keep slots organized** - Plan your layout
-5. **Use consistent colors** - Match your server theme
-
----
-
-## Input Menus
-
-Some menus require text input from players (e.g., naming a claim, renaming a warp). These input menus are configured in separate files and support two different types.
-
-### Input Menu Files
-
-| File                    | Purpose                  |
-|-------------------------|--------------------------|
-| `claim_rename.yml`      | Rename a claim           |
-| `claim_warp_rename.yml` | Rename a warp            |
-| `claim_warp_create.yml` | Create a new warp        |
-| `claim_role_create.yml` | Create a new role        |
-| `claim_role_rename.yml` | Rename a role            |
-
-### Configuration Structure
+Some items exist in more than one form and the plugin picks by state:
 
 ```yaml
-# The type of input menu to use.
-# Available options: ANVIL, CHAT
-type: ANVIL
-
-# The title of the input menu.
-# For ANVIL: appears at the top of the anvil window.
-# For CHAT: appears as the main title, use %time% for countdown.
-title: '<dark_gray>Rename Your Claim</dark_gray>'
-
-# The subtitle/placeholder text.
-# For ANVIL: acts as a placeholder in the text field.
-# For CHAT: appears as subtitle, use %time% for countdown.
-placeholder: '<gray>Enter a new name</gray> <yellow>%time%s</yellow>'
+ownedClaimItem:          # normal
+ownedClaimItemSelected:  # currently selected — glow: true, a ✔ in the name
 ```
 
-### Input Menu Types
+Keep both keys. Deleting the variant leaves that state unrendered.
 
-| Type    | Description                                           |
-|---------|-------------------------------------------------------|
-| `ANVIL` | Opens an anvil GUI for text input (default)           |
-| `CHAT`  | Player types in chat with a countdown timer           |
+## The files
 
-### Settings Explained
+| Group | Files |
+|---|---|
+| Personal | `common_main`, `common_list`, `common_selection`, `common_warp_list`, `common_invite_inbox`, `common_confirmation` |
+| Claim | `claim_main`, `claim_map`, `claim_flags`, `claim_vault`, `claim_rename`, `claim_time_adjust` |
+| Members | `claim_member_list`, `claim_member_manage` |
+| Invites | `claim_invite_list`, `claim_invite_send` |
+| Bans | `claim_ban_list`, `claim_ban_player` |
+| Roles | `claim_role_list`, `claim_role_manage`, `claim_role_create`, `claim_role_rename` |
+| Warps | `claim_warp_list`, `claim_warp_manage`, `claim_warp_create`, `claim_warp_rename` |
+| Claim block | `claim_block`, `claim_block_change` |
 
-| Setting       | ANVIL Mode                    | CHAT Mode                          |
-|---------------|-------------------------------|------------------------------------|
-| `type`        | Set to `ANVIL`                | Set to `CHAT`                      |
-| `title`       | Title at top of anvil window  | Main title shown on screen         |
-| `placeholder` | Placeholder text in input     | Subtitle shown below title         |
+## Rules
 
-### Using %time% Placeholder
+- **Item keys are looked up by name.** Rename `changeFlag` and that button disappears. Change its
+  material, text, lore, slot and glow freely; leave the key alone.
+- **`slot` is 0-indexed** and must fall inside `size × 9`.
+- **A slot listed in `itemSlots` and also given to a fixed item** will be overwritten by the generated
+  entry.
+- **Everything is MiniMessage.** Legacy `&` codes are not translated.
+- **`/claim reload` rebuilds the menus** — no restart needed while you are styling.
 
-The `%time%` placeholder shows the remaining seconds for input (used primarily in CHAT mode):
+<Callout type="tip" title="Copy the folder before you start">
 
-```yaml
-placeholder: '<gray>Enter a new name</gray> <yellow>%time%s</yellow>'
-```
+`menu/` is 28 files of layout you cannot regenerate without deleting them and restarting. Copy it
+somewhere before a redesign, so a broken slot number is a file restore rather than an evening.
 
-This displays: "Enter a new name **30s**" (counting down)
-
----
-
-
-## Troubleshooting
-
-### Menu won't open
-
-- Check YAML syntax (spaces, not tabs)
-- Look for console errors
-
-### Items not showing
-
-- Verify slot numbers
-- Check material names are correct
-
-### Colors not working
-
-- Use MiniMessage format, not legacy `&` codes
-- Close all tags properly
-
----
-
-## Next Steps
-
-- [🛡️ Protection Overview](../protection/overview.md) - How protection works
-- [💾 Database Setup](../database/sqlite.md) - Configure database
+</Callout>

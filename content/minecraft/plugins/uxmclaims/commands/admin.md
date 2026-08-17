@@ -1,120 +1,59 @@
 ---
-title: Admin Commands
-order: 140
-description: Staff commands behind uxmclaims.admin for managing any claim on the server.
-icon: shield-user
+title: Admin
+order: 208
+description: Inspecting other players' claims, and the bulk operations.
+icon: shield-check
 ---
 
-## Overview
+Every command here requires `uxmclaims.admin`, declared in `plugin.yml` with `default: op`. That node
+also bypasses every ability check and every role permission everywhere.
 
-Admin commands require the `uxmclaims.admin` permission. These commands allow server administrators to manage claims globally.
+| Command | What it does |
+|---|---|
+| `/claim admin view <player>` | Open a menu of every claim that player owns or belongs to |
+| `/claim reload` | Re-read every config file |
 
----
+## Bulk operations
 
-## Available Commands
+These act on **every claim currently loaded**, not on one. They exist for the moment a server changes
+policy — a new flag default, a rebalanced role — and does not want to edit thousands of claims by
+hand.
 
-| Command | Description |
-|---------|-------------|
-| `/claim admin view <player>` | View and manage a player's claims |
-| `/claim admin bulk setflag <flag> <value>` | Set a flag on all claims |
-| `/claim admin bulk setrolepermission <role> <perm> <value>` | Set a permission for a role on all claims |
-| `/claim admin bulk rename <basename>` | Rename all claims with sequential numbering |
-| `/claim admin bulk setblock <type>` | Set all claim blocks to a type |
-| `/claim admin bulk destroyblock` | Destroy all claim blocks |
+| Command | What it does |
+|---|---|
+| `/claim admin bulk setflag <flag> <true\|false>` | Set one flag on every claim |
+| `/claim admin bulk setrolepermission <role> <perm> <true\|false>` | Set one permission on one system role, in every claim |
+| `/claim admin bulk rename <base>` | Rename every claim to `base-1`, `base-2`, … |
+| `/claim admin bulk setblock <style>` | Change every claim's visual block |
+| `/claim admin bulk destroyblock` | Remove every claim's visual block |
 
----
+`setrolepermission` completes against the standard roles — the three system roles — because a custom
+role name means something different in every claim.
 
-## `/claim admin view <player>`
+<Callout type="danger" title="Bulk commands do not confirm and cannot be undone">
 
-Opens a menu showing all claims where the specified player is owner or member.
+There is no confirmation step and no rollback. `bulk rename` in particular discards every name every
+player chose, permanently, and `bulk setflag PVP true` turns PvP on inside every base on the server at
+once.
 
-**Usage:**
-```
-/claim admin view Steve
-```
-
-**Features:**
-
-- View all claims for a player
-- Access claim management menus
-- Manage claims on behalf of players
-
----
-
-## Bulk Commands
-
-Bulk commands apply changes to **all claims** on the server. Use with caution!
-
-<Callout type="warning" title="Performance">
-
-Bulk operations run asynchronously but may take time on large servers.
+Take a database backup before running any of them. On a live server, run them during a restart window
+rather than at peak, since each one writes every loaded claim.
 
 </Callout>
 
-### `/claim admin bulk setflag <flag> <value>`
+## Bypass nodes
 
-Sets a flag on every claim.
+Beyond `uxmclaims.admin`, individual actions can be bypassed:
 
-**Example:**
-```
-/claim admin bulk setflag PVP false
-```
+| Node | Effect |
+|---|---|
+| `uxmclaims.bypass.*` | Bypass every ability check |
+| `uxmclaims.bypass.<category>.*` | Bypass a whole category, e.g. `uxmclaims.bypass.warp.*` |
+| `uxmclaims.bypass.<action>` | Bypass one, e.g. `uxmclaims.bypass.claim.delete` |
+| `uxmclaims.bypass.teleport` | Ignore the teleport warmup |
 
-This disables PvP on all claims at once.
+Bypass nodes mirror ability nodes exactly — swap `ability` for `bypass`. See
+[Ability permissions](../permissions/abilities.md).
 
----
-
-### `/claim admin bulk setrolepermission <role> <permission> <value>`
-
-Updates a permission for a specific role across all claims.
-
-**Roles:** `Owner`, `Moderator`, `Member`, `Default`
-
-**Example:**
-```
-/claim admin bulk setrolepermission Member BLOCK_BREAK true
-```
-
-This grants `BLOCK_BREAK` permission to the Member role on all claims.
-
----
-
-### `/claim admin bulk rename <basename>`
-
-Renames all claims using a base name with sequential numbers.
-
-**Example:**
-```
-/claim admin bulk rename Base
-```
-
-Result: `Base-1`, `Base-2`, `Base-3`, etc.
-
----
-
-### `/claim admin bulk setblock <type>`
-
-Places a claim block of the specified type on all claims.
-
-**Example:**
-```
-/claim admin bulk setblock DIAMOND_BLOCK
-```
-
----
-
-### `/claim admin bulk destroyblock`
-
-Removes the claim block from all claims.
-
-**Example:**
-```
-/claim admin bulk destroyblock
-```
-
----
-
-## Next Steps
-
-- [⚙️ config.yml](../config/config-yml.md) - Server configuration
-- [🔐 Ability Permissions](../integrations/ability-permissions.md) - Permission nodes
+Give staff `uxmclaims.bypass.*` rather than `uxmclaims.admin` when you want them to work everywhere
+without also silently passing every in-claim role permission check.

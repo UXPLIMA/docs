@@ -1,90 +1,55 @@
 ---
-title: SQLite (Easy)
-order: 380
-description: The zero-setup default backend, and when to move off it.
-icon: database
+title: SQLite
+order: 902
+description: The zero-setup default, and when to move off it.
+icon: file
 ---
 
-## Why SQLite?
-
-| Pros                            | Cons                                           |
-|---------------------------------|------------------------------------------------|
-| ✅ No setup required             | ❌ Not ideal for very large servers             |
-| ✅ Works out of the box          | ❌ Single-file, harder to back up while running |
-| ✅ Fast for small-medium servers | ❌ No remote access                             |
-| ✅ No external software          |                                                |
-
-**Recommended for:** Most servers, especially those with \<100 concurrent players
-
----
-
-## Configuration
-
-In `config.yml`:
+The shipped configuration. Nothing to install.
 
 ```yaml
 database:
   type: 'AUTO'
-  username: 'root'       # Not used for SQLite
-  password: 'password'   # Not used for SQLite
-  url: 'jdbc:sqlite:./plugins/uxmClaims/claims.db'
+  username: 'root'       # ignored
+  password: 'password'   # ignored
+  url: 'jdbc:sqlite:./plugins/uxmClaims/data/claims.db'
 ```
 
-That's it! The plugin creates the database file automatically.
+`username` and `password` are inert — SQLite has no accounts. Leaving them at the shipped values is
+harmless here, and a landmine if you later switch to MySQL without editing them.
 
----
+The path is relative to the server directory. The file and its parent are created on first start.
 
-## Database Location
+## When it is the right choice
 
-The database file is created at:
+- one server
+- file-level backups
+- no need to read the data from anywhere else
 
+That covers most servers. SQLite with WAL handles a claims workload comfortably; the reason to move is
+architecture, not performance.
+
+## When to move
+
+- **A second server needs the same claims.** SQLite is a local file; two servers cannot share it
+  safely over a network filesystem.
+- **Your backups are database-level.** Point-in-time recovery on a file is a file copy.
+- **You want to query claims from outside.** A web panel reading MySQL is straightforward; reading a
+  live SQLite file over the network is not.
+
+## Backing up
+
+```bash
+sqlite3 plugins/uxmClaims/data/claims.db ".backup 'claims-backup.db'"
 ```
-plugins/uxmClaims/claims.db
-```
 
-This single file contains all claim data.
+Safe while the server is running. A plain `cp` of a live SQLite file can capture a partially written
+transaction.
 
----
+<Callout type="danger" title="Do not put the file on a network share">
 
-## Backing Up
+NFS, SMB and most network filesystems implement locking in ways SQLite cannot rely on. The failure
+mode is not an error — it is silent corruption discovered days later. Keep the file on local disk, or
+move to [MySQL](mysql.md).
 
-To back up your data:
-
-1. **Stop the server** (recommended for clean backup)
-2. Copy `claims.db` to a safe location
-3. Start the server
-
-You can also copy while running, but there's a small risk of corruption.
-
----
-
-## Migrating to MySQL/PostgreSQL
-
-If your server grows, you might want to migrate:
-
-1. Export data using external tools
-2. Change database settings in config.yml
-3. Import data to new database
-4. Restart server
-
----
-
-## Troubleshooting
-
-### "Database is locked"
-
-- Only one process should access the file
-- Restart the server
-- Check for leftover lock files
-
-### "File not found"
-
-- The plugin creates the file automatically
-- Check permissions on the plugins folder
-
-### Performance issues
-
-If you have many claims and notice slowdowns:
-
-- Consider upgrading to MySQL/PostgreSQL
-- See [MySQL Setup](../database/mysql.md)
+</Callout>

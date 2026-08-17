@@ -1,338 +1,101 @@
 ---
-title: Domain Models
-order: 460
-description: Claim, Member, Role and the rest of the domain types you will read.
-icon: boxes
+title: Domain model
+order: 1005
+description: Claim and the objects hanging off it, and the one method worth knowing.
+icon: box
 ---
 
-## Core Models
+Everything lives under `com.uxplima.claim.domain.model`.
 
-### Claim
+## Claim
 
-The main aggregate root. Contains all data about a claim.
-
-```java
-public class Claim {
-    UUID id;                    // Unique identifier
-    String name;                // Display name
-    Instant expireDate;         // When the claim expires
-    Instant creationDate;       // When it was created
-    Location spawnLocation;     // Teleport destination
-    ClaimBlock block;           // Block style and location
-    ClaimVault vault;           // Shared storage
-    
-    Map<UUID, ClaimBan> bans;       // Banned players
-    Map<UUID, ClaimRole> roles;     // Roles (Owner, Member, custom)
-    Map<UUID, ClaimWarp> warps;     // Teleport points
-    Map<UUID, ClaimChunk> chunks;   // Claimed chunks
-    Map<UUID, ClaimMember> members; // Claim members
-    Map<UUID, ClaimInvite> invites; // Pending invitations
-    Set<ClaimFlag> flags;           // Active flags
-}
-```
-
-**Key Methods:**
-
-| Method                   | Returns                 | Description               |
-|--------------------------|-------------------------|---------------------------|
-| `getId()`                | `UUID`                  | Claim's unique ID         |
-| `getName()`              | `String`                | Display name              |
-| `getOwnerUid()`          | `UUID`                  | Owner's player UUID       |
-| `getOwner()`             | `ClaimMember`           | Owner member object       |
-| `isOwner(UUID)`          | `boolean`               | Check if UUID is owner    |
-| `isExpired()`            | `boolean`               | Check if expired          |
-| `getRemainTime()`        | `Duration`              | Time until expiration     |
-| `hasFlag(ClaimFlag)`     | `boolean`               | Check if flag is enabled  |
-| `hasBanByUid(UUID)`      | `boolean`               | Check if player is banned |
-| `findMemberByUid(UUID)`  | `Optional<ClaimMember>` | Find member               |
-| `findRoleByName(String)` | `Optional<ClaimRole>`   | Find role by name         |
-
----
-
-### ClaimMember
-
-A player who is part of a claim.
+The aggregate root.
 
 ```java
-public class ClaimMember {
-    UUID id;                // Member entry ID
-    UUID uid;               // Player's UUID
-    ClaimRole role;         // Assigned role
-    Instant joinDate;       // When they joined
-    Set<ClaimPermission> grantedPermissions;   // Extra permissions
-    Set<ClaimPermission> revokedPermissions;   // Removed permissions
-}
+UUID    id
+String  name
+Instant expireDate
+Instant creationDate
+Location spawnLocation
+ClaimBlock block
+ClaimVault vault
+
+Map<UUID, ClaimChunk>  chunks
+Map<UUID, ClaimMember> members
+Map<UUID, ClaimRole>   roles
+Map<UUID, ClaimWarp>   warps
+Map<UUID, ClaimBan>    bans
+Map<UUID, ClaimInvite> invites
+
+Set<ClaimFlag> flags
 ```
 
-**Key Methods:**
+| Method | Returns |
+|---|---|
+| `getOwnerUid()` | The owner's UUID |
+| `getOwner()` | The owner as a `ClaimMember` |
+| `getMainChunk()` | The chunk holding the block, hologram and spawn |
+| `getRemainTime()` | A `Duration` until expiry |
+| `isOwner(UUID)` | Whether that player owns it |
+| `hasMemberByUid(UUID)` | Whether they are a member |
+| `hasBanByUid(UUID)` | Whether they are banned |
+| `hasFlag(ClaimFlag)` | Whether the flag is set |
+| `hasPermission(UUID, ClaimPermission)` | **The one that matters** |
+| `getMemberByUid`, `getRoleById`, `getRoleByType`, `getRoleByPriority`, `getWarpByName`, `getChunkByLocation`, `getBanByUid`, `getInviteByUid` | Lookups |
 
-| Method                           | Returns                | Description                |
-|----------------------------------|------------------------|----------------------------|
-| `getUid()`                       | `UUID`                 | Player's UUID              |
-| `getRole()`                      | `ClaimRole`            | Current role               |
-| `hasPermission(ClaimPermission)` | `boolean`              | Check effective permission |
-| `getEffectivePermissions()`      | `Set<ClaimPermission>` | All active permissions     |
-
----
-
-### ClaimRole
-
-A role with a set of permissions.
+### hasPermission
 
 ```java
-public class ClaimRole {
-    UUID id;                        // Role ID
-    String name;                    // Display name
-    ClaimRoleType type;             // OWNER, MEMBER, DEFAULT, CUSTOM
-    int priority;                   // Lower = higher rank
-    Set<ClaimPermission> permissions; // Granted permissions
-}
+claim.hasPermission(player.getUniqueId(), ClaimPermission.BLOCK_BREAK)
 ```
 
-**Role Types:**
+One call, resolving the whole chain: ban, ownership, per-member deny, per-member allow, the member's
+role, the `Member` fallback when their role was deleted, and the `Default` role for non-members. Do
+not reimplement it — the order is subtle and the fallbacks are easy to get wrong.
 
-| Type      | Description                                  |
-|-----------|----------------------------------------------|
-| `OWNER`   | The claim owner (cannot delete)              |
-| `MEMBER`  | Default role for new members (cannot delete) |
-| `DEFAULT` | Permissions for non-members (cannot delete)  |
-| `CUSTOM`  | User-created roles                           |
-
----
-
-### ClaimChunk
-
-A 16x16 block area that's part of a claim.
+It does **not** consider `uxmclaims.admin`. For that, go through `ClaimPermissionPolicy`, which checks
+the admin node first:
 
 ```java
-public class ClaimChunk {
-    UUID id;            // Chunk entry ID
-    Chunk chunk;        // Chunk coordinates
-    boolean isMain;     // Is this the main chunk?
-    Instant createdAt;  // When it was claimed
-}
+ClaimPermissionPolicy policy = api.getInstance(ClaimPermissionPolicy.class);
+policy.hasPerm(uuid, claim, ClaimPermission.BLOCK_BREAK);
+policy.isOwner(uuid, claim);
+policy.canPerform(uuid, ClaimAction.CLAIM_DELETE);
 ```
 
-**The Chunk value object:**
+## The pieces
 
-```java
-public record Chunk(String world, int x, int z) {
-    public static Chunk of(String world, int x, int z);
-    public static Chunk fromLocation(Location loc);
-}
-```
+| Type | Holds |
+|---|---|
+| `ClaimMember` | `uid`, `roleId`, `joinDate`, `allowedPermissions`, `deniedPermissions` |
+| `ClaimRole` | `name`, `priority`, `type`, its permission set |
+| `ClaimChunk` | The chunk coordinates and world |
+| `ClaimWarp` | `name`, `location`, `isPublic`, `createdBy`, `createdAt` |
+| `ClaimBan` | `bannedUid`, `reason`, `bannedAt` |
+| `ClaimInvite` | `invitedUid`, `invitedAt` |
+| `ClaimBlock` | The style key and where the block sits |
+| `ClaimVault` | The stored items |
 
----
+`ClaimMember` carrying both an allowed and a denied set is the per-member override mechanism. Denied
+is checked first, so a denial always wins.
 
-### ClaimWarp
+## The enums
 
-A teleport point within a claim.
+| Enum | Values | Page |
+|---|---|---|
+| `ClaimFlag` | 32 | [Flags](../protection/flags.md) |
+| `ClaimPermission` | 48 | [Role permissions](../protection/permissions.md) |
+| `ClaimAction` | 30 | [Ability permissions](../permissions/abilities.md) |
+| `ClaimRoleType` | `OWNER`, `MEMBER`, `DEFAULT`, `CUSTOM` | — |
+| `ClaimSideEffect` | `REGION`, `ECONOMY`, `WEBHOOK`, `LIMITATION`, `PERMISSION` | [Architecture](architecture.md) |
 
-```java
-public class ClaimWarp {
-    UUID id;            // Warp ID
-    String name;        // Display name
-    Location location;  // Teleport destination
-    boolean isPublic;   // Visible to everyone?
-    Instant createdAt;  // Creation time
-}
-```
+`ClaimAction` also builds its own permission strings — `toPermissionNode()`, `toBypassNode()`,
+`toCategoryWildcard()` — which is how the ability and bypass node families stay in sync.
 
----
+<Callout type="info" title="Model objects are snapshots">
 
-### ClaimInvite
+A `Claim` you hold is a view of the state when you fetched it. Another server, or another thread, may
+have changed it since. Re-fetch before acting on stale data, and make changes through the
+[facade](api.md) rather than by mutating the object — direct mutation is not persisted.
 
-A pending invitation to join a claim.
-
-```java
-public class ClaimInvite {
-    UUID id;            // Invite ID
-    UUID uid;           // Invited player's UUID
-    Instant createdAt;  // When sent
-}
-```
-
----
-
-### ClaimBan
-
-A banned player entry.
-
-```java
-public class ClaimBan {
-    UUID id;            // Ban entry ID
-    UUID uid;           // Banned player's UUID
-    Instant createdAt;  // When banned
-}
-```
-
----
-
-### ClaimVault
-
-Shared storage for a claim.
-
-```java
-public class ClaimVault {
-    UUID id;            // Vault ID
-    byte[] items;       // Serialized inventory contents
-}
-```
-
----
-
-### ClaimBlock
-
-The physical claim block in the world.
-
-```java
-public class ClaimBlock {
-    UUID id;            // Block entry ID
-    Location location;  // Where it's placed (null if not placed)
-    String key;         // Block style key (e.g., "bedrock")
-}
-```
-
----
-
-## Value Objects
-
-### Location
-
-A position in the world.
-
-```java
-public record Location(
-    String world,
-    double x,
-    double y,
-    double z
-) {
-    public static Location of(String world, double x, double y, double z);
-}
-```
-
-### Chunk
-
-A chunk coordinate.
-
-```java
-public record Chunk(
-    String world,
-    int x,
-    int z
-) {
-    public static Chunk of(String world, int x, int z);
-    public static Chunk fromLocation(Location loc);
-}
-```
-
----
-
-## Enums
-
-### ClaimFlag
-
-Global rules for a claim (affects everyone):
-
-```java
-public enum ClaimFlag {
-    // Security
-    PVP, TNT_EXPLOSIONS, CREEPER_DAMAGE, WITHER_DAMAGE,
-    FIRE_SPREAD, LIGHTNING_DAMAGE, MOB_GRIEFING,
-    
-    // World mechanics
-    FLUID_FLOW, PISTON_PUSH, LEAF_DECAY, ICE_MELT,
-    BLOCK_FADE, BLOCK_FORM, ENTITY_BLOCK_FORM,
-    STRUCTURE_GROW, NATURE_SPREAD,
-    
-    // Mob spawning
-    SPAWN_ANIMALS, SPAWN_MONSTERS, SPAWN_PHANTOMS, MOB_SPAWNING,
-    
-    // Other
-    ITEM_PICKUP_GLOBAL, CHORUS_TELEPORT
-}
-```
-
-### ClaimPermission
-
-Role-based permissions:
-
-```java
-public enum ClaimPermission {
-    // Management
-    MANAGE_CHUNKS, MANAGE_TIME, MANAGE_BANS, MANAGE_INVITES,
-    MANAGE_VAULT, MANAGE_BLOCK, MANAGE_RENAME, MANAGE_RELOCATE,
-    MANAGE_WARPS,
-    
-    // Build
-    BLOCK_PLACE, BLOCK_BREAK, SIGN_EDIT, BUCKET_FILL, BUCKET_EMPTY,
-    HANGING_PLACE, HANGING_BREAK, TRAMPLE_CROPS,
-    SPAWNER_PLACE, SPAWNER_DESTROY,
-    
-    // Interact
-    IGNITE, USE_REDSTONE, USE_MECHANISMS, CONTAINER_OPEN,
-    TAKE_LECTERN_BOOK, ARMOR_STAND_MANIPULATE, SLEEP,
-    
-    // Entity
-    ANIMAL_DAMAGE, MONSTER_DAMAGE, ANIMAL_INTERACT,
-    SHEAR_ENTITY, VILLAGER_TRADE, VEHICLE_INTERACT, RIDE_ENTITY,
-    
-    // Movement
-    MOVE_INSIDE, TELEPORT, USE_WARPS, ENDERPEARL_USE, ELYTRA_USE,
-    ITEM_DROP, ITEM_PICKUP, FISHING, RAID_TRIGGER
-}
-```
-
-### ClaimRoleType
-
-```java
-public enum ClaimRoleType {
-    OWNER,      // The owner role
-    MEMBER,     // Default member role
-    DEFAULT,    // Non-member role
-    CUSTOM      // User-created
-}
-```
-
----
-
-## Working Example
-
-```java
-// Get a claim and explore its data
-Optional<Claim> optClaim = claimQuery.findByLocation(location);
-if (optClaim.isEmpty()) return;
-
-Claim claim = optClaim.get();
-
-// Basic info
-getLogger().info("Claim: " + claim.getName());
-getLogger().info("Owner: " + claim.getOwnerUid());
-getLogger().info("Chunks: " + claim.getChunks().size());
-getLogger().info("Expires: " + claim.getExpireDate());
-
-// Check flags
-if (claim.hasFlag(ClaimFlag.PVP)) {
-    getLogger().info("PvP is enabled in this claim");
-}
-
-// List members
-for (ClaimMember member : claim.getMembers().values()) {
-    getLogger().info("Member: " + member.getUid() + 
-                     " Role: " + member.getRole().getName());
-}
-
-// Check if player can build
-Optional<ClaimMember> member = claim.findMemberByUid(playerUid);
-if (member.isPresent() && member.get().hasPermission(ClaimPermission.BLOCK_PLACE)) {
-    getLogger().info("Player can build here");
-}
-```
-
----
-
-## Next Steps
-
-- [📖 Query API](../developer/queries.md) - Finding claims
-- [⚡ Events](../developer/events.md) - Listening to changes
+</Callout>

@@ -1,77 +1,64 @@
 ---
-title: Vault (Economy)
-order: 340
-description: Charging for claims, warps and upgrades through any Vault economy.
-icon: landmark
+title: Vault
+order: 802
+description: Charging for claims, chunks, warps and time, and picking a currency.
+icon: coins
 ---
 
-## What is Vault?
-
-Vault is a bridge plugin that connects economy plugins (like EssentialsX, CMI, or QuickShop) with other plugins.
-
-**You need:**
-
-1. Vault plugin installed
-2. An economy plugin (EssentialsX, CMI, etc.)
-
----
-
-## Enabling/Disabling
-
-In `config.yml`:
+Vault bridges uxmClaims to whatever economy plugin you run — EssentialsX, CMI, CoinsEngine and the
+rest.
 
 ```yaml
 generalSettings:
   economySupport: true
+  economyProvider: ''
 ```
 
-| Value   | Effect                       |
-|---------|------------------------------|
-| `true`  | Economy features are enabled |
-| `false` | Everything is free           |
+Without Vault, or with `economySupport: false`, everything is free. Costs still resolve; nothing is
+charged.
 
----
+## What can cost money
 
-## What Uses Economy?
+| Action | Node | Default |
+|---|---|---|
+| Creating a claim | `uxmclaims.cost.claim.<level>.<price>` | `0.0` |
+| Buying a chunk | `uxmclaims.cost.chunk.<count>.<price>` | `25.0` |
+| Creating a warp | `uxmclaims.cost.warp.<count>.<price>` | `0.0` |
+| Creating a role | `uxmclaims.cost.role.<count>.<price>` | `0.0` |
+| Teleporting to a warp | `uxmclaims.cost.warptp.<public\|private>.<price>` | `0.0` |
+| Sending an invitation | `uxmclaims.cost.invite.<count>.<price>` | `0.0` |
+| Renaming a claim | `uxmclaims.cost.rename.<price>` | `0.0` |
+| Extending, **per second** | `uxmclaims.cost.time.<price>` | `5.0` |
 
-| Action           | Where to Configure                           |
-|------------------|----------------------------------------------|
-| Creating a claim | `entitlements.yml` → `uxmclaims.cost.claim`  |
-| Buying chunks    | `entitlements.yml` → `uxmclaims.cost.chunk`  |
-| Creating warps   | `entitlements.yml` → `uxmclaims.cost.warp`   |
-| Using warps      | `entitlements.yml` → `uxmclaims.cost.warptp` |
-| Creating roles   | `entitlements.yml` → `uxmclaims.cost.role`   |
-| Inviting members | `entitlements.yml` → `uxmclaims.cost.invite` |
-| Renaming claims  | `entitlements.yml` → `uxmclaims.cost.rename` |
-| Extending time   | `entitlements.yml` → `uxmclaims.cost.time`   |
+Only chunks and time cost anything out of the box.
 
-See [entitlements.yml](../config/entitlements-yml.md) for details.
+Costs use the `MIN` strategy — see [Limits and costs](../permissions/limits.md) — so a rank's node can
+only ever discount below `defaultValue`. Granting a higher number changes nothing.
 
----
+## Picking a currency
 
-## Setup Checklist
+```yaml
+economyProvider: 'coins'
+```
 
-1. ✅ Install Vault plugin
-2. ✅ Install an economy plugin
-3. ✅ Set `economySupport: true` in config.yml
-4. ✅ Configure costs in entitlements.yml
-5. ✅ Restart server
+The value is matched against the registered Vault provider name, the Bukkit plugin name, and the
+currency's singular and plural names. Empty means Vault's default provider.
 
----
+<Callout type="warning" title="A provider name that does not resolve fails startup">
 
-## Troubleshooting
+This is deliberate. On a multi-currency server the alternative — silently falling back to the default
+economy — means charging players in the wrong currency for however long it takes someone to notice.
+Better a server that will not start.
 
-### "Economy plugin not found"
+</Callout>
 
-- Make sure Vault is installed
-- Make sure an economy plugin is installed
-- Check console for economy registration
+## Refunds
 
-### "Players can't afford claims"
+`/claim chunk remove` sells a chunk back. Deleting a claim does **not** refund what was spent on it,
+and there is no refund percentage setting — price accordingly, especially `cost.time`, which at the
+shipped `5.0` per second makes a week's extension expensive.
 
-- Check their balance with `/balance`
-- Lower the costs in entitlements.yml
+## Not enough money
 
-### "I want everything free"
-
-Set `economySupport: false` in config.yml, or set all costs to `0.0` in entitlements.yml.
+The action is refused with `errorInsufficientFunds` from `messages.yml`, and nothing is charged
+partially. The economy call and the claim change are one operation.

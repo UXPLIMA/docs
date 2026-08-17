@@ -1,116 +1,51 @@
 ---
 title: Invitations
-order: 190
-description: Pending invitations, and cancelling one before it is answered.
-icon: user-plus
+order: 407
+description: Sending invitations and cancelling ones that have not been answered.
+icon: mail
 ---
 
-## How to Open
+Two screens, plus the inbox on the personal menu.
 
-1. Open claim management
-2. Click **Invitations** (`inviteList`)
+## Sending
 
----
+`menu/claim_invite_send.yml`, opened from claim management. Pick a player and the invitation goes out.
 
-## What Is This Menu For?
+Needs `MANAGE_INVITES` and `uxmclaims.ability.member.invite`.
 
-When you invite someone to your claim, it shows here until they accept or decline.
+The invited player, if online, gets `notificationInviteReceived` from `messages.yml` — a message with
+clickable **[Accept]** and **[Reject]** buttons running `/claim invite accept` and
+`/claim invite reject`.
 
----
+## Pending
 
-## Menu Items
+`menu/claim_invite_list.yml`. Every invitation this claim has sent that has not been answered, with
+the target's head and the time it was sent.
 
-### `inviteHead` - Pending Invite Entry
+Clicking revokes it, which frees a slot against the invite limit. Needs
+`uxmclaims.ability.member.revoke`.
 
-**Icon:** Player Head
+## The inbox
 
-**What it shows:**
+`menu/common_invite_inbox.yml`, opened by `/claim invites` from the personal menu. Everything waiting
+for *you*, with accept and reject on each entry.
 
-- Invited player's name
-- When the invite was sent
+This is where a player who was offline when they were invited finds out.
 
-**Click to:** Revoke (cancel) the invitation
+## Limits
 
----
+| | Node | Default |
+|---|---|---|
+| Pending invitations per claim | `uxmclaims.limit.invite.<n>` | `10`, MAX |
+| Cost of sending one | `uxmclaims.cost.invite.<count>.<price>` | `0.0` |
+| Members per claim | `uxmclaims.limit.member.<n>` | `50`, stacking |
 
-### `addInvite` - Send New Invite
+The invite limit counts unanswered invitations, so a claim inviting offline players in bulk will hit
+it. Revoking frees a slot.
 
-**Icon:** Lime Dye (glowing) ➕
+<Callout type="info" title="Nobody joins without accepting">
 
-**What it does:** Opens a text input to invite a player by name.
+`/claim trust` and this screen both create an invitation, not a membership. Until the player accepts
+they hold no permissions at all and are subject to the `Default` role like any stranger.
 
----
-
-### `previousPage` & `nextPage` - Pagination
-
-Navigate through pages if you have many pending invites.
-
----
-
-### `back` - Back
-
-Returns to claim management.
-
----
-
-## How Invitations Work
-
-### Sending an Invite
-
-1. Click "Send New Invite" (`addInvite`)
-2. Enter the player's name
-3. They receive the invitation in their Invite Inbox
-
-### What the Invited Player Sees
-
-1. They type `/claim`
-2. Click "Invite Inbox"
-3. See your invitation
-4. Choose to Accept or Decline
-
-### If They Accept
-
-- They become a member
-- They get the "Member" role by default
-- They can now access your claim
-
-### If They Decline
-
-- The invitation is removed
-- You can invite them again
-
----
-
-## Revoking Invitations
-
-Changed your mind? Cancel the invite:
-
-1. Find the pending invite
-2. Click on the player's head
-3. The invitation is cancelled
-
----
-
-## Invite Limits
-
-Most servers limit pending invites:
-
-- Default: 10 pending invites per claim
-- May cost money to send invites (configurable)
-
----
-
-## Cannot Invite?
-
-Check these:
-
-- Is the player banned? (Unban first)
-- Is the player already a member?
-- Have you hit the invite limit?
-
----
-
-## Next Steps
-
-- [🚫 Banned Players](../menus/banned-players.md) - Ban management
-- [👥 Members & Roles](../menus/members-roles.md) - Role management
+</Callout>

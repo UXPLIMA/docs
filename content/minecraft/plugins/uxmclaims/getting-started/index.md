@@ -1,11 +1,11 @@
 ---
 title: Getting Started
-order: 2
-description: Welcome, Quick Installation, Your First Claim and Basic Concepts.
+order: 10
+description: What uxmClaims is, how to install it, and the ideas it is built on.
 icon: rocket
 ---
 
 - [Welcome](welcome.md)
-- [Quick Installation](installation.md)
-- [Your First Claim](first-claim.md): Let's create your first claim! This guide walks you through every step.
-- [Basic Concepts](concepts.md)
+- [Installation](installation.md)
+- [Concepts](concepts.md)
+- [Your first claim](first-claim.md)

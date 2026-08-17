@@ -1,93 +1,48 @@
 ---
-title: Vault (Storage)
-order: 210
-description: The shared storage every member with the permission can open.
-icon: landmark
+title: The vault
+order: 410
+description: The claim's shared storage, and the lock that keeps it consistent.
+icon: archive
 ---
 
-## How to Open
+`menu/claim_vault.yml`, opened from claim management or by `/claim vault`.
 
-1. Open claim management
-2. Click **Claim Vault** (`claimVault`)
+A shared inventory belonging to the claim. Items placed here are visible to every member who may open
+it, and persist across restarts in the database.
 
----
+| Requirement | |
+|---|---|
+| Role permission | `MANAGE_VAULT` |
+| Ability node | `uxmclaims.ability.vault.access` |
 
-## What Is This Menu For?
+## One at a time
 
-The vault acts like a shared chest that:
+The vault is locked while someone has it open. Three different refusals exist, and they mean different
+things:
 
-- Is tied to your claim (not a physical block)
-- Can be accessed from anywhere via the menu
-- Persists even when you're offline
-- Has access controlled by permissions
+| Message | Means |
+|---|---|
+| `errorVaultBusy` | Someone is looking at it right now |
+| `errorVaultInUse` | Someone with a **higher-priority role** took it from you |
+| `errorVaultAlreadyInUse` | It is locked; try again shortly |
 
----
+Priority is the tie-break, which is the same ordering that drives promotion — see
+[Roles](../commands/roles.md). An owner can always take the vault back from a member.
 
-## How It Works
+The lock exists because two players editing one inventory concurrently is how items get duplicated.
 
-When you open the vault:
+## Contents in placeholders
 
-1. A chest-like inventory appears
-2. You can deposit items (move from your inventory)
-3. You can withdraw items (take from vault)
-4. Close with Escape or by clicking outside
+| Placeholder | Renders |
+|---|---|
+| `%uxmclaims_count:claim_vault_items%` | How many items are in the vault |
 
----
+The shipped hologram uses it — `Vault: %count:claim.vault.items% items` over the claim block.
 
-## Access Control
+<Callout type="warning" title="The vault is as safe as the role that opens it">
 
-Access depends on the `MANAGE_VAULT` permission:
+`MANAGE_VAULT` is one permission covering both reading and taking. There is no view-only mode. Grant
+it to a `Trusted` role rather than to `Member`, and remember a per-member deny
+(`/claim member setperm Steve MANAGE_VAULT false`) overrides the role if you need one exception.
 
-| Role         | Default Access |
-|--------------|----------------|
-| Owner        | ✅ Full access  |
-| Member       | ❌ No access    |
-| Custom Roles | Configurable   |
-
-To give vault access to a role:
-
-1. Go to Roles menu
-2. Click on the role
-3. Enable `MANAGE_VAULT` permission
-
----
-
-## Important Rules
-
-### One User at a Time
-
-Only one player can view the vault at a time.
-
-If someone else is using it:
-> "Someone is looking at claim vault right now. Please try again later."
-
-### Rank Priority
-
-If a higher-ranked member opens the vault while you're viewing:
-
-- You're kicked out
-- They get access
-
----
-
-## Common Uses
-
-- **Shared resources** - Building materials for members
-- **Team storage** - Equipment for group activities
-- **Safe keeping** - Valuable items protected by claim
-- **Trading** - Leave items for members to pick up
-
----
-
-## Tips
-
-1. **Be careful who has access** - Only give `MANAGE_VAULT` to trusted members
-2. **Don't use as personal storage** - It's shared, not private
-3. **Keep organized** - Others will use it too
-
----
-
-## Next Steps
-
-- [🚩 Flags](../menus/flags.md) - Set claim rules
-- [👥 Members & Roles](../menus/members-roles.md) - Manage access
+</Callout>

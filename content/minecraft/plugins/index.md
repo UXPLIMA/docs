@@ -2,7 +2,7 @@
 title: Plugins
 order: 3
 description: uxmEssentials, uxmClaims, uxmSkyblock, Chunklock, uxmHelperNPC,
-  uxmSpawners, uxmFarmer, uxmDiscordSync and uxmDragonEvent.
+  uxmSpawners, uxmFarmer, uxmDiscordSync, uxmDragonEvent and uxmBlacksmith.
 icon: puzzle
 ---
 
@@ -17,3 +17,4 @@ icon: puzzle
 | [uxmFarmer](uxmfarmer/) | A hired farmhand NPC that harvests, kills, collects XP and sells, with per-product levels |
 | [uxmDiscordSync](uxmdiscordsync/) | Account linking, rank sync, chat bridge, Discord-side 2FA and level rewards |
 | [uxmDragonEvent](uxmdragonevent/) | A scheduled Ender Dragon fight with rebirths, damage leaderboards and rewards |
+| [uxmBlacksmith](uxmblacksmith/) | Time-gated crafting with burn risk, trade slots, boosts, levels, masteries and a perk tree |

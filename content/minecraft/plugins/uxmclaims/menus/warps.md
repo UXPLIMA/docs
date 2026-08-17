@@ -1,115 +1,52 @@
 ---
 title: Warps
-order: 220
-description: Creating warps inside a claim and making them public.
+order: 409
+description: Creating warps in a claim, and publishing them to the server.
 icon: map-pin
 ---
 
-## How to Open
+Four screens: `claim_warp_list.yml`, `claim_warp_create.yml`, `claim_warp_manage.yml` and
+`claim_warp_rename.yml`. Opened from claim management.
 
-1. Open claim management
-2. Click **Warps** (`warpList`)
+Managing warps needs `MANAGE_WARPS`. Using one needs `USE_WARPS`.
 
----
+## The list
 
-## What Is This Menu For?
+Every warp in the claim, showing its name, location, whether it is public, and who created it.
+Clicking opens the management screen for that warp.
 
-Warps let you create custom teleport points within your claim. Useful for:
+## Managing one
 
-- Shop entrances
-- Farm locations
-- Meeting points
-- Guest spawn points
+| Button | Does | Ability node |
+|---|---|---|
+| Teleport | Goes there | — |
+| Move here | Relocates it to where you stand | `uxmclaims.ability.warp.relocate` |
+| Rename | Prompts in chat | `uxmclaims.ability.warp.rename` |
+| Public / private | Toggles visibility | `uxmclaims.ability.warp.visibility` |
+| Delete | Removes it | `uxmclaims.ability.warp.delete` |
 
----
+## Public warps
 
-## Menu Items
+A public warp appears in `/claim warps` and the public warp screen for **everyone on the server**.
+Anyone with `USE_WARPS` can teleport to it.
 
-### `warpItem` - Warp Entry
+The one safety net: teleporting to a public warp in a claim with `PVP` on shows a confirmation first,
+using `warningWarpPvpEnabled`. Nobody gets dropped into a PvP zone by clicking a list entry.
 
-**Icon:** Ender Pearl
+## Costs and limits
 
-**What it shows:**
+| | Node | Default |
+|---|---|---|
+| Warps per claim | `uxmclaims.limit.warp.<n>` | `3`, MAX |
+| Creating one | `uxmclaims.cost.warp.<count>.<price>` | `0.0` |
+| Teleporting | `uxmclaims.cost.warptp.<public\|private>.<price>` | `0.0` |
+| Warmup | `uxmclaims.delay.teleport.<n>` | `3` seconds, MIN |
 
-- Warp name
-- Location coordinates
-- Public/Private status
-- Creation date
+The teleport cost distinguishes `public` from `private`, so a player's own warps can stay free while
+hopping to someone else's shop costs money.
 
-**Click to:** Open warp management (rename, relocate, delete, toggle visibility)
+## Name resolution
 
----
-
-### `addWarp` - Create New Warp
-
-**Icon:** Lime Dye (glowing) ➕
-
-**What it does:** Creates a new warp at your current location.
-
-**After clicking:**
-
-1. Enter a name for the warp
-2. The warp is created where you're standing
-
-**Requirements:**
-
-- Must be standing inside your claim
-- Must have warp slots available (default: 5 per claim)
-- May cost money (configurable)
-
----
-
-### `previousPage` & `nextPage` - Pagination
-
-Navigate through pages if you have many warps.
-
----
-
-### `back` - Back
-
-Returns to claim management menu.
-
----
-
-## Warp Properties
-
-### Visibility
-
-| Mode        | Who Can Use          |
-|-------------|----------------------|
-| **Private** | Only claim members   |
-| **Public**  | Anyone on the server |
-
-Public warps appear in the main menu's "Public Warps" list.
-
----
-
-## Using Warps
-
-**As a member:**
-
-1. Open the warps menu
-2. Click on a warp
-3. You're teleported!
-
-**As a visitor (public warps):**
-
-1. Type `/claim`
-2. Click "Public Warps"
-3. Find and click the warp
-
----
-
-## Tips
-
-1. **Name clearly** - "Shop" is better than "warp1"
-2. **Face the right direction** - You'll spawn facing the way you were looking when creating
-3. **Stand on solid ground** - Don't create warps in mid-air!
-4. **Use public warps wisely** - Everyone can see and use them
-
----
-
-## Next Steps
-
-- [📦 Vault](../menus/vault.md) - Shared storage
-- [🚩 Flags](../menus/flags.md) - Claim settings
+`/claim spawn <name>` and `/claim warp teleport <name>` search public warps first, then your own
+claims, then claims you are a member of, then claims by name. First match wins — a public warp named
+`shop` shadows your private one.

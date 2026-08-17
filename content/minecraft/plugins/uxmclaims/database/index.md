@@ -1,10 +1,11 @@
 ---
-title: Database Setup
-order: 38
-description: SQLite (Easy), MySQL and PostgreSQL.
+title: Database
+order: 90
+description: The three backends, how to configure each, and when to move.
 icon: database
 ---
 
-- [SQLite (Easy)](sqlite.md)
+- [Overview](overview.md)
+- [SQLite](sqlite.md)
 - [MySQL](mysql.md)
 - [PostgreSQL](postgresql.md)

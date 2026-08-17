@@ -1,60 +1,64 @@
 ---
-title: Member Commands
-order: 80
-description: Advanced member management for owners who prefer commands to menus.
+title: Members
+order: 204
+description: Roles, promotion, per-member overrides and ownership transfer.
 icon: users
 ---
 
-## Available Commands
+`/claim member` is the long form of the member shortcuts on the root command, plus the things the
+shortcuts do not cover: promotion, role assignment and per-member permission overrides.
 
-These commands are strictly for advanced member management. For quick actions, see the [Basic Commands](basic.md) shortcuts.
+| Command | What it does | Ability node |
+|---|---|---|
+| `/claim member leave` | Leave the claim | — |
+| `/claim member kick <player>` | Remove a member | `uxmclaims.ability.member.kick` |
+| `/claim member promote <player>` | Move them one role up | `uxmclaims.ability.member.role` |
+| `/claim member demote <player>` | Move them one role down | `uxmclaims.ability.member.role` |
+| `/claim member setrole <player> <role>` | Put them in a specific role | `uxmclaims.ability.member.role` |
+| `/claim member setperm <player> <perm> <true\|false>` | Override one permission for them | `uxmclaims.ability.member.permissions.<PERM>` |
+| `/claim member transfer <player>` | Hand over ownership | `uxmclaims.ability.claim.transfer` |
 
-| Command | Description |
-|---------|-------------|
-| `/claim member leave` | Leaves the current claim |
-| `/claim member kick <player>` | Kicks a member |
-| `/claim member promote <player>` | Promotes to next role |
-| `/claim member demote <player>` | Demotes to previous role |
-| `/claim member setrole <player> <role>` | Sets exact role |
-| `/claim member setperm <player> <perm> <val>` | Sets personal permission |
-| `/claim member transfer <player>` | Transfers claim ownership to a member |
+## Promote and demote
 
----
+Roles are ordered by **priority**, and lower is higher rank. `promote` moves a member to the role with
+the next lower priority number; `demote` moves them to the next higher one. Neither can push someone
+into `Owner`, and neither wraps around at the ends.
 
-## Member Management
+Because priority drives this, the order you see in `/claim role list` is the order promotion walks.
+Set priorities deliberately — see [Roles](roles.md).
 
-### `/claim member kick <player>`
+## Per-member overrides
 
-Alternative to `/claim kick`. Removes a member.
+`setperm` writes on the member, not the role, and the member's own list beats their role:
 
-## Role & Permission Management
-
-### `/claim member promote / demote <player>`
-
-Moves a member up or down one role level based on priority.
-
-### `/claim member setrole <player> <role>`
-
-Directly assigns a specific role to a member.
-
-**Example:**
 ```
-/claim member setrole Steve Builder
+/claim member setrole Steve Builder          Steve gets everything Builder grants
+/claim member setperm Steve CONTAINER_OPEN false   …except this
+/claim member setperm Steve MANAGE_WARPS true      …plus this
 ```
 
-### `/claim member setperm <player> <permission> <val>`
+Each member carries an **allowed** set and a **denied** set. Denied is checked first, so a denial
+always wins — over the allowed set and over the role.
 
-Grants or revokes a specific permission for one player only.
+The ability node is per permission: `uxmclaims.ability.member.permissions.CONTAINER_OPEN` grants the
+right to override exactly that one, and `…permissions.*` grants all of them.
 
-**Example:**
-```
-/claim member setperm Steve BLOCK_BREAK true
-```
+## Ownership transfer
 
----
+`transfer` confirms first, and refuses if:
 
-## Next Steps
+- you are not the owner
+- the target is you
+- the target is not already a member of the claim
 
-- [Basic Commands](basic.md) - Shortcuts for trust, kick, ban
-- [🎭 Role Commands](roles.md) - Create custom roles
-- [🔐 All Permissions](../protection/permissions.md) - Permission list
+After the transfer the old owner becomes a normal member — not automatically an admin of their former
+claim. Give them a role first if that is what you meant.
+
+<Callout type="warning" title="A deleted role drops its members onto Member, not Default">
+
+When a role is deleted, members holding it fall back to the built-in `Member` role — which by default
+can build, break, and open every container in the claim. If you delete a restrictive custom role
+expecting its holders to lose access, they gain it instead. Move them off the role first, then delete
+it.
+
+</Callout>

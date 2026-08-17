@@ -1,17 +1,15 @@
 ---
 title: Commands
-order: 6
-description: Overview, Basic Commands, Member Commands, Role Commands, Warp Commands,
-  Chunk Commands, Invite Commands, Flag Commands and Admin Commands.
+order: 20
+description: The whole /claim tree, grouped, with the ability node each branch needs.
 icon: terminal
 ---
 
 - [Overview](overview.md)
-- [Basic Commands](basic.md)
-- [Member Commands](members.md)
-- [Role Commands](roles.md)
-- [Warp Commands](warps.md)
-- [Chunk Commands](chunks.md)
-- [Invite Commands](invites.md)
-- [Flag Commands](flags-cmd.md)
-- [Admin Commands](admin.md)
+- [Claim commands](claim.md)
+- [Chunks and the claim block](chunks.md)
+- [Members](members.md)
+- [Invites](invites.md)
+- [Roles](roles.md)
+- [Warps](warps.md)
+- [Admin](admin.md)

@@ -1,8 +1,7 @@
 ---
 title: Configuration
-order: 24
-description: config.yml, roles.yml, entitlements.yml, messages.yml, webhooks.yml and
-  Menu Customization.
+order: 50
+description: Every file the plugin writes, and what belongs in it.
 icon: settings
 ---
 
@@ -11,4 +10,5 @@ icon: settings
 - [entitlements.yml](entitlements-yml.md)
 - [messages.yml](messages-yml.md)
 - [webhooks.yml](webhooks-yml.md)
-- [Menu Customization](menus.md)
+- [aliases.yml](aliases-yml.md)
+- [Menu layouts](menus.md)

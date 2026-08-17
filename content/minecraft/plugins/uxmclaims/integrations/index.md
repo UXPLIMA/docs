@@ -1,13 +1,12 @@
 ---
 title: Integrations
-order: 33
-description: Ability Permissions, Vault (Economy), PlaceholderAPI, WorldGuard and
-  Map Plugins.
+order: 80
+description: Vault, WorldGuard, PlaceholderAPI and the four web-map plugins.
 icon: plug
 ---
 
-- [Ability Permissions](ability-permissions.md)
-- [Vault (Economy)](vault.md)
-- [PlaceholderAPI](placeholderapi.md)
+- [Overview](overview.md)
+- [Vault](vault.md)
 - [WorldGuard](worldguard.md)
-- [Map Plugins](maps.md)
+- [Map plugins](maps.md)
+- [PlaceholderAPI](placeholderapi.md)

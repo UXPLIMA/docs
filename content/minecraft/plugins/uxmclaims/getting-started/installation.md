@@ -1,110 +1,79 @@
 ---
-title: Quick Installation
-order: 30
-description: Requirements, supported server software, and the first start.
+title: Installation
+order: 102
+description: Requirements, the first start, and the files that appear.
 icon: download
 ---
 
 ## Requirements
 
-Before you start, make sure you have:
+| | |
+|---|---|
+| Server | Paper, Spigot, Purpur, Folia or another Bukkit fork, 1.19.4 or newer |
+| Java | 21 or newer |
+| Database | SQLite out of the box; MySQL 8+ or PostgreSQL 13+ optional |
 
-| Requirement          | Minimum Version                 |
-|----------------------|---------------------------------|
-| **Minecraft Server** | Spigot, Paper, Purpur, or Folia |
-| **Server Version**   | 1.19.4 or newer                 |
-| **Java**             | Java 21 or newer                |
+Paper is not required — `api-version` is `1.20` and the plugin declares `folia-supported: true`, so it
+runs unchanged on a regionised server.
 
-<Callout type="note" title="Compatibility">
+## Optional plugins
 
-uxmClaims works on **Spigot**, **Paper**, **Purpur**, **Folia** and 
-other Bukkit/Spigot forks. It does **not** require Paper, but we 
-recommend it for better performance.
+Every one of these is a `softdepend`. The plugin starts without all of them.
+
+| Plugin | Adds |
+|---|---|
+| Vault | Charging money for claims, chunks, warps and time |
+| A permission plugin | Reading `uxmclaims.limit.*` and `uxmclaims.ability.*` nodes |
+| PlaceholderAPI | The `%uxmclaims_...%` placeholders, and placeholders inside messages |
+| WorldGuard | Refusing claims that overlap a region |
+| Dynmap, BlueMap, Pl3xMap, squaremap | Drawing claims on the web map |
+
+Adventure and MiniMessage are downloaded at runtime through Paper's `libraries` mechanism — there is
+nothing to shade or install.
+
+## Installing
+
+1. Drop `uxmClaims.jar` into `plugins/`.
+2. Start the server once. The plugin writes its files and creates `data/claims.db`.
+3. Stop the server.
+4. Open `config.yml` and set at minimum `generalSettings.licenseKey`, `generalSettings.disabledWorlds`
+   and `claimSettings.expireMode`.
+5. Start again.
+
+## The files
+
+```
+plugins/uxmClaims/
+├── config.yml          settings, borders, holograms, blocks, database
+├── roles.yml           the default roles new claims are created with
+├── entitlements.yml    limits, costs and delays, and how permissions change them
+├── messages.yml        every message the plugin sends
+├── webhooks.yml        Discord webhooks per event
+├── aliases.yml         short commands mapped onto /claim subcommands
+├── menu/               28 menu layouts
+└── data/claims.db      the SQLite database, when SQLite is the backend
+```
+
+Each has its own page under [Configuration](../config/).
+
+## Reloading
+
+`/claim reload` re-reads every file and rebuilds the menus, the alias table and the border colours.
+
+<Callout type="warning" title="Reload does not move a claim to a new database">
+
+`database` in `config.yml` is read at startup. Changing the backend and running `/claim reload` leaves
+the plugin on the old connection. Restart the server, and read
+[Database](../database/) before changing it on a live server — nothing migrates the rows for you.
 
 </Callout>
 
----
+## First checks
 
-## Step-by-Step Installation
-
-### Step 1: Download the Plugin
-
-Download the latest `uxmClaims.jar` file from the official source.
-
-### Step 2: Put It in Your Plugins Folder
-
-1. Go to your server folder
-2. Open the `plugins` folder
-3. Drop the `uxmClaims.jar` file inside
-
-Your folder should look like this:
-
-```
-your-server/
-├── plugins/
-│   ├── uxmClaims.jar  ← Put it here!
-│   └── (other plugins)
-├── server.properties
-└── paper.jar
-```
-
-### Step 3: Start Your Server
-
-Start (or restart) your server. You'll see messages like:
-
-```
-[uxmClaims] Loading uxmClaims...
-[uxmClaims] Migrations applied successfully
-[uxmClaims] uxmClaims enabled!
-```
-
-### Step 4: Check the Config Files
-
-After the first start, uxmClaims creates its configuration files:
-
-```
-plugins/
-└── uxmClaims/
-    ├── config.yml        ← Main settings
-    ├── messages.yml      ← All text messages
-    ├── roles.yml         ← Role definitions
-    ├── entitlements.yml  ← Limits and costs
-    ├── webhooks.yml      ← Discord notifications
-    └── menu/             ← Menu layouts (27 files)
-```
-
----
-
-## That's It! 🎉
-
-The plugin is now running with default settings. Players can type `/claim` to open the main menu.
-
----
-
-## What's Next?
-
----
-
-## Common Installation Problems
-
-### "Plugin failed to load"
-
-**Cause:** Your Java version is too old.
-
-**Fix:** Install Java 21 or newer. Check with:
-
-```bash
-java -version
-```
-
-### "Database connection failed"
-
-**Cause:** If using MySQL/PostgreSQL, the connection settings are wrong.
-
-**Fix:** For now, use SQLite (the default). It works without any setup. See [Database Setup](../database/sqlite.md) later.
-
-### "Players can't use /claim"
-
-**Cause:** Missing permissions.
-
-**Fix:** Players need no special permission by default. Check if another permission plugin is blocking it.
+| Check | How |
+|---|---|
+| The plugin loaded | `/claim` opens a menu |
+| Claiming works | Stand in a normal world and run `/claim create Test` |
+| Economy is wired | `/claim` in a second chunk shows a cost, and the balance drops |
+| Limits are read | Grant `uxmclaims.limit.claim.2` and confirm the limit rises |
+| The map integration works | Open the web map and look for the claim outline |

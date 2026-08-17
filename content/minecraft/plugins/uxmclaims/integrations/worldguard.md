@@ -1,73 +1,48 @@
 ---
 title: WorldGuard
-order: 360
-description: Refusing claims that overlap a WorldGuard region.
-icon: shield
+order: 803
+description: Stopping claims from overlapping protected regions.
+icon: shield-alert
 ---
-
-## What It Does
-
-When enabled:
-
-- Players cannot create claims inside WorldGuard regions
-- Prevents conflicts between claim protection and region protection
-
----
-
-## Enabling
-
-In `config.yml`:
 
 ```yaml
 generalSettings:
   worldGuardSupport: true
 ```
 
----
+## What it does
 
-## How It Works
+When a player tries to claim a chunk, the plugin asks WorldGuard whether that chunk overlaps a region.
+If it does, the claim is refused with `errorNotClaimableArea` — *"Here is not claimable area."*
 
-1. Player tries to claim a chunk
-2. uxmClaims checks if the chunk overlaps a WorldGuard region
-3. If yes: Claim is blocked
-4. If no: Claim proceeds normally
+It is one check in one direction: WorldGuard regions block claims. uxmClaims does not create regions
+and does not modify existing ones.
 
----
+## What this is for
 
-## Use Cases
+The usual setup is a spawn region, an event arena, a shop district and a warzone — areas the server
+owns and players should not be able to fence off.
 
-### Protecting Spawn
+Two ways to protect them, and they compose:
 
-If your spawn area is a WorldGuard region, players won't be able to claim chunks inside it.
+| Approach | Use when |
+|---|---|
+| A WorldGuard region | The area is a shape inside an otherwise claimable world |
+| `generalSettings.disabledWorlds` | The whole world should never be claimed |
 
-### Server Events/Arenas
+`disabledWorlds` is cheaper — no region lookup at all — so use it for whole worlds and reserve regions
+for shapes.
 
-Mark event areas as WorldGuard regions to prevent claiming.
+## When to turn it off
 
-### Admin Builds
+`worldGuardSupport: false` on a server where regions and claims are meant to coexist. A plot world
+wrapped in one large region, for example, would otherwise be entirely unclaimable.
 
-Protect important server builds from being claimed.
+## Notes
 
----
-
-## Setup
-
-1. Install WorldGuard (and WorldEdit)
-2. Create regions for protected areas
-3. Set `worldGuardSupport: true` in config.yml
-4. Restart or reload the server
-
----
-
-## Troubleshooting
-
-### Players can still claim in regions
-
-- Make sure the region exists: `/region info <name>`
-- Make sure uxmClaims is detecting WorldGuard (check startup logs)
-- Try restarting the server
-
-### I want to allow claiming in some regions
-
-Currently, all WorldGuard regions block claiming. Consider using `disabledWorlds` in config.yml for world-based
-restrictions instead.
+- **Existing claims are not re-checked.** Drawing a region over land somebody already claimed does not
+  remove their claim. The check happens at claim time only.
+- **The check covers the chunk, not the block.** A region touching any part of a 16×16 chunk blocks
+  that whole chunk.
+- **`disabledWorlds` is case sensitive.** `World_Nether` and `world_nether` are different strings, and
+  a typo there silently leaves the world claimable.

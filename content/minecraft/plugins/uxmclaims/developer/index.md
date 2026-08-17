@@ -1,14 +1,12 @@
 ---
 title: Developer API
-order: 41
-description: Overview, Adding Dependency, Query API, Events, Use Cases and Domain
-  Models.
+order: 100
+description: The architecture, the facade, the events and the domain model.
 icon: code
 ---
 
-- [Overview](overview.md)
-- [Adding Dependency](dependency.md)
-- [Query API](queries.md)
+- [Architecture](architecture.md)
+- [Adding the dependency](dependency.md)
+- [The API](api.md)
 - [Events](events.md)
-- [Use Cases](usecases.md)
-- [Domain Models](models.md)
+- [Domain model](models.md)

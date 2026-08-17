@@ -1,107 +1,66 @@
 ---
 title: PlaceholderAPI
-order: 350
-description: Every placeholder the plugin exposes, and the fallback text when outside a claim.
+order: 805
+description: The uxmclaims expansion, and where its placeholders can be used.
 icon: braces
 ---
-
-## Enabling
-
-In `config.yml`:
 
 ```yaml
 generalSettings:
   placeholderSupport: true
 ```
 
----
+uxmClaims registers an expansion with the identifier `uxmclaims`. It is bundled — there is nothing to
+download from the eCloud.
 
-## Available Placeholders
+The complete syntax, the path rules and every modifier are in
+[Placeholders → Reference](../placeholders/reference.md). This page is about where they work.
 
-Use these in any plugin that supports PlaceholderAPI:
+## In other plugins
 
-### Location Check
+Any plugin that resolves PlaceholderAPI placeholders can use them: scoreboards, tab lists, holograms,
+chat formats, NPC dialogue.
 
-| Placeholder | Output |
-|-------------|--------|
-| `%uxmclaims_is_claimable%` | `true` if current location can be claimed, `false` otherwise |
+```
+%uxmclaims_claim_name%
+%uxmclaims_claim_owner_name%
+%uxmclaims_count:claim_chunks%
+%uxmclaims_time:claim_remainTime%
+%uxmclaims_is_claimable%
+```
 
-### Current Claim (where player is standing)
+Which claim they describe is the one selected with `/claim select`, or failing that the one the player
+is standing in.
 
-| Placeholder | Output |
-|-------------|--------|
-| `%uxmclaims_claim_name%` | Claim name |
-| `%uxmclaims_claim_owner_name%` | Owner's username |
-| `%uxmclaims_claim_owner_uid%` | Owner's UUID |
+## In uxmClaims' own files
 
-### Claim Statistics
+`messages.yml`, `webhooks.yml`, the hologram lines and every menu use the same engine **without** the
+`uxmclaims_` prefix, and with more objects in context:
 
-| Placeholder | Output |
-|-------------|--------|
-| `%uxmclaims_count:claim.chunks%` | Number of chunks |
-| `%uxmclaims_count:claim.members%` | Number of members |
-| `%uxmclaims_count:claim.warps%` | Number of warps |
-| `%uxmclaims_count:claim.roles%` | Number of roles |
+```yaml
+'<gray>Owner:</gray> <white>%claim.owner.name%</white>'
+'<gray>Expires:</gray> <gold>%time:claim.remainTime%</gold>'
+```
 
-### Claim Time
+This part works with `placeholderSupport: false` and without PlaceholderAPI installed — it is the
+plugin's own parser. The switch and the dependency only govern *external* placeholders.
 
-| Placeholder | Output |
-|-------------|--------|
-| `%uxmclaims_time:claim.remainTime%` | Formatted remaining time |
-| `%uxmclaims_date:claim.expireDate%` | Expiration date |
-| `%uxmclaims_date:claim.creationDate%` | Creation date |
+## Third-party placeholders inside uxmClaims
 
----
+With PlaceholderAPI installed, another plugin's placeholders work inside uxmClaims' messages and
+menus. A hologram line can carry `%vault_eco_balance%`; a menu lore line can carry
+`%player_world%`.
 
-## Default Values
-
-When a player isn't in a claim, you can customize what shows in `messages.yml`:
+## Defaults outside a claim
 
 ```yaml
 placeholderDefaults:
-  uxmclaims_claim_name: 'Wilderness'
-  uxmclaims_claim_owner_name: 'Nobody'
+  uxmclaims_claim_name: 'No claim'
+  uxmclaims_claim_owner_name: 'No claim'
 ```
 
----
+Two are defined. Every other path renders empty outside a claim, so add an entry for anything you put
+on a permanent scoreboard.
 
-## Example Uses
-
-### In a Scoreboard
-
-```
-You are in: %uxmclaims_claim_name%
-Owner: %uxmclaims_claim_owner_name%
-```
-
-### In Chat Format
-
-```
-[%uxmclaims_claim_name%] PlayerName: message
-```
-
-### In Tab/Nameplates
-
-```
-PlayerName
-%uxmclaims_claim_name%
-```
-
----
-
-## Setup
-
-1. Install PlaceholderAPI
-2. Set `placeholderSupport: true` in config.yml
-3. Restart or reload the server
-4. Use the placeholders in your other plugins
-
----
-
-## Troubleshooting
-
-### Placeholders show as raw text
-
-- Make sure PlaceholderAPI is installed
-- Make sure the other plugin supports PlaceholderAPI
-- Try `/papi parse me %uxmclaims_claim_name%` to test
+`%uxmclaims_is_claimable%` is the exception — it works anywhere, because it is answered before the
+claim is resolved.

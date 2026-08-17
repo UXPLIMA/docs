@@ -1,104 +1,50 @@
 ---
-title: Invite Commands
-order: 120
-description: Sending, accepting, declining and revoking invitations to a claim.
-icon: user-plus
+title: Invites
+order: 205
+description: The invitation flow, from sending to accepting, and the inbox.
+icon: mail
 ---
 
-## Available Commands
+Nobody is added to a claim directly. An invitation is created, and the invited player accepts it.
 
-| Command | Description |
-|---------|-------------|
-| `/claim invite send <player>` | Sends an invitation |
-| `/claim invite inbox` | Opens your invite inbox |
-| `/claim invite accept <claim>` | Accepts an invitation |
-| `/claim invite reject <claim>` | Declines an invitation |
-| `/claim invite revoke <player>` | Revokes a sent invitation |
+| Command | What it does | Ability node |
+|---|---|---|
+| `/claim invite send <player>` | Invite someone | `uxmclaims.ability.member.invite` |
+| `/claim invite accept <claim>` | Accept an invitation | — |
+| `/claim invite reject <claim>` | Decline one | — |
+| `/claim invite revoke <player>` | Withdraw one you sent | `uxmclaims.ability.member.revoke` |
+| `/claim invite inbox` | Open your pending invitations | — |
 
----
+`/claim trust <player>` is a shorthand for `invite send`, and `/claim invites` for `invite inbox`.
 
-## How Invitations Work
+Sending also needs the `MANAGE_INVITES` role permission.
 
-1. **Owner sends invite** → `/claim invite send PlayerName` (or `/claim trust`)
-2. **Player receives notification** with clickable buttons
-3. **Player accepts:**
-    - By clicking `[ACCEPT]` in chat
-    - By typing `/claim invite accept <claimName>`
-    - By opening the inbox `/claim invites`
+## The flow
 
----
+1. The owner or a member with `MANAGE_INVITES` runs `/claim trust Steve`.
+2. Steve, if online, receives a message with clickable **[Accept]** and **[Reject]** buttons.
+3. Steve accepts. He becomes a member with the claim's `Member` role.
 
-## Command Details
+The notification is `notificationInviteReceived` in `messages.yml` and its buttons run
+`/claim invite accept <claim>` and `/claim invite reject <claim>`. Rewriting that message is how you
+change what players see; the click targets are ordinary commands.
 
-### `/claim invite send <player>`
+If Steve was offline, or lost the message, `/claim invites` shows everything waiting.
 
-Sends an invitation to join your claim.
+## Limits
 
-**Requirements:**
+| Limit | Node | Default |
+|---|---|---|
+| Pending invitations per claim | `uxmclaims.limit.invite.<n>` | `10`, MAX |
+| Members per claim | `uxmclaims.limit.member.<n>` | `50`, stacking |
+| Cost of sending one | `uxmclaims.cost.invite.<count>.<price>` | `0.0` |
 
-- You must have permission to invite (check your role)
-- Player must not already be a member
-- Player must not be banned
+The invite limit counts invitations that have not been answered, so a claim spamming invitations to
+offline players will hit it. Revoking frees a slot.
 
----
+<Callout type="info" title="Aliases make this two keystrokes">
 
-### `/claim invite inbox`
+`aliases.yml` ships `/accept` and `/untrust`. Adding `/invite: "claim invite send"` gives players the
+verb they expect from every other plugin, without touching the command tree.
 
-Opens your personal inbox showing all pending invitations. Same as `/claim invites`.
-
-From this menu you can:
-
-- See which claims invited you
-- See who sent the invitation
-- Accept (become a member)
-- Decline (remove invitation)
-
----
-
-### `/claim invite accept <claim>`
-
-Accepts a pending invitation from a specific claim.
-
-**Example:**
-```
-/claim invite accept MyBase
-```
-
----
-
-### `/claim invite reject <claim>`
-
-Declines (removes) a pending invitation from a specific claim.
-
-**Example:**
-```
-/claim invite reject MyBase
-```
-
----
-
-### `/claim invite revoke <player>`
-
-Cancels a pending invitation you sent, before the player accepts it.
-
----
-
-## Examples
-
-### Inviting a Friend
-
-```
-/claim invite send FriendPlayer
-```
-
-### Checking Your Invitations
-
-```
-/claim invites
-```
-
----
-
-## Next Steps
-- [👥 Member Commands](members.md) - Managing members after they join
-- [📬 Invitations Menu](../menus/invitations.md) - GUI invite management
+</Callout>

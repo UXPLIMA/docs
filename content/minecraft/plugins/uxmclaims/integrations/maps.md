@@ -1,117 +1,80 @@
 ---
-title: Map Plugins
-order: 370
-description: Drawing claim borders on Dynmap, BlueMap and squaremap.
+title: Map plugins
+order: 804
+description: Drawing claims on Dynmap, BlueMap, Pl3xMap and squaremap.
 icon: map
 ---
 
-## Supported Map Plugins
+Four are supported and detected automatically. Install one; the plugin picks it up.
 
-| Plugin    | Support |
-|-----------|---------|
-| Dynmap    | ✅ Full  |
-| BlueMap   | ✅ Full  |
-| Pl3xMap   | ✅ Full  |
-| SquareMap | ✅ Full  |
-
----
-
-## Enabling
-
-In `config.yml`:
+| Plugin |
+|---|
+| Dynmap |
+| BlueMap |
+| Pl3xMap |
+| squaremap |
 
 ```yaml
 visualizer:
   enabled: true
 ```
 
-The plugin automatically detects which map plugin you have installed.
-
----
-
-## Customizing Appearance
-
-### Border and Fill Style
+## Styling
 
 ```yaml
 visualizer:
   style:
-    borderColor: "#33FF33"     # Line color (hex)
-    borderOpacity: 0.8         # Line opacity (0-1)
-    borderWeight: 2            # Line thickness
-    fillColor: "#33FF33"       # Fill color (hex)
-    fillOpacity: 0.35          # Fill opacity (0-1)
+    borderColor: "#33FF33"
+    borderOpacity: 0.8
+    borderWeight: 2
+    fillColor: "#33FF33"
+    fillOpacity: 0.35
 ```
 
-**Example colors:**
+| Key | Default | Meaning |
+|---|---|---|
+| `borderColor` | `#33FF33` | Outline colour |
+| `borderOpacity` | `0.8` | Outline opacity, 0–1 |
+| `borderWeight` | `2` | Outline thickness in pixels |
+| `fillColor` | `#33FF33` | Fill colour |
+| `fillOpacity` | `0.35` | Fill opacity, 0–1 |
 
-- Green: `#33FF33`
-- Red: `#FF3333`
-- Blue: `#3333FF`
-- Yellow: `#FFFF33`
+These are the web map's own colour format — six hex digits, no alpha channel. Opacity is the separate
+`…Opacity` key. That is different from the in-world `border` colours in `config.yml`, which are
+eight-digit `#RRGGBBAA`.
 
----
+## Tooltips
 
-### Tooltip (Hover Information)
+The hover popup is HTML, rendered by the map's front end, with placeholders parsed first.
 
 ```yaml
 visualizer:
   tooltip:
     lines:
-      - '<span style="font-weight:bold;">%claim.name%</span>'
-      - '• Owner: %claim.owner.name%'
-      - '• Chunks: %count:claim.chunks%'
-      - '• Members: %count:claim.members%'
-      - '• Created: %date:claim.creationDate%'
+      - '<span style="font-weight:bold; font-size:12px; color:#22c55e;">%claim.name%</span>'
+      - '<span style="color:#22c55e;">• Owner:</span> <span style="color:#111827;">%claim.owner.name%</span>'
+      - '<span style="color:#22c55e;">• Chunks:</span> <span style="color:#111827;">%count:claim.chunks%</span>'
+      - '<span style="color:#22c55e;">• Members:</span> <span style="color:#111827;">%count:claim.members%</span>'
+      - '<span style="color:#22c55e;">• Created:</span> <span style="color:#111827;">%date:claim.creationDate%</span>'
 ```
 
-This is HTML that shows when hovering over a claim on the map.
+MiniMessage does **not** work here — `<gray>` renders as a broken HTML tag. Use inline CSS, as the
+shipped lines do.
 
-**Available placeholders:**
+Any [placeholder](../placeholders/reference.md) works, including the `count:`, `date:` and `time:`
+modifiers.
 
-- `%claim.name%` - Claim name
-- `%claim.owner.name%` - Owner name
-- `%count:claim.chunks%` - Number of chunks
-- `%count:claim.members%` - Number of members
-- `%date:claim.creationDate%` - Creation date
+<Callout type="warning" title="The tooltip is public">
 
----
+Whatever you put in these lines is visible to anyone who can load the web map, signed in or not.
+`%claim.owner.name%` is fine; coordinates of a claim's vault or spawn are an invitation. Keep the
+tooltip to the name, the owner and counts.
 
-## How It Looks
+</Callout>
 
-On the web map, claims appear as colored shapes:
+## Notes
 
-- The border shows the outline
-- The fill shows the area
-- Hovering shows the tooltip
-
----
-
-## Setup
-
-1. Install a map plugin (Dynmap, BlueMap, etc.)
-2. Set `visualizer.enabled: true` in config.yml
-3. Customize colors if desired
-4. Restart or reload the server
-5. View your web map!
-
----
-
-## Troubleshooting
-
-### Claims don't appear on map
-
-- Make sure `enabled: true` is set
-- Check that the map plugin is working
-- Restart both plugins
-- Check console for errors
-
-### Colors are wrong
-
-- Use hex format with `#` (e.g., `"#33FF33"`)
-- Make sure values are in quotes
-
-### Tooltip shows raw placeholders
-
-- Check that placeholders are spelled correctly
-- HTML formatting must be valid
+- **Only one map plugin is used.** With several installed the first detected wins.
+- **The whole claim is drawn, not just the main chunk** — every chunk it owns, as one outline.
+- **`enabled: false` removes the markers entirely,** which is what you want on a server where the map
+  is meant to hide player builds.

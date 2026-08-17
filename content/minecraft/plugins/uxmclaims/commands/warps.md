@@ -1,112 +1,55 @@
 ---
-title: Warp Commands
-order: 100
-description: Creating, deleting and publishing warps inside a claim.
+title: Warps
+order: 207
+description: Creating warps inside a claim, moving them, and publishing them server-wide.
 icon: map-pin
 ---
 
-## Available Commands
+| Command | What it does | Ability node |
+|---|---|---|
+| `/claim warp create <name>` | Create a warp where you stand | `uxmclaims.ability.warp.create` |
+| `/claim warp delete <name>` | Delete it | `uxmclaims.ability.warp.delete` |
+| `/claim warp rename <name> <new>` | Rename it | `uxmclaims.ability.warp.rename` |
+| `/claim warp move <name>` | Move it to where you stand | `uxmclaims.ability.warp.relocate` |
+| `/claim warp setpublic <name> <true\|false>` | Publish or unpublish it | `uxmclaims.ability.warp.visibility` |
+| `/claim warp teleport <name>` | Teleport to any warp you may reach | — |
 
-| Command | Description |
-|---------|-------------|
-| `/claim warp create <name>` | Creates a warp at your location |
-| `/claim warp delete <name>` | Deletes a warp |
-| `/claim warp teleport <name>` | Teleports to a warp |
-| `/claim warp rename <name> <new-name>` | Renames a warp |
-| `/claim warp move <name>` | Updates warp location (Relocate) |
-| `/claim warp setpublic <name> <true/false>` | Sets warp visibility |
+Managing warps also needs the `MANAGE_WARPS` role permission. *Using* one needs `USE_WARPS`.
 
----
+`/claim warps` opens the public warp list, and `/claim spawn <name>` will find a warp by name too.
 
-## Public vs Private Warps
+## Public and private
 
-| Type | Who Can Use |
-|------|-------------|
-| **Private** | Only claim members |
-| **Public** | Anyone on the server |
+A private warp is visible to the claim's members. A public warp appears in `/claim warps` for
+everyone on the server and can be teleported to by anyone with `USE_WARPS`.
 
-Public warps appear in the main menu's "Public Warps" list (`/claim warps`).
+Publishing is the one thing here with a safety net: teleporting to a public warp in a claim that has
+the `PVP` flag on prompts for confirmation first, with the `warningWarpPvpEnabled` message. A player
+cannot be dropped into a PvP zone by clicking a warp in a list.
 
----
+## What a teleport costs
 
-## Command Details
+| Setting | Node | Default |
+|---|---|---|
+| Warps per claim | `uxmclaims.limit.warp.<n>` | `3`, MAX |
+| Creating a warp | `uxmclaims.cost.warp.<count>.<price>` | `0.0` |
+| Teleporting | `uxmclaims.cost.warptp.<public\|private>.<price>` | `0.0` |
+| Warmup before the teleport | `uxmclaims.delay.teleport.<n>` | `3` seconds, MIN |
 
-### `/claim warp create <name>`
+The teleport cost node distinguishes public from private, so you can leave a player's own warps free
+and charge for hopping to someone else's shop.
 
-Creates a warp at your current position. You'll spawn facing the direction you were looking.
+The delay uses the `MIN` strategy, which means granting a rank a *smaller* number is the perk:
+`uxmclaims.delay.teleport.0` is an instant teleport.
 
-**Requirements:**
+## Name resolution
 
-- Must be standing inside your claim
-- Must have available warp slots
-- May cost money (server configurable)
+`/claim spawn <name>` and `/claim warp teleport <name>` search in this order:
 
-**Naming Rules:**
+1. public warps
+2. warps in claims you own
+3. warps in claims you are a member of
+4. claims by name, teleporting to the claim spawn
 
-- At least 3 characters
-- Cannot contain spaces (use underscores or hyphens instead)
-
----
-
-### `/claim warp delete <name>`
-
-Permanently deletes a warp from your claim.
-
-<Callout type="info" title="Confirmation Required">
-
-This command requires confirmation. Click `[CONFIRM]` in chat or use `/claim confirm`.
-
-</Callout>
-
----
-
-### `/claim warp teleport <name>`
-
-Teleports to the specified warp. May have a delay based on server settings.
-
----
-
-### `/claim warp move <name>`
-
-Updates the warp's location to where you're currently standing.
-
----
-
-### `/claim warp setpublic <name> <true/false>`
-
-Makes a warp:
-
-- **Public (`true`):** Visible to all players in `/claim warps`
-- **Private (`false`):** Only accessible by claim members
-
----
-
-## Examples
-
-### Creating a Shop Warp
-
-```
-/claim warp create Shop
-/claim warp setpublic Shop true
-```
-
-### Moving a Warp
-
-```
-/claim warp move Shop
-```
-
----
-
-## Tips
-
-1. **Name clearly** - "Shop" is better than "warp1"
-2. **Face the right direction** - You'll spawn facing that way
-3. **Stand on solid ground** - Don't create warps in mid-air
-
----
-
-## Next Steps
-
-- [📍 Warps Menu](../menus/warps.md) - GUI warp management
-- [Basic Commands](basic.md) - Core claim commands
+First match wins. A public warp named `shop` will shadow your own private warp of the same name, so
+name public warps distinctly if that matters on your server.

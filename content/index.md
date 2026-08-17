@@ -20,6 +20,7 @@ Premium plugins for Paper/Spigot servers.
 - **[uxmFarmer](minecraft/plugins/uxmfarmer/)** - A hired farmhand NPC that harvests, kills, collects XP & sells, with per-product levels
 - **[uxmDiscordSync](minecraft/plugins/uxmdiscordsync/)** - Account linking, rank sync, chat bridge, Discord-side 2FA & level rewards
 - **[uxmDragonEvent](minecraft/plugins/uxmdragonevent/)** - A scheduled Ender Dragon fight with rebirths, damage leaderboards & rewards
+- **[uxmBlacksmith](minecraft/plugins/uxmblacksmith/)** - Time-gated crafting with burn risk, trade slots, boosts, levels, masteries & a perk tree
 
 ---
 

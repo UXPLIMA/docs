@@ -1,89 +1,63 @@
 ---
-title: Chunk Commands
-order: 110
-description: Claiming, unclaiming and inspecting the 16x16 chunks a claim is made of.
-icon: grid-3x3
+title: Chunks and the claim block
+order: 203
+description: Growing and shrinking a claim, and the block that marks it.
+icon: box
 ---
 
-## Available Commands
+## /claim chunk
 
-| Command | Description |
-|---------|-------------|
-| `/claim chunk view` | Opens the chunk map menu |
-| `/claim chunk add` | Adds your current chunk to the claim |
-| `/claim chunk remove` | Removes the most recently added chunk |
+| Command | What it does | Ability node |
+|---|---|---|
+| `/claim chunk view` | Open the chunk map for the current claim | — |
+| `/claim chunk add` | Buy the chunk you are standing on | `uxmclaims.ability.chunk.extend` |
+| `/claim chunk remove` | Sell back the chunk you are standing on | `uxmclaims.ability.chunk.shrink` |
 
----
+Both `add` and `remove` also need the `MANAGE_CHUNKS` role permission.
 
-## What is a Chunk?
+`add` refuses a chunk that does not touch the claim — *"You can only claim chunks connected to your
+claim."* — and one that would break `claimSettings.minDistance` from someone else's land.
 
-A chunk is a 16×16 block area extending from bedrock to sky. When you claim land, you claim whole chunks.
+`remove` refuses two cases:
 
-<Callout type="info" title="How Big is a Chunk?">
+- the **main chunk**, which holds the claim block, hologram and spawn; delete the claim instead
+- any chunk whose removal would split the claim into two disconnected pieces
 
-16×16 blocks = **256 blocks of area**. A small house needs 1 chunk, a large base might need 4-9 chunks.
+The second is the one people hit. A claim shaped like a corridor cannot have its middle removed.
+
+## Costs and limits
+
+| Setting | Node | Default |
+|---|---|---|
+| Chunks a player may hold in total | `uxmclaims.limit.chunk.<n>` | `10`, stacking |
+| Price of one chunk | `uxmclaims.cost.chunk.<count>.<price>` | `25.0`, flat |
+
+The chunk limit is global across all of a player's claims, not per claim.
+
+## /claim block
+
+The claim block is a real block placed in the main chunk that marks the claim in the world and carries
+the hologram.
+
+| Command | What it does | Ability node |
+|---|---|---|
+| `/claim block place <style>` | Place the block where you stand | `uxmclaims.ability.block.place` |
+| `/claim block change <style>` | Switch to another style | `uxmclaims.ability.block.change` |
+| `/claim block destroy` | Remove it | `uxmclaims.ability.block.destroy` |
+
+All three also need the `MANAGE_BLOCK` role permission.
+
+`<style>` is a key from the `blocks` section of `config.yml` — `block1` and `block2` ship, being
+bedrock and obsidian. A style may carry its own permission; `block2` ships gated behind
+`claim.blockchange.obsidian`.
+
+The block must be inside the **main chunk**. Anywhere else answers *"You can only place the claim
+block inside the main chunk."*
+
+<Callout type="tip" title="The claim block is where the hologram lives">
+
+Holograms are rendered above the claim block, using the lines and styling in the `hologram` section
+of [config.yml](../config/config-yml.md). No block, no hologram — which is a reasonable way to let
+players opt out of floating text over their base.
 
 </Callout>
-
----
-
-## Command Details
-
-### `/claim chunk view`
-
-Opens a visual map showing:
-
-- Your claimed chunks (green)
-- Available chunks to claim (gray)
-- Other players' claims (red)
-
-From this menu, you can click to add or remove chunks.
-
----
-
-### `/claim chunk add`
-
-Adds the chunk you're currently standing in to your claim.
-
-**Requirements:**
-
-- Chunk must be adjacent to an existing claimed chunk
-- Chunk must not be claimed by another player
-- You must have available chunk slots
-- May cost money (server configurable)
-
----
-
-### `/claim chunk remove`
-
-Removes the **most recently added** chunk from your claim.
-
-<Callout type="warning">
-
-You cannot remove the main chunk (where the claim was originally created).
-
-</Callout>
-
----
-
-## Examples
-
-### Expanding Your Claim
-
-```
-# Stand in the new chunk you want to add
-/claim chunk add
-```
-
-### Using the Map
-
-```
-/claim chunk view
-```
-
----
-
-## Next Steps
-
-- [🗺️ Claim Map Menu](../menus/claim-map.md) - Visual chunk management
-- [📖 Basic Concepts](../getting-started/concepts.md) - Understanding chunks
