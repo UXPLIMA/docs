@@ -40,8 +40,7 @@ Drop-in Luau systems for Roblox experiences. Each one is a single folder you pla
 - **[How a UXR system works](roblox/systems/platform/)** - The bootstrap, the folders, the remotes and the profiles every system shares
 - **[All systems](roblox/systems/)** - Sixteen systems: daily rewards, levels, seven games, vehicles, doors, handcuffs, pets, trolls, overheads and an admin panel
 
-Alongside them: [Setups](roblox/setups/), [Scripts](roblox/scripts/) and
-[Graphic & UI](roblox/graphic-ui/).
+Alongside them: [Setups](roblox/setups/) and [Graphic & UI](roblox/graphic-ui/).
 
 ---
 
