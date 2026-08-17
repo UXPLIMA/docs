@@ -1,7 +1,7 @@
 ---
 title: uxrVehicleSystemPack
 order: 30
-description: A vehicle dealership economy: catalog, ownership, spawn pads, fuel, radar, trunks and auctions.
+description: A vehicle dealership economy with a catalog, ownership, spawn pads, fuel, radar, trunks and auctions.
 icon: car
 ---
 

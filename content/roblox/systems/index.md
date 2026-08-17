@@ -46,4 +46,4 @@ parts every system shares, so each product's own pages can stay on what makes it
 | System | What it does |
 |---|---|
 | [uxrOverhead](uxroverhead/) | Nameplates above every player, driven by your own data |
-| [uxrAdminPanel](uxradminpanel/) | An in-game admin panel with ranks, commands and logging |
+| [uxrAdminPanel](uxradminpanel/) | An admin panel with ranks, 346 commands, moderation, logs and cross-server control |
