@@ -2,7 +2,7 @@
 title: Analytics and the audit trail
 order: 211
 description: Every trade event recorded, queryable in chat, a menu, or a CSV export.
-icon: bar-chart-3
+icon: chart-column
 ---
 
 Every trade outcome is written to the database. Nothing is sampled and nothing expires on its own.

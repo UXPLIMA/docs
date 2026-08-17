@@ -2,7 +2,7 @@
 title: The personal menu
 order: 402
 description: The hub a player sees outside their own land.
-icon: home
+icon: house
 ---
 
 Opened by `/claim menu`, or by `/claim` anywhere you are not a member.

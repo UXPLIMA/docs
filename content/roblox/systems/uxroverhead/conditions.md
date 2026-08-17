@@ -2,7 +2,7 @@
 title: Conditions
 order: 5
 description: The eighteen check types, how they combine, and the caches behind them.
-icon: filter
+icon: funnel
 ---
 
 Ranks and icon tags are both matched by a `CheckTypes` table. Every entry in it must pass;

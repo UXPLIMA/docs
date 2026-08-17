@@ -2,7 +2,7 @@
 title: uxrHandcuff
 order: 32
 description: Cuff, grab, search, take down and jail, with bail, admin commands and an arrest log.
-icon: handcuffs
+icon: user-lock
 ---
 
 A police roleplay toolkit. An officer holding the handcuffs can cuff a suspect, walk them

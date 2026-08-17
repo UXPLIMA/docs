@@ -2,7 +2,7 @@
 title: AI Assistant
 order: 36
 description: "The Gemini-backed assistant: setup, prompts, limits and what it costs."
-icon: message-circle-question
+icon: bot
 ---
 
 The NPC can take a question in chat and answer it from a knowledge base you write. It is off by
