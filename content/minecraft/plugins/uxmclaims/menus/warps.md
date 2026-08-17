@@ -19,7 +19,7 @@ Clicking opens the management screen for that warp.
 
 | Button | Does | Ability node |
 |---|---|---|
-| Teleport | Goes there | — |
+| Teleport | Goes there | n/a |
 | Move here | Relocates it to where you stand | `uxmclaims.ability.warp.relocate` |
 | Rename | Prompts in chat | `uxmclaims.ability.warp.rename` |
 | Public / private | Toggles visibility | `uxmclaims.ability.warp.visibility` |
@@ -48,5 +48,5 @@ hopping to someone else's shop costs money.
 ## Name resolution
 
 `/claim spawn <name>` and `/claim warp teleport <name>` search public warps first, then your own
-claims, then claims you are a member of, then claims by name. First match wins — a public warp named
+claims, then claims you are a member of, then claims by name. First match wins: a public warp named
 `shop` shadows your private one.

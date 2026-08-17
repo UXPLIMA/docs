@@ -14,7 +14,7 @@ icon: download
 | Required | A region plugin from the [supported list](../integrations.md#region-hook) |
 | Recommended | PlaceholderAPI, Vault, an NPC plugin |
 
-Libraries are downloaded by the server at startup — ORMLite, SnakeYAML and XSeries are declared in
+Libraries are downloaded by the server at startup: ORMLite, SnakeYAML and XSeries are declared in
 `plugin.yml` and do not need to be shaded or installed by hand.
 
 ## First run
@@ -24,10 +24,10 @@ Libraries are downloaded by the server at startup — ORMLite, SnakeYAML and XSe
 2. Stop the server and open `config.yml`.
 3. Set `license-key` to the key from your UXPLIMA panel.
 4. Set `hooks.region-hook` to the plugin that owns claims or islands on your server. This is not
-   optional — a farmer belongs to a region, and without this hook there is nowhere to put one.
+   optional: a farmer belongs to a region, and without this hook there is nowhere to put one.
 5. Set `hooks.interaction-hook` to the NPC plugin you run. With `default` or `""` the farmer has no
    body and is reachable only through commands.
-6. Set `hooks.money-hook` — `Vault`, `PlayerPoints`, or `SuperiorSkyblock2` to charge the island
+6. Set `hooks.money-hook`: `Vault`, `PlayerPoints`, or `SuperiorSkyblock2` to charge the island
    bank.
 7. Set `world-management.world-list` and `list-type` so farmers exist only where you want them.
 8. Start the server.
@@ -46,7 +46,7 @@ other.
 <Callout type="warning" title="Set the world list before you open the server">
 
 `world-management.list-type` defaults to `BLACKLIST` with `world` in the list, which means farmers
-are blocked in your main world and allowed everywhere else. On most servers this is backwards —
+are blocked in your main world and allowed everywhere else. On most servers this is backwards:
 switch to `WHITELIST` and list your island or survival world.
 
 </Callout>

@@ -6,7 +6,7 @@ icon: chart-no-axes-column-increasing
 ---
 
 Every product the farmer collects has its own level. The level sets how much of that product the
-farmer can hold, what one unit is worth, and what tax is taken when it sells — so upgrading wheat
+farmer can hold, what one unit is worth, and what tax is taken when it sells, so upgrading wheat
 does nothing for cactus, and a player builds the ladder they actually use.
 
 ## What a level defines
@@ -59,13 +59,13 @@ The plugin resolves `condition` and compares the result to `required-output` as 
 playtime check compares against `"1"`.
 
 `display` is what the player reads in the upgrade menu. Write it as the requirement, not as the
-expression — the player does not need to see your placeholder.
+expression: the player does not need to see your placeholder.
 
 <Callout type="note" title="Braces inside conditions">
 
 Inside a placeholder argument, `{...}` is used for nested placeholders so the outer `%...%` does not
 terminate early. `%math_({statistic_PLAY_ONE_MINUTE}/72000)>60%` reads the playtime statistic,
-divides it, and compares — all inside one `math` call.
+divides it, and compares: all inside one `math` call.
 
 </Callout>
 
@@ -76,7 +76,7 @@ level 0 at 2,500 capacity to the top of your table, with prices climbing as capa
 in `collected-materials.yml` with their own `levels` section ignore it completely.
 
 Keep the default ladder as your baseline and give a product its own only when it genuinely needs a
-different shape — a rare product with high unit price and low capacity, for instance.
+different shape: a rare product with high unit price and low capacity, for instance.
 
 ## Upgrade All
 
@@ -96,7 +96,7 @@ only-owners-can-upgrade: false
 | `upgrade-all-discount` | Percentage off the total, as an incentive to upgrade in bulk |
 | `only-owners-can-upgrade` | Members with the UPGRADE rank permission are still refused |
 
-`upgrade-all-must-meet-all-requirements` applies to money requirements only — placeholder
+`upgrade-all-must-meet-all-requirements` applies to money requirements only: placeholder
 requirements are always checked per product, because there is no meaningful way to partially satisfy
 a VIP rank check.
 

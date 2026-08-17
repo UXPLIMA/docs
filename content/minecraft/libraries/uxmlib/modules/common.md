@@ -26,7 +26,7 @@ it took, and having exactly one representation removes a whole class of formatti
 ## Scheduling
 
 One `Scheduler` interface over Paper's four schedulers. Build it once, inject it everywhere, and
-your plugin never touches `BukkitScheduler` — which is what makes it run unchanged on Folia.
+your plugin never touches `BukkitScheduler`, which is what makes it run unchanged on Folia.
 
 ```java
 Scheduler scheduler = new PaperScheduler(plugin);
@@ -43,7 +43,7 @@ can stop itself without holding a field.
 
 | Method family | Runs on |
 |---|---|
-| `global` | The global region — server-wide state |
+| `global` | The global region (server-wide state) |
 | `region` | The region owning a location |
 | `entity` | The region owning an entity, following it |
 | `async` | Off the main thread |
@@ -81,7 +81,7 @@ settings.reload();
 ```
 
 The whole file maps onto one `@ConfigSerializable` record. `current()` returns a cached snapshot,
-cheap enough for a hot path, and `reload()` swaps in a new one atomically — or keeps the previous
+cheap enough for a hot path, and `reload()` swaps in a new one atomically, or keeps the previous
 value if the new file does not parse.
 
 That last part matters: a typo in a config file leaves the server running on the last good
@@ -105,7 +105,7 @@ The point is that message text lives in a file the server owner edits, and code 
 | `Durations` | Parsing and formatting durations from config strings |
 | `Numbers` | Parsing and formatting numbers safely |
 | `Sounds` | Sound keys from config, with validation |
-| `Particles`, `ParticleData` | Type-safe particle spawning — the right data type per particle |
+| `Particles`, `ParticleData` | Type-safe particle spawning (the right data type per particle) |
 | `SemanticVersion` | Version comparison |
 | `ServerVersion` | What the server is running |
 | `TimedRegex` | Regex with a ReDoS guard |
@@ -117,4 +117,4 @@ backtracking pattern in a hot path is a denial of service, and this bounds how l
 rather than trusting the pattern.
 
 `Particles` is typed because the vanilla particle API takes an `Object` whose required class depends
-on the particle — a mismatch throws at runtime. Here it does not compile.
+on the particle: a mismatch throws at runtime. Here it does not compile.

@@ -5,7 +5,7 @@ description: Messages, ranks, conversions and the menu files.
 icon: languages
 ---
 
-Everything a player reads lives under `languages/<code>/`. Two languages ship — `en` and `tr` — and
+Everything a player reads lives under `languages/<code>/`. Two languages ship (`en` and `tr`) and
 `config.yml → language` picks one.
 
 ```
@@ -34,8 +34,8 @@ prefix: "<#ff7700><bold>Farmer <dark_gray>►<reset>"
 reloaded: "<prefix> <gray>Configuration files updated."
 ```
 
-Message-specific placeholders are written in angle brackets — `<player>`, `<amount>`,
-`<setting>` — and are filled in by the plugin. PlaceholderAPI placeholders work too, in the
+Message-specific placeholders are written in angle brackets (`<player>`, `<amount>`,
+`<setting>`) and are filled in by the plugin. PlaceholderAPI placeholders work too, in the
 `<papi:'...'>` form.
 
 ## Menus
@@ -100,7 +100,7 @@ Items are defined the same way everywhere in this plugin: `material`, `model-dat
 `glowing`, `head-data` and a MiniMessage `display-name` and `lore`. `head-data` takes a texture
 value prefixed with `texture-`, or a player name.
 
-`collected-item` is a template — the material is replaced with the actual product, which is why the
+`collected-item` is a template: the material is replaced with the actual product, which is why the
 comment says to leave `STONE` alone. Its lore is where product placeholders like `<amount>`,
 `<capacity>`, `<fullness>`, `<unit_price>` and `<tax>` are available.
 

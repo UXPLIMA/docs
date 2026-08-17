@@ -39,11 +39,11 @@ combining strategy and a multiplier.
 |---|---|---|
 | `STACK` | Adding them up | Limits that should accumulate across ranks |
 | `MAX` | Taking the largest | Limits where the best rank should simply win |
-| `MIN` | Taking the smallest | Costs and delays — smaller is the upgrade |
+| `MIN` | Taking the smallest | Costs and delays (smaller is the upgrade) |
 
 A player holding both `uxmclaims.limit.claim.2` and `uxmclaims.limit.claim.3`:
 
-- under `STACK`: `1 + 2 + 3 = 6` claims — the default is included
+- under `STACK`: `1 + 2 + 3 = 6` claims; the default is included
 - under `MAX`: `3` claims
 - under `MIN`: `2` claims
 
@@ -53,7 +53,7 @@ not `0`.
 ## incrementRate
 
 For **limits**, `incrementRate` multiplies the number in the node. With a rate of `20`,
-`uxmclaims.limit.claim.5` grants 100 claims — the node becomes a *tier* rather than a count. All
+`uxmclaims.limit.claim.5` grants 100 claims: the node becomes a *tier* rather than a count. All
 shipped limits use rate `1`, so what you write is what you get.
 
 For **costs**, `incrementRate` is a percentage increase per item already owned. With a rate of `10.0`
@@ -64,7 +64,7 @@ and a base of 100, the first claim costs 100, the second 110, the third 121. All
 
 Because costs use `MIN`, a player with no cost node pays `defaultValue`. Granting
 `uxmclaims.cost.chunk.1.10` makes chunks cost 10 for that rank. Granting a rank a *higher* number than
-the default does nothing at all — `MIN` keeps the default. Cost nodes can only ever discount.
+the default does nothing at all: `MIN` keeps the default. Cost nodes can only ever discount.
 
 </Callout>
 
@@ -77,11 +77,11 @@ default:
 vip:
   - uxmclaims.limit.claim.2     # …+2 = 4 claims when stacked on default
   - uxmclaims.limit.chunk.25    # …+25 = 50 chunks
-  - uxmclaims.limit.warp.10     # MAX — 10 warps, not 13
-  - uxmclaims.cost.chunk.1.10   # MIN — chunks cost 10 instead of 25
-  - uxmclaims.delay.teleport.1  # MIN — 1 second warmup instead of 3
+  - uxmclaims.limit.warp.10     # MAX: 10 warps, not 13
+  - uxmclaims.cost.chunk.1.10   # MIN: chunks cost 10 instead of 25
+  - uxmclaims.delay.teleport.1  # MIN: 1 second warmup instead of 3
 ```
 
 Because `limit.claim` and `limit.chunk` stack, a VIP who also holds the default group's nodes gets the
-sum. If you inherit groups in LuckPerms, count the inherited nodes too — this is the single most
+sum. If you inherit groups in LuckPerms, count the inherited nodes too: this is the single most
 common source of "why does my VIP have twelve claims".

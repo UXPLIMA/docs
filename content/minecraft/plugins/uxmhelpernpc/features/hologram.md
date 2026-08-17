@@ -1,7 +1,7 @@
 ---
 title: Hologram
 order: 34
-description: The text above the NPC — content, placement, visibility and per-entity offsets.
+description: "The text above the NPC: content, placement, visibility and per-entity offsets."
 icon: text-cursor
 ---
 
@@ -32,7 +32,7 @@ level, owner name or anything else your other plugins expose.
 
 <Callout type="tip" title="update-period is a performance setting">
 
-`update-period` is in ticks — 1200 is one minute. Every tick of that period is a text refresh for
+`update-period` is in ticks, 1200 is one minute. Every tick of that period is a text refresh for
 every NPC on the server. Keep it high unless the hologram shows something that genuinely changes
 by the second. Changing it needs a restart, not a reload.
 

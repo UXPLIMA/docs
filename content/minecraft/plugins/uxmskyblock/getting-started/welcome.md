@@ -22,16 +22,16 @@ re-theme, or fully translate the plugin without touching a single line of code.
 
 | Feature | What it means |
 |---------|---------------|
-| 🏝️ **Their own island** | `/is create` drops a fresh island for the player to build on |
-| 👥 **Real teams** | Invite friends, give them roles, kick or ban them |
-| 🎭 **Custom roles** | Owners create their own ranks and hand out exact permissions |
-| 📈 **Levels & points** | Placing valuable blocks raises the island's level |
-| ⬆️ **Upgrades** | Bigger teams, bigger islands, better generators, faster spawners |
-| ⛏️ **Custom generators** | Weighted cobble generators that can roll ores or even obsidian |
-| 🏦 **Island bank** | A shared balance the whole team can deposit into |
-| 🌀 **Named warps** | Public warps reachable by name or through a menu |
-| 🏆 **Leaderboard** | `/is top`, plus a floating hologram that follows you |
-| 🛡️ **Protection flags** | PvP, mob spawning, explosions, fire, visitor access |
+| **Their own island** | `/is create` drops a fresh island for the player to build on |
+| **Real teams** | Invite friends, give them roles, kick or ban them |
+| **Custom roles** | Owners create their own ranks and hand out exact permissions |
+| **Levels & points** | Placing valuable blocks raises the island's level |
+| **Upgrades** | Bigger teams, bigger islands, better generators, faster spawners |
+| **Custom generators** | Weighted cobble generators that can roll ores or even obsidian |
+| **Island bank** | A shared balance the whole team can deposit into |
+| **Named warps** | Public warps reachable by name or through a menu |
+| **Leaderboard** | `/is top`, plus a floating hologram that follows you |
+| **Protection flags** | PvP, mob spawning, explosions, fire, visitor access |
 
 ---
 
@@ -69,6 +69,6 @@ turns the world into a shared grid where players expand their island chunk by ch
 
 ## Where Should I Start?
 
-- [🔧 Installation](installation.md): get the plugin running in 2 minutes
-- [🏝️ Your First Island](first-island.md): create and grow an island step by step
-- [🧠 Core Concepts](concepts.md): the ideas behind islands, points, and roles
+- [Installation](installation.md): get the plugin running in 2 minutes
+- [Your First Island](first-island.md): create and grow an island step by step
+- [Core Concepts](concepts.md): the ideas behind islands, points, and roles

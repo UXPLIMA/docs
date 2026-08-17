@@ -23,12 +23,12 @@ JDA, HikariCP, the database drivers, Caffeine and the webhook client are declare
    configuration, and report that no token is set.
 2. Stop the server.
 3. In `config.yml`, set:
-   - `plugin.license-key` — from your UXPLIMA panel
-   - `discord.token` — the bot token
-   - `discord.guild-id` — your guild's id
-   - `discord.linking.channel-id` — where the link embed is posted
-   - `discord.linking.linked-role-ids` — the roles a linked player receives
-   - `plugin.server-name` — a unique name if you run more than one server
+   - `plugin.license-key`, from your UXPLIMA panel
+   - `discord.token`: the bot token
+   - `discord.guild-id`: your guild's id
+   - `discord.linking.channel-id`: where the link embed is posted
+   - `discord.linking.linked-role-ids`: the roles a linked player receives
+   - `plugin.server-name`: a unique name if you run more than one server
 4. Start the server. The console should report the guild name it connected to and how many slash
    commands it registered.
 
@@ -41,7 +41,7 @@ JDA, HikariCP, the database drivers, Caffeine and the webhook client are declare
 in Minecraft returns a six-digit code. In Discord, the linking channel now holds an embed with a
 **Link Account** button; clicking it opens a modal that takes the code.
 
-If the embed is not there, the bot could not post in that channel — check that it can see the
+If the embed is not there, the bot could not post in that channel: check that it can see the
 channel and has Embed Links.
 
 ## Turning features on
@@ -72,5 +72,5 @@ when only one thing changed.
 ```
 
 Re-reads the configuration files. The bot connection, its intents and the registered slash commands
-are established at startup — changing `discord.token`, `discord.guild-id` or adding a file to
+are established at startup: changing `discord.token`, `discord.guild-id` or adding a file to
 `discord-commands/` needs a restart.

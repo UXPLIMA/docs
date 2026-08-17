@@ -26,7 +26,7 @@ things:
 | `errorVaultInUse` | Someone with a **higher-priority role** took it from you |
 | `errorVaultAlreadyInUse` | It is locked; try again shortly |
 
-Priority is the tie-break, which is the same ordering that drives promotion — see
+Priority is the tie-break, which is the same ordering that drives promotion: see
 [Roles](../commands/roles.md). An owner can always take the vault back from a member.
 
 The lock exists because two players editing one inventory concurrently is how items get duplicated.
@@ -37,7 +37,7 @@ The lock exists because two players editing one inventory concurrently is how it
 |---|---|
 | `%uxmclaims_count:claim_vault_items%` | How many items are in the vault |
 
-The shipped hologram uses it — `Vault: %count:claim.vault.items% items` over the claim block.
+The shipped hologram uses it: `Vault: %count:claim.vault.items% items` over the claim block.
 
 <Callout type="warning" title="The vault is as safe as the role that opens it">
 

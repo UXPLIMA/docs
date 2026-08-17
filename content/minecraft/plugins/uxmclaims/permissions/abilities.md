@@ -9,7 +9,7 @@ An ability node decides whether a player may perform an operation **anywhere at 
 from the [role permission](../protection/permissions.md), which decides whether they may do it *in
 this claim*. Both must pass.
 
-There is no default. A node not granted is denied — except for a player holding `uxmclaims.admin` or a
+There is no default. A node not granted is denied, except for a player holding `uxmclaims.admin` or a
 matching bypass.
 
 ## Claim lifecycle
@@ -82,7 +82,7 @@ matching bypass.
 | `uxmclaims.ability.*` | Every ability |
 | `uxmclaims.ability.<category>.*` | Every ability in that category |
 
-The categories are `claim`, `chunk`, `member`, `role`, `warp`, `block` and `vault` — the part of the
+The categories are `claim`, `chunk`, `member`, `role`, `warp`, `block` and `vault`: the part of the
 enum name before the underscore.
 
 ## The order they are checked
@@ -92,7 +92,7 @@ For any action, `ClaimPermissionPolicy` asks in this order and stops at the firs
 1. Is the player `uxmclaims.admin`?
 2. `uxmclaims.bypass.*`, then the bypass category wildcard, then the exact bypass node
 3. `uxmclaims.ability.*`, then the ability category wildcard
-4. Any explicit wildcards the action declares — `…flag.*`, `…permissions.*`
+4. Any explicit wildcards the action declares, `…flag.*`, `…permissions.*`
 5. The exact ability node
 
 <Callout type="tip" title="Grant per-flag nodes to shape what players may change">

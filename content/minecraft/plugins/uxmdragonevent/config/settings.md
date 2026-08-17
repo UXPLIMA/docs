@@ -26,7 +26,7 @@ settings:
 | `next-event-time-format` | `SimpleDateFormat` pattern for `%dragonevent_next%` and `_last%` |
 | `ingame-remaining-time-format` | The in-event clock, shown as minutes until under one, then seconds |
 
-The in-event clock switches from `minutes` to `seconds` automatically in the last minute — the two
+The in-event clock switches from `minutes` to `seconds` automatically in the last minute: the two
 formats are the same value rendered differently, not two different timers.
 
 ## Joining
@@ -99,7 +99,7 @@ Not inside `settings`, but closely related.
 | `BLACKLIST` | Commands players **may not** use |
 
 Use a whitelist. A blacklist has to enumerate every teleport, home, warp and shop command on the
-server, including the ones another plugin adds next month — and each one you miss is a way for a
+server, including the ones another plugin adds next month, and each one you miss is a way for a
 player to leave the arena while still holding an event session.
 
 `disable-all-commands: false` means the lists are not consulted at all.
@@ -111,5 +111,5 @@ config-version: "..."
 license-key: ""
 ```
 
-`config-version` is written by the plugin and used for migration between versions — leave it.
+`config-version` is written by the plugin and used for migration between versions: leave it.
 `license-key` comes from your UXPLIMA panel.

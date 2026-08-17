@@ -26,7 +26,7 @@ public final class ExamplePlugin extends JavaPlugin {
 `Guis.install` with the `Scheduler` overload is what enables animated and auto-refreshing items. The
 overload without it works, with those features inert.
 
-`Scheduler` is built once and injected. uxmLib has no static mutable state and no service locator —
+`Scheduler` is built once and injected. uxmLib has no static mutable state and no service locator:
 library types are plain objects you construct.
 
 ## The command
@@ -65,13 +65,13 @@ final class MenuCommand {
 Three things worth noticing:
 
 **Clicks are cancelled by default.** An unconfigured menu cannot leak items. You opt into
-interaction — with `StorageGui`, or by allowing it explicitly — rather than remembering to cancel.
+interaction (with `StorageGui`, or by allowing it explicitly) rather than remembering to cancel.
 
 **Slots are 1-indexed row and column.** `menu.set(2, 5, ...)` is the middle of the second row, not
 raw slot 13. The single-argument `set(int, ...)` takes a raw slot when you want one.
 
 **All text is MiniMessage.** `Text.mini` is the only way text enters the library. There is no
-`ChatColor`, no `§`, and no `&` translation — those are deliberately unsupported, not missing.
+`ChatColor`, no `§`, and no `&` translation: those are deliberately unsupported, not missing.
 
 ## Configuration
 
@@ -100,7 +100,7 @@ new MigrationRunner(db).apply(List.of(
 Sql sql = new Sql(db);
 ```
 
-Migrations run once each, in order, and are recorded — so this block is safe to leave in `onEnable`
+Migrations run once each, in order, and are recorded, so this block is safe to leave in `onEnable`
 forever.
 
 ## What to read next

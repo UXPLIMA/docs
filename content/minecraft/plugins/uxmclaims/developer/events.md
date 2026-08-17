@@ -59,12 +59,12 @@ public void onCreate(ClaimCreateEvent event) {
 | Movement | `ClaimMoveInsideEvent`, `ClaimMoveOutsideEvent` |
 
 `ClaimMoveInsideEvent` and `ClaimMoveOutsideEvent` fire on border crossings, which on a busy server is
-often. Keep those handlers cheap — no database calls, no synchronous lookups.
+often. Keep those handlers cheap, no database calls, no synchronous lookups.
 
 <Callout type="danger" title="Handlers may run off the main thread">
 
 uxmClaims publishes events from whichever thread performed the operation, and writes are frequently
-asynchronous. Touching the Bukkit API — spawning entities, changing blocks, sending packets — from a
+asynchronous. Touching the Bukkit API (spawning entities, changing blocks, sending packets) from a
 handler will throw or corrupt state on a regionised server.
 
 Schedule back to the main thread first:
@@ -83,5 +83,5 @@ On Folia, use the region scheduler for the claim's location rather than the glob
 ## Events versus webhooks
 
 `webhooks.yml` posts a subset of these to Discord without any code. Reach for the event bus when you
-need to *react* — cancel the operation, mirror the change into another plugin, write an audit row —
+need to *react* (cancel the operation, mirror the change into another plugin, write an audit row)
 and for a notification, use the webhook.

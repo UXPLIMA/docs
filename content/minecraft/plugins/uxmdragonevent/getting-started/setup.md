@@ -16,7 +16,7 @@ Stand where players should return to when the event ends or they leave:
 /dragon setlobbyspawn
 ```
 
-This must not be inside the event world — the plugin refuses and tells you so.
+This must not be inside the event world: the plugin refuses and tells you so.
 
 ## 2. The event spawn
 
@@ -32,7 +32,7 @@ settings:
 
 | Value | Where players arrive |
 |---|---|
-| `PLATFORM` | The obsidian platform near the end spawn, underground — they dig up |
+| `PLATFORM` | The obsidian platform near the end spawn, underground (they dig up) |
 | `SURFACE` | On the surface near the end spawn |
 
 `PLATFORM` is the vanilla arrival experience and gives everyone the same slow start. `SURFACE` puts
@@ -51,7 +51,7 @@ them straight into the fight.
 /dragon save
 ```
 
-Writes the locations. Run it before restarting — spawn points held only in memory are lost.
+Writes the locations. Run it before restarting: spawn points held only in memory are lost.
 
 Check what the plugin thinks it has:
 
@@ -108,7 +108,7 @@ settings:
     require-permission: true
 ```
 
-`/dragon join` is disabled by default — the portal is the intended door. Enable it if you have no
+`/dragon join` is disabled by default: the portal is the intended door. Enable it if you have no
 portal, and leave `require-permission: true` if it should be a perk.
 
 ## 5. Test it

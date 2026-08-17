@@ -25,7 +25,7 @@ auto-harvest:
 | `default-status` | Whether a new farmer has it switched on |
 | `permission-required` | Requires the owner to hold `uxmfarmer.autoharvest` |
 | `required-piston` | Crops in `piston-check-items` are only harvested if a piston is aimed at them |
-| `extended-piston-check` | Changes how that piston search works — see below |
+| `extended-piston-check` | Changes how that piston search works (see below) |
 | `drop-item-if-stock-full` | Drops the yield on the ground when storage cannot take it |
 
 ## The crop list
@@ -61,7 +61,7 @@ The two search modes differ in where they look:
 
 | | Where it searches | Does aim matter |
 |---|---|---|
-| `extended-piston-check: false` | Above, below, west, east, north and south of the crop | Yes — the piston must face the crop |
+| `extended-piston-check: false` | Above, below, west, east, north and south of the crop | Yes (the piston must face the crop) |
 | `extended-piston-check: true` | Above, and the upper block west, east, north and south | No |
 
 The extended mode is the forgiving one: it looks a block higher, which is where players usually put
@@ -70,7 +70,7 @@ pistons in a real harvester design, and it does not care which way they face.
 ## Growth and storage
 
 `disabled-products-grow-physically` in `general-settings.yml` decides what happens to a product the
-player has switched off. Left at `false`, those crops do not grow at all — the farmer simply skips
+player has switched off. Left at `false`, those crops do not grow at all: the farmer simply skips
 them and the server does no work. Setting it to `true` makes them grow as vanilla crops, which
 looks better and costs real performance on a busy island world.
 
@@ -91,8 +91,8 @@ exactly the problem this plugin exists to remove.
 
 <Callout type="tip" title="Tell players when they are full">
 
-`notify-when-stock-gets-full` in `general-settings.yml` messages the owner — or every active
-member, with `notify-members: true` — when a product fills up. Without it the first sign a player
+`notify-when-stock-gets-full` in `general-settings.yml` messages the owner (or every active
+member, with `notify-members: true`) when a product fills up. Without it the first sign a player
 gets is that their farm has quietly stopped producing.
 
 </Callout>

@@ -5,7 +5,7 @@ description: The admin command and its subcommands, with tab completion and the 
 icon: terminal
 ---
 
-uxmSpawners has one command, and everything under it is for staff. Players never type anything —
+uxmSpawners has one command, and everything under it is for staff. Players never type anything:
 they click spawners.
 
 `/uxmspawners`, aliases `/spawners`, `/uxmspawner`, `/usp`. Every subcommand requires
@@ -36,6 +36,6 @@ fit is dropped at their feet and both of you are told how much.
 <Callout type="warning" title="convert is a one-way operation">
 
 `/uxmspawners convert` rewrites spawner data in place. Take a backup of the world and the plugin
-folder before you run it, and run it once — not once per restart.
+folder before you run it, and run it once, not once per restart.
 
 </Callout>

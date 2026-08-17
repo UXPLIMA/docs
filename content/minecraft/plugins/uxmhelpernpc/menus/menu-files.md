@@ -46,7 +46,7 @@ items:
 | `rows` | Inventory rows |
 | `filler-material` | Material for the empty slots |
 | `filler-slots` | Which slots the filler occupies |
-| `items` | A map of named items — the name is yours, only `actions` and `slots` matter to the plugin |
+| `items` | A map of named items (the name is yours, only `actions` and `slots` matter to the plugin) |
 
 ## Item keys
 

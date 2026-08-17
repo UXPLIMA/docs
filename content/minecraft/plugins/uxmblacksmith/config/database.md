@@ -18,7 +18,7 @@ install.
 | Synchronous | NORMAL |
 
 WAL means a second file, `database.db-wal`, sits next to the database and holds recent writes.
-**Copy both**, or copy neither — a `database.db` taken alone while the server runs can be missing the
+**Copy both**, or copy neither: a `database.db` taken alone while the server runs can be missing the
 last few minutes.
 
 Writes go through an operation queue off the main thread, and per-player work is serialised under a
@@ -38,7 +38,7 @@ lock, so two clicks cannot interleave into a corrupt state.
 | `trade_daily_stats` | Per-day per-trade rollups |
 | `pending_refunds` | Refunds owed but not yet delivered |
 
-Indexed by player, trade id and timestamp — the queries the analytics commands run stay fast as the
+Indexed by player, trade id and timestamp: the queries the analytics commands run stay fast as the
 event log grows.
 
 ## Migrations
@@ -60,9 +60,9 @@ server was up or not.
 
 Back up the whole `plugins/uxmBlacksmith/` folder:
 
-- `database.db` **and** `database.db-wal` — every player's progression and every pending craft
-- `binary_files/` — the saved items your trades reference
-- `categories/`, `config.yml`, `gui.yml`, `language.yml` — the configuration
+- `database.db` **and** `database.db-wal`: every player's progression and every pending craft
+- `binary_files/`: the saved items your trades reference
+- `categories/`, `config.yml`, `gui.yml`, `language.yml`: the configuration
 
 `binary_files/` matters more than it looks: a trade referencing a saved item that has gone missing
 is skipped at load, so losing that folder silently removes trades from the menu.
@@ -77,6 +77,6 @@ expect. Stop the server, take a copy, then work on the copy.
 ## Growth
 
 Nothing prunes `trade_events` or `progression_events`. They are append-only and grow with activity.
-That is deliberate — they are the audit trail — but plan an archive if you run for years. Deleting
+That is deliberate: they are the audit trail, but plan an archive if you run for years. Deleting
 old rows from `trade_events` does not affect gameplay; `trade_daily_stats` already holds the
 aggregates the analytics commands read.

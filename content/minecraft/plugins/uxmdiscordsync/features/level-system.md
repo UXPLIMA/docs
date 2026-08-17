@@ -75,13 +75,13 @@ text-level:
 Console commands, keyed by level. `%player%` is the linked Minecraft username. Text and voice levels
 have separate reward tables, so voice time can pay differently from chatting.
 
-A player must be linked for a reward to mean anything — there is no Minecraft account to run the
+A player must be linked for a reward to mean anything: there is no Minecraft account to run the
 command against otherwise. Rewards are claimed with `/discordreward` in game.
 
 <Callout type="warning" title="Rank grants through rewards">
 
 `lp user %player% parent add vip` is permanent and has no matching removal. If a level reward grants
-a rank, it grants it forever. Use a timed grant — `lp user %player% parent addtemp vip 30d` — if that
+a rank, it grants it forever. Use a timed grant (`lp user %player% parent addtemp vip 30d`) if that
 is not what you mean.
 
 </Callout>
@@ -95,7 +95,7 @@ notifications:
 ```
 
 Sent as a DM. `{type}` is `text` or `voice` and `{level}` is the new level. Note these use braces,
-not percent signs — the level system's own message placeholders differ from the `%...%` form used
+not percent signs: the level system's own message placeholders differ from the `%...%` form used
 elsewhere in the plugin.
 
 ## Viewing levels

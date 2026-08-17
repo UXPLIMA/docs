@@ -17,7 +17,7 @@ A grid of glass panes centred on your claim. Each pane is one chunk, coloured by
 | An enemy chunk | Someone else's claim |
 | Empty | Wilderness |
 
-Clicking a free chunk that touches your claim buys it. Clicking one of your own removes it — subject
+Clicking a free chunk that touches your claim buys it. Clicking one of your own removes it: subject
 to the connectivity rule.
 
 ## Rules the map enforces
@@ -42,6 +42,6 @@ The limit is across all of a player's claims, not per claim.
 <Callout type="tip" title="The map is also the fastest way to see what is around you">
 
 `/claim showborders` draws the same information in the world, but the map shows chunks you cannot see
-from where you stand — which is what you want before deciding where to expand.
+from where you stand, which is what you want before deciding where to expand.
 
 </Callout>

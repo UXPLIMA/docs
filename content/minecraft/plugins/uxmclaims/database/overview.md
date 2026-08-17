@@ -13,7 +13,7 @@ database:
   url: 'jdbc:sqlite:./plugins/uxmClaims/data/claims.db'
 ```
 
-`type: 'AUTO'` reads the dialect out of the JDBC URL, which is what you want — the URL already says
+`type: 'AUTO'` reads the dialect out of the JDBC URL, which is what you want: the URL already says
 `sqlite`, `mysql`, `mariadb` or `postgresql`.
 
 | Backend | Right for |
@@ -38,8 +38,8 @@ to MySQL or PostgreSQL when one of these is true:
 There is no migration command. Changing the URL points the plugin at an empty database; the claims do
 not follow.
 
-To move for real: export from the old database and import into the new one with the usual tools —
-`sqlite3 .dump` into a converter for SQLite, `mysqldump` or `pg_dump` for the others — with the server
+To move for real: export from the old database and import into the new one with the usual tools;
+`sqlite3 .dump` into a converter for SQLite, `mysqldump` or `pg_dump` for the others, with the server
 stopped on both sides.
 
 <Callout type="warning" title="database is read once, at startup">
@@ -61,4 +61,4 @@ Take a copy of `data/claims.db` before touching this section on a live server.
 | PostgreSQL | `pg_dump uxmclaims > backup.sql` |
 
 Copying a SQLite file while the server is running can capture a half-written state. Stop, copy, start
-— or use `sqlite3 claims.db ".backup 'out.db'"`, which is safe against a live connection.
+or use `sqlite3 claims.db ".backup 'out.db'"`, which is safe against a live connection.

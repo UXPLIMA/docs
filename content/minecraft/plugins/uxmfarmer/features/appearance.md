@@ -23,7 +23,7 @@ entity-specific-scales:
   VILLAGER: 2.5
 ```
 
-`use-name: false` is the default because the hologram already carries the name — turning both on
+`use-name: false` is the default because the hologram already carries the name: turning both on
 gives you the name twice, once above the other.
 
 `default-type` is any entity type, and works with Citizens and FancyNpcs. `entity-specific-scales`
@@ -94,7 +94,7 @@ content:
   - "<#ffcb0b>▶ Click to use the farmer"
 ```
 
-Holograms are drawn by the plugin itself as text displays — there is no hologram plugin to install.
+Holograms are drawn by the plugin itself as text displays: there is no hologram plugin to install.
 `content` is MiniMessage and supports placeholders, so the hologram can show the owner's name or
 the storage state.
 
@@ -102,7 +102,7 @@ the storage state.
 |---|---|
 | `view-range` | Blocks at which the hologram becomes visible |
 | `height` | How far above the entity the text sits |
-| `billboard` | `CENTER`, `FIXED`, `VERTICAL`, `HORIZONTAL` — which axes turn toward the viewer |
+| `billboard` | `CENTER`, `FIXED`, `VERTICAL`, `HORIZONTAL` (which axes turn toward the viewer) |
 | `text-alignment` | `CENTER`, `LEFT`, `RIGHT` |
 | `background-color` | ARGB integer; `0` for no background |
 | `shadow` | Drop shadow behind the text |
@@ -115,7 +115,7 @@ enable an entity that is not listed.
 <Callout type="tip" title="Working out background-color">
 
 `background-color` is a single signed ARGB integer, not a hex string. The default `1682722635` is a
-translucent dark panel. If you need a different one, compute the ARGB integer rather than guessing —
+translucent dark panel. If you need a different one, compute the ARGB integer rather than guessing:
 a wrong sign here produces an opaque block behind the text.
 
 </Callout>
@@ -124,7 +124,7 @@ a wrong sign here produces an opaque block behind the text.
 
 `farmer-visible-by-default: true` in `general-settings.yml` decides whether a new farmer has a body.
 Players toggle it with `/farmer disappear` and the `NO_VISUAL` setting. A hidden farmer still works
-— it harvests, sells and stores exactly as before, and is reachable through `/farmer menu`.
+it harvests, sells and stores exactly as before, and is reachable through `/farmer menu`.
 
 ## Default click action
 

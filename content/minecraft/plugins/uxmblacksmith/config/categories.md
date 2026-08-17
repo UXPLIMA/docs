@@ -33,7 +33,7 @@ The defaults it picks depend on the key:
 | Anything else | Three generic starter contracts |
 
 That is the intended way to start a category: declare it in `config.yml`, restart, then edit what
-was written. The generated trades are real and balanced against each other — worth reading before
+was written. The generated trades are real and balanced against each other: worth reading before
 you replace them.
 
 ## Shape
@@ -86,7 +86,7 @@ A trade's identity in the database is `<category>.<page>.<id>`. That string is w
 <Callout type="danger" title="Moving a trade between pages breaks its pending crafts">
 
 Change a trade's page or id and its key changes with it. Existing pending crafts now point at a
-trade that does not resolve — and with `removePendingInvalidTrade: true`, the default, they are
+trade that does not resolve, and with `removePendingInvalidTrade: true`, the default, they are
 discarded on the next start. Its analytics history also splits across two keys.
 
 Renumber during a maintenance window with no crafts running, or accept the loss deliberately.
@@ -101,7 +101,7 @@ Renumber during a maintenance window with no crafts running, or accept the loss 
 | `Please add a trades config file. File: categories/x.yml` | The file exists but has no `trades` |
 | A hook usage message, then the trade is skipped | A requirement or reward names a hook that is disabled, or an item id that does not resolve |
 
-A trade with a broken requirement is skipped **whole** — not partially loaded. Check the console
+A trade with a broken requirement is skipped **whole**, not partially loaded. Check the console
 after every edit; a trade missing from the menu is almost always a line in the log.
 
 ## Two categories cannot share a file

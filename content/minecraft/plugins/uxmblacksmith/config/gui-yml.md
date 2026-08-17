@@ -31,7 +31,7 @@ mainMenu:
 Each string is one row of nine. Each character is a key into `items`. A space is an empty slot.
 
 Rows beyond nine characters are truncated; the inventory size follows the number of rows. The same
-character may appear many times — every matching slot gets that item, which is how borders are
+character may appear many times: every matching slot gets that item, which is how borders are
 filled with one definition.
 
 ## An item
@@ -44,7 +44,7 @@ filled with one definition.
 | `lore` | `[]` | Lore lines |
 | `customModelData` | unset | Model data |
 | `forceGlowing` | `false` | Enchantment glint |
-| `customItemData` | unset | A hook item instead of a material — same shape as a requirement |
+| `customItemData` | unset | A hook item instead of a material (same shape as a requirement) |
 | `permission` | unset | Hide the item from players without it |
 | `clickActions` | `[]` | What clicking it does |
 
@@ -72,7 +72,7 @@ on one item and run in order.
 <Callout type="danger" title="[CONSOLE] runs with full console authority">
 
 An item with `[CONSOLE] op {player}` ops whoever clicks it. Menu items are not permission-checked
-beyond the item's own `permission` key — set one on anything that runs a console command, and treat
+beyond the item's own `permission` key: set one on anything that runs a console command, and treat
 `gui.yml` as a file only trusted staff may edit.
 
 </Callout>
@@ -93,7 +93,7 @@ beyond the item's own `permission` key — set one on anything that runs a conso
 | `generalText` | Fallback title and the unknown-requirement label |
 | `tradeItemLores` | The lore template appended to every trade icon |
 | `requirementLineFormat` | How one requirement line renders |
-| `guiClickCooldown` | Milliseconds between accepted clicks — `400` |
+| `guiClickCooldown` | Milliseconds between accepted clicks (`400`) |
 
 A category may override `defaultCategoryMenu` with its own `guiLayout` in `config.yml`.
 
@@ -107,7 +107,7 @@ requirementLineFormat: '<dark_gray>  ▪</dark_gray> <#CCCCCC>{amount}x <white>{
 ```
 
 The placeholders available in these templates are listed in
-[Placeholders](../placeholders.md#gui-placeholders) — `{success_chance}`, `{time_remaining}`,
+[Placeholders](../placeholders.md#gui-placeholders), `{success_chance}`, `{time_remaining}`,
 `{progress_bar}`, `{player_mastery_level}` and the rest.
 
 ## Slot positions
@@ -121,7 +121,7 @@ mainMenu:
 
 <Callout type="danger" title="Do not renumber the keys of this map">
 
-The **key** — `1`, `2`, `3` — is what `pending_trades` stores as a player's slot. Changing `slot`
+The **key** (`1`, `2`, `3`) is what `pending_trades` stores as a player's slot. Changing `slot`
 (the inventory position) or `permission` is safe. Changing a key orphans every pending trade in it.
 
 </Callout>

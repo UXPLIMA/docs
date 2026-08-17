@@ -8,7 +8,7 @@ icon: lightbulb
 ## One player, one NPC
 
 An NPC belongs to a player, not to a place. `settings.maximum-npc-per-player` caps how many a
-player may own; the default is 2. Ownership is what every command checks — returning, moving or
+player may own; the default is 2. Ownership is what every command checks: returning, moving or
 reskinning an NPC you do not own is refused.
 
 ## The NPC lives inside a region
@@ -48,7 +48,7 @@ asks for the same command again as confirmation and forgets the request after te
 
 ## Actions are the extension point
 
-Everything a click can do is an action string — `[menu] main`, `[player] spawn`,
+Everything a click can do is an action string: `[menu] main`, `[player] spawn`,
 `[sound] ENTITY_ALLAY_AMBIENT_WITHOUT_ITEM`. Menu items carry a list of them, and
 `settings.default-click-actions` is what a click on the NPC body runs. See
 [Actions](../menus/actions.md).

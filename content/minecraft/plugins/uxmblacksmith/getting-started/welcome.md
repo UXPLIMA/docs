@@ -27,18 +27,18 @@ how many diamonds someone has. It becomes a function of how many slots they hold
 willing to wait, and whether they get lucky.
 
 The burn system is the gamble. An 85% success chance means one attempt in seven destroys the
-materials — and rank permissions can raise that chance, which is a straightforward thing to sell.
+materials, and rank permissions can raise that chance, which is a straightforward thing to sell.
 
 ## Everything in the box
 
 - Trades with a duration, a success chance, a reward item or a command, and arbitrary requirements
-- Requirements from items, money, PlayerPoints, XP, CoinsEngine, or a **PlaceholderAPI condition** —
+- Requirements from items, money, PlayerPoints, XP, CoinsEngine, or a **PlaceholderAPI condition**,
   so "VIP only" and "1 hour playtime" are requirements like any other
 - Custom-item hooks for MMOItems, EcoItems, ExecutableItems, ItemsAdder and Nexo
 - A binary item store: save any item in-game and use it as a requirement or reward
 - Boost items that speed up trades or finish one instantly
 - A global blacksmith level, per-category masteries, and a configurable perk tree
-- Vanilla crafting gates — require a blacksmith level to craft a normal recipe
+- Vanilla crafting gates: require a blacksmith level to craft a normal recipe
 - An admin analytics layer with daily statistics, per-player history and CSV/JSON export
 - SQLite storage with HikariCP and WAL
 

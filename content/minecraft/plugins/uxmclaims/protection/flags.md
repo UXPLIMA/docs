@@ -8,7 +8,7 @@ icon: flag
 A flag permits something when it is **present**. Removing it forbids that thing. Set them with
 `/claim setflag <flag> <true|false>`, flip them with `/claim toggleflag <flag>`, or use the flags menu.
 
-The **New** column is whether the flag is in `claimSettings.defaultFlags` — what a freshly created
+The **New** column is whether the flag is in `claimSettings.defaultFlags`: what a freshly created
 claim gets.
 
 ## Security and damage
@@ -21,7 +21,7 @@ claim gets.
 | `WITHER_DAMAGE` | The wither may break blocks | **on** |
 | `FIRE_SPREAD` | Fire may spread from block to block | **on** |
 | `LIGHTNING_DAMAGE` | Lightning may set fires and damage entities | off |
-| `MOB_GRIEFING` | Mobs may change blocks — endermen, sheep, villagers | off |
+| `MOB_GRIEFING` | Mobs may change blocks (endermen, sheep, villagers) | off |
 
 ## Explosions
 
@@ -42,9 +42,9 @@ claim gets.
 | `PISTON_PUSH` | Pistons may push and pull blocks | **on** |
 | `LEAF_DECAY` | Leaves decay when the tree is cut | off |
 | `ICE_MELT` | Ice and snow melt | off |
-| `BLOCK_FADE` | Blocks fade — coral drying, farmland reverting, snow melting | off |
-| `BLOCK_FORM` | Blocks form — ice freezing, snow settling, concrete setting | **on** |
-| `ENTITY_BLOCK_FORM` | Entities form blocks — a snow golem's trail, frost walker ice | off |
+| `BLOCK_FADE` | Blocks fade (coral drying, farmland reverting, snow melting) | off |
+| `BLOCK_FORM` | Blocks form (ice freezing, snow settling, concrete setting) | **on** |
+| `ENTITY_BLOCK_FORM` | Entities form blocks (a snow golem's trail, frost walker ice) | off |
 | `STRUCTURE_GROW` | Saplings, mushrooms and vines may grow into structures | **on** |
 | `NATURE_SPREAD` | Grass, mycelium and vines may spread | **on** |
 
@@ -60,7 +60,7 @@ claim gets.
 
 | Flag | When present | New |
 |---|---|---|
-| `MOB_SPAWNING` | The master switch — **off blocks every natural spawn** | **on** |
+| `MOB_SPAWNING` | The master switch (**off blocks every natural spawn**) | **on** |
 | `SPAWN_ANIMALS` | Passive mobs may spawn naturally | **on** |
 | `SPAWN_MONSTERS` | Hostile mobs may spawn naturally | **on** |
 | `SPAWN_PHANTOMS` | Phantoms may spawn | off |
@@ -81,7 +81,7 @@ claim gets.
   genuinely mob-free zone.
 
 - **Explosion flags govern block damage, not entity damage.** `TNT_EXPLOSIONS` off means the TNT still
-  goes off and still hurts whoever is standing next to it — it just does not break the base.
+  goes off and still hurts whoever is standing next to it: it just does not break the base.
 
 - **`PVP` off applies inside the claim only.** A player can be chased out of a claim and killed one
   chunk away. Warp confirmation exists for exactly this reason: teleporting to a public warp in a
@@ -92,9 +92,9 @@ claim gets.
   claim that allows neither is genuinely fireproof; allowing `IGNITE` but not `FIRE_SPREAD` gives you
   decorative campfires that cannot burn the house down.
 
-- **`REDSTONE` off stops the components firing** — clocks, dispensers, pistons wired to redstone. It
+- **`REDSTONE` off stops the components firing**: clocks, dispensers, pistons wired to redstone. It
   is heavier than it looks, and it is on by default because turning it off breaks most farms.
 
 - **Changing a default does not change existing claims.** `claimSettings.defaultFlags` only applies at
-  creation. Use `/claim admin bulk setflag <flag> <value>` to change every loaded claim — read the
+  creation. Use `/claim admin bulk setflag <flag> <value>` to change every loaded claim: read the
   warning on the [Admin commands](../commands/admin.md) page first.

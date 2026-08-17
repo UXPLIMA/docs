@@ -21,7 +21,7 @@ Layout: `menu/common_main.yml`.
 `menu/common_list.yml`. Paginated, filling the slots listed in `itemSlots`.
 
 Each entry shows the claim's name, its owner and its remaining time. Click to manage it, shift-click
-to select it — selection is what makes `/claim role create …` work from anywhere.
+to select it: selection is what makes `/claim role create …` work from anywhere.
 
 The currently selected claim renders through the `…Selected` item variant, with a glint and a tick in
 the name.

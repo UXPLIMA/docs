@@ -16,7 +16,7 @@ database:
   type: SQLITE      # leave as SQLITE
 ```
 
-`config.version` is written by the plugin — leave it alone. `database.type` currently has one
+`config.version` is written by the plugin: leave it alone. `database.type` currently has one
 supported value; do not change it.
 
 ## World and block behaviour
@@ -54,7 +54,7 @@ auto-save:
   console-log: true
 ```
 
-Spawner data is written every `interval` seconds. This is the window you lose in a crash — 300 is
+Spawner data is written every `interval` seconds. This is the window you lose in a crash, 300 is
 the recommended value, and lowering it below about 60 buys little for the write cost. Keep
 `console-log: true`: it is where you find out that saving is failing.
 

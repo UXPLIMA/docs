@@ -41,7 +41,7 @@ farmer-ranks:
 ```
 
 `id` must be unique, `weight` sets the order, and `show` is the item drawn in the member management
-menu — including the slot it occupies. Left-click promotes, right-click demotes, and the plugin
+menu, including the slot it occupies. Left-click promotes, right-click demotes, and the plugin
 walks the ranks in weight order.
 
 Adding a fourth rank is a matter of adding a block with a weight between two existing ones and
@@ -51,7 +51,7 @@ listing what it adds.
 
 | Permission | What it allows |
 |---|---|
-| `ACCESS_MANAGE_MENU` | Open the manage menu — members, transfer, deletion |
+| `ACCESS_MANAGE_MENU` | Open the manage menu (members, transfer, deletion) |
 | `SELL` | Sell products from storage |
 | `UPGRADE` | Buy product levels |
 | `COLLECT` | Take products out of storage |
@@ -93,7 +93,7 @@ transfer-farmer-ownership-to-region-owner-on-leave: true
 
 Someone trusted on the claim or added to the island becomes a farmer member automatically, and
 loses it when they leave. The third setting handles the awkward case: a farmer owner who is not the
-region owner and who leaves — the farmer goes to whoever owns the land rather than disappearing
+region owner and who leaves: the farmer goes to whoever owns the land rather than disappearing
 with them.
 
 Turn all three off if farmer membership should be a separate thing players manage themselves.
@@ -104,7 +104,7 @@ Turn all three off if farmer membership should be a separate thing players manag
 can hand the farmer to another player through a confirmation menu.
 
 `return-price-on-delete: true` refunds the farmer's price when a farmer is deleted; `/farmer return`
-refunds `return-percent` of it — 75% by default — which is the one players use.
+refunds `return-percent` of it (75% by default) which is the one players use.
 
 ## Logs
 

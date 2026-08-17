@@ -10,8 +10,8 @@ icon: download
 | Requirement | Detail |
 |---|---|
 | Server | 1.13 or newer (`api-version: 1.13`) |
-| Vault | Required — selling goes through it |
-| NBTAPI | Required — spawner items are identified by NBT |
+| Vault | Required (selling goes through it) |
+| NBTAPI | Required (spawner items are identified by NBT) |
 | Load order | The plugin loads `POSTWORLD`, after worlds exist |
 
 Everything else is optional and hooked only if present.
@@ -22,7 +22,7 @@ Everything else is optional and hooked only if present.
 2. The plugin writes `config.yml`, a `modules/` folder, a `lang/` folder and `loottables/`.
 3. Set `config.lang` to one of `en`, `tr`, `pl`, `de`, `fr`.
 4. Fill in `license-key`.
-5. Work through `modules/` — each file is one feature and can be turned off on its own.
+5. Work through `modules/`: each file is one feature and can be turned off on its own.
 
 <Callout type="danger" title="RoseStacker needs one setting changed">
 

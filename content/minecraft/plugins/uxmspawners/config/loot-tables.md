@@ -6,7 +6,7 @@ icon: list
 ---
 
 A loot table replaces what a mob drops into spawner storage. Files live in `loottables/`, one per
-mob, named after the entity type — `zombie.yml`, `blaze.yml`.
+mob, named after the entity type: `zombie.yml`, `blaze.yml`.
 
 ```yaml
 drops:
@@ -47,7 +47,7 @@ everywhere else on the server.
 
 <Callout type="tip" title="Start from the example">
 
-`loottables/example_zombie.yml` ships as a working reference. Copy it to `zombie.yml` — the
+`loottables/example_zombie.yml` ships as a working reference. Copy it to `zombie.yml`: the
 example file name does not match an entity, so it is never used by itself.
 
 </Callout>

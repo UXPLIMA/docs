@@ -17,8 +17,8 @@ the end-of-event message shows:
 %dragonevent_top_damage_1%    their damage
 ```
 
-Places 1 upward. A place nobody occupies returns the `leaderboard-empty-entry` message — `—` by
-default — rather than an empty string, so a scoreboard with three lines still has three lines when
+Places 1 upward. A place nobody occupies returns the `leaderboard-empty-entry` message, `, ` by
+default, rather than an empty string, so a scoreboard with three lines still has three lines when
 only two people joined.
 
 This leaderboard exists only while an event is running.
@@ -73,7 +73,7 @@ Needed after editing `data/stats.yml` by hand. Under normal use the plugin keeps
 Players read their own with `/dragon stats`, formatted by the `stats-of` message.
 
 Only `damage`, `kill` and `win` have leaderboards. Deaths and losses are recorded and shown in
-`/dragon stats`, but not ranked — which is right: a death leaderboard rewards the wrong thing.
+`/dragon stats`, but not ranked, which is right: a death leaderboard rewards the wrong thing.
 
 ## Storage
 

@@ -6,15 +6,15 @@ icon: terminal
 ---
 
 uxmFarmer has two command roots: `/farmer` for players and `/uxmfarmer` for staff. Both accept
-Turkish names as well — `/çiftçi` is the primary name of the player command and `/farmer` its
+Turkish names as well: `/çiftçi` is the primary name of the player command and `/farmer` its
 alias, so both spellings work everywhere.
 
 ## Player commands
 
 | Command | Aliases | Permission |
 |---|---|---|
-| `/farmer` | `/çiftçi`, `/farmer help` | — |
-| `/farmer buy` | `/çiftçi satınal` | — |
+| `/farmer` | `/çiftçi`, `/farmer help` | n/a |
+| `/farmer buy` | `/çiftçi satınal` | n/a |
 | `/farmer menu` | `/çiftçi menü` | `uxmfarmer.command.menu` (default: everyone) |
 | `/farmer teleport` | `/farmer tp`, `/çiftçi getir` | `uxmfarmer.command.teleport` |
 | `/farmer disappear` | `/farmer getrid`, `/çiftçi yoket` | `uxmfarmer.command.disappear` |
@@ -40,7 +40,7 @@ With both off it prints the help list.
 `buy` charges `farmer-price` through your money hook and places a farmer. Set
 `disable-buy-command: true` if farmers should only ever come from eggs.
 
-`return` sells the farmer back for `return-percent` of its price — 75% by default — and deletes it.
+`return` sells the farmer back for `return-percent` of its price (75% by default) and deletes it.
 
 `disappear` hides the farmer's body without deleting it. The data, the storage and the members all
 survive; `/farmer teleport` brings it back to the player.
@@ -49,7 +49,7 @@ survive; `/farmer teleport` brings it back to the player.
 
 Sells everything sellable in the storage at once. With
 `sell-all-requires-confirmation: true` the player gets a confirmation menu first, which is worth
-keeping on — a full storage is a lot of money to lose to a misclick.
+keeping on: a full storage is a lot of money to lose to a misclick.
 
 ## Admin commands
 
@@ -73,7 +73,7 @@ Aliases `sel` and `seç`. The selection is remembered per sender until you selec
 |---|---|
 | `/uxmfarmer givefarmer <player>` | Places a farmer for a player who has a region |
 | `/uxmfarmer delete <player>` | Deletes that player's farmer |
-| `/uxmfarmer deleteall <player>` | Deletes every farmer that player owns — run it twice, the first run only asks |
+| `/uxmfarmer deleteall <player>` | Deletes every farmer that player owns (run it twice, the first run only asks) |
 | `/uxmfarmer deleteuuid <uuid>` | Deletes one farmer by its UUID |
 | `/uxmfarmer setowner <player>` | Transfers the selected farmer to another player |
 | `/uxmfarmer uuidof <player>` | Prints the UUIDs of that player's farmers |

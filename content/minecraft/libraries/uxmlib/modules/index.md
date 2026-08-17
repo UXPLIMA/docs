@@ -5,7 +5,7 @@ description: Every uxmlib-* module and what it gives you.
 icon: layers
 ---
 
-Each module is published separately — pull only what you use. Modules never depend upward, so the
+Each module is published separately: pull only what you use. Modules never depend upward, so the
 dependency graph is a tree with `uxmlib-common` at the root.
 
 | Module | What it gives you |
@@ -46,7 +46,7 @@ graph TD
     nametags --> packet
 ```
 
-`uxmlib-redis` depends on nothing internal — it is a standalone primitive with no relational
+`uxmlib-redis` depends on nothing internal: it is a standalone primitive with no relational
 dependencies at all.
 
 ArchUnit tests enforce that this graph has no cycles and that nothing depends upward. It is a

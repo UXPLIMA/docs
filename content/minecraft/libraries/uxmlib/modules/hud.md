@@ -5,7 +5,7 @@ description: A flicker-free sidebar, titles, action bar, boss bars and tablist.
 icon: monitor
 ---
 
-Overlays delivered through Paper's own player API — no packets, no NMS.
+Overlays delivered through Paper's own player API, no packets, no NMS.
 
 ## Sidebar
 
@@ -43,7 +43,7 @@ new ActionBarManager(scheduler, server)
 Sticky: the action bar clears itself after a couple of seconds, so a message that should stay for
 three has to be resent. The manager does that, and takes a duration instead.
 
-It also arbitrates between callers — two features writing to the action bar at once produce a
+It also arbitrates between callers: two features writing to the action bar at once produce a
 flicker otherwise.
 
 ## Boss bars
@@ -80,7 +80,7 @@ packets in the same tick.
 
 ## Everything is per-player
 
-Every type here takes a `Player`. There is no server-wide scoreboard state and no shared objective —
+Every type here takes a `Player`. There is no server-wide scoreboard state and no shared objective,
 which means two plugins can each show a sidebar without fighting, and a per-player value needs no
 special handling.
 

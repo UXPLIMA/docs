@@ -10,7 +10,7 @@ Every protected action passes three gates. All three must say yes.
 ```mermaid
 flowchart LR
     A[Action] --> B[1. Is this chunk claimed?]
-    B -- no --> Z[Allowed — wilderness]
+    B -- no --> Z[Allowed: wilderness]
     B -- yes --> C[2. Does a flag permit it?]
     C -- no --> D[Denied]
     C -- yes --> E[3. Does the player hold the role permission?]
@@ -25,7 +25,7 @@ Unclaimed land is not protected at all. uxmClaims never touches wilderness.
 ## 2. Does a flag permit it?
 
 A [flag](flags.md) is a rule about the claim, not about a player. `TNT_EXPLOSIONS` decides whether TNT
-may break blocks here at all — the owner's TNT included.
+may break blocks here at all: the owner's TNT included.
 
 Flags are **allow-when-present**. A flag in the claim's set means the thing is permitted, and removing
 it forbids it. New claims start with `claimSettings.defaultFlags`.
@@ -55,10 +55,10 @@ The distinction is the thing worth internalising.
 
 | | Flag | Role permission |
 |---|---|---|
-| Applies to | The claim — everyone, owner included | One player |
+| Applies to | The claim (everyone, owner included) | One player |
 | Configured per | Claim | Role, with per-member overrides |
-| Example | `FIRE_SPREAD` — may fire spread here? | `IGNITE` — may this player light a fire? |
-| Example | `PVP` — may players fight here? | `MONSTER_DAMAGE` — may this player hit mobs? |
+| Example | `FIRE_SPREAD` (may fire spread here?) | `IGNITE` (may this player light a fire?) |
+| Example | `PVP` (may players fight here?) | `MONSTER_DAMAGE` (may this player hit mobs?) |
 
 The owner turning `FIRE_SPREAD` off means fire will not spread in their own base either. That is the
 point: flags protect against physics, permissions protect against people.
@@ -84,4 +84,4 @@ Two settings reach outside the permission system entirely:
 | `generalSettings.disabledCommandsInClaim` | Those commands are refused for non-members inside any claim |
 
 `disabledCommandsInClaim` is the one people forget. It ships with `sethome` in it, which stops
-visitors setting a home inside someone else's base — a common way to get around a ban.
+visitors setting a home inside someone else's base: a common way to get around a ban.

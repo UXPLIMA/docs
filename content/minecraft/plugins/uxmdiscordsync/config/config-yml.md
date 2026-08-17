@@ -21,7 +21,7 @@ plugin:
     notify-permission: "uxmdiscordsync.admin"
 ```
 
-`server-name` must be unique per server on a network — it is the identity everything multi-server
+`server-name` must be unique per server on a network: it is the identity everything multi-server
 keys off. `auto-save-interval: 0` disables periodic saving, which is not recommended: data is then
 only written on shutdown, and a crash loses everything since the last restart.
 
@@ -31,9 +31,9 @@ only written on shutdown, and a crash loses everything since the last restart.
 
 Bot token, guild id, presence, voice, linking and webhook rate limiting. Covered on:
 
-- [Creating the bot](../getting-started/discord-bot.md) — token, guild, intents
-- [Account linking](../features/account-linking.md) — the `linking` section
-- [Server stats and presence](../features/server-stats.md) — `presence` and `voice`
+- [Creating the bot](../getting-started/discord-bot.md): token, guild, intents
+- [Account linking](../features/account-linking.md): the `linking` section
+- [Server stats and presence](../features/server-stats.md): `presence` and `voice`
 
 ```yaml
 discord:
@@ -45,7 +45,7 @@ discord:
 
 `rate-limit-delay` is milliseconds between webhook posts. 2000 keeps you inside Discord's 30-per-
 minute limit with room to spare. Lower it and Discord starts returning 429s, which the plugin then
-has to retry — slower overall than waiting in the first place.
+has to retry: slower overall than waiting in the first place.
 
 ## multi-server
 
@@ -57,7 +57,7 @@ multi-server:
 ```
 
 Explained in [Concepts](../getting-started/concepts.md#link-mode-and-reward-mode). Requires a shared
-database — see [Database](database.md).
+database: see [Database](database.md).
 
 ## linking
 
@@ -88,7 +88,7 @@ Java `SimpleDateFormat` patterns. `timezone` takes `server` or a zone id such as
 `Europe/Istanbul` or `America/New_York`.
 
 Set it explicitly rather than leaving `server` if your host is in a different timezone from your
-players — timestamps in audit logs are only useful if everyone reads them the same way.
+players: timestamps in audit logs are only useful if everyone reads them the same way.
 
 ## discord-server-command
 
@@ -112,7 +112,7 @@ discord-broadcast:
 ```
 
 `/broadcast` sends a message to every player. The prefix is MiniMessage and should say plainly that
-the message came from Discord — a broadcast that looks like a server announcement is a good way for
+the message came from Discord: a broadcast that looks like a server announcement is a good way for
 one compromised Discord account to cause a lot of confusion.
 
 ## server-stats and chat-bridge

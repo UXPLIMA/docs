@@ -56,7 +56,7 @@ only adds the **per-chunk lock** layer on top.
 
 ## Where to Start
 
-- [🔧 Installation](installation.md): drop in the module, set two core options
-- [🧩 How It Works](how-it-works.md): rings, drops, barriers, borders
-- [📟 Commands](commands.md): the `/chunklock` info commands
-- [⚙️ Configuration](configuration.md): `config.yml` reference
+- [Installation](installation.md): drop in the module, set two core options
+- [How It Works](how-it-works.md): rings, drops, barriers, borders
+- [Commands](commands.md): the `/chunklock` info commands
+- [Configuration](configuration.md): `config.yml` reference

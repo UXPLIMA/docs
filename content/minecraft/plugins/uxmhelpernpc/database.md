@@ -5,7 +5,7 @@ description: SQLite, MySQL and the Redis layer that keeps several servers in ste
 icon: database
 ---
 
-NPC data — owner, location, entity type, skin, glow, hidden state — is stored through ORMLite,
+NPC data (owner, location, entity type, skin, glow, hidden state) is stored through ORMLite,
 with SQLite and MySQL as the two drivers.
 
 ```yaml
@@ -27,7 +27,7 @@ block is read. Right for a single server.
 ## MySQL
 
 Set `driver: "MYSQL"` and fill in `host`, `port`, `database`, `username`, `password`. `use-ssl`
-follows whatever your server requires — leave it `false` for a database on the same host.
+follows whatever your server requires: leave it `false` for a database on the same host.
 
 ## More than one server
 

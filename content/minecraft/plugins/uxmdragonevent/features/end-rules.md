@@ -38,7 +38,7 @@ takes damage, and nobody loses items. Everyone is there to damage the dragon and
 leaderboard.
 
 That is the right default because it removes every reason for the event to become an argument. The
-alternative — a fight where players can kill each other for the last hit — is a different event, and
+alternative (a fight where players can kill each other for the last hit) is a different event, and
 one you should turn on deliberately.
 
 ## The rules
@@ -66,19 +66,19 @@ one you should turn on deliberately.
 | `disableEndermanGrief` | Endermen do not move blocks |
 
 Note that `announceAdvancements`, `showDeathMessages` and `generateStructures` read the opposite way
-from the `disable...` rules — they are on when `true`.
+from the `disable...` rules: they are on when `true`.
 
 ## Rules worth thinking about
 
 **`disableDragonEgg: true`.** One egg per event, and the event runs three times a day. Left enabled,
 the egg stops being a trophy within a week. Give it as a first-place reward in `rewards.yml`
-instead — which the default rewards do.
+instead, which the default rewards do.
 
 **`disableDamage: true`.** With this on, the dragon's `damage-modifier` settings do nothing. Turn it
 off before tuning damage, and remember that `keepInventory: true` is what stops death from being a
 real loss.
 
-**`disableBlockPlace`.** Left off, players will build up to reach the dragon — which is fine, and
+**`disableBlockPlace`.** Left off, players will build up to reach the dragon, which is fine, and
 part of the vanilla fight. If you do not want it, `block-blacklist` is the softer tool: it blocks
 specific materials without stopping building entirely.
 
@@ -100,7 +100,7 @@ item-blacklist:
 ```
 
 Blocks that cannot be placed and items that cannot be used inside the event, regardless of the
-`disableBlockPlace` rule. `*` matches — `*_BED` covers every bed colour.
+`disableBlockPlace` rule. `*` matches: `*_BED` covers every bed colour.
 
 Beds and TNT are blacklisted by default because both explode in the end. The mace is there because
 its damage scales with fall distance, which in a dragon fight is unbounded.

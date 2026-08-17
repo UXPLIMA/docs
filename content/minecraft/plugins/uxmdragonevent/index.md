@@ -11,8 +11,8 @@ enter, the dragon spawns in an event world with the health and damage you set, a
 killed more than once before the event ends. Damage is tracked per player and the leaderboard decides
 who gets what.
 
-Everything about the fight is configurable — where it happens, how hard the dragon hits, which
-vanilla end rules apply inside, which commands players may use while they are in there — and the
+Everything about the fight is configurable: where it happens, how hard the dragon hits, which
+vanilla end rules apply inside, which commands players may use while they are in there, and the
 whole thing can announce itself in Discord without a second plugin.
 
 - [Getting Started](getting-started/)

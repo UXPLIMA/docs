@@ -33,7 +33,7 @@ server-stats:
 ```
 
 One embed, edited in place every `update-interval` seconds rather than reposted, so the channel does
-not fill up. Give it a channel of its own where nobody can post — an edited message that other
+not fill up. Give it a channel of its own where nobody can post: an edited message that other
 messages have scrolled past is not much use.
 
 Each `show-` switch removes a field. TPS, MSPT and memory are useful to staff and mean nothing to
@@ -83,7 +83,7 @@ discord:
     self-deafen: true
 ```
 
-Parks the bot in a voice channel so it shows as present. `self-deafen: true` is worth keeping —
+Parks the bot in a voice channel so it shows as present. `self-deafen: true` is worth keeping:
 a bot that is not deafened still receives every voice packet in the channel, for no purpose.
 
 `auto-reconnect: true` brings it back after a gateway drop.

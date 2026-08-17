@@ -1,7 +1,7 @@
 ---
 title: Your first trade
 order: 104
-description: A category, a trade, a requirement and a risk — start to finish.
+description: "A category, a trade, a requirement and a risk: start to finish."
 icon: play
 ---
 
@@ -91,9 +91,9 @@ A requirement does not have to be an item. This one checks a placeholder:
 ```
 
 `PLACEHOLDER` requirements are **checked, not consumed**. The Math expansion returns `1` when the
-expression is true, which is what `required-output` compares against.
+expression is true, which is what `requiredOutput` compares against, as a string.
 
-This needs PlaceholderAPI and the Math expansion — `/papi ecloud download Math`.
+This needs PlaceholderAPI and the Math expansion: `/papi ecloud download Math`.
 
 ## 5. Reload and try it
 
@@ -127,7 +127,7 @@ Open the two progression menus.
 /blacksmith giveboost <player> instant_finish
 ```
 
-`instant_finish` is one of the five shipped boosts, and the only single-use `INSTANT` one —
+`instant_finish` is one of the five shipped boosts, and the only single-use `INSTANT` one:
 right-click it, pick the slot, and the trade finishes immediately so you can verify the reward
 without waiting three hours.
 

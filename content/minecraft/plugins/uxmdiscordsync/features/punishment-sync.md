@@ -36,12 +36,12 @@ the other direction.
 | Minecraft actions | `ban`, `kick`, `mute`, `warn`, `none` |
 
 `none` disables that mapping. The default configuration syncs bans, mutes and kicks and leaves
-warnings alone, which is the right starting point — a warning is a conversation, not a sanction.
+warnings alone, which is the right starting point: a warning is a conversation, not a sanction.
 
 ## Timeouts have a ceiling
 
 Discord's timeout maxes out at 28 days. A longer Minecraft mute maps to a 28-day timeout, not to a
-longer one — Discord will not accept it. For a permanent mute, either accept the 28 days or map
+longer one: Discord will not accept it. For a permanent mute, either accept the 28 days or map
 `mute` to `"mute"`, which uses a role instead and has no limit.
 
 ## The bypass list
@@ -59,14 +59,14 @@ bypass:
 
 Nobody in these lists is affected by the sync in either direction. Put your staff here.
 
-Note that `players` takes **names**, not UUIDs — a renamed account falls out of the list, and a
+Note that `players` takes **names**, not UUIDs: a renamed account falls out of the list, and a
 player who takes the old name falls into it. Review this list when someone changes their name.
 
 <Callout type="danger" title="Test the direction you care about, on a test account">
 
 Punishment sync acts automatically and both ways. A misconfigured `minecraft-actions.ban` means a
-Discord ban — including one handed out by another bot, or by a moderator who does not know this
-plugin exists — bans that person from the game server. Confirm which side your moderators actually
+Discord ban, including one handed out by another bot, or by a moderator who does not know this
+plugin exists: bans that person from the game server. Confirm which side your moderators actually
 work on, and set the other direction to `none` if you do not want it.
 
 </Callout>

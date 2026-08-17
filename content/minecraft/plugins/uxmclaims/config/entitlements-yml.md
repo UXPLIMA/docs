@@ -1,7 +1,7 @@
 ---
 title: entitlements.yml
 order: 503
-description: Limits, costs and delays — their defaults, strategies and multipliers.
+description: "Limits, costs and delays: their defaults, strategies and multipliers."
 icon: sliders-horizontal
 ---
 
@@ -20,12 +20,12 @@ entitlements:
 
 | Key | Meaning |
 |---|---|
-| `strategy` | How several matching permissions combine — `STACK`, `MAX` or `MIN` |
+| `strategy` | How several matching permissions combine (`STACK`, `MAX` or `MIN`) |
 | `defaultValue` | What a player with no matching permission gets |
 | `incrementRate` | A multiplier for limits, a percentage for costs |
 
 The map key is the permission **prefix**. A player grants the value by holding
-`<prefix>.<amount>` — `uxmclaims.limit.claim.5`.
+`<prefix>.<amount>`: `uxmclaims.limit.claim.5`.
 
 ## strategy
 
@@ -49,7 +49,7 @@ Two different meanings depending on what the entitlement is.
 | `1` | `uxmclaims.limit.chunk.500` | 500 chunks |
 | `20` | `uxmclaims.limit.claim.5` | 100 claims |
 
-A rate above 1 turns the node into a *tier* — level 5 rather than five claims. Every shipped
+A rate above 1 turns the node into a *tier*: level 5 rather than five claims. Every shipped
 entitlement uses `1`, so what you write is what you get.
 
 **For costs, it is compound interest per item owned.**
@@ -92,7 +92,7 @@ cost meaningfully more than the first without writing ten permission nodes.
 
 - **`limit.time` interacts with `expireMode`.** With `claimSettings.expireMode: false` nothing
   expires and the entitlement is inert. With it on, `limit.time` caps how far `/claim extend` may
-  push the expiry — extending past it answers *"The maximum claim duration has been exceeded."*
+  push the expiry: extending past it answers *"The maximum claim duration has been exceeded."*
 
 - **Cost nodes can only ever discount,** because they use `MIN`. Granting a rank a number higher than
   `defaultValue` changes nothing.

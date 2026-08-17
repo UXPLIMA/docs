@@ -15,7 +15,7 @@ CREATE USER uxmclaims WITH ENCRYPTED PASSWORD 'a-long-random-password';
 GRANT ALL PRIVILEGES ON DATABASE uxmclaims TO uxmclaims;
 ```
 
-On PostgreSQL 15 and newer, the database-level grant is not enough — the user also needs the schema:
+On PostgreSQL 15 and newer, the database-level grant is not enough: the user also needs the schema:
 
 ```sql
 \c uxmclaims
@@ -35,7 +35,7 @@ database:
   url: 'jdbc:postgresql://localhost:5432/uxmclaims'
 ```
 
-`AUTO` reads `postgresql` out of the URL. Restart — this section is not re-read by `/claim reload`.
+`AUTO` reads `postgresql` out of the URL. Restart: this section is not re-read by `/claim reload`.
 
 ## Remote access
 
@@ -66,5 +66,5 @@ Restore:
 psql -U uxmclaims uxmclaims < uxmclaims-2026-01-01.sql
 ```
 
-Run a dump before any `/claim admin bulk …` command — they rewrite every loaded claim, without
+Run a dump before any `/claim admin bulk …` command: they rewrite every loaded claim, without
 confirmation and without undo.

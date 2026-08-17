@@ -44,7 +44,7 @@ dependencies {
 </dependencies>
 ```
 
-`compileOnly` and `provided` are correct — uxmClaims is already on the server, and shading it would
+`compileOnly` and `provided` are correct: uxmClaims is already on the server, and shading it would
 give you a second, disconnected copy of the domain model.
 
 ## Declaring the dependency
@@ -63,7 +63,7 @@ after uxmClaims, which matters because the API throws until uxmClaims has initia
 
 ```java
 if (Bukkit.getPluginManager().getPlugin("uxmClaims") == null) {
-    getLogger().info("uxmClaims not found — claim integration disabled.");
+    getLogger().info("uxmClaims not found, claim integration disabled.");
     return;
 }
 
@@ -71,7 +71,7 @@ UxmClaimBukkitAPI api = UxmClaimBukkitAPI.getInstance();
 ```
 
 `getInstance()` throws `IllegalStateException` with *"uxmClaims is not initialized yet!"* when called
-too early. With `softdepend` set and the call made in `onEnable`, that will not happen — but a static
+too early. With `softdepend` set and the call made in `onEnable`, that will not happen, but a static
 initialiser, or a call from `onLoad`, will hit it.
 
 ## Requirements
@@ -80,4 +80,4 @@ initialiser, or a call from `onLoad`, will hit it.
 |---|---|
 | Java | 21 |
 | Server | 1.19.4 or newer |
-| Scope | `compileOnly` / `provided` — never shade |
+| Scope | `compileOnly` / `provided` (never shade) |

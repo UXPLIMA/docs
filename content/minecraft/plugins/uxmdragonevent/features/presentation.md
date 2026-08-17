@@ -23,7 +23,7 @@ sounds:
 Three moments: the event starting, the event ending, and the dragon being reborn. Any Bukkit sound
 name.
 
-The start sound plays server-wide — it is the announcement — so pick something that carries without
+The start sound plays server-wide (it is the announcement) so pick something that carries without
 being irritating three times a day.
 
 ## Titles
@@ -43,7 +43,7 @@ titles:
 Same three moments. Times are in seconds. `actionbar` is shown instead of nothing if you set it;
 leave it empty to skip.
 
-The `respawn` title takes `%times%` — how many kills remain:
+The `respawn` title takes `%times%`: how many kills remain:
 
 ```yaml
 respawn:
@@ -67,7 +67,7 @@ boss-bar:
     - CREATE_WORLD_FOG
 ```
 
-This is a second bar, in addition to the vanilla dragon bar. With both on, players see two — set
+This is a second bar, in addition to the vanilla dragon bar. With both on, players see two: set
 `dragon.boss-bar-visible: false` if you want only this one.
 
 | Key | Values |
@@ -88,7 +88,7 @@ default picks one.
 
 The `messages` block in `config.yml` holds everything the plugin says, in MiniMessage.
 
-The `end` message is the one worth writing carefully — it is the leaderboard everyone reads:
+The `end` message is the one worth writing carefully: it is the leaderboard everyone reads:
 
 ```yaml
 end:
@@ -97,8 +97,8 @@ end:
   - '<reset> <#CD7F32><bold>3rd <white>%dragonevent_top_name_3% <gray>- <white>%dragonevent_top_damage_3%'
 ```
 
-The shipped version also lists the prizes in plain text. That list is written by hand — it does not
-read `rewards.yml` — so if you change the rewards, change this message too, or it will advertise
+The shipped version also lists the prizes in plain text. That list is written by hand: it does not
+read `rewards.yml`, so if you change the rewards, change this message too, or it will advertise
 prizes nobody receives.
 
 ## Commands on start and end

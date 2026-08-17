@@ -24,7 +24,7 @@ hologram:
 
 <Callout type="warning" title="No hologram plugin means turn this off">
 
-The module has no renderer of its own. With none of the three installed, leave `enabled: false` —
-otherwise the plugin spends startup looking for a hook that will not be there.
+The module has no renderer of its own. With none of the three installed, leave `enabled: false`.
+Otherwise the plugin spends startup looking for a hook that will not be there.
 
 </Callout>

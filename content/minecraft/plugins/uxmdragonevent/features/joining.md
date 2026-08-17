@@ -5,7 +5,7 @@ description: The portal, the command, the entry fee, the IP limit and flight.
 icon: door-open
 ---
 
-Three ways in — a portal, a command, or neither — and several gates in front of them.
+Three ways in (a portal, a command, or neither) and several gates in front of them.
 
 ## The portal
 
@@ -35,7 +35,7 @@ settings:
   permission-required: false
 ```
 
-With this on, joining at all needs `dragonevent.joinevent` — whichever door they use. This is how you
+With this on, joining at all needs `dragonevent.joinevent`: whichever door they use. This is how you
 run the event for a subset of the server.
 
 ## Price
@@ -51,7 +51,7 @@ Charged through Vault. `price-required-for-every-join: true` charges again when 
 comes back, which is what stops the entry fee being a one-off.
 
 An entry fee makes the event a sink rather than a source: money comes out of the economy at the door
-and the rewards put some of it back. If your rewards pay more than the fee — as the defaults do —
+and the rewards put some of it back. If your rewards pay more than the fee (as the defaults do)
 the event is still net inflation, just less of it.
 
 ## Same-IP limit
@@ -78,7 +78,7 @@ settings:
 `keep-stats-on-leave` means a disconnect does not cost a player their damage. `auto-join-after-leaving`
 puts them straight back in when they reconnect, without the portal.
 
-Both on is the forgiving configuration and the right default — a server hiccup should not eliminate
+Both on is the forgiving configuration and the right default: a server hiccup should not eliminate
 someone from an event they paid to enter.
 
 ## Leaving the world
@@ -101,7 +101,7 @@ from that, which is what you give staff who need to keep flying.
 
 <Callout type="note" title="Flight changes the fight">
 
-A dragon fight where players can fly is a different event — the platform, the pillars and the
+A dragon fight where players can fly is a different event: the platform, the pillars and the
 approach all stop mattering. Giving flight to a donor rank is a real advantage, not a cosmetic one.
 
 </Callout>

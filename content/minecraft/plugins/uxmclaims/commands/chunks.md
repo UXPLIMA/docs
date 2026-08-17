@@ -9,14 +9,14 @@ icon: box
 
 | Command | What it does | Ability node |
 |---|---|---|
-| `/claim chunk view` | Open the chunk map for the current claim | — |
+| `/claim chunk view` | Open the chunk map for the current claim | n/a |
 | `/claim chunk add` | Buy the chunk you are standing on | `uxmclaims.ability.chunk.extend` |
 | `/claim chunk remove` | Sell back the chunk you are standing on | `uxmclaims.ability.chunk.shrink` |
 
 Both `add` and `remove` also need the `MANAGE_CHUNKS` role permission.
 
-`add` refuses a chunk that does not touch the claim — *"You can only claim chunks connected to your
-claim."* — and one that would break `claimSettings.minDistance` from someone else's land.
+`add` refuses a chunk that does not touch the claim: *"You can only claim chunks connected to your
+claim."*, and one that would break `claimSettings.minDistance` from someone else's land.
 
 `remove` refuses two cases:
 
@@ -47,7 +47,7 @@ the hologram.
 
 All three also need the `MANAGE_BLOCK` role permission.
 
-`<style>` is a key from the `blocks` section of `config.yml` — `block1` and `block2` ship, being
+`<style>` is a key from the `blocks` section of `config.yml`: `block1` and `block2` ship, being
 bedrock and obsidian. A style may carry its own permission; `block2` ships gated behind
 `claim.blockchange.obsidian`.
 
@@ -57,7 +57,7 @@ block inside the main chunk."*
 <Callout type="tip" title="The claim block is where the hologram lives">
 
 Holograms are rendered above the claim block, using the lines and styling in the `hologram` section
-of [config.yml](../config/config-yml.md). No block, no hologram — which is a reasonable way to let
+of [config.yml](../config/config-yml.md). No block, no hologram, which is a reasonable way to let
 players opt out of floating text over their base.
 
 </Callout>

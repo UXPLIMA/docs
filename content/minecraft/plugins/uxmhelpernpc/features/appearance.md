@@ -8,7 +8,7 @@ icon: palette
 ## Entity type
 
 `npc.default-type` is what a new NPC looks like. Any Bukkit entity type works, but only the
-Citizens and FancyNpcs hooks change shape per NPC — the other hooks draw whatever they draw.
+Citizens and FancyNpcs hooks change shape per NPC: the other hooks draw whatever they draw.
 
 Players change their own NPC's type from the appearance menu, which fires the
 `[modify_appearance]` action with an entity type as its argument.

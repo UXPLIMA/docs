@@ -13,14 +13,14 @@ generalSettings:
 ## What it does
 
 When a player tries to claim a chunk, the plugin asks WorldGuard whether that chunk overlaps a region.
-If it does, the claim is refused with `errorNotClaimableArea` — *"Here is not claimable area."*
+If it does, the claim is refused with `errorNotClaimableArea`: *"Here is not claimable area."*
 
 It is one check in one direction: WorldGuard regions block claims. uxmClaims does not create regions
 and does not modify existing ones.
 
 ## What this is for
 
-The usual setup is a spawn region, an event arena, a shop district and a warzone — areas the server
+The usual setup is a spawn region, an event arena, a shop district and a warzone: areas the server
 owns and players should not be able to fence off.
 
 Two ways to protect them, and they compose:
@@ -30,7 +30,7 @@ Two ways to protect them, and they compose:
 | A WorldGuard region | The area is a shape inside an otherwise claimable world |
 | `generalSettings.disabledWorlds` | The whole world should never be claimed |
 
-`disabledWorlds` is cheaper — no region lookup at all — so use it for whole worlds and reserve regions
+`disabledWorlds` is cheaper (no region lookup at all) so use it for whole worlds and reserve regions
 for shapes.
 
 ## When to turn it off

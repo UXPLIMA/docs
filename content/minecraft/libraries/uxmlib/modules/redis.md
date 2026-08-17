@@ -16,7 +16,7 @@ bus.publish("party-updates", encode(update));
 
 ## Why bytes
 
-The bus does not serialize for you. Encoding is yours — protobuf, JSON, a hand-rolled format — and
+The bus does not serialize for you. Encoding is yours (protobuf, JSON, a hand-rolled format) and
 the bus moves the bytes.
 
 That is the right boundary for a primitive: a bus with an opinion about serialization forces every
@@ -25,7 +25,7 @@ than the message's.
 
 ## Failure behaviour
 
-**Publishing is fail-degraded.** With Redis unreachable, `publish` does not throw — the message is
+**Publishing is fail-degraded.** With Redis unreachable, `publish` does not throw: the message is
 lost and the plugin keeps running. A cross-server notification is not worth taking a server down
 for.
 
@@ -49,7 +49,7 @@ A plugin that shades `uxmlib-redis` without using it does not carry a Redis clie
 
 ## No internal dependencies
 
-`uxmlib-redis` depends on nothing else in the library — not even `uxmlib-common`. It is usable on its
+`uxmlib-redis` depends on nothing else in the library, not even `uxmlib-common`. It is usable on its
 own, and `uxmlib-storage`'s `RedisDataSynchronizer` builds cache invalidation on top of it without
 the storage stack and the bus knowing about each other.
 

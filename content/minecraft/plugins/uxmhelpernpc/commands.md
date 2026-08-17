@@ -12,8 +12,8 @@ icon: terminal
 
 | Command | Aliases | Permission | What it does |
 |---|---|---|---|
-| `/helpernpc` | | — | Sends the help message, or opens the NPC menu if `helpernpc-command-opens-gui` is on |
-| `/helpernpc buy` | `satınal` | — | Opens the shop menu. Refused when `disable-buy-command` is true |
+| `/helpernpc` | | n/a | Sends the help message, or opens the NPC menu if `helpernpc-command-opens-gui` is on |
+| `/helpernpc buy` | `satınal` | n/a | Opens the shop menu. Refused when `disable-buy-command` is true |
 | `/helpernpc menu` | `menü` | `uxmhelpernpc.command.menu` | Opens your NPC's main menu |
 | `/helpernpc return` | `iade` | `uxmhelpernpc.returnnpc` | Deletes your NPC and refunds `return-percent` of the price |
 | `/helpernpc skin <name\|reset>` | | `uxmhelpernpc.changeskin` | Changes the NPC skin, or clears it |
@@ -23,7 +23,7 @@ icon: terminal
 <Callout type="warning" title="The disappear node is not the one in plugin.yml">
 
 `plugin.yml` declares `uxmhelpernpc.disappear`, but the command checks
-`helpernpc.command.disappear`. Grant the node the command checks — the one in the table above.
+`helpernpc.command.disappear`. Grant the node the command checks: the one in the table above.
 
 </Callout>
 

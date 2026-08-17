@@ -45,7 +45,7 @@ boosts:
 ## Keep the id stable
 
 The id is written into the item's persistent data when it is created. Rename the key and every boost
-item already in a player's inventory or an unopened crate stops being recognised — it becomes an
+item already in a player's inventory or an unopened crate stops being recognised: it becomes an
 ordinary emerald.
 
 Change the name, the lore, the material and the numbers freely; those are read from config each time

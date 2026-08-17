@@ -12,7 +12,7 @@ The rules uxmLib is written to, and what they mean for a plugin built on it.
 Paper 1.21+ and Java 21 only. Every API targets the current server, with no reflection machinery for
 versions that no longer exist.
 
-A cross-version library pays for that reach in every method — reflection lookups, per-version
+A cross-version library pays for that reach in every method: reflection lookups, per-version
 branches, and an API shaped by the oldest thing it supports. Dropping that is what lets the item
 builder use registry keys directly and the scheduler map onto Folia's four schedulers without an
 abstraction over an abstraction.
@@ -24,7 +24,7 @@ The cost is real: uxmLib will not run on 1.20.
 `common` depends on nothing internal. Everything may depend on `common`. `gui` depends on `item`.
 `all` aggregates. `redis` depends on nothing at all.
 
-ArchUnit tests enforce it, so the graph is a guarantee rather than a convention — and taking one
+ArchUnit tests enforce it, so the graph is a guarantee rather than a convention, and taking one
 module is genuinely taking one module, not discovering a transitive half of the library.
 
 ## Constructor injection, no static state
@@ -45,7 +45,7 @@ hold their own instances, and a test constructs one with a fake instead of stand
 Nothing schedules through `BukkitScheduler`. The `Scheduler` abstraction maps onto Paper's global,
 region, entity and async schedulers, so the same plugin code runs unchanged on Folia.
 
-That only holds if you pick the right one. Folia's threading model is the reason the four exist —
+That only holds if you pick the right one. Folia's threading model is the reason the four exist:
 touching a block from the wrong region is the bug the abstraction makes visible rather than
 prevents.
 
@@ -64,13 +64,13 @@ Every package is JSpecify `@NullMarked`. NullAway and Error Prone run as errors 
 formatting is enforced by Spotless with Palantir Java Format, and ArchUnit guards the module
 boundaries.
 
-`@NullMarked` means a reference is non-null unless annotated otherwise — so `Optional` in a return
+`@NullMarked` means a reference is non-null unless annotated otherwise, so `Optional` in a return
 type is a real signal, and a parameter that accepts null says so.
 
 ## Native where it can be
 
 GUIs, holograms, HUD overlays and toasts use the public Paper and Adventure API. No packets, no
-per-version NMS — so they keep working across point releases without anyone updating anything.
+per-version NMS, so they keep working across point releases without anyone updating anything.
 
 The [experimental packet modules](modules/experimental.md) are the deliberate exception, for
 per-viewer effects the public API cannot express.
@@ -78,7 +78,7 @@ per-viewer effects the public API cannot express.
 ## MIT, and clean-room
 
 Nothing is copied from GPL, AGPL or proprietary sources. The Minecraft-facing API is written from
-scratch; only neutral infrastructure — HikariCP, Caffeine, Configurate — is taken as a dependency.
+scratch; only neutral infrastructure (HikariCP, Caffeine, Configurate) is taken as a dependency.
 
 Use it anywhere, including in closed-source plugins.
 

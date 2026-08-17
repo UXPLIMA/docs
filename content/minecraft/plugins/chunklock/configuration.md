@@ -168,7 +168,7 @@ messages:
   prefix: "&8[&aChunklock&8] &7"
   no-island: "&cYou need to create an island first: &f/ada oluştur"
   chunk-locked: "&cThis chunk is not open yet. &7Unlock it first."
-  unlocked: "&aChunk unlocked! &7({x}, {z}) — ring {ring}"
+  unlocked: "&aChunk unlocked! &7({x}, {z}) ring {ring}"
   # ... and more
 ```
 

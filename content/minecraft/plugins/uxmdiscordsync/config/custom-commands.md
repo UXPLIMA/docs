@@ -8,7 +8,7 @@ icon: message-square-code
 Every `.yml` file in `discord-commands/` becomes one Discord command. The file name is the command
 name: `ip.yml` gives you `!ip` and `/ip`.
 
-Six ship as examples — `ip`, `serverip`, `store`, `stats`, `balance`, `profile`. Copy one, rename it,
+Six ship as examples: `ip`, `serverip`, `store`, `stats`, `balance`, `profile`. Copy one, rename it,
 edit it.
 
 The master switch is in `discord-custom-commands.yml`:
@@ -77,8 +77,8 @@ description: |
   • World: %player_world%
 ```
 
-With `player-field-enabled: true`, the command takes a player name — `!ip Notch` or
-`/profile player:Notch` — and placeholders resolve against that player. Without it, they resolve
+With `player-field-enabled: true`, the command takes a player name (`!ip Notch` or
+`/profile player:Notch`) and placeholders resolve against that player. Without it, they resolve
 against the Discord user's own linked account.
 
 `fields` builds embed fields:
@@ -95,7 +95,7 @@ Discord allows 25 fields per embed and 1024 characters per field value.
 <Callout type="warning" title="Placeholders can leak information">
 
 `player-field-enabled: true` lets anyone in Discord look up any player. The shipped `profile.yml`
-returns coordinates. On a survival server that is a location-sharing feature you did not intend —
+returns coordinates. On a survival server that is a location-sharing feature you did not intend:
 remove the `%player_x%` fields, or restrict the command with `required-roles`.
 
 </Callout>
@@ -113,7 +113,7 @@ required-user-ids: []
 ```
 
 That command works only in that channel and only for holders of that role. An empty list means no
-restriction of that kind — not "nobody".
+restriction of that kind, not "nobody".
 
 ## Adding and removing
 

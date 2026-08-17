@@ -8,7 +8,7 @@ icon: braces
 uxmClaims registers a PlaceholderAPI expansion with the identifier `uxmclaims`, and uses the same
 engine for the tokens inside `messages.yml`, `webhooks.yml`, holograms and menus.
 
-Set `generalSettings.placeholderSupport: true` — the default — and install PlaceholderAPI.
+Set `generalSettings.placeholderSupport: true` (the default) and install PlaceholderAPI.
 
 ## How a placeholder resolves
 
@@ -22,7 +22,7 @@ Everything after `uxmclaims_` is a **path** into the claim object:
 
 Which claim? The one selected with `/claim select`, if any; otherwise the one the player is standing
 in. Outside a claim, `%uxmclaims_claim_name%` and `%uxmclaims_claim_owner_name%` fall back to the
-values in `messageFile.placeholderDefaults` — `No claim` for both — and every other path returns
+values in `messageFile.placeholderDefaults` (`No claim` for both) and every other path returns
 empty.
 
 Separators are interchangeable: `claim_name` and `claim.name` are the same path. Inside `messages.yml`

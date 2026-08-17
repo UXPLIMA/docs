@@ -21,8 +21,8 @@ progression:
     maxLevel: 50
 ```
 
-Set `enabled: false` and the whole system — levels, masteries, perks, the two menus, `reqLevel`
-gates and the vanilla crafting gate — goes inert.
+Set `enabled: false` and the whole system (levels, masteries, perks, the two menus, `reqLevel`
+gates and the vanilla crafting gate) goes inert.
 
 ## The curve
 
@@ -45,7 +45,7 @@ With the shipped global curve:
 | 50 → 51 | 332,827 | 2,181,311 |
 
 At level `maxLevel` the requirement is 0, XP stops accumulating on the level bar, and `totalXp` keeps
-counting. `growthFactor: 1.18` is steep — level 50 costs roughly 3,300 times what level 1 did, and
+counting. `growthFactor: 1.18` is steep: level 50 costs roughly 3,300 times what level 1 did, and
 reaching 100 is not a realistic goal on the default curve. Lower it to about 1.10 if you want most of
 the server past level 30.
 
@@ -85,7 +85,7 @@ xp x= 1 + (total GLOBAL_XP_BOOST perk effect)
 
 The `asCommand` 1.10x is a fixed constant, not a config value.
 
-Worked example — the shipped `Netherite Warlord Blade`: `time: 420`, four requirements totalling 22
+Worked example: the shipped `Netherite Warlord Blade`: `time: 420`, four requirements totalling 22
 items, `successChance: 70`.
 
 ```
@@ -93,7 +93,7 @@ items, `successChance: 70`.
 x 1 + (30÷100 x 0.35)                    = x 1.105 = 79.97  →  80 XP
 ```
 
-Its config sets `xpReward: 155` instead, roughly double what the formula would give — which is the
+Its config sets `xpReward: 155` instead, roughly double what the formula would give, which is the
 point of `xpReward`: use it when a trade should be worth more than its shape suggests.
 
 ## Mastery XP
@@ -127,12 +127,12 @@ See [Masteries](masteries.md).
 
 XP is applied, then levels are consumed in a loop, so a single large grant can raise several levels
 at once and grant a perk point for each. At `maxLevel` the bar is pinned to 0 and `totalXp` keeps
-rising — nothing is lost, it just stops converting.
+rising: nothing is lost, it just stops converting.
 
 ## Duplicate protection
 
 Each grant is written to `progression_events` keyed by a source id. If the same trade completion is
-processed twice — a race, a retry after a crash — the second write is recognised as a duplicate and
+processed twice (a race, a retry after a crash) the second write is recognised as a duplicate and
 no XP is granted. You will not see doubled XP from a restart mid-completion.
 
 ## Inspecting and adjusting
@@ -149,7 +149,7 @@ All four need `uxmblacksmith.admin`. See [Commands](../commands.md).
 <Callout type="tip" title="Set the curve before launch, not after">
 
 Changing `growthFactor` later re-prices every level for players who already have them. Their stored
-level does not move, but the next level suddenly costs a different amount — which reads as a nerf
+level does not move, but the next level suddenly costs a different amount, which reads as a nerf
 even when it is a buff. Decide the curve while the server is empty.
 
 </Callout>

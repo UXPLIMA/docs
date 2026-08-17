@@ -36,7 +36,7 @@ may be anything.
 | Role | Ships with |
 |---|---|
 | `Owner` | An **empty** list. The owner holds everything implicitly; entries here change nothing. |
-| `Member` | 30 permissions — build, interact, entities, movement. No management. |
+| `Member` | 30 permissions (build, interact, entities, movement. No management.) |
 | `Default` | `MOVE_INSIDE` only. |
 
 The full `Member` set is `BLOCK_PLACE`, `BLOCK_BREAK`, `BUCKET_FILL`, `BUCKET_EMPTY`,
@@ -66,7 +66,7 @@ Anything under `custom` is added to every new claim. Priorities are adjusted aut
 between `Member` and `Default`, so the number you write is a hint about ordering rather than an
 absolute.
 
-`custom: { }` ships empty — new claims get exactly the three system roles.
+`custom: { }` ships empty: new claims get exactly the three system roles.
 
 ## Priority
 
@@ -79,7 +79,7 @@ Lower is higher rank. Priority drives three things:
 ## Notes
 
 - **Editing `roles.yml` does not touch existing claims.** Use
-  `/claim admin bulk setrolepermission <role> <perm> <value>` for that — it works on the system roles,
+  `/claim admin bulk setrolepermission <role> <perm> <value>` for that: it works on the system roles,
   in every loaded claim, without confirmation.
 
 - **`Default` is the one to think about.** It is what a stranger gets. Adding `CONTAINER_OPEN` here

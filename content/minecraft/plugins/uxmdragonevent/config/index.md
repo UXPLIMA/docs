@@ -10,8 +10,8 @@ plugins/uxmDragonEvent/
 ├── config.yml            the event, the dragon, the world, the rules, the messages
 ├── rewards.yml           what winners get
 ├── discord.yml           announcements
-├── locations.yml         spawn points — written by /dragon save
-├── autostart_data.yml    schedule state — written by the plugin
+├── locations.yml         spawn points, written by /dragon save
+├── autostart_data.yml    schedule state, written by the plugin
 └── data/stats.yml        player statistics
 ```
 

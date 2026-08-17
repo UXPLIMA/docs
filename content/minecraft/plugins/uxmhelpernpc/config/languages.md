@@ -27,7 +27,7 @@ folder name.
 ## Messages
 
 `messages.yml` is MiniMessage throughout. Placeholders arrive as MiniMessage tags rather than
-percent-signs — `<remaining_time>` in the cooldown message, `<money>` in the refund message,
+percent-signs, `<remaining_time>` in the cooldown message, `<money>` in the refund message,
 `<skin>` in the skin message, `<player_name>` in the admin confirmations.
 
 ## Command aliases follow the language

@@ -41,7 +41,7 @@ higher rank opened the vault."*
 /claim role setperm Builder CONTAINER_OPEN true
 ```
 
-Tab completion offers all 48 permissions. Names are the enum names — see
+Tab completion offers all 48 permissions. Names are the enum names: see
 [Role permissions](../protection/permissions.md) for what each one covers.
 
 The ability node is per permission: `uxmclaims.ability.role.permissions.BLOCK_BREAK` lets a player
@@ -56,7 +56,7 @@ but not removed:
 - `Owner` holds every permission implicitly; its permission list is empty by design, and adding to it
   changes nothing.
 - `Member` is the fallback for a member whose role was deleted.
-- `Default` applies to everyone who is **not** a member — the strangers walking through.
+- `Default` applies to everyone who is **not** a member: the strangers walking through.
 
 ## Limits
 
@@ -70,7 +70,7 @@ The limit counts custom roles only; the three system roles do not use a slot.
 <Callout type="tip" title="Design Default before you design anything else">
 
 `Default` is the only role a griefer will ever have. Everything a claim needs to be safe is decided
-there. The shipped default grants `MOVE_INSIDE` and nothing else, which is the right starting point —
+there. The shipped default grants `MOVE_INSIDE` and nothing else, which is the right starting point:
 strangers may walk through and do nothing at all.
 
 </Callout>

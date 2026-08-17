@@ -24,7 +24,7 @@ inside a block.
 
 ## autostart_data.yml
 
-The schedule's state — when the last event ran and when the next one is due. Written by the plugin,
+The schedule's state, when the last event ran and when the next one is due. Written by the plugin,
 read on startup so a restart does not reset the timetable or the monthly count.
 
 Delete it to reset the schedule from scratch; the plugin rebuilds it from `auto-start` in
@@ -51,8 +51,8 @@ To edit it: stop the server, edit, start, then `/dragon refresh` to rebuild the 
 
 ## Backups
 
-Back up the whole plugin folder. `data/stats.yml` is the only copy of every all-time statistic —
-there is no database backend to fall back on — and `locations.yml` is a few minutes of setup you
+Back up the whole plugin folder. `data/stats.yml` is the only copy of every all-time statistic (there is no database backend to fall back on)
+and `locations.yml` is a few minutes of setup you
 would otherwise redo.
 
 `/dragon save` before a manual restart makes sure both are current.

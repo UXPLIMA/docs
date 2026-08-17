@@ -12,7 +12,7 @@ Seven sections. Every key below is shown with the value the plugin ships.
 | Key | Default | What it does |
 |---|---|---|
 | `expireMode` | `true` | Delete claims when their lifetime runs out |
-| `expireTime` | `2592000` | Lifetime of a new claim, in seconds — 30 days |
+| `expireTime` | `2592000` | Lifetime of a new claim, in seconds (30 days) |
 | `minDistance` | `2` | Chunks of empty land required between different players' claims |
 | `defaultBlock` | `'block1'` | Which `blocks` style a new claim uses |
 | `defaultName` | `'Claim of %player.name%'` | Name given to an unnamed claim |
@@ -22,7 +22,7 @@ The shipped `defaultFlags` are `SPAWN_ANIMALS`, `SPAWN_MONSTERS`, `PISTON_PUSH`,
 `TNT_EXPLOSIONS`, `CREEPER_DAMAGE`, `WITHER_DAMAGE`, `FIRE_SPREAD`, `REDSTONE`, `STRUCTURE_GROW`,
 `NATURE_SPREAD`, `BLOCK_FORM` and `MOB_SPAWNING`.
 
-That default set leaves explosions and fire **enabled** in new claims — the plugin ships permissive
+That default set leaves explosions and fire **enabled** in new claims: the plugin ships permissive
 and expects you to decide. A survival server that wants safe bases should remove `TNT_EXPLOSIONS`,
 `CREEPER_DAMAGE`, `WITHER_DAMAGE` and `FIRE_SPREAD` before letting anyone claim.
 
@@ -44,15 +44,15 @@ for a survival one.
 | `placeholderSupport` | `true` | Parse placeholders in messages |
 | `reminderEnabled` | `true` | Warn players about claims nearing expiry |
 | `reminderOnLogin` | `true` | Warn them on join too |
-| `reminderIntervalSeconds` | `300` | How often to check — 5 minutes |
-| `reminderThresholdSeconds` | `86400` | How long before expiry to start warning — 1 day |
+| `reminderIntervalSeconds` | `300` | How often to check (5 minutes) |
+| `reminderThresholdSeconds` | `86400` | How long before expiry to start warning (1 day) |
 
 Edit `disabledWorlds` before opening the server. The shipped values are examples, and a world named
 `world_nether` is disabled out of the box on most servers by accident.
 
 `economyProvider` matches against the registered provider name, the Bukkit plugin name and the
 currency names, singular and plural. When it is set and nothing matches, **startup fails** rather than
-silently charging Vault's default economy — which is the correct behaviour for a multi-currency
+silently charging Vault's default economy, which is the correct behaviour for a multi-currency
 server.
 
 ## border
@@ -67,7 +67,7 @@ The overlay `/claim showborders` draws.
 | `autoCloseSeconds` | `30` | Seconds before the overlay closes itself; `0` never closes it |
 | `visualizerType` | `'DISPLAY_ENTITY'` | `DISPLAY_ENTITY` or `PARTICLE` |
 
-Colours are `#RRGGBBAA` — eight digits, the last two being opacity. `#FF0000FF` is solid red,
+Colours are `#RRGGBBAA`: eight digits, the last two being opacity. `#FF0000FF` is solid red,
 `#FF000080` is half-transparent red.
 
 `DISPLAY_ENTITY` is smoother and cheaper; `PARTICLE` is the fallback for clients or server versions
@@ -119,7 +119,7 @@ Web-map integration.
 | `style.fillOpacity` | `0.35` | Fill opacity, 0–1 |
 | `tooltip.lines` | 5 lines of HTML | The hover popup |
 
-Tooltip lines are HTML, not MiniMessage — they are rendered by the map's web front end. Placeholders
+Tooltip lines are HTML, not MiniMessage: they are rendered by the map's web front end. Placeholders
 work inside them. See [Map plugins](../integrations/maps.md).
 
 ## hologram
@@ -143,7 +143,7 @@ The floating text above the claim block.
 | `textOpacity` | `0.98` | Text transparency |
 | `lines` | 9 lines | The text itself, MiniMessage, with placeholders |
 
-No claim block means no hologram — placing one is how a player opts in.
+No claim block means no hologram: placing one is how a player opts in.
 
 ## database
 

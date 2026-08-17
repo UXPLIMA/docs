@@ -6,8 +6,8 @@ description: A per-player helper NPC that stands on the player's own island or c
 icon: bot
 ---
 
-uxmHelperNPC gives every player one NPC of their own. It is placed on their island or claim —
-either automatically when the region is created, or by the player buying it — and clicking it
+uxmHelperNPC gives every player one NPC of their own. It is placed on their island or claim (either automatically when the region is created, or by the player buying it)
+and clicking it
 runs whatever you configured: a menu, a command, a sound, a question to an AI assistant.
 
 The plugin owns no world of its own. It asks a claim plugin where a player's region is, an NPC

@@ -51,7 +51,7 @@ rank-mappings:
       - "give %player% diamond 8"
 ```
 
-A player in several groups gets every matching role — the mapping is not exclusive. `priority`
+A player in several groups gets every matching role: the mapping is not exclusive. `priority`
 decides which group counts as their *primary* rank, which is what `%primary_rank%` resolves to in a
 nickname format.
 
@@ -111,6 +111,6 @@ your console every five minutes.
 /uxmdiscordsync forcesync <player>   # one player
 ```
 
-Run this after editing `rank-mappings` rather than waiting for `sync-interval` — and use it to check
+Run this after editing `rank-mappings` rather than waiting for `sync-interval`, and use it to check
 your role ids before assuming they are right, because a wrong id is indistinguishable from a
 permission problem until you look.

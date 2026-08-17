@@ -16,7 +16,7 @@ also bypasses every ability check and every role permission everywhere.
 ## Bulk operations
 
 These act on **every claim currently loaded**, not on one. They exist for the moment a server changes
-policy — a new flag default, a rebalanced role — and does not want to edit thousands of claims by
+policy (a new flag default, a rebalanced role) and does not want to edit thousands of claims by
 hand.
 
 | Command | What it does |
@@ -27,7 +27,7 @@ hand.
 | `/claim admin bulk setblock <style>` | Change every claim's visual block |
 | `/claim admin bulk destroyblock` | Remove every claim's visual block |
 
-`setrolepermission` completes against the standard roles — the three system roles — because a custom
+`setrolepermission` completes against the standard roles (the three system roles) because a custom
 role name means something different in every claim.
 
 <Callout type="danger" title="Bulk commands do not confirm and cannot be undone">
@@ -52,7 +52,7 @@ Beyond `uxmclaims.admin`, individual actions can be bypassed:
 | `uxmclaims.bypass.<action>` | Bypass one, e.g. `uxmclaims.bypass.claim.delete` |
 | `uxmclaims.bypass.teleport` | Ignore the teleport warmup |
 
-Bypass nodes mirror ability nodes exactly — swap `ability` for `bypass`. See
+Bypass nodes mirror ability nodes exactly: swap `ability` for `bypass`. See
 [Ability permissions](../permissions/abilities.md).
 
 Give staff `uxmclaims.bypass.*` rather than `uxmclaims.admin` when you want them to work everywhere

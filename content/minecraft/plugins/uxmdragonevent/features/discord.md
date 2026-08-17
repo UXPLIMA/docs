@@ -5,7 +5,7 @@ description: Countdown, start and result embeds, posted by the built-in bot.
 icon: megaphone
 ---
 
-The plugin can post to Discord directly — a countdown before the event, an announcement when it
+The plugin can post to Discord directly: a countdown before the event, an announcement when it
 starts, and a result when it ends. No second plugin is involved; the bot is embedded.
 
 Configured in `discord.yml`, off by default.
@@ -63,7 +63,7 @@ embeds:
 
 | Key | Notes |
 |---|---|
-| `message` | Plain text above the embed — where a role ping goes |
+| `message` | Plain text above the embed (where a role ping goes) |
 | `color` | Hex **without** a leading `#` |
 | `fields` | Named `field1`, `field2`, …; `inline: true` puts up to three side by side |
 
@@ -75,7 +75,7 @@ Note the colour format differs from most plugins: `"00e5ff"`, not `"#00e5ff"`.
 message: '<@&roleid>'
 ```
 
-Replace `roleid` with the role's id — the full form is `<@&123456789012345678>`. Make the role
+Replace `roleid` with the role's id: the full form is `<@&123456789012345678>`. Make the role
 mentionable in Discord, or give the bot **Mention @everyone, @here and All Roles**.
 
 Ping on `start` and on the last `notify-times` entry. Pinging on all four is how a role gets muted.
@@ -99,7 +99,7 @@ description: "⏰ **Time Remaining:** <t:%timestamp%:R>"
 
 `%timestamp%` is the event's start time as a Unix timestamp, and `<t:...:R>` makes Discord render it
 as a live relative countdown in each viewer's own timezone. That is better than a fixed time string
-for exactly that reason — an international community reads one message correctly.
+for exactly that reason: an international community reads one message correctly.
 
 ## Announcing without a bot
 

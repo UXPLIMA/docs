@@ -13,7 +13,7 @@ icon: download
 | Java | 21 or newer |
 | Database | SQLite out of the box; MySQL 8+ or PostgreSQL 13+ optional |
 
-Paper is not required — `api-version` is `1.20` and the plugin declares `folia-supported: true`, so it
+Paper is not required: `api-version` is `1.20` and the plugin declares `folia-supported: true`, so it
 runs unchanged on a regionised server.
 
 ## Optional plugins
@@ -28,7 +28,7 @@ Every one of these is a `softdepend`. The plugin starts without all of them.
 | WorldGuard | Refusing claims that overlap a region |
 | Dynmap, BlueMap, Pl3xMap, squaremap | Drawing claims on the web map |
 
-Adventure and MiniMessage are downloaded at runtime through Paper's `libraries` mechanism — there is
+Adventure and MiniMessage are downloaded at runtime through Paper's `libraries` mechanism: there is
 nothing to shade or install.
 
 ## Installing
@@ -64,7 +64,7 @@ Each has its own page under [Configuration](../config/).
 
 `database` in `config.yml` is read at startup. Changing the backend and running `/claim reload` leaves
 the plugin on the old connection. Restart the server, and read
-[Database](../database/) before changing it on a live server — nothing migrates the rows for you.
+[Database](../database/) before changing it on a live server: nothing migrates the rows for you.
 
 </Callout>
 

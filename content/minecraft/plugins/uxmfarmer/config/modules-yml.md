@@ -75,15 +75,15 @@ farm-manager:
 `farm-manager` requires auto-harvest to be doing something; on its own it has nothing to manage.
 
 The defaults are the cheap configuration and the right starting point. The last option is the
-expensive one — it converts every overflowing farm into a pile of item entities, and on a server
+expensive one: it converts every overflowing farm into a pile of item entities, and on a server
 with a hundred islands that is the difference between a healthy tick and a bad one.
 
 ## Module-specific keys
 
 Each module has settings beyond the four common ones. They are documented with the module:
 
-- [Auto Harvest](../features/auto-harvest.md) — `items`, `piston-check-items`, `required-piston`,
+- [Auto Harvest](../features/auto-harvest.md): `items`, `piston-check-items`, `required-piston`,
   `extended-piston-check`, `drop-item-if-stock-full`
-- [Auto Kill](../features/auto-kill.md) — `mobs`, `only-kill-spawner-mobs`
-- [Auto Sell](../features/auto-sell.md) — `everything`, `items`, `send-message`, `send-to-members`
-- [XP Collector](../features/xp-collector.md) — `xp-unit-price`, `xp-tax`, `sellable-by-default`
+- [Auto Kill](../features/auto-kill.md): `mobs`, `only-kill-spawner-mobs`
+- [Auto Sell](../features/auto-sell.md): `everything`, `items`, `send-message`, `send-to-members`
+- [XP Collector](../features/xp-collector.md): `xp-unit-price`, `xp-tax`, `sellable-by-default`

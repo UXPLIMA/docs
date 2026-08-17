@@ -21,7 +21,7 @@ successClaimCreated:
 | `type` | `CHAT`, `TITLE` or `ACTIONBAR` |
 | `text` | A single string, or a list of lines |
 
-A `TITLE` message takes a two-line list — the title and the subtitle:
+A `TITLE` message takes a two-line list: the title and the subtitle:
 
 ```yaml
 infoClaimMoveInside:
@@ -42,7 +42,7 @@ A `CHAT` message given a list sends one line per entry.
 | `statusActive` | `Active` | The `status:` modifier, for true |
 | `statusPassive` | `Passive` | The `status:` modifier, for false |
 
-Changing `dateFormat` changes every rendered date at once — holograms, menus, map tooltips and chat.
+Changing `dateFormat` changes every rendered date at once: holograms, menus, map tooltips and chat.
 
 ## The groups
 
@@ -50,7 +50,7 @@ Changing `dateFormat` changes every rendered date at once — holograms, menus, 
 |---|---|---|
 | `success…` | ~35 | Something worked |
 | `error…` | ~50 | Something was refused, and why |
-| `info…` | ~15 | Neutral state changes — entering a claim, a pending teleport |
+| `info…` | ~15 | Neutral state changes (entering a claim, a pending teleport) |
 | `notification…` | 1 | The invitation a player receives |
 | `warning…` | 1 | The PvP warp confirmation |
 | `broadcast…` | 1 | A claim expired |
@@ -86,14 +86,14 @@ placeholderDefaults:
 ```
 
 What `%uxmclaims_claim_name%` and `%uxmclaims_claim_owner_name%` render when the player is not in a
-claim. Add entries here for any other placeholder you put on a scoreboard — without one, an
+claim. Add entries here for any other placeholder you put on a scoreboard, without one, an
 unresolvable path renders empty.
 
 ## Notes
 
 - **`errorNoPermission` is shown for two different failures.** A missing ability node and a missing
   role permission produce the same string. If players are confused about which they hit, split the
-  wording — mention both causes — rather than trying to find a second key.
+  wording (mention both causes) rather than trying to find a second key.
 
 - **`infoTeleportPending` carries `%seconds%`,** the resolved warmup from
   `uxmclaims.delay.teleport`. A rank with a 0-second delay never sees it.

@@ -15,7 +15,7 @@ default-click-actions:
   - "[sound] ENTITY_ALLAY_AMBIENT_WITHOUT_ITEM"
 ```
 
-Actions run in order, and an action that fails stops the ones after it — which is what makes
+Actions run in order, and an action that fails stops the ones after it, which is what makes
 `[check_permission]` and `[cooldown]` useful as guards.
 
 ## Reference
@@ -27,16 +27,16 @@ Actions run in order, and an action that fails stops the ones after it — which
 | `[player_message]` | text | Sends the text to the player |
 | `[console_message]` | text | Prints the text to the console |
 | `[menu]` | `main`, `glow`, `appearance`, `shop` | Opens one of the plugin's menus |
-| `[close]` | — | Closes the open inventory |
+| `[close]` | n/a | Closes the open inventory |
 | `[modify_appearance]` | entity type | Changes the NPC's entity type |
 | `[glow_color]` | colour name | Sets the glow colour |
-| `[glow_status]` | — | Toggles the glow on or off |
-| `[buy]` | — | Buys an NPC, charging the configured price |
+| `[glow_status]` | n/a | Toggles the glow on or off |
+| `[buy]` | n/a | Buys an NPC, charging the configured price |
 | `[check_permission]` | `<node> [message]` | Continues if the player has the node; otherwise sends the message and stops |
 | `[cooldown]` | cooldown name | Continues if the cooldown has expired; otherwise stops |
 | `[sound]` | sound name | Plays a sound to the player |
 | `[wait]` | ticks | Delays the actions after it |
-| `[ask_question]` | — | Starts an assistant question, see [AI Assistant](../features/ai-assistant.md) |
+| `[ask_question]` | n/a | Starts an assistant question, see [AI Assistant](../features/ai-assistant.md) |
 
 ## Guarding a button
 

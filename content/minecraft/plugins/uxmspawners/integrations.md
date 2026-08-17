@@ -27,7 +27,7 @@ Spawner placing, breaking and menu access respect these:
 
 ## Shops
 
-ShopGUIPlus, EconomyShopGUI (free and premium) and ExcellentShop can all supply sell prices — see
+ShopGUIPlus, EconomyShopGUI (free and premium) and ExcellentShop can all supply sell prices: see
 [Prices](config/prices.md).
 
 ## Economy

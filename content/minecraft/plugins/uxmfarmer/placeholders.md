@@ -12,7 +12,7 @@ identifies a farmer by its UUID:
 %uxmfarmer_<uuid>_<what>%
 ```
 
-The UUID is the farmer's, not the player's — get it from `/uxmfarmer uuidof <player>`,
+The UUID is the farmer's, not the player's: get it from `/uxmfarmer uuidof <player>`,
 `/uxmfarmer select`, or `/uxmfarmer nearfarmers`. An unknown UUID returns an empty string.
 
 Inside menu and hologram lore the plugin's own `<uuid>` tag is substituted first, which is why the
@@ -65,7 +65,7 @@ An unknown material returns `0` for the numeric ones and the disabled text for t
 
 The hourly and daily figures are extrapolated from the per-minute one, so they are projections and
 move as the farm does. Income uses the live price for the player reading the placeholder, which
-means two players can see different numbers for the same farmer — correctly, because their tax
+means two players can see different numbers for the same farmer: correctly, because their tax
 discounts differ.
 
 ## All-time statistics
@@ -85,7 +85,7 @@ discounts differ.
 These are totals and do not move backwards, which makes them the right thing to put on a leaderboard
 or a scoreboard. `all_time_tax` is `all_time_tax_product` plus `all_time_tax_xp`.
 
-Money values are formatted with the plugin's money formatter, counts with its number formatter — so
+Money values are formatted with the plugin's money formatter, counts with its number formatter, so
 they arrive readable and do not need a `math` expansion to make them presentable.
 
 ## Using placeholders as conditions
@@ -101,5 +101,5 @@ requirements:
     required-output: "yes"
 ```
 
-uxmFarmer's own placeholders work here too — a level that requires the player's farmer to already
+uxmFarmer's own placeholders work here too: a level that requires the player's farmer to already
 hold a certain amount of another product, for example.

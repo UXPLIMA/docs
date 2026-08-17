@@ -32,7 +32,7 @@ artificial-intelligence:
    the question in place of the second.
 4. The reply is sent back to that player, formatted with MiniMessage.
 
-The player has `chat-timeout` seconds to type. Keep `cooldown.ask-question-cooldown` equal to it —
+The player has `chat-timeout` seconds to type. Keep `cooldown.ask-question-cooldown` equal to it:
 the shipped config does, and a shorter cooldown lets a player queue questions faster than they can
 be answered.
 
@@ -40,7 +40,7 @@ be answered.
 
 Both are positional and both are required, in that order: knowledge base first, question second.
 Everything else in `prompt` is yours to write. The shipped prompt tells the model to answer only
-from the knowledge base and to say it does not know otherwise — keep that instruction, or the NPC
+from the knowledge base and to say it does not know otherwise: keep that instruction, or the NPC
 will confidently invent server rules.
 
 <Callout type="warning" title="The key is a credential">

@@ -9,7 +9,7 @@ icon: lightbulb
 
 One event runs at a time. It starts on the schedule or with `/dragon start`, lasts
 `settings.dragon-event-time` minutes, and ends when the dragon has been killed the required number of
-times — or when the clock runs out, in which case nobody wins.
+times, or when the clock runs out, in which case nobody wins.
 
 ## Rebirths
 
@@ -37,7 +37,7 @@ settings:
   auto-join-after-leaving: true
 ```
 
-`keep-stats-on-leave` means a player who disconnects and comes back keeps the damage they had done —
+`keep-stats-on-leave` means a player who disconnects and comes back keeps the damage they had done,
 without it, a crash costs them the event. `auto-join-after-leaving` puts them straight back in on
 rejoin rather than making them find the portal again.
 
@@ -81,5 +81,5 @@ The event world is reset by the plugin. Everything else is left alone.
 Inside the event world, the plugin overrides vanilla behaviour: PvP, damage, keepInventory, block
 breaking, elytra, potions and about a dozen others. See [End rules](../features/end-rules.md).
 
-The defaults make the event a co-operative fight — no PvP, no player damage, items kept on death —
+The defaults make the event a co-operative fight (no PvP, no player damage, items kept on death)
 which is the shape most servers want. Every one of them can be turned the other way.

@@ -14,7 +14,7 @@ settings:
   worldguard-region-name: dragonportal
 ```
 
-`lobby-world-name` holds the spawn players return to. `event-world-name` is the arena — managed and
+`lobby-world-name` holds the spawn players return to. `event-world-name` is the arena: managed and
 reset by the plugin. `worldguard-region-name` is the region containing the entry portal.
 
 ## Vanilla or custom
@@ -29,14 +29,14 @@ custom-world:
 | Mode | Behaviour |
 |---|---|
 | `custom-world.enabled: false` | Uses the world named in `event-world-name` |
-| `type: VANILLA` | Same — your existing end world is the arena |
+| `type: VANILLA` | Same (your existing end world is the arena) |
 | `type: CUSTOM` | Uses a world folder placed inside the plugin's folder, named in `folder-name` |
 
 A custom world is the better option for anything you have built. Drop the world folder into
 `plugins/uxmDragonEvent/`, name it in `folder-name`, and set the two spawn points with
 `/dragon setcustomspawn` and `/dragon setdragonspawn`.
 
-With a vanilla end, spawn placement is controlled by `settings.spawn-type` instead — `PLATFORM` or
+With a vanilla end, spawn placement is controlled by `settings.spawn-type` instead: `PLATFORM` or
 `SURFACE`.
 
 <Callout type="warning" title="The event world gets reset">
@@ -58,13 +58,13 @@ world-border:
 ```
 
 `size` is the diameter in blocks, not the radius. The default is a 1000-block square centred just
-south of the end spawn — which is where the vanilla end island sits.
+south of the end spawn, which is where the vanilla end island sits.
 
 The border is what keeps the fight in one place. Without it, a dragon in the vanilla end can drift
 toward the outer islands and take the event with it.
 
 Set `center-x` and `center-z` to your arena's centre if you are using a custom world, and size it to
-the arena rather than to the dragon's flight range — a border that is too generous is the same as no
+the arena rather than to the dragon's flight range: a border that is too generous is the same as no
 border.
 
 ## End crystals

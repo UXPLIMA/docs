@@ -27,7 +27,7 @@ itemPrices:
 With anything other than `CUSTOM`, the list below is ignored entirely.
 
 Keys are Bukkit material names and values are the price for one item. An item with no price cannot
-be sold from a spawner — which is a usable way to force a material to be withdrawn and used rather
+be sold from a spawner, which is a usable way to force a material to be withdrawn and used rather
 than turned into money.
 
 Payment goes through Vault, multiplied by whatever `modules/multipliers.yml` grants the player.
@@ -35,7 +35,7 @@ Payment goes through Vault, multiplied by whatever `modules/multipliers.yml` gra
 <Callout type="note" title="Spawner farms are an economy, not a feature">
 
 These few numbers set the income of every farm on the server. Work out what one spawner earns per
-hour at your `delay` and `range` before opening it — that figure, not the price of the spawner,
+hour at your `delay` and `range` before opening it: that figure, not the price of the spawner,
 is what decides whether your economy holds.
 
 </Callout>

@@ -33,7 +33,7 @@ items:
 |---|---|
 | `title` | The window title. MiniMessage, with placeholders. |
 | `size` | Rows, not slots. `6` is a double chest. |
-| `type` | The inventory type — `CHEST`, `HOPPER`, `DISPENSER` and so on. |
+| `type` | The inventory type (`CHEST`, `HOPPER`, `DISPENSER` and so on.) |
 | `items` | The buttons, keyed by the name the plugin looks them up by. |
 
 Each item takes:
@@ -65,7 +65,7 @@ Some items exist in more than one form and the plugin picks by state:
 
 ```yaml
 ownedClaimItem:          # normal
-ownedClaimItemSelected:  # currently selected — glow: true, a ✔ in the name
+ownedClaimItemSelected:  # currently selected: glow true, a check mark in the name
 ```
 
 Keep both keys. Deleting the variant leaves that state unrendered.
@@ -91,7 +91,7 @@ Keep both keys. Deleting the variant leaves that state unrendered.
 - **A slot listed in `itemSlots` and also given to a fixed item** will be overwritten by the generated
   entry.
 - **Everything is MiniMessage.** Legacy `&` codes are not translated.
-- **`/claim reload` rebuilds the menus** — no restart needed while you are styling.
+- **`/claim reload` rebuilds the menus**, no restart needed while you are styling.
 
 <Callout type="tip" title="Copy the folder before you start">
 

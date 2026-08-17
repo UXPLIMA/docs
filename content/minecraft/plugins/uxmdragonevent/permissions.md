@@ -33,7 +33,7 @@ The two conditional permissions only apply when their setting is on:
 `dragonevent.fly` is the one permission worth thinking about as a reward. It grants `/dragon fly`
 and, with `auto-flight: true`, flight from the moment a player enters.
 
-It is a real advantage in a dragon fight, not a cosmetic one — a flying player reaches the dragon
+It is a real advantage in a dragon fight, not a cosmetic one: a flying player reaches the dragon
 whenever they want and never falls. If your leaderboard pays out meaningfully, giving flight to a
 donor rank is giving them the leaderboard.
 
@@ -48,7 +48,7 @@ holding a session. Keep it on staff groups only.
 ## dragonevent.usecmds
 
 Bypasses `command-blocking` completely. A player with it can use `/home`, `/tpa` or any shop command
-mid-fight — which is precisely what the blocking exists to prevent.
+mid-fight, which is precisely what the blocking exists to prevent.
 
 Staff need it to moderate an event. Nobody else should have it.
 
@@ -70,4 +70,4 @@ Everything needed to run, watch and fix an event from inside it.
 dragonevent.joincommand
 ```
 
-Skipping the walk to the portal is a fair perk. `dragonevent.fly` is not — see above.
+Skipping the walk to the portal is a fair perk. `dragonevent.fly` is not: see above.

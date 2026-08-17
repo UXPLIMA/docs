@@ -14,7 +14,7 @@ Every trade outcome is written to the database. Nothing is sampled and nothing e
 | `TRADE_STARTED` | Requirements taken, slot filled |
 | `TRADE_COMPLETED` | Finished and rewarded |
 | `TRADE_BURNED` | Failed its success roll |
-| `TRADE_FAILED` | Could not complete — a missing hook, an invalid reward |
+| `TRADE_FAILED` | Could not complete (a missing hook, an invalid reward) |
 | `TRADE_CANCELLED` | The player cancelled it |
 | `ADMIN_CANCELLED` | Staff cancelled it |
 | `ADMIN_FORCE_COMPLETED` | Staff completed it |
@@ -61,7 +61,7 @@ Defaults to `today`. The same figures with the period switchable in-place.
 ```
 
 Newest first. `limit` defaults to 10 and is capped at 50. Each line is the event type, the trade,
-the slot, who did it, and the time — which is the answer to "my legendary sword disappeared".
+the slot, who did it, and the time, which is the answer to "my legendary sword disappeared".
 
 ## Export
 
@@ -87,7 +87,7 @@ on a busy day.
 The live view of what is running, and the tools to intervene. `cancel` refunds by default; pass
 `no-refund` to take the materials.
 
-A refund the player cannot receive — offline, full inventory — becomes a row in `pending_refunds`
+A refund the player cannot receive (offline, full inventory) becomes a row in `pending_refunds`
 and is delivered on their next login. `REFUND_PENDING` then `REFUND_DELIVERED` in the event log is
 the normal, healthy sequence, not an error.
 
@@ -114,5 +114,5 @@ Server-wide, cached, safe on a scoreboard.
 ## Retention
 
 Nothing prunes `trade_events` or `progression_events`. On a busy server they grow steadily. They are
-indexed by player, trade and timestamp, so queries stay fast, but the file does not shrink — plan a
+indexed by player, trade and timestamp, so queries stay fast, but the file does not shrink: plan a
 periodic archive if you run for years.

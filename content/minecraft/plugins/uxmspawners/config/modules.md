@@ -20,7 +20,7 @@ Each feature is one file under `modules/`, so a feature is turned off by one lin
 
 ## The pattern the permission lists follow
 
-Three of these files use the same shape — a default, then a map of permission to value:
+Three of these files use the same shape: a default, then a map of permission to value:
 
 ```yaml
 permissions:

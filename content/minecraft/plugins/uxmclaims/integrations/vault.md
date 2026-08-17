@@ -5,7 +5,7 @@ description: Charging for claims, chunks, warps and time, and picking a currency
 icon: coins
 ---
 
-Vault bridges uxmClaims to whatever economy plugin you run — EssentialsX, CMI, CoinsEngine and the
+Vault bridges uxmClaims to whatever economy plugin you run: EssentialsX, CMI, CoinsEngine and the
 rest.
 
 ```yaml
@@ -32,7 +32,7 @@ charged.
 
 Only chunks and time cost anything out of the box.
 
-Costs use the `MIN` strategy — see [Limits and costs](../permissions/limits.md) — so a rank's node can
+Costs use the `MIN` strategy: see [Limits and costs](../permissions/limits.md), so a rank's node can
 only ever discount below `defaultValue`. Granting a higher number changes nothing.
 
 ## Picking a currency
@@ -46,8 +46,8 @@ currency's singular and plural names. Empty means Vault's default provider.
 
 <Callout type="warning" title="A provider name that does not resolve fails startup">
 
-This is deliberate. On a multi-currency server the alternative — silently falling back to the default
-economy — means charging players in the wrong currency for however long it takes someone to notice.
+This is deliberate. On a multi-currency server the alternative (silently falling back to the default
+economy) means charging players in the wrong currency for however long it takes someone to notice.
 Better a server that will not start.
 
 </Callout>
@@ -55,7 +55,7 @@ Better a server that will not start.
 ## Refunds
 
 `/claim chunk remove` sells a chunk back. Deleting a claim does **not** refund what was spent on it,
-and there is no refund percentage setting — price accordingly, especially `cost.time`, which at the
+and there is no refund percentage setting: price accordingly, especially `cost.time`, which at the
 shipped `5.0` per second makes a week's extension expensive.
 
 ## Not enough money

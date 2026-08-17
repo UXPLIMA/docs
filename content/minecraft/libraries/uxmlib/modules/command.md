@@ -52,7 +52,7 @@ accordingly, so a database lookup does not hold up a tick.
 
 ## Help
 
-`HelpPages` and `HelpRenderer` generate paginated help from the registered model — the same
+`HelpPages` and `HelpRenderer` generate paginated help from the registered model: the same
 descriptions the annotations already carry. `@Secret` keeps staff-only branches out of it.
 
 ## The facade
@@ -67,7 +67,7 @@ CommandRegistrar.register(plugin,
         "Replies with pong");
 ```
 
-`Cmd`, `Args`, `Sender` and `CommandRegistrar` are a thin layer over Brigadier — enough to remove the
+`Cmd`, `Args`, `Sender` and `CommandRegistrar` are a thin layer over Brigadier: enough to remove the
 boilerplate, not enough to hide the tree. Use it when the shape of the command is unusual enough that
 annotations fight you.
 
@@ -91,7 +91,7 @@ Three SPIs:
 |---|---|
 | `ParamResolver` | Turning an argument into your own type |
 | `ParameterValidator` | Rules beyond `@Range` and `@Length` |
-| `CommandCondition` | Gates beyond permissions — a state check, a world check |
+| `CommandCondition` | Gates beyond permissions (a state check, a world check) |
 
 A resolver for your plugin's `Home` type means every command taking a home gets parsing, validation
 and completion from one registration.

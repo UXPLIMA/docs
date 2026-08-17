@@ -19,7 +19,7 @@ so call sites never null-check and a plugin without an economy degrades to doing
 throwing.
 
 `CachedEconomyBridge` caches balances, `AsyncEconomy` moves calls off the main thread, and
-`RebindingEconomyBridge` picks up an economy plugin that loads after you do — which is the case that
+`RebindingEconomyBridge` picks up an economy plugin that loads after you do, which is the case that
 otherwise produces "no economy found" on a server that has one.
 
 ## Permissions and ranks
@@ -38,7 +38,7 @@ LuckPermsHook.find()
 String text = Placeholders.apply(player, "Hi %player_name%");
 ```
 
-A pass-through without PlaceholderAPI installed — the string comes back with its placeholders
+A pass-through without PlaceholderAPI installed: the string comes back with its placeholders
 unresolved rather than the call failing.
 
 There is a write side too:
@@ -48,7 +48,7 @@ PlaceholderRegistry.register(new MyPlaceholderProvider());
 ```
 
 A `PlaceholderProvider` exposes your own placeholders as `%uxm_<prefix>_<params>%`.
-`UxmPlaceholderExpansion` registers the expansion with PlaceholderAPI once, for every provider — so
+`UxmPlaceholderExpansion` registers the expansion with PlaceholderAPI once, for every provider, so
 several plugins can contribute placeholders without each registering their own expansion.
 
 ## Regions
@@ -63,12 +63,12 @@ boolean canBuild = regions.active()
 ```
 
 WorldGuard and Towny behind one `RegionService` contract. `orElse(true)` is the important part of
-that snippet: with no region plugin, the answer is *allowed* — the hook does not become a protection
+that snippet: with no region plugin, the answer is *allowed*; the hook does not become a protection
 plugin by accident.
 
 ## Holograms
 
-Built on native 1.21+ `Display` entities — Text, Item and Block — with no packets and no per-version
+Built on native 1.21+ `Display` entities (Text, Item and Block) with no packets and no per-version
 NMS, so they keep working across point releases.
 
 ```java
@@ -121,7 +121,7 @@ new DiscordWebhook(url)
         .sendEmbed(DiscordEmbed.colored("Alert", "Server started", 0x00FF00));
 ```
 
-No JDA, no bot token, no dependency — a webhook URL and an HTTP call. `EmbedLimits` enforces
+No JDA, no bot token, no dependency: a webhook URL and an HTTP call. `EmbedLimits` enforces
 Discord's field and length limits before sending, so an over-long message is truncated rather than
 rejected.
 
@@ -129,5 +129,5 @@ For anything interactive you need a bot; for one-way notifications this is the w
 
 ## Online data
 
-`OnlineDataManager` and `OnlineDataListener` manage per-player state for the duration of a session —
+`OnlineDataManager` and `OnlineDataListener` manage per-player state for the duration of a session:
 loaded on join, disposed on quit. It is the lifecycle every plugin writes by hand, once.

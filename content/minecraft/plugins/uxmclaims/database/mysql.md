@@ -16,7 +16,7 @@ GRANT ALL PRIVILEGES ON uxmclaims.* TO 'uxmclaims'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-`utf8mb4` matters — claim names contain emoji more often than you would expect, and `utf8` in MySQL
+`utf8mb4` matters: claim names contain emoji more often than you would expect, and `utf8` in MySQL
 is a three-byte encoding that cannot store them.
 
 Use `'uxmclaims'@'%'` instead of `@'localhost'` when the database is on another host, and restrict it
@@ -32,7 +32,7 @@ database:
   url: 'jdbc:mysql://localhost:3306/uxmclaims'
 ```
 
-`AUTO` reads `mysql` out of the URL. Restart the server — this section is not re-read by
+`AUTO` reads `mysql` out of the URL. Restart the server: this section is not re-read by
 `/claim reload`.
 
 Useful URL parameters:
@@ -49,7 +49,7 @@ stored as an instant, but a mismatched session timezone makes every `date:` plac
 More than one server may share one database. That is the main reason to be here.
 
 What is shared: claims, members, roles, warps, bans, vaults. What is not: the in-memory caches. A claim
-edited on one server is not instantly visible on another — there is no cross-server invalidation
+edited on one server is not instantly visible on another: there is no cross-server invalidation
 message. Give each server its own worlds, and the question does not arise.
 
 ## Backups

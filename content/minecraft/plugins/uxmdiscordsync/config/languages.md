@@ -5,8 +5,8 @@ description: The Minecraft message files, and the Discord text that lives elsewh
 icon: languages
 ---
 
-Every message the plugin sends in Minecraft lives in `languages/<code>.yml`. Two ship — `en_US` and
-`tr_TR` — and `plugin.language` picks one.
+Every message the plugin sends in Minecraft lives in `languages/<code>.yml`. Two ship (`en_US` and
+`tr_TR`) and `plugin.language` picks one.
 
 ```yaml
 plugin:
@@ -27,7 +27,7 @@ no-permission: "<gradient:#FF6B6B:#C0392B>❌ You don't have permission to use t
 cooldown: "<gradient:#FF6B6B:#C0392B>⏰ Please wait <yellow>{time}</yellow> seconds!</gradient>"
 ```
 
-Message placeholders use `{braces}` — `{code}`, `{time}`, `{player}` — and are filled in by the
+Message placeholders use `{braces}` (`{code}`, `{time}`, `{player}`) and are filled in by the
 plugin. This is a different convention from the config files, which use `%percent%` for their
 placeholders. When editing a message, keep whatever braces are already there.
 
@@ -38,7 +38,7 @@ Messages are grouped by feature: `linking`, `boost`, `rank-sync`, `two-factor` a
 Copy `en_US.yml` to a new file, translate the values, and point `language` at the new name without
 `.yml`.
 
-Keep every key. A key you delete has no fallback — the message becomes empty rather than reverting to
+Keep every key. A key you delete has no fallback: the message becomes empty rather than reverting to
 English.
 
 After a plugin update, compare your file against the shipped `en_US.yml`: new messages are written to
@@ -58,5 +58,5 @@ descriptions are configured where the feature is:
 | Custom command replies | `discord-commands/*.yml` |
 | Level-up DM | `level-system.yml → notifications` |
 
-This is deliberate — those strings are part of a feature's configuration, not of a translation — but
+This is deliberate (those strings are part of a feature's configuration, not of a translation) but
 it does mean translating the plugin fully means editing more than one file.

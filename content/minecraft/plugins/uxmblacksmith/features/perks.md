@@ -1,7 +1,7 @@
 ---
 title: Perks
 order: 209
-description: The buyable upgrade tree — effect types, costs, and the shipped nine.
+description: "The buyable upgrade tree: effect types, costs, and the shipped nine."
 icon: git-branch
 ---
 
@@ -29,15 +29,15 @@ category first. That shape is worth keeping if you write your own.
 
 | Type | `valuePerLevel` means | Applied as |
 |---|---|---|
-| `TRADE_SPEED` | Fraction faster — `0.05` is 5% | Sum of levels, added to the mastery speed reduction |
+| `TRADE_SPEED` | Fraction faster (`0.05` is 5%) | Sum of levels, added to the mastery speed reduction |
 | `BURN_RESISTANCE` | Percentage points of success chance | Sum of levels, added after the burn multiplier |
 | `EXTRA_SLOT` | Slots | Unlocks that many locked slot icons, lowest first |
 | `GLOBAL_XP_BOOST` | Fraction more XP | `xp x (1 + total)` |
 | `MASTERY_XP_BOOST` | Fraction more mastery XP | `masteryXp x (1 + total)` |
-| `COMMAND` | Nothing directly | Use `commands` — the effect is whatever you run |
+| `COMMAND` | Nothing directly | Use `commands` (the effect is whatever you run) |
 
 Effects are `valuePerLevel x currentLevel`, summed across every perk of that type the player holds.
-`speed_forging` at 5 and `blades_discipline` at 4 give `0.25 + 0.16` = 41% faster sword crafts —
+`speed_forging` at 5 and `blades_discipline` at 4 give `0.25 + 0.16` = 41% faster sword crafts:
 before mastery, and the combined reduction is floored at 90%.
 
 ## Defining one
@@ -85,7 +85,7 @@ progression:
 cost = max(1, baseCost + currentLevel x costPerLevel)
 ```
 
-`baseCost: 1`, `costPerLevel: 1` gives 1, 2, 3, 4, 5 — fifteen points for all five levels. A player
+`baseCost: 1`, `costPerLevel: 1` gives 1, 2, 3, 4, 5: fifteen points for all five levels. A player
 earning one point per level pays fifteen levels for one maxed perk.
 
 ## Buying
@@ -121,12 +121,12 @@ prestige_title:
     - 'lp user {player} parent add mastersmith'
 ```
 
-`COMMAND` perks have no built-in effect — the `commands` list is the whole point. Commands run from
+`COMMAND` perks have no built-in effect: the `commands` list is the whole point. Commands run from
 console on every upgrade, so with `maxLevel` above 1 they run once per level.
 
 <Callout type="warning" title="There is no refund and no respec">
 
-Points spent are gone. Nothing in the plugin resets a perk tree — `/blacksmith admin perkpoints set`
+Points spent are gone. Nothing in the plugin resets a perk tree: `/blacksmith admin perkpoints set`
 grants points back, but it does not un-level the perk. If you plan to rebalance the tree, decide
 before players spend.
 
@@ -144,5 +144,5 @@ before players spend.
 %uxmblacksmith_perk_name_speed_forging%
 ```
 
-`perk_value_` formats by effect type — a percentage for `TRADE_SPEED`, points for
+`perk_value_` formats by effect type: a percentage for `TRADE_SPEED`, points for
 `BURN_RESISTANCE`, a whole number for `EXTRA_SLOT`.

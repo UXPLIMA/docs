@@ -84,5 +84,5 @@ controls whether the standalone island UI/world is registered.
 
 ## Next
 
-- [🧩 How It Works](how-it-works.md)
-- [⚙️ Configuration](configuration.md)
+- [How It Works](how-it-works.md)
+- [Configuration](configuration.md)

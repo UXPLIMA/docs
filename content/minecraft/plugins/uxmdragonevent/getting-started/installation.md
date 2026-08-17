@@ -14,7 +14,7 @@ icon: download
 | Required | An end-type world for the event |
 | Recommended | Vault (entry price), PlaceholderAPI, WorldGuard (portal region) |
 
-JDA and its dependencies are declared as libraries in `plugin.yml` and downloaded at startup — they
+JDA and its dependencies are declared as libraries in `plugin.yml` and downloaded at startup: they
 are only used if you enable the Discord integration.
 
 The plugin loads with `load: POSTWORLD`, after worlds exist, which is what lets it manage the event
@@ -49,7 +49,7 @@ world.
 
 <Callout type="warning" title="The event world is not an ordinary world">
 
-The plugin resets and manages `event-world-name`. Do not point it at your live end — anything built
+The plugin resets and manages `event-world-name`. Do not point it at your live end: anything built
 there will not survive. Use a separate world, or a
 [custom world folder](../features/worlds.md#custom-worlds).
 

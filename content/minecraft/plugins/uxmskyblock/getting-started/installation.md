@@ -77,7 +77,7 @@ existing files automatically; your edited values are kept.
 
 ---
 
-## That's It! 🎉
+## That's it
 
 Players can now type `/island` (or `/is`, `/sb`, `/ada`, `/sky`) to open the main
 menu and `/is create` to make their first island.
@@ -108,5 +108,5 @@ menu and `/is create` to make their first island.
 
 ## What's Next?
 
-- [🏝️ Your First Island](first-island.md)
-- [🧠 Core Concepts](concepts.md)
+- [Your First Island](first-island.md)
+- [Core Concepts](concepts.md)

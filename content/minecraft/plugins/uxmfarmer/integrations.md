@@ -9,7 +9,7 @@ Four hooks in `config.yml`, and a handful of plugins uxmFarmer notices without b
 
 ## Region hook
 
-Which plugin owns the land. A farmer belongs to a region, so this hook is not optional — without it
+Which plugin owns the land. A farmer belongs to a region, so this hook is not optional, without it
 there is nowhere to put one.
 
 ```yaml
@@ -22,7 +22,7 @@ hooks:
 | `uxmClaims` | The recommended option |
 | `SuperiorSkyblock2` | |
 | `IridiumSkyblock` | |
-| `BentoBox:<world name>` | Written as `BentoBox:BSkyBlock` or `BentoBox:OneBlock` — the friendly world name from your addon's config |
+| `BentoBox:<world name>` | Written as `BentoBox:BSkyBlock` or `BentoBox:OneBlock` (the friendly world name from your addon's config) |
 | `FabledSkyBlock` | |
 | `DeluxeSkyblock` | |
 | `Lands` | |
@@ -39,7 +39,7 @@ hooks:
 Island hooks are the only ones where `where-players-can-reach-farmer: EVERYWHERE` has any effect.
 Every other hook behaves as `NEAR_FARMER`.
 
-The region hook also drives the member rules in `general-settings.yml` — who is added to a farmer
+The region hook also drives the member rules in `general-settings.yml`, who is added to a farmer
 when they join the region, who is removed when they leave, and where ownership goes if the owner
 leaves.
 
@@ -76,7 +76,7 @@ hooks:
 | `EconomyShopGUI` or `EconomyShopGUI-Premium` | Live shop prices |
 | `ExcellentShop` | Live shop prices |
 
-Using a shop plugin keeps one price list for the whole server — a player cannot make money by
+Using a shop plugin keeps one price list for the whole server: a player cannot make money by
 selling through the farmer instead of the shop, or the other way round. The cost is that a product
 missing from your shop has no price, so it never auto-sells and its storage fills quietly. If that
 matters more than the single price list, use `default` and price everything here.
@@ -96,11 +96,11 @@ hooks:
 | `FancyNpcs` | |
 | `ZNPCsPlus` | |
 | `NpcApi` | Eisi05's NpcApi |
-| `Holograms` | Internal — a hologram with no entity |
-| `ModelSystem` | Internal — ModelEngine, BetterModel or ItemsAdder, configured under `model-settings` |
+| `Holograms` | Internal (a hologram with no entity) |
+| `ModelSystem` | Internal (ModelEngine, BetterModel or ItemsAdder, configured under `model-settings`) |
 | `default` or `""` | No body at all; commands only |
 
-Holograms above the farmer are drawn by the plugin itself in every case — the interaction hook is
+Holograms above the farmer are drawn by the plugin itself in every case: the interaction hook is
 only about the entity.
 
 ## Plugins it notices without configuration

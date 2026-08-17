@@ -29,7 +29,7 @@ boosts:
 | `material` | The item that represents the boost |
 | `type` | `SPAWN_AMOUNT` or `SPAWN_TIME` |
 | `amount` | How much is added or multiplied |
-| `duration` | How long it lasts — `1d`, `12h`, and so on |
+| `duration` | How long it lasts (`1d`, `12h`, and so on) |
 | `model-data` | Custom model data for resource packs |
 | `name`, `lore` | The item's appearance, MiniMessage |
 
@@ -38,16 +38,16 @@ boosts:
 | Type | Effect |
 |---|---|
 | `SPAWN_AMOUNT` | Adds `amount` mobs to each spawn cycle |
-| `SPAWN_TIME` | Divides the delay between cycles — `amount: 4` means four times faster |
+| `SPAWN_TIME` | Divides the delay between cycles (`amount: 4` means four times faster) |
 
-The boost id — `boost1`, `boost2`, whatever you name it — is what tab completion offers and what
+The boost id (`boost1`, `boost2`, whatever you name it) is what tab completion offers and what
 `giveboost` takes. Name them after what they do rather than by number, and the staff command
 becomes readable: `/uxmspawners giveboost Notch double-spawn`.
 
 <Callout type="tip" title="Boosts are the thing to sell">
 
 A boost is temporary and consumable, which makes it a much healthier crate or store item than a
-permanent upgrade. Two shipped examples — `+2 per cycle for a day`, `4× speed for twelve hours` —
+permanent upgrade. Two shipped examples (`+2 per cycle for a day`, `4× speed for twelve hours`)
 are a reasonable starting shape.
 
 </Callout>

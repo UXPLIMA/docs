@@ -51,7 +51,7 @@ claim.hasPermission(player.getUniqueId(), ClaimPermission.BLOCK_BREAK)
 
 One call, resolving the whole chain: ban, ownership, per-member deny, per-member allow, the member's
 role, the `Member` fallback when their role was deleted, and the `Default` role for non-members. Do
-not reimplement it — the order is subtle and the fallbacks are easy to get wrong.
+not reimplement it: the order is subtle and the fallbacks are easy to get wrong.
 
 It does **not** consider `uxmclaims.admin`. For that, go through `ClaimPermissionPolicy`, which checks
 the admin node first:
@@ -86,16 +86,16 @@ is checked first, so a denial always wins.
 | `ClaimFlag` | 32 | [Flags](../protection/flags.md) |
 | `ClaimPermission` | 48 | [Role permissions](../protection/permissions.md) |
 | `ClaimAction` | 30 | [Ability permissions](../permissions/abilities.md) |
-| `ClaimRoleType` | `OWNER`, `MEMBER`, `DEFAULT`, `CUSTOM` | — |
+| `ClaimRoleType` | `OWNER`, `MEMBER`, `DEFAULT`, `CUSTOM` | n/a |
 | `ClaimSideEffect` | `REGION`, `ECONOMY`, `WEBHOOK`, `LIMITATION`, `PERMISSION` | [Architecture](architecture.md) |
 
-`ClaimAction` also builds its own permission strings — `toPermissionNode()`, `toBypassNode()`,
-`toCategoryWildcard()` — which is how the ability and bypass node families stay in sync.
+`ClaimAction` also builds its own permission strings (`toPermissionNode()`, `toBypassNode()`,
+`toCategoryWildcard()`) which is how the ability and bypass node families stay in sync.
 
 <Callout type="info" title="Model objects are snapshots">
 
 A `Claim` you hold is a view of the state when you fetched it. Another server, or another thread, may
 have changed it since. Re-fetch before acting on stale data, and make changes through the
-[facade](api.md) rather than by mutating the object — direct mutation is not persisted.
+[facade](api.md) rather than by mutating the object: direct mutation is not persisted.
 
 </Callout>

@@ -31,8 +31,8 @@ Positions are 1-indexed row and column. `filler()` offers border, row, column, r
 
 <Callout type="tip" title="Clicks are cancelled by default">
 
-An unconfigured menu can never leak items. Interaction is something you opt into — with a
-`StorageGui`, or by allowing it through `GuiInteractions` — rather than something you have to
+An unconfigured menu can never leak items. Interaction is something you opt into (with a
+`StorageGui`, or by allowing it through `GuiInteractions`) rather than something you have to
 remember to prevent.
 
 </Callout>
@@ -45,7 +45,7 @@ remember to prevent.
 | `Guis.paginated()` | Pages, with `addPageItem` |
 | `Guis.scrolling(ScrollType)` | Scrolls horizontally or vertically |
 | `Guis.storage()` | Real items, take and place allowed, contents kept across opens |
-| `Guis.typed(GuiType)` | Non-chest inventories — hopper, dispenser, dropper, and the rest |
+| `Guis.typed(GuiType)` | Non-chest inventories (hopper, dispenser, dropper, and the rest) |
 
 ```java
 PaginatedGui shop = Guis.paginated().title(Text.mini("Shop")).rows(6).build();
@@ -58,7 +58,7 @@ vault.onClose(e -> save(vault.contents()));
 ```
 
 Paginated is the right choice for a list whose length you do not know. Scrolling suits a grid that
-should feel continuous — a warp map, a skin picker.
+should feel continuous: a warp map, a skin picker.
 
 ## Items
 
@@ -102,7 +102,7 @@ AnvilInput.prompt(player, Text.mini("Enter a name"), result -> rename(result.tex
 ```
 
 Anvil, chat and sign input behind one `InputType` contract, routed by `InputRouter`. Switching a
-prompt from an anvil to a sign is a parameter, not a rewrite — which matters because each has
+prompt from an anvil to a sign is a parameter, not a rewrite, which matters because each has
 different failure modes on different clients.
 
 ## Menus from config
@@ -119,7 +119,7 @@ name. Operators re-skin the menu freely and can only ever reference actions you 
 
 ## Dialogs
 
-`DialogScreen` and `DialogInputScreen` are a facade over Paper's server-side Dialogs — a native
+`DialogScreen` and `DialogInputScreen` are a facade over Paper's server-side Dialogs: a native
 confirmation or form, not an inventory pretending to be one.
 
 `ConfirmMenu` is the inventory-based equivalent when you want the same idea in a chest.

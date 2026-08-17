@@ -7,10 +7,10 @@ icon: shield-check
 
 uxmFarmer has three kinds of permission, and they are not interchangeable:
 
-- **Module permissions** — checked against the farmer's **owner**, and decide what the farmer can
+- **Module permissions**: checked against the farmer's **owner**, and decide what the farmer can
   do at all.
-- **Command permissions** — checked against whoever typed, and decide what a player may run.
-- **Rank permissions** — not Bukkit permissions. They live in
+- **Command permissions**: checked against whoever typed, and decide what a player may run.
+- **Rank permissions**, not Bukkit permissions. They live in
   [`ranks.yml`](features/members-and-ranks.md) and decide what a member may do with someone else's
   farmer.
 
@@ -60,7 +60,7 @@ appear in your permission plugin's auto-complete. Type it out in full.
 
 | Permission | Command | Default |
 |---|---|---|
-| — | `/farmer`, `/farmer buy` | Everyone |
+| n/a | `/farmer`, `/farmer buy` | Everyone |
 | `uxmfarmer.command.menu` | `/farmer menu` | Everyone |
 | `uxmfarmer.command.teleport` | `/farmer teleport` | Operators |
 | `uxmfarmer.command.disappear` | `/farmer disappear` | Operators |
@@ -111,7 +111,7 @@ All default to operators.
 
 The same node grants the player command `/farmer teleport`, which brings a player's own farmer to
 them, and the admin command `/uxmfarmer teleport`, which sends you to the selected farmer. Giving it
-to your default group gives them both — harmless, since the admin form additionally requires a
+to your default group gives them both: harmless, since the admin form additionally requires a
 selection made with `uxmfarmer.command.admin`, but worth knowing before you audit your groups.
 
 </Callout>
@@ -129,5 +129,5 @@ uxmfarmer.autoharvest
 uxmfarmer.maxfarmer.1
 ```
 
-That is a farmer that harvests and can be sold from, with the paid modules — Auto Kill, Auto Sell,
-XP Collector — and extra farmer slots left as things to earn.
+That is a farmer that harvests and can be sold from, with the paid modules (Auto Kill, Auto Sell,
+XP Collector) and extra farmer slots left as things to earn.

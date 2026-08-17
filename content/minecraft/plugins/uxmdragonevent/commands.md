@@ -12,12 +12,12 @@ One root command with many aliases: `/dragon`, `/dragonevent`, `/dragon-event`, 
 
 | Command | What it does | Permission |
 |---|---|---|
-| `/dragon` | Help, or the admin help if you have `dragonevent.admin` | — |
-| `/dragon help` | The same help | — |
+| `/dragon` | Help, or the admin help if you have `dragonevent.admin` | n/a |
+| `/dragon help` | The same help | n/a |
 | `/dragon join` | Joins the event | `dragonevent.joincommand`, when required |
-| `/dragon leave` | Leaves the event and returns to the lobby | — |
+| `/dragon leave` | Leaves the event and returns to the lobby | n/a |
 | `/dragon fly` | Toggles flight inside the event world | `dragonevent.fly` |
-| `/dragon stats` | Your event statistics | — |
+| `/dragon stats` | Your event statistics | n/a |
 
 `/dragon join` only exists if `settings.join-command.enabled` is `true`. It is off by default: the
 portal is the intended entrance, and a join command lets players enter from anywhere on the server.
@@ -46,7 +46,7 @@ All require `dragonevent.admin`.
 | `/dragon refresh` | Rebuilds the all-time leaderboards |
 | `/dragon spawndebug` | Reports the spawn locations the plugin currently holds |
 
-`/dragon teleport` puts you in the event world as a spectator in practice — you are not in the event,
+`/dragon teleport` puts you in the event world as a spectator in practice: you are not in the event,
 so you have no session, no damage tracking and no rewards. It requires an event to be running.
 
 `/dragon spawndebug` is the first thing to run when an event refuses to start: it tells you which
@@ -58,7 +58,7 @@ that file by hand; otherwise the leaderboards refresh on their own.
 <Callout type="warning" title="/dragon reset rebuilds the event world">
 
 It restores the event world to its starting state. Anything players built or dropped there is gone.
-This is normal between events — it is how the arena comes back clean — but do not run it while an
+This is normal between events (it is how the arena comes back clean) but do not run it while an
 event is in progress.
 
 </Callout>
@@ -75,9 +75,9 @@ command-blocking:
     - "/example"
 ```
 
-`/dragon` subcommands are always allowed, whatever the configuration says — a player must always be
+`/dragon` subcommands are always allowed, whatever the configuration says: a player must always be
 able to leave. Anyone with `dragonevent.usecmds` bypasses the restriction entirely.
 
 `disable-all-commands: true` with a `WHITELIST` is the safe shape: nothing works except what you
-list. The alternative — a blacklist — means every command you forget about is a way out of the
+list. The alternative (a blacklist) means every command you forget about is a way out of the
 arena with your event inventory.

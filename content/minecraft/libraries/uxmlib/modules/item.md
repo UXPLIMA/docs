@@ -20,7 +20,7 @@ ItemStack sword = ItemBuilder.of(Material.DIAMOND_SWORD)
         .build();
 ```
 
-Covers names, lore, enchantments, attributes, flags, durability, banners and data components — each
+Covers names, lore, enchantments, attributes, flags, durability, banners and data components: each
 with a matching remover, so a builder can take an existing stack apart as well as put one together.
 
 ### Registry lookups
@@ -43,7 +43,7 @@ ItemStack head = ItemBuilder.of(Material.PLAYER_HEAD)
         .build();
 ```
 
-`SkullData` is a sealed type — by name, by UUID, or by base64 texture. The skin resolver is async:
+`SkullData` is a sealed type, by name, by UUID, or by base64 texture. The skin resolver is async:
 resolving a name to a texture is an HTTP call to Mojang, and the builder never blocks the main thread
 to make one.
 
@@ -60,7 +60,7 @@ ItemStack back = ItemSerialization.fromBase64(saved);
 Component-safe: it survives every data component, which the naive
 `YamlConfiguration`-round-trip does not on 1.21. A gzip variant is available for storing many stacks.
 
-Use this for anything that has to be an exact stack later — a vault, a kit, a claimed reward. Use
+Use this for anything that has to be an exact stack later: a vault, a kit, a claimed reward. Use
 `ItemConfig` instead when the item should be editable by the server owner.
 
 ## ItemConfig
@@ -82,7 +82,7 @@ not provide, and `PdcFlag` for the common case of a marker with no payload.
 ## isSimilar by key
 
 Comparing two stacks with the vanilla `isSimilar` compares everything. `Items` offers a single-key
-comparison instead — two stacks are "the same item" if they carry the same value under one PDC key,
+comparison instead: two stacks are "the same item" if they carry the same value under one PDC key,
 whatever else differs.
 
 That is what you want for a shop or a quest: the same reward item after a lore change is still the
@@ -90,7 +90,7 @@ same item.
 
 ## Item actions
 
-`ItemAction` and `ItemActionListener` drive behaviour from an item's persistent data — a right-click
+`ItemAction` and `ItemActionListener` drive behaviour from an item's persistent data: a right-click
 that runs a command, gated by a `RateLimiter` and an `ItemBlockerType`.
 
 These are the listeners the standalone `uxmlib-all` jar registers. Everything else in the library is

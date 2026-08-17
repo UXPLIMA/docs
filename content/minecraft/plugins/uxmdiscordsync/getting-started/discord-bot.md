@@ -9,11 +9,11 @@ icon: bot
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and create a
    new application.
-2. Open **Bot** and copy the token. This is the value for `discord.token` — treat it as a password.
+2. Open **Bot** and copy the token. This is the value for `discord.token`: treat it as a password.
 3. On the same page, enable the **Privileged Gateway Intents** the plugin needs:
-   - **Server Members Intent** — required for rank sync, nickname sync and member join/leave
+   - **Server Members Intent**: required for rank sync, nickname sync and member join/leave
      logging.
-   - **Message Content Intent** — required for the chat bridge, text-level XP and chat-style
+   - **Message Content Intent**: required for the chat bridge, text-level XP and chat-style
      custom commands (`!ip`).
 4. Open **OAuth2 → URL Generator**, tick `bot` and `applications.commands`, pick the permissions
    below, and use the generated URL to invite the bot.
@@ -21,7 +21,7 @@ icon: bot
 <Callout type="warning" title="Missing intents fail quietly">
 
 Without the Server Members intent, rank sync appears to run and assigns nothing. Without Message
-Content, the chat bridge sees empty messages. Neither produces an obvious error — if a feature does
+Content, the chat bridge sees empty messages. Neither produces an obvious error, if a feature does
 nothing at all, check the intents first.
 
 </Callout>
@@ -38,7 +38,7 @@ nothing at all, check the intents first.
 | Use Application Commands | Slash commands |
 
 The bot's own role must sit **above** every role it assigns and above every member whose nickname it
-changes. Discord refuses both operations otherwise, and it refuses them silently — a bot cannot
+changes. Discord refuses both operations otherwise, and it refuses them silently: a bot cannot
 manage a role equal to or higher than its own.
 
 The guild owner's nickname can never be changed by a bot. `nickname-sync.skip-on-permission-error:
@@ -59,7 +59,7 @@ offers **Copy ID**. You need:
 | Stats channel | `server-stats.channel-id` |
 | Your own user | `discord-server-command.authorized-users` |
 
-Ids are strings. Keep the quotes — an 18-digit number written without them loses precision in YAML.
+Ids are strings. Keep the quotes: an 18-digit number written without them loses precision in YAML.
 
 ## Webhooks
 

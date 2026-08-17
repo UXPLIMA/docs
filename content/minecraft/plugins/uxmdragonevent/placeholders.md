@@ -17,7 +17,7 @@ written `%dragonevent_...%`. Names are not case sensitive.
 | `%dragonevent_rebirths%` | Kills still required |
 | `%dragonevent_required_kills%` | Kills required in total |
 | `%dragonevent_players%` | How many players are in the event |
-| `%dragonevent_health%` | Same as `rebirths` — kept for compatibility |
+| `%dragonevent_health%` | Same as `rebirths` (kept for compatibility) |
 
 With no event running, `remaining_game` returns `0m` and `current_health` and `rebirths` return
 empty strings. Guard for that on a scoreboard that is always visible.
@@ -26,7 +26,7 @@ empty strings. Guard for that on a scoreboard that is always visible.
 
 <Callout type="note" title="health does not mean health">
 
-`%dragonevent_health%` returns the remaining **kill count**, not hit points — it is an older name for
+`%dragonevent_health%` returns the remaining **kill count**, not hit points: it is an older name for
 what `rebirths` returns. For the dragon's actual health, use `%dragonevent_current_health%`.
 
 </Callout>
@@ -78,7 +78,7 @@ These require `auto-start.enabled`. Without a schedule there is no next event to
 
 ## Where to use them
 
-The plugin resolves placeholders in its own configuration — the dragon's nametag, the boss bar name,
+The plugin resolves placeholders in its own configuration: the dragon's nametag, the boss bar name,
 the messages and the Discord embeds all accept them:
 
 ```yaml
@@ -90,5 +90,5 @@ boss-bar:
 ```
 
 Outside the plugin, anywhere PlaceholderAPI reaches. `%dragonevent_remaining%` on a spawn hologram
-or a scoreboard is the single most useful one — an event nobody knows is coming is an event nobody
+or a scoreboard is the single most useful one: an event nobody knows is coming is an event nobody
 attends.

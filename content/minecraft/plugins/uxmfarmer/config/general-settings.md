@@ -22,13 +22,13 @@ return-percent: 75
 |---|---|
 | `maximum-farmer-per-player` | Raised per player with `uxmfarmer.maxfarmer.<amount>` |
 | `farmer-price` | Charged by `/farmer buy` |
-| `tax-price` | Default tax on sales, as a fraction — `0.25` is 25% |
+| `tax-price` | Default tax on sales, as a fraction (`0.25` is 25%) |
 | `return-price-on-delete` | Refunds the full price when a farmer is deleted |
 | `return-percent` | Percentage refunded by `/farmer return` |
 
 `tax-price` here is the floor; a product or a level may override it, and
-`uxmfarmer.taxdiscount.<percentage>` reduces whatever applies. Tax is the main sink in this plugin —
-it is where the money a farmer generates goes back out of the economy — so tune it before you tune
+`uxmfarmer.taxdiscount.<percentage>` reduces whatever applies. Tax is the main sink in this plugin (it is where the money a farmer generates goes back out of the economy)
+so tune it before you tune
 prices.
 
 ## The commands players get
@@ -43,13 +43,13 @@ where-players-can-reach-farmer: NEAR_FARMER
 
 `where-players-can-reach-farmer` has two values:
 
-- `NEAR_FARMER` — the player must be standing near their farmer.
-- `EVERYWHERE` — the player can use it from anywhere on their island.
+- `NEAR_FARMER`: the player must be standing near their farmer.
+- `EVERYWHERE`: the player can use it from anywhere on their island.
 
 `EVERYWHERE` only works with island hooks. Every other region hook behaves as `NEAR_FARMER`
 regardless of what you set here.
 
-`disable-buy-command: true` removes purchasing entirely, leaving farmer eggs as the only source —
+`disable-buy-command: true` removes purchasing entirely, leaving farmer eggs as the only source,
 which is how you sell farmers through a crate or a store instead of a command.
 
 ## Collection rules
@@ -117,7 +117,7 @@ first-location:
 
 With `place-farmer-on-region-creation: true`, every new island or claim gets a farmer immediately.
 `first-location` then decides where it stands, as an offset from the region centre and a pitch and
-yaw. Tune it against your island schematic — the default offset assumes a particular layout and will
+yaw. Tune it against your island schematic: the default offset assumes a particular layout and will
 put the farmer inside a wall on most others.
 
 <Callout type="note" title="Region hooks and automatic placement">

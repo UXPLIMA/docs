@@ -36,8 +36,8 @@ auto-sell:
 
 The `items` list has two different meanings depending on `everything`:
 
-- `everything: false` — the farmer auto-sells **only** the listed materials.
-- `everything: true` — the farmer auto-sells everything it collects, and the list becomes the set
+- `everything: false`. The farmer auto-sells **only** the listed materials.
+- `everything: true`. The farmer auto-sells everything it collects, and the list becomes the set
   of products a player is **allowed to toggle** in their own auto-sell menu.
 
 The second reading is the one that surprises people. With the default configuration, every product
@@ -45,7 +45,7 @@ is sold automatically and a player may only opt WHEAT and CARROT out of it.
 
 ## Money and tax
 
-The sale price comes from your [price source](../integrations.md#price-source-hook) — either
+The sale price comes from your [price source](../integrations.md#price-source-hook): either
 `unit-price` in `collected-materials.yml` or a live price from your shop plugin. The tax comes from,
 in order of precedence:
 

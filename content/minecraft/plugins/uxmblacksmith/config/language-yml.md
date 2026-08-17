@@ -26,7 +26,7 @@ store and every admin subcommand.
 
 ## Adding a language
 
-Copy the `en:` block, rename it to your code, translate it, and set `lang:` to match. Any key works —
+Copy the `en:` block, rename it to your code, translate it, and set `lang:` to match. Any key works:
 `de`, `fr`, `pt`. There is nothing to register.
 
 If `lang` names a block that does not exist, the plugin warns, resets the setting to `en` and saves
@@ -34,7 +34,7 @@ If `lang` names a block that does not exist, the plugin warns, resets the settin
 
 ## Formatting
 
-Both `&` codes and MiniMessage work in every message, and can be mixed in one string — the parser
+Both `&` codes and MiniMessage work in every message, and can be mixed in one string: the parser
 converts legacy codes to tags before deserialising. Newer messages use MiniMessage with gradients;
 older ones use `&`. Both are correct.
 
@@ -42,12 +42,12 @@ older ones use `&`. Both are correct.
 
 ## Placeholders in messages
 
-Each message takes the placeholders its own call site provides — `{player}`, `{level}`, `{boost}`,
+Each message takes the placeholders its own call site provides, `{player}`, `{level}`, `{boost}`,
 `{amount}`, `{multiplier}`, `{duration}`, `{trade}`, `{slot}`, `{file}` and so on. A placeholder the
 call site does not provide is left as literal text, which is how you can tell you used the wrong one.
 
 The shipped default of a message is the best reference for what it accepts. Delete a key and the
-plugin writes the default back on the next start — which is also how you recover one you have broken.
+plugin writes the default back on the next start, which is also how you recover one you have broken.
 
 ## Keys worth knowing
 

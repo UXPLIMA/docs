@@ -1,7 +1,7 @@
 ---
 title: Your first claim
 order: 104
-description: Claim a chunk, invite a friend, set the rules — start to finish.
+description: "Claim a chunk, invite a friend, set the rules: start to finish."
 icon: play
 ---
 
@@ -13,7 +13,7 @@ Everything below is also in the menus. Commands are shown because they are short
 /claim
 ```
 
-With `generalSettings.smartCommand: true` — the default — a bare `/claim` is context aware:
+With `generalSettings.smartCommand: true` (the default) a bare `/claim` is context aware:
 
 | Where you are | What happens |
 |---|---|
@@ -33,7 +33,7 @@ Set `smartCommand: false` and a bare `/claim` always opens the menu instead.
 ```
 
 Green is yours, red is someone else's, blue is wilderness. The overlay closes itself after
-`border.autoCloseSeconds` seconds — 30 by default.
+`border.autoCloseSeconds` seconds, 30 by default.
 
 ## 3. Grow it
 
@@ -43,7 +43,7 @@ Walk to a chunk touching your claim and run:
 /claim chunk add
 ```
 
-The chunk costs whatever `uxmclaims.cost.chunk` resolves to — `25.0` by default — and counts against
+The chunk costs whatever `uxmclaims.cost.chunk` resolves to, `25.0` by default, and counts against
 `uxmclaims.limit.chunk`. `/claim chunk remove` sells one back.
 
 ## 4. Invite someone
@@ -56,7 +56,7 @@ Steve gets a clickable accept/reject message. Until he accepts he is not a membe
 permissions. `/claim invites` opens his inbox if he lost the message.
 
 Once he accepts he holds the `Member` role, which by default may build, open containers, use redstone,
-ride and interact — but not manage anything.
+ride and interact, but not manage anything.
 
 ## 5. Set the house rules
 
@@ -76,7 +76,7 @@ Or open the flags menu from `/claim` → *Claim Flags*, which lists all 32 with 
 ```
 
 A public warp appears in `/claim warps` for everyone on the server. If the claim has `PVP` on, players
-teleporting to a public warp get a confirmation prompt first — the plugin will not drop a stranger
+teleporting to a public warp get a confirmation prompt first: the plugin will not drop a stranger
 into a PvP zone silently.
 
 ## 7. Give someone a custom role
@@ -98,7 +98,7 @@ The per-member deny wins over the role.
 
 ## 8. Keep it alive
 
-If `claimSettings.expireMode` is on, a claim expires after `expireTime` — 30 days by default — and is
+If `claimSettings.expireMode` is on, a claim expires after `expireTime` (30 days by default) and is
 deleted. Extend it:
 
 ```
@@ -108,7 +108,7 @@ deleted. Extend it:
 The duration parser accepts `d`, `h`, `m` and `s` and combinations like `1d12h30m`. The cost is
 `uxmclaims.cost.time` per second, `5.0` by default, so price your ranks accordingly.
 
-Players get a warning when a claim is within `reminderThresholdSeconds` — one day — of expiring.
+Players get a warning when a claim is within `reminderThresholdSeconds` (one day) of expiring.
 
 <Callout type="tip" title="Turn expiry off for a survival server">
 

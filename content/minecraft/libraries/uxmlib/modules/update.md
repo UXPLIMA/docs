@@ -17,7 +17,7 @@ new UpdateNotifier(plugin, scheduler, checker, "yourplugin.update.notify")
         .start(Duration.ofSeconds(40), Duration.ofHours(6));
 ```
 
-`start(delay, interval)` — first check forty seconds after startup, then every six hours. The delay
+`start(delay, interval)`: first check forty seconds after startup, then every six hours. The delay
 matters: checking during `onEnable` competes with everything else the server is doing to start.
 
 ## Providers
@@ -28,7 +28,7 @@ matters: checking during `onEnable` competes with everything else the server is 
 | `ModrinthReleaseProvider` | A Modrinth project |
 | `JsonUrlReleaseProvider` | Any JSON endpoint you control |
 
-The comparison uses `SemanticVersion` from `uxmlib-common`, against a build-time version constant —
+The comparison uses `SemanticVersion` from `uxmlib-common`, against a build-time version constant,
 not the plugin's runtime version, which a repackaged jar can lie about.
 
 ## Notification
@@ -50,7 +50,7 @@ the server.
 
 ## Outcomes
 
-`UpdateOutcome` and `UpdateStatus` describe what a check found — up to date, an update available, or
+`UpdateOutcome` and `UpdateStatus` describe what a check found, up to date, an update available, or
 the check failed. A failed check is a normal outcome, not an exception: GitHub rate limits, and a
 plugin should not log a stack trace because a network call did what network calls do.
 

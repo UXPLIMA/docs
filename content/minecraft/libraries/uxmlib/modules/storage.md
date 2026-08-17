@@ -32,7 +32,7 @@ Database db = Database.builder()
         .build();
 ```
 
-MariaDB, MySQL, PostgreSQL and H2 are opt-in — the driver is yours to add, so a plugin using SQLite
+MariaDB, MySQL, PostgreSQL and H2 are opt-in: the driver is yours to add, so a plugin using SQLite
 does not ship four JDBC drivers it never loads.
 
 Pooling is HikariCP.
@@ -46,7 +46,7 @@ new MigrationRunner(db).apply(List.of(
 ```
 
 Each runs exactly once, in version order, and is recorded. Leave the list in `onEnable` and append to
-it — that is the whole schema history, in code, and a server three versions behind catches up in
+it: that is the whole schema history, in code, and a server three versions behind catches up in
 order on the next start.
 
 `MigrationFile` and `MigrationResources` load them from resources instead when the SQL is long
@@ -81,7 +81,7 @@ CachedStorage<UUID, Profile> cached = new CachedStorage<>(repo, ...);
 WriteBehindStorage<UUID, Profile> writeBehind = new WriteBehindStorage<>(repo, scheduler, ...);
 ```
 
-`CachedStorage` is write-through — a write goes to the database and the cache together. Nothing can
+`CachedStorage` is write-through: a write goes to the database and the cache together. Nothing can
 be lost, and every write costs a round trip.
 
 `WriteBehindStorage` batches writes and flushes them. Much cheaper for something written constantly,

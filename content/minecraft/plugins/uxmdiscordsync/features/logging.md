@@ -9,7 +9,7 @@ Three logs, all in `logging.yml`, all posted through webhooks rather than the bo
 and audit.
 
 Each section takes its own `webhook-url`, so each can go to a different channel with different
-permissions — which is the point of separating them.
+permissions, which is the point of separating them.
 
 ## Chat logging
 
@@ -38,7 +38,7 @@ filter:
   ignored-permission: ""
 ```
 
-`ignore-prefixes` keeps commands out of the chat log — including any typed as `/msg`, which is why
+`ignore-prefixes` keeps commands out of the chat log, including any typed as `/msg`, which is why
 `/` is there by default. Setting `ignored-permission` to something like
 `uxmdiscordsync.chatlog.ignore` exempts staff from being logged.
 
@@ -52,7 +52,7 @@ rate-limit:
   max-messages-per-minute: 30
 ```
 
-Thirty is Discord's own webhook allowance. Raising it does not raise Discord's limit — it only means
+Thirty is Discord's own webhook allowance. Raising it does not raise Discord's limit: it only means
 messages get dropped by Discord instead of by the plugin.
 
 ## Join and leave
@@ -106,7 +106,7 @@ until you delete them. Set it to `0` to keep everything.
 
 <Callout type="note" title="Webhook URLs are credentials">
 
-A webhook URL is enough for anyone to post in that channel as the webhook — no bot, no token, no
+A webhook URL is enough for anyone to post in that channel as the webhook, no bot, no token, no
 membership. Keep `logging.yml` out of public repositories and out of pastes in support channels, and
 delete and recreate the webhook if one leaks.
 

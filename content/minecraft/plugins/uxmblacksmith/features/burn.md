@@ -34,7 +34,7 @@ item:
 
 | `successChance` | Meaning |
 |---|---|
-| `-1` | Burn disabled for this trade — always succeeds |
+| `-1` | Burn disabled for this trade (always succeeds) |
 | `0` | Always burns |
 | `1`–`99` | That percent chance of success |
 | `100` or more | Always succeeds |
@@ -64,20 +64,20 @@ With the shipped multipliers:
 | `uxmblacksmith.burn.2` (+10) | 85 × 110 ÷ 100 | **93%** |
 | Both | largest wins, +10 | **93%** |
 
-Multipliers **do not stack** — the largest held wins. They are also percentage *increases of the
+Multipliers **do not stack**: the largest held wins. They are also percentage *increases of the
 chance*, not percentage points: at a base of 50, `+10` gives 55, not 60.
 
 ## Two bypasses, and they mean different things
 
 | Node | Scope |
 |---|---|
-| `burn.bypassPermission` — `uxmblacksmith.bypassall` | Every trade on the server never burns |
-| `item.burnBypassPermission` — `uxmblacksmith.burn.bypass` | This one trade never burns |
+| `burn.bypassPermission` (`uxmblacksmith.bypassall`) | Every trade on the server never burns |
+| `item.burnBypassPermission` (`uxmblacksmith.burn.bypass`) | This one trade never burns |
 
 The per-trade node is configurable, so different tiers can have different bypasses:
 
 ```yaml
-# Legendary tier — its own bypass
+# Legendary tier, with its own bypass
 burnBypassPermission: "uxmblacksmith.burn.bypass.legendary"
 ```
 
@@ -85,7 +85,7 @@ burnBypassPermission: "uxmblacksmith.burn.bypass.legendary"
 
 It is the global bypass, not a staff convenience. Giving it to a donor rank makes every legendary
 recipe on the server a guaranteed craft for them. If you want to sell better odds, sell
-`uxmblacksmith.burn.1` and `.2` — or add a higher multiplier of your own.
+`uxmblacksmith.burn.1` and `.2`, or add a higher multiplier of your own.
 
 </Callout>
 
@@ -100,7 +100,7 @@ progression:
 ```
 
 Mastery in a category adds up to **12 percentage points** of success chance there, at 0.30 per level
-above the first — `(masteryLevel - 1) x 0.30`, so mastery level 41 reaches the cap. This is added to
+above the first: `(masteryLevel - 1) x 0.30`, so mastery level 41 reaches the cap. This is added to
 the result of the permission multiplier, not multiplied by it, and it is the reason a player who has
 crafted swords for a month burns fewer of them.
 
@@ -117,7 +117,7 @@ A burned trade is not a total loss:
 | Mastery XP | `burnedMasteryXpMultiplier` | `0.25` |
 
 Mastery keeps a quarter of the XP on failure, which means failing at a category still moves you toward
-failing less. That is deliberate — it is the mechanic that stops a run of bad luck feeling pointless.
+failing less. That is deliberate: it is the mechanic that stops a run of bad luck feeling pointless.
 
 ## Showing the odds
 

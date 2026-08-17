@@ -28,7 +28,7 @@ spawners:
 ## Adding a type
 
 1. Copy the whole `default` block.
-2. Rename it — the key is the id `/uxmspawners give` takes.
+2. Rename it: the key is the id `/uxmspawners give` takes.
 3. Change `material` and whatever else differs.
 
 ```yaml
@@ -62,7 +62,7 @@ spawners:
 | `spawnerInfo.range` | Blocks a player must be within for the spawner to run |
 | `spawnerInfo.delay` | Seconds between spawn attempts |
 | `spawnerInfo.sell_button` | Whether the menu offers selling |
-| `spawnerInfo.details` | `ITEM` mode only — the name and lore of the produced item |
+| `spawnerInfo.details` | `ITEM` mode only (the name and lore of the produced item) |
 
 <Callout type="warning" title="Leave material alone in default">
 

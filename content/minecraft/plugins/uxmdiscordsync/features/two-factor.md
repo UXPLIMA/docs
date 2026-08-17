@@ -23,7 +23,7 @@ two-factor:
   geoip-database: "plugins/uxmDiscordSync/GeoLite2-City.mmdb"
 ```
 
-Only players who have linked an account can be challenged — the plugin needs a Discord user to ask.
+Only players who have linked an account can be challenged: the plugin needs a Discord user to ask.
 
 ## The freeze
 
@@ -65,7 +65,7 @@ buttons:
   deny: "❌ No, this is not me"
 ```
 
-`%ip_address%` and `%location%` are what make the prompt useful — a login from a city the player has
+`%ip_address%` and `%location%` are what make the prompt useful: a login from a city the player has
 never been to is the signal they act on. `%location%` requires GeoIP.
 
 ## GeoIP
@@ -94,7 +94,7 @@ on-timeout:
   kick-message: "..."
 ```
 
-Deny means the player is saying *this is not me* — someone else has their session. A kick stops that
+Deny means the player is saying *this is not me*: someone else has their session. A kick stops that
 login; `ban-player: true` with a duration stops the next fifty. `24h` is a reasonable default, and
 `permanent` is available for staff accounts.
 
@@ -128,6 +128,6 @@ as a convenience, removes the protection for anyone who can reach it.
 
 Test with your own account first. A 2FA system with a wrong guild id, a bot that cannot DM, or a
 `timeout` shorter than a phone notification takes to arrive will lock every linked player out of the
-server, staff included — and the fix requires editing the config and restarting.
+server, staff included, and the fix requires editing the config and restarting.
 
 Set `freeze-player: true` and a generous `timeout` for the first day.

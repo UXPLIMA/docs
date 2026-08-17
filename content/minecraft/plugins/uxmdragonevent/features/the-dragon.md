@@ -38,8 +38,8 @@ dragon:
 
 `health` is the base. `health-per-player` scales it with the number of players in the event:
 
-- `add-as-extra: true` — final health is `health + (players × health-per-player)`
-- `add-as-extra: false` — final health is `players × health-per-player`, and `health` is ignored
+- `add-as-extra: true`. Final health is `health + (players × health-per-player)`
+- `add-as-extra: false`. Final health is `players × health-per-player`, and `health` is ignored
 
 `health-per-player: 0.0` disables scaling.
 
@@ -48,7 +48,7 @@ you are tuning a fixed number against an attendance you cannot predict.
 
 <Callout type="warning" title="2048 is a hard ceiling by default">
 
-Spigot caps entity health at 2048. A configured value above that is clamped, not honoured — raise
+Spigot caps entity health at 2048. A configured value above that is clamped, not honoured: raise
 `maxHealth` in `spigot.yml` first if you need more. With `health-per-player` on a busy server it is
 easy to cross that line without noticing.
 
@@ -70,7 +70,7 @@ dragon:
 | `multiplier` | Multiplies it; `1.0` is unmodified |
 | `add-base-to-final-damage` | Adds `base-damage` to the result instead of replacing it |
 
-With `disableDamage: true` in the end rules — the default — none of this reaches players. Turn that
+With `disableDamage: true` in the end rules (the default) none of this reaches players. Turn that
 off first if you want the dragon to be dangerous.
 
 ## Rebirths
@@ -113,7 +113,7 @@ dragon:
 | `ITEMS_ADDER` | ItemsAdder V4 |
 | `BETTER_MODEL` | The latest BetterModel |
 
-Nexo and Oraxen both render through ModelEngine — use `MODEL_ENGINE` for those. `model-id` is the
+Nexo and Oraxen both render through ModelEngine: use `MODEL_ENGINE` for those. `model-id` is the
 model's id in whichever plugin you chose.
 
 ## Custom NBT
@@ -124,6 +124,6 @@ dragon:
 ```
 
 Extra NBT applied to the dragon entity, for attributes or tags other plugins read. Write the contents
-**without** the surrounding braces — `{` and `}` at either end will not parse.
+**without** the surrounding braces, `{` and `}` at either end will not parse.
 
 Requires NBTAPI.

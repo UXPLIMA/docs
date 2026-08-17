@@ -71,7 +71,7 @@ public class MyModule implements UxmSkyblockModule {
 
     @Override
     public void onEnable() {
-        // Register listeners / commands — auto-removed on disable.
+        // Register listeners / commands. Auto-removed on disable.
         ctx.registerListener(new MyListener(ctx));
         ctx.registerCommand("mymodule", new MyCommand(ctx));
     }

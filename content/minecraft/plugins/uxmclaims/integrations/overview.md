@@ -5,7 +5,7 @@ description: Every optional plugin, what it adds, and the switch that controls i
 icon: plug-zap
 ---
 
-Every integration is a `softdepend`. The plugin starts and runs with none of them installed — each
+Every integration is a `softdepend`. The plugin starts and runs with none of them installed: each
 one has a no-op implementation that simply does nothing.
 
 | Plugin | Adds | Switch |
@@ -15,7 +15,7 @@ one has a no-op implementation that simply does nothing.
 | WorldGuard | Refusing claims that overlap a region | `generalSettings.worldGuardSupport` |
 | PlaceholderAPI | The `%uxmclaims_...%` expansion and placeholders in messages | `generalSettings.placeholderSupport` |
 | Dynmap, BlueMap, Pl3xMap, squaremap | Claim outlines on the web map | `visualizer.enabled` |
-| Discord webhooks | Event notifications — no plugin needed | `webhooks.yml` |
+| Discord webhooks | Event notifications (no plugin needed) | `webhooks.yml` |
 
 ## What happens when one is missing
 
@@ -28,7 +28,7 @@ one has a no-op implementation that simply does nothing.
 | A map plugin | The visualizer does nothing. |
 
 None of these are startup failures. The one configuration that *does* fail at startup is
-`generalSettings.economyProvider` naming a Vault provider that is not registered — the plugin refuses
+`generalSettings.economyProvider` naming a Vault provider that is not registered: the plugin refuses
 to start rather than silently charging the wrong currency.
 
 ## Turning one off deliberately
@@ -45,6 +45,6 @@ worth doing when:
 ## Also worth knowing
 
 uxmClaims itself is a protection provider other plugins can query. uxmEssentials, for instance, reads
-the active claim plugin when deciding whether a home may be placed — see
+the active claim plugin when deciding whether a home may be placed: see
 [uxmEssentials → Claims](../../uxmessentials/integrations/claims.md). The
 [developer API](../developer/) is how a plugin of your own does the same.

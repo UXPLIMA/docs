@@ -19,7 +19,7 @@ boolean allowed = gate.test(ConditionRequest.forPlayer(player));
 ```
 
 A condition is an operand comparison with placeholders resolved through an injected
-`OperandResolver` — which is what keeps the engine independent of PlaceholderAPI while working with
+`OperandResolver`, which is what keeps the engine independent of PlaceholderAPI while working with
 it.
 
 The failure message travels with the condition. A gate that fails knows what to tell the player, so
@@ -29,15 +29,15 @@ the call site does not have to map failures to messages.
 
 | Symbol | Meaning |
 |---|---|
-| `==` | Equal — numeric when both sides are numbers, otherwise exact string equality |
+| `==` | Equal (numeric when both sides are numbers, otherwise exact string equality) |
 | `!=` | Not equal |
-| `>=` | Greater or equal — numeric only; a non-numeric operand is false |
-| `<=` | Less or equal — numeric only |
-| `>` | Greater than — numeric only |
-| `<` | Less than — numeric only |
-| `?=` | Contains — the left operand contains the right, always a text test |
-| `*` | Glob — `*` matches any run, `?` matches one character, must match in full |
-| `\|\|` | Alternation — the right side is a `\|`-separated list, left passes if it equals any branch |
+| `>=` | Greater or equal (numeric only; a non-numeric operand is false) |
+| `<=` | Less or equal (numeric only) |
+| `>` | Greater than (numeric only) |
+| `<` | Less than (numeric only) |
+| `?=` | Contains (the left operand contains the right, always a text test) |
+| `*` | Glob (`*` matches any run, `?` matches one character, must match in full) |
+| `\|\|` | Alternation (the right side is a `\)|`-separated list, left passes if it equals any branch |
 
 Symbols are matched longest-first, so `>=` is found before `>`, and `*` is tried last.
 
@@ -47,7 +47,7 @@ the gate, not break the caller.
 
 ## Failure policy
 
-`FailurePolicy` decides what happens when a list has several failing conditions — whether to report
+`FailurePolicy` decides what happens when a list has several failing conditions, whether to report
 the first, or collect them all. Reporting the first is friendlier for a gate a player is expected to
 pass; collecting them all suits a requirements list the player is reading.
 
@@ -72,7 +72,7 @@ Parsed once into closures, then run in order.
 | `[player]` | Dispatches a command as the target | Required |
 | `[close]` | Closes the target's open inventory | None |
 
-Prefixes are matched case-insensitively — `[Message]` and `[MESSAGE]` both parse.
+Prefixes are matched case-insensitively: `[Message]` and `[MESSAGE]` both parse.
 
 ## Why parse once
 

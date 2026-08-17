@@ -29,21 +29,21 @@ categories:
 
 | Key | Default | What it does |
 |---|---|---|
-| `name` | — | Display name |
+| `name` | n/a | Display name |
 | `permission` | empty | Node required to see and open it; empty means everyone |
 | `trades` | `pickaxes.yml` | The file under `categories/` holding its trades |
 | `slot` | `0` | Where its icon sits in the category menu |
 | `hide` | `false` | Hide it from the menu entirely |
 | `useNavigation` | `true` | Show the navigation row inside it |
 | `sameTimeCraftCount` | `0` | Concurrent trades allowed from this category; `0` and `-1` mean unlimited |
-| `menuDisplayItem` | — | The icon: material, name, lore, model data, layout key |
+| `menuDisplayItem` | n/a | The icon: material, name, lore, model data, layout key |
 | `guiLayout` | unset | An override layout for this category's screen |
 
 ## The trade file
 
 `trades:` names a file under `categories/`. If the file does not exist, the plugin **generates** it
 with worked defaults and logs `Generated category file: categories/<file>`. That is the intended way
-to start a category — declare it, restart, then edit what was written.
+to start a category: declare it, restart, then edit what was written.
 
 Two categories may not share a file.
 
@@ -53,7 +53,7 @@ Two categories may not share a file.
 permission: "uxmblacksmith.category.legendary"
 ```
 
-Any node you like — it is a config value, not a plugin constant. A player without it does not see the
+Any node you like: it is a config value, not a plugin constant. A player without it does not see the
 category. This is the cleanest way to sell access to a tier of recipes without touching individual
 trades.
 

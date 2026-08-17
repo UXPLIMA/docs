@@ -34,7 +34,7 @@ either does not see the button or is refused on click.
 |---|---|---|
 | Set spawn | `MANAGE_RELOCATE` | `uxmclaims.ability.claim.relocate` |
 | Rename | `MANAGE_RENAME` | `uxmclaims.ability.claim.rename` |
-| Flags | — | `uxmclaims.ability.claim.flag.<FLAG>` |
+| Flags | n/a | `uxmclaims.ability.claim.flag.<FLAG>` |
 | Chunk map | `MANAGE_CHUNKS` to change anything | `uxmclaims.ability.chunk.*` |
 | Members | `MANAGE_INVITES` for invites, `…member.role` to move people | see [abilities](../permissions/abilities.md) |
 | Banned players | `MANAGE_BANS` | `uxmclaims.ability.member.ban` / `.unban` |
@@ -46,8 +46,8 @@ either does not see the button or is refused on click.
 
 ## Rename and time
 
-Both prompt in chat rather than in an anvil. The plugin sends `infoChatInputInstruction` — *"Type your
-input in chat. Type 'cancel' to cancel."* — and waits.
+Both prompt in chat rather than in an anvil. The plugin sends `infoChatInputInstruction`: *"Type your
+input in chat. Type 'cancel' to cancel."*, and waits.
 
 Time extension is priced by `uxmclaims.cost.time` **per second**, defaulting to `5.0`. A week is
 604 800 seconds, so at the shipped price that is three million of your currency. Set the cost node

@@ -12,7 +12,7 @@ icon: map-pin
 | `/claim warp rename <name> <new>` | Rename it | `uxmclaims.ability.warp.rename` |
 | `/claim warp move <name>` | Move it to where you stand | `uxmclaims.ability.warp.relocate` |
 | `/claim warp setpublic <name> <true\|false>` | Publish or unpublish it | `uxmclaims.ability.warp.visibility` |
-| `/claim warp teleport <name>` | Teleport to any warp you may reach | — |
+| `/claim warp teleport <name>` | Teleport to any warp you may reach | n/a |
 
 Managing warps also needs the `MANAGE_WARPS` role permission. *Using* one needs `USE_WARPS`.
 

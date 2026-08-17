@@ -36,12 +36,12 @@ discord:
 | Key | Meaning |
 |---|---|
 | `channel-id` | Where the embed with the button is posted |
-| `linked-role-ids` | Roles given on a successful link — as many as you like |
+| `linked-role-ids` | Roles given on a successful link (as many as you like) |
 | `code-expiration` | Seconds a code stays valid |
 | `send-dm-on-link` | DM the user on success |
 | `notification-channel-id` | Announce successful links here; empty disables it |
 
-The embed, its button and the modal are all configurable — title, description, colour, thumbnail,
+The embed, its button and the modal are all configurable: title, description, colour, thumbnail,
 footer, the button's label, emoji and style (`PRIMARY`, `SECONDARY`, `SUCCESS`, `DANGER`), and the
 modal's field labels.
 
@@ -63,12 +63,12 @@ linking:
 Run from console. Available placeholders: `%player%`, `%player_uuid%`, `%discord_id%`,
 `%discord_user%`, `%server_name%`.
 
-Rank-specific rewards go in `rank-sync.yml` instead — see [Rank sync](rank-sync.md#post-link-commands).
+Rank-specific rewards go in `rank-sync.yml` instead: see [Rank sync](rank-sync.md#post-link-commands).
 
 <Callout type="warning" title="Post-link commands and unlinking">
 
 If `allow-unlink` is `true` and your post-link commands hand out items or money, a player can link,
-claim, unlink and link again. Either make the reward idempotent — a permission, a role — or set
+claim, unlink and link again. Either make the reward idempotent (a permission, a role) or set
 `allow-unlink: false` and handle unlinking through `/uxmdiscordsync forceunlink`.
 
 </Callout>

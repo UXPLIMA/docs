@@ -10,10 +10,10 @@ Nobody is added to a claim directly. An invitation is created, and the invited p
 | Command | What it does | Ability node |
 |---|---|---|
 | `/claim invite send <player>` | Invite someone | `uxmclaims.ability.member.invite` |
-| `/claim invite accept <claim>` | Accept an invitation | — |
-| `/claim invite reject <claim>` | Decline one | — |
+| `/claim invite accept <claim>` | Accept an invitation | n/a |
+| `/claim invite reject <claim>` | Decline one | n/a |
 | `/claim invite revoke <player>` | Withdraw one you sent | `uxmclaims.ability.member.revoke` |
-| `/claim invite inbox` | Open your pending invitations | — |
+| `/claim invite inbox` | Open your pending invitations | n/a |
 
 `/claim trust <player>` is a shorthand for `invite send`, and `/claim invites` for `invite inbox`.
 

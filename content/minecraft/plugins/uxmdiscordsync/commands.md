@@ -5,7 +5,7 @@ description: Minecraft commands from commands.yml, and the Discord slash command
 icon: terminal
 ---
 
-Minecraft commands are **not** declared in `plugin.yml` — they are registered from `commands.yml` at
+Minecraft commands are **not** declared in `plugin.yml`: they are registered from `commands.yml` at
 startup. Every name, alias, permission and cooldown on this page is something you can change.
 
 ## Player commands
@@ -17,7 +17,7 @@ startup. Every name, alias, permission and cooldown on this page is something yo
 | `/linkstatus` | `/hesapdurum` | none | 5s |
 | `/boostprize` | `/boostödül` | `uxmdiscordsync.boostreward` | 5s |
 | `/discordreward` | `/discordödül`, `/dcreward`, `/levelreward` | none | 5s |
-| `/2fa` | — | `uxmdiscordsync.2fa` | 5s |
+| `/2fa` | n/a | `uxmdiscordsync.2fa` | 5s |
 
 `/link` returns a six-digit code to enter in Discord. `/linkstatus` reports whether the player is
 linked and to whom; it is the only player command that also works from console.
@@ -42,7 +42,7 @@ the boost reward, subject to `boost-rewards.yml → cooldown`.
 | `debug` | `uxmdiscordsync.admin.debug` | Toggles debug logging |
 | `database` | `uxmdiscordsync.admin.database` | Database type, size and connection state |
 
-`forcesync` without a player syncs everyone online — the command to run after editing
+`forcesync` without a player syncs everyone online: the command to run after editing
 `rank-mappings` rather than waiting for `sync-interval`.
 
 ## Changing command names
@@ -61,7 +61,7 @@ commands:
 ```
 
 The **first** alias is the real command name; the rest are aliases. `enabled: false` unregisters the
-command entirely, which is how you resolve a clash with another plugin that already owns `/link` —
+command entirely, which is how you resolve a clash with another plugin that already owns `/link`:
 rename it here rather than fighting over the name.
 
 `permission: ""` means no permission is required. `player-only: true` refuses the command from
@@ -80,7 +80,7 @@ Registered in your guild at startup.
 | `/broadcast <message>` | Broadcasts to the Minecraft server | `discord-broadcast.authorized-users` |
 | `/servercommand <server> <command>` | Runs a command on the server | `discord-server-command.authorized-users` |
 
-Plus every custom command in `discord-commands/` — see [Custom Discord commands](config/custom-commands.md).
+Plus every custom command in `discord-commands/`: see [Custom Discord commands](config/custom-commands.md).
 
 <Callout type="danger" title="/servercommand is console access">
 
@@ -91,5 +91,5 @@ than everyone with a role, and require 2FA on those Discord accounts.
 
 </Callout>
 
-The two authorised-user lists are user ids, not roles, and they are checked before anything else —
+The two authorised-user lists are user ids, not roles, and they are checked before anything else:
 a slash command from anyone else is refused whatever their Discord permissions are.

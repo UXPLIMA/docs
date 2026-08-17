@@ -6,7 +6,7 @@ icon: list-checks
 ---
 
 A requirement is what the player gives up, or a condition they must satisfy. They are numbered under
-a trade and evaluated together — the trade starts only when all of them pass.
+a trade and evaluated together: the trade starts only when all of them pass.
 
 ```yaml
 requirements:
@@ -20,7 +20,7 @@ requirements:
 
 | Key | Default | What it does |
 |---|---|---|
-| `displayName` | — | The name shown in the trade lore |
+| `displayName` | n/a | The name shown in the trade lore |
 | `material` | `STONE` | A Minecraft material, or a type keyword from the table below |
 | `amount` | `1` | How many |
 | `requiredName` | unset | The item must carry this display name |
@@ -31,7 +31,7 @@ requirements:
 | `condition` | unset | A PlaceholderAPI expression, for `PLACEHOLDER` requirements |
 | `requiredOutput` | unset | What the condition must evaluate to |
 
-Text fields accept **both** legacy `&` codes and MiniMessage — the parser converts `&a` to
+Text fields accept **both** legacy `&` codes and MiniMessage: the parser converts `&a` to
 `<green>` before deserialising, so `'&bRare Diamond'` and `'<aqua>Rare Diamond'` both work, and they
 can be mixed in one string. There is no format switch to set.
 
@@ -41,23 +41,23 @@ can be mixed in one string. There is no format switch to set.
 
 | Keyword | Consumes | Needs |
 |---|---|---|
-| Any material name | The items | — |
+| Any material name | The items | n/a |
 | `MONEY` | Vault balance | Vault |
 | `PLAYERPOINTS` | PlayerPoints | PlayerPoints |
 | `COINSENGINE:<currency>` | A CoinsEngine currency | CoinsEngine |
-| `XP` | Vanilla experience | — |
+| `XP` | Vanilla experience | n/a |
 | `MMOITEMS` | An MMOItems item | MMOItems |
 | `ECOITEM` | An EcoItems item | EcoItems |
 | `EXECITEM` | An ExecutableItems item | ExecutableItems |
 | `IAITEM` | An ItemsAdder item | ItemsAdder or Nexo |
 | `NEXO` | A Nexo item | Nexo or ItemsAdder |
-| `SKULL` | A player head | — |
-| `SAVE` | A saved binary item | — |
-| `CUSTOMREQ` | A requirement-editor profile | — |
+| `SKULL` | A player head | n/a |
+| `SAVE` | A saved binary item | n/a |
+| `CUSTOMREQ` | A requirement-editor profile | n/a |
 | `PLACEHOLDER` | **nothing** | PlaceholderAPI |
 
 Each keyword's hook must be **enabled** under `settings.Hooks` in `config.yml`, not merely installed.
-A trade whose requirement names a disabled or invalid hook is skipped at load with a warning — the
+A trade whose requirement names a disabled or invalid hook is skipped at load with a warning: the
 whole trade, not just that requirement.
 
 ## Matching a specific item
@@ -87,7 +87,7 @@ Or match on model data alone:
   ignoreMeta: true
 ```
 
-`ignoreMeta: true` — the default — checks material and model data and ignores name, lore and
+`ignoreMeta: true` (the default) checks material and model data and ignores name, lore and
 enchantments. That is what you want for a resource-pack item whose name players may have changed.
 Set it to `false` when the name is part of the identity.
 
@@ -116,15 +116,15 @@ Hook items use `customItemData`, not a per-plugin key:
 
 | Hook | `customItemID` | `type` |
 |---|---|---|
-| `MMOITEMS` | The item id | The MMOItems type — `ARMOR`, `SWORD`, … |
-| `ECOITEM` | The EcoItems id | — |
-| `EXECITEM` | The ExecutableItems id | — |
-| `IAITEM` / `NEXO` | The item id | — |
-| `SAVE` | The saved item key | — |
-| `CUSTOMREQ` | The profile id from `/blacksmith editor` | — |
+| `MMOITEMS` | The item id | The MMOItems type (`ARMOR`, `SWORD`, …) |
+| `ECOITEM` | The EcoItems id | n/a |
+| `EXECITEM` | The ExecutableItems id | n/a |
+| `IAITEM` / `NEXO` | The item id | n/a |
+| `SAVE` | The saved item key | n/a |
+| `CUSTOMREQ` | The profile id from `/blacksmith editor` | n/a |
 
-A shorthand form works for hooks that declare one — `material: 'SAVE:my_item'`,
-`material: 'CUSTOMREQ:mythic_sword'` — instead of the nested block.
+A shorthand form works for hooks that declare one (`material: 'SAVE:my_item'`,
+`material: 'CUSTOMREQ:mythic_sword'`) instead of the nested block.
 
 Hook items carry their own display name, so `displayName` is optional. When it is omitted the plugin
 copies the name off the resolved item.
@@ -159,7 +159,7 @@ copies the name off the resolved item.
   requiredOutput: 'yes'
 ```
 
-The plugin resolves `condition` and compares the result to `requiredOutput` as a **string** — quote
+The plugin resolves `condition` and compares the result to `requiredOutput` as a **string**: quote
 `'1'` rather than writing a bare number.
 
 | Expansion | Why |
@@ -167,13 +167,13 @@ The plugin resolves `condition` and compares the result to `requiredOutput` as a
 | Math | Returns `1` when an expression is true, so comparisons become `requiredOutput: '1'` |
 | Vault | `%vault_hasgroup_X%` returns `yes` or `no` |
 | Permission | `%permission_has_node%` returns `yes` or `no` |
-| Statistic | Raw statistics — `PLAY_ONE_MINUTE` is in **ticks**, hence `/1200` for minutes |
+| Statistic | Raw statistics (`PLAY_ONE_MINUTE` is in **ticks**, hence `/1200` for minutes) |
 
 Install them with `/papi ecloud download Math`, `… Vault`, `… String`.
 
 <Callout type="tip" title="Conditions are the reason this system is flexible">
 
-Anything PlaceholderAPI can answer becomes a requirement — quest completion, a rank, a stat, another
+Anything PlaceholderAPI can answer becomes a requirement: quest completion, a rank, a stat, another
 plugin's level, the time of day. If you find yourself wanting a feature the plugin does not have,
 check whether a placeholder already answers the question.
 
@@ -182,7 +182,7 @@ check whether a placeholder already answers the question.
 <Callout type="warning" title="Test a condition before shipping it">
 
 A condition that never evaluates true makes the trade permanently unstartable, and the player sees
-only the `displayName` you wrote. Check it with `/papi parse me <condition>` first — and write the
+only the `displayName` you wrote. Check it with `/papi parse me <condition>` first, and write the
 `displayName` in words the player can act on.
 
 </Callout>

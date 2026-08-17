@@ -34,7 +34,7 @@ flatfile:
     max-backups: 7
 ```
 
-JSON files under the plugin folder. `pretty-print: true` makes them readable and larger — worth
+JSON files under the plugin folder. `pretty-print: true` makes them readable and larger: worth
 keeping while you are setting things up, and worth turning off once you have thousands of links.
 
 Backups are taken every `interval` seconds and `max-backups` are kept. This is the only backend with
@@ -47,7 +47,7 @@ sqlite:
   file-name: "database.db"
 ```
 
-One file in the plugin folder. Do not copy it while the server is running — stop the server first,
+One file in the plugin folder. Do not copy it while the server is running: stop the server first,
 or you may get a file that opens and is missing recent writes.
 
 ## MySQL and MariaDB
@@ -70,7 +70,7 @@ mysql:
     trust-certificate: true
 ```
 
-`maximum-pool-size: 10` is generous for this plugin — its queries are small and infrequent. If
+`maximum-pool-size: 10` is generous for this plugin: its queries are small and infrequent. If
 several plugins share a database server, the sum of their pools is what matters, and ten connections
 each adds up quickly. Five is usually plenty here.
 
@@ -79,7 +79,7 @@ pool hands out connections the server has already closed. This is the usual caus
 link failure" an hour after startup.
 
 Set `ssl.enabled: true` for any database not on the same machine. `trust-certificate: true` accepts a
-self-signed certificate — acceptable on a private network, not over the internet.
+self-signed certificate: acceptable on a private network, not over the internet.
 
 <Callout type="warning" title="Change the default password">
 
@@ -120,7 +120,7 @@ postgresql:
 ```
 
 Reports the active type, the connection state and how much data is stored. Run it after any change
-here — a database that failed to connect at startup leaves the plugin running with no storage, and
+here: a database that failed to connect at startup leaves the plugin running with no storage, and
 this is the fastest way to see that.
 
 ## Switching backends

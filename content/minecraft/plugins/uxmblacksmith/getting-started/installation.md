@@ -10,12 +10,12 @@ icon: download
 | | |
 |---|---|
 | Server | Bukkit, Spigot or Paper, 1.16 or newer |
-| Database | SQLite, bundled — nothing to install |
+| Database | SQLite, bundled (nothing to install) |
 
 ## Optional plugins
 
 Every one of these is a `softdepend`. Each is also a switch under `settings.Hooks` in `config.yml`, so
-installing the plugin is not enough — the hook must be on.
+installing the plugin is not enough: the hook must be on.
 
 | Plugin | Hook key | Adds | Default |
 |---|---|---|---|
@@ -28,10 +28,10 @@ installing the plugin is not enough — the hook must be on.
 | ExecutableItems | `EXECITEM` | ExecutableItems | off |
 | ItemsAdder | `IAITEM` | ItemsAdder items | off |
 | Nexo | `NEXO` | Nexo items | **on** |
-| NBTAPI | — | Deeper item matching | — |
-| — | `SAVE` | The built-in binary item store | **on** |
-| — | `SKULL` | Player heads as items | **on** |
-| — | `XP` | Vanilla experience as a currency | **on** |
+| NBTAPI | n/a | Deeper item matching | n/a |
+| n/a | `SAVE` | The built-in binary item store | **on** |
+| n/a | `SKULL` | Player heads as items | **on** |
+| n/a | `XP` | Vanilla experience as a currency | **on** |
 
 `IAITEM` and `NEXO` are interchangeable. A trade configured with `IAITEM` will use Nexo if only Nexo
 is installed, and the reverse.
@@ -56,7 +56,7 @@ plugins/uxmBlacksmith/
 │   └── boosts.yml      boost item definitions
 ├── categories/
 │   └── *.yml           the trades, one file per category
-├── binary_files/       saved items — do not edit by hand
+├── binary_files/       saved items, do not edit by hand
 └── database.db         SQLite
 ```
 
@@ -68,7 +68,7 @@ plugin writes it with worked defaults if it does not exist.
 <Callout type="danger" title="Never edit binary_files by hand">
 
 Those are serialised `ItemStack`s written by `/blacksmith binary save`. They are not meant to be
-readable, and a hand edit produces an item that fails to deserialise — which takes the trade
+readable, and a hand edit produces an item that fails to deserialise, which takes the trade
 referencing it down with it. Manage them through the `binary` subcommands.
 
 </Callout>

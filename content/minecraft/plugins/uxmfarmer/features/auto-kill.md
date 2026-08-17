@@ -33,7 +33,7 @@ auto-kill:
 
 `mobs` is the whole list. Anything not in it is safe from the farmer no matter what a player does,
 which makes this the one setting to get right before opening the module to players. Adding
-`IRON_GOLEM` — as the default does — means iron farms work; adding a hostile mob means the farmer
+`IRON_GOLEM` (as the default does) means iron farms work; adding a hostile mob means the farmer
 does the fighting.
 
 Players can narrow the list further in their own auto-kill settings menu, but never widen it.
@@ -66,7 +66,7 @@ their own base feeds their farmer; turn it off and only the farmer's own kills c
 <Callout type="warning" title="Auto Kill and stacker plugins">
 
 If you run a stacking plugin, a single kill can represent dozens of mobs. Check that its "kill the
-whole stack" behaviour is what you expect before enabling this module — otherwise the farmer's
+whole stack" behaviour is what you expect before enabling this module: otherwise the farmer's
 throughput is a multiple of what your prices were tuned for.
 
 </Callout>

@@ -21,12 +21,12 @@ A player's slot count is **how many of those ten nodes they hold**, not the high
 
 Ten is the ceiling. `uxmblacksmith.slot.11` does nothing.
 
-The `EXTRA_SLOT` perk — `artisan_slots`, up to 3 levels — unlocks that many of the player's
+The `EXTRA_SLOT` perk (`artisan_slots`, up to 3 levels) unlocks that many of the player's
 **locked** slots, lowest-numbered first. A player holding all ten nodes gains nothing from it, which
 is the intended relationship: the perk is a path to slots for players who did not buy a rank, not a
 way past ten.
 
-Anyone with `uxmblacksmith.admin` is treated as having **99** slots — that is what
+Anyone with `uxmblacksmith.admin` is treated as having **99** slots: that is what
 `%uxmblacksmith_maxslots%` returns for staff, so do not be alarmed by the number.
 
 <Callout type="warning" title="Slots are not granted by default">
@@ -70,7 +70,7 @@ your rank layout better. Locked slots render the "buy this slot" icon.
 Both `sameTimeCraftCount` values use `0` and `-1` to mean unlimited.
 
 A player with 5 slots, a `swords` category capped at 1, and a legendary trade capped at 1 can run
-five trades at once — but only one of them from `swords`, and only one copy of that legendary.
+five trades at once, but only one of them from `swords`, and only one copy of that legendary.
 
 `{remaining_trade_slots}` in the trade lore shows the tightest of the three that currently applies.
 
@@ -87,7 +87,7 @@ waiting, trades complete on click. `time` is ignored. Use it when you want the r
 systems without the queue.
 
 `instantCraftBatchLimit` caps how many crafts one shift-click may run. It is a guard against a
-recipe whose requirements are effectively free looping forever — leave it at 64 unless you have a
+recipe whose requirements are effectively free looping forever: leave it at 64 unless you have a
 reason.
 
 A single trade can opt into the same behaviour without changing the server:
@@ -97,7 +97,7 @@ item:
   instantCraft: true
 ```
 
-That trade completes on click, occupies no slot, and earns XP at `instantCraftMultiplier` — `0.65` —
+That trade completes on click, occupies no slot, and earns XP at `instantCraftMultiplier`, `0.65`,
 because it carries no opportunity cost.
 
 ## Performance
@@ -114,6 +114,6 @@ players and menus feel heavy; lower it if `{remaining_trade_slots}` looks stale.
 
 ## What happens when a slot frees up
 
-The trade completes, the reward is handed over — or dropped at the player's feet if their inventory
-is full — and the slot returns to the pool. If the player is offline the trade is finished on their
+The trade completes, the reward is handed over (or dropped at the player's feet if their inventory
+is full) and the slot returns to the pool. If the player is offline the trade is finished on their
 next login; a pending trade is a database row, not a memory object, so a restart does not lose it.

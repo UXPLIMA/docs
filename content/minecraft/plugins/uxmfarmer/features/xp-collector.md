@@ -24,16 +24,16 @@ xp-collector:
 | `permission-required` | Requires the owner to hold `uxmfarmer.xpcollector` |
 | `sellable-by-default` | Whether new farmers allow their XP to be sold |
 | `xp-unit-price` | Money paid per point of XP |
-| `xp-tax` | Tax on XP sales, as a fraction — `0.1` is 10% |
+| `xp-tax` | Tax on XP sales, as a fraction (`0.1` is 10%) |
 
 Selling XP additionally requires the owner to hold `uxmfarmer.sellxp`. Without it, no member of
-that farmer can sell XP even if the farmer's own `XP_SELLABLE` setting is on — the owner's
+that farmer can sell XP even if the farmer's own `XP_SELLABLE` setting is on: the owner's
 permissions gate the farmer, and the farmer gates the members.
 
 ## Pricing XP
 
 `xp-unit-price` is deliberately tiny. At `0.001`, a mob dropping 5 XP is worth half a cent, and a
-grinder running all night is worth a modest sum — which is the intent. XP is a by-product here, not
+grinder running all night is worth a modest sum, which is the intent. XP is a by-product here, not
 an income stream, and raising this by an order of magnitude turns every mob farm into a money
 printer without the player having to build anything new.
 
@@ -44,7 +44,7 @@ only, with no money attached at all.
 
 Players take XP out through the farmer menu. The amount is entered on a sign or in chat, depending
 on `take-amount.input-type` in `general-settings.yml`, and the operation is rate-limited by
-`cooldowns.sell-xp-cooldown` — 120 seconds by default.
+`cooldowns.sell-xp-cooldown`, 120 seconds by default.
 
 ## Placeholders
 

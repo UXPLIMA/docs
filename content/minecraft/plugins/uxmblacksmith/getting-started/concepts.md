@@ -21,7 +21,7 @@ categories:
     sameTimeCraftCount: 0
 ```
 
-A category is also a **mastery key** — the thing a player gains mastery in by crafting from it.
+A category is also a **mastery key**: the thing a player gains mastery in by crafting from it.
 
 ## Trade
 
@@ -48,8 +48,8 @@ it. Pages are how a category with forty trades paginates in the menu.
 
 ## Requirement
 
-Something the player must hand over or satisfy. A requirement is either consumed — items, money,
-points, XP — or merely checked, which is what a PlaceholderAPI condition is.
+Something the player must hand over or satisfy. A requirement is either consumed (items, money,
+points, XP) or merely checked, which is what a PlaceholderAPI condition is.
 
 The full list of types is in [Requirements](../features/requirements.md).
 
@@ -71,7 +71,7 @@ the server, or nobody can start anything.
 A trade with `successChance` below 100 may fail. On failure the materials are gone and the reward is
 not given, with the `trade_burned` message and the configured sound and particle.
 
-`successChance: -1` disables the risk for that trade — it always succeeds.
+`successChance: -1` disables the risk for that trade: it always succeeds.
 
 Rank permissions raise the chance; see [Burn and risk](../features/burn.md).
 
@@ -111,5 +111,5 @@ flowchart LR
     J --> M[Mastery level → speed and chance bonus]
 ```
 
-A burned trade still grants XP, at `burnedTradeXpMultiplier` — `0.10` — and mastery XP at
-`burnedMasteryXpMultiplier` — `0.25`. Failure is not wasted time.
+A burned trade still grants XP, at `burnedTradeXpMultiplier`, `0.10`, and mastery XP at
+`burnedMasteryXpMultiplier`, `0.25`. Failure is not wasted time.

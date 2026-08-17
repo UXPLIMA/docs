@@ -83,7 +83,7 @@ money and XP amounts are shown as a title on screen.
 
 <Callout type="note" title="A price provider is a contract with another plugin">
 
-With a shop provider selected, uxmSpawners does not keep its own prices — change a price in the
+With a shop provider selected, uxmSpawners does not keep its own prices: change a price in the
 shop plugin and spawners follow. If the shop plugin has no price for an item, it cannot be sold
 from a spawner either.
 

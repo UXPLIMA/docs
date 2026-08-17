@@ -10,7 +10,7 @@ generalSettings:
   placeholderSupport: true
 ```
 
-uxmClaims registers an expansion with the identifier `uxmclaims`. It is bundled — there is nothing to
+uxmClaims registers an expansion with the identifier `uxmclaims`. It is bundled: there is nothing to
 download from the eCloud.
 
 The complete syntax, the path rules and every modifier are in
@@ -42,7 +42,7 @@ is standing in.
 '<gray>Expires:</gray> <gold>%time:claim.remainTime%</gold>'
 ```
 
-This part works with `placeholderSupport: false` and without PlaceholderAPI installed — it is the
+This part works with `placeholderSupport: false` and without PlaceholderAPI installed: it is the
 plugin's own parser. The switch and the dependency only govern *external* placeholders.
 
 ## Third-party placeholders inside uxmClaims
@@ -62,5 +62,5 @@ placeholderDefaults:
 Two are defined. Every other path renders empty outside a claim, so add an entry for anything you put
 on a permanent scoreboard.
 
-`%uxmclaims_is_claimable%` is the exception — it works anywhere, because it is answered before the
+`%uxmclaims_is_claimable%` is the exception: it works anywhere, because it is answered before the
 claim is resolved.

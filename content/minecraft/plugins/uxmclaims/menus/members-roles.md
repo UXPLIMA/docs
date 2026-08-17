@@ -21,7 +21,7 @@ Click a member to manage them.
   writes an override on the member.
 
 An override beats the role. The member carries an *allowed* set and a *denied* set, and denied is
-checked first — so a denial holds even if you later promote them.
+checked first, so a denial holds even if you later promote them.
 
 The state shown is the effective one: the override if there is one, otherwise the role's value,
 otherwise the `Member` role's value if their role no longer exists.
@@ -34,7 +34,7 @@ otherwise the `Member` role's value if their role no longer exists.
 
 ## The role list
 
-`menu/claim_role_list.yml`. Every role in the claim, ordered by priority — lower first, so `Owner`,
+`menu/claim_role_list.yml`. Every role in the claim, ordered by priority: lower first, so `Owner`,
 `Member`, `Default` and anything custom in between.
 
 | Button | Does |

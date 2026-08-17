@@ -1,7 +1,7 @@
 ---
 title: Permissions
 order: 60
-description: The server permissions — admin, abilities, bypasses, and the numeric nodes.
+description: "The server permissions: admin, abilities, bypasses, and the numeric nodes."
 icon: lock
 ---
 

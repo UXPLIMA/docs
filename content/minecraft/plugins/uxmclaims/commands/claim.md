@@ -9,7 +9,7 @@ icon: land-plot
 
 | Command | What it does |
 |---|---|
-| `/claim` | Context aware — see below |
+| `/claim` | Context aware (see below) |
 | `/claim menu` | Always opens the personal menu, ignoring context |
 
 With `generalSettings.smartCommand: true`, `/claim` on its own decides what you meant:
@@ -28,11 +28,11 @@ Set `smartCommand: false` and `/claim` behaves exactly like `/claim menu`.
 | Command | What it does | Ability node |
 |---|---|---|
 | `/claim create [name]` | Create a claim on this chunk | `uxmclaims.ability.claim.create` |
-| `/claim delete` | Delete the current claim — confirms first | `uxmclaims.ability.claim.delete` |
+| `/claim delete` | Delete the current claim (confirms first) | `uxmclaims.ability.claim.delete` |
 | `/claim rename <name>` | Rename it | `uxmclaims.ability.claim.rename` |
 | `/claim extend <duration>` | Push the expiry date out | `uxmclaims.ability.claim.reschedule` |
-| `/claim transfer <player>` | Hand ownership to a member — confirms first | `uxmclaims.ability.claim.transfer` |
-| `/claim leave` | Leave a claim you are a member of | — |
+| `/claim transfer <player>` | Hand ownership to a member (confirms first) | `uxmclaims.ability.claim.transfer` |
+| `/claim leave` | Leave a claim you are a member of | n/a |
 
 Without a name, a new claim is named from `claimSettings.defaultName`, which is
 `Claim of %player.name%` out of the box.
@@ -59,11 +59,11 @@ Selection is what lets you run `/claim role create …` while standing somewhere
 | Command | What it does | Ability node |
 |---|---|---|
 | `/claim trust <player>` | Send an invite | `uxmclaims.ability.member.invite` |
-| `/claim kick <player>` | Remove a member — confirms first | `uxmclaims.ability.member.kick` |
+| `/claim kick <player>` | Remove a member (confirms first) | `uxmclaims.ability.member.kick` |
 | `/claim ban <player>` | Ban a player, immediately | `uxmclaims.ability.member.ban` |
 | `/claim unban <player>` | Lift a ban | `uxmclaims.ability.member.unban` |
 
-`/claim trust` does not add anyone directly — it sends an invitation the target must accept. The
+`/claim trust` does not add anyone directly: it sends an invitation the target must accept. The
 longer forms under [`/claim member`](members.md) do the same work with more options.
 
 ## Flags
@@ -85,13 +85,13 @@ The ability node is per flag, so `uxmclaims.ability.claim.flag.PVP` grants exact
 | Command | What it does | Ability node |
 |---|---|---|
 | `/claim setspawn` | Set the claim spawn to where you stand | `uxmclaims.ability.claim.relocate` |
-| `/claim spawn` | Teleport to the current claim's spawn | — |
-| `/claim spawn <name>` | Teleport to a warp or a claim by name | — |
+| `/claim spawn` | Teleport to the current claim's spawn | n/a |
+| `/claim spawn <name>` | Teleport to a warp or a claim by name | n/a |
 | `/claim vault` | Open the shared vault | `uxmclaims.ability.vault.access` |
-| `/claim warps` | Open the public warp list | — |
+| `/claim warps` | Open the public warp list | n/a |
 
 `/claim spawn <name>` searches in a fixed order: public warps first, then warps in claims you own,
-then warps in claims you are a member of, and finally claims by name. The first match wins — so a
+then warps in claims you are a member of, and finally claims by name. The first match wins, so a
 public warp named `shop` shadows your own claim named `shop`.
 
 Teleports wait `uxmclaims.delay.teleport` seconds, `3` by default.

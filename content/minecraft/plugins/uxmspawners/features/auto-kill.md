@@ -55,7 +55,7 @@ no-equipment:
   enabled: false
 ```
 
-`nerf-spawner-mobs` strips AI — no movement, no pathfinding, no attacking. The `mobs` list is read
+`nerf-spawner-mobs` strips AI, no movement, no pathfinding, no attacking. The `mobs` list is read
 two ways: with `nerf-every-mob: false` it is the list of mobs to nerf; with it `true` the list
 becomes the exceptions that keep their AI. `no-equipment` stops spawned mobs carrying armour or
 weapons, which also stops them dropping it.

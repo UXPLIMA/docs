@@ -27,7 +27,7 @@ auto-start:
 | `timezone` | The zone the times are written in |
 | `days.<Day>.times` | Comma-separated 24-hour times |
 
-Days are the English names — `Sunday` through `Saturday` — and a day you leave out simply has no
+Days are the English names (`Sunday` through `Saturday`) and a day you leave out simply has no
 events. A day with an empty `times` is the same as leaving it out.
 
 ## Timezone
@@ -37,7 +37,7 @@ like `Europe/Istanbul`.
 
 Set this to the timezone your **players** are in. A schedule written in UTC on a server whose
 community is all in one country produces events at times nobody is awake for, and daylight saving
-makes a fixed GMT offset drift by an hour twice a year — a named zone handles that, an offset does
+makes a fixed GMT offset drift by an hour twice a year: a named zone handles that, an offset does
 not.
 
 ## max-per-month
@@ -71,7 +71,7 @@ settings:
 `remaining-time-format` uses `%days%`, `%hours%`, `%minutes%` and `%seconds%`.
 `next-event-time-format` is a Java `SimpleDateFormat` pattern.
 
-Put `%dragonevent_remaining%` on a scoreboard or a hologram at spawn — the schedule only works as a
+Put `%dragonevent_remaining%` on a scoreboard or a hologram at spawn: the schedule only works as a
 draw if players know when the next one is.
 
 ## Announcing ahead of time
@@ -95,7 +95,7 @@ settings:
   dragon-event-time: 15
 ```
 
-Minutes. When the clock runs out with the dragon still alive, the event ends with `timed-out` — no
+Minutes. When the clock runs out with the dragon still alive, the event ends with `timed-out`, no
 winner, no rewards.
 
 Fifteen minutes with two rebirths is a sensible starting point. Check the first few real events: if

@@ -22,7 +22,7 @@ categories:        # every category and the file its trades live in
 | `lang` | `en` | `en` or `tr`; picks a block out of `language.yml` |
 | `debug` | `false` | Verbose logging |
 | `removePendingInvalidTrade` | `true` | Drop pending trades whose definition no longer exists |
-| `disableSlotModule` | `false` | Turn off the queue entirely — trades complete on click |
+| `disableSlotModule` | `false` | Turn off the queue entirely (trades complete on click) |
 | `instantCraftBatchLimit` | `64` | Cap on crafts per shift-click batch |
 
 `removePendingInvalidTrade` is the setting to think about before deleting a trade. Left `true`, a
@@ -39,7 +39,7 @@ The effect on a successful trade.
 | `particleEffect` | `VILLAGER_HAPPY` |
 | `particleCount` | `10` |
 
-Bukkit `Sound` and `Particle` enum names. Version-specific — a name that does not exist on your
+Bukkit `Sound` and `Particle` enum names. Version-specific: a name that does not exist on your
 server is logged and skipped.
 
 ### settings.performance
@@ -51,16 +51,16 @@ server is logged and skipped.
 
 ### settings.Hooks
 
-A switch per integration. Installing the plugin is not enough — the hook must be **on**.
+A switch per integration. Installing the plugin is not enough: the hook must be **on**.
 
 | Key | Default | Plugin |
 |---|---|---|
 | `MONEY` | `true` | Vault |
 | `PLACEHOLDER` | `true` | PlaceholderAPI |
 | `NEXO` | `true` | Nexo |
-| `SAVE` | `true` | Built in — the binary item store |
-| `SKULL` | `true` | Built in — player heads |
-| `XP` | `true` | Built in — vanilla experience |
+| `SAVE` | `true` | Built in (the binary item store) |
+| `SKULL` | `true` | Built in (player heads) |
+| `XP` | `true` | Built in (vanilla experience) |
 | `PLAYERPOINTS` | `false` | PlayerPoints |
 | `COINSENGINE` | `false` | CoinsEngine |
 | `MMOITEMS` | `false` | MMOItems |
@@ -90,7 +90,7 @@ Full explanation in [Burn and risk](../features/burn.md).
 ## vanillaCrafting
 
 **Enabled by default**, with ten materials gated behind blacksmith levels. See
-[Vanilla crafting gates](../features/vanilla-crafting.md) — this is the setting most likely to
+[Vanilla crafting gates](../features/vanilla-crafting.md): this is the setting most likely to
 surprise you on an existing server.
 
 ## progression
@@ -117,7 +117,7 @@ Fields are documented in [Categories](../features/categories.md).
 The file is written by the plugin from its own defaults, which has two consequences worth knowing:
 
 **Missing keys are re-added on start.** Delete a setting and it comes back with its default. To turn
-something off, set it to `false` — do not remove it.
+something off, set it to `false`: do not remove it.
 
 **Comments in the file are generated.** Your own comments are lost the next time the plugin rewrites
 the file. Keep notes outside it.

@@ -11,7 +11,7 @@ icon: download
 |---|---|
 | Server | Paper 1.21 or newer (developed against 1.21.11). Folia-ready |
 | Java | 21 |
-| Build | Gradle or Maven — the modules are plain Maven artifacts |
+| Build | Gradle or Maven (the modules are plain Maven artifacts) |
 
 Adventure, MiniMessage and Brigadier come from Paper at runtime. uxmLib compiles against them and
 never ships them.
@@ -24,7 +24,7 @@ as the version.
 <Callout type="warning" title="The group carries the repository name">
 
 There is no `com.github.UXPLIMA:uxmLib` artifact. The group is
-`com.github.UXPLIMA.uxmLib` — repository name after a dot — and the coordinate always ends in a
+`com.github.UXPLIMA.uxmLib` (repository name after a dot) and the coordinate always ends in a
 module name.
 
 </Callout>

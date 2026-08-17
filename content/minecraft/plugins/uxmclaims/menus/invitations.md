@@ -13,7 +13,7 @@ Two screens, plus the inbox on the personal menu.
 
 Needs `MANAGE_INVITES` and `uxmclaims.ability.member.invite`.
 
-The invited player, if online, gets `notificationInviteReceived` from `messages.yml` — a message with
+The invited player, if online, gets `notificationInviteReceived` from `messages.yml`: a message with
 clickable **[Accept]** and **[Reject]** buttons running `/claim invite accept` and
 `/claim invite reject`.
 

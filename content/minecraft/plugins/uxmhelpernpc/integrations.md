@@ -52,7 +52,7 @@ Holograms are always the plugin's own, whichever hook you choose.
 
 ## PlaceholderAPI
 
-The plugin reads placeholders — in hologram lines, menu titles, item names and lore — but does not
+The plugin reads placeholders (in hologram lines, menu titles, item names and lore) but does not
 publish an expansion of its own. Anything PlaceholderAPI can resolve on your server can be shown
 on an NPC.
 

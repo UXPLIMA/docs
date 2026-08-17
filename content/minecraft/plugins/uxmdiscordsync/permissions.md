@@ -6,13 +6,13 @@ icon: shield-check
 ---
 
 uxmDiscordSync declares no permissions in `plugin.yml`. Every command permission comes from
-`commands.yml`, which means the nodes below are defaults you can change — including to nothing.
+`commands.yml`, which means the nodes below are defaults you can change, including to nothing.
 
 ## Command permissions
 
 | Permission | Grants | Default in `commands.yml` |
 |---|---|---|
-| — | `/link`, `/unlink`, `/linkstatus`, `/discordreward` | No permission required |
+| n/a | `/link`, `/unlink`, `/linkstatus`, `/discordreward` | No permission required |
 | `uxmdiscordsync.boostreward` | `/boostprize` | Required |
 | `uxmdiscordsync.2fa` | `/2fa` | Required |
 | `uxmdiscordsync.admin` | `/uxmdiscordsync` | Required |
@@ -42,7 +42,7 @@ Both are configurable: the first is `two-factor.yml → on-deny.admin-permission
 `logging.yml → chat-logging.filter.ignored-permission`, which is empty by default. The nodes above
 are the suggested values, not fixed ones.
 
-`plugin.version-checker.notify-permission` decides who is told about a new plugin version on join —
+`plugin.version-checker.notify-permission` decides who is told about a new plugin version on join:
 `uxmdiscordsync.admin` by default.
 
 ## Discord-side authorisation
@@ -60,7 +60,7 @@ discord-broadcast:
 Being an administrator in the guild grants neither. This is intentional: `/servercommand` is console
 access, and it should be held by named people rather than by whoever currently has a role.
 
-Custom Discord commands are gated per file by `required-roles` and `required-user-ids` — see
+Custom Discord commands are gated per file by `required-roles` and `required-user-ids`: see
 [Custom Discord commands](config/custom-commands.md#restricting-a-command).
 
 ## A working default group

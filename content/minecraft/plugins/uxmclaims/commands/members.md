@@ -10,7 +10,7 @@ shortcuts do not cover: promotion, role assignment and per-member permission ove
 
 | Command | What it does | Ability node |
 |---|---|---|
-| `/claim member leave` | Leave the claim | — |
+| `/claim member leave` | Leave the claim | n/a |
 | `/claim member kick <player>` | Remove a member | `uxmclaims.ability.member.kick` |
 | `/claim member promote <player>` | Move them one role up | `uxmclaims.ability.member.role` |
 | `/claim member demote <player>` | Move them one role down | `uxmclaims.ability.member.role` |
@@ -25,7 +25,7 @@ the next lower priority number; `demote` moves them to the next higher one. Neit
 into `Owner`, and neither wraps around at the ends.
 
 Because priority drives this, the order you see in `/claim role list` is the order promotion walks.
-Set priorities deliberately — see [Roles](roles.md).
+Set priorities deliberately: see [Roles](roles.md).
 
 ## Per-member overrides
 
@@ -38,7 +38,7 @@ Set priorities deliberately — see [Roles](roles.md).
 ```
 
 Each member carries an **allowed** set and a **denied** set. Denied is checked first, so a denial
-always wins — over the allowed set and over the role.
+always wins, over the allowed set and over the role.
 
 The ability node is per permission: `uxmclaims.ability.member.permissions.CONTAINER_OPEN` grants the
 right to override exactly that one, and `…permissions.*` grants all of them.
@@ -51,12 +51,12 @@ right to override exactly that one, and `…permissions.*` grants all of them.
 - the target is you
 - the target is not already a member of the claim
 
-After the transfer the old owner becomes a normal member — not automatically an admin of their former
+After the transfer the old owner becomes a normal member, not automatically an admin of their former
 claim. Give them a role first if that is what you meant.
 
 <Callout type="warning" title="A deleted role drops its members onto Member, not Default">
 
-When a role is deleted, members holding it fall back to the built-in `Member` role — which by default
+When a role is deleted, members holding it fall back to the built-in `Member` role, which by default
 can build, break, and open every container in the claim. If you delete a restrictive custom role
 expecting its holders to lose access, they gain it instead. Move them off the role first, then delete
 it.

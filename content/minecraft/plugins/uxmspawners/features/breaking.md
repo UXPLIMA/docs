@@ -21,7 +21,7 @@ spawner-drop-chance:
 ```
 
 `default` is the chance for a player with no matching permission. The two permission lists are the
-tiers — one for uxmSpawners spawners, one for vanilla spawners when vanilla support is on. Keep
+tiers: one for uxmSpawners spawners, one for vanilla spawners when vanilla support is on. Keep
 them ascending; the highest match wins.
 
 ## Requiring a tool
@@ -48,7 +48,7 @@ break-management:
 | `FOR_BOTH_SILK_TOUCH` | Both types need silk touch |
 
 `block: true` refuses the break outright without the right tool. `block: false` allows the break
-but the spawner is lost — a harsher rule that reads as a bug to players, so prefer `true` unless
+but the spawner is lost: a harsher rule that reads as a bug to players, so prefer `true` unless
 you mean it.
 
 The break item has a use counter: `{uses}` in its name is replaced with what is left. Hand it out
@@ -78,7 +78,7 @@ vanilla-spawner-support:
 ```
 
 With `enabled`, breaking a vanilla spawner tries to match its entity type against your configured
-spawner types, and hands the player a uxmSpawners spawner if one matches — which is how an
+spawner types, and hands the player a uxmSpawners spawner if one matches, which is how an
 existing world is migrated without touching it. The rest of the block decides whether vanilla
 spawners can be broken or placed at all, and whether the plain vanilla block drops.
 

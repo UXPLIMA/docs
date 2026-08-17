@@ -30,7 +30,7 @@ refuses.
 |---|---|
 | `uxmblacksmith.burn.1` | +5% success chance (a multiplier, not points) |
 | `uxmblacksmith.burn.2` | +10% success chance |
-| `uxmblacksmith.burn.bypass` | Never burn — on trades using the default `burnBypassPermission` |
+| `uxmblacksmith.burn.bypass` | Never burn (on trades using the default `burnBypassPermission`) |
 | `uxmblacksmith.bypassall` | Never burn, on **every** trade |
 
 Multipliers do not stack; the largest held wins. Both node names and their values come from
@@ -53,7 +53,7 @@ guaranteed craft. Sell `uxmblacksmith.burn.1` and `.2` instead.
 | `uxmblacksmith.admin` | Every admin subcommand, the editor, and 99 slots |
 
 One node for everything: `reload`, `giveboost`, `editor`, `namedebug`, `binary`, and the whole
-`admin` tree — progression edits, queue intervention, analytics and export.
+`admin` tree: progression edits, queue intervention, analytics and export.
 
 It also treats the holder as having **99 slots**, which is why `%uxmblacksmith_maxslots%` returns 99
 for staff. That is a convenience for testing, not a bug.
@@ -85,7 +85,7 @@ requirements:
     requiredOutput: 'yes'
 ```
 
-This is better than a real permission node would be — the player sees *why* the trade is locked
+This is better than a real permission node would be: the player sees *why* the trade is locked
 rather than finding it missing.
 
 ## A worked setup

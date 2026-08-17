@@ -24,7 +24,7 @@ notification-channel-id: ""
 
 | Key | Meaning |
 |---|---|
-| `cooldown` | Seconds between claims — 86400 is a daily reward |
+| `cooldown` | Seconds between claims (86400 is a daily reward) |
 | `cooldown-mode` | `per-server` gives each server its own cooldown; `global` shares one |
 | `rewards` | Console commands, with `%player%`, `%player_uuid%`, `%discord_id%`, `%discord_user%`, `%server_name%` |
 | `send-discord-message` | Announce the claim in Discord |
@@ -37,13 +37,13 @@ able to claim, but keeps what they already took.
 
 The `cooldown` decides which kind of reward this is:
 
-- **86400** — a daily perk. The player comes back every day, which is the point.
-- **A very large number** — effectively one-off. Better done with a permission or rank grant than
+- **86400**: a daily perk. The player comes back every day, which is the point.
+- **A very large number**: effectively one-off. Better done with a permission or rank grant than
   with items.
 
 On a network, `cooldown-mode: per-server` means a daily reward is claimable once per day on each
 server. If the reward is money and your servers share an economy, that is a multiplier you probably
-did not intend — use `global` there.
+did not intend: use `global` there.
 
 ## Audit trail
 

@@ -38,7 +38,7 @@ aliases:
 
 <Callout type="warning" title="The shipped /deny alias points at the wrong subcommand">
 
-`deny: "claim invite deny"` targets a subcommand that does not exist — the registered one is
+`deny: "claim invite deny"` targets a subcommand that does not exist: the registered one is
 `/claim invite reject`. Change the value to `claim invite reject`, or remove the alias. The other
 three shipped aliases are correct.
 
@@ -53,5 +53,5 @@ three shipped aliases are correct.
 - **Aliases do not bypass permissions.** `/unclaim` still requires
   `uxmclaims.ability.claim.delete` and still asks for confirmation.
 
-- **There is no per-alias permission.** If you need one, do not add the alias — point players at the
+- **There is no per-alias permission.** If you need one, do not add the alias: point players at the
   full command and gate that instead.

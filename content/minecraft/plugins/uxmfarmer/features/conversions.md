@@ -37,7 +37,7 @@ gold-nugget-to-ingot:
   cooldown: 30
 ```
 
-The key — `gold-nugget-to-ingot` — is the conversion's id. `item` is what the player sees in the
+The key (`gold-nugget-to-ingot`) is the conversion's id. `item` is what the player sees in the
 menu, written in MiniMessage, and `<papi:'...'>` reads a placeholder inline so the lore can show
 live stock.
 
@@ -75,7 +75,7 @@ nuggets, which is almost never what you want unless the fee is a nominal one.
 
 Each of those last four has a matching `execute-...-per-convert` or `send-messages-per-convert`
 flag. Left at `false`, a convert-all runs the commands and sends the messages once. Set to `true`
-and they fire per conversion — which for a full storage means hundreds of command executions, so
+and they fire per conversion, which for a full storage means hundreds of command executions, so
 treat `true` as something you enable deliberately for a cheap action, never for a command.
 
 `<processed_conversions>` in a message is how many conversions actually happened, and

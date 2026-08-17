@@ -45,7 +45,7 @@ boosts:
 
 | Key | Applies to | Meaning |
 |---|---|---|
-| `id` | both | The key used by `/blacksmith giveboost` — keep it equal to the map key |
+| `id` | both | The key used by `/blacksmith giveboost` (keep it equal to the map key) |
 | `material` | both | Bukkit material |
 | `customModelData` | both | `-1` means none |
 | `name` | both | Display name; `{uses}` is substituted |
@@ -66,7 +66,7 @@ boosts:
 Needs `uxmblacksmith.admin`, and the player must be online. The item goes into their inventory, or on
 the ground if it is full.
 
-That is the only built-in way to distribute boosts, which is deliberate — it means your crate
+That is the only built-in way to distribute boosts, which is deliberate: it means your crate
 plugin, shop or reward system hands them out with a console command and you keep one source of truth
 for the item's appearance.
 
@@ -81,7 +81,7 @@ carry three completions.
 ## Active state survives a restart
 
 A running `TIME` boost is a row in `active_boosts` with its start and expiry. Log out with 20 minutes
-left and you come back with 20 minutes left — the clock is wall-clock, not session time.
+left and you come back with 20 minutes left: the clock is wall-clock, not session time.
 
 <Callout type="warning" title="A TIME boost keeps running while the player is offline">
 
@@ -97,7 +97,7 @@ Right-click the item.
 A `TIME` boost applies immediately to every trade the player has running and every one they start
 before it expires. The item is consumed on activation.
 
-An `INSTANT` boost arms the player and opens the main menu — they then click the slot they want
+An `INSTANT` boost arms the player and opens the main menu: they then click the slot they want
 finished. One use is deducted from the item, and the item is returned to their inventory while uses
 remain (or dropped at their feet if it is full).
 
@@ -107,8 +107,8 @@ menu the moment it is applied.
 ## One at a time
 
 A player may hold **one** active `TIME` boost and **one** armed `INSTANT` boost. Right-clicking a
-second while one is running is refused with `timeBoostAlreadyActive` — which reports the running
-multiplier and the seconds left — or `instantBoostAlreadyActive`, and the item is not consumed.
+second while one is running is refused with `timeBoostAlreadyActive` (which reports the running
+multiplier and the seconds left) or `instantBoostAlreadyActive`, and the item is not consumed.
 
 This is why a 4x boost cannot be stacked on top of a 2x one. If you sell boosts, the practical effect
 is that a player buys the best one they can afford rather than several at once.

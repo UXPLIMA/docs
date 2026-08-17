@@ -7,7 +7,7 @@ icon: house
 
 ---
 
-## 🎮 Minecraft Plugins
+## Minecraft Plugins
 
 Premium plugins for Paper/Spigot servers.
 
@@ -24,26 +24,26 @@ Premium plugins for Paper/Spigot servers.
 
 ---
 
-## 📚 Libraries
+## Libraries
 
 Open-source developer tooling.
 
-- **[uxmLib](minecraft/libraries/uxmlib/)** - A modular, Folia-ready toolkit for Paper 1.21+ plugins on Java 21 — GUIs, items, commands, config, storage, integrations & HUD
+- **[uxmLib](minecraft/libraries/uxmlib/)** - A modular, Folia-ready toolkit for Paper 1.21+ plugins on Java 21: GUIs, items, commands, config, storage, integrations & HUD
 
 ---
 
-## 🎲 Roblox
+## Roblox
 
 Coming soon...
 
 ---
 
-## 🌐 Web Platforms
+## Web Platforms
 
 Coming soon...
 
 ---
 
-## 🤖 Discord Bots
+## Discord Bots
 
 Coming soon...

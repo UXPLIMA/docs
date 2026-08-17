@@ -39,7 +39,7 @@ visualizer:
 | `fillColor` | `#33FF33` | Fill colour |
 | `fillOpacity` | `0.35` | Fill opacity, 0–1 |
 
-These are the web map's own colour format — six hex digits, no alpha channel. Opacity is the separate
+These are the web map's own colour format: six hex digits, no alpha channel. Opacity is the separate
 `…Opacity` key. That is different from the in-world `border` colours in `config.yml`, which are
 eight-digit `#RRGGBBAA`.
 
@@ -58,7 +58,7 @@ visualizer:
       - '<span style="color:#22c55e;">• Created:</span> <span style="color:#111827;">%date:claim.creationDate%</span>'
 ```
 
-MiniMessage does **not** work here — `<gray>` renders as a broken HTML tag. Use inline CSS, as the
+MiniMessage does **not** work here, `<gray>` renders as a broken HTML tag. Use inline CSS, as the
 shipped lines do.
 
 Any [placeholder](../placeholders/reference.md) works, including the `count:`, `date:` and `time:`
@@ -75,6 +75,6 @@ tooltip to the name, the owner and counts.
 ## Notes
 
 - **Only one map plugin is used.** With several installed the first detected wins.
-- **The whole claim is drawn, not just the main chunk** — every chunk it owns, as one outline.
+- **The whole claim is drawn, not just the main chunk**: every chunk it owns, as one outline.
 - **`enabled: false` removes the markers entirely,** which is what you want on a server where the map
   is meant to hide player builds.

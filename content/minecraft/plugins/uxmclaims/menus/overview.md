@@ -50,7 +50,7 @@ flowchart TD
 
 - **Left click acts, shift-click does the secondary thing.** On the spawn button, click teleports and
   shift-click sets the spawn. Lore states which is which on every button that has both.
-- **Destructive actions route through a confirmation screen** — `common_confirmation`.
+- **Destructive actions route through a confirmation screen**: `common_confirmation`.
 - **Text input happens in chat, not in an anvil.** The plugin prompts, you type, and `cancel` aborts.
 - **Permissions are honoured in the GUI.** A button you may not use is absent or refuses on click; the
   menu is not a way around [role permissions](../protection/permissions.md).

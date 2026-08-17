@@ -23,7 +23,7 @@ permission plugin as a string, which means unlisted nodes are simply absent unti
 
 ## Bypasses
 
-Every ability node has a bypass twin — replace `ability` with `bypass`:
+Every ability node has a bypass twin: replace `ability` with `bypass`:
 
 | Node | Effect |
 |---|---|
@@ -44,7 +44,7 @@ Each entry in the `blocks` section of `config.yml` may carry its own permission.
 |---|---|
 | `claim.blockchange.obsidian` | Use the obsidian claim block style |
 
-That node is a config value, not a plugin constant — rename it to whatever fits your permission
+That node is a config value, not a plugin constant: rename it to whatever fits your permission
 tree. A style with an empty `permission` is available to everyone.
 
 ## A worked example

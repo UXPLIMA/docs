@@ -67,8 +67,8 @@ randomized:
 Each category holds several `reward_N` keys and one is picked at random. Every list inside the chosen
 key runs.
 
-The keys must be named `reward_1`, `reward_2` and so on. There is no weighting — each is equally
-likely — so to make one outcome rarer, add more copies of the common one.
+The keys must be named `reward_1`, `reward_2` and so on. There is no weighting (each is equally
+likely) so to make one outcome rarer, add more copies of the common one.
 
 Randomized rewards give an event replay value that a fixed table does not: winning first place twice
 does not produce the same prize twice.
@@ -82,14 +82,14 @@ works: `eco give`, `lp user ... parent addtemp`, `crate givekey`, `give`.
 
 Three events a day, each paying `every-other-player` 1000 to everyone who joined, is a large amount
 of money entering your economy every day. Set `event-price` against it, and prefer items and keys
-over currency for the places — a dragon head is a trophy, and money is inflation.
+over currency for the places: a dragon head is a trophy, and money is inflation.
 
 </Callout>
 
 ## Nobody wins
 
 If the dragon is not killed within `dragon-event-time`, the event ends with the `timed-out` message
-and **no rewards at all** — not even `every-other-player`. Players who paid to enter get nothing.
+and **no rewards at all**, not even `every-other-player`. Players who paid to enter get nothing.
 
 That is the correct behaviour for a challenge, but it is worth knowing when you tune the dragon's
 health: an event that times out regularly is one players stop paying to enter.

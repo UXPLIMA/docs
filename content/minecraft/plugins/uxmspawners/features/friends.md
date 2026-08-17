@@ -13,7 +13,7 @@ friends:
   permission: uxmspawners.friends
 ```
 
-A friend can do everything the owner can — open the menu, withdraw, sell, toggle the modules —
+A friend can do everything the owner can (open the menu, withdraw, sell, toggle the modules)
 with two exceptions they cannot do: **break the spawner** and **add more friends**. Those stay
 with the owner.
 

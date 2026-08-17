@@ -7,7 +7,7 @@ icon: flask-conical
 
 `uxmlib-npc`, `uxmlib-packet` and `uxmlib-nametags` are an in-progress, clean-room packet foundation.
 
-<Callout type="warning" title="Experimental — unstable APIs">
+<Callout type="warning" title="Experimental: unstable APIs">
 
 These three modules are a preview. Names and signatures may change without notice until they
 graduate, and parts are still landing. The stable toolkit does not depend on them, so you can ignore
@@ -23,7 +23,7 @@ public API precisely so it keeps working across point releases; these three are 
 exception, for the cases that have no other route.
 
 PacketEvents is the off-the-shelf answer and is GPL, which would make uxmLib GPL. None of it is
-borrowed — the Netty plumbing is re-implemented for Paper 1.21+, and the unavoidable NMS is
+borrowed: the Netty plumbing is re-implemented for Paper 1.21+, and the unavoidable NMS is
 quarantined in single, named classes behind pure ports built against the Mojang-mapped dev bundle.
 
 ## uxmlib-npc
@@ -32,14 +32,14 @@ The pipeline foundation, and no NPC yet despite the name:
 
 - channel resolution for a player
 - idempotent inject and eject, so double-injection is not a state to get into
-- a self-healing reorder watchdog — another plugin inserting itself into the pipeline does not
+- a self-healing reorder watchdog: another plugin inserting itself into the pipeline does not
   silently disable yours
 - a fail-open listener seam: a listener that throws does not drop the connection
 
 ## uxmlib-packet
 
-Shared Mojang-mapped helpers — Adventure to vanilla component conversion, packet bundling, the
-stream-codec buffer trick, guarded reflection, entity-id allocation — plus per-viewer ports for tab
+Shared Mojang-mapped helpers: Adventure to vanilla component conversion, packet bundling, the
+stream-codec buffer trick, guarded reflection, entity-id allocation, plus per-viewer ports for tab
 list, NPCs and text displays built on them.
 
 ## uxmlib-nametags
@@ -66,6 +66,6 @@ If you do:
 - Expect to update on Minecraft point releases. NMS is quarantined, not eliminated.
 - Keep them behind an interface of your own, so replacing them later is one class.
 
-For anything the public API can do — a hologram everyone sees the same, a sidebar, a boss bar — use
+For anything the public API can do (a hologram everyone sees the same, a sidebar, a boss bar) use
 [`uxmlib-integration`](integration.md) and [`uxmlib-hud`](hud.md) instead. They are stable, and they
 survive server updates without you doing anything.

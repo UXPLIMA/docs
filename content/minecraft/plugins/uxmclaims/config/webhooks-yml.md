@@ -23,7 +23,7 @@ senders:
     webhookUrl: 'WEBHOOK_URL'
 ```
 
-Two ship. Add as many as you like — the point of more than one is routing: player-visible events to a
+Two ship. Add as many as you like: the point of more than one is routing: player-visible events to a
 public channel, deletions and expiries to a staff channel.
 
 Create the URL in Discord under **Edit Channel → Integrations → Webhooks → New Webhook**.
@@ -43,7 +43,7 @@ Each event gets a block naming the senders to post through and the embed to buil
 | `footer.text`, `footer.icon` | Footer |
 | `author.name`, `author.avatarUrl` | Author line above the title |
 
-Placeholders work in every text field — `%claim.name%`, `%claim.owner.name%`,
+Placeholders work in every text field, `%claim.name%`, `%claim.owner.name%`,
 `%count:claim.chunks%` and the rest. See [Placeholders](../placeholders/reference.md).
 
 ## The events
@@ -69,7 +69,7 @@ Placeholders work in every text field — `%claim.name%`, `%claim.owner.name%`,
 - **Start with two or three events.** `ClaimChunkCreateEvent` fires every time anyone buys a chunk,
   which on a busy server is a message every few seconds and a rate-limited webhook.
 
-- **Route deletions and expiries to a staff channel.** They are the ones worth an audit trail —
+- **Route deletions and expiries to a staff channel.** They are the ones worth an audit trail:
   "my base is gone" is answerable in seconds if the deletion is in Discord with a timestamp.
 
 - **Webhooks are a side effect, and side effects can be switched off in the API.** A plugin calling

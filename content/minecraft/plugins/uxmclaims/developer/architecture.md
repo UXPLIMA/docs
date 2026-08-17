@@ -13,10 +13,10 @@ setters.
 
 | Module | Contains | Depends on |
 |---|---|---|
-| `uxmclaims-domain` | The model — `Claim`, `ClaimMember`, `ClaimRole`, the enums, the events | nothing |
+| `uxmclaims-domain` | The model (`Claim`, `ClaimMember`, `ClaimRole`, the enums, the events) | nothing |
 | `uxmclaims-core` | Policies and rules, such as permission resolution | domain |
 | `uxmclaims-app` | The facades, the command objects and the ports | domain, core |
-| `uxmclaims-infra` | The repositories — jOOQ against the database | app |
+| `uxmclaims-infra` | The repositories (jOOQ against the database) | app |
 | `uxmclaims-platform-bukkit` | Everything Bukkit: commands, menus, listeners, integrations | all |
 
 The Bukkit module is split further into `api`, `bootstrap`, `handlers` and `infra`. `api` is the part
@@ -38,7 +38,7 @@ platform.
 | `MapVisualizerPort` | `DynmapVisualizer`, `BlueMapVisualizer`, `Pl3xMapVisualizer`, `SquareMapVisualizer`, `NoopMapVisualizer` |
 
 Every port has a `Noop` implementation. That is why the plugin runs with none of its soft dependencies
-installed — the missing integration is not a special case, it is an adapter that does nothing.
+installed: the missing integration is not a special case, it is an adapter that does nothing.
 
 ## Commands and queries
 
@@ -65,7 +65,7 @@ Claim renamed = claimFacade.renameClaim(command);
 ```
 
 The command carries the actor, which is what lets one code path enforce permissions, charge the
-economy, fire the event and post the webhook — rather than every caller remembering to.
+economy, fire the event and post the webhook, rather than every caller remembering to.
 
 ## Side effects
 
@@ -95,7 +95,7 @@ claimFacade.createClaim(command, ClaimCommandOptions.builder()
 `ClaimCommandOptions.all()` is the default, and `none()` disables everything.
 
 This is how an admin tool, a world generator or a migration script creates claims without charging
-anyone, spamming Discord or tripping a limit — without reimplementing the write path.
+anyone, spamming Discord or tripping a limit, without reimplementing the write path.
 
 <Callout type="warning" title="none() also disables the permission check">
 

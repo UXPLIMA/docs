@@ -133,4 +133,4 @@ your island to visitors any time with `/is lock`.
 | Set a warp | `/is setwarp <name>` |
 | See rankings | `/is top` |
 
-Next: [🧠 Core Concepts](concepts.md)
+Next: [Core Concepts](concepts.md)

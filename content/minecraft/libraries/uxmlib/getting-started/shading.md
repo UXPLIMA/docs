@@ -19,7 +19,7 @@ tasks.shadowJar {
 
 The config and storage layers find their codecs through the JDK `ServiceLoader`. Shadow's
 `minimize()` removes classes it cannot see referenced, and a service implementation is referenced
-only by a text file under `META-INF/services` — so minimisation strips exactly the classes that make
+only by a text file under `META-INF/services`, so minimisation strips exactly the classes that make
 config parsing work.
 
 The failure is a missing-serializer error at runtime, long after the build succeeded.
@@ -36,7 +36,7 @@ tasks.shadowJar {
 <Callout type="tip" title="Test the shaded jar, not the classpath">
 
 Both of these problems only appear in the built artifact. A plugin that runs from your IDE proves
-nothing about the jar you ship — load the shaded jar on a real server once before releasing.
+nothing about the jar you ship: load the shaded jar on a real server once before releasing.
 
 </Callout>
 
@@ -53,7 +53,7 @@ Shading uxmLib brings its dependencies with it:
 |---|---|
 | `uxmlib-common` | Configurate (HOCON) |
 | `uxmlib-storage` | HikariCP, Caffeine, the SQLite driver |
-| `uxmlib-redis` | Nothing — Lettuce is compile-only |
+| `uxmlib-redis` | Nothing (Lettuce is compile-only) |
 
 Adventure, MiniMessage and Brigadier are provided by Paper and are never shipped, whichever route you
 take.

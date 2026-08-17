@@ -20,7 +20,7 @@ One command: `/blacksmith`. Aliases `/bsmith`, `/uxmblacksmith`, `/smith`.
 Any unrecognised subcommand opens the main menu rather than printing an error, so a player who types
 `/blacksmith help` gets somewhere useful.
 
-All three are player-only. There are no permission nodes on them — if a player can run the command,
+All three are player-only. There are no permission nodes on them, if a player can run the command,
 they can open the menu. Gating happens at the slot and category level.
 
 ## Admin
@@ -96,13 +96,13 @@ Saving a real `ItemStack` so a trade can use it as a reward or a requirement.
 Reference a saved item in a trade with `material: SAVE` and
 `customItemData: { customItemID: <name> }`, or the shorthand `material: 'SAVE:<name>'`.
 
-Every subcommand needs the `SAVE` hook enabled — it is on by default. Without it the plugin answers
+Every subcommand needs the `SAVE` hook enabled: it is on by default. Without it the plugin answers
 `binaryNotEnabled`.
 
 <Callout type="danger" title="binary clear is not reversible">
 
 `/blacksmith binary clear` without `confirm` only prints a prompt. With it, every saved item is
-deleted and every trade referencing one stops loading. Back up `binary_files/` first — there is no
+deleted and every trade referencing one stops loading. Back up `binary_files/` first: there is no
 undo beyond that copy.
 
 </Callout>
@@ -110,5 +110,5 @@ undo beyond that copy.
 ## Tab completion
 
 Everything completes, including saved item names, boost ids, mastery keys and online players.
-Non-admins see only the three player subcommands — the admin branches are not suggested and not
+Non-admins see only the three player subcommands: the admin branches are not suggested and not
 reachable.

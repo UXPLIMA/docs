@@ -36,7 +36,7 @@ collected-materials:
 | `levels` | The upgrade ladder, keyed by level number starting at 0 |
 
 The key is a Bukkit material name. A material the farmer collects but which has no entry here has no
-price and no capacity — so the first thing to check when a product will not sell is whether it is in
+price and no capacity, so the first thing to check when a product will not sell is whether it is in
 this file.
 
 `sellable: false` gives a product that accumulates and can only be withdrawn, which is how you
@@ -48,8 +48,8 @@ Every level key is documented on
 [Storage and Levels](../features/storage-and-levels.md#what-a-level-defines). The two that decide
 the shape of your economy:
 
-- `capacity` — how long a player can be away before their farm stalls
-- `price` — what the next step costs
+- `capacity`: how long a player can be away before their farm stalls
+- `price`: what the next step costs
 
 The default ladder runs 2,500 → 10,000 → 20,000 → 30,000 capacity while prices go
 1,000 → 1,000 → 4,500 → 20,000. Capacity grows linearly and price grows steeply, which is the
@@ -58,7 +58,7 @@ correct direction: the last upgrade should be a serious purchase.
 ## Which ladder applies
 
 A product with its own `levels` section uses it. A product without one falls back to
-`default-levels.yml` entirely — you cannot mix, and there is no partial inheritance between the two
+`default-levels.yml` entirely: you cannot mix, and there is no partial inheritance between the two
 files.
 
 Inside a single ladder, `unit-price` and `tax-price` *do* inherit from the last level that stated
@@ -79,7 +79,7 @@ levels:
 
 ## Editing products safely
 
-Adding a product, or adding levels to the top of an existing ladder, is safe — reload and it is
+Adding a product, or adding levels to the top of an existing ladder, is safe: reload and it is
 live.
 
 Removing levels from the middle, or removing a product players have stock in, is not. A farmer
@@ -90,7 +90,7 @@ set its `sellable: false` and leave the ladder in place until stocks have draine
 
 `/uxmfarmer reload` re-reads the files; it does not adjust stored levels or stored amounts. To move
 players off a level you are deleting, use `/uxmfarmer setproductlevel` on the affected farmers
-first — `/uxmfarmer nearfarmers` and `/uxmfarmer uuidof` will find them.
+first: `/uxmfarmer nearfarmers` and `/uxmfarmer uuidof` will find them.
 
 </Callout>
 

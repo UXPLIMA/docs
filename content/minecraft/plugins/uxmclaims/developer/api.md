@@ -53,7 +53,7 @@ boolean canBuild = claims.findByLocation(loc)
         .orElse(true);   // wilderness is not protected
 ```
 
-That is the whole of "may this player build here" — including bans, ownership, per-member overrides
+That is the whole of "may this player build here", including bans, ownership, per-member overrides
 and role fallback, because `hasPermission` resolves all of it.
 
 ## Writing
@@ -79,8 +79,8 @@ Claim claim = claims.renameClaim(
 | Roles | `createRole`, `deleteRole`, `renameRole`, `updateRolePriority`, `updateRolePermission` |
 | Warps | `createWarp`, `deleteWarp`, `renameWarp`, `relocateWarp`, `updateWarpVisibility` |
 
-Each command class mirrors its method name — `ClaimRenameCommand`, `ClaimMemberBanCommand`,
-`ClaimWarpCreateCommand` — and all of them carry the `actorUid` the permission check runs against.
+Each command class mirrors its method name (`ClaimRenameCommand`, `ClaimMemberBanCommand`,
+`ClaimWarpCreateCommand`) and all of them carry the `actorUid` the permission check runs against.
 
 ## Controlling side effects
 
@@ -104,7 +104,7 @@ usually want. Prefer removing effects individually.
 
 ## Threading
 
-Writes touch the database. Call them off the main thread, or accept the tick cost — the facade does
+Writes touch the database. Call them off the main thread, or accept the tick cost: the facade does
 not schedule for you. Reads are served from cache and are cheap.
 
 ## PlayerFacade

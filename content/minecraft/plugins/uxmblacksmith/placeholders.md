@@ -17,7 +17,7 @@ PlaceholderAPI is installed. Every placeholder returns an empty string for a nul
 
 | Placeholder | Returns |
 |---|---|
-| `%uxmblacksmith_maxslots%` | Slots the player has — **99** for `uxmblacksmith.admin` |
+| `%uxmblacksmith_maxslots%` | Slots the player has (**99** for `uxmblacksmith.admin`) |
 | `%uxmblacksmith_freeslots%` | Slots not currently in use |
 | `%uxmblacksmith_usedslots%` | Trades running |
 | `%uxmblacksmith_alltrades%` | Pending trades server-wide |
@@ -33,7 +33,7 @@ the same four.
 | `%uxmblacksmith_time_left_<n>%` | The same |
 
 `n` is the slot number, 1 to 10. An empty slot returns the `tradeEmptyPlaceholder` message, not a
-blank — which is what you want on a scoreboard.
+blank, which is what you want on a scoreboard.
 
 The value reflects any active boost, so a 2x boost visibly halves the countdown.
 
@@ -59,7 +59,7 @@ The value reflects any active boost, so a 2x boost visibly halves the countdown.
 
 ### Masteries
 
-Suffix with the mastery key — the category key unless a trade overrides it.
+Suffix with the mastery key: the category key unless a trade overrides it.
 
 | Placeholder | Returns |
 |---|---|
@@ -72,7 +72,7 @@ Suffix with the mastery key — the category key unless a trade overrides it.
 
 `mastery_xp_required_<key>` is accepted as well as `mastery_required_xp_<key>`.
 
-`mastery_name_swords` returns "Blades" on the shipped config — use it so a scoreboard shows the name
+`mastery_name_swords` returns "Blades" on the shipped config: use it so a scoreboard shows the name
 players see rather than the internal key.
 
 ### Perks
@@ -98,10 +98,10 @@ Suffix with the perk key.
 | `%uxmblacksmith_analytics_today_started%` | Trades started today, UTC |
 | `%uxmblacksmith_analytics_today_completed%` | Completed |
 | `%uxmblacksmith_analytics_today_burned%` | Burned |
-| `%uxmblacksmith_analytics_today_cancelled%` | Cancelled — `canceled` also works |
+| `%uxmblacksmith_analytics_today_cancelled%` | Cancelled (`canceled` also works) |
 | `%uxmblacksmith_analytics_today_failed%` | Failed |
 
-Server-wide, not per player, and read from a cached snapshot — safe on a scoreboard that refreshes
+Server-wide, not per player, and read from a cached snapshot: safe on a scoreboard that refreshes
 every tick.
 
 ## GUI placeholders
@@ -114,7 +114,7 @@ These resolve inside `gui.yml` layouts and trade lore only.
 |---|---|
 | `{success_chance}` | The **resolved** chance for this player, including multipliers and mastery |
 | `{required_time}` | The trade's configured duration |
-| `{required_blacksmith_level}` | `reqLevel` — `{requiredblacksmithlevel}` also works |
+| `{required_blacksmith_level}` | `reqLevel` (`{requiredblacksmithlevel}` also works) |
 | `{required_mastery_level}` | `requiredMasteryLevel` |
 | `{remaining_trade_slots}` | How many more of this trade the player may run |
 | `{reward_as_command}` | Yes or No, from `rewardAsCommandTrue` / `rewardAsCommandFalse` |
@@ -154,7 +154,7 @@ These resolve inside `gui.yml` layouts and trade lore only.
 | `{top_mastery_1_name}` … `{top_mastery_3_name}` | The player's three highest masteries |
 | `{top_mastery_1_level}` … `{top_mastery_3_level}` | Their levels |
 
-Useful on the main menu — a one-line summary of what the player has specialised in.
+Useful on the main menu: a one-line summary of what the player has specialised in.
 
 <Callout type="tip" title="Show {success_chance}, not the config number">
 

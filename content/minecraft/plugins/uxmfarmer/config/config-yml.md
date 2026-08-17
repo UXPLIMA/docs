@@ -76,7 +76,7 @@ sounds:
   blacklisted-world: BLOCK_ANVIL_BREAK
 ```
 
-Any Bukkit sound name. These are the feedback sounds for refusals — leave them distinct from each
+Any Bukkit sound name. These are the feedback sounds for refusals: leave them distinct from each
 other so a player can tell what went wrong without reading.
 
 ## Log cleaner

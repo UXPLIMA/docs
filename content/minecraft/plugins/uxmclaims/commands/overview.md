@@ -8,7 +8,7 @@ icon: list-tree
 Everything lives under one root, `/claim`, with six sub-roots below it.
 
 ```
-/claim                  the smart root — see Claim commands
+/claim                  the smart root, see Claim commands
 ├── chunk    …          add and remove land
 ├── block    …          the visual claim block
 ├── invite   …          the invitation flow
@@ -57,7 +57,7 @@ Destructive actions route through a confirmation step, then `/claim confirm` or 
 | Teleporting to a public warp in a PvP claim | yes |
 | `/claim ban` | no |
 
-`/claim ban` is deliberately immediate — it exists for the moment someone is already causing damage.
+`/claim ban` is deliberately immediate: it exists for the moment someone is already causing damage.
 
 ## Aliases
 
