@@ -121,6 +121,9 @@ Rules that are easy to get wrong:
   brand blue. You never need to colour a title yourself.
 - `✎` is the description header and `≡` is the information header. Don't swap them.
 - The description header is mandatory: body lines never hang under the breadcrumb.
+- Keep a description line to about 34 characters and break the sentence across lines. A line that
+  runs wider reads as a paragraph instead of a label, and the plugin's own blocks are all written
+  this way.
 - Every line opens and closes with one space.
 - A state is a coloured **word** (`ᴇɴᴀʙʟᴇᴅ` green, `ᴅɪꜱᴀʙʟᴇᴅ` red), never a tick or cross.
 - An item that carries information carries at least six filled lines.
@@ -128,7 +131,8 @@ Rules that are easy to get wrong:
 ## Titles, navigation and sound
 
 **Titles** are centred and bare: no colour, no bold, no dashes around them. The plugin centres each
-one and strips whatever styling it finds, so a title key is written as plain text with no tag at all.
+one with the client's own font metrics and strips whatever styling it finds, so a title key is
+written as plain text with no tag at all.
 
 **Navigation buttons** are an `ARROW` with a single-line name and no lore:
 
