@@ -21,26 +21,49 @@ message never clashes with the rest of the UI: every line pulls from the same pa
 
 | Token | Use it for | Colour |
 |---|---|---|
-| `<value>` / `<accent>` | Names, `{placeholder}` values, coordinates | cyan |
-| `<body>` | The sentence itself, field labels: the default reading colour | cream |
-| `<cta>` | "Click to…", `/command` hints: the next action | orange |
-| `<money>` / `<good>` | Money amounts and success words | green |
-| `<bad>` | Error / denial wording | red |
-| `<level>` | Counts, page numbers, quantities | yellow |
-| `<muted>` | Dates, breadcrumbs, list bullets, parentheticals | gray |
-| `<tag:'X'>` | The chat prefix for a normal message (`X` = module label) | gold gradient |
-| `<etag:'X'>` | The chat prefix for an error/denial | red gradient |
-| `<h:'X'>` | A gold-gradient bold header: GUI titles and lore titles | gold gradient |
+| `<accent>` | Brand accent, section labels, navigation | sky `#38B6FF` |
+| `<value>` | A name, an amount, a number, a duration | ice `#8FD9FF` |
+| `<body>` | The sentence itself and field labels | white |
+| `<subtext>` | Lore description lines | `#DDE8F0` |
+| `<muted>` | Dates, counters, parentheticals | `#93A4B3` |
+| `<dim>` | Separators and disabled state | `#6B7886` |
+| `<icon>` | The glyph at the head of a lore line | `#8A93A1` |
+| `<crumb>` | The breadcrumb under a lore title | `#565F6B` |
+| `<good>` | Success, enabled, incoming money | green `#5BE38C` |
+| `<bad>` | Error, denial, disabled | red `#FF6B6B` |
+| `<money>` `<level>` `<cta>` | An amount, a highlighted number, the click word | gold `#FFC93C` |
+| `<info>` | A section header inside lore | cyan `#4FD6E8` |
+| `<rank>` `<event>` | Rank tiers, events and bonuses | purple, pink |
 
 The solid-colour tokens wrap their content (`<value>Steve</value>`). The composite tokens
-(`<tag:'HOME'>`, `<etag:'ERROR'>`, `<h:'Your Homes'>`) take one quoted argument and are
-self-closing.
+take one quoted argument and are self-closing:
+
+| Token | Renders |
+|---|---|
+| `<tag:'HOME'>` | The category prefix: the label bold in small capitals, then a dim `▶` |
+| `<etag:'…'>` | The red `ᴇʀʀᴏʀ` word and the dim `▶` |
+| `<h:'Home Panel'>` | A bold sky header, written in small capitals |
+
+A category prefix is sky unless the category is about money (`ECONOMY`, `BANK`, `LOAN`, `TRADE`,
+`VAULT`), where it turns green so a balance line is recognisable before it is read.
+
+## Small capitals
+
+Fixed text is written in small capitals: `ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ`. Note that `x` has no
+small-capital form and stays as it is, and `q` becomes `ǫ`.
+
+Digits, symbols, `{placeholders}`, `%papi%` tokens, tag names and `/command` literals stay in
+ordinary characters, so a player can read a number and type a command. A player's own name arrives
+as they spell it.
+
+The argument of `<tag:>`, `<etag:>` and `<h:>` is written in plain ASCII: the tag converts it when it
+renders, so you never type the glyphs by hand.
 
 <Callout type="danger" title="Never inline hex or legacy codes">
 
-Don't write `<#7cc7ff>`, `<gradient:#…>`, `&a`, or `§a` in a restyled line. Reference
-a token instead. A raw hex in a catalog is treated as a regression and flagged by the
-build's drift checks.
+Don't write `<#8fd9ff>`, `<gradient:#…>`, `&a`, `§a` or a named colour like `<red>` in a
+restyled line. Reference a token instead. A raw hex in a catalog is treated as a regression
+and flagged by the build's drift checks.
 
 Also never put a `{placeholder}` **inside** a tag argument (e.g. `<h:'Home {home}'>`):
 a value containing a quote or angle bracket would break the tag. Put dynamic values
@@ -48,68 +71,120 @@ outside the argument: `<h:'Home'> <value>{home}</value>`.
 
 </Callout>
 
-## The line shapes
+## Chat lines
 
-**Chat / feedback.** Lead with a prefix, colour the parts by role, end with a status
-glyph where it reads well:
-
-```hocon
-"pay.sent" = "<tag:'ECONOMY'> You paid <money>{amount}</money> to <value>{player}</value>. 💰"
-"command.no-permission" = "<etag:'ERROR'> <bad>You don't have permission.</bad> ✗"
-```
-
-Use `<tag:'MODULE'>` for normal messages and `<etag:'MODULE'>` for errors and denials,
-where `MODULE` is the feature label (`HOME`, `WARP`, `ECONOMY`, …).
-
-**GUI item lore.** Descriptive lore follows a fixed beat, written as one `<newline>`-joined
-string: a crest + title, a muted breadcrumb, a section header, body lines, then the action.
+Lead with a prefix, colour the parts by role, and stop there. A chat line carries **no** trailing
+tick, cross or emoji: a red `ᴇʀʀᴏʀ ▶` already says the action failed.
 
 ```hocon
-" ⛨ <h:'Home Panel'><newline>    <muted>Your saved homes</muted><newline><newline> ✎ <accent>Description</accent><newline>   <body>Teleport to a saved location instantly.</body><newline><newline> ▶ <cta>Click to teleport</cta>"
+"pay.sent" = "<tag:'ECONOMY'> <body>ʏᴏᴜ ᴘᴀɪᴅ</body> <money>{amount}</money> <body>ᴛᴏ</body> <value>{player}</value>."
+"command.no-permission" = "<etag:'ERROR'> <bad>ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪꜱꜱɪᴏɴ.</bad>"
 ```
 
-A labelled fact inside lore is one info row: a muted `|` bullet, a `<body>` label, the
-value, and a matching glyph:
+The category word does not repeat in the body, and at most two accent colours appear in one line.
+A key that is embedded inside another message (a currency format, a list row, a help entry) carries
+no prefix at all.
+
+## GUI item lore
+
+Every item carries one block, and the block opens with its title. Writing the item's display name
+blank and letting the lore title carry the name is the cleanest result: it hides the material name and
+puts a line of space above the title. The order of the lines is fixed:
+
+```text
+ ◆ ʜᴏᴍᴇ
+    ᴏɴᴇ ᴏꜰ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ʜᴏᴍᴇꜱ
+
+ ✎ ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ
+    ᴀ ᴘʟᴀᴄᴇ ʏᴏᴜ ꜱᴀᴠᴇᴅ, ᴏɴᴇ ᴄʟɪᴄᴋ ᴀᴡᴀʏ.
+
+ ≡ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ
+    • ᴡᴏʀʟᴅ world
+    • ᴀᴛ 120, 64, -32
+
+ → ᴄʟɪᴄᴋ ᴛᴏ ᴍᴀɴᴀɢᴇ ᴛʜɪꜱ ʜᴏᴍᴇ
+```
+
+Written out, that is one `<newline>`-joined string:
 
 ```hocon
-"<muted>|</muted> <body>Balance:</body> <money>{bal}</money> 💰"
+" <icon>◆</icon> <h:'Home'><newline>    <crumb>ᴏɴᴇ ᴏꜰ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ʜᴏᴍᴇꜱ</crumb><newline><newline> <icon>✎</icon> <info>ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ</info><newline>    <subtext>ᴀ ᴘʟᴀᴄᴇ ʏᴏᴜ ꜱᴀᴠᴇᴅ, ᴏɴᴇ ᴄʟɪᴄᴋ ᴀᴡᴀʏ.</subtext><newline><newline> <icon>≡</icon> <info>ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ</info><newline>    <icon>•</icon> <body>ᴡᴏʀʟᴅ</body> <value>{world}</value><newline><newline> <icon>→</icon> <cta>ᴄʟɪᴄᴋ</cta> <subtext>ᴛᴏ ᴍᴀɴᴀɢᴇ ᴛʜɪꜱ ʜᴏᴍᴇ</subtext>"
 ```
+
+Rules that are easy to get wrong:
+
+- `✎` is the description header and `≡` is the information header. Don't swap them.
+- The description header is mandatory: body lines never hang under the breadcrumb.
+- Every line opens and closes with one space.
+- A state is a coloured **word** (`ᴇɴᴀʙʟᴇᴅ` green, `ᴅɪꜱᴀʙʟᴇᴅ` red), never a tick or cross.
+- An item that carries information carries at least six filled lines.
+
+## Titles, navigation and sound
+
+**Titles** are centred, colourless and unbolded, framed in dashes. The plugin centres them for you,
+so a title key is written as plain text with no colour tag.
+
+**Navigation buttons** are an `ARROW` with a single-line name and no lore:
+
+```hocon
+"home.menu.prev"      = "<accent>← ᴘʀᴇᴠɪᴏᴜꜱ ᴘᴀɢᴇ</accent>"
+"home.menu.next"      = "<accent>→ ɴᴇxᴛ ᴘᴀɢᴇ</accent>"
+"home.menu.page-info" = "<muted>ᴘᴀɢᴇ</muted> <value>{page}</value><dim>/</dim><value>{max_page}</value>"
+```
+
+**Sound** is part of the look. Every menu declares an open sound through the engine's
+`sound:<key> <volume> <pitch>` action on `open-actions`. Click feedback is automatic: the engine
+plays it for every gesture it accepts, so your own menus get it without writing anything. A slot
+with nothing bound to it stays silent, and a click that declares its own `sound:` effect replaces
+the default rather than stacking on top of it.
+
+| Event | Sound | volume / pitch |
+|---|---|---|
+| Menu opens | `ITEM_BOOK_PAGE_TURN` | 0.7 / 1.2 |
+| Confirm, positive | `BLOCK_NOTE_BLOCK_PLING` | 0.6 / 1.5 |
+| Cancel, danger | `BLOCK_NOTE_BLOCK_BASS` | 0.6 / 0.9 |
+| Pagination | `ITEM_BOOK_PAGE_TURN` | 0.7 / 1.0 |
+| A requirement refused the click | `BLOCK_NOTE_BLOCK_BASS` | 0.6 / 0.9 |
+| Money | `BLOCK_NOTE_BLOCK_BELL` | 0.5 / 1.5 |
+| Anything else | `UI_BUTTON_CLICK` | 0.5 / 1.6 |
+
+Filler panes stay silent. Keep volumes low: a menu is clicked far more often than anything else in
+the game.
 
 ## Glyph legend
 
-These are plain Unicode characters (no resource pack). Use each for its meaning:
+These are plain Unicode characters (no resource pack). Each one has one meaning:
 
 | Glyph | Meaning |
 |---|---|
-| `▶` | Action / "click to…" |
-| `✎` | Section header inside lore |
-| `⛨` | Panel / module crest (lore title line) |
-| `ℹ` | Neutral information |
-| `🧭` | Location, world, teleport |
-| `💰` | Money, balance, payment |
-| `🏆` | Ranking, leaderboard |
-| `👑` | Ownership |
-| `📅` | A date or time |
-| `👥` | People / members |
-| `✓` / `✗` | Success / denial |
+| `▶` | The separator after a chat prefix, and nothing else |
+| `◆` | The title line of a lore block |
+| `✎` | The description header |
+| `≡` | The information header |
+| `•` | A bullet inside an information row |
+| `→` | An action line, and the next-page button |
+| `←` | The previous-page and back buttons |
+
+Emoji are not used anywhere. If a fact needs marking, it is marked by colour and by a word.
 
 ## Styling menus
 
 Custom menus in `plugins/uxmEssentials/menus/*.conf` are styled with the **same
 MiniMessage tags**. Titles, item names, and lore in a menu file are written **verbatim**:
 they are not routed through the message catalogs, so you can style them however you like,
-though matching the palette above keeps them consistent with the built-in GUIs.
+though matching the conventions above keeps them consistent with the built-in GUIs.
 
 ```hocon
 # menus/example.conf
-title = "<h:'Example Menu'>"
+title = "Example Menu"
 rows = 3
+open-actions = ["sound:ITEM_BOOK_PAGE_TURN 0.7 1.2"]
 items {
   spawn {
     slot = 11
     material = COMPASS
-    name = "<cta>Go to spawn</cta>"
-    lore = [" ▶ <cta>Click to teleport</cta>"]
+    name = ""
+    lore = [" <icon>◆</icon> <h:'Spawn'><newline>    <crumb>ꜱᴇʀᴠᴇʀ ʟᴏᴄᴀᴛɪᴏɴ</crumb><newline><newline> <icon>→</icon> <cta>ᴄʟɪᴄᴋ</cta> <subtext>ᴛᴏ ᴛᴇʟᴇᴘᴏʀᴛ</subtext>"]
     click { left = ["command:spawn", "close"] }
   }
 }
@@ -120,11 +195,13 @@ conventions: treat them as worked examples if you are building your own.
 
 ## A few rules of thumb
 
-- **Do** reference colours by token, use `<h:'…'>` for headers, and end chat lines with
-  the matching status glyph.
-- **Do** use normal capitalization: Title Case for headers, sentence case for body text.
-- **Don't** inline hex or legacy `&`/`§` codes, invent new tokens, or rename
-  `{placeholders}`.
+- **Do** reference colours by token and let `<tag:>`, `<etag:>` and `<h:>` do the prefixes and headers.
+- **Do** give every menu a deliberate layout: a border, grouped rows, centred content. A default grid
+  with new colours still reads as a default grid.
+- **Do** pick a vanilla material that says what the item is. Use a head only when the head *is* the
+  information (a player entry, an owner).
+- **Don't** inline hex or legacy `&`/`§` codes, invent new tokens, or rename `{placeholders}`.
+- **Don't** end a chat line with a tick, a cross or an emoji.
 - Styling is language-independent: when you restyle a key in one language, apply the same
   token edit to the matching key in every other language file.
 

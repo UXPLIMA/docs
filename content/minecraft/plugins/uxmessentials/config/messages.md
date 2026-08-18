@@ -67,16 +67,16 @@ literally instead of colouring the line.
 
 ## Languages that ship
 
-Two catalogs are bundled and kept in perfect key-parity:
+One catalog is bundled:
 
 | File | Language |
 |---|---|
 | `messages_en.conf` | English |
-| `messages_tr.conf` | Turkish |
 
-Both carry the same key set, only the words differ. To add a language, copy an existing
-file to `messages_<code>.conf` (e.g. `messages_de.conf`), translate the **values**, and
-leave every key in place.
+The English catalog is written in the small capitals the interface style uses, and it is the
+authoritative key set. To add a language, copy it to `messages_<code>.conf` (e.g. `messages_de.conf`),
+translate the **values**, and leave every key in place. A translated catalog is written in ordinary
+letters for any language whose alphabet small capitals do not cover.
 
 The fallback language is set once, in the globals file:
 
@@ -100,7 +100,7 @@ Players manage their own override with:
 
 ```text
 /lang            # show your current language and the available codes
-/lang tr         # switch yourself to Turkish
+/lang de         # switch yourself to another installed language
 /lang reset      # clear the override and follow your client locale again
 ```
 

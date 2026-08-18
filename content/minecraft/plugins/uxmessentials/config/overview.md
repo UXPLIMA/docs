@@ -66,7 +66,6 @@ plugins/uxmEssentials/
 │   └── … one folder per module (homes, warps, kits, moderation, …)
 ├── messages/
 │   ├── messages_en.conf            # player-facing text (English)
-│   └── messages_tr.conf            # player-facing text (Turkish)
 ├── commands/
 │   └── commands.conf               # rename / realias / disable any command
 ├── menus/
