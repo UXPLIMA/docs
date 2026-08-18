@@ -89,8 +89,9 @@ no prefix at all.
 
 Every item carries one block, and the block opens with its title. The plugin writes that title line
 itself, from the item's own name, and leaves the display name blank: that hides the material name and
-puts a line of space above the title. A lore block you write therefore starts at the breadcrumb, one
-line below. The order of the lines is fixed:
+puts a line of space above the title. It closes the block with a blank line too, so the last line has
+the same air under it. A lore block you write therefore starts at the breadcrumb, one line below, and
+stops at its last written line. The order of the lines is fixed:
 
 ```text
  ◆ ʜᴏᴍᴇ                          (written for you, from the item's name)
@@ -104,6 +105,7 @@ line below. The order of the lines is fixed:
     • ᴀᴛ 120, 64, -32
 
  → ᴄʟɪᴄᴋ ᴛᴏ ᴍᴀɴᴀɢᴇ ᴛʜɪꜱ ʜᴏᴍᴇ
+                                 (written for you: the closing blank line)
 ```
 
 Written out, that is one `<newline>`-joined string:
@@ -114,6 +116,9 @@ Written out, that is one `<newline>`-joined string:
 
 Rules that are easy to get wrong:
 
+- The title is drawn bold, in a gradient. Its family follows the colour you gave the item's name: a
+  delete stays red, money stays green, a call to act stays gold, and anything else reads in the
+  brand blue. You never need to colour a title yourself.
 - `✎` is the description header and `≡` is the information header. Don't swap them.
 - The description header is mandatory: body lines never hang under the breadcrumb.
 - Every line opens and closes with one space.
