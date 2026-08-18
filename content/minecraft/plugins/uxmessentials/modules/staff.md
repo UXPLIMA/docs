@@ -44,23 +44,23 @@ Module `staff` · enabled by default · `modules/staff/config.conf`
 | `gadgets.vanish.enabled` | `true` |  |
 | `gadgets.vanish.slot` | `0` |  |
 | `gadgets.vanish.material` | `"SLIME_BALL"` |  |
-| `gadgets.vanish.name` | `"<accent>Vanish</accent>"` |  |
+| `gadgets.vanish.name` | `"<accent>ᴠᴀɴɪꜱʜ</accent>"` |  |
 | `gadgets.examine.enabled` | `true` |  |
 | `gadgets.examine.slot` | `1` |  |
 | `gadgets.examine.material` | `"BOOK"` |  |
-| `gadgets.examine.name` | `"<accent>Examine</accent>"` |  |
+| `gadgets.examine.name` | `"<accent>ᴇxᴀᴍɪɴᴇ</accent>"` |  |
 | `gadgets.freeze.enabled` | `true` |  |
 | `gadgets.freeze.slot` | `2` |  |
 | `gadgets.freeze.material` | `"PACKED_ICE"` |  |
-| `gadgets.freeze.name` | `"<accent>Freeze</accent>"` |  |
+| `gadgets.freeze.name` | `"<accent>ꜰʀᴇᴇᴢᴇ</accent>"` |  |
 | `gadgets.compass.enabled` | `true` |  |
 | `gadgets.compass.slot` | `3` |  |
 | `gadgets.compass.material` | `"COMPASS"` |  |
-| `gadgets.compass.name` | `"<accent>Navigator</accent>"` |  |
+| `gadgets.compass.name` | `"<accent>ɴᴀᴠɪɢᴀᴛᴏʀ</accent>"` |  |
 | `gadgets.follow.enabled` | `true` |  |
 | `gadgets.follow.slot` | `4` |  |
 | `gadgets.follow.material` | `"LEAD"` |  |
-| `gadgets.follow.name` | `"<accent>Follow</accent>"` |  |
+| `gadgets.follow.name` | `"<accent>ꜰᴏʟʟᴏᴡ</accent>"` |  |
 | `follow.interval-ticks` | `10` |  |
 | `staff-chat.receive-node` | `"uxmessentials.staff.chat"` | The permission node identifying the staff-chat audience: every online holder of this node receives staff chat. Defaults to the same node that gates sending, so anyone who can send also receives. |
 {/* /generated */}

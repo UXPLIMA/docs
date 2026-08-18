@@ -18,7 +18,7 @@ Module `poses` · enabled by default · `modules/poses/config.conf`
 |---|---|---|
 | `/crawl` | Crawl through a one-block gap; run again to stand up. | `uxmessentials.crawl.use` |
 | `/poses` | Allow or refuse other players sitting on you. | `uxmessentials.poses.toggle` |
-| `/sit` | Sit down where you stand or on the block you're looking at. | `uxmessentials.sit.use` |
+| `/sit` | Sit down where you stand or on a sittable block. | `uxmessentials.sit.use` |
 {/* /generated */}
 
 ## Permissions
@@ -70,6 +70,14 @@ Module `poses` · enabled by default · `modules/poses/config.conf`
 
 ## Notes
 
+- **`/lay`, `/bellyflop` and `/spin` are struck where you stand.** They take no seat and no block, so they work
+  anywhere the region checks below allow. Each one is drawn by a stand-in copy of the player while their own body
+  is hidden, which is what makes the pose look the same on their own screen as on everybody else's.
+- **Every pose ends on shift, or on the same command again.** Sneaking stands a player back up out of any pose,
+  and running the command a second time does the same, so `/lay` while lying down is the way back to your feet.
+- **Crawling places no blocks.** What keeps a crawler prone is an invisible, client-only entity just above them,
+  never a fake block, so the camera and the light around them are untouched. A crawl also ends by itself when the
+  player enters water or takes flight.
 - **Claims are honoured when a claim plugin is installed.** With `respect-claims` on, a player poses only where
   they are trusted to act.
 - **WorldGuard gets four flags:** `sit`, `playersit`, `pose` and `crawl`, each defaulting to allow. Set one to
