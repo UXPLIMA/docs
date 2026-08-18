@@ -87,12 +87,13 @@ no prefix at all.
 
 ## GUI item lore
 
-Every item carries one block, and the block opens with its title. Writing the item's display name
-blank and letting the lore title carry the name is the cleanest result: it hides the material name and
-puts a line of space above the title. The order of the lines is fixed:
+Every item carries one block, and the block opens with its title. The plugin writes that title line
+itself, from the item's own name, and leaves the display name blank: that hides the material name and
+puts a line of space above the title. A lore block you write therefore starts at the breadcrumb, one
+line below. The order of the lines is fixed:
 
 ```text
- ◆ ʜᴏᴍᴇ
+ ◆ ʜᴏᴍᴇ                          (written for you, from the item's name)
     ᴏɴᴇ ᴏꜰ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ʜᴏᴍᴇꜱ
 
  ✎ ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ
@@ -108,7 +109,7 @@ puts a line of space above the title. The order of the lines is fixed:
 Written out, that is one `<newline>`-joined string:
 
 ```hocon
-" <icon>◆</icon> <h:'Home'><newline>    <crumb>ᴏɴᴇ ᴏꜰ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ʜᴏᴍᴇꜱ</crumb><newline><newline> <icon>✎</icon> <info>ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ</info><newline>    <subtext>ᴀ ᴘʟᴀᴄᴇ ʏᴏᴜ ꜱᴀᴠᴇᴅ, ᴏɴᴇ ᴄʟɪᴄᴋ ᴀᴡᴀʏ.</subtext><newline><newline> <icon>≡</icon> <info>ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ</info><newline>    <icon>•</icon> <body>ᴡᴏʀʟᴅ</body> <value>{world}</value><newline><newline> <icon>→</icon> <cta>ᴄʟɪᴄᴋ</cta> <subtext>ᴛᴏ ᴍᴀɴᴀɢᴇ ᴛʜɪꜱ ʜᴏᴍᴇ</subtext>"
+"    <crumb>ᴏɴᴇ ᴏꜰ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ʜᴏᴍᴇꜱ</crumb><newline><newline> <icon>✎</icon> <info>ᴅᴇꜱᴄʀɪᴘᴛɪᴏɴ</info><newline>    <subtext>ᴀ ᴘʟᴀᴄᴇ ʏᴏᴜ ꜱᴀᴠᴇᴅ, ᴏɴᴇ ᴄʟɪᴄᴋ ᴀᴡᴀʏ.</subtext><newline><newline> <icon>≡</icon> <info>ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ</info><newline>    <icon>•</icon> <body>ᴡᴏʀʟᴅ</body> <value>{world}</value><newline><newline> <icon>→</icon> <cta>ᴄʟɪᴄᴋ</cta> <subtext>ᴛᴏ ᴍᴀɴᴀɢᴇ ᴛʜɪꜱ ʜᴏᴍᴇ</subtext>"
 ```
 
 Rules that are easy to get wrong:
@@ -121,8 +122,8 @@ Rules that are easy to get wrong:
 
 ## Titles, navigation and sound
 
-**Titles** are centred, colourless and unbolded, framed in dashes. The plugin centres them for you,
-so a title key is written as plain text with no colour tag.
+**Titles** are centred and bare: no colour, no bold, no dashes around them. The plugin centres each
+one and strips whatever styling it finds, so a title key is written as plain text with no tag at all.
 
 **Navigation buttons** are an `ARROW` with a single-line name and no lore:
 
@@ -158,7 +159,7 @@ These are plain Unicode characters (no resource pack). Each one has one meaning:
 | Glyph | Meaning |
 |---|---|
 | `▶` | The separator after a chat prefix, and nothing else |
-| `◆` | The title line of a lore block |
+| `◆` | The title line of a lore block (written for you) |
 | `✎` | The description header |
 | `≡` | The information header |
 | `•` | A bullet inside an information row |
@@ -184,7 +185,7 @@ items {
     slot = 11
     material = COMPASS
     name = ""
-    lore = [" <icon>◆</icon> <h:'Spawn'><newline>    <crumb>ꜱᴇʀᴠᴇʀ ʟᴏᴄᴀᴛɪᴏɴ</crumb><newline><newline> <icon>→</icon> <cta>ᴄʟɪᴄᴋ</cta> <subtext>ᴛᴏ ᴛᴇʟᴇᴘᴏʀᴛ</subtext>"]
+    lore = ["    <crumb>ꜱᴇʀᴠᴇʀ ʟᴏᴄᴀᴛɪᴏɴ</crumb><newline><newline> <icon>→</icon> <cta>ᴄʟɪᴄᴋ</cta> <subtext>ᴛᴏ ᴛᴇʟᴇᴘᴏʀᴛ</subtext>"]
     click { left = ["command:spawn", "close"] }
   }
 }
