@@ -101,6 +101,7 @@ reason is on the page the column links to.
 | discordlink | Yes | Yes | Yes | Yes |
 | security | Yes | Yes | Yes | Yes |
 | invrollback | Yes | Yes | Yes | Yes |
+| skin | Yes | | Yes | Yes |
 | npc | Yes | Yes | Yes | Yes |
 | holograms | Yes | Yes | Yes | Yes |
 | scoreboard | Yes | Yes | Yes | Yes |
@@ -122,8 +123,8 @@ reason is on the page the column links to.
 placeholders, list sources and icons into the menu engine, which is a different shape of surface from reading and
 writing and so has a page of its own.
 
-The write column is blank where writing would be dishonest rather than unimplemented. Regions and staff say why on
-their own sections; itemworld's state lives on the item a player is holding; the command gate's rules are the
+The write column is blank where writing would be dishonest rather than unimplemented. Skin, regions and staff say
+why on their own sections; itemworld's state lives on the item a player is holding; the command gate's rules are the
 operator's config file. The read column is blank for tablist and nametags because what they show is authored in
 config and repainted on a timer, so there is no per-player state to read.
 

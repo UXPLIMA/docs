@@ -388,6 +388,23 @@ is what the server kept. The items are not in it. A snapshot's contents are seri
 is no honest way to hand them across this boundary; what is published is enough to list them and to name one for a
 restore.
 
+## Skin
+
+`api.skin()` &rarr; `UxmSkinQuery`
+
+| Method | Answers |
+|---|---|
+| `of(playerId)` | the skin that player chose, or empty when they chose none |
+
+The choice, not the texture: where the skin came from (`BY_NAME`, `BY_URL`, `BY_FILE`, `BEDROCK`, `FALLBACK`), what
+that source names, which player model it was cut for and when it was taken. The signed texture is left behind
+because it means nothing outside a client, while a source is something a caller can act on. Empty is not the same
+as looking like Steve: a player who chose nothing still arrives wearing whatever the join order gave them.
+
+There is no write surface. Putting a skin on somebody is a rate-limited, permission-checked act with a per-skin
+allowlist behind it, and a plugin that could bypass all three would make the limits meaningless; the command and
+the config are the way in.
+
 ## Security
 
 `api.security()` &rarr; `UxmSecurityQuery`

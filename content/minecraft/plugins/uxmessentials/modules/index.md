@@ -5,7 +5,7 @@ description: Every feature ships as a module you can switch off. One page each.
 icon: blocks
 ---
 
-uxmEssentials is 34 modules behind one jar. Each one owns its commands, its permission nodes, its placeholders
+uxmEssentials is 35 modules behind one jar. Each one owns its commands, its permission nodes, its placeholders
 and its config file at `plugins/uxmEssentials/modules/<module>/config.conf`, and each can be switched off on its
 own: a disabled module registers no commands, no listeners and no database migrations, and holds no runtime
 state.
@@ -37,6 +37,7 @@ Set `enabled = false` in a module's `config.conf` and restart, or edit and run `
 | [Scoreboard](scoreboard.md) | The per-player sidebar | off |
 | [Security](security.md) | Two-factor, join verification, op protection, alt guard | on |
 | [Server Tweaks](servertweaks.md) | F3 brand, console filter, unsigned chat | on |
+| [Skin](skin.md) | Skins by name, link or file, with Bedrock and cracked covered | off |
 | [Staff](staff.md) | An on-duty mode with a gadget loadout | on |
 | [Survival](survival.md) | Tree-feller, veinminer, auto-pickup and the rest | off |
 | [Tablist](tablist.md) | Tab-list header, footer, layout and skins | off |

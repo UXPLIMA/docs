@@ -1,7 +1,7 @@
 ---
 title: uxmEssentials
 order: 89
-description: An all-in-one Paper suite, 34 modules in one jar.
+description: An all-in-one Paper suite, 35 modules in one jar.
 icon: wrench
 ---
 

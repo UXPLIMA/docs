@@ -282,6 +282,19 @@ plugin.
 Fires after the items are set, so a listener reading the inventory sees the restored one. The safety copy taken of
 what was there before is a capture rather than a restore, and fires nothing.
 
+### Skin
+
+| Event | Fires when | Carries |
+|---|---|---|
+| `UxmSkinChangeEvent` | a player took a skin, or dropped the one they had | `getSourceType()`, `getSourceValue()`, `isCleared()` |
+
+One event covers both directions. A clear carries `isCleared()` true and an empty source, because dropping a choice
+has no source of its own: the player goes back to whatever the join order gives them. The source type is the stored
+spelling (`BY_NAME`, `BY_URL`, `BY_FILE`, `BEDROCK`, `FALLBACK`), so an event and the published read agree.
+
+Being dressed on the way in fires nothing. A login is not a change: nobody chose anything, and a listener that
+mirrored it would see an event for every join on a server where the module is on.
+
 ### Security
 
 | Event | Fires when | Carries |

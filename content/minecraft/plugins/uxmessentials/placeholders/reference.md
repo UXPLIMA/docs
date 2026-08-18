@@ -476,6 +476,17 @@ The brand this server reports to its clients.
 |-------------|-------|-----------------|
 | `%uxmessentials_servertweaks_brand%` | global | The server brand reported to clients on the F3 screen, or a dash when the tweak is off. |
 
+## Skin
+
+The skin a player chose. A player who chose nothing reads the dash: what the join order dressed them in is not a choice of theirs.
+
+| Placeholder | Reads | What it renders |
+|-------------|-------|-----------------|
+| `%uxmessentials_skin_chosen%` | player | Whether the player chose a skin of their own (yes/no). |
+| `%uxmessentials_skin_model%` | player | The player model the skin was cut for: classic or slim. |
+| `%uxmessentials_skin_source%` | player | Where the player's chosen skin came from: by-name, by-url, by-file, bedrock or fallback. |
+| `%uxmessentials_skin_value%` | player | What that source names: the account, the link, the file or the Bedrock id. |
+
 ## Staff
 
 Staff mode, and how many staff are on.

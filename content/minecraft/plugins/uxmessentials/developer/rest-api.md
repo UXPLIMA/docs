@@ -240,6 +240,7 @@ too, which is the honest reply to a bot passing along whatever a user typed.
 | `GET /worlds/{name}/regions/{id}` | One region, or `null` |
 | `GET /players/{uuid}/snapshots` | The inventory snapshots held for them, newest first |
 | `GET /players/{uuid}/security` | Which factors are on file, and whether they are locked out |
+| `GET /players/{uuid}/skin` | The skin they chose, or `404` when they chose none |
 
 Ask `GET /regions` before the others. With no WorldGuard installed every region read answers empty, which looks
 exactly like a world nobody has protected; that route is what tells the two apart.
@@ -574,7 +575,7 @@ money is a money whichever way it arrived.
 
 ### What is carried
 
-Eighty-six events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
+Eighty-seven events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
 
 | Context | Names |
 |---|---|
@@ -597,6 +598,7 @@ Eighty-six events, named `context.thing`. Every notification event uxmEssentials
 | `rank` | `up`, `set`, `prestige` |
 | `scoreboard` | `visibility` |
 | `security` | `verification-pass`, `verification-fail`, `lockout` |
+| `skin` | `change` |
 | `staff` | `chat`, `mode` |
 | `teleport` | `player-teleport`, `back-location-capture`, `warmup-start`, `warmup-cancel`, `request-send`, `request-accept`, `request-deny`, `request-cancel`, `request-expire` |
 | `vanish` | `toggle` |

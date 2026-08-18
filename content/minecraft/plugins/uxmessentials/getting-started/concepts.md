@@ -9,7 +9,7 @@ Five ideas carry through the rest of the documentation.
 
 ## Modules
 
-The plugin is 34 modules: teleport, homes, warps, economy, kits, moderation, holograms, worlds and the
+The plugin is 35 modules: teleport, homes, warps, economy, kits, moderation, holograms, worlds and the
 rest. Each is self-contained, and a disabled module wires nothing: no commands, no listeners, no tables, no
 tasks, no state.
 

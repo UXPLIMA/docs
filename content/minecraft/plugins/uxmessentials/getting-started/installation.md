@@ -18,7 +18,7 @@ Folia-safe schedulers. Older Bukkit and Spigot builds are not supported.
 ```
 [uxmEssentials] Enabling uxmEssentials...
 [uxmEssentials] Database migrations applied
-[uxmEssentials] 25 of 34 feature modules enabled
+[uxmEssentials] 25 of 35 feature modules enabled
 [uxmEssentials] uxmEssentials enabled!
 ```
 

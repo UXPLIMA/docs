@@ -779,6 +779,30 @@ nodes default to `op`. See the [Regions](../modules/regions.md) guide.
 | `uxmessentials.regions.list` | `op` | `/regions [world]`: open the WorldGuard region-list GUI for a world. |
 | `uxmessentials.regions.members` | `op` | `/regions` members `<id>` and `/regions` addmember\|addowner `<id> <player>`: manage a region roster. |
 
+## Skin
+
+The built-in skin system: a player wears the skin of another account, an image published on the
+web, or one the operator dropped in the server's skin folder, and drops it again with
+`/skin clear`. The module ships **disabled**, because an online-mode server already dresses
+everybody correctly; it earns its keep on a cracked or Bedrock-facing server, where it also
+dresses a joining player automatically (their real premium skin, their Bedrock skin, or one from
+the configured pool). The self-service verbs default to `true`; reading, dropping or purging
+somebody else's skin is staff work and defaults to `op`, as does `/skin file`, which reads from
+the server's own disk. See the [Skin](../modules/skin.md) guide.
+
+| Node | Default | What it grants |
+|------|---------|----------------|
+| `uxmessentials.module.skin` | `op` | Hot-reload / inspect the skin module (the skin a player wears). |
+| `uxmessentials.skin.use` | `true` | `/skin <name>` and `/skin clear`: wear another account's skin, or go back to your own. |
+| `uxmessentials.skin.url` | `true` | `/skin` url `<link>`: wear the skin drawn in an image published on the web. |
+| `uxmessentials.skin.update` | `true` | `/skin` update: re-fetch your skin, for an account whose skin changed at the source. |
+| `uxmessentials.skin.file` | `op` | `/skin` file `<name>`: wear one of the skins the operator dropped in the server's skin folder. |
+| `uxmessentials.skin.other` | `op` | `/skin` set `<name> <player>` and `/skin` clear `<player>`: dress or undress somebody else. |
+| `uxmessentials.skin.drop` | `op` | `/skin` drop `<player>`: delete a stored skin, so their next join derives one afresh. |
+| `uxmessentials.skin.info` | `op` | `/skin` info `<player>`: which skin somebody wears, from where, and when it was set. |
+| `uxmessentials.skin.purge` | `op` | `/skin` purge `<name>`: forget a cached texture so the next lookup goes back to the source. |
+| `uxmessentials.skin.name.<skin>` | `true` | Wear the skin of one named account; only checked for the skins the operator restricted. |
+
 ## Server Tweaks
 
 A grab-bag of silent server-side infrastructure tweaks: a custom F3 brand, a console-log
@@ -907,8 +931,9 @@ Every bounded context is a first-class feature module. Each owns a node tier `ux
 commandcontrol  communication  custommenus  discordlink  economy  holograms
 homes  invrollback  itemworld  kits  messaging  moderation
 nametags  npc  playerstate  playerwarps  poses  presence
-ranks  regions  scoreboard  security  servertweaks  staff
-survival  tablist  teleport  trade  vanish  vaults
+ranks  regions  scoreboard  security  servertweaks  skin
+staff  survival  tablist  teleport  trade  vanish
+vaults
 villagers  vote  warps  worlds
 ```
 
