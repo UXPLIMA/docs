@@ -5,7 +5,7 @@ description: Requirements, the first start, the files you get, and how to verify
 icon: download
 ---
 
-uxmEssentials needs Paper 26.1.2 or newer on Java 25. Folia is supported: every scheduled task goes through
+uxmEssentials needs Paper 26.2 or newer on Java 25. Folia is supported: every scheduled task goes through
 Folia-safe schedulers. Older Bukkit and Spigot builds are not supported.
 
 ## Install
