@@ -91,8 +91,8 @@ messages {
 **What it does:** The language a player gets when their Minecraft client locale has no
 matching catalog and they have not chosen one with `/lang`.
 
-**Default:** `en`. Two catalogs ship: `en` and `tr`. See
-[Messages & Languages](messages.md) to add or edit locales.
+**Default:** `en`. Twelve catalogs ship: `en`, `tr`, `de`, `ru`, `es`, `pt`, `fr`, `pl`,
+`uk`, `zh`, `ja` and `ko`. See [Messages & Languages](messages.md) to add or edit locales.
 
 ## `lookup`
 

@@ -69,7 +69,7 @@ optional; with LuckPerms installed the same quotas can also come from LuckPerms 
 ## Messages
 
 Every player-facing string is a catalog entry written in MiniMessage, never legacy `&` codes. Catalogs are
-per language in `messages/messages_<lang>.conf`; English ships with the plugin.
+per language in `messages/messages_<lang>.conf`; twelve languages ship with the plugin.
 
 ```
 /lang            # your current language

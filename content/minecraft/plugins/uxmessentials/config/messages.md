@@ -67,16 +67,53 @@ literally instead of colouring the line.
 
 ## Languages that ship
 
-One catalog is bundled:
+Twelve catalogs are bundled, and all of them are written to `plugins/uxmEssentials/messages/` on first
+run:
 
-| File | Language |
-|---|---|
-| `messages_en.conf` | English |
+| File | Language | File | Language |
+|---|---|---|---|
+| `messages_en.conf` | English | `messages_fr.conf` | French |
+| `messages_tr.conf` | Turkish | `messages_pl.conf` | Polish |
+| `messages_de.conf` | German | `messages_uk.conf` | Ukrainian |
+| `messages_ru.conf` | Russian | `messages_zh.conf` | Chinese (Simplified) |
+| `messages_es.conf` | Spanish | `messages_ja.conf` | Japanese |
+| `messages_pt.conf` | Portuguese (Brazil) | `messages_ko.conf` | Korean |
 
-The English catalog is written in the small capitals the interface style uses, and it is the
-authoritative key set. To add a language, copy it to `messages_<code>.conf` (e.g. `messages_de.conf`),
-translate the **values**, and leave every key in place. A translated catalog is written in ordinary
-letters for any language whose alphabet small capitals do not cover.
+English is the authoritative key set: every other catalog carries exactly the same keys, and the build
+fails if one of them drifts. Each file is yours to edit in place; an update never overwrites a line you
+changed, it only appends keys that are new.
+
+### Typography
+
+Catalogs are plain readable text. The small capitals the interface is drawn in are applied when the
+language is loaded, not written into the file, so a translator edits ordinary letters and still gets the
+house style back. The switch sits at the top of each catalog:
+
+```hocon
+"meta.small-caps" = "true"
+```
+
+It ships as `true` for English and `false` for every translation. Small capitals exist for the
+twenty-six Latin letters only: Russian, Ukrainian, Chinese, Japanese and Korean have no small-capital
+form at all, and a language with an accented Latin alphabet would lose its accents halfway through a
+word, so a translation reads in ordinary letters. Turn it on for a language of your own if the letters
+suit it.
+
+Text a player has to be able to type back (a command, a permission node, a state word standing where a
+number usually stands) is wrapped in `<plain>`, which leaves it exactly as written:
+
+```hocon
+"skin.usage" = "<tag:'SKIN'> use <value><plain>/skin</plain> a player name</value>."
+```
+
+Keep those spans, the `{placeholder}` names and the style tags as English writes them; the prose between
+them is what a translation changes.
+
+### Adding your own
+
+To add a language, copy `messages_en.conf` to `messages_<code>.conf` (e.g. `messages_it.conf`), translate
+the **values**, and leave every key in place. Set `meta.small-caps` to `false` if your alphabet is not
+Latin.
 
 The fallback language is set once, in the globals file:
 
@@ -94,7 +131,9 @@ uxmEssentials resolves a player's language through a fallback chain, first match
 1. **Their `/lang` override**: a personal choice they set in-game.
 2. **Their Minecraft client locale**: if a matching catalog exists.
 3. **`default-locale`** from `config.conf`.
-4. **The English base**, then the key's own name as a last resort.
+4. **The English base**, key by key: a line a translation has not filled in reads in English rather
+   than as a raw key name, so a half-finished catalog never shows `warp.list.header` to a player.
+5. The key's own name, as a last resort.
 
 Players manage their own override with:
 
