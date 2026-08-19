@@ -1,63 +1,65 @@
 ---
 title: uxmlib-redis
 order: 30
-description: A binary pub/sub bus for the servers sharing one Redis.
+description: A low-level binary Redis pub/sub bus for fanning an opaque frame across the nodes sharing one Redis.
 icon: radio
 ---
 
-A binary publish/subscribe bus for fanning a message across the servers sharing one Redis. It is
-deliberately small: opaque `byte[]` frames, no relational dependencies, and nothing that knows what
-a message means.
+The smallest useful cross-server primitive: publish a `byte[]` to a named channel, subscribe to a
+named channel. It owns the wire and nothing else. Encoding, routing and echo suppression are yours.
+
+This module depends on **nothing internal**, not even `uxmlib-common`. Lettuce is a compile-only soft
+dependency, so it is not shipped with the module.
 
 ```java
-bus.subscribe("party-updates", frame -> applyUpdate(frame));
+RedisBus bus = new LettuceRedisBus(RedisClient.create("redis://localhost:6379"), logger::warning);
+
+bus.subscribe("party-updates", frame -> applyUpdate(decode(frame)));
 bus.publish("party-updates", encode(update));
+
+bus.healthy();
+bus.close();
 ```
 
-## Why bytes
+## What it guarantees
 
-The bus does not serialize for you. Encoding is yours (protobuf, JSON, a hand-rolled format) and
-the bus moves the bytes.
+**Publish never blocks.** It is fire-and-forget over the client's event loop and may be called from
+any thread.
 
-That is the right boundary for a primitive: a bus with an opinion about serialization forces every
-consumer to share it, and a version mismatch between two servers becomes the bus's problem rather
-than the message's.
+**Publish fails degraded.** A publish while the connection is down is dropped and warned about, not
+thrown. A Redis outage degrades cross-server messaging; it does not take the server with it.
 
-## Failure behaviour
+**Subscriptions reconnect.** Each subscription re-establishes itself after a connection drop, so a
+node that lost Redis for thirty seconds resumes receiving without a restart.
 
-**Publishing is fail-degraded.** With Redis unreachable, `publish` does not throw: the message is
-lost and the plugin keeps running. A cross-server notification is not worth taking a server down
-for.
+**Warnings are rate-limited.** A connection that is down produces one warning periodically rather
+than one per publish.
 
-**Subscriptions auto-reconnect,** per subscription. A Redis restart does not require a server
-restart, and each subscription recovers independently.
+## What you have to do
 
-`RateLimitedWarner` bounds the logging: an unreachable Redis warns once and then goes quiet rather
-than writing a line per publish.
+**Bridge threads yourself.** `subscribe` delivers frames on the client's pub/sub thread. Nothing
+Bukkit may be touched there. Hop through the `Scheduler` first.
 
-## Lettuce is compile-only
-
-`LettuceRedisBus` is the implementation, and Lettuce is a compile-only soft dependency. You add it
-yourself:
-
-```kotlin
-implementation("com.github.UXPLIMA.uxmLib:uxmlib-redis:VERSION")
-implementation("io.lettuce:lettuce-core:VERSION")
+```java
+bus.subscribe("party-updates", frame -> scheduler.global(() -> apply(decode(frame))));
 ```
 
-A plugin that shades `uxmlib-redis` without using it does not carry a Redis client.
+**Suppress your own echo.** Redis pub/sub delivers a publisher its own messages. A node that both
+publishes and subscribes on a channel will receive what it just sent, so stamp your frames with a
+node id and drop your own.
 
-## No internal dependencies
+**Choose an encoding.** The frame is opaque bytes. Protobuf, your own binary format, or a UTF-8
+string, whichever fits.
 
-`uxmlib-redis` depends on nothing else in the library, not even `uxmlib-common`. It is usable on its
-own, and `uxmlib-storage`'s `RedisDataSynchronizer` builds cache invalidation on top of it without
-the storage stack and the bus knowing about each other.
+## When to use this rather than storage sync
 
-## When you need it
+| Need | Use |
+|---|---|
+| An opaque binary payload, no relational dependency | `RedisBus` |
+| A small text id or blob tied to the storage stack | `DataSynchronizer` in [`uxmlib-storage`](storage/sync.md) |
+| Eventual consistency with no extra infrastructure | Row sync in `uxmlib-storage` |
 
-Only when more than one server node has to agree about something: a party that spans servers, a
-cache to invalidate, a broadcast to carry.
-
-A single server does not need Redis. `uxmlib-storage` ships a `LocalDataSynchronizer` that
-implements the same interface as a no-op, so the same code runs in both shapes and adding Redis later
-is a wiring change.
+`uxmlib-storage` builds its `DataSynchronizer` on the same idea with a `String` payload and a
+`LocalDataSynchronizer` fallback for single-node servers. Reach for `uxmlib-redis` when the payload is
+a codec's output rather than an identifier, or when you want the primitive with no other module
+attached.

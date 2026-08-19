@@ -72,7 +72,7 @@ type is a real signal, and a parameter that accepts null says so.
 GUIs, holograms, HUD overlays and toasts use the public Paper and Adventure API. No packets, no
 per-version NMS, so they keep working across point releases without anyone updating anything.
 
-The [experimental packet modules](modules/experimental.md) are the deliberate exception, for
+The [experimental packet modules](modules/experimental/) are the deliberate exception, for
 per-viewer effects the public API cannot express.
 
 ## MIT, and clean-room

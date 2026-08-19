@@ -1,57 +1,98 @@
 ---
 title: uxmlib-update
 order: 29
-description: A notify-only release checker that never downloads anything.
+description: A notify-only release checker with GitHub, Modrinth and JSON providers. It never self-downloads.
 icon: refresh-cw
 ---
 
-A release update checker that notifies and never downloads.
+Compares the running build against the latest published release, logs it once, and shows a
+permission-gated clickable notice on join. It never downloads anything, which is the point: a plugin
+that updates itself is a plugin that changes under an operator without their say-so.
+
+## Wiring it up
 
 ```java
 UpdateChecker checker = new UpdateChecker(
-        scheduler,
-        new GitHubReleaseProvider("you", "your-plugin"),
-        UxmLibVersion.VERSION);
+        scheduler, new GitHubReleaseProvider("UXPLIMA", "uxmLib"), getPluginMeta().getVersion());
 
-new UpdateNotifier(plugin, scheduler, checker, "yourplugin.update.notify")
+new UpdateNotifier(plugin, scheduler, checker, "myplugin.update.notify")
         .start(Duration.ofSeconds(40), Duration.ofHours(6));
 ```
 
-`start(delay, interval)`: first check forty seconds after startup, then every six hours. The delay
-matters: checking during `onEnable` competes with everything else the server is doing to start.
+`start(initialDelay, period)` and `stop()` are both idempotent, and `start` may be called again after
+a `stop`, so a reload command can restart the poll safely.
+
+The initial delay exists so the check does not compete with everything else enabling at startup.
 
 ## Providers
 
-| Provider | Source |
+```java
+new GitHubReleaseProvider("owner", "repo");
+new ModrinthReleaseProvider("projectId");
+new JsonUrlReleaseProvider("https://example.com/latest.json");
+new JsonUrlReleaseProvider(uri, List.of("version", "tag_name"));
+```
+
+`JsonUrlReleaseProvider` reads a version from your own endpoint, with the field names you name. This
+is the one to use for a private or paid plugin whose releases are not on a public host.
+
+`UpdateProvider` is a one-method interface returning `CompletableFuture<Optional<Release>>`, so
+anything else is a small class.
+
+`provider.endpoint()` reports the URI it will call, which is worth logging once at startup so an
+operator can see what the plugin talks to.
+
+## Checking manually
+
+```java
+checker.check().thenAccept(outcome -> {
+    switch (outcome.status()) {
+        case OUTDATED -> logger.info("Update available: " + outcome.release().orElseThrow().version());
+        case UP_TO_DATE -> logger.info("Up to date");
+        case DEV_BUILD -> logger.info("Running a build newer than any release");
+        case FAILED -> logger.warning("Update check failed");
+    }
+});
+
+checker.lastOutcome();
+checker.currentVersion();
+```
+
+| Status | Meaning |
 |---|---|
-| `GitHubReleaseProvider` | GitHub releases for an owner and repository |
-| `ModrinthReleaseProvider` | A Modrinth project |
-| `JsonUrlReleaseProvider` | Any JSON endpoint you control |
+| `UP_TO_DATE` | The running build matches or exceeds the latest release |
+| `OUTDATED` | A newer release exists |
+| `DEV_BUILD` | The running build is newer than anything published |
+| `FAILED` | The check could not complete |
 
-The comparison uses `SemanticVersion` from `uxmlib-common`, against a build-time version constant,
-not the plugin's runtime version, which a repackaged jar can lie about.
+`DEV_BUILD` is a real state, not an error. A developer running a local build should not be told they
+are out of date.
 
-## Notification
+## Announce once
 
-`UpdateNotifier` logs to the console and shows a clickable message on join to players holding the
-permission you passed. Everyone else sees nothing.
+```java
+checker.checkAndAnnounce(outcome -> logger.warning("Update: " + outcome.release().orElseThrow().url()));
+```
 
-Permission-gating this is not cosmetic. An update notice tells anyone reading it exactly which
-version of which plugin the server is running, which is the first thing an attacker wants to know.
+The callback fires at most once per distinct newer release, not once per poll. A six-hourly timer
+therefore produces one console line, and a **later** release announces again because it is a new
+version.
 
-## Notify-only, on purpose
+## Threading
 
-It never self-downloads and never replaces a jar. Automatic updating means a plugin can change under
-a server owner without their knowledge, and a compromised release channel becomes remote code
-execution on every server running it.
+The provider fetch runs on `scheduler.async`, so the network call never touches a server thread. The
+version comparison itself is pure, using `SemanticVersion`, which is what makes it able to say a
+stable release is newer than a beta of the same number.
 
-The notification carries the version and the link. The decision to update stays with whoever runs
-the server.
+## The join notice
 
-## Outcomes
+`UpdateNotifier` registers a listener that shows a clickable message to joining players who hold the
+permission you passed. It is a permission node, not an operator check, so a server can show it to a
+developer role without giving them the world.
 
-`UpdateOutcome` and `UpdateStatus` describe what a check found, up to date, an update available, or
-the check failed. A failed check is a normal outcome, not an exception: GitHub rate limits, and a
-plugin should not log a stack trace because a network call did what network calls do.
+<Callout type="note" title="Notify only, deliberately">
 
-`UpdateMessages` holds the message templates, so the notice is translatable.
+There is no self-download and no plan for one. The notice carries the release URL and the operator
+decides.
+
+</Callout>

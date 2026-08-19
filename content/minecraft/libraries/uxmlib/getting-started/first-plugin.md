@@ -107,8 +107,8 @@ forever.
 
 | You want | Page |
 |---|---|
-| Menus in depth | [uxmlib-gui](../modules/gui.md) |
-| The command DSL | [uxmlib-command](../modules/command.md) |
-| Items and heads | [uxmlib-item](../modules/item.md) |
-| Config, text and scheduling | [uxmlib-common](../modules/common.md) |
-| Databases and caches | [uxmlib-storage](../modules/storage.md) |
+| Menus in depth | [uxmlib-gui](../modules/gui/) |
+| The command DSL | [uxmlib-command](../modules/command/) |
+| Items and heads | [uxmlib-item](../modules/item/) |
+| Config, text and scheduling | [uxmlib-common](../modules/common/) |
+| Databases and caches | [uxmlib-storage](../modules/storage/) |
