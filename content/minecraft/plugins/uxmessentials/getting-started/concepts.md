@@ -41,7 +41,7 @@ and anything reported `[OK]` apply at once.
 | `config.conf` | Globals: storage, default language, cross-server, update checks |
 | `modules/<module>/config.conf` | One file per module, with `enabled` as the first key |
 | `messages/messages_<lang>.conf` | Player-facing text, per language |
-| `commands/commands.conf` | Rename, re-alias or disable any command |
+| `commands.conf` | Rename, re-alias or disable any command |
 | `menus/*.conf` | Your own menus |
 
 Keys are kebab-case. An update appends the keys it added, with their comments, and leaves your values alone;
@@ -79,6 +79,15 @@ per language in `messages/messages_<lang>.conf`; twelve languages ship with the 
 
 The chain is your `/lang` choice, then your client locale, then the server default, then English. See
 [Messages](../config/messages.md).
+
+## Running commands from the console
+
+Administration commands work from the server console, from a command block and from a remote console the same
+way they work in game. Anything that would have needed your position takes it as arguments instead, for example
+`/setjail main at world 120 64 -40`, and the same shape applies to spawns, warps, worlds, holograms and NPCs.
+Anything that would have acted on you takes the player instead, for example `/heal Notch` or `/gamemode creative
+Notch`. Replies are written to the console, and what the console does is attributed to the console in audit
+lines and broadcasts.
 
 ## Threading
 

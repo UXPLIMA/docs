@@ -5,12 +5,21 @@ description: Renaming, re-aliasing and disabling any command in commands.conf.
 icon: file-cog
 ---
 
-`plugins/uxmEssentials/commands/commands.conf` renames, re-aliases or disables any command. It is one
+`plugins/uxmEssentials/commands.conf` renames, re-aliases or disables any command. It is one
 global file, keyed by each command's stable id.
+
+<Callout type="info" title="The file moved in 0.8.1">
+
+It used to live at `plugins/uxmEssentials/commands/commands.conf`. If yours is still there, it is moved up to
+the data folder root the first time 0.8.1 loads, with your edits intact. An install that deliberately split the
+catalog across several files inside `commands/` keeps being read from there, but that layout is deprecated:
+merge the blocks into one `commands.conf` when convenient.
+
+</Callout>
 
 ## How to Edit
 
-1. Open `plugins/uxmEssentials/commands/commands.conf`.
+1. Open `plugins/uxmEssentials/commands.conf`.
 2. Edit the `name`, `aliases`, or `enabled` value for the command you want to change.
 3. Save.
 4. Reload (see the tip at the bottom).
@@ -44,6 +53,7 @@ commands {
 | `enabled` | `false` drops the command entirely; it registers nothing. |
 | `name` | The primary literal players type. Edit it to rename the command. |
 | `aliases` | Extra literals that map to the same command. |
+| `localized-aliases` | Extra literals offered only to players using a given language, keyed by locale tag. |
 
 ## Renaming a command
 
@@ -95,6 +105,36 @@ commands {
 
 Avoid giving two commands the same name or alias: the first one registered wins and the
 other silently loses that literal.
+
+## Aliases for one language only
+
+A command can carry aliases that exist only for players using a given language. Key them by locale tag under
+`localized-aliases`:
+
+```hocon
+commands {
+  home {
+    enabled = true
+    name = "home"
+    aliases = ["homes"]
+    localized-aliases {
+      tr = ["ev"]
+      de = ["zuhause"]
+    }
+  }
+}
+```
+
+A tag may be a language (`tr`) or a full locale (`pt-BR`). Unicode is allowed, so a language that needs its own
+letters can have them.
+
+Every localized alias is registered on the server like any other, so the console, a command block and a Geyser
+client can all use it. What changes is what a player sees: when the client asks for its command list, aliases
+that belong only to other languages are left out of it. A player on Turkish is offered `/ev`, a player on German
+is offered `/zuhause`, and neither is shown the other. The canonical `name` and the ordinary `aliases` are shown
+to everybody.
+
+The language used is the player's own `/lang` choice when they made one, and their client locale otherwise.
 
 ## Disabling a command
 

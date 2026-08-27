@@ -74,6 +74,7 @@ Module `teleport` · enabled by default · `modules/teleport/config.conf`
 | `uxmessentials.rtp.others` | op | /rtp \<player> to force another online player to random teleport (staff). |
 | `uxmessentials.rtp.radius.<blocks>` | everyone | How far from the world centre /rtp may drop you; the largest tier held wins. |
 | `uxmessentials.rtp.use` | everyone | /rtp random teleport from the pre-warmed safe-location queue. |
+| `uxmessentials.spawn.join.exempt` | off | Exempt the player from automatic first-join/every-join spawn movement. |
 | `uxmessentials.spawn.named` | everyone | /spawn \<name> to teleport to a named spawn. |
 | `uxmessentials.spawn.set` | op | /setspawn, /setmainspawn, /removespawn and /mirrorspawn to define and manage spawns. |
 | `uxmessentials.spawn.use` | everyone | /spawn to teleport to the resolved server spawn. |
@@ -165,6 +166,11 @@ Module `teleport` · enabled by default · `modules/teleport/config.conf`
 | `back.on-death` | `true` | /back may return to a death location |
 | `back.death-delay-seconds` | `0` | seconds after dying before /back may return to the death point (0 = off) |
 | `back.ignored-causes` | `["ender_pearl", "chorus_fruit"]` | causes that never overwrite the /back point |
+| `spawn.first-join` | `true` | genuinely new players start at the resolved spawn |
+| `spawn.every-join` | `false` | true = returning players also return to spawn on every login |
+| `spawn.respawn` | `true` | manage death respawns through the chain below |
+| `spawn.respawn-chain` | `["bed", "anchor", "spawn"]` | the ordered death chain; the first step that resolves wins |
+| `spawn.exempt-permission` | `"uxmessentials.spawn.join.exempt"` | holders are left where they logged out |
 | `combat.block-teleport` | `true` |  |
 {/* /generated */}
 
@@ -205,6 +211,17 @@ Module `teleport` · enabled by default · `modules/teleport/config.conf`
   claim or a WorldGuard region is rejected. Both need no setup beyond installing the other plugin.
 - **Spawns are plural.** There is a main spawn, any number of named ones reachable with `/spawn <name>`, and
   `/mirrorspawn <world>` to hand a new world off to an existing spawn instead of a fresh one.
+- **Join and death placement live in one `spawn` block.** `first-join` places a genuinely new player at the
+  resolved spawn, `every-join` does it on every login, and `respawn` decides whether deaths are managed at all.
+  Every one of them walks the same chain `/spawn` does: a mirror redirect, then the world's own `/setspawn`,
+  then the main spawn, then the vanilla world spawn. Grant `uxmessentials.spawn.join.exempt` to leave a player
+  where they logged out.
+- **The respawn chain is a list of steps, first match wins.** `respawn-chain` defaults to
+  `["bed", "anchor", "spawn"]`, so a valid bed or anchor is kept and everybody else lands on your spawn. The
+  steps are `home`, `bed`, `anchor`, `spawn`, `warp:<name>` and `rtp`. `respawn.chain.<world>` still overrides
+  the default for one world, and giving a world an empty list puts it back on vanilla respawning.
+- **Automatic moves are not teleports you asked for.** A first-join or join-spawn placement writes no `/back`
+  point and plays no arrival title, sound or effect, so logging in never overwrites the last place you chose.
 - **Combat blocking is borrowed, not invented.** With CombatLogX or PvPManager installed and
   `combat.block-teleport` on, a tagged player cannot self-teleport with `/home`, `/warp`, `/spawn`, `/back`,
   `/rtp` or `/tpa`. With neither installed nothing is ever blocked, and staff teleports are never affected.

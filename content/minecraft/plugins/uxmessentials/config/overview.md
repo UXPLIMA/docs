@@ -109,7 +109,7 @@ as [custom menus](../menus/engine.md).
   Your edits, comments and formatting survive restarts and plugin upgrades.
 - **Delete a single key** and it falls back to its built-in default on next load.
 - **Delete a whole file** and it is regenerated from defaults.
-- `commands/commands.conf` is generated from the live command list on first run and then
+- `commands.conf` is generated from the live command list on first run and then
   left untouched.
 
 ### What an update does to your files
@@ -159,7 +159,9 @@ step whose new values are live now, `[RESTART]` for a module that builds its lis
 and commands once at startup, and `[FAIL]` for a file it could not read. Configuration
 is swapped atomically, so players in-flight are never left half-configured.
 **Reloading never deletes stored data**: disabling a module leaves its database rows
-intact.
+intact. A step that fails keeps the values it was already running on rather than dropping
+to defaults, the report closes with how long the run took, and a second `/uxmess reload`
+while one is still running is refused instead of queued behind it.
 
 **Some edits need a restart, and reload says so.** Turning a module or a mechanic on or off changes **what is wired**, and wiring
 happens once when the server starts. Those edits show up as `[RESTART]` in the
@@ -172,7 +174,7 @@ anything reported `[OK]`, apply immediately.
 |---|---|---|
 | Storage / database, default locale, cross-server, server links, update check, map markers | `config.conf` | [config.conf (Globals)](global-config.md) |
 | Enabling/disabling a module and its tunables | `modules/<m>/config.conf` (+ sub-files) | [Per-Module Config](per-module.md) |
-| Renaming, re-aliasing or disabling a command | `commands/commands.conf` | [Renaming Commands](commands-conf.md) |
+| Renaming, re-aliasing or disabling a command | `commands.conf` | [Renaming Commands](commands-conf.md) |
 | Player-facing text and languages | `messages/messages_<lang>.conf` | [Messages & Languages](messages.md) |
 | Colours, glyphs and tone of chat/GUI text | catalogs + `menus/*.conf` | [UI Style](ui-style.md) |
 | Custom GUIs | `menus/*.conf` | [Custom Menu Engine](../menus/engine.md) |

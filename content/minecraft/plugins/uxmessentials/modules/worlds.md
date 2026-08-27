@@ -101,7 +101,8 @@ Module `worlds` · enabled by default · `modules/worlds/config.conf`
 - **Access is not automatic.** The `access` block gates a world behind a permission and can charge an entry fee
   through the economy, which is how a paid event map or a premium world is built with no extra plugin.
 - **Portals wire worlds together** so players walk between them instead of typing a command; a portal honours
-  the same access gate and fee.
+  the same access gate and fee. It also honours the server's own policy: with `allow-nether` or `allow-end` off
+  in `server.properties`, that portal is refused before any configured link is looked at.
 - **Deleting and restoring are two-step.** Both ask for a confirm command, so a live world cannot be lost to a
   mistyped name. Snapshots land in `backup.directory` and are pruned to `backup.retention-count`.
 - **Pre-generation is paced, not blocking.** `pregen <name> <radius>` walks the world outward under

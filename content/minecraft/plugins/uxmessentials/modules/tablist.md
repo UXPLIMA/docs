@@ -46,6 +46,10 @@ Module `tablist` · disabled by default · `modules/tablist/config.conf`
   while they are online, and fetched from Mojang otherwise, so an offline-mode server still renders faces.
 - **Header and footer share the HUD content grammar:** built-in `{tokens}`, PlaceholderAPI placeholders when
   PAPI is present, and animations paced by the refresh setting.
+- **A filler grid can own every cell.** With `exact = true` on the filler block, all 80 cells are drawn,
+  including the ones you did not author, so a designed grid keeps its shape instead of collapsing around the
+  real player list. It needs `suppress-real-players = true` on the same format and refuses to switch itself on
+  otherwise: the native roster and a full synthetic grid cannot both decide the layout.
 - **The layout arranges players into columns**, which is how a network builds a per-server or per-rank grid
   instead of one alphabetical list.
 

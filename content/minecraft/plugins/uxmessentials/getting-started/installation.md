@@ -45,11 +45,18 @@ back to its default. See [Core Concepts](concepts.md).
 | Command | What it tells you |
 |---|---|
 | `/uxmess status` | Every module and whether it is enabled |
-| `/uxmess doctor` | Health checks: database, economy provider, soft-depends, threading |
+| `/uxmess doctor` | Health checks: database, economy provider, soft-depends, threading, data integrity |
 | `/uxmess help` | The admin subcommands |
 
 The admin root is `/uxmess`, with the aliases `/uxmessentials` and `/uxe`. A clean `/uxmess doctor` means the
 install is done.
+
+One of those checks reads the whole database looking for rows whose owner is gone, which an interrupted import
+or a hand-edited database can leave behind. If it reports any, `/uxmess doctor repair` shows you what would be
+removed without touching anything, and `/uxmess doctor repair confirm` does it, inside a transaction that rolls
+back on failure. Only unambiguous orphans are deleted; a record pointing at a world that is currently missing is
+reported and kept, because restoring that world makes it valid again. The confirming half needs
+`uxmessentials.admin.doctor.repair`.
 
 ## Companion jars
 
