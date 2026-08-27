@@ -66,6 +66,7 @@ The `teleport` context owns all movement orchestration and the shared cooldown/w
 | `uxmessentials.spawn.named` | `true` | `/spawn <name>` to teleport to a named spawn. |
 | `uxmessentials.spawn.set` | `op` | `/setspawn`, `/setmainspawn`, `/removespawn` and `/mirrorspawn` to define and manage spawns. |
 | `uxmessentials.spawn.use` | `true` | `/spawn` to teleport to the resolved server spawn. |
+| `uxmessentials.spawn.join.exempt` | `false` | Marks the holder as exempt from the automatic first-join / every-join spawn placement. |
 | `uxmessentials.teleport.gui` | `op` | Show the teleport settings panel on the `/uxmess` gui hub. |
 | `uxmessentials.teleport.settpr` | `op` | `/settpr <minRange> <maxRange>` to set the `/rtp` search zone at runtime. |
 | `uxmessentials.tp.all` | `op` | `/tpall` to pull every online player to you. |
@@ -824,6 +825,7 @@ The kernel owns no feature commands, but carries two cross-cutting self-service 
 |------|---------|----------------|
 | `uxmessentials.admin` | `op` | Access to the `/uxmess` administration root. |
 | `uxmessentials.admin.backup` | `op` | `/backup` to snapshot the plugin data directory on demand. |
+| `uxmessentials.admin.doctor.repair` | `op` | `/uxmess` doctor repair confirm: apply the safe data repairs the doctor found. The preview needs only `uxmessentials.admin`. |
 | `uxmessentials.admin.import` | `op` | `/uxmess` import `<plugin>`: run the one-shot data import from another essentials plugin. |
 | `uxmessentials.admin.permissions` | `op` | `/uxmess` permissions `[area] [page]` and `/uxmess` permissions export: read the permission catalogue in game or write it to a file. |
 | `uxmessentials.admin.placeholders` | `op` | `/uxmess` placeholders `[area] [page]` and `/uxmess` placeholders export: read the placeholder catalogue in game or write it to a file. |
@@ -908,6 +910,7 @@ Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, 
 | `uxmessentials.world.access.bypass` | Enter a restricted world without holding that world's own entry node. |
 | `uxmessentials.world.gamemode.bypass` | Keep your own game mode in a world that forces one on entry. |
 | `uxmessentials.vault.bypass-blacklist` | Store any item in a vault, ignoring the blacklist-materials list (items are not returned). |
+| `uxmessentials.spawn.join.exempt` *(default `false`)* | Left where they logged out instead of being moved to spawn on first or every join. |
 | `uxmessentials.economy.baltop.exempt` *(default `false`)* | Marks the holder as hidden from every `/baltop` leaderboard. |
 | `uxmessentials.economy.bypasscmdcost` | Skip the configured per-command economy charge (command-costs in economy.conf). |
 | `uxmessentials.economy.tax.bypass` | Send a `/pay` without the configured transfer tax being deducted. |
