@@ -491,6 +491,7 @@ Multi-world management. Nodes use the `uxmessentials.world.*` prefix (the plural
 | `uxmessentials.world.tp.others` | `op` | `/world` tp `<name> <player>`: teleport somebody else to a world's spawn. |
 | `uxmessentials.world.unload` | `op` | `/world` unload `<name>`: unload a loaded world, moving anybody inside to spawn. |
 | `uxmessentials.world.unregister` | `op` | `/world` unregister `<name>`: drop a world from the registry, leaving its folder on disk. |
+| `uxmessentials.world.voidrescue.exempt` | `false` | Keep falling in a world that catches players out of the void. |
 
 Per-world entry uses `uxmessentials.world.<name>.enter` (a world with access restrictions). Bypass nodes are listed under [Bypass Nodes](#bypass-nodes).
 
@@ -909,6 +910,7 @@ Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, 
 | `uxmessentials.pwarp.bypass.safety` | Use a player warp whose destination is unsafe (skips the safe-landing check on `/pwarp`). |
 | `uxmessentials.world.access.bypass` | Enter a restricted world without holding that world's own entry node. |
 | `uxmessentials.world.gamemode.bypass` | Keep your own game mode in a world that forces one on entry. |
+| `uxmessentials.world.voidrescue.exempt` *(default `false`)* | Keep falling in a world that catches players out of the void, instead of being moved by its void rescue. |
 | `uxmessentials.vault.bypass-blacklist` | Store any item in a vault, ignoring the blacklist-materials list (items are not returned). |
 | `uxmessentials.spawn.join.exempt` *(default `false`)* | Left where they logged out instead of being moved to spawn on first or every join. |
 | `uxmessentials.economy.baltop.exempt` *(default `false`)* | Marks the holder as hidden from every `/baltop` leaderboard. |

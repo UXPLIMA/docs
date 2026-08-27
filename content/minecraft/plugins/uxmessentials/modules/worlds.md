@@ -46,6 +46,7 @@ Module `worlds` · enabled by default · `modules/worlds/config.conf`
 | `uxmessentials.world.tp.others` | op | /world tp \<name> \<player>: teleport somebody else to a world's spawn. |
 | `uxmessentials.world.unload` | op | /world unload \<name>: unload a loaded world, moving anybody inside to spawn. |
 | `uxmessentials.world.unregister` | op | /world unregister \<name>: drop a world from the registry, leaving its folder on disk. |
+| `uxmessentials.world.voidrescue.exempt` | off | Keep falling in a world that catches players out of the void. |
 {/* /generated */}
 
 ## Settings
@@ -100,6 +101,27 @@ Module `worlds` · enabled by default · `modules/worlds/config.conf`
 - **Two generators ship beyond the vanilla types:** `void` for an empty world and `flat` for a superflat one.
 - **Access is not automatic.** The `access` block gates a world behind a permission and can charge an entry fee
   through the economy, which is how a paid event map or a premium world is built with no extra plugin.
+- **A world can catch players who fall out of it.** Set `void-rescue` on a world and anybody who drops into the
+  void there is moved instead of dying. The value is an ordered list of steps separated by `;`, and the first one
+  that resolves wins:
+
+  | Step | Sends the player to |
+  |---|---|
+  | `spawn` | the spawn `/spawn` would use for that world |
+  | `warp:<name>` | a server warp |
+  | `at:<world>,<x>,<y>,<z>` | exact coordinates, optionally `,<yaw>,<pitch>` |
+
+  ```
+  /worlds set lobby void-rescue spawn
+  /worlds set event void-rescue warp:arena;spawn
+  /worlds set parkour void-rescue at:parkour,0.5,80,0.5,180,0
+  ```
+
+  By default the catch happens when the void starts hurting the player. Set `void-rescue-y` as well to catch them
+  earlier, at a height of your choosing (`/worlds set lobby void-rescue-y -10`), so they never see the bottom of
+  the fall. Clear either setting by passing an empty value. Spectators are never moved, nor is anybody holding
+  `uxmessentials.world.voidrescue.exempt`. If the destination is itself in the void the rescue would loop, so
+  after three rescues in ten seconds the player is left to fall and a warning is written to the console.
 - **Portals wire worlds together** so players walk between them instead of typing a command; a portal honours
   the same access gate and fee. It also honours the server's own policy: with `allow-nether` or `allow-end` off
   in `server.properties`, that portal is refused before any configured link is looked at.
