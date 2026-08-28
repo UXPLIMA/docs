@@ -7,7 +7,7 @@ icon: list
 
 ## Overview
 
-With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 338 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
+With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 335 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
 
 Every key is declared once inside the plugin, in a single catalogue that a build-time guard resolves against the resolver in both directions. That is what this page is generated from, so a key listed here is a key this build answers.
 
