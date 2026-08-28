@@ -9,7 +9,7 @@ uxmEssentials is one jar that covers what a survival server usually installs a d
 warps, teleports, an economy, kits, vaults, moderation, staff tools, holograms, NPCs, a scoreboard and
 tablist, a world manager and a menu engine. It runs on Paper 26.2 and on Folia.
 
-The plugin is 35 modules. Each one owns its commands, permissions and config file, and each can be turned
+The plugin is 36 modules. Each one owns its commands, permissions and config file, and each can be turned
 off: a disabled module registers nothing and runs no migrations. 25 ship on, 9 ship off. See
 [Modules](../modules/index.md) for the list.
 
