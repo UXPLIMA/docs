@@ -112,6 +112,10 @@ Module `worlds` · enabled by default · `modules/worlds/config.conf`
   load:STARTUP?)` and generated normal terrain, because the server builds the default world before the plugin
   had enabled. If the worlds module is off, or the id after the colon is not `void` or `flat`, the world still
   generates as normal terrain and the reason is now written to the log.
+
+  One consequence is worth planning for: a world pointed at our generator falls back to whatever
+  `server.properties` describes if the plugin ever fails to enable. Keep `level-type` and the rest of that file
+  set to something you would accept seeing, because that is the world your players land in on a bad boot.
 - **Access is not automatic.** The `access` block gates a world behind a permission and can charge an entry fee
   through the economy, which is how a paid event map or a premium world is built with no extra plugin.
 - **A world can catch players who fall out of it.** Set `void-rescue` on a world and anybody who drops into the
