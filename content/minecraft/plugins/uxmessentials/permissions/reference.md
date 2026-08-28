@@ -619,6 +619,22 @@ Server-wide packet fake-player/entity NPCs. The `/npc` command is an operator su
 | `uxmessentials.npc.gui` | `op` | `/npc` (no args) opens the NPC management GUI. |
 | `uxmessentials.npc.limit.<n>` | `quota` | How many NPCs you may own; the largest tier held wins. |
 
+## Custom Commands
+
+Operator-declared commands, written as files in `commands/custom/` and run through the same action vocabulary the
+menu engine speaks. See [Custom Commands](../modules/customcommands.md).
+
+| Node | Default | What it grants |
+|------|---------|----------------|
+| `uxmessentials.customcommand.admin` | `op` | `/customcmd` to list, inspect, reload, test and run operator-defined commands. |
+| `uxmessentials.customcommand.run.others` | `op` | `/customcmd` run `<id> <player>`: run an operator-defined command for somebody else. |
+| `uxmessentials.customcommand.cooldown.bypass` | `op` | Run an operator-defined command without waiting out its cooldown. |
+| `uxmessentials.customcommand.cost.bypass` | `op` | Run an operator-defined command that costs money without paying for it. |
+| `uxmessentials.module.customcommands` | `op` | Hot-reload / inspect the customcommands module (operator-defined commands behind `/customcmd`). |
+
+A definition may name a permission node of its own in its `command {}` block; that node is whatever the operator
+writes, so it is not listed here. Nothing grants it by default.
+
 ## Menus
 
 The operator surface over the built-in [menu engine](../menus/engine.md).
@@ -933,7 +949,8 @@ Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, 
 Every bounded context is a first-class feature module. Each owns a node tier `uxmessentials.module.<id>` (default `op`): **not** the feature's runtime permission, but the per-module **administrative** gate: who may inspect and hot-reload that one module via `/uxmess reload <id>` without holding the blanket `uxmessentials.admin.reload`. `<id>` is the module id used everywhere else (config path `modules.<id>`, the reload command, the tier node):
 
 ```
-commandcontrol  communication  custommenus  discordlink  economy  holograms
+commandcontrol  communication  customcommands  custommenus  discordlink
+economy  holograms
 homes  invrollback  itemworld  kits  messaging  moderation
 nametags  npc  playerstate  playerwarps  poses  presence
 ranks  regions  scoreboard  security  servertweaks  skin

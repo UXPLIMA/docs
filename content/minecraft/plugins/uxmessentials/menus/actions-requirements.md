@@ -8,6 +8,11 @@ icon: play
 Everything a menu does is an action, and everything it checks is a requirement. Both are written the same
 way, a bare `id:value` reference, and both are shared by the built-in menus and your own.
 
+The same vocabulary drives [custom commands](../modules/customcommands.md): a command file's `actions` and
+`requirements` lists take exactly the references on this page, so anything a button can do a command can do. One
+token is specific to a command file: `delay:<duration>` (for example `delay:2s`) shifts every step after it, which
+is how a chain waits without a per-action `delay` modifier.
+
 <Callout type="warning" title="Bare references, never brackets">
 
 A reference is `id:value`: `message:hi`, `command:spawn`, `has-money:500`, `perm:vip`,

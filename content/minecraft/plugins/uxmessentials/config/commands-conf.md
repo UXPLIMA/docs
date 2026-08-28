@@ -155,6 +155,26 @@ Disabling a single command is different from disabling its whole module: the res
 module keeps working. To turn off an entire feature, use the module's `enabled` key
 instead, see [Per-Module Config](per-module.md).
 
+## Custom commands in the catalog
+
+A [custom command](../modules/customcommands.md) is a command like any other once it is loaded, so it gets a block
+here too. Its id is the definition's file name with a `custom:` prefix, which keeps an operator-chosen name out of
+the built-in id space. A file `commands/custom/welcome.conf` is keyed `custom:welcome`:
+
+```hocon
+commands {
+  "custom:welcome" {
+    enabled = true
+    name = "welcome"
+    aliases = ["hello"]
+  }
+}
+```
+
+Everything on this page applies to it: rename it, give it aliases, add per-language aliases, or set
+`enabled = false` to drop it without touching the file that defines it. What the command *does* still lives in
+`commands/custom/<id>.conf`; this file only decides what it is called and whether it registers at all.
+
 **Reload after editing.** Apply your changes with `/uxmess reload` (or restart). The command surface is
 re-published on reload, so renames, new aliases and disabled commands take effect
 immediately.
