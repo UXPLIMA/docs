@@ -99,6 +99,19 @@ Module `worlds` · enabled by default · `modules/worlds/config.conf`
 - **`import` registers a folder in place**, regenerating nothing, which is how a downloaded map or a world from
   another plugin joins the roster. `/uxmess import multiverse` does the whole Multiverse-Core registry at once.
 - **Two generators ship beyond the vanilla types:** `void` for an empty world and `flat` for a superflat one.
+- **The default world can use them too.** `/world create` is the usual way in, but the world the server starts
+  with is made before any command can run, so it is configured in `bukkit.yml` instead:
+
+  ```yaml
+  worlds:
+    world:
+      generator: uxmEssentials:void
+  ```
+
+  This works from 0.8.3 on. Earlier versions logged `Plugin 'uxmEssentials' is not enabled yet (is it
+  load:STARTUP?)` and generated normal terrain, because the server builds the default world before the plugin
+  had enabled. If the worlds module is off, or the id after the colon is not `void` or `flat`, the world still
+  generates as normal terrain and the reason is now written to the log.
 - **Access is not automatic.** The `access` block gates a world behind a permission and can charge an entry fee
   through the economy, which is how a paid event map or a premium world is built with no extra plugin.
 - **A world can catch players who fall out of it.** Set `void-rescue` on a world and anybody who drops into the
