@@ -192,5 +192,11 @@ Module `economy` · enabled by default · `modules/economy/config.conf` and `cur
   rather than failing.
 - **On a server that already has a Vault economy**, uxmEssentials defers to the existing provider. Set
   `provider.register` and its priority deliberately if you want it to take over.
+- **What third-party plugins see.** With `provider.register` on and no other economy present, a plugin that pays
+  through Vault (a reward, a shop, a job) is paying into these balances. Vault has one currency, so that view
+  serves the default currency only and ignores per-world arguments; anything that needs a second currency has to
+  go through the plugin's own API. Vault's named bank accounts are not `/bank` and are answered as not
+  implemented rather than mapped onto a personal account. From 0.8.3 on: earlier versions registered only the
+  internal port, so third-party plugins found no economy and paid nothing.
 
 Related: [Homes](homes.md), [Kits](kits.md), [Ranks](ranks.md)
