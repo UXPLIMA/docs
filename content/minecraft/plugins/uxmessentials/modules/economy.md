@@ -182,6 +182,10 @@ Module `economy` · enabled by default · `modules/economy/config.conf` and `cur
 - **A currency can be backed by another plugin.** Set `backend` on it (`playerpoints`, `coinsengine:gold`, `exp`,
   `placeholder:<name>`) and uxmEssentials reads and writes that plugin's numbers instead of keeping a second
   balance beside it. A foreign-backed currency has no `/baltop`.
+- **Available is not in use.** The startup log prints a `currency_backend_available` line for every backend a
+  currency is allowed to name, and the built-in ledger and the vanilla exp bar are always among them, so an
+  empty `backends` block still produces several lines. The line that says where your currencies actually live
+  is `currency_backends_in_use`.
 - **The extras are feature flags:** banks, loans, banknotes, worth and sell, exchange and the wallet dashboard
   each register their commands only when their block is enabled.
 - **Banknotes need three things aligned:** the currency marked `physical`, its `denominations` set, and the
@@ -196,7 +200,9 @@ Module `economy` · enabled by default · `modules/economy/config.conf` and `cur
   through Vault (a reward, a shop, a job) is paying into these balances. Vault has one currency, so that view
   serves the default currency only and ignores per-world arguments; anything that needs a second currency has to
   go through the plugin's own API. Vault's named bank accounts are not `/bank` and are answered as not
-  implemented rather than mapped onto a personal account. From 0.8.3 on: earlier versions registered only the
+  implemented rather than mapped onto a personal account. Publishing is Vault only: Treasury is consumed when it
+  is installed, and a Treasury economy wins the whole economy here, but this ledger is never published to it, so
+  a plugin that reads only Treasury finds no economy. From 0.8.3 on: earlier versions registered only the
   internal port, so third-party plugins found no economy and paid nothing.
 
 Related: [Homes](homes.md), [Kits](kits.md), [Ranks](ranks.md)
