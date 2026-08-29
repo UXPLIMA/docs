@@ -77,12 +77,48 @@ Each entry under `items { }` is one tile, keyed by an id you choose.
 | `lore` | Lore lines (a list of MiniMessage strings). |
 | `lore-mode` | How this lore combines with the base icon's own lore (`REPLACE` is the default). |
 | `amount` | Stack size shown on the icon. |
-| `decor { }` | Rich extras: `model-data`, `glow`, item flags, enchantments, potion/banner/trim, damage, data-components. |
+| `decor { }` | Rich extras: `model-data`, `glow`, item flags, enchantments, potion/banner/trim, damage, data-components, and the tooltip keys below. |
 | `view` | Visibility gate: hide the tile unless conditions pass (see below). |
 | `update` | `true` to re-render this tile on every refresh tick. |
 | `type` | Pagination role: `NONE`, `NEXT`, `PREVIOUS`, `JUMP`. |
 | `list { }` | Expand one template tile across a data source (online players, worlds, …). See below. |
 | `click { }` | What each click gesture does (see below). |
+
+## What the client is allowed to say
+
+A menu icon is a button, and the client does not know that. Left alone it writes its own
+lines under the lore you wrote: the mining speed under an `IRON_PICKAXE`, `Dyed` under a
+tinted chestplate, the flight duration under a firework, in a colour the menu never chose.
+
+The engine silences those lines by default, keeping the ones your own `decor` block asked
+for. If you wrote `enchantments`, `trim`, `potion`, `leather-color`, `banner`, `unbreakable`,
+`attribute-modifiers` or `tool`, that line is content and it stays; a shop tile selling a
+Sharpness V book still shows Sharpness V. Only the lines that come from the material alone
+go away.
+
+Two keys inside `decor { }` change that:
+
+```hocon
+decor {
+  hide-vanilla-tooltip = false                      # give every line back
+  hidden-components = ["dyed_color", "equippable"]  # or name an exact set
+}
+```
+
+`hide-vanilla-tooltip = false` lets the client draw everything, which is what you want for a
+tile that shows a real item and nothing else. `hidden-components` names exactly what to
+silence and overrides the default; an id it cannot resolve is skipped rather than failing the
+render. The component ids are the vanilla ones (`dyed_color`, `equippable`, `trim`,
+`fireworks`, `tool`, `attribute_modifiers`, and so on).
+
+This is about drawing, not about behaviour. Hiding `equippable` removes the line, not the
+equip: a menu stops the equip by cancelling the click, which it already does.
+
+Two related keys are not the same thing. `hide-tooltip = true` removes the whole tooltip,
+your name and lore included, which is almost never what a menu wants. The item flags
+(`flags = ["HIDE_ATTRIBUTES"]`) still work, but they predate the components the client has
+gained since and cannot cover most of them; `HIDE_ADDITIONAL_TOOLTIP` in particular is
+deprecated on Paper 26.2. New menus should use the keys above instead.
 
 ## List-backed items
 
