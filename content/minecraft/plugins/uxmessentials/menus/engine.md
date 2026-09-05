@@ -118,7 +118,9 @@ Two related keys are not the same thing. `hide-tooltip = true` removes the whole
 your name and lore included, which is almost never what a menu wants. The item flags
 (`flags = ["HIDE_ATTRIBUTES"]`) still work, but they predate the components the client has
 gained since and cannot cover most of them; `HIDE_ADDITIONAL_TOOLTIP` in particular is
-deprecated on Paper 26.2. New menus should use the keys above instead.
+deprecated on Paper 26.2. New menus should use the keys above instead. Flag names are
+case-insensitive and a hyphen reads as an underscore, so `hide_attributes` and
+`hide-attributes` name the same flag; a name that matches no flag is skipped.
 
 ## List-backed items
 
