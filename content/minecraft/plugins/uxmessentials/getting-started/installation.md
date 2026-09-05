@@ -6,7 +6,8 @@ icon: download
 ---
 
 uxmEssentials needs Paper 26.2 or newer on Java 25. Folia is supported: every scheduled task goes through
-Folia-safe schedulers. Older Bukkit and Spigot builds are not supported.
+Folia-safe schedulers. Older Bukkit and Spigot builds are not supported. An older server refuses to load the
+jar and says so at startup, rather than starting and failing later on a method it does not have.
 
 ## Install
 
