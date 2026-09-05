@@ -84,6 +84,30 @@ Each entry under `items { }` is one tile, keyed by an id you choose.
 | `list { }` | Expand one template tile across a data source (online players, worlds, …). See below. |
 | `click { }` | What each click gesture does (see below). |
 
+## Arithmetic in a line
+
+A `name` or `lore` line can carry `{math: <expression>}` anywhere in it, and the block is
+replaced by the number it evaluates to. Placeholders resolve first, so the expression sees
+values rather than tokens:
+
+```hocon
+lore = [
+  "<gray>Cost: <white>{math: %price% * %amount%}",
+  "<gray>Left: <white>{math: max(0, %limit% - %used%)}"
+]
+```
+
+The expression language is closed. Operators are `+ - * / % ^`, with `^` right associative
+and a leading `+` or `-` allowed on a term. The functions are `abs`, `floor`, `ceil`,
+`round`, `sqrt`, and the variadic `min` and `max`; any other name is refused. There is no
+way to reach the server, the filesystem or a plugin from inside a block. A result that is a
+whole number prints without a trailing `.0`.
+
+A block that cannot be evaluated renders as nothing, leaving a visible gap rather than the
+raw expression. That includes a block whose expression names a placeholder that resolves to
+nothing: `{math: %missing% + 1}` shows nothing, not `1`. The one case still evaluated with a
+hole in it is a block a placeholder's own value supplies rather than one written in the file.
+
 ## What the client is allowed to say
 
 A menu icon is a button, and the client does not know that. Left alone it writes its own
