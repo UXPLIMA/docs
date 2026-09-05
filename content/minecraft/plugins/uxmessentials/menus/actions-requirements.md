@@ -45,8 +45,9 @@ more. Use `/menu dump <menu>` to see exactly what a menu resolves.
 | `action-bar:<text>` | Show an action-bar line. |
 | `title:<text>` | Show a title. |
 | `toast:<text>` | Pop an advancement-style toast. |
-| `sound:<key>` | Play a sound to the clicker. |
-| `broadcast-sound:<key>` | Play a sound to everyone. |
+| `sound:<key> [volume] [pitch]` | Play a sound to the clicker. |
+| `broadcast-sound:<key> [volume] [pitch]` | Play a sound to everyone, each at their own position. |
+| `rawsound:<key> [volume] [pitch]` | Play a key to the clicker exactly as written, for a resource-pack sound. |
 | `command:<cmd>` | Run a command **as the player**. |
 | `console:<cmd>` | Run a command **as the console**. |
 | `command-as-op:<cmd>` | Run a command with a temporary op. |
@@ -66,6 +67,15 @@ more. Use `/menu dump <menu>` to see exactly what a menu resolves.
 | `list-search:<source>:<key>` | Prompt for text and store it as a paged list's filter. |
 | `input:<key>` | Ask the player to type something, then continue the chain with it. |
 | `confirm:<key>` | Ask for a yes/no before the rest of the chain runs. |
+
+**Sound keys take either spelling.** `sound:block.note_block.pling` and
+`sound:BLOCK_NOTE_BLOCK_PLING` name the same sound; the constant form is resolved
+through the server's sound registry rather than by rewriting the underscores, so a
+key with an underscore inside a segment works as well as one without. A name the
+registry does not know is passed to the client as written, which is how a
+resource-pack key reaches it. Volume and pitch are optional and default to `1`.
+`rawsound:` skips the registry entirely and is the one to use when you want a key
+sent verbatim.
 
 **`input:` and `confirm:` are top-level steps only.** They pause the chain and resume on a later callback, so they only work as a direct
 step of a gesture. Put one inside an `else`, a `deny` or a per-requirement list and
