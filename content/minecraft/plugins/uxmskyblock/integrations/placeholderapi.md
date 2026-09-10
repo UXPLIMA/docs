@@ -34,7 +34,7 @@ PAPI is only needed for **other** plugins to read them.
 | `%skyblock_points%` | Total island points |
 | `%skyblock_next_points%` | Points required for the next level (`MAX` at the cap) |
 | `%skyblock_points_needed%` | Points still missing to reach the next level |
-| `%skyblock_progress%` | Progress to the next level as a 0–100 percentage |
+| `%skyblock_progress%` | Progress to the next level as a 0 to 100 percentage |
 | `%skyblock_progress_bar%` | A 10-segment colored progress bar |
 | `%skyblock_bank%` | Island bank balance |
 | `%skyblock_biome%` | The island's chosen biome (empty if never set) |

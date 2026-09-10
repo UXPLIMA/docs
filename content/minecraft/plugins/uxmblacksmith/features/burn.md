@@ -36,7 +36,7 @@ item:
 |---|---|
 | `-1` | Burn disabled for this trade (always succeeds) |
 | `0` | Always burns |
-| `1`–`99` | That percent chance of success |
+| `1` to `99` | That percent chance of success |
 | `100` or more | Always succeeds |
 
 ## How the final chance is calculated

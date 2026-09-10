@@ -113,10 +113,10 @@ Web-map integration.
 |---|---|---|
 | `enabled` | `true` | Draw claims on the map |
 | `style.borderColor` | `"#33FF33"` | Outline colour |
-| `style.borderOpacity` | `0.8` | Outline opacity, 0–1 |
+| `style.borderOpacity` | `0.8` | Outline opacity, 0 to 1 |
 | `style.borderWeight` | `2` | Outline thickness |
 | `style.fillColor` | `"#33FF33"` | Fill colour |
-| `style.fillOpacity` | `0.35` | Fill opacity, 0–1 |
+| `style.fillOpacity` | `0.35` | Fill opacity, 0 to 1 |
 | `tooltip.lines` | 5 lines of HTML | The hover popup |
 
 Tooltip lines are HTML, not MiniMessage: they are rendered by the map's web front end. Placeholders

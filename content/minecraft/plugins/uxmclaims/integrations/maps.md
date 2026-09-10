@@ -34,10 +34,10 @@ visualizer:
 | Key | Default | Meaning |
 |---|---|---|
 | `borderColor` | `#33FF33` | Outline colour |
-| `borderOpacity` | `0.8` | Outline opacity, 0–1 |
+| `borderOpacity` | `0.8` | Outline opacity, 0 to 1 |
 | `borderWeight` | `2` | Outline thickness in pixels |
 | `fillColor` | `#33FF33` | Fill colour |
-| `fillOpacity` | `0.35` | Fill opacity, 0–1 |
+| `fillOpacity` | `0.35` | Fill opacity, 0 to 1 |
 
 These are the web map's own colour format: six hex digits, no alpha channel. Opacity is the separate
 `…Opacity` key. That is different from the in-world `border` colours in `config.yml`, which are

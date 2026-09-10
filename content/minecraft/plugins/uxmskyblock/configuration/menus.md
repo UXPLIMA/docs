@@ -46,7 +46,7 @@ items:
 | Field | Meaning |
 |-------|---------|
 | `title` | Inventory title (color codes allowed) |
-| `rows` | 1–6 rows |
+| `rows` | 1 to 6 rows |
 | `type` | Special behavior (see below) |
 | `items.<id>.slot` | Slot index (0-based) |
 | `items.<id>.material` | Item material |

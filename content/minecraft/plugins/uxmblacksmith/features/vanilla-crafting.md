@@ -47,7 +47,7 @@ That is the entire rule. Consequences worth knowing:
 
 ## Why you would want it
 
-The shipped list is a coherent design: iron gear at level 2–4, diamond at 8–12, netherite at 18–24.
+The shipped list is a coherent design: iron gear at level 2 to 4, diamond at 8 to 12, netherite at 18 to 24.
 A new player cannot skip straight to a diamond sword at the crafting table, so the blacksmith is
 where early gear comes from, which is the whole point of installing the plugin.
 

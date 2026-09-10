@@ -44,7 +44,7 @@ The value reflects any active boost, so a 2x boost visibly halves the countdown.
 | `%uxmblacksmith_level%` | Blacksmith level |
 | `%uxmblacksmith_xp%` | XP toward the next level |
 | `%uxmblacksmith_xp_required%` | XP needed for the next level |
-| `%uxmblacksmith_xp_percent%` | Progress to the next level, 0–100 |
+| `%uxmblacksmith_xp_percent%` | Progress to the next level, 0 to 100 |
 | `%uxmblacksmith_xp_total%` | Lifetime XP |
 | `%uxmblacksmith_perk_points%` | Unspent perk points |
 
@@ -67,7 +67,7 @@ Suffix with the mastery key: the category key unless a trade overrides it.
 | `%uxmblacksmith_mastery_xp_<key>%` | XP toward the next level |
 | `%uxmblacksmith_mastery_required_xp_<key>%` | XP needed for the next |
 | `%uxmblacksmith_mastery_total_xp_<key>%` | Lifetime mastery XP |
-| `%uxmblacksmith_mastery_percent_<key>%` | Progress, 0–100 |
+| `%uxmblacksmith_mastery_percent_<key>%` | Progress, 0 to 100 |
 | `%uxmblacksmith_mastery_name_<key>%` | The category's display name |
 
 `mastery_xp_required_<key>` is accepted as well as `mastery_required_xp_<key>`.

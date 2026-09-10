@@ -24,7 +24,7 @@ drops:
 | Part | Meaning |
 |---|---|
 | `ITEM` | A material name |
-| `CHANCE` | 0–100, the percent chance this line drops at all |
+| `CHANCE` | 0 to 100, the percent chance this line drops at all |
 | `RANGE` | `min-max` quantity, e.g. `1-3` |
 
 Each line is rolled on its own, so a mob can drop everything or nothing.

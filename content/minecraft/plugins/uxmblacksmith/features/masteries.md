@@ -84,7 +84,7 @@ Success chance:
 chance  = burn permission multiplier applied to successChance
 chance += BURN_RESISTANCE perk effects
 chance += mastery success bonus
-clamped to 0–100
+clamped to 0 to 100
 ```
 
 The permission multiplier **multiplies**; perks and mastery **add**. See
@@ -97,7 +97,7 @@ to `swords`, so its 4% per level applies to sword contracts and nothing else. Th
 tree lets a player go deep rather than wide.
 
 Perks can also *require* a mastery level to unlock: `requiredMasteryKey` and `requiredMasteryLevel`.
-The four shipped category perks each need level 6–8 in their own category.
+The four shipped category perks each need level 6 to 8 in their own category.
 
 ## Seeing it
 

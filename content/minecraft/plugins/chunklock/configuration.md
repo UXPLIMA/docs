@@ -153,10 +153,10 @@ Order bands from smallest `max-ring` to largest, and end with a catch-all
 
 | Band | Covers rings | Cost |
 |------|--------------|------|
-| 1 | 1–2 | 5× Dirt |
-| 2 | 3–4 | 16× Cobblestone, 8× Oak Log |
-| 3 | 5–8 | 8× Iron Ingot, 16× Coal |
-| 4 | 9–16 | 4× Diamond, 8× Gold Ingot |
+| 1 | 1 to 2 | 5× Dirt |
+| 2 | 3 to 4 | 16× Cobblestone, 8× Oak Log |
+| 3 | 5 to 8 | 8× Iron Ingot, 16× Coal |
+| 4 | 9 to 16 | 4× Diamond, 8× Gold Ingot |
 | 5 | 17+ | 1× Netherite Ingot, 2× Diamond Block, 1× custom Paper (model 1001) |
 
 ---

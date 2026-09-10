@@ -20,9 +20,9 @@ Coop lets you grant someone access to your island **without making them a perman
 
 <Callout type="note" title="Coop vs Trust vs Member">
 
-- **Member** – permanent, counts against the team limit, has a role.
-- **Coop** – lightweight, does **not** count against the team limit, no role.
-- **Visitor** – anyone else; limited by island flags.
+- **Member**: permanent, counts against the team limit, has a role.
+- **Coop**: lightweight, does **not** count against the team limit, no role.
+- **Visitor**: anyone else; limited by island flags.
 
 </Callout>
 
