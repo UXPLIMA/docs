@@ -28,7 +28,7 @@ at the firewall rather than trusting the wildcard.
 database:
   type: 'AUTO'
   username: 'uxmclaims'
-  password: 'a-long-random-password'
+  password: '<a long random password>'
   url: 'jdbc:mysql://localhost:3306/uxmclaims'
 ```
 

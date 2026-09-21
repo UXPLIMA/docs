@@ -31,7 +31,7 @@ the single most common PostgreSQL setup problem.
 database:
   type: 'AUTO'
   username: 'uxmclaims'
-  password: 'a-long-random-password'
+  password: '<a long random password>'
   url: 'jdbc:postgresql://localhost:5432/uxmclaims'
 ```
 
