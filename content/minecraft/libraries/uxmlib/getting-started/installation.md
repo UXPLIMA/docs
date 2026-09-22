@@ -18,13 +18,17 @@ never ships them.
 
 ## Coordinates
 
-Artifacts are published through JitPack under the group `com.github.UXPLIMA.uxmLib`, with the git tag
+Artifacts are published through JitPack under the group `com.github.UXPLIMA.uxm-lib`, with the git tag
 as the version.
+
+The repository was called `uxmLib` once, and a build asking for the old group still resolves because
+GitHub redirects the old path and JitPack follows it. Use the name above in anything new: the old one
+rests on that redirect, and the redirect ends the moment anything else claims the old name.
 
 <Callout type="warning" title="The group carries the repository name">
 
-There is no `com.github.UXPLIMA:uxmLib` artifact. The group is
-`com.github.UXPLIMA.uxmLib` (repository name after a dot) and the coordinate always ends in a
+There is no `com.github.UXPLIMA:uxm-lib` artifact. The group is
+`com.github.UXPLIMA.uxm-lib` (repository name after a dot) and the coordinate always ends in a
 module name.
 
 </Callout>
@@ -39,9 +43,9 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.UXPLIMA.uxmLib:uxmlib-gui:VERSION")
-    implementation("com.github.UXPLIMA.uxmLib:uxmlib-item:VERSION")
-    implementation("com.github.UXPLIMA.uxmLib:uxmlib-command:VERSION")
+    implementation("com.github.UXPLIMA.uxm-lib:uxmlib-gui:VERSION")
+    implementation("com.github.UXPLIMA.uxm-lib:uxmlib-item:VERSION")
+    implementation("com.github.UXPLIMA.uxm-lib:uxmlib-command:VERSION")
 }
 ```
 
@@ -57,8 +61,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.UXPLIMA.uxmLib:uxmlib-gui:VERSION'
-    implementation 'com.github.UXPLIMA.uxmLib:uxmlib-item:VERSION'
+    implementation 'com.github.UXPLIMA.uxm-lib:uxmlib-gui:VERSION'
+    implementation 'com.github.UXPLIMA.uxm-lib:uxmlib-item:VERSION'
 }
 ```
 
@@ -77,7 +81,7 @@ dependencies {
 </repositories>
 
 <dependency>
-  <groupId>com.github.UXPLIMA.uxmLib</groupId>
+  <groupId>com.github.UXPLIMA.uxm-lib</groupId>
   <artifactId>uxmlib-gui</artifactId>
   <version>VERSION</version>
 </dependency>
@@ -89,11 +93,11 @@ Importing `uxmlib-bom` as a platform lets you list modules without repeating the
 
 ```kotlin
 dependencies {
-    implementation(platform("com.github.UXPLIMA.uxmLib:uxmlib-bom:VERSION"))
+    implementation(platform("com.github.UXPLIMA.uxm-lib:uxmlib-bom:VERSION"))
 
-    implementation("com.github.UXPLIMA.uxmLib:uxmlib-gui")
-    implementation("com.github.UXPLIMA.uxmLib:uxmlib-item")
-    implementation("com.github.UXPLIMA.uxmLib:uxmlib-storage")
+    implementation("com.github.UXPLIMA.uxm-lib:uxmlib-gui")
+    implementation("com.github.UXPLIMA.uxm-lib:uxmlib-item")
+    implementation("com.github.UXPLIMA.uxm-lib:uxmlib-storage")
 }
 ```
 
@@ -105,7 +109,7 @@ Use it once you depend on more than two modules. Mismatched versions between `gu
 `uxmlib-all` depends on every module:
 
 ```kotlin
-implementation("com.github.UXPLIMA.uxmLib:uxmlib-all:VERSION")
+implementation("com.github.UXPLIMA.uxm-lib:uxmlib-all:VERSION")
 ```
 
 Convenient while exploring; prefer naming the modules you actually use once the plugin settles,
