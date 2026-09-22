@@ -24,6 +24,6 @@ built from MiniMessage: legacy `§` and `&` colour codes are not supported.
 
 | | |
 |---|---|
-| Source | [github.com/UXPLIMA/uxmLib](https://github.com/UXPLIMA/uxmLib) |
-| Artifacts | [JitPack](https://jitpack.io/#UXPLIMA/uxmLib) |
+| Source | [github.com/UXPLIMA/uxm-lib](https://github.com/UXPLIMA/uxm-lib) |
+| Artifacts | [JitPack](https://jitpack.io/#UXPLIMA/uxm-lib) |
 | Licence | MIT |

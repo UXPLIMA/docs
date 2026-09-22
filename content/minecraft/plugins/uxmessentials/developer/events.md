@@ -360,4 +360,4 @@ happened. Use `api.isModuleEnabled("homes")` when you need to tell the differenc
 
 - [Adding the dependency](dependency.md)
 - [Menu API](menu-api.md) to extend the GUI engine
-- [The sample consumer](https://github.com/UXPLIMA/uxmEssentials/tree/main/sample-consumer), a compiling example
+- [The sample consumer](https://github.com/UXPLIMA/uxm-essentials/tree/main/sample-consumer), a compiling example

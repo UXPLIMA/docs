@@ -604,4 +604,4 @@ private void send(Player viewer, String line) {
 ```
 
 The full sample plugin, including this idiom, is in
-[`sample-consumer`](https://github.com/UXPLIMA/uxmEssentials/tree/main/sample-consumer) in the repository.
+[`sample-consumer`](https://github.com/UXPLIMA/uxm-essentials/tree/main/sample-consumer) in the repository.

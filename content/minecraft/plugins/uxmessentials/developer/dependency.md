@@ -16,7 +16,7 @@ the event classes, the front door and the value types with their javadoc.
 
 ```kotlin
 repositories {
-    maven("https://raw.githubusercontent.com/UXPLIMA/uxmEssentials/maven")
+    maven("https://raw.githubusercontent.com/UXPLIMA/uxm-essentials/maven")
 }
 
 dependencies {
@@ -30,7 +30,7 @@ dependencies {
 
 ```groovy
 repositories {
-    maven { url 'https://raw.githubusercontent.com/UXPLIMA/uxmEssentials/maven' }
+    maven { url 'https://raw.githubusercontent.com/UXPLIMA/uxm-essentials/maven' }
 }
 
 dependencies {
@@ -46,7 +46,7 @@ dependencies {
 <repositories>
     <repository>
         <id>uxplima</id>
-        <url>https://raw.githubusercontent.com/UXPLIMA/uxmEssentials/maven</url>
+        <url>https://raw.githubusercontent.com/UXPLIMA/uxm-essentials/maven</url>
     </repository>
 </repositories>
 
@@ -121,7 +121,7 @@ this API is null-safe or callback-based, there is nothing to gain from it and a 
 
 ## A complete example
 
-The [sample consumer](https://github.com/UXPLIMA/uxmEssentials/tree/main/sample-consumer) in the repository is a
+The [sample consumer](https://github.com/UXPLIMA/uxm-essentials/tree/main/sample-consumer) in the repository is a
 small, compiling plugin that uses the front door, one veto listener and two notification listeners. It is built in CI
 against the published artifacts on every commit, so what it shows is what currently works.
 

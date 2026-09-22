@@ -216,7 +216,7 @@ call: opt in explicitly.
 ```hocon
 update-check {
   enabled = false
-  source-url = "https://api.github.com/repos/UXPLIMA/uxmEssentials/releases/latest"
+  source-url = "https://api.github.com/repos/UXPLIMA/uxm-essentials/releases/latest"
   notify-ops-on-join = true     # tell operators on join when a newer version exists
   interval-hours = 12           # re-check cadence; 0 = check once on enable only
 }
