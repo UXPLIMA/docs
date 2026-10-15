@@ -68,6 +68,12 @@ a list of action lines, as in `modules/effects.conf`, with `%theme%` and `%place
 who was on the team before the votes began is paid, at once when online and when they next join
 otherwise.
 
+## Windows
+
+`menus/brix-gallery.conf` is every plot on the server, opened with `/is plots`. The plots of the
+contest under way come first, best first, and the rest follow, the newest first. A Bedrock player
+gets it as a form.
+
 ## Commands
 
 | Command | What it does |

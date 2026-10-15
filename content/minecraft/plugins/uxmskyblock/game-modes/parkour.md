@@ -95,6 +95,11 @@ course, and a run starts empty handed.
 - `modes.play`: the mode of runners and everybody else, `SURVIVAL` or `ADVENTURE`.
 - `modes.keep-permission`: a holder keeps their own mode and items on a course.
 
+## Windows
+
+`menus/parkour-courses.conf` is every course on the server, the most run first, opened with
+`/is courses`. A Bedrock player gets it as a form.
+
 ## Commands
 
 | Command | What it does |

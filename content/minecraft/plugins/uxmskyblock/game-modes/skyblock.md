@@ -63,4 +63,7 @@ whether the schematic's air, entities and biomes are carried.
 | `/is values` | Shows what each block adds to an island: its worth, its points and the levels they make |
 | `/is level` | Shows the island level and block worth |
 
+`/is values` opens `menus/block-values.conf`, the most points first. A Bedrock player gets it as a
+form.
+
 Every word is yours to rename, alias or turn off in `commands.conf`.

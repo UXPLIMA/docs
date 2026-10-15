@@ -2,7 +2,7 @@
 title: uxmSkyblock
 order: 47
 description: Getting Started, Commands, Menu Guide, Progression, Roles & Protection,
-  Features, Configuration, Database, Cross-Server, Integrations, Modules and Developer
+  Features, Game Modes, Configuration, Database, Cross-Server, Integrations, Modules and Developer
   API.
 icon: cloud
 ---
@@ -13,6 +13,7 @@ icon: cloud
 - [Progression](progression/)
 - [Roles & Protection](protection/)
 - [Features](features/)
+- [Game Modes](game-modes/)
 - [Configuration](configuration/)
 - [Database](database/)
 - [Cross-Server](proxy/)

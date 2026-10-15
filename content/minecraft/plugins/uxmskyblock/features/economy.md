@@ -58,3 +58,10 @@ bank:
 ```
 
 Each line shows the time, type (`DEPOSIT` / `WITHDRAW` / `INTEREST`), who did it, the amount and the resulting balance.
+
+## Who put in and took out
+
+`/is activity` opens what happened on the island lately. Its totals button opens
+`menus/island-activity-totals.conf`: what each member put in and took out of the island bank. It
+reads the same lines the feed shows, so the member, the kinds and the stretch of time a player
+narrowed the feed to narrow these totals too. A Bedrock player gets it as a form.
