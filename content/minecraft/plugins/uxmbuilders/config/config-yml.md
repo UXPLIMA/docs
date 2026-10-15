@@ -121,7 +121,6 @@ logging:          # the audit trail
 | `item.material` | `PAPER` | The blueprint item |
 | `item.customModelData` | `1001` | For a resource pack model |
 | `item.glow` | `true` | Enchantment shimmer |
-| `item.name`, `item.lore` | | Its text; `%package.name%` and `%package.id%` are filled |
 | `origin.yMode` | `ABOVE` | Build `ABOVE`, `AT` or `BELOW` the block looked at |
 | `cooldownSeconds` | `30` | Between two starts; a package's own `cooldown` wins if longer |
 | `confirmCancel` | `true` | `/builders cancel` asks for `/builders confirm` |

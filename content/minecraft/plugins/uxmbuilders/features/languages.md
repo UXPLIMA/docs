@@ -53,8 +53,11 @@ translation lacks appears in English rather than as a blank.
 
 - Command names and their arguments stay English in every language: `/builders warehouse deposit all`
   is the same command everywhere.
-- Builder and package names come from `builders.yml` and `packages.yml`, which are not translated:
-  name them in your players' language there.
+- `builders.yml` and `packages.yml` hold prices and stats as well as names, so there is one copy of each
+  whatever the language. It is written in the language set when the plugin first starts; after that,
+  rename builders and categories there yourself.
+- The blueprint item's name and lore are messages (`blueprintName`, `blueprintLore`), so they follow the
+  language. Its material and model stay in `config.yml` under `start.item`.
 - Money formatting is separate: `economy.locale` decides thousands and decimal marks.
 
 Related: [Messages and menus](../config/messages-and-menus.md), [config.yml](../config/config-yml.md)
