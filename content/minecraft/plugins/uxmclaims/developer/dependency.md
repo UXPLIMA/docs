@@ -16,6 +16,7 @@ objects, the domain model and the events. The current version is `3.6.7`.
 ```groovy
 repositories {
     maven { url = 'https://repo.uxplima.com/repository/maven-releases/' }
+    maven { url = 'https://repo.uxplima.com/repository/maven-snapshots/' }
 }
 
 dependencies {
@@ -32,6 +33,10 @@ dependencies {
         <id>uxplima-releases</id>
         <url>https://repo.uxplima.com/repository/maven-releases/</url>
     </repository>
+    <repository>
+        <id>uxplima-snapshots</id>
+        <url>https://repo.uxplima.com/repository/maven-snapshots/</url>
+    </repository>
 </repositories>
 
 <dependencies>
@@ -46,8 +51,6 @@ dependencies {
 
 </Tab>
 </Tabs>
-
-Versions ending in `-SNAPSHOT` live in `https://repo.uxplima.com/repository/maven-snapshots/`.
 
 ## What the artifact contains
 

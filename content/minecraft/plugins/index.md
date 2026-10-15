@@ -2,7 +2,8 @@
 title: Plugins
 order: 3
 description: uxmEssentials, uxmClaims, uxmSkyblock, Chunklock, uxmHelperNPC,
-  uxmSpawners, uxmFarmer, uxmDiscordSync, uxmDragonEvent, uxmBlacksmith and uxmGlow.
+  uxmSpawners, uxmFarmer, uxmDiscordSync, uxmDragonEvent, uxmBlacksmith, uxmGlow and
+  uxmBuilders.
 icon: puzzle
 ---
 
@@ -19,3 +20,4 @@ icon: puzzle
 | [uxmDragonEvent](uxmdragonevent/) | A scheduled Ender Dragon fight with rebirths, damage leaderboards and rewards |
 | [uxmBlacksmith](uxmblacksmith/) | Time-gated crafting with burn risk, trade slots, boosts, levels, masteries and a perk tree |
 | [uxmGlow](uxmglow/) | A glowing outline a player picks for themselves, visible through walls |
+| [uxmBuilders](uxmbuilders/) | Schematics a player buys and an NPC crew builds block by block, with a live preview |
