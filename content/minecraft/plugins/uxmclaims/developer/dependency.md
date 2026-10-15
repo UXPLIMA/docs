@@ -11,8 +11,8 @@ One dependency gets you the API, the facades, the domain model and the events.
 
 ```groovy
 repositories {
-    maven { url = 'https://repo.inovixi.com/repository/maven-releases/' }
-    maven { url = 'https://repo.inovixi.com/repository/maven-snapshots/' }
+    maven { url = 'https://repo.uxplima.com/repository/maven-releases/' }
+    maven { url = 'https://repo.uxplima.com/repository/maven-snapshots/' }
 }
 
 dependencies {
@@ -25,12 +25,12 @@ dependencies {
 ```xml
 <repositories>
     <repository>
-        <id>inovixi-releases</id>
-        <url>https://repo.inovixi.com/repository/maven-releases/</url>
+        <id>uxplima-releases</id>
+        <url>https://repo.uxplima.com/repository/maven-releases/</url>
     </repository>
     <repository>
-        <id>inovixi-snapshots</id>
-        <url>https://repo.inovixi.com/repository/maven-snapshots/</url>
+        <id>uxplima-snapshots</id>
+        <url>https://repo.uxplima.com/repository/maven-snapshots/</url>
     </repository>
 </repositories>
 
