@@ -39,6 +39,13 @@ The foundation goes below the box the protection check covered, so each column i
 own before anything is placed under it. A column the owner may not build in is skipped. With the
 [warehouse](warehouse.md) on, each foundation block is charged like any other block.
 
+## Players on the site
+
+While a build is going up, a player standing in its footprint is moved just past the nearest edge, onto
+the ground there, and told so in chat. Blocks go in without physics, so one placed where a
+player stands would trap and suffocate them. Creative and spectator players take no suffocation damage
+and are left where they are, so staff can watch from inside.
+
 ## Settings
 
 | Key | Default | Meaning |
@@ -47,6 +54,7 @@ own before anything is placed under it. A column the owner may not build in is s
 | `sitePreparation.foundation.enabled` | `true` | Fill gaps under the floor |
 | `sitePreparation.foundation.block` | `minecraft:dirt` | The block used, with optional states |
 | `sitePreparation.foundation.maxDepth` | `6` | The deepest gap filled under one column |
+| `sitePreparation.movePlayersOut` | `true` | Move players out of a footprint while it builds |
 
 ## Notes
 
