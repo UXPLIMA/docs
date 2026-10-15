@@ -24,6 +24,10 @@ and every island plays the mode it was made in for the rest of its life.
 | [Brix](brix.md) | A creative building plot with contests | `modules/brix.conf` |
 | [TradeWinds](tradewinds.md) | A vessel that sails between ports and trades | `modules/tradewinds.conf` |
 
+Two more pages belong with them: [Loot Tables](loot-tables.md), the tables the modes fill their
+containers from, and [What a Player Carries](player-state.md), how a server of several modes keeps
+each world group's inventory apart.
+
 ## Offering modes
 
 The kinds of island a player can start are the presets of `modules/presets.conf`. Each preset
