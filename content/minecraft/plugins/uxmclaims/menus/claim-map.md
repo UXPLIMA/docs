@@ -7,41 +7,55 @@ icon: map
 
 `menu/claim_map.yml`, opened from claim management or by `/claim chunk view`.
 
-A grid of glass panes centred on your claim. Each pane is one chunk, coloured by who owns it.
+![The chunk map with the claim's core chunk selected](claim-map.png)
 
-| Colour | Meaning |
-|---|---|
-| Your claim's main chunk | The chunk holding the claim block, hologram and spawn |
-| Your claim's other chunks | Land you already own |
-| An ally's chunk | A claim you are a member of |
-| An enemy chunk | Someone else's claim |
-| Empty | Wilderness |
+A 9 by 6 grid of glass panes, centred on your claim's main chunk. Each pane is one chunk, and the item
+key it uses says who owns it. The arrows (`left`, `right`, `up`, `down`) move the grid one chunk at a
+time.
 
-Clicking a free chunk that touches your claim buys it. Clicking one of your own removes it: subject
-to the connectivity rule.
+| Key | Shipped pane | Meaning |
+|---|---|---|
+| `mainClaim` | Lime | Your claim's main chunk, holding the claim block, hologram and spawn |
+| `subClaim` | Green | Your claim's other chunks |
+| `allyMainClaim` | Light blue | The main chunk of another claim you are a member of |
+| `allySubClaim` | Blue | Other chunks of a claim you are a member of |
+| `enemyClaim` | Red | Someone else's claim |
+| `region` | Red | A protected [WorldGuard](../integrations/worldguard.md) region, or a chunk in a world listed in `generalSettings.disabledWorlds` |
+| `wilderness` | Gray | Unclaimed land |
+
+## Clicking a chunk
+
+| Chunk | Left click | Right click |
+|---|---|---|
+| Wilderness | Buys it for this claim | Shows its border in the world |
+| Your claim | Removes it, after confirmation | Shows the claim's border |
+| Any other | Tells you whose it is | Tells you whose it is |
 
 ## Rules the map enforces
 
-- **New chunks must touch the claim.** A pane not adjacent to your land answers *"You can only claim
-  chunks connected to your claim."*
-- **A chunk holding the claim together cannot be removed.** *"Cannot delete this chunk! It connects
-  other chunks to the claim."*
-- **The main chunk cannot be removed at all.** Delete the claim instead.
-- **`claimSettings.minDistance` still applies.** Default `2` chunks of clearance from another player's
-  land.
+| Rule | Refusal |
+|---|---|
+| A new chunk must touch the claim | `errorChunkNotConnected` |
+| A chunk holding the claim together cannot be removed | `errorChunkBreaksConnectivity` |
+| The main chunk cannot be removed; delete the claim instead | `errorMainChunkRemove` |
+| Other players' land must be `claimSettings.minDistance` chunks away (default `2`) | `errorClaimTooClose` |
+| Region chunks and chunks in `disabledWorlds` cannot be claimed | `errorNotClaimableArea` |
+
+Changing chunks needs `MANAGE_CHUNKS` and the `uxmclaims.ability.chunk.extend` or `.shrink` node.
 
 ## Costs and limits
 
 | | Node | Default |
 |---|---|---|
-| Price per chunk | `uxmclaims.cost.chunk.<count>.<price>` | `25.0` |
-| Chunks a player may hold | `uxmclaims.limit.chunk.<n>` | `10`, stacking |
+| Price per chunk | `uxmclaims.cost.chunk.<n>.<price>` | `25.0` |
+| Chunks per claim | `uxmclaims.limit.chunk.<n>` | `10`, stacking |
 
-The limit is across all of a player's claims, not per claim.
+The limit counts the chunks of this claim against the owner's limit, and the player who clicks pays.
+See [Limits and costs](../permissions/limits.md).
 
-<Callout type="tip" title="The map is also the fastest way to see what is around you">
+<Callout type="tip" title="The map shows what you cannot see">
 
-`/claim showborders` draws the same information in the world, but the map shows chunks you cannot see
-from where you stand, which is what you want before deciding where to expand.
+`/claim showborders` draws borders in the world, but only around you. The map also shows chunks out of
+sight, which is what you want before deciding where to expand.
 
 </Callout>

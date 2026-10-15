@@ -5,7 +5,8 @@ description: "Claim a chunk, invite a friend, set the rules: start to finish."
 icon: play
 ---
 
-Everything below is also in the menus. Commands are shown because they are shorter to write down.
+Every step below also works from the menus. The commands are shown because they are shorter to write
+down. With LuckPerms, each step also needs its [ability node](../permissions/abilities.md).
 
 ## 1. Claim the chunk you are standing on
 
@@ -13,18 +14,20 @@ Everything below is also in the menus. Commands are shown because they are short
 /claim
 ```
 
-With `generalSettings.smartCommand: true` (the default) a bare `/claim` is context aware:
+With `generalSettings.smartCommand: true` (the default) a bare `/claim` looks at where you stand:
 
-| Where you are | What happens |
+| Where you stand | What happens |
 |---|---|
-| In your own claim | Opens the claim's management menu |
-| In someone else's claim | Opens your personal menu |
-| On free land next to your own claim | Buys that chunk and adds it to the neighbouring claim |
-| On free land elsewhere | Asks you to confirm, then creates a new claim |
+| In a claim you belong to | Opens that claim's menu |
+| In a claim you do not belong to | Opens the main menu |
+| On free land sharing a side with a claim you own | Buys the chunk and adds it to that claim |
+| On other free land | Asks you to confirm, then creates a claim |
 
-Set `smartCommand: false` and a bare `/claim` always opens the menu instead.
+With `smartCommand: false`, the last two rows open the main menu instead. `/claim create MyBase` creates a
+claim without the confirmation and names it. The claim block appears where you stand.
 
-`/claim create MyBase` skips the guessing and names the claim as it creates it.
+The new claim becomes your selected claim. Every command below acts on the selected claim, or on the
+claim you stand in when nothing is selected. `/claim select <claim>` picks another one.
 
 ## 2. See what you own
 
@@ -32,19 +35,21 @@ Set `smartCommand: false` and a bare `/claim` always opens the menu instead.
 /claim showborders
 ```
 
-Green is yours, red is someone else's, blue is wilderness. The overlay closes itself after
-`border.autoCloseSeconds` seconds, 30 by default.
+This toggles the outline of the claim you stand in: green when you belong to it, red when you do not,
+blue for an unclaimed chunk. It closes after `border.autoCloseSeconds`, 30 by default. `/claim chunk view`
+opens the claim map instead.
 
 ## 3. Grow it
 
-Walk to a chunk touching your claim and run:
+Walk to a free chunk that shares a side with your claim and run:
 
 ```
 /claim chunk add
 ```
 
-The chunk costs whatever `uxmclaims.cost.chunk` resolves to, `25.0` by default, and counts against
-`uxmclaims.limit.chunk`. `/claim chunk remove` sells one back.
+The chunk costs `uxmclaims.cost.chunk`, `25.0` by default, and a claim holds at most
+`uxmclaims.limit.chunk` chunks, 10 by default. `/claim chunk remove` gives up the chunk you stand in after
+a confirmation. It refunds nothing.
 
 ## 4. Invite someone
 
@@ -52,11 +57,10 @@ The chunk costs whatever `uxmclaims.cost.chunk` resolves to, `25.0` by default, 
 /claim trust Steve
 ```
 
-Steve gets a clickable accept/reject message. Until he accepts he is not a member and holds no
-permissions. `/claim invites` opens his inbox if he lost the message.
-
-Once he accepts he holds the `Member` role, which by default may build, open containers, use redstone,
-ride and interact, but not manage anything.
+Steve must have joined the server before. He gets a message with **[Accept]** and **[Reject]**, and
+`/claim invites` opens his inbox if he missed it. Until he accepts he is a visitor. Once he accepts he holds
+the `Member` role, which may build, open containers, use redstone and doors, ride and handle animals, but
+manage nothing.
 
 ## 5. Set the house rules
 
@@ -65,7 +69,8 @@ ride and interact, but not manage anything.
 /claim toggleflag TNT_EXPLOSIONS
 ```
 
-Or open the flags menu from `/claim` → *Claim Flags*, which lists all 32 with their current state.
+Or open `/claim` and click *Flags*, which lists all 32 flags over two pages. Only the owner may change
+flags. [Flags](../protection/flags.md) says what each one does.
 
 ## 6. Make a spawn and a warp
 
@@ -75,45 +80,49 @@ Or open the flags menu from `/claim` → *Claim Flags*, which lists all 32 with 
 /claim warp setpublic shop true
 ```
 
-A public warp appears in `/claim warps` for everyone on the server. If the claim has `PVP` on, players
-teleporting to a public warp get a confirmation prompt first: the plugin will not drop a stranger
-into a PvP zone silently.
+A public warp appears in `/claim warps` for everyone on the server. When the claim has `PVP` on, a player
+teleporting to one of its public warps is asked to confirm first. A claim holds 3 warps by default
+(`uxmclaims.limit.warp`).
 
 ## 7. Give someone a custom role
 
 ```
 /claim role create Builder
+/claim role setperm Builder MOVE_INSIDE true
 /claim role setperm Builder BLOCK_PLACE true
 /claim role setperm Builder BLOCK_BREAK true
 /claim member setrole Steve Builder
 ```
 
-Then take one thing back, just from Steve:
+A new role starts with no permissions, which is why `MOVE_INSIDE` comes first: without it Steve would be
+pushed out of the claim. Then take one thing back from Steve alone:
 
 ```
-/claim member setperm Steve CONTAINER_OPEN false
+/claim member setperm Steve BLOCK_BREAK false
 ```
 
-The per-member deny wins over the role.
+The per-member deny wins over the role. Steve can place blocks but no longer break them.
 
 ## 8. Keep it alive
 
-If `claimSettings.expireMode` is on, a claim expires after `expireTime` (30 days by default) and is
-deleted. Extend it:
+With `claimSettings.expireMode: true` (the default), a claim is deleted when its time runs out:
+`claimSettings.expireTime`, 30 days, after creation. Extend it with the *Extend Time* menu or:
 
 ```
 /claim extend 7d
 ```
 
-The duration parser accepts `d`, `h`, `m` and `s` and combinations like `1d12h30m`. The cost is
-`uxmclaims.cost.time` per second, `5.0` by default, so price your ranks accordingly.
+The duration accepts `d`, `h`, `m` and `s`, combined as in `1d12h30m`. The price is
+`uxmclaims.cost.time` per second per chunk: the default `5.0` makes one day on a one-chunk claim cost
+432,000, so set it to suit your economy. The time left after extending may not exceed
+`uxmclaims.limit.time`, 30 days by default, so a brand new claim cannot be extended until some of its
+time has passed. Owners get a reminder once less than `generalSettings.reminderThresholdSeconds` (one
+day) is left.
 
-Players get a warning when a claim is within `reminderThresholdSeconds` (one day) of expiring.
+<Callout type="warning" title="Turning expiry back on deletes overdue claims">
 
-<Callout type="tip" title="Turn expiry off for a survival server">
-
-`expireMode: true` is the right default for a busy server that must reclaim abandoned land. On a small
-whitelisted server it mostly generates support tickets. Set `claimSettings.expireMode: false` and the
-whole timer, the reminders and the extend cost disappear.
+With `expireMode: false` claims are never deleted and `/claim extend` is refused, but every claim's
+expiry date keeps passing. Set `expireMode` back to `true` and every claim whose date has passed is
+deleted within seconds. Raising `claimSettings.expireTime` does not save them: it only applies to new claims.
 
 </Callout>

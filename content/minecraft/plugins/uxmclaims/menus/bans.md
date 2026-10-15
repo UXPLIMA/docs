@@ -5,21 +5,27 @@ description: The ban list, and what a ban actually blocks.
 icon: user-x
 ---
 
-Two screens: `menu/claim_ban_player.yml` to ban someone, `menu/claim_ban_list.yml` to see and lift
-existing bans. Both need `MANAGE_BANS`.
+`menu/claim_ban_list.yml`, opened by **Banned players** in claim management, lists every ban with its
+reason and date. Clicking an entry lifts the ban after confirmation.
 
-| Action | Ability node |
-|---|---|
-| Ban | `uxmclaims.ability.member.ban` |
-| Unban | `uxmclaims.ability.member.unban` |
+**Ban player** (`banPlayer`) asks for a name through `menu/claim_ban_player.yml`, which uses a dialog
+and falls back to chat (see [typing text](overview.md#typing-text)). A ban typed there takes effect at
+once; a ban from [member management](members-roles.md#managing-one-member) asks for confirmation first.
+
+| Action | Role permission | Ability node |
+|---|---|---|
+| Ban | `MANAGE_BANS` | `uxmclaims.ability.member.ban` |
+| Unban | `MANAGE_BANS` | `uxmclaims.ability.member.unban` |
 
 ## What a ban does
 
 A ban is the strongest thing in the permission model. `Claim.hasPermission` checks it **first**, before
 ownership and before roles: a banned player is denied everything inside the claim, no matter what
-role they hold or what a per-member override says.
+role they hold or what a per-member override says. A banned player cannot teleport into the claim by
+any means.
 
-Banning a current member removes them from the claim as well.
+Banning a player also removes their membership, cancels any invitation they hold, and moves them out of
+the claim. The owner cannot be banned.
 
 ## From chat
 
@@ -28,8 +34,8 @@ Banning a current member removes them from the claim as well.
 /claim unban Steve
 ```
 
-`/claim ban` is the one destructive action that does **not** ask for confirmation, deliberately: it
-exists for the moment someone is already causing damage.
+`/claim ban` does **not** ask for confirmation, deliberately: it exists for the moment someone is
+already causing damage.
 
 ## Limits
 

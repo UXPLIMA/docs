@@ -5,51 +5,74 @@ description: Creating warps inside a claim, moving them, and publishing them ser
 icon: map-pin
 ---
 
-| Command | What it does | Ability node |
-|---|---|---|
-| `/claim warp create <name>` | Create a warp where you stand | `uxmclaims.ability.warp.create` |
-| `/claim warp delete <name>` | Delete it | `uxmclaims.ability.warp.delete` |
-| `/claim warp rename <name> <new>` | Rename it | `uxmclaims.ability.warp.rename` |
-| `/claim warp move <name>` | Move it to where you stand | `uxmclaims.ability.warp.relocate` |
-| `/claim warp setpublic <name> <true\|false>` | Publish or unpublish it | `uxmclaims.ability.warp.visibility` |
-| `/claim warp teleport <name>` | Teleport to any warp you may reach | n/a |
+A warp is a named teleport point inside a claim. Members reach the warps of their claims, and a warp
+made public is open to every player on the server.
 
-Managing warps also needs the `MANAGE_WARPS` role permission. *Using* one needs `USE_WARPS`.
+## Commands
 
-`/claim warps` opens the public warp list, and `/claim spawn <name>` will find a warp by name too.
+| Command | What it does | Claim access | Ability node |
+|---|---|---|---|
+| `/claim warp create <name>` | Creates a private warp where you stand | `MANAGE_WARPS` | `uxmclaims.ability.warp.create` |
+| `/claim warp delete <warp>` | Deletes a warp, after confirmation | `MANAGE_WARPS` | `uxmclaims.ability.warp.delete` |
+| `/claim warp rename <warp> <name>` | Renames a warp | `MANAGE_WARPS` | `uxmclaims.ability.warp.rename` |
+| `/claim warp move <warp>` | Moves a warp to where you stand | `MANAGE_WARPS` | `uxmclaims.ability.warp.relocate` |
+| `/claim warp setpublic <warp> <true\|false>` | Publishes or hides a warp | `MANAGE_WARPS` | `uxmclaims.ability.warp.visibility` |
+| `/claim warp teleport <warp>` | Teleports you to a warp you can reach | `USE_WARPS` for a private warp | none |
 
-## Public and private
+All but `teleport` act on the warps of the current claim. `create` and `move` only accept a position
+inside the claim's chunks (`errorLocationOutsideChunk`). Warp names are unique within a claim
+regardless of case. In `rename`, the old name is one word and the new name takes the rest of the line.
 
-A private warp is visible to the claim's members. A public warp appears in `/claim warps` for
-everyone on the server and can be teleported to by anyone with `USE_WARPS`.
+`/claim warps` opens the list of public warps, and `/claim spawn <name>` also finds warps: see
+[Claim commands](claim.md#spawn-warps-and-the-vault).
 
-Publishing is the one thing here with a safety net: teleporting to a public warp in a claim that has
-the `PVP` flag on prompts for confirmation first, with the `warningWarpPvpEnabled` message. A player
-cannot be dropped into a PvP zone by clicking a warp in a list.
+### Which warps you can reach
 
-## What a teleport costs
+`/claim warp teleport <warp>` and `/claim spawn <name>` look in this order and take the first match:
 
-| Setting | Node | Default |
-|---|---|---|
-| Warps per claim | `uxmclaims.limit.warp.<n>` | `3`, MAX |
-| Creating a warp | `uxmclaims.cost.warp.<count>.<price>` | `0.0` |
-| Teleporting | `uxmclaims.cost.warptp.<public\|private>.<price>` | `0.0` |
-| Warmup before the teleport | `uxmclaims.delay.teleport.<n>` | `3` seconds, MIN |
-
-The teleport cost node distinguishes public from private, so you can leave a player's own warps free
-and charge for hopping to someone else's shop.
-
-The delay uses the `MIN` strategy, which means granting a rank a *smaller* number is the perk:
-`uxmclaims.delay.teleport.0` is an instant teleport.
-
-## Name resolution
-
-`/claim spawn <name>` and `/claim warp teleport <name>` search in this order:
-
-1. public warps
+1. public warps of every claim
 2. warps in claims you own
-3. warps in claims you are a member of
-4. claims by name, teleporting to the claim spawn
+3. warps in claims you belong to
+4. for `/claim spawn` only: claims you own or belong to, by name, to their spawn
 
-First match wins. A public warp named `shop` will shadow your own private warp of the same name, so
-name public warps distinctly if that matters on your server.
+A public warp named `shop` shadows your own warp named `shop`. Name public warps distinctly if that
+matters on your server.
+
+| Warp | Who may teleport |
+|---|---|
+| Public | Everyone |
+| Private | The owner, holders of `uxmclaims.admin`, and members whose role or per-member override gives `USE_WARPS` in that claim |
+
+A refused private warp answers with `errorNoPermission`. The Teleport button in the warp manage menu
+applies the same rule.
+
+Teleporting by command to a public warp in a claim with the `PVP` flag on asks for confirmation
+first, with `warningWarpPvpEnabled`. A click in the warp list menus teleports without this warning.
+
+A teleport waits out the warmup and is cancelled if you move. The price is taken after the warmup. A
+player banned from the claim, or whose role there lacks `MOVE_INSIDE`, cannot teleport into it.
+
+## Permissions
+
+| Node | Applies to | Default |
+|---|---|---|
+| `uxmclaims.limit.warp.<n>` | Warps per claim, read from the owner | `3` |
+| `uxmclaims.cost.warp.<count>.<price>` | Price of creating a warp | `0.0` |
+| `uxmclaims.cost.warptp.<public\|private>.<price>` | Price of a warp teleport | `0.0` |
+| `uxmclaims.delay.warprename.<n>` | Seconds between warp renames | `30` |
+| `uxmclaims.delay.warprelocate.<n>` | Seconds between warp moves | `60` |
+| `uxmclaims.delay.teleport.<n>` | Teleport warmup in seconds | `3` |
+
+The teleport price separates public from private warps, so a server can keep a player's own warps free
+and charge for visiting someone else's. Delays use the `MIN` strategy: granting a rank
+`uxmclaims.delay.teleport.0` makes its teleports instant. See
+[Limits, costs and delays](../permissions/limits.md).
+
+## Notes
+
+- The default `Member` role has `USE_WARPS`. A custom role created in game starts empty: give it
+  `USE_WARPS` if its members should use private warps.
+- Removing a chunk deletes the warps inside it: see [Chunks](chunks.md).
+- The [warp menus](../menus/warps.md) create, edit and publish warps with the same checks.
+
+Related: [Claim commands](claim.md), [Warp menus](../menus/warps.md), [Limits, costs and delays](../permissions/limits.md)

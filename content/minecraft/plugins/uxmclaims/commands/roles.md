@@ -5,19 +5,27 @@ description: Creating roles, ordering them by priority, and granting permissions
 icon: shield-user
 ---
 
-| Command | What it does | Ability node |
-|---|---|---|
-| `/claim role create <name>` | Create a role with no permissions | `uxmclaims.ability.role.create` |
-| `/claim role delete <role>` | Delete a role | `uxmclaims.ability.role.delete` |
-| `/claim role rename <role> <name>` | Rename it | `uxmclaims.ability.role.rename` |
-| `/claim role setpriority <role> <n>` | Move it in the hierarchy | `uxmclaims.ability.role.priority` |
-| `/claim role setperm <role> <perm> <true\|false>` | Grant or revoke one permission | `uxmclaims.ability.role.permissions.<PERM>` |
+Every claim has three system roles, `Owner`, `Member` and `Default`, and the owner can add custom
+ones. `/claim role` creates, orders and configures them in the current claim; only the owner (or an
+admin) can run these commands.
 
-A new role starts empty. It grants nothing until you add permissions.
+## Commands
 
-## Priority
+| Command | What it does | Claim access | Ability node |
+|---|---|---|---|
+| `/claim role create <name>` | Creates a custom role with no permissions | owner | `uxmclaims.ability.role.create` |
+| `/claim role delete <role>` | Deletes a custom role, after confirmation | owner | `uxmclaims.ability.role.delete` |
+| `/claim role rename <role> <name>` | Renames a role | owner | `uxmclaims.ability.role.rename` |
+| `/claim role setpriority <role> <n>` | Moves a role in the order | owner | `uxmclaims.ability.role.priority` |
+| `/claim role setperm <role> <perm> <true\|false>` | Grants or removes one permission | owner | `uxmclaims.ability.role.permissions.<perm>` |
 
-Priority orders the hierarchy and **lower is higher rank**:
+`<role>` is a role name in the claim, one word, any case. Role names are unique within a claim
+regardless of case; a clash answers `errorRoleAlreadyExists`. System roles can be renamed but not
+deleted.
+
+### Priority
+
+Priority orders the roles, and a lower number is a higher rank. A claim without custom roles has:
 
 | Priority | Role |
 |---|---|
@@ -25,14 +33,14 @@ Priority orders the hierarchy and **lower is higher rank**:
 | 1 | `Member` |
 | 2 | `Default` |
 
-Custom roles are placed between `Member` and `Default` when the claim is created from
-[`roles.yml`](../config/roles-yml.md), and `setpriority` moves them afterwards.
+A new role takes the place directly above `Default`, and `Default` moves down one. `setpriority`
+accepts any number between `Owner` and `Default`, exclusive, and swaps the role with the one at that
+number. `Owner` and `Default` cannot be moved; both cases answer `errorRolePriorityInvalid`. Deleting
+a role moves every role below it up one.
 
-Priority is what `/claim member promote` and `demote` walk, and it is also what decides who wins a
-contested vault: opening the vault while a higher-priority member has it open answers *"Someone with a
-higher rank opened the vault."*
+Priority is the order `/claim member promote` and `demote` walk: see [Members](members.md).
 
-## Granting permissions
+### Granting permissions
 
 ```
 /claim role create Builder
@@ -41,36 +49,45 @@ higher rank opened the vault."*
 /claim role setperm Builder CONTAINER_OPEN true
 ```
 
-Tab completion offers all 48 permissions. Names are the enum names: see
-[Role permissions](../protection/permissions.md) for what each one covers.
+`<perm>` is one of the 48 [role permissions](../protection/permissions.md), any case. The ability
+node uses the lower-case name: `uxmclaims.ability.role.permissions.block_break` lets the owner grant
+or remove exactly that one, and `uxmclaims.ability.role.permissions.*` covers all of them. This is how
+a server keeps permissions such as `FLY` out of players' hands.
 
-The ability node is per permission: `uxmclaims.ability.role.permissions.BLOCK_BREAK` lets a player
-grant exactly that one to a role, and `…permissions.*` lets them grant anything. This is what stops a
-claim member with role-editing rights from quietly promoting themselves.
+### The system roles
 
-## The three roles you cannot delete
-
-`Owner`, `Member` and `Default` are system roles. They can be renamed and their permissions changed,
-but not removed:
-
-- `Owner` holds every permission implicitly; its permission list is empty by design, and adding to it
-  changes nothing.
-- `Member` is the fallback for a member whose role was deleted.
-- `Default` applies to everyone who is **not** a member: the strangers walking through.
-
-## Limits
-
-| Limit | Node | Default |
+| Role | Who holds it | Notes |
 |---|---|---|
-| Custom roles per claim | `uxmclaims.limit.role.<n>` | `5`, MAX |
-| Cost of creating one | `uxmclaims.cost.role.<count>.<price>` | `0.0` |
+| `Owner` | The claim owner | Has every permission; its own list is ignored |
+| `Member` | Everyone who accepts an invite | Fallback for members of a deleted role, and the role a former owner gets after a transfer |
+| `Default` | Every player who is not a member | Decides what strangers may do; ships with `MOVE_INSIDE` only |
 
-The limit counts custom roles only; the three system roles do not use a slot.
+The permissions each system role starts with come from [roles.yml](../config/roles-yml.md).
 
-<Callout type="tip" title="Design Default before you design anything else">
+<Callout type="warning" title="A deleted role drops its members onto Member">
 
-`Default` is the only role a griefer will ever have. Everything a claim needs to be safe is decided
-there. The shipped default grants `MOVE_INSIDE` and nothing else, which is the right starting point:
-strangers may walk through and do nothing at all.
+Members of a deleted role fall back to `Member`, which in the shipped `roles.yml` can build, break,
+and open every container in the claim. Deleting a restrictive custom role gives its holders more
+access, not less. Move them to another role first.
 
 </Callout>
+
+## Permissions
+
+| Node | Applies to | Default |
+|---|---|---|
+| `uxmclaims.limit.role.<n>` | Custom roles per claim, read from the owner | `5` |
+| `uxmclaims.cost.role.<count>.<price>` | Price of creating a role | `0.0` |
+| `uxmclaims.delay.rolerename.<n>` | Seconds between role renames | `30` |
+
+The role limit counts custom roles only. See [Limits, costs and delays](../permissions/limits.md).
+
+## Notes
+
+- `Default` is the only role a griefer ever has. Keep it at `MOVE_INSIDE`, or remove that too to keep
+  strangers out of the claim entirely.
+- `/claim admin bulk setrolepermission` changes one permission on a system role in every claim: see
+  [Admin](admin.md).
+- The [role menus](../menus/members-roles.md) create, order and edit roles with the same checks.
+
+Related: [Members](members.md), [Role permissions](../protection/permissions.md), [roles.yml](../config/roles-yml.md)

@@ -1,48 +1,54 @@
 ---
 title: WorldGuard
 order: 803
-description: Stopping claims from overlapping protected regions.
+description: Keeping claims out of WorldGuard regions and disabled worlds.
 icon: shield-alert
 ---
+
+With WorldGuard installed, uxmClaims refuses to claim land that lies in a WorldGuard region. It never
+creates or changes regions. Worlds in `disabledWorlds` are refused at the same points, with or without
+WorldGuard.
+
+## Settings
 
 ```yaml
 generalSettings:
   worldGuardSupport: true
+  disabledWorlds:
+    - 'arena'
+    - 'spawn'
+    - 'world_nether'
 ```
 
-## What it does
+| Key | Default | Meaning |
+|---|---|---|
+| `worldGuardSupport` | `true` | Check WorldGuard regions. Read at startup |
+| `disabledWorlds` | `arena`, `spawn`, `world_nether` | Worlds where nobody may claim, with or without WorldGuard. Matched ignoring case, applied by `/claim reload` |
 
-When a player tries to claim a chunk, the plugin asks WorldGuard whether that chunk overlaps a region.
-If it does, the claim is refused with `errorNotClaimableArea`: *"Here is not claimable area."*
+## What is checked
 
-It is one check in one direction: WorldGuard regions block claims. uxmClaims does not create regions
-and does not modify existing ones.
-
-## What this is for
-
-The usual setup is a spawn region, an event arena, a shop district and a warzone: areas the server
-owns and players should not be able to fence off.
-
-Two ways to protect them, and they compose:
-
-| Approach | Use when |
+| Action | Points checked |
 |---|---|
-| A WorldGuard region | The area is a shape inside an otherwise claimable world |
-| `generalSettings.disabledWorlds` | The whole world should never be claimed |
+| Creating a claim | The spot where the claim is created |
+| Adding a chunk | The four corner columns of that chunk, at Y 64 |
+| Placing the claim block | The block's position |
+| The claim map menu | Shows a chunk as not claimable by the same corner test |
 
-`disabledWorlds` is cheaper (no region lookup at all) so use it for whole worlds and reserve regions
-for shapes.
+A point counts when it is inside any region, whatever that region's flags, owners or members. A
+refused action shows `errorNotClaimableArea` (*"This area cannot be claimed."*). Admin commands are
+checked too.
 
-## When to turn it off
-
-`worldGuardSupport: false` on a server where regions and claims are meant to coexist. A plot world
-wrapped in one large region, for example, would otherwise be entirely unclaimable.
+Because the test samples points, a small region that covers none of them, such as a spawn platform
+in the middle of a chunk, does not stop that chunk from being added. Draw protected regions so they
+reach the chunk corners, or list the world in `disabledWorlds`.
 
 ## Notes
 
-- **Existing claims are not re-checked.** Drawing a region over land somebody already claimed does not
-  remove their claim. The check happens at claim time only.
-- **The check covers the chunk, not the block.** A region touching any part of a 16×16 chunk blocks
-  that whole chunk.
-- **`disabledWorlds` is case sensitive.** `World_Nether` and `world_nether` are different strings, and
-  a typo there silently leaves the world claimable.
+- **Existing claims are not re-checked.** Drawing a region over land somebody already claimed does
+  not remove their claim.
+- **Turn it off** with `worldGuardSupport: false` where regions and claims are meant to overlap, such
+  as a plot world inside one large region. `disabledWorlds` keeps working.
+- **The [API](../developer/api.md)** skips both checks for a write sent without the `REGION` side
+  effect.
+
+Related: [Overview](overview.md), [config.yml](../config/config-yml.md)

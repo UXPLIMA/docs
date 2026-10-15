@@ -1,59 +1,96 @@
 ---
 title: Admin
 order: 208
-description: Inspecting other players' claims, and the bulk operations.
+description: Inspecting other players' claims, the bulk operations, and reloading the configuration.
 icon: shield-check
 ---
 
-Every command here requires `uxmclaims.admin`, declared in `plugin.yml` with `default: op`. That node
-also bypasses every ability check and every role permission everywhere.
+Staff commands need `uxmclaims.admin`, declared in `plugin.yml` with `default: op`. The same node, or
+being op, also passes every ability check, role permission, ownership check, limit, cost and cooldown
+in the ordinary commands.
 
-| Command | What it does |
-|---|---|
-| `/claim admin view <player>` | Open a menu of every claim that player owns or belongs to |
-| `/claim reload` | Re-read every config file |
+## Commands
 
-## Bulk operations
+| Command | What it does | Console |
+|---|---|---|
+| `/claim admin view <player>` | Opens a menu of every claim that player owns or belongs to | no |
+| `/claim admin bulk setflag <flag> <true\|false>` | Sets one flag on every claim | yes |
+| `/claim admin bulk setrolepermission <role> <perm> <true\|false>` | Sets one permission on one role in every claim | yes |
+| `/claim admin bulk rename <base>` | Renames every claim to `<base>-1`, `<base>-2` and so on | yes |
+| `/claim admin bulk setblock <style>` | Switches every claim's block to one style | yes |
+| `/claim admin bulk destroyblock` | Removes every claim's block | yes |
+| `/claim reload` | Reloads the configuration files | yes |
 
-These act on **every claim currently loaded**, not on one. They exist for the moment a server changes
-policy (a new flag default, a rebalanced role) and does not want to edit thousands of claims by
-hand.
+### Bulk operations
 
-| Command | What it does |
-|---|---|
-| `/claim admin bulk setflag <flag> <true\|false>` | Set one flag on every claim |
-| `/claim admin bulk setrolepermission <role> <perm> <true\|false>` | Set one permission on one system role, in every claim |
-| `/claim admin bulk rename <base>` | Rename every claim to `base-1`, `base-2`, … |
-| `/claim admin bulk setblock <style>` | Change every claim's visual block |
-| `/claim admin bulk destroyblock` | Remove every claim's visual block |
+uxmClaims keeps every claim in memory, so a bulk command reaches every claim on the server. Each one
+reports how many claims it is starting on and how many it changed. These replies are fixed English
+text, whatever `language` is set to.
 
-`setrolepermission` completes against the standard roles (the three system roles) because a custom
-role name means something different in every claim.
+Bulk changes run as an admin action: no permission, cost, limit or cooldown applies, WorldGuard
+regions are still respected, and webhooks still report each change. From the console the actor
+is the system id `00000000-0000-0000-0000-000000000000`.
+
+- `setrolepermission` matches `<role>` against each claim's role names and the role types `owner`,
+  `member`, `default` and `custom`, and skips claims with no match. Tab completion offers the three
+  system roles, the only names every claim shares.
+- `setblock` ignores the style's `permission`.
+- `rename` numbers claims in no particular order.
 
 <Callout type="danger" title="Bulk commands do not confirm and cannot be undone">
 
-There is no confirmation step and no rollback. `bulk rename` in particular discards every name every
-player chose, permanently, and `bulk setflag PVP true` turns PvP on inside every base on the server at
-once.
-
-Take a database backup before running any of them. On a live server, run them during a restart window
-rather than at peak, since each one writes every loaded claim.
+There is no confirmation step and no rollback. `bulk rename` replaces every name players chose, and
+`bulk setflag PVP true` turns PvP on in every claim at once. Back up the database first, and run
+them when few players are online, since each one saves every claim.
 
 </Callout>
 
-## Bypass nodes
+### Reload
 
-Beyond `uxmclaims.admin`, individual actions can be bypassed:
+`/claim reload` works from the console and in game, and answers `uxmClaims has been reloaded!`.
 
-| Node | Effect |
+| Step | What happens |
 |---|---|
-| `uxmclaims.bypass.*` | Bypass every ability check |
-| `uxmclaims.bypass.<category>.*` | Bypass a whole category, e.g. `uxmclaims.bypass.warp.*` |
-| `uxmclaims.bypass.<action>` | Bypass one, e.g. `uxmclaims.bypass.claim.delete` |
-| `uxmclaims.bypass.teleport` | Ignore the teleport warmup |
+| 1. Language | If `language` in `config.yml` differs from the language the files are in, the files switch first (see below) |
+| 2. Files | `roles.yml`, `config.yml`, `aliases.yml`, `messages.yml`, `webhooks.yml` and `entitlements.yml` are read again |
+| 3. Aliases | The old aliases are unregistered, the ones in `aliases.yml` are registered, and online players get their command list again for tab completion |
+| 4. Menus | The Java menu files in `menu/` are read again, `common_selection.yml` included; the Bedrock forms in `menu/bedrock/` are read on their next use |
 
-Bypass nodes mirror ability nodes exactly: swap `ability` for `bypass`. See
-[Ability permissions](../permissions/abilities.md).
+A language switch accepts `en`, `tr`, `es`, `pt-BR`, `de`, `fr`, `ru` and `pl`, in any case, with `_`
+for `-`, and plain `pt` for `pt-BR`. An unknown value falls back to English with a console warning.
+The switch copies the current files to `backups/language-<from>-<yyyyMMdd-HHmmss>/`, then rewrites
+every text you have not edited into the new language and keeps every text you changed.
+`entitlements.yml` and `aliases.yml` hold no texts and stay as they are. The language in use is
+recorded in `data/metadata.yml`; a file that fails to switch is tried again on the next reload or
+restart. The console log reports how many texts changed and how many edited ones were kept.
 
-Give staff `uxmclaims.bypass.*` rather than `uxmclaims.admin` when you want them to work everywhere
-without also silently passing every in-claim role permission check.
+These need a restart instead of a reload:
+
+| Change | Why |
+|---|---|
+| `database` settings | The connection is opened at startup |
+| `generalSettings.licenseKey` | The licence check is set up at startup |
+
+## Permissions
+
+| Node | Default | Effect |
+|---|---|---|
+| `uxmclaims.admin` | op | Admin commands, `/claim reload`, and passing every check in the other commands |
+| `uxmclaims.bypass.*` | none | Passes every ability check |
+| `uxmclaims.bypass.<category>.*` | none | Passes the ability checks of one category, for example `uxmclaims.bypass.warp.*` |
+| `uxmclaims.bypass.<category>.<action>` | none | Passes one ability check, for example `uxmclaims.bypass.claim.delete` |
+| `uxmclaims.bypass.teleport` | none | Teleports into claims regardless of bans and of `TELEPORT`, `ENDERPEARL_USE` and `CHORUS_TELEPORT` |
+| `uxmclaims.bypass.enter` | none | Exempt from the access guard that ejects banned players and those without `MOVE_INSIDE` |
+
+A bypass node replaces the ability check only. Role permissions, ownership checks, limits, costs and
+cooldowns still apply, so staff with `uxmclaims.bypass.*` can act only in claims where their role
+allows it. The full node list is in [Ability permissions](../permissions/abilities.md).
+
+## Notes
+
+- `/claim transfer` and `/claim member transfer` require the real owner, even for an admin.
+- `/claim admin view` finds players uxmClaims has seen, online or not.
+- In the admin view menu, a click opens a claim's management menu, shift and left click selects the
+  claim, so the ordinary commands then act on it, and shift and right click deselects it.
+
+Related: [Overview](overview.md), [Ability permissions](../permissions/abilities.md), [config.yml](../config/config-yml.md)

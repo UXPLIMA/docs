@@ -15,15 +15,14 @@ CREATE USER uxmclaims WITH ENCRYPTED PASSWORD 'a-long-random-password';
 GRANT ALL PRIVILEGES ON DATABASE uxmclaims TO uxmclaims;
 ```
 
-On PostgreSQL 15 and newer, the database-level grant is not enough: the user also needs the schema:
+On PostgreSQL 15 and newer the database-level grant is not enough: the user also needs the schema.
 
 ```sql
 \c uxmclaims
 GRANT ALL ON SCHEMA public TO uxmclaims;
 ```
 
-Without that, the plugin starts and fails on its first table creation with a permission error. It is
-the single most common PostgreSQL setup problem.
+Without it, the plugin fails at startup on its first table creation with a permission error.
 
 ## Point the plugin at it
 
@@ -31,28 +30,31 @@ the single most common PostgreSQL setup problem.
 database:
   type: 'AUTO'
   username: 'uxmclaims'
-  password: '<a long random password>'
+  password: '<your password>'
   url: 'jdbc:postgresql://localhost:5432/uxmclaims'
 ```
 
-`AUTO` reads `postgresql` out of the URL. Restart: this section is not re-read by `/claim reload`.
+`AUTO` finds `postgres` in the URL. Restart the server: `/claim reload` does not reconnect.
 
 ## Remote access
 
-`postgresql.conf`:
+For a database on another host, open it to the game server in `postgresql.conf` and `pg_hba.conf`:
 
 ```
-listen_addresses = 'localhost'
+listen_addresses = '10.0.0.5'
 ```
-
-`pg_hba.conf`, for a database on another host:
 
 ```
 host    uxmclaims    uxmclaims    10.0.0.0/24    scram-sha-256
 ```
 
-Prefer a private network range over `0.0.0.0/0`, and keep `listen_addresses` as tight as the topology
-allows.
+Prefer a private network range over `0.0.0.0/0`, and keep `listen_addresses` as narrow as the
+setup allows.
+
+## One server only
+
+This database belongs to one server at a time. A second server pointed at it refuses to start while
+the first is running; see [One server per database](overview.md). Give every server its own database.
 
 ## Backups
 
@@ -60,11 +62,13 @@ allows.
 pg_dump -U uxmclaims uxmclaims > uxmclaims-$(date +%F).sql
 ```
 
-Restore:
+Restore with the server stopped:
 
 ```bash
 psql -U uxmclaims uxmclaims < uxmclaims-2026-01-01.sql
 ```
 
-Run a dump before any `/claim admin bulk …` command: they rewrite every loaded claim, without
+Run a dump before any `/claim admin bulk …` command: they change every loaded claim, without
 confirmation and without undo.
+
+Related: [Overview](overview.md), [MySQL](mysql.md)
