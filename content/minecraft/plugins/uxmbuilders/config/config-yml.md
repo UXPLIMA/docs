@@ -65,6 +65,7 @@ logging:          # the audit trail
 | `unknownBlock` | `SKIP` | `SKIP`, `REPLACE` or `ABORT` |
 | `unknownReplacement` | `minecraft:stone` | Used by `REPLACE` |
 | `keepSignText` | `true` | Copy sign text from the schematic |
+| `keepSkullTextures` | `true` | Copy the skin of player heads from the schematic |
 | `allowFluids` | `false` | Place water and lava |
 | `blacklist` | spawners, command blocks, bedrock... | Blocks never placed |
 

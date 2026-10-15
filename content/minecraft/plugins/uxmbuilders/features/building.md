@@ -82,6 +82,7 @@ Blocks go in directly, without neighbour updates or physics, which is what keeps
 | Fluids | Water and lava are dropped unless `schematic.allowFluids` is on; waterlogged blocks keep the block |
 | Unknown blocks | `schematic.unknownBlock`: `SKIP`, `REPLACE` with `unknownReplacement`, or `ABORT` |
 | Signs | Text is kept with `keepSignText`, as plain text |
+| Player heads | The skin is kept with `keepSkullTextures` |
 | Containers | A chest in the way has its contents dropped, never deleted |
 | Size | Schematics over `schematic.maxBlocks` are refused before they are read |
 
