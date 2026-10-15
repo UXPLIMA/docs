@@ -5,43 +5,42 @@ description: Claim and the objects hanging off it, and the one method worth know
 icon: box
 ---
 
-Everything lives under `com.uxplima.claim.domain.model`.
+The model lives in `com.uxplima.claim.domain.model`, with the enums in `.enums` and the coordinate
+types in `.vo`. Read it freely; change it only through the [facade](api.md).
 
 ## Claim
 
-The aggregate root.
+The aggregate root. Every other object on this page belongs to one claim.
 
-```java
-UUID    id
-String  name
-Instant expireDate
-Instant creationDate
-Location spawnLocation
-ClaimBlock block
-ClaimVault vault
+| Getter | Type |
+|---|---|
+| `getId()` | `UUID` |
+| `getName()` | `String` |
+| `getCreationDate()` / `getExpireDate()` | `Instant` |
+| `getSpawnLocation()` | domain `Location` |
+| `getBlock()` | `ClaimBlock` |
+| `getVault()` | `ClaimVault` |
+| `getChunks()` / `getMembers()` / `getRoles()` / `getWarps()` / `getBans()` / `getInvites()` | Read-only `Map<UUID, …>` |
+| `getFlags()` | Read-only `Set<ClaimFlag>` |
 
-Map<UUID, ClaimChunk>  chunks
-Map<UUID, ClaimMember> members
-Map<UUID, ClaimRole>   roles
-Map<UUID, ClaimWarp>   warps
-Map<UUID, ClaimBan>    bans
-Map<UUID, ClaimInvite> invites
-
-Set<ClaimFlag> flags
-```
+The maps are keyed by each entry's own id, not by a player's UUID. To find a player, use the `…ByUid`
+lookups below.
 
 | Method | Returns |
 |---|---|
-| `getOwnerUid()` | The owner's UUID |
-| `getOwner()` | The owner as a `ClaimMember` |
-| `getMainChunk()` | The chunk holding the block, hologram and spawn |
-| `getRemainTime()` | A `Duration` until expiry |
+| `hasPermission(UUID, ClaimPermission)` | Whether that player may do it here. **The one that matters** |
 | `isOwner(UUID)` | Whether that player owns it |
-| `hasMemberByUid(UUID)` | Whether they are a member |
-| `hasBanByUid(UUID)` | Whether they are banned |
+| `getOwnerUid()` / `getOwner()` / `findOwner()` | The owner's UUID, as `ClaimMember`, or as `Optional` |
+| `getMainChunk()` / `findMainChunk()` | The chunk holding the block, hologram and spawn |
+| `getRemainTime()` / `isExpired()` | A `Duration` until expiry, negative once expired |
 | `hasFlag(ClaimFlag)` | Whether the flag is set |
-| `hasPermission(UUID, ClaimPermission)` | **The one that matters** |
-| `getMemberByUid`, `getRoleById`, `getRoleByType`, `getRoleByPriority`, `getWarpByName`, `getChunkByLocation`, `getBanByUid`, `getInviteByUid` | Lookups |
+| `has…` / `find…` / `get…` + `MemberByUid`, `BanByUid`, `InviteByUid` | A player's membership, ban or invite |
+| `has…` / `find…` / `get…` + `RoleById`, `RoleByType`, `RoleByPriority` | A role |
+| `has…` / `find…` / `get…` + `WarpById`, `WarpByName` | A warp |
+| `has…` / `find…` / `get…` + `ChunkById`, `ChunkByData(Chunk)`, `ChunkByLocation(Location)` | A chunk |
+| `has…` / `find…` / `get…` + `MemberById`, `BanById`, `InviteById` | An entry by its own id |
+
+`has…` returns `boolean`, `find…` an `Optional`, and `get…` the object or a `ClaimException`.
 
 ### hasPermission
 
@@ -49,35 +48,53 @@ Set<ClaimFlag> flags
 claim.hasPermission(player.getUniqueId(), ClaimPermission.BLOCK_BREAK)
 ```
 
-One call, resolving the whole chain: ban, ownership, per-member deny, per-member allow, the member's
-role, the `Member` fallback when their role was deleted, and the `Default` role for non-members. Do
-not reimplement it: the order is subtle and the fallbacks are easy to get wrong.
+One call resolves the whole chain, in this order:
 
-It does **not** consider `uxmclaims.admin`. For that, go through `ClaimPermissionPolicy`, which checks
-the admin node first:
+| Step | Result |
+|---|---|
+| The player is banned | Denied |
+| The player is the owner | Allowed |
+| The member has a per-member deny | Denied |
+| The member has a per-member allow | Allowed |
+| The member's role, or the `MEMBER` role if theirs was deleted | That role's answer |
+| Not a member | The `DEFAULT` role's answer |
+
+A missing role denies rather than throws, and a `null` argument returns `false`. Do not reimplement
+the chain.
+
+It does not consider `uxmclaims.admin`. `ClaimPermissionPolicy` does: it treats operators and holders
+of `uxmclaims.admin` as allowed, then falls through to the claim.
 
 ```java
 ClaimPermissionPolicy policy = api.getInstance(ClaimPermissionPolicy.class);
+
 policy.hasPerm(uuid, claim, ClaimPermission.BLOCK_BREAK);
 policy.isOwner(uuid, claim);
 policy.canPerform(uuid, ClaimAction.CLAIM_DELETE);
 ```
 
+`canPerform` checks an [ability node](../permissions/abilities.md), with bypass and wildcard nodes
+first.
+
 ## The pieces
 
-| Type | Holds |
+| Type | Getters |
 |---|---|
-| `ClaimMember` | `uid`, `roleId`, `joinDate`, `allowedPermissions`, `deniedPermissions` |
-| `ClaimRole` | `name`, `priority`, `type`, its permission set |
-| `ClaimChunk` | The chunk coordinates and world |
-| `ClaimWarp` | `name`, `location`, `isPublic`, `createdBy`, `createdAt` |
-| `ClaimBan` | `bannedUid`, `reason`, `bannedAt` |
-| `ClaimInvite` | `invitedUid`, `invitedAt` |
-| `ClaimBlock` | The style key and where the block sits |
-| `ClaimVault` | The stored items |
+| `ClaimMember` | `getId`, `getUid`, `getClaimId`, `getRoleId`, `getJoinDate`, `getAllowedPermissions`, `getDeniedPermissions`, `hasAllowedPermission`, `hasDeniedPermission` |
+| `ClaimRole` | `getId`, `getClaimId`, `getName`, `getPriority`, `getType`, `getPermissions`, `hasPermission`, `isOwner`, `isMember`, `isDefault`, `isCustom` |
+| `ClaimChunk` | `getId`, `getClaimId`, `getChunk`, `getCreatedAt`, `isMain` |
+| `ClaimWarp` | `getId`, `getClaimId`, `getName`, `getLocation`, `isPublic`, `getCreatedBy`, `getCreatedAt` |
+| `ClaimBan` | `getId`, `getClaimId`, `getActorUid`, `getBannedUid`, `getReason`, `getBannedAt` |
+| `ClaimInvite` | `getId`, `getClaimId`, `getActorUid`, `getInvitedUid`, `getInvitedAt` |
+| `ClaimBlock` | `getId`, `getClaimId`, `getKeyId`, `getLocation`, `isPlaced` |
+| `ClaimVault` | `getId`, `getClaimId`, `getActorUid`, `getUpdatedAt`, `getItems` (`List<ClaimVaultItem>`) |
+| `ClaimVaultItem` | `getVaultId`, `getSlot`, `getItemStack` (the stack, serialised to a `String`) |
+| `CPlayer` | `getUid`, `getName`, `getTexture`, `getSignature`, `getFirstLoginDate`, `getLastLoginDate` |
+| `vo.Location` | `getWorld` (name), `getX`, `getY`, `getZ`, `getChunk`, `getBlockLocation` |
+| `vo.Chunk` | `getWorld` (name), `getX`, `getZ`, `getCenter`, `isNeighbor` |
 
-`ClaimMember` carrying both an allowed and a denied set is the per-member override mechanism. Denied
-is checked first, so a denial always wins.
+A member's denied set is checked before the allowed set, so a denial always wins. Convert `Location`
+and `Chunk` to Bukkit with [`BukkitConverter`](api.md).
 
 ## The enums
 
@@ -86,16 +103,20 @@ is checked first, so a denial always wins.
 | `ClaimFlag` | 32 | [Flags](../protection/flags.md) |
 | `ClaimPermission` | 48 | [Role permissions](../protection/permissions.md) |
 | `ClaimAction` | 30 | [Ability permissions](../permissions/abilities.md) |
-| `ClaimRoleType` | `OWNER`, `MEMBER`, `DEFAULT`, `CUSTOM` | n/a |
-| `ClaimSideEffect` | `REGION`, `ECONOMY`, `WEBHOOK`, `LIMITATION`, `PERMISSION` | [Architecture](architecture.md) |
+| `ClaimRoleType` | `OWNER`, `MEMBER`, `DEFAULT`, `CUSTOM` | [Roles](../commands/roles.md) |
 
-`ClaimAction` also builds its own permission strings (`toPermissionNode()`, `toBypassNode()`,
-`toCategoryWildcard()`) which is how the ability and bypass node families stay in sync.
+`ClaimAction` builds its own permission strings (`toPermissionNode(…)`, `toBypassNode(…)`,
+`toCategoryWildcard()`, `toBypassCategoryWildcard()`), which keeps the ability and bypass node
+families in sync. `ClaimSideEffect` is not a domain enum: it lives in
+`com.uxplima.claim.app.command.options`, see [The API](api.md).
 
-<Callout type="info" title="Model objects are snapshots">
+<Callout type="info" title="Model objects are copies">
 
-A `Claim` you hold is a view of the state when you fetched it. Another server, or another thread, may
-have changed it since. Re-fetch before acting on stale data, and make changes through the
-[facade](api.md) rather than by mutating the object: direct mutation is not persisted.
+Every `Claim` the facade returns is a copy of the plugin's cached state at the moment you fetched
+it. Mutating methods such as `rename` or `addFlag` change only your copy: nothing is saved, no event
+fires, and the plugin never sees it. Make changes through the [facade](api.md), and fetch again
+after a write instead of reusing an old copy.
 
 </Callout>
+
+Related: [The API](api.md), [Events](events.md)

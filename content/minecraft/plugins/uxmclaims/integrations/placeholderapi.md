@@ -1,25 +1,28 @@
 ---
 title: PlaceholderAPI
 order: 805
-description: The uxmclaims expansion, and where its placeholders can be used.
+description: The uxmclaims expansion, which claim it describes, and its fallbacks.
 icon: braces
 ---
+
+uxmClaims registers a PlaceholderAPI expansion with the identifier `uxmclaims`. It is built in, so
+there is nothing to download from the eCloud. The syntax and every path are on
+[Placeholders reference](../placeholders/reference.md); this page covers the integration.
+
+## Settings
 
 ```yaml
 generalSettings:
   placeholderSupport: true
 ```
 
-uxmClaims registers an expansion with the identifier `uxmclaims`. It is bundled: there is nothing to
-download from the eCloud.
-
-The complete syntax, the path rules and every modifier are in
-[Placeholders → Reference](../placeholders/reference.md). This page is about where they work.
+With `true` and PlaceholderAPI installed, the expansion is registered at startup. Changing the switch
+needs a restart.
 
 ## In other plugins
 
-Any plugin that resolves PlaceholderAPI placeholders can use them: scoreboards, tab lists, holograms,
-chat formats, NPC dialogue.
+Scoreboards, tab lists, holograms, chat formats and any other plugin that resolves PlaceholderAPI
+placeholders can use them:
 
 ```
 %uxmclaims_claim_name%
@@ -29,38 +32,35 @@ chat formats, NPC dialogue.
 %uxmclaims_is_claimable%
 ```
 
-Which claim they describe is the one selected with `/claim select`, or failing that the one the player
-is standing in.
+They describe one claim, picked in this order:
 
-## In uxmClaims' own files
+| Order | Claim |
+|---|---|
+| 1 | The claim the player selected with `/claim select` |
+| 2 | The claim the player is standing in |
+| 3 | The player's only claim, when they own exactly one |
 
-`messages.yml`, `webhooks.yml`, the hologram lines and every menu use the same engine **without** the
-`uxmclaims_` prefix, and with more objects in context:
+`%uxmclaims_is_claimable%` ignores that order: it is `true` when no claim covers the player's
+position. It does not check WorldGuard regions or `disabledWorlds`.
 
-```yaml
-'<gray>Owner:</gray> <white>%claim.owner.name%</white>'
-'<gray>Expires:</gray> <gold>%time:claim.remainTime%</gold>'
-```
-
-This part works with `placeholderSupport: false` and without PlaceholderAPI installed: it is the
-plugin's own parser. The switch and the dependency only govern *external* placeholders.
-
-## Third-party placeholders inside uxmClaims
-
-With PlaceholderAPI installed, another plugin's placeholders work inside uxmClaims' messages and
-menus. A hologram line can carry `%vault_eco_balance%`; a menu lore line can carry
-`%player_world%`.
-
-## Defaults outside a claim
+## When there is no claim
 
 ```yaml
 placeholderDefaults:
-  uxmclaims_claim_name: 'No claim'
-  uxmclaims_claim_owner_name: 'No claim'
+  uxmclaims_claim_name: 'Wilderness'
+  uxmclaims_claim_owner_name: 'None'
 ```
 
-Two are defined. Every other path renders empty outside a claim, so add an entry for anything you put
-on a permanent scoreboard.
+When no claim is found, or a path has no value, the expansion answers with the entry for that
+placeholder from `placeholderDefaults` in `messages.yml`. A placeholder without an entry is left as
+typed, so add one for anything you put on a permanent scoreboard.
 
-`%uxmclaims_is_claimable%` is the exception: it works anywhere, because it is answered before the
-claim is resolved.
+## Notes
+
+- **uxmClaims' own files do not need PlaceholderAPI.** Messages, menus, holograms, webhooks and map
+  tooltips use the plugin's own parser, with `%claim.name%` style paths and no `uxmclaims_` prefix.
+  They work with `placeholderSupport: false`.
+- **Other plugins' placeholders do not work inside uxmClaims' files.** A `%vault_eco_balance%` in a
+  menu or hologram stays as typed.
+
+Related: [Overview](overview.md), [Placeholders reference](../placeholders/reference.md), [messages.yml](../config/messages-yml.md)

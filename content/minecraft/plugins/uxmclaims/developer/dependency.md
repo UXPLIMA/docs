@@ -5,9 +5,13 @@ description: The repository, the artifact, and declaring the soft dependency.
 icon: package
 ---
 
-One dependency gets you the API, the facades, the domain model and the events.
+One artifact, `com.uxplima.claim:bukkit-api`, gives you the entry point, the facades, the command
+objects, the domain model and the events. The current version is `3.6.7`.
 
-## Gradle
+## Gradle and Maven
+
+<Tabs>
+<Tab label="Gradle">
 
 ```groovy
 repositories {
@@ -16,11 +20,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.uxplima.claim:bukkit-api:VERSION'
+    compileOnly 'com.uxplima.claim:bukkit-api:3.6.7'
 }
 ```
 
-## Maven
+</Tab>
+<Tab label="Maven">
 
 ```xml
 <repositories>
@@ -38,14 +43,28 @@ dependencies {
     <dependency>
         <groupId>com.uxplima.claim</groupId>
         <artifactId>bukkit-api</artifactId>
-        <version>VERSION</version>
+        <version>3.6.7</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
 ```
 
-`compileOnly` and `provided` are correct: uxmClaims is already on the server, and shading it would
-give you a second, disconnected copy of the domain model.
+</Tab>
+</Tabs>
+
+## What the artifact contains
+
+| Artifact | Packages | Holds |
+|---|---|---|
+| `bukkit-api` | `com.uxplima.claim.bukkit.api` | `UxmClaimBukkitAPI`, `@ClaimEventHandler`, `BukkitConverter` |
+| `uxmclaims-app` (pulled in) | `com.uxplima.claim.app` | `ClaimFacade`, `PlayerFacade`, the command objects, `ClaimCommandOptions`, the ports, the config models |
+| `uxmclaims-domain` (pulled in) | `com.uxplima.claim.domain` | `Claim` and its parts, the enums, the events, `ClaimException` |
+
+`bukkit-api` re-exports the other two, so you declare only `bukkit-api`. The Spigot API is not
+included: your build already has it.
+
+Use `compileOnly` or `provided`, never shade. uxmClaims is already on the server, and a shaded copy
+is a second, disconnected set of classes that the running plugin does not know.
 
 ## Declaring the dependency
 
@@ -56,13 +75,13 @@ softdepend:
   - uxmClaims
 ```
 
-`softdepend` if your plugin works without it, `depend` if it does not. Either way your plugin loads
-after uxmClaims, which matters because the API throws until uxmClaims has initialised.
+Use `softdepend` if your plugin works without it, `depend` if it does not. Either way your plugin
+enables after uxmClaims.
 
 ## Guarding the call
 
 ```java
-if (Bukkit.getPluginManager().getPlugin("uxmClaims") == null) {
+if (!Bukkit.getPluginManager().isPluginEnabled("uxmClaims")) {
     getLogger().info("uxmClaims not found, claim integration disabled.");
     return;
 }
@@ -70,14 +89,17 @@ if (Bukkit.getPluginManager().getPlugin("uxmClaims") == null) {
 UxmClaimBukkitAPI api = UxmClaimBukkitAPI.getInstance();
 ```
 
-`getInstance()` throws `IllegalStateException` with *"uxmClaims is not initialized yet!"* when called
-too early. With `softdepend` set and the call made in `onEnable`, that will not happen, but a static
-initialiser, or a call from `onLoad`, will hit it.
+`getInstance()` throws `IllegalStateException` (`uxmClaims is not initialized yet!`) until uxmClaims
+has finished starting. Calling it from a static initialiser or from `onLoad` hits this. So does a
+server where uxmClaims disabled itself at startup, for example over a missing licence key or a
+database another server holds: `isPluginEnabled` is the check that covers that case.
 
 ## Requirements
 
-| | |
+| Requirement | Value |
 |---|---|
 | Java | 21 |
-| Server | 1.19.4 or newer |
-| Scope | `compileOnly` / `provided` (never shade) |
+| Server | Spigot 1.19.4 or newer, or a fork such as Paper, Purpur or Folia |
+| Scope | `compileOnly` / `provided` |
+
+Related: [The API](api.md), [Events](events.md)

@@ -5,46 +5,55 @@ description: The invitation flow, from sending to accepting, and the inbox.
 icon: mail
 ---
 
-Nobody is added to a claim directly. An invitation is created, and the invited player accepts it.
+Nobody joins a claim directly. A member with the right to invite sends an invitation, and the invited
+player accepts or rejects it. Accepting adds them with the claim's `Member` role.
 
-| Command | What it does | Ability node |
+## Commands
+
+| Command | What it does | Claim access | Ability node |
+|---|---|---|---|
+| `/claim invite send <player>` | Invites a player to the current claim | `MANAGE_INVITES` | `uxmclaims.ability.member.invite` |
+| `/claim invite revoke <player>` | Withdraws a pending invitation of the current claim | `MANAGE_INVITES` | `uxmclaims.ability.member.revoke` |
+| `/claim invite accept <claim>` | Accepts an invitation, by claim name | none | none |
+| `/claim invite reject <claim>` | Rejects an invitation, by claim name | none | none |
+| `/claim invite inbox` | Opens your pending invitations | none | none |
+
+`/claim trust <player>` is the same as `invite send`, and `/claim invites` the same as `invite inbox`.
+
+### The flow
+
+1. The owner, or a member whose role has `MANAGE_INVITES`, runs `/claim trust Steve`.
+2. If Steve is online he gets `notificationInviteReceived`, with clickable **[Accept]** and
+   **[Reject]** buttons. The buttons run `/claim invite accept <claim>` and
+   `/claim invite reject <claim>`.
+3. Steve accepts and becomes a member with the `Member` role.
+
+If Steve was offline or missed the message, `/claim invites` lists everything waiting for him.
+Invitations do not expire; they stay until accepted, rejected or revoked.
+
+`send` refuses a player who is already a member, already invited, or banned from the claim.
+`accept` checks the member limit again, so a claim that filled up meanwhile turns the invitation
+down with `errorMaxMembers`.
+
+## Permissions
+
+| Node | Applies to | Default |
 |---|---|---|
-| `/claim invite send <player>` | Invite someone | `uxmclaims.ability.member.invite` |
-| `/claim invite accept <claim>` | Accept an invitation | n/a |
-| `/claim invite reject <claim>` | Decline one | n/a |
-| `/claim invite revoke <player>` | Withdraw one you sent | `uxmclaims.ability.member.revoke` |
-| `/claim invite inbox` | Open your pending invitations | n/a |
+| `uxmclaims.limit.member.<n>` | Members in one claim, read from the owner | `50` |
+| `uxmclaims.limit.invite.<n>` | Pending invitations in one claim, read from the owner | `10` |
+| `uxmclaims.cost.invite.<count>.<price>` | Price of sending an invitation | `0.0` |
+| `uxmclaims.delay.invite.<n>` | Seconds between invitations a player sends | `10` |
 
-`/claim trust <player>` is a shorthand for `invite send`, and `/claim invites` for `invite inbox`.
+The invite limit counts invitations nobody has answered yet; revoking one frees its slot. See
+[Limits, costs and delays](../permissions/limits.md).
 
-Sending also needs the `MANAGE_INVITES` role permission.
+## Notes
 
-## The flow
+- The claim name in `accept` and `reject` is the last argument, so a name with spaces works:
+  `/claim invite accept Claim of Alex`.
+- `aliases.yml` ships `/accept <claim>` and `/deny <claim>`, which run `accept` and `reject`.
+- Rewriting `notificationInviteReceived` in `messages.yml` changes what the invited player sees.
+  Keep the two click commands if you want the buttons.
+- The [invitation menus](../menus/invitations.md) send, revoke, accept and reject with the same checks.
 
-1. The owner or a member with `MANAGE_INVITES` runs `/claim trust Steve`.
-2. Steve, if online, receives a message with clickable **[Accept]** and **[Reject]** buttons.
-3. Steve accepts. He becomes a member with the claim's `Member` role.
-
-The notification is `notificationInviteReceived` in `messages.yml` and its buttons run
-`/claim invite accept <claim>` and `/claim invite reject <claim>`. Rewriting that message is how you
-change what players see; the click targets are ordinary commands.
-
-If Steve was offline, or lost the message, `/claim invites` shows everything waiting.
-
-## Limits
-
-| Limit | Node | Default |
-|---|---|---|
-| Pending invitations per claim | `uxmclaims.limit.invite.<n>` | `10`, MAX |
-| Members per claim | `uxmclaims.limit.member.<n>` | `50`, stacking |
-| Cost of sending one | `uxmclaims.cost.invite.<count>.<price>` | `0.0` |
-
-The invite limit counts invitations that have not been answered, so a claim spamming invitations to
-offline players will hit it. Revoking frees a slot.
-
-<Callout type="info" title="Aliases make this two keystrokes">
-
-`aliases.yml` ships `/accept` and `/untrust`. Adding `/invite: "claim invite send"` gives players the
-verb they expect from every other plugin, without touching the command tree.
-
-</Callout>
+Related: [Members](members.md), [Invitations menu](../menus/invitations.md), [aliases.yml](../config/aliases-yml.md)

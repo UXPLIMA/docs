@@ -1,105 +1,84 @@
 ---
 title: Concepts
 order: 103
-description: Chunks, roles, flags, entitlements and how they combine into a yes or no.
+description: Chunks, the claim lifecycle, roles, flags, entitlements and abilities.
 icon: lightbulb
 ---
 
-Five ideas. Everything in uxmClaims is one of them.
+Everything in uxmClaims is one of six ideas. This page explains each in a few lines and links to the
+page that lists the details.
 
 ## Chunks
 
-A chunk is Minecraft's own 16×16 grid cell, from the bottom of the world to the top. Claims are made
-of whole chunks: there are no partial claims and no selection wands.
+A claim is made of whole chunks, from the bottom of the world to the top. There are no partial claims
+and no selection wands.
 
-The first chunk a player claims is the **main chunk**. It holds the claim block, the hologram and the
-spawn point. Extra chunks are added with `/claim chunk add` and must touch the claim already:
+| Rule | Detail |
+|---|---|
+| Main chunk | The chunk the claim was created in. It cannot be removed. |
+| Adding a chunk | The chunk must be free and share a side with the claim. Diagonal contact does not count. |
+| Removing a chunk | Refused when the claim would split in two: *"Cannot delete this chunk! It connects other chunks to the claim."* Warps inside the chunk are deleted, a spawn inside it moves to the main chunk, and nothing is refunded. |
+| Distance | `claimSettings.minDistance` (default `2`) is the gap, in chunks, between your claim and another player's. It is checked in a square around every chunk you create or add. `0` lets claims touch. |
+| Size | `uxmclaims.limit.chunk` caps the chunks in one claim, main chunk included (default 10). |
 
-```
-  ██              ██ ██            ██ ██
-  ██     →        ██ ██     →      ██ ██ ██
-                                      ██
-```
+## The claim lifecycle
 
-A chunk whose removal would split the claim in two cannot be removed: the plugin answers
-*"Cannot delete this chunk! It connects other chunks to the claim."*
-
-`claimSettings.minDistance` (default `2`) forces a gap in chunks between claims belonging to different
-players. `0` lets them sit flush against each other.
+| Stage | What happens |
+|---|---|
+| Create | `/claim` or `/claim create [name]`. The chunk must be free, outside `minDistance` of other players' claims and off any WorldGuard region. The creator pays `uxmclaims.cost.claim` and must be under `uxmclaims.limit.claim`. |
+| Claim block | Set where the creator stood, using `claimSettings.defaultBlock`, with a hologram above it. Nothing can break, blow up or push it. Right-clicking it opens the claim menu for members. `/claim block` moves, restyles or removes it. |
+| Starting state | Flags from `claimSettings.defaultFlags`, roles from [`roles.yml`](../config/roles-yml.md), and an expiry date `claimSettings.expireTime` seconds away (30 days). |
+| Time | `/claim extend <duration>` or the *Extend Time* menu adds time. It costs `uxmclaims.cost.time` per second per chunk, and the time left afterwards may not exceed `uxmclaims.limit.time` (30 days by default). |
+| Expiry | With `claimSettings.expireMode: true`, a claim whose time runs out is deleted within seconds and `broadcastClaimExpired` is announced. Owners get a reminder in the last `generalSettings.reminderThresholdSeconds` (one day). |
+| Delete, transfer | Only the owner may delete the claim or hand it to a member. |
 
 ## Roles
 
-A role is a named set of [role permissions](../protection/permissions.md). Three always exist and
-cannot be deleted:
+A role is a named set of [role permissions](../protection/permissions.md). Three always exist and cannot
+be deleted:
 
-| Role | Priority | Applies to |
-|---|---|---|
-| `Owner` | 0 | The owner. Holds every permission implicitly (its permission list is empty on purpose.) |
-| `Member` | 1 | The fallback for a member whose role was deleted. |
-| `Default` | 2 | Everyone who is **not** a member. This is what visitors get. |
+| Role | Priority | Holds | Applies to |
+|---|---|---|---|
+| `Owner` | 0 | Every permission, implicitly | The owner |
+| `Member` | 1 | The list in `roles.yml` | Everyone who accepts an invite |
+| `Default` | 2 | `MOVE_INSIDE` | Everyone who is not a member: visitors |
 
-Lower priority is higher rank. Custom roles are created per claim and slot in between.
-
-`Default` is the important one: it is the role that decides what a stranger walking through your land
-may do. Shipping it with `MOVE_INSIDE` alone (the shipped default) means outsiders may walk and
-nothing else.
+A lower priority number is a higher rank. A custom role is inserted just above `Default`, so it ranks
+below `Member` until you change its priority, and it starts with no permissions at all. Give it
+`MOVE_INSIDE` first: without it, its holders are pushed out of the claim. Deleting a custom role moves
+its members to `Member`.
 
 ## Flags
 
 A [flag](../protection/flags.md) is a rule about the claim itself, not about a player. `TNT_EXPLOSIONS`
 does not ask who lit the TNT; it decides whether TNT may break blocks here at all.
 
-Flags are **allow-when-present**. A flag in the claim's set means that thing is permitted. Removing
-`FIRE_SPREAD` stops fire spreading; adding it lets fire spread again.
+Flags are **allow when present**. A flag in the claim's set permits that thing; removing it forbids it.
+Only the owner changes flags.
 
-New claims start with `claimSettings.defaultFlags`.
+## The permission check
 
-## How a permission check resolves
+When a player acts inside a claim, uxmClaims asks in a fixed order: admin, ban, owner, the member's own
+overrides, the member's role, and for everyone else the `Default` role. The full table is on
+[How protection works](../protection/overview.md). Two consequences matter in practice:
 
-When a player tries to do something inside a claim, `Claim.hasPermission` runs in this order:
-
-```mermaid
-flowchart TD
-    A[Player acts in a claim] --> B{Banned?}
-    B -- yes --> N[Denied]
-    B -- no --> C{Owner, or has uxmclaims.admin?}
-    C -- yes --> Y[Allowed]
-    C -- no --> D{Is a member?}
-    D -- no --> E[Use the Default role]
-    D -- yes --> F{Denied on the member?}
-    F -- yes --> N
-    F -- no --> G{Allowed on the member?}
-    G -- yes --> Y
-    G -- no --> H[Use the member's role]
-    E --> I{Role grants it?}
-    H --> I
-    I -- yes --> Y
-    I -- no --> N
-```
-
-Three things are worth reading twice:
-
-- **A ban beats everything.** A banned player fails before ownership is even checked.
-- **Per-member deny beats the role.** You can hand someone the Builder role and still take
-  `CONTAINER_OPEN` off them individually.
-- **A member whose role was deleted falls back to `Member`,** not to `Default`. They keep member-level
-  access until you give them a new role.
+- A ban beats every role and every override.
+- A per-member deny beats the role. You can give someone the Builder role and still take
+  `CONTAINER_OPEN` away from them alone.
 
 ## Entitlements
 
-An entitlement is a number that comes from a permission: how many claims, how many chunks, how much a
-chunk costs, how long a teleport takes. They live in
-[`entitlements.yml`](../config/entitlements-yml.md) and each has a default, a permission prefix, and a
-strategy for combining several grants: `STACK` adds them, `MAX` takes the largest, `MIN` takes the
-smallest.
+An entitlement is a number that comes from a permission node: how many claims a player may own, how
+many chunks a claim may have, what a chunk costs, how long a teleport warmup lasts. Each is defined in
+[`entitlements.yml`](../config/entitlements-yml.md) with a default and a strategy for limits and delays:
+`STACK` adds every grant to the default, `MAX` takes the largest, `MIN` the smallest. For a cost, the
+cheapest matching grant wins.
 
-`MIN` is used for costs and delays on purpose: giving a rank a *lower* number there is the upgrade.
+uxmClaims reads these nodes through LuckPerms. Without LuckPerms, every player gets the defaults.
 
 ## Abilities
 
-Separately from all of the above, `uxmclaims.ability.*` decides whether a player may perform an
-operation *anywhere at all*, whether they may create claims, delete them, make warps, open vaults.
-See [Ability permissions](../permissions/abilities.md).
-
-A player needs the ability node **and** the in-claim role permission. The ability is the server-wide
-licence; the role permission is the per-claim one.
+An ability node, `uxmclaims.ability.<category>.<action>`, decides whether a player may perform an
+operation anywhere at all: create claims, delete them, make warps, open vaults. A role permission then
+decides whether they may do it in this claim. Both must pass. Without LuckPerms every ability passes;
+with LuckPerms nothing passes until you grant it. See [Ability permissions](../permissions/abilities.md).

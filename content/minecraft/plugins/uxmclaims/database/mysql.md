@@ -5,22 +5,22 @@ description: Creating the database and user, and pointing the plugin at it.
 icon: database
 ---
 
-MySQL 8 or newer. MariaDB works through the same dialect.
+MySQL 8.0 or newer. The schema uses MySQL 8 features (`BIN_TO_UUID` in its views and the
+`utf8mb4_0900_ai_ci` collation), so use MySQL itself rather than MariaDB.
 
 ## Create the database
 
 ```sql
-CREATE DATABASE uxmclaims CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE uxmclaims CHARACTER SET utf8mb4;
 CREATE USER 'uxmclaims'@'localhost' IDENTIFIED BY 'a-long-random-password';
 GRANT ALL PRIVILEGES ON uxmclaims.* TO 'uxmclaims'@'localhost';
-FLUSH PRIVILEGES;
 ```
 
-`utf8mb4` matters: claim names contain emoji more often than you would expect, and `utf8` in MySQL
-is a three-byte encoding that cannot store them.
+The plugin creates its tables and views itself, so the user needs `CREATE`, `ALTER`, `DROP` and
+`CREATE VIEW` on the database as well as read and write access.
 
-Use `'uxmclaims'@'%'` instead of `@'localhost'` when the database is on another host, and restrict it
-at the firewall rather than trusting the wildcard.
+Use `'uxmclaims'@'%'` instead of `'localhost'` when the database runs on another host, and restrict
+access at the firewall rather than trusting the wildcard.
 
 ## Point the plugin at it
 
@@ -28,29 +28,20 @@ at the firewall rather than trusting the wildcard.
 database:
   type: 'AUTO'
   username: 'uxmclaims'
-  password: '<a long random password>'
+  password: '<your password>'
   url: 'jdbc:mysql://localhost:3306/uxmclaims'
 ```
 
-`AUTO` reads `mysql` out of the URL. Restart the server: this section is not re-read by
-`/claim reload`.
+`AUTO` finds `mysql` in the URL. Keep the `jdbc:mysql://` scheme: the bundled driver is MySQL
+Connector/J. Driver options go after a `?`, for example `?useSSL=false` for a local database
+without TLS.
 
-Useful URL parameters:
+Restart the server: `/claim reload` does not reconnect.
 
-```
-jdbc:mysql://localhost:3306/uxmclaims?useSSL=false&characterEncoding=utf8&serverTimezone=UTC
-```
+## One server only
 
-Set `serverTimezone` when the database host and the game server disagree about time. Claim expiry is
-stored as an instant, but a mismatched session timezone makes every `date:` placeholder read wrong.
-
-## Several servers
-
-More than one server may share one database. That is the main reason to be here.
-
-What is shared: claims, members, roles, warps, bans, vaults. What is not: the in-memory caches. A claim
-edited on one server is not instantly visible on another: there is no cross-server invalidation
-message. Give each server its own worlds, and the question does not arise.
+This database belongs to one server at a time. A second server pointed at it refuses to start while
+the first is running; see [One server per database](overview.md). Give every server its own database.
 
 ## Backups
 
@@ -58,11 +49,13 @@ message. Give each server its own worlds, and the question does not arise.
 mysqldump -u uxmclaims -p uxmclaims > uxmclaims-$(date +%F).sql
 ```
 
-Run it before any bulk operation. `/claim admin bulk rename` has no undo and no confirmation.
+Run it before any `/claim admin bulk …` command. They have no undo and no confirmation.
 
 <Callout type="warning" title="Change the shipped credentials">
 
-`config.yml` ships with `username: 'root'` and `password: 'password'`. They do nothing under SQLite,
-which is the default, so it is easy to switch the URL to MySQL and forget them. Set both.
+`config.yml` ships with `username: 'root'` and `password: 'password'`. SQLite ignores them, so it is
+easy to switch the URL to MySQL and forget them. Set both.
 
 </Callout>
+
+Related: [Overview](overview.md), [PostgreSQL](postgresql.md)

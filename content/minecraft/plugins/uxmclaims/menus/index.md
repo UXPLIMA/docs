@@ -15,3 +15,4 @@ icon: layout-grid
 - [Bans](bans.md)
 - [Warps](warps.md)
 - [The vault](vault.md)
+- [Bedrock menus](bedrock.md)

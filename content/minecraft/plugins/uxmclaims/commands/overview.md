@@ -1,82 +1,115 @@
 ---
 title: Overview
 order: 201
-description: How the tree is shaped, what the two permission systems mean, and aliases.
+description: How the command tree is shaped, which checks every command passes, and what runs from the console.
 icon: list-tree
 ---
 
-Everything lives under one root, `/claim`, with six sub-roots below it.
+Every command lives under `/claim`. The root and its direct subcommands handle the claim itself, and
+seven sub-roots group the rest.
 
-```
-/claim                  the smart root, see Claim commands
-├── chunk    …          add and remove land
-├── block    …          the visual claim block
-├── invite   …          the invitation flow
-├── member   …          roles and per-member permissions
-├── role     …          create and configure roles
-├── warp     …          teleport points
-└── admin    …          staff only
-```
+| Root | Page |
+|---|---|
+| `/claim`, `/claim <subcommand>` | [Claim commands](claim.md) |
+| `/claim chunk`, `/claim block` | [Chunks and the claim block](chunks.md) |
+| `/claim member` | [Members](members.md) |
+| `/claim invite` | [Invites](invites.md) |
+| `/claim role` | [Roles](roles.md) |
+| `/claim warp` | [Warps](warps.md) |
+| `/claim admin`, `/claim reload` | [Admin](admin.md) |
 
-## Two permissions per command
+## Commands
 
-Almost every command is gated twice:
+### Which claim a command acts on
 
-| Gate | Node | Question |
-|---|---|---|
-| **Ability** | `uxmclaims.ability.<action>` | May this player ever do this, anywhere? |
-| **Role permission** | A `ClaimPermission` on their role | May they do it *in this claim*? |
+Commands that act on "the current claim" resolve it in this order:
 
-Both must pass. `uxmclaims.admin` skips both, and so does a `uxmclaims.bypass.*` node for the matching
-action. The full node list is in [Ability permissions](../permissions/abilities.md).
-
-Only one command is gated by a plain Bukkit permission in `plugin.yml`: `/claim reload`, which needs
-`uxmclaims.admin`.
-
-## Which claim a command acts on
-
-Commands that say "the current claim" resolve it in this order:
-
-1. The claim selected with `/claim select`, if any.
+1. The claim you selected with `/claim select`, or that `/claim create` just selected for you.
 2. The claim you are standing in.
 
-If neither applies you get *"No claim selected. Use /claim select or stand in a claim."*
-`/claim select` with no argument opens a picker menu; `/claim select <name>` picks by name and is what
-makes remote administration possible.
+If neither exists you get `errorNoClaimSelected`. A selection lasts until you log out, delete or leave
+that claim, or deselect it in the `/claim list` menu.
 
-## Confirmation
+<Callout type="warning" title="A selection outlives where you stand">
 
-Destructive actions route through a confirmation step, then `/claim confirm` or `/claim cancel`:
-
-| Action | Asks first |
-|---|---|
-| `/claim` creating a brand new claim | yes |
-| `/claim delete` | yes |
-| `/claim kick` | yes |
-| `/claim transfer` | yes |
-| Teleporting to a public warp in a PvP claim | yes |
-| `/claim ban` | no |
-
-`/claim ban` is deliberately immediate: it exists for the moment someone is already causing damage.
-
-## Aliases
-
-`aliases.yml` maps a short command onto a `/claim` subcommand. Four ship by default:
-
-| Alias | Runs |
-|---|---|
-| `/accept <claim>` | `/claim invite accept` |
-| `/deny <claim>` | `/claim invite deny` |
-| `/unclaim` | `/claim delete` |
-| `/untrust <player>` | `/claim kick` |
-
-Tab completion follows the target command automatically. Add your own and run `/claim reload`. See
-[aliases.yml](../config/aliases-yml.md).
-
-<Callout type="warning" title="/deny points at a subcommand that is spelled reject">
-
-The shipped alias maps `/deny` onto `claim invite deny`, but the registered subcommand is
-`/claim invite reject`. Either change the alias target to `claim invite reject`, or drop `/deny` and
-tell players to use `/claim invite reject`. `/accept`, `/unclaim` and `/untrust` are all correct.
+After `/claim select` or `/claim create`, commands act on the selected claim even while you stand in
+another one. Check the selection in `/claim list` before running `/claim delete`, a kick, or a
+transfer.
 
 </Callout>
+
+### Arguments
+
+The last text argument of a command takes the rest of the line, so `/claim select Claim of Steve`
+and `/claim rename North Base` work with spaces. A name in the middle of a command, such as the role in
+`/claim role rename <role> <name>`, must be one word. Names of flags, role permissions, roles, warps
+and claims match without regard to case.
+
+### Confirmation
+
+These commands ask first and wait for `/claim confirm` or `/claim cancel`. The prompt is
+`confirmationRequired` in `messages.yml`, with clickable buttons.
+
+| Command | Asks first |
+|---|---|
+| `/claim` on free land, creating a new claim | yes |
+| `/claim delete` | yes |
+| `/claim kick`, `/claim member kick` | yes |
+| `/claim transfer`, `/claim member transfer` | yes |
+| `/claim chunk remove` | yes |
+| `/claim role delete` | yes |
+| `/claim warp delete` | yes |
+| `/claim warp teleport`, `/claim spawn <name>` to a public warp in a claim with `PVP` on | yes, with `warningWarpPvpEnabled` |
+| `/claim ban`, every `/claim admin bulk` command | no |
+
+A prompt expires after 30 seconds. Starting another confirmable command replaces the pending one.
+`generalSettings.confirmationEnabled: false` in `config.yml` turns every prompt off, and the
+commands run at once.
+
+### Console
+
+Only `/claim reload` and the `/claim admin bulk` commands run from the console. Every other command
+needs a player, because it reads the player's position, selection or menus.
+
+## Permissions
+
+A command that changes a claim passes up to two checks, and both must pass:
+
+| Check | What it is | Question |
+|---|---|---|
+| Ability | A server permission, `uxmclaims.ability.<category>.<action>` | May this player ever do this, anywhere? |
+| Claim access | A [role permission](../protection/permissions.md) on the player's role, or ownership of the claim | May they do it in this claim? |
+
+Some actions skip the role permission and require ownership instead: deleting and transferring the
+claim, flags, role management, and assigning roles or permission overrides to members. Each command
+page lists which check applies. The ability nodes, their wildcards and when they are read are in
+[Ability permissions](../permissions/abilities.md).
+
+`uxmclaims.admin` (default `op`, the only node `plugin.yml` declares) passes both checks, every limit,
+cost and cooldown. A `uxmclaims.bypass.*` node passes the ability check only.
+
+Limits, costs and cooldowns come from `uxmclaims.limit.*`, `uxmclaims.cost.*` and `uxmclaims.delay.*`
+nodes, resolved through [entitlements.yml](../config/entitlements-yml.md). The full table is in
+[Limits, costs and delays](../permissions/limits.md).
+
+## Settings
+
+| Key | File | Default | Effect |
+|---|---|---|---|
+| `generalSettings.smartCommand` | `config.yml` | `true` | What a bare `/claim` does on free land |
+| `generalSettings.confirmationEnabled` | `config.yml` | `true` | Confirmation prompts on or off |
+| `aliases` | `aliases.yml` | four aliases | Top-level shortcuts for `/claim` subcommands |
+
+## Notes
+
+- **Aliases.** `aliases.yml` ships `/accept` (`claim invite accept`), `/deny`
+  (`claim invite reject`), `/unclaim` (`claim delete`) and `/untrust` (`claim kick`). Arguments pass
+  through and tab completion follows the target. `/claim reload` applies a change to the file. See
+  [aliases.yml](../config/aliases-yml.md).
+- **Replies come from `messages.yml`.** A refusal such as `errorNoPermission` or
+  `errorAbilityPermissionDenied` is a key in [messages.yml](../config/messages-yml.md), in the
+  language set in `config.yml`. The replies of `/claim reload`, the bulk commands and an unreadable
+  `/claim extend` duration are fixed English text.
+
+Related: [Claim commands](claim.md), [Ability permissions](../permissions/abilities.md),
+[Role permissions](../protection/permissions.md)

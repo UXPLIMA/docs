@@ -5,13 +5,13 @@ description: Mapping short commands onto /claim subcommands.
 icon: link-2
 ---
 
-An alias is a top-level command that runs a `/claim` subcommand. Tab completion follows the target
-automatically.
+An alias is a top-level command that runs a `/claim` subcommand as the player who typed it. Tab
+completion follows the target.
 
 ```yaml
 aliases:
   accept: "claim invite accept"
-  deny: "claim invite deny"
+  deny: "claim invite reject"
   unclaim: "claim delete"
   untrust: "claim kick"
 ```
@@ -19,13 +19,14 @@ aliases:
 | Alias | Runs |
 |---|---|
 | `/accept <claim>` | `/claim invite accept <claim>` |
-| `/deny <claim>` | `/claim invite deny <claim>` |
+| `/deny <claim>` | `/claim invite reject <claim>` |
 | `/unclaim` | `/claim delete` |
 | `/untrust <player>` | `/claim kick <player>` |
 
-Arguments pass straight through: `/accept MyBase` becomes `/claim invite accept MyBase`.
+Arguments pass straight through: `/accept MyBase` becomes `/claim invite accept MyBase`. Each alias is
+also registered as `/uxmclaims:<alias>`.
 
-Add your own and run `/claim reload`.
+Add your own and run `/claim reload`:
 
 ```yaml
 aliases:
@@ -36,22 +37,21 @@ aliases:
   warps: "claim warps"
 ```
 
-<Callout type="warning" title="The shipped /deny alias points at the wrong subcommand">
+`/claim reload` applies the file without a restart:
 
-`deny: "claim invite deny"` targets a subcommand that does not exist: the registered one is
-`/claim invite reject`. Change the value to `claim invite reject`, or remove the alias. The other
-three shipped aliases are correct.
-
-</Callout>
+| Step | Effect |
+|---|---|
+| Unregister | Every alias registered before the reload is removed, so a deleted alias stops working |
+| Register | Every alias in the file is registered again with its current target |
+| Resend | Every online player gets their command list again, so tab completion shows the change |
 
 ## Notes
 
-- **An alias that collides with another plugin's command loses or wins unpredictably.** `/accept` in
-  particular is claimed by several teleport-request plugins. Check `/plugins`-level conflicts before
-  adding common verbs.
-
-- **Aliases do not bypass permissions.** `/unclaim` still requires
-  `uxmclaims.ability.claim.delete` and still asks for confirmation.
-
+- **An alias that collides with another plugin's command may not register.** The console logs
+  `Failed to register alias '<name>'` when it loses. `/accept` in particular is taken by several
+  teleport-request plugins. Check for conflicts before adding common verbs.
+- **Aliases do not bypass permissions.** `/unclaim` still requires `uxmclaims.ability.claim.delete`
+  and still asks for confirmation.
 - **There is no per-alias permission.** If you need one, do not add the alias: point players at the
   full command and gate that instead.
+- **The file is not translated.** Switching [language](languages.md) leaves it as it is.
