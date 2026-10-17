@@ -51,17 +51,21 @@ listing what it adds.
 
 | Permission | What it allows |
 |---|---|
-| `ACCESS_MANAGE_MENU` | Open the manage menu (members, transfer, deletion) |
-| `SELL` | Sell products from storage |
+| `ACCESS_MANAGE_MENU` | Open the manage menu (members, deletion), and switch the farmer's modules, collection and products |
+| `SELL` | Sell products and XP from storage, and use conversions |
 | `UPGRADE` | Buy product levels |
-| `COLLECT` | Take products out of storage |
+| `COLLECT` | Take products and XP out of storage |
 | `TOGGLE_GLOWING` | Turn the farmer's glow on and off |
 | `CHANGE_GLOWING_COLOR` | Change the glow colour |
 | `CHANGE_SKIN_NAME` | Change the farmer's skin and name |
-| `CHANGE_APPEARANCE` | Change entity type, profession, baby variant |
+| `CHANGE_APPEARANCE` | Change entity type, profession, baby variant, and hide the farmer |
 | `MOVE_HERE` | Move the farmer to their position |
 | `SEE_LOGS` | Read the farmer's log |
 | `SEE_MODULE_SETTINGS` | Open the module settings menus |
+
+Each farmer can change which rank a permission needs, in its permission menu. A member who is not
+the owner can only change a permission their own rank already holds, and cannot move it above
+their own rank; only the owner can make a permission owner-only.
 
 ## Adding members
 
@@ -100,23 +104,14 @@ Turn all three off if farmer membership should be a separate thing players manag
 
 ## Transferring and deleting
 
-`disable-transfer: true` removes transfer entirely. Otherwise a player with `ACCESS_MANAGE_MENU`
-can hand the farmer to another player through a confirmation menu.
+`disable-transfer: true` removes transfer entirely. Otherwise the owner, and only the owner, can
+hand the farmer to a member through a confirmation menu.
 
 `return-price-on-delete: true` refunds the farmer's price when a farmer is deleted; `/farmer return`
-refunds `return-percent` of it (75% by default) which is the one players use.
+refunds `return-percent` of it (75% by default) which is the one players use. Both are covered on
+[general-settings.yml](../config/general-settings.md#prices-and-limits).
 
 ## Logs
 
-Every action on the farmer is logged and readable by anyone with `SEE_LOGS`. Logs are trimmed
-automatically:
-
-```yaml
-log-cleaner:
-  enabled: true
-  clean-old-logs-after: 50
-  logs-to-clean: 25
-```
-
-At 50 entries the oldest 25 are dropped. `disable-logs: true` in `general-settings.yml` switches
-logging off entirely, which is worth doing only if you have measured that it costs you something.
+Sales, collections and member changes are logged, and anyone with `SEE_LOGS` reads them in the
+logs menu. How many are kept is set in `config.yml`; see [Logs](../config/logs.md).

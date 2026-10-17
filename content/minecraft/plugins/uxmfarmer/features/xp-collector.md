@@ -13,6 +13,7 @@ xp-collector:
   name: "XP Collector"
   status: true
   default-status: false
+  force-default: false
   sellable-by-default: true
   permission-required: true
   xp-unit-price: 0.001
@@ -21,14 +22,17 @@ xp-collector:
 
 | Option | What it does |
 |---|---|
+| `force-default` | Holds every farmer at `default-status`, see [modules.yml](../config/modules-yml.md) |
 | `permission-required` | Requires the owner to hold `uxmfarmer.xpcollector` |
 | `sellable-by-default` | Whether new farmers allow their XP to be sold |
 | `xp-unit-price` | Money paid per point of XP |
 | `xp-tax` | Tax on XP sales, as a fraction (`0.1` is 10%) |
 
-Selling XP additionally requires the owner to hold `uxmfarmer.sellxp`. Without it, no member of
-that farmer can sell XP even if the farmer's own `XP_SELLABLE` setting is on: the owner's
-permissions gate the farmer, and the farmer gates the members.
+Selling XP takes three things at once: the farmer's own `XP_SELLABLE` setting on, the owner holding
+`uxmfarmer.sellxp`, and the seller holding the `SELL` rank permission. The owner's permissions gate
+the farmer, and the farmer gates the members. Switching `XP_COLLECTOR` or `XP_SELLABLE` takes the
+`ACCESS_MANAGE_MENU` rank permission. Sales are limited by `cooldowns.sell-xp-cooldown`, 120
+seconds by default.
 
 ## Pricing XP
 
@@ -42,9 +46,9 @@ only, with no money attached at all.
 
 ## Withdrawing
 
-Players take XP out through the farmer menu. The amount is entered on a sign or in chat, depending
-on `take-amount.input-type` in `general-settings.yml`, and the operation is rate-limited by
-`cooldowns.sell-xp-cooldown`, 120 seconds by default.
+Players with the `COLLECT` rank permission take XP out through the farmer menu. The amount is
+entered on a sign or in chat, depending on `take-amount.input-type` in `general-settings.yml`.
+Withdrawing has no cooldown.
 
 ## Placeholders
 

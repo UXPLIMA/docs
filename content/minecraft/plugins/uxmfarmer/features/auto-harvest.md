@@ -13,6 +13,7 @@ auto-harvest:
   name: "Automatic Harvest"
   status: true
   default-status: false
+  force-default: false
   permission-required: true
   required-piston: false
   extended-piston-check: false
@@ -23,6 +24,7 @@ auto-harvest:
 |---|---|
 | `status` | Whether the module exists on this server at all |
 | `default-status` | Whether a new farmer has it switched on |
+| `force-default` | Holds every farmer at `default-status`, see [modules.yml](../config/modules-yml.md) |
 | `permission-required` | Requires the owner to hold `uxmfarmer.autoharvest` |
 | `required-piston` | Crops in `piston-check-items` are only harvested if a piston is aimed at them |
 | `extended-piston-check` | Changes how that piston search works (see below) |

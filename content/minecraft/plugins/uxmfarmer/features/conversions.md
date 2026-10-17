@@ -9,7 +9,8 @@ A conversion turns products the farmer is holding into a different product, insi
 without the player ever holding an item. Nine gold nuggets become an ingot; nine ingots become a
 block. It is how you give raw output a reason to be refined instead of sold.
 
-Conversions live in `languages/<lang>/conversions.yml` and appear in the conversions menu.
+Conversions live in `languages/<lang>/conversions.yml` and appear in the conversions menu. Using one
+takes the `SELL` rank permission.
 
 ## A conversion
 
@@ -80,6 +81,10 @@ treat `true` as something you enable deliberately for a cheap action, never for 
 
 `<processed_conversions>` in a message is how many conversions actually happened, and
 `<possible_conversions>` in lore is how many the player could do right now.
+
+A conversion stops where the output would not fit. Converting all converts as many times as the
+storage has room for, and with no room for even one the player gets `output-full`. A conversion
+whose output product is switched off in the farmer is refused with `output-disabled`.
 
 ## Cooldown
 

@@ -94,14 +94,18 @@ only-owners-can-upgrade: false
 | `upgrade-all-upgrades-everything` | Upgrades every product in `collected-materials.yml`, not only the ones this farmer has collected |
 | `upgrade-all-must-meet-all-requirements` | Requires every product's money requirement to be met before any upgrade happens |
 | `upgrade-all-discount` | Percentage off the total, as an incentive to upgrade in bulk |
-| `only-owners-can-upgrade` | Members with the UPGRADE rank permission are still refused |
+| `only-owners-can-upgrade` | Members with the UPGRADE rank permission are still refused, for single upgrades and Upgrade All alike |
 
 `upgrade-all-must-meet-all-requirements` applies to money requirements only: placeholder
 requirements are always checked per product, because there is no meaningful way to partially satisfy
 a VIP rank check.
 
 Per-player discounts come from `uxmfarmer.upgradediscount.<percentage>`, which replaces the
-configured `upgrade-all-discount` for that player.
+configured `upgrade-all-discount` for that player. A discount above 100 counts as 100.
+
+What a farmer spends on levels is recorded since 3.17, so `/farmer return` can refund it, at
+`return-percent`, when `return-upgrade-prices: true` is set in `general-settings.yml`. Levels bought
+before 3.17 were not recorded and are not refunded.
 
 ## Storage limits and full stock
 

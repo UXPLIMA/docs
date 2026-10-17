@@ -14,6 +14,7 @@ auto-sell:
   name: "Automatic Sell"
   status: true
   default-status: false
+  force-default: false
   permission-required: true
   send-message: false
   send-to-members: false
@@ -27,6 +28,7 @@ auto-sell:
 |---|---|
 | `status` | Whether the module exists on this server |
 | `default-status` | Whether a new farmer has it switched on |
+| `force-default` | Holds every farmer at `default-status`, see [modules.yml](../config/modules-yml.md) |
 | `permission-required` | Requires the owner to hold `uxmfarmer.autosell` |
 | `send-message` | Messages the owner on each sale |
 | `send-to-members` | Sends that message to active members as well |
@@ -53,8 +55,12 @@ in order of precedence:
 2. `tax-price` on the product
 3. `tax-price` in `general-settings.yml` (0.25 by default)
 
-Then `uxmfarmer.taxdiscount.<percentage>` reduces the result for that player. A player with
+Then the owner's `uxmfarmer.taxdiscount.<percentage>` reduces the result. An owner with
 `uxmfarmer.taxdiscount.50` pays half the tax the level asked for.
+
+A product priced at `0` or below, or taxed above `1`, is never sold, and the console lists those
+prices at startup. A product that was full when the server stopped is sold once the farmers load
+again.
 
 ## Messages
 
