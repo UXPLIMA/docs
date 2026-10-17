@@ -25,9 +25,11 @@ hooks:
 | `BentoBox:<world name>` | Written as `BentoBox:BSkyBlock` or `BentoBox:OneBlock` (the friendly world name from your addon's config) |
 | `FabledSkyBlock` | |
 | `DeluxeSkyblock` | |
-| `Lands` | |
+| `Skyllia` | New island members are not added on their own: Skyllia has no join event |
+| `PlotSquared` | On merged plots, a farmer is found by the plot it was placed on |
+| `Lands` | A farmer is deleted only when its land is deleted |
 | `RealmCore` | |
-| `GriefPrevention` | |
+| `GriefPrevention` | A farmer moves to the new owner with its claim. Subdivisions and admin claims never get one |
 | `GriefDefender` | Does not support `place-farmer-on-region-creation` |
 | `ProtectionStones:<world>` | Supports automatic placement, but leaving it off is recommended |
 | `RClaim` | |
@@ -36,8 +38,8 @@ hooks:
 | `NClaim` | |
 | `hClaims` | Treated as `uxmClaims` |
 
-Island hooks are the only ones where `where-players-can-reach-farmer: EVERYWHERE` has any effect.
-Every other hook behaves as `NEAR_FARMER`.
+Island hooks and PlotSquared are the only ones where `where-players-can-reach-farmer: EVERYWHERE`
+has any effect. Every other hook behaves as `NEAR_FARMER`.
 
 The region hook also drives the member rules in `general-settings.yml`, who is added to a farmer
 when they join the region, who is removed when they leave, and where ownership goes if the owner
@@ -97,7 +99,7 @@ hooks:
 | `ZNPCsPlus` | |
 | `NpcApi` | Eisi05's NpcApi |
 | `Holograms` | Internal (a hologram with no entity) |
-| `ModelSystem` | Internal (ModelEngine, BetterModel or ItemsAdder, configured under `model-settings`) |
+| `ModelSystem` | Internal (ModelEngine or ItemsAdder, configured under `model-settings`) |
 | `default` or `""` | No body at all; commands only |
 
 Holograms above the farmer are drawn by the plugin itself in every case: the interaction hook is
@@ -111,7 +113,7 @@ only about the entity.
 | LuckPerms | Permission lookups for offline owners, which is what makes owner-gated modules work while the owner is away |
 | packetevents | Packet-level NPC and hologram handling |
 | RoseStacker, WildStacker, SpawnerMeta | Stacked mobs and spawners are understood by Auto Kill |
-| ModelEngine, BetterModel, ItemsAdder | Custom models for the farmer |
+| ModelEngine, ItemsAdder | Custom models for the farmer |
 
 <Callout type="note" title="LuckPerms and offline owners">
 

@@ -17,6 +17,7 @@ default-type: VILLAGER
 default-baby: false
 default-villager-profession: FARMER
 default-glowing: true
+force-default: false
 default-glowing-color: "BLUE"
 scale: 1.0
 entity-specific-scales:
@@ -29,6 +30,12 @@ gives you the name twice, once above the other.
 `default-type` is any entity type, and works with Citizens and FancyNpcs. `entity-specific-scales`
 lets a villager stand at 2.5 while everything else stays at 1.0, which is how the farmer reads as a
 character rather than a mob.
+
+`default-villager-profession` takes the old names (`FARMER`) or namespaced keys
+(`minecraft:farmer`).
+
+`force-default: true` holds the glow of every farmer at `default-glowing`: players can no longer
+switch it, and the glow menu tells them the server does not allow the change.
 
 Players change the entity type, the villager profession, the baby variant and the glow through the
 appearance menus, gated by the `CHANGE_APPEARANCE`, `TOGGLE_GLOWING` and `CHANGE_GLOWING_COLOR`
@@ -49,7 +56,8 @@ cooldowns:
 `skin-texture` and `skin-signature` are the default skin, as a texture value and its Mojang
 signature. `skin-name` set to a player's name uses that player's skin instead.
 
-Players with `uxmfarmer.changeskin` use `/farmer skin <name>`. You can also lock specific skins
+Players with `uxmfarmer.changeskin` use `/farmer skin <name>`. The name must be a valid Minecraft
+username: 3 to 16 letters, digits or underscores. You can also lock specific skins
 behind permissions:
 
 ```yaml
@@ -62,7 +70,7 @@ particular skins a rank reward.
 
 ## Models
 
-If you run ModelEngine, BetterModel or ItemsAdder, the farmer can be a custom model instead of a
+If you run ModelEngine or ItemsAdder, the farmer can be a custom model instead of a
 vanilla entity:
 
 ```yaml
