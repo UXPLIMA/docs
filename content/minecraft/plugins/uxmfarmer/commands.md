@@ -120,7 +120,8 @@ farmer.
 
 | Command | What it does |
 |---|---|
-| `/uxmfarmer statistics` | Statistics for the selected farmer |
+| `/uxmfarmer statistics` | Server-wide totals: farmers, members, loaded chunks, tracked crops, and what was collected, sold, earned and taxed |
+| `/uxmfarmer sweep` | Clears the empty chunks out of the crop tracker |
 | `/uxmfarmer checkage.target` | Reports the growth stage of the crop you are looking at |
 | `/uxmfarmer checkage.chunk [radius]` | Reports growth stages across the chunk |
 | `/uxmfarmer productiondebug [product]` | Explains what the production module is counting |
@@ -129,7 +130,7 @@ farmer.
 | `/uxmfarmer clearlogs` | Deletes the selected farmer's logs |
 | `/uxmfarmer menu` | Opens the admin menu |
 | `/uxmfarmer bypass` | Toggles bypassing region and ownership checks |
-| `/uxmfarmer save` | Writes everything to the database now |
+| `/uxmfarmer save` | Writes the collection buffer to the database now and trims farmer logs |
 | `/uxmfarmer reload` | Reloads configuration and languages |
 | `/uxmfarmer help` | Lists the admin commands |
 

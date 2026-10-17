@@ -48,6 +48,8 @@ These take a number in the node itself. Give the player the highest one they sho
 | `uxmfarmer.upgradediscount.<percentage>` | Reduces the upgrade-all price by that percentage |
 
 So `uxmfarmer.taxdiscount.50` halves the tax and `uxmfarmer.maxfarmer.5` allows five farmers.
+Discounts stop at 100: a higher number counts as 100, and the console warns about it. A sale made
+from the menu uses the seller's tax discount; an automatic sale uses the owner's.
 
 <Callout type="note" title="These nodes are not in the permission list">
 
@@ -92,12 +94,13 @@ the plugin up, not an extra.
 | `uxmfarmer.command.setowner` | `/uxmfarmer setowner` |
 | `uxmfarmer.command.uuidof` | `/uxmfarmer uuidof` |
 | `uxmfarmer.command.nearfarmers` | `/uxmfarmer nearfarmers` |
-| `uxmfarmer.command.teleport` | `/uxmfarmer teleport` |
+| `uxmfarmer.command.adminteleport` | `/uxmfarmer teleport` |
 | `uxmfarmer.command.editsetting` | `/uxmfarmer editsetting` |
 | `uxmfarmer.command.bulkedit` | `/uxmfarmer bulkedit` |
 | `uxmfarmer.command.fixstatus` | `/uxmfarmer fixstatus` |
 | `uxmfarmer.command.setproductlevel` | `/uxmfarmer setproductlevel` |
 | `uxmfarmer.command.statistics` | `/uxmfarmer statistics` |
+| `uxmfarmer.command.sweep` | `/uxmfarmer sweep` |
 | `uxmfarmer.command.checkage` | `/uxmfarmer checkage.target`, `/uxmfarmer checkage.chunk` |
 | `uxmfarmer.command.productiondebug` | `/uxmfarmer productiondebug` |
 | `uxmfarmer.command.checkperm` | `/uxmfarmer checkperm` |
@@ -106,15 +109,6 @@ the plugin up, not an extra.
 | `uxmfarmer.seedebugs` | Receiving debug output in chat |
 
 All default to operators.
-
-<Callout type="warning" title="uxmfarmer.command.teleport does two things">
-
-The same node grants the player command `/farmer teleport`, which brings a player's own farmer to
-them, and the admin command `/uxmfarmer teleport`, which sends you to the selected farmer. Giving it
-to your default group gives them both: harmless, since the admin form additionally requires a
-selection made with `uxmfarmer.command.admin`, but worth knowing before you audit your groups.
-
-</Callout>
 
 ## A working default group
 
