@@ -21,6 +21,7 @@ Premium plugins for Paper/Spigot servers.
 - **[uxmDiscordSync](minecraft/plugins/uxmdiscordsync/)** - Account linking, rank sync, chat bridge, Discord-side 2FA & level rewards
 - **[uxmDragonEvent](minecraft/plugins/uxmdragonevent/)** - A scheduled Ender Dragon fight with rebirths, damage leaderboards & rewards
 - **[uxmBlacksmith](minecraft/plugins/uxmblacksmith/)** - Time-gated crafting with burn risk, trade slots, boosts, levels, masteries & a perk tree
+- **[uxmSupplyRush](minecraft/plugins/uxmsupplyrush/)** - Timed item tournaments where players deposit items for points and the top contributors win rewards
 
 ---
 
