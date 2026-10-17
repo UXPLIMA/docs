@@ -15,6 +15,7 @@ auto-harvest:
   name: "Automatic Harvest"
   status: true
   default-status: false
+  force-default: false
   permission-required: true
 ```
 
@@ -23,10 +24,16 @@ auto-harvest:
 | `name` | Shown in menus |
 | `status` | Whether the module exists on this server |
 | `default-status` | Whether a new farmer has it switched on |
+| `force-default` | Holds every farmer at `default-status` and stops players from switching it |
 | `permission-required` | Whether the owner needs the module's permission |
 
 `status: false` removes the module from every farmer and every menu. `default-status` only decides
-the starting position of a switch players can flip themselves.
+the starting position of a switch players can flip themselves, unless `force-default: true` takes
+the switch away: a player who tries is told the server does not allow the change.
+
+`force-default` exists on Auto Harvest, Auto Kill, Auto Sell and XP Collector. On Auto Kill it
+covers both the natural and the spawner switch. A farmer whose owner lacks the module's permission
+still does not run it, forced or not.
 
 ## The permission rule
 
@@ -80,7 +87,7 @@ with a hundred islands that is the difference between a healthy tick and a bad o
 
 ## Module-specific keys
 
-Each module has settings beyond the four common ones. They are documented with the module:
+Each module has settings beyond the five common ones. They are documented with the module:
 
 - [Auto Harvest](../features/auto-harvest.md): `items`, `piston-check-items`, `required-piston`,
   `extended-piston-check`, `drop-item-if-stock-full`
