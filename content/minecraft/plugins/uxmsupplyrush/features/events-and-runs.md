@@ -12,7 +12,7 @@ can be done from the menus or with commands.
 
 | Way | How |
 |---|---|
-| Command | `/sr start [id]` |
+| Command | `/sr start <key>` |
 | Manage menu | **Start Event** |
 | Event list | Right-click the event |
 | Schedule | A weekly slot in [auto-start.yml](auto-start.md) |

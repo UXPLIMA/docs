@@ -38,7 +38,7 @@ and the **Copy Event ID** button prints it in chat. Fill in the `rewards` sectio
 
 ## 5. Start it
 
-Click **Start Event**, or type `/sr start`. The start announcement goes out, and players can open
+Click **Start Event**, or type `/sr start <key>`. The start announcement goes out, and players can open
 `/sr` and hand in items until the time runs out.
 
 ## 6. Let it finish
