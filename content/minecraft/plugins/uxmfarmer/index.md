@@ -14,6 +14,9 @@ tax you set.
 It is built as five independent modules, each with its own permission and its own on/off switch,
 so a server can ship it as a small quality-of-life feature or as the centre of its economy.
 
+These pages describe uxmFarmer 4.0. Coming from 3.x, read
+[Upgrading to 4.0](getting-started/upgrading.md) first.
+
 - [Getting Started](getting-started/)
 - [Commands](commands.md)
 - [Features](features/)

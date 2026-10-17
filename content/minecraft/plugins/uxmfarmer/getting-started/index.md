@@ -11,3 +11,4 @@ which plugin draws the NPC. Everything else has a working default.
 
 - [Installation](installation.md)
 - [Concepts](concepts.md)
+- [Upgrading to 4.0](upgrading.md)

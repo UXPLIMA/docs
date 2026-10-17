@@ -114,7 +114,8 @@ The three items are defined in `items.yml`. `LEVEL_CHANGER` sets a product to an
 farmer.
 
 `give-even-if-has-farmer: false` in `items.yml` stops eggs from reaching players who already own a
-farmer.
+farmer. Every farmer egg is a separate item and does not stack; using one takes it from the hand it
+was used from. A farmer placed from an egg cost nothing, so it refunds no farmer price.
 
 ### Diagnostics
 
