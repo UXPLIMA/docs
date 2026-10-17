@@ -1,7 +1,7 @@
 ---
 title: config.yml
 order: 51
-description: Hooks, worlds, cooldowns, sounds, the log cleaner and debug.
+description: Hooks, worlds, cooldowns, sounds, farmer logs and debug.
 icon: file-cog
 ---
 
@@ -56,6 +56,7 @@ All in seconds.
 |---|---|---|
 | `move-cooldown` | 180 | Moving the farmer |
 | `take-all-cooldown` | 120 | Taking everything out of storage |
+| `take-amount-cooldown` | 120 | Taking a chosen amount out of storage |
 | `sell-all-cooldown` | 120 | Selling everything |
 | `sell-xp-cooldown` | 120 | Selling XP |
 | `change-glowing-cooldown` | 120 | Changing the glow |
@@ -79,23 +80,16 @@ sounds:
 Any Bukkit sound name. These are the feedback sounds for refusals: leave them distinct from each
 other so a player can tell what went wrong without reading.
 
-## Log cleaner
+## Farmer logs
 
 ```yaml
-log-cleaner:
-  enabled: true
-  clean-old-logs-after: 50
-  logs-to-clean: 25
+farmer-logs:
+  max-per-farmer: 100
+  max-age-days: 30
 ```
 
-When a farmer reaches 50 log entries, the oldest 25 are deleted.
-
-<Callout type="warning" title="Enabling the cleaner on an old database">
-
-On a server that has been running without it, the first cleanup pass has a large backlog to work
-through and can cause a stall. Disable the cleaner, trim the log table directly, then enable it.
-
-</Callout>
+A farmer keeps its last 100 logs, and none older than 30 days. `0` turns either limit off. See
+[Logs](logs.md).
 
 ## Debug
 

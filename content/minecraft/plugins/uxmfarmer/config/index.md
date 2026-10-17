@@ -15,6 +15,7 @@ plugins/uxmFarmer/
 ├── items.yml                  farmer egg and level items
 ├── npc.yml                    the farmer's body
 ├── hologram.yml               the text above it
+├── logs/                      one log file per day
 └── languages/
     ├── en/
     └── tr/
@@ -30,3 +31,4 @@ plugins/uxmFarmer/
 - [Products and levels](products.md)
 - [Database and multi-server](database.md)
 - [Languages and menus](languages.md)
+- [Logs](logs.md)

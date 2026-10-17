@@ -17,9 +17,10 @@ database:
   port: 3306
   use-ssl: false
   use-extra-flags: false
+  flush-interval-seconds: 5
 ```
 
-SQLite is the default and is correct for a single server: the file lives in the plugin folder and
+`driver` is not case-sensitive: `MYSQL` and `mysql` are the same. SQLite is the default and is correct for a single server: the file lives in the plugin folder and
 needs no setup.
 
 MySQL is required the moment more than one server needs to see the same farmers. Set `driver` to
@@ -34,11 +35,21 @@ JDBC connection string, and the default string is the one that has been tested.
 multi-server:
   enabled: false
   redis-host: ""
+  stream-retention-seconds: 300
+  stream-max-length: 20000
 ```
 
 A shared MySQL database is not enough on its own. Two servers reading the same rows will each cache
 a farmer and each write over the other. Redis carries the messages that keep them in step: a
 change made on one server is announced to the others rather than discovered later.
+
+The messages go through a Redis stream, so a server that loses its connection reads what it missed
+when it reconnects. `stream-retention-seconds` is how far back it can catch up, and needs Redis 6.2
+or newer; `stream-max-length` caps the stream on every Redis version, at about 250 bytes an entry.
+A server that missed more than the stream holds reloads its farmers from the database instead.
+
+Every server on the network runs the same uxmFarmer version. 4.0 renamed its Redis channels, so a
+3.x server and a 4.0 server do not hear each other.
 
 Enable both together, or neither:
 
@@ -50,8 +61,12 @@ Enable both together, or neither:
 
 ## Saving
 
-Data is written on a schedule and on shutdown. `/uxmfarmer save` forces a write immediately, which
-is what to run before a manual restart or before taking a backup.
+The database is the record of every farmer. Sales, withdrawals, upgrades and conversions are
+decided and written in the database the moment they happen, under a lock on the farmer,
+so two servers cannot spend the same stock twice. What the farmer collects is buffered and written
+every `flush-interval-seconds`, and once more on shutdown.
+
+`/uxmfarmer save` writes the buffer immediately, which is what to run before taking a backup.
 
 ## Backups
 
