@@ -50,6 +50,6 @@ tools work while the server runs.
 
 When a new version needs a change to the database, it makes the change by itself on start and says
 so in the console. With SQLite, the old file is first copied to `backups/`. With MySQL, take your
-own backup before upgrading. See [Upgrading to 1.1](../getting-started/upgrading.md).
+own backup before upgrading. See [Upgrading to 1.1.0](../getting-started/upgrading.md).
 
 Related: [config.yml](config-yml.md), [Multiple servers](../features/multi-server.md)

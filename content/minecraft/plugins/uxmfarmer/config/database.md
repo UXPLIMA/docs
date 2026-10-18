@@ -48,8 +48,8 @@ when it reconnects. `stream-retention-seconds` is how far back it can catch up, 
 or newer; `stream-max-length` caps the stream on every Redis version, at about 250 bytes an entry.
 A server that missed more than the stream holds reloads its farmers from the database instead.
 
-Every server on the network runs the same uxmFarmer version. 4.0 renamed its Redis channels, so a
-3.x server and a 4.0 server do not hear each other.
+Every server on the network runs the same uxmFarmer version. 4.0.0 renamed its Redis channels, so a
+3.x.x server and a 4.0.0 server do not hear each other.
 
 Enable both together, or neither:
 

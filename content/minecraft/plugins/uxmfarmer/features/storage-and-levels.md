@@ -103,9 +103,9 @@ a VIP rank check.
 Per-player discounts come from `uxmfarmer.upgradediscount.<percentage>`, which replaces the
 configured `upgrade-all-discount` for that player. A discount above 100 counts as 100.
 
-What a farmer spends on levels is recorded since 3.17, so `/farmer return` can refund it, at
+What a farmer spends on levels is recorded since 3.17.0, so `/farmer return` can refund it, at
 `return-percent`, when `return-upgrade-prices: true` is set in `general-settings.yml`. Levels bought
-before 3.17 were not recorded and are not refunded.
+before 3.17.0 were not recorded and are not refunded.
 
 ## Storage limits and full stock
 

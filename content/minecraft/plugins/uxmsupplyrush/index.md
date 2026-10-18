@@ -15,8 +15,8 @@ Everything is set up in game: creating an event, picking its items, setting its 
 starting it. Rewards and announcements live in one file per event, and a weekly schedule can start
 events on its own. On a network, one tournament can run across every server at once.
 
-These pages describe uxmSupplyRush 1.1. Coming from 1.0, read
-[Upgrading to 1.1](getting-started/upgrading.md) first.
+These pages describe uxmSupplyRush 1.1.0. Coming from 1.0.0, read
+[Upgrading to 1.1.0](getting-started/upgrading.md) first.
 
 - [Getting Started](getting-started/)
 - [Commands](commands.md)

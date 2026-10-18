@@ -1,11 +1,11 @@
 ---
-title: Upgrading to 4.0
+title: Upgrading to 4.0.0
 order: 13
-description: What to do before and after moving a 3.x server to uxmFarmer 4.0.
+description: What to do before and after moving a 3.x.x server to uxmFarmer 4.0.0.
 icon: circle-arrow-up
 ---
 
-4.0 moves every sale, withdrawal and upgrade into the database, under a lock on the farmer. The
+4.0.0 moves every sale, withdrawal and upgrade into the database, under a lock on the farmer. The
 configuration carries over: new keys are added with their defaults on the first start, and the
 database schema is updated by itself.
 
@@ -13,13 +13,13 @@ database schema is updated by itself.
 
 1. Check the server: Paper 1.21.11 or newer, on Java 21.
 2. Back up `plugins/uxmFarmer/` and, on MySQL, the database. The first start merges duplicate
-   product and statistics rows and adds new columns; the backup is your way back to 3.x.
-3. On a network, stop every server and upgrade them all together. 4.0 renamed its Redis channels,
-   so a 3.x server and a 4.0 server do not hear each other and overwrite each other's farmers.
+   product and statistics rows and adds new columns; the backup is your way back to 3.x.x.
+3. On a network, stop every server and upgrade them all together. 4.0.0 renamed its Redis channels,
+   so a 3.x.x server and a 4.0.0 server do not hear each other and overwrite each other's farmers.
 
 ## What changes on the first start
 
-| Area | 3.x | 4.0 |
+| Area | 3.x.x | 4.0.0 |
 |---|---|---|
 | Farmer logs | `log-cleaner` kept 50 and then dropped 25 | `farmer-logs` keeps the last 100, none older than 30 days. Older logs are deleted on the first start |
 | Log files | Every farmer log was also written to the log file | Only with `write-farmer-logs-to-file: true`. Files rotate daily and are kept 14 days |

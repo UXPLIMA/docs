@@ -11,4 +11,4 @@ included, so you can look at a finished setup before building your own.
 - [Installation](installation.md)
 - [Concepts](concepts.md)
 - [Your first event](first-event.md)
-- [Upgrading to 1.1](upgrading.md)
+- [Upgrading to 1.1.0](upgrading.md)

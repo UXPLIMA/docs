@@ -1,11 +1,11 @@
 ---
-title: Upgrading to 1.1
+title: Upgrading to 1.1.0
 order: 14
-description: What happens to a 1.0 server's settings, events and running tournament on the first start of 1.1.
+description: What happens to a 1.0.0 server's settings, events and running tournament on the first start of 1.1.0.
 icon: circle-arrow-up
 ---
 
-Replacing the jar is all an upgrade takes. On its first start, 1.1 moves your 1.0 setup into the
+Replacing the jar is all an upgrade takes. On its first start, 1.1.0 moves your 1.0.0 setup into the
 new layout by itself, and a tournament that was running carries on where it stopped.
 
 ## Before you start
@@ -16,7 +16,7 @@ new layout by itself, and a tournament that was running carries on where it stop
 
 ## What moves on the first start
 
-| 1.0 | 1.1 |
+| 1.0.0 | 1.1.0 |
 |---|---|
 | The `auto-start` section of `config.yml` | `auto-start.yml` |
 | The `log-cleaner` section of `config.yml` | `general-settings.yml` |
@@ -27,7 +27,7 @@ A running or paused event keeps its run, its scores and its remaining time. The 
 step as it happens. A setting that is already in its new file is left as it is, so starting the
 server twice changes nothing.
 
-## New in 1.1
+## New in 1.1.0
 
 One tournament can now run across several servers that share a MySQL database. Nothing changes for
 a single server; see [Multiple servers](../features/multi-server.md) to set it up.
