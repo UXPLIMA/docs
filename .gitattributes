@@ -1,0 +1,3 @@
+# Text is stored with LF line endings whatever the editor writes, so a script runs on Linux and a diff shows
+# what changed rather than every line of the file.
+* text=auto eol=lf
