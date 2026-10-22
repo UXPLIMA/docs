@@ -29,6 +29,27 @@ Read on enable and on `/uxmglow reload`, and swapped in whole, so a reload is ne
 One task drives every cycling player, not one task per player. The cost of the feature is the
 number of players who are cycling, and it does not grow with the number of colours they chose.
 
+### Effects
+
+The `effects` block decides what each moment looks and sounds like. Every moment is a list, and each
+line of the list is one thing that happens, in the order you wrote them.
+
+| Moment | When it fires |
+|---|---|
+| `effects.set` | A solid colour was turned on |
+| `effects.cycling` | A cycle of colours was turned on |
+| `effects.cleared` | The glow was turned off |
+| `effects.restored` | The glow came back when the player logged in |
+| `effects.lapsed` | The glow did not come back, because the colour is no longer theirs |
+
+A line starts with what it does: `[message]`, `[broadcast]`, `[title]`, `[subtitle]`, `[actionbar]`,
+`[bossbar]`, `[sound]`, `[particle]`, `[console]` or `[player]`. Text that starts with `@` names a line
+of the language file, so the words stay in the language the player reads, for example
+`"[message] @glow.set"`. A brace block says when and how often a line runs, for example
+`"[sound] {chance=0.2} ui.button.click 1 1"`. Delete a moment to keep the shipped default, and write
+it as `[]` for silence. The comment above the block in `config.conf` lists the arguments of every
+verb.
+
 When a release adds a key, the next start adds it to your file with the comment that explains
 it, and it never changes a value you wrote. Your file as it was is kept beside it as
 `config.conf.bak`.
