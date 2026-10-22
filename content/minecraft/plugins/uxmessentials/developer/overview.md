@@ -98,7 +98,6 @@ reason is on the page the column links to.
 | playerstate | Yes | Yes | Yes | Yes |
 | ranks | Yes | Yes | Yes | Yes |
 | vote | Yes | Yes | Yes | Yes |
-| discordlink | Yes | Yes | Yes | Yes |
 | security | Yes | Yes | Yes | Yes |
 | invrollback | Yes | Yes | Yes | Yes |
 | skin | Yes | | Yes | Yes |

@@ -56,7 +56,7 @@ Module `survival` · disabled by default · `modules/survival/config.conf`
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `tree-feller.enabled` | `true` |  |
+| `tree-feller.enabled` | `true` | Tree-feller: break one log of a tree and the whole connected trunk of the same wood comes down with it, up to max-blocks. |
 | `tree-feller.require-axe` | `true` | Require an axe in hand to fell. With this off, breaking a log by any means fells the tree. |
 | `tree-feller.durability-drain` | `true` | Drain the axe's durability as the tree comes down. |
 | `tree-feller.durability-multiplier` | `1` | Durability points spent per extra log felled (the log you broke by hand is not counted). 1 mirrors mining each log normally; raise it to make felling wear the axe faster. |
@@ -64,48 +64,48 @@ Module `survival` · disabled by default · `modules/survival/config.conf`
 | `tree-feller.hunger-cost` | `0.0` | Food exhaustion added per extra log felled (0 disables the hunger cost). 0.0 by default so felling costs no more hunger than mining the logs by hand would. |
 | `tree-feller.sneak-required` | `false` | Require the player to be sneaking to fell. This doubles as the "shift to fell" switch: with it on, a normal break chops a single log and a shift-break fells the tree; with it off (the default) any log break fells. |
 | `tree-feller.replant-saplings` | `true` | Replant a matching sapling at the base after felling, when the block below is soil. Nothing is replanted for a species without a plantable sapling (the nether stems). |
-| `veinminer.enabled` | `true` |  |
+| `veinminer.enabled` | `true` | Veinminer: break one of the listed blocks and the whole connected vein of that same material breaks with it, up to max-blocks. |
 | `veinminer.blocks` | `[...]` | The blocks a vein-break triggers on. A break of any of these mines the connected run of the same block. Use the Bukkit material names; unknown names are skipped with a warning at startup. |
 | `veinminer.max-blocks` | `64` | The most blocks a single vein-break mines, counting the one you broke. A safety cap for very large veins. |
 | `veinminer.tool-durability` | `true` | Drain the mining tool's durability as the vein breaks. |
 | `veinminer.hunger-cost` | `0.0` | Food exhaustion added per extra block mined (0 disables the hunger cost). |
 | `veinminer.sneak-required` | `true` | Require the player to be sneaking to vein. The "shift to vein" switch: with it on (the default) a plain break takes a single ore and a shift-break takes the vein; with it off any break of a listed block veins it. |
-| `leaf-decay.enabled` | `true` |  |
+| `leaf-decay.enabled` | `true` | Fast-leaf-decay: when a log is broken, the leaves it was holding up decay right away instead of lingering for vanilla's slow random-tick sweep. |
 | `leaf-decay.radius` | `4` | How far from the broken log to look for leaves to decay, as the half-width of a cube. Larger values clear a bigger canopy but cost more to sweep; keep it modest. |
 | `leaf-decay.delay-ticks` | `4` | Ticks to wait after the log breaks before decaying the leaves (20 ticks = 1 second). A small delay lets the cascade read as a gentle ripple rather than the whole canopy vanishing at once. |
-| `farmprotect.enabled` | `true` |  |
-| `farmassist.enabled` | `true` |  |
+| `farmprotect.enabled` | `true` | Farmland protection: a personal /farmprotect toggle (default on) that stops the player trampling farmland into dirt, whether by stepping on it or landing on it from a fall. |
+| `farmassist.enabled` | `true` | Farm-assist: right-click a fully grown crop to harvest its drops and replant it in one motion. |
 | `farmassist.crops` | `[...]` | The crops farm-assist acts on. Only crops that grow through a block age and replant from a single seed item are supported; unknown or seedless crops are skipped with a warning at startup. |
-| `anvilunlocker.enabled` | `true` |  |
+| `anvilunlocker.enabled` | `true` | Anvil-unlocker: lift vanilla's anvil caps so a costly combine is not rejected with "Too Expensive!". |
 | `anvilunlocker.remove-level-limit` | `true` | Lift the "Too Expensive!" level ceiling (vanilla stops a survival combine once it costs 40 levels) so any combine, however many prior-work levels it has stacked up, produces a result. |
 | `anvilunlocker.remove-cost-limit` | `false` | Also zero the level price of the combine, so the unlocked repair is free rather than charging the full (and possibly enormous) XP cost. Off by default, so an unlocked combine still costs its levels. |
-| `oneplayersleep.enabled` | `true` |  |
+| `oneplayersleep.enabled` | `true` | One-player-sleep: skip the night as soon as enough of a world's players are sleeping, evaluated per world. |
 | `oneplayersleep.required-percent` | `50` | The percentage of eligible players that must be sleeping to skip the night, rounded up to a whole player. Only used when required-count is 0. |
 | `oneplayersleep.required-count` | `1` | A fixed number of sleeping players that skips the night. When above 0 this takes precedence over required-percent entirely; the default of 1 is the classic one-player sleep. Set to 0 to fall back to the percentage instead. |
-| `headdrop.enabled` | `true` |  |
+| `headdrop.enabled` | `true` | Head-drop: a slain entity may drop its head. |
 | `headdrop.player-head-on-pvp` | `true` | A player killed by another player drops their player head at full odds. PvE and environmental deaths never drop a player head. |
 | `headdrop.mob-chance` | `0.0` | The default chance a slain mob drops its head, as a percentage. 0 means mobs drop no heads unless a per-mob override below raises their chance. |
-| `autopickup.enabled` | `true` |  |
+| `autopickup.enabled` | `true` | Auto-pickup: a broken block's drops go straight into your inventory instead of scattering on the ground; only when the inventory is full do the extras spill out. |
 | `autopickup.transfer-xp` | `false` | Grant the block's dropped experience straight to the player instead of spawning XP orbs on the ground. Off by default, so mining still drops the usual orbs. |
-| `autosmelt.enabled` | `true` |  |
-| `autosmelt.smelt.RAW_IRON` | `IRON_INGOT` |  |
-| `autosmelt.smelt.RAW_GOLD` | `GOLD_INGOT` |  |
-| `autosmelt.smelt.RAW_COPPER` | `COPPER_INGOT` |  |
-| `autosmelt.smelt.ANCIENT_DEBRIS` | `NETHERITE_SCRAP` |  |
-| `autosell.enabled` | `true` |  |
+| `autosmelt.enabled` | `true` | Auto-smelt: a broken block's smeltable drop is turned into its furnace result as you mine, so an iron ore yields an ingot rather than raw iron. |
+| `autosmelt.smelt.RAW_IRON` | `IRON_INGOT` | The drop -> smelted-result map, keyed by the DROP material (raw iron, not the ore block) using Bukkit material names. |
+| `autosmelt.smelt.RAW_GOLD` | `GOLD_INGOT` | The drop -> smelted-result map, keyed by the DROP material (raw iron, not the ore block) using Bukkit material names. |
+| `autosmelt.smelt.RAW_COPPER` | `COPPER_INGOT` | The drop -> smelted-result map, keyed by the DROP material (raw iron, not the ore block) using Bukkit material names. |
+| `autosmelt.smelt.ANCIENT_DEBRIS` | `NETHERITE_SCRAP` | The drop -> smelted-result map, keyed by the DROP material (raw iron, not the ore block) using Bukkit material names. |
+| `autosell.enabled` | `true` | Auto-sell: a broken block's priced drops are sold into the server economy as you mine and the coins credited to your wallet. |
 | `autosell.notify.mode` | `"actionbar"` | Where the receipt goes: actionbar (the default; it overwrites itself and leaves the chat log clean), chat, or off for the silent behaviour. |
 | `autosell.notify.interval-seconds` | `3` | Sales are pooled for this many seconds and reported as one line ("12x Iron Ingot, 3x Coal for $102"), so a vein does not print a receipt per block. Set 0 to report every sale on its own; raise it for chat mode. |
-| `autosell.prices.COAL` | `2` |  |
-| `autosell.prices.IRON_INGOT` | `8` |  |
-| `autosell.prices.COPPER_INGOT` | `4` |  |
-| `autosell.prices.GOLD_INGOT` | `12` |  |
-| `autosell.prices.REDSTONE` | `1` |  |
-| `autosell.prices.LAPIS_LAZULI` | `2` |  |
-| `autosell.prices.DIAMOND` | `80` |  |
-| `autosell.prices.EMERALD` | `60` |  |
-| `autosell.prices.QUARTZ` | `3` |  |
-| `autosell.prices.NETHERITE_SCRAP` | `120` |  |
-| `autotool.enabled` | `true` |  |
+| `autosell.prices.COAL` | `2` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.IRON_INGOT` | `8` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.COPPER_INGOT` | `4` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.GOLD_INGOT` | `12` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.REDSTONE` | `1` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.LAPIS_LAZULI` | `2` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.DIAMOND` | `80` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.EMERALD` | `60` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.QUARTZ` | `3` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autosell.prices.NETHERITE_SCRAP` | `120` | Per-item sell prices, keyed by the (post-smelt) drop material using Bukkit material names. |
+| `autotool.enabled` | `true` | Auto-tool: as you start breaking a block, your held hotbar slot swaps to the strongest tool of the family that block needs: a pickaxe for stone, an axe for a log. |
 {/* /generated */}
 
 ## Placeholders

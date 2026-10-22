@@ -5,7 +5,7 @@ description: Every feature ships as a module you can switch off. One page each.
 icon: blocks
 ---
 
-uxmEssentials is 36 modules behind one jar. Each one owns its commands, its permission nodes, its placeholders
+uxmEssentials is 35 modules behind one jar. Each one owns its commands, its permission nodes, its placeholders
 and its config file at `plugins/uxmEssentials/modules/<module>/config.conf`, and each can be switched off on its
 own: a disabled module registers no commands, no listeners and no database migrations, and holds no runtime
 state.
@@ -18,7 +18,6 @@ Set `enabled = false` in a module's `config.conf` and restart, or edit and run `
 | [Communication](communication.md) | Chat format, join and quit lines, announcer, info pages | on |
 | [Custom Commands](customcommands.md) | Your own commands, declared in a file | on |
 | [Custom Menus](custommenus.md) | Your own menus, behind `/menu` | on |
-| [Discord Link](discordlink.md) | Bind a Minecraft account to a Discord account | off |
 | [Economy](economy.md) | Balances, `/pay`, `/baltop`, banks, loans, banknotes | on |
 | [Holograms](holograms.md) | Floating displays with pages and click actions | on |
 | [Homes](homes.md) | Private teleport points in a slot grid | on |

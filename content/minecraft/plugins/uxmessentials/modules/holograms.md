@@ -43,14 +43,14 @@ Module `holograms` · enabled by default · `modules/holograms/config.conf`
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `damage-indicators.enabled` | `false` |  |
-| `damage-indicators.show-for-players` | `true` |  |
-| `damage-indicators.show-for-mobs` | `true` |  |
-| `damage-indicators.show-heal` | `true` |  |
-| `damage-indicators.duration-ticks` | `20` |  |
-| `damage-indicators.damage-format` | `"<red>-{amount}"` |  |
-| `damage-indicators.crit-format` | `"<gold><bold>-{amount} ✦"` |  |
-| `damage-indicators.heal-format` | `"<green>+{amount}"` |  |
+| `damage-indicators.enabled` | `false` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
+| `damage-indicators.show-for-players` | `true` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
+| `damage-indicators.show-for-mobs` | `true` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
+| `damage-indicators.show-heal` | `true` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
+| `damage-indicators.duration-ticks` | `20` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
+| `damage-indicators.damage-format` | `"<red>-{amount}"` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
+| `damage-indicators.crit-format` | `"<gold><bold>-{amount} ✦"` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
+| `damage-indicators.heal-format` | `"<green>+{amount}"` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
 {/* /generated */}
 
 ## Placeholders

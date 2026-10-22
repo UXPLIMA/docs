@@ -34,11 +34,10 @@ Module `scoreboard` · disabled by default · `modules/scoreboard/config.conf`
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `refresh-ticks` | `20` | How often every viewer is re-rendered, in server ticks (20 ticks = one second). Must be positive. This is the GLOBAL refresh cadence shared by every board; per-board refresh intervals are not yet honoured. With the back-compat single-board shape below, the cadence is read from scoreboard.refresh-ticks instead. |
+| `refresh-ticks` | `20` | How often every viewer is re-rendered, in server ticks (20 ticks = one second). Must be positive. This is the GLOBAL refresh cadence shared by every board, in both shapes below; per-board refresh intervals are not yet honoured. A file from 0.10.0 or older may also set scoreboard.refresh-ticks: that value is used only when this one is still 20. |
 | `scoreboard.title` | `"<h:'uxmEssentials'>"` | The sidebar heading. Leave blank for no heading. |
 | `scoreboard.lines` | `[...]` | Candidate lines, top to bottom. Up to 128 may be authored; conditions and hide-when-empty are evaluated per viewer, then the first 15 visible rows are shown. A blank string is a real spacer with its own stable identity. |
 | `scoreboard.hide-score-numbers` | `true` | Hide the red score numbers vanilla draws down the right edge of each line; the clean, modern look. Set to false to show the numbers. |
-| `scoreboard.refresh-ticks` | `20` | The global refresh cadence for this single-board shape, in server ticks (20 = one second). Must be positive. |
 | `scoreboard.world-blacklist` | `[]` | World names where the sidebar is suppressed entirely. |
 {/* /generated */}
 

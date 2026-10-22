@@ -115,26 +115,26 @@ Module `economy` · enabled by default · `modules/economy/config.conf` and `cur
 | `baltop.exempt-permission` | `"uxmessentials.economy.baltop.exempt"` |  |
 | `baltop.exclude-banned` | `false` | drop banned players from the leaderboard |
 | `baltop.min-balance` | `"0"` | hide rows below this balance (0 = show everyone) |
-| `provider.register` | `true` | register the native economy with Vault/Treasury via ServicesManager |
+| `provider.register` | `true` | publish the native economy through the ServicesManager, as our own |
 | `provider.priority` | `"Normal"` | Lowest \| Low \| Normal \| High \| Highest |
 | `allow-nonatomic-recurring` | `false` | A backend that cannot guard its take (anything but the built-in ledger) may double-charge a scheduled sweep, because a debit that reports failure might in fact have succeeded. A player clicking "buy" sees a wrong charge and complains; a nightly sweep cannot. So a module that bills on a timer refuses a foreign-backed currency at startup, naming it, unless you set this to true and accept the risk. Player-warp rent is the module that bills on a timer: with rent on, its sweep stays off and the console names the currency until this is true or the rent currency lives in the built-in ledger. Salary and bank interest pay out rather than charge, and loans are already limited to the built-in ledger. |
 | `persistence.write-debounce-ms` | `250` | coalesce rapid balance writes |
 | `persistence.batch-flush-ms` | `1000` | transaction-telemetry flush interval |
-| `worth.enabled` | `true` |  |
+| `worth.enabled` | `true` | Per-item sell values for /worth and /sell. |
 | `worth.economyshopgui-fallback` | `true` | When EconomyShopGUI is installed, an item with no /setworth override and no price in the list below falls back to the shop's own sell price, so a priced shop does not have to be priced twice. Your own prices always win, and with the plugin absent this setting does nothing. |
-| `worth.items` | `[...]` |  |
+| `worth.items` | `[...]` | Per-item sell values for /worth and /sell. |
 | `command-costs-enabled` | `true` | Charge players to execute configured commands. Format is "COMMAND:cost" (without slash, case-insensitive). Bypass with permission node: uxmessentials.economy.bypasscmdcost |
 | `command-costs` | `[...]` |  |
-| `exchange.enabled` | `true` |  |
-| `exchange.rates` | `[...]` |  |
-| `salary.enabled` | `false` |  |
-| `salary.interval-seconds` | `3600` |  |
-| `salary.default-amount` | `100` |  |
-| `fraud-detection.enabled` | `false` |  |
-| `fraud-detection.webhook-url` | `""` |  |
-| `fraud-detection.single-limit` | `"1000000"` |  |
-| `fraud-detection.velocity-seconds` | `60` |  |
-| `fraud-detection.velocity-limit` | `"5000000"` |  |
+| `exchange.enabled` | `true` | Exchange rates between different currencies. |
+| `exchange.rates` | `[...]` | Exchange rates between different currencies. |
+| `salary.enabled` | `false` | Salary settings for active players |
+| `salary.interval-seconds` | `3600` | Salary settings for active players |
+| `salary.default-amount` | `100` | Salary settings for active players |
+| `fraud-detection.enabled` | `false` | Algorithmic fraud detection |
+| `fraud-detection.webhook-url` | `""` | Algorithmic fraud detection |
+| `fraud-detection.single-limit` | `"1000000"` | Algorithmic fraud detection |
+| `fraud-detection.velocity-seconds` | `60` | Algorithmic fraud detection |
+| `fraud-detection.velocity-limit` | `"5000000"` | Algorithmic fraud detection |
 | `maintenance.enabled` | `false` | master switch; off means no maintenance runs at all |
 | `maintenance.dry-run` | `true` | true = only log what WOULD be removed; set false to actually delete |
 | `maintenance.run-interval-hours` | `24` | how often the task runs |

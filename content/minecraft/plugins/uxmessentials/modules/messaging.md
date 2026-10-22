@@ -88,4 +88,4 @@ Module `messaging` · enabled by default · `modules/messaging/config.conf`
 - **A vanished player is not reachable** by anyone whose see level does not cover them, because messaging reads
   the vanish module rather than keeping its own idea of who is online.
 
-Related: [Communication](communication.md), [Vanish](vanish.md), [Discord Link](discordlink.md)
+Related: [Communication](communication.md), [Vanish](vanish.md)

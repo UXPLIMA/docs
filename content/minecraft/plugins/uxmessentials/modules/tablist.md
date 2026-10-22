@@ -24,10 +24,9 @@ Module `tablist` · disabled by default · `modules/tablist/config.conf`
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `refresh-ticks` | `20` | How often every viewer is re-rendered, in server ticks (20 ticks = one second). Must be positive. This is the GLOBAL cadence; when using the `formats { … }` block below it is read from here, otherwise from `tablist.refresh-ticks`. |
+| `refresh-ticks` | `20` | How often every viewer is re-rendered, in server ticks (20 ticks = one second). Must be positive. This is the GLOBAL cadence, in both shapes below. A file from 0.10.0 or older may also set tablist.refresh-ticks: that value is used only when this one is still 20. |
 | `tablist.header` | `[...]` | The tablist header lines, joined top to bottom with newlines. This example uses the built-in \{tokens} above, so it shows real values with or without PlaceholderAPI; edit it to taste. (Leaving BOTH header and footer empty would leave the player's tab untouched rather than blanking it; the header and footer are sent together.) |
 | `tablist.footer` | `[...]` | The tablist footer lines, joined top to bottom with newlines. |
-| `tablist.refresh-ticks` | `20` | How often every viewer is re-rendered, in server ticks (20 ticks = one second). Must be positive. |
 | `tablist.world-blacklist` | `[]` | World names where the tablist is suppressed entirely. |
 {/* /generated */}
 

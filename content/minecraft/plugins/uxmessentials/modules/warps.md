@@ -50,6 +50,8 @@ Module `warps` · enabled by default · `modules/warps/config.conf`
 | Key | Default | What it does |
 |---|---|---|
 | `list-display` | `"gui"` | how bare /warps presents the list: "gui" opens the browse menu, "chat" prints the chat list |
+| `selector-presets.particles` | `[...]` | The particles and sounds the warp editor's two pickers offer, in this order, up to eighteen of each. |
+| `selector-presets.sounds` | `[...]` | The particles and sounds the warp editor's two pickers offer, in this order, up to eighteen of each. |
 {/* /generated */}
 
 ## Placeholders

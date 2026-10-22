@@ -58,27 +58,27 @@ Module `worlds` · enabled by default · `modules/worlds/config.conf`
 | `auto-load-registered` | `true` | On enable, load every registered world flagged auto_load that is not yet loaded. |
 | `protect-default-world` | `true` | Refuse to unload or delete the server's primary world. |
 | `delete-confirm-timeout` | `"30s"` | How long a staged /worlds delete confirmation stays valid before it must be re-requested. |
-| `defaults.environment` | `"NORMAL"` |  |
-| `defaults.world-type` | `"NORMAL"` |  |
-| `defaults.generate-structures` | `true` |  |
-| `settings.defaults.pvp` | `true` |  |
-| `settings.defaults.difficulty` | `"NORMAL"` |  |
-| `settings.defaults.force-gamemode` | `"NONE"` |  |
-| `settings.defaults.spawn-animals` | `true` |  |
-| `settings.defaults.spawn-monsters` | `true` |  |
+| `defaults.environment` | `"NORMAL"` | Defaults applied to a newly created world when the operator omits the option. |
+| `defaults.world-type` | `"NORMAL"` | Defaults applied to a newly created world when the operator omits the option. |
+| `defaults.generate-structures` | `true` | Defaults applied to a newly created world when the operator omits the option. |
+| `settings.defaults.pvp` | `true` | Default per-world settings. |
+| `settings.defaults.difficulty` | `"NORMAL"` | Default per-world settings. |
+| `settings.defaults.force-gamemode` | `"NONE"` | Default per-world settings. |
+| `settings.defaults.spawn-animals` | `true` | Default per-world settings. |
+| `settings.defaults.spawn-monsters` | `true` | Default per-world settings. |
 | `generators.void.biome` | `"plains"` |  |
-| `generators.flat.biome` | `"plains"` |  |
+| `generators.flat.biome` | `"plains"` | Built-in generators. |
 | `generators.flat.layers` | `["minecraft:bedrock 1", "minecraft:dirt 3", "minecraft:grass_block 1"]` | Bottom -> top, each "\<blockId> \<height>". Default = Classic Flat (bedrock, 3x dirt, grass). |
-| `access.redirect-on-restricted-join` | `true` |  |
-| `pregen.max-radius` | `200` |  |
-| `pregen.max-concurrent-chunks` | `10` |  |
-| `pregen.tick-period-ticks` | `1` |  |
-| `backup.directory` | `"backups/worlds"` |  |
-| `backup.retention-count` | `10` |  |
-| `auto-unload.enabled` | `false` |  |
-| `auto-unload.idle-minutes` | `30` |  |
-| `auto-unload.sweep-interval-seconds` | `60` |  |
-| `auto-unload.excluded-worlds` | `[]` |  |
+| `access.redirect-on-restricted-join` | `true` | World access control. |
+| `pregen.max-radius` | `200` | World pre-generation. |
+| `pregen.max-concurrent-chunks` | `10` | World pre-generation. |
+| `pregen.tick-period-ticks` | `1` | World pre-generation. |
+| `backup.directory` | `"backups/worlds"` | World backups. |
+| `backup.retention-count` | `10` | World backups. |
+| `auto-unload.enabled` | `false` | Idle world auto-unload (opt-in). |
+| `auto-unload.idle-minutes` | `30` | Idle world auto-unload (opt-in). |
+| `auto-unload.sweep-interval-seconds` | `60` | Idle world auto-unload (opt-in). |
+| `auto-unload.excluded-worlds` | `[]` | Idle world auto-unload (opt-in). |
 {/* /generated */}
 
 ## Placeholders

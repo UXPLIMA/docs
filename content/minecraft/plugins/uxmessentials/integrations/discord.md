@@ -1,45 +1,28 @@
 ---
 title: Discord
 order: 1550
-description: The companion jar, what it mirrors into Discord, and account linking.
+description: The companion jar and what it mirrors into Discord.
 icon: message-circle
 ---
 
 uxmEssentials reaches Discord through a companion jar built on JDA. It mirrors server events into your
-channels and hosts the Discord side of account linking.
+channels, so staff actions and money movement show up where your team already watches.
 
 ## What It Is
 
 The bridge ships as its own jar, **`uxmessentials-discord`**, alongside the main
 plugin. It is *not* bundled into the main jar and does nothing until configured.
 
-It does two things:
+It mirrors two kinds of event into Discord channels:
 
-- **Notifications**: mirrors audit events and economy notifications into Discord
-  channels, so staff actions and money movement show up where your team already
-  watches.
-- **Account linking**: hosts the Discord-side `/link` slash command that redeems
-  the code a player generates in-game.
+- **Audit events**: staff actions and sanctions, into the `audit` channel.
+- **Economy notifications**: money movement, into the `economy` channel. A transaction
+  below `min-eco-notify` is not posted.
 
-## How Linking Works
+`max-per-minute` caps how many messages the bridge posts, so a burst of events never
+floods a channel.
 
-The in-game and Discord halves are deliberately decoupled:
-
-1. A player runs `/discordlink` in-game to get a one-time code.
-2. They run `/link <code>` in your Discord server.
-3. The bridge redeems the code and binds the two accounts.
-
-The in-game commands (`/discordlink`, `/discordlink status`, `/discordlink gui`,
-`/discordunlink`) come from the **Discord Link** module and work on their own: a
-player can generate and inspect a code with no bridge running. Only the **redemption
-step** needs the companion jar to be online and connected.
-
-| Command | Where | Permission |
-|---------|-------|------------|
-| `/discordlink` · `/discordlink status` | In-game | `uxmessentials.discord.link` |
-| `/discordlink gui` | In-game | `uxmessentials.discord.gui` |
-| `/discordunlink` | In-game | `uxmessentials.discord.link` |
-| `/link <code>` | Discord | (Discord role gating) |
+Account linking is not part of uxmEssentials. It is sold as a plugin of its own.
 
 ## Setup (High Level)
 
@@ -47,8 +30,8 @@ step** needs the companion jar to be online and connected.
    its **bot token**.
 2. Invite the bot to your server with permission to post in the channels you want.
 3. Drop **`uxmessentials-discord`** into `plugins/` next to the main jar.
-4. Put the token and channel settings into the bridge's `discord.conf`.
-5. Restart: JDA connects and the `/link` slash command registers.
+4. Put the token and the channel ids into the bridge's `discord.conf`, and set `enabled = true`.
+5. Restart: JDA connects and notifications start to flow.
 
 <Callout type="warning" title="Keep the bot token secret">
 
@@ -65,16 +48,8 @@ is completely unaffected:
 
 | Situation | Behavior |
 |-----------|----------|
-| Bridge not installed | In-game `/discordlink` still issues codes; there is simply nothing to redeem them against. |
+| Bridge not installed | Nothing is posted; every other feature works as before. |
 | Bridge installed, no token | Dormant: no connection, no notifications. |
-| Bridge connected | Notifications flow and `/link` redeems codes. |
+| Bridge connected | Audit and economy notifications flow into their channels. |
 
-## Setup Checklist
-
-1. Keep the **Discord Link** module enabled for the in-game commands.
-2. Install the **`uxmessentials-discord`** jar only if you want notifications and
-   `/link` redemption.
-3. Configure a bot token in `discord.conf`.
-4. Restart and confirm the bot comes online in your Discord server.
-
-Related: [Discord Link Feature](../modules/discordlink.md), [‍ Developer Overview](../developer/overview.md)
+Related: [‍ Developer Overview](../developer/overview.md)

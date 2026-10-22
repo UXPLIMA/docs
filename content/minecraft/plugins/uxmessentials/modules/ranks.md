@@ -40,14 +40,14 @@ Module `ranks` · enabled by default · `modules/ranks/config.conf`, `ranks.conf
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `gui.enabled` | `true` |  |
-| `prestige.enabled` | `true` |  |
+| `gui.enabled` | `true` | The /ranks ladder panel: a self-service GUI showing the player's current rank and prestige, the next rank on the ladder with its cost and requirements, and a rank-up button that runs the same pipeline as /rankup. |
+| `prestige.enabled` | `true` | Prestige lets a player at the very top rank reset back to the first rank in exchange for a permanent prestige level (and whatever reward you configure). |
 | `prestige.max-level` | `0` | The highest prestige level a player can reach. 0 means no cap (prestige forever). At the cap, /prestige is refused. |
 | `prestige.cost` | `0` | How much is charged through the economy when a player prestiges (0 for a free prestige). |
 | `prestige.requirements` | `[]` | What the player must satisfy to prestige, on top of being at the top rank. Same grammar as a rank's requirements (see ranks.conf): "money \<amount>", "playtime \<seconds>", "permission \<node>", etc. An unmet requirement blocks the prestige; an unknown type is simply not enforced. |
 | `prestige.actions` | `[]` | What runs when a player prestiges, in order. Same grammar as a rank's actions (see ranks.conf): "console ...", "player ...", "message ...", "sound ...", and so on. Use \{player} for the player's name. |
 | `prestige.reward-multiplier` | `1.0` | The reward multiplier granted per prestige level, applied linearly: a value of 1.0 grants no bonus, 1.5 gives a 1.5x multiplier at prestige 1, 2.0x at prestige 2, and so on. It is surfaced to the player on prestige (and exposed as a placeholder) so your rewards can scale with prestige level. |
-| `autorank.enabled` | `false` |  |
+| `autorank.enabled` | `false` | Autorank promotes online players automatically the moment they already meet their next rank's requirements, without them running /rankup. |
 | `autorank.interval-seconds` | `300` | How often, in seconds, the scan runs. Clamped to a minimum of 1. Keep it comfortably large: every scan re-checks every online player's next-rank requirements. 300 (five minutes) is a sensible default. |
 | `autorank.charge-cost` | `true` | Whether an automatic promotion charges the rank's cost, exactly as /rankup would. Leave it true so autorank respects your ladder's prices; set it false to let eligible players climb for free (requirements still apply). |
 {/* /generated */}

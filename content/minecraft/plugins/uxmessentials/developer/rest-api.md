@@ -211,16 +211,6 @@ different answers. Passing `?viewer=` adds `visible-to-viewer` and saves a calle
 
 Not being in a trade is an answer rather than a miss, so it is `null` in the envelope's `data` and not a `404`.
 
-### Discord links
-
-| Route | Answers |
-|---|---|
-| `GET /players/{uuid}/discord` | The Discord account bound to them, or `null` |
-| `GET /discord/{id}` | The same binding read from the Discord side, or `null` |
-
-Both answer `null` rather than `404`: not being linked is an answer. An id that is not a snowflake answers `null`
-too, which is the honest reply to a bot passing along whatever a user typed.
-
 ### Ranks
 
 | Route | Answers |
@@ -395,15 +385,6 @@ is not something a single answer can say honestly.
 `rankup` and `prestige` charge the cost and check the requirements the same way the commands do, and answer
 `player-offline` for somebody who is not there. `set` does neither and works for an offline account.
 
-### Discord links
-
-| Route | Body |
-|---|---|
-| `POST /players/{uuid}/discord/unlink` | none |
-
-There is no route that creates a binding. A link is only real once the player proved it in game with a one-time
-code, so the only write here is the removal, which answers `not-found` for somebody who was never linked.
-
 ### Snapshots and security
 
 | Route | Body |
@@ -575,12 +556,11 @@ money is a money whichever way it arrived.
 
 ### What is carried
 
-Eighty-seven events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
+Eighty-five events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
 
 | Context | Names |
 |---|---|
 | `communication` | `announcer-reload`, `broadcast-opt-out` |
-| `discordlink` | `account-link`, `account-unlink` |
 | `economy` | `wallet-credit`, `wallet-debit`, `wallet-reject`, `bank-deposit`, `bank-withdraw`, `loan-disburse`, `loan-repay` |
 | `hologram` | `create`, `delete` |
 | `home` | `create`, `delete`, `relocate`, `rename`, `icon-change`, `visibility-change`, `limit-reached` |

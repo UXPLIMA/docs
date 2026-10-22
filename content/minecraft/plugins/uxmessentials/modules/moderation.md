@@ -106,8 +106,9 @@ Module `moderation` · enabled by default · `modules/moderation/config.conf`
 | `jails` | `[]` | names of defined jails, e.g. ["spawnjail"] |
 | `jail-countdown` | `"online-only"` | online-only (counts only while online) \| wall-clock |
 | `muted-blocked-commands` | `["me", "msg", "tell", "w", "whisper", "mail", "helpop", "r", "reply"]` |  |
-| `warnings.actions` | `["3:tempmute:1h", "5:tempban:1d"]` |  |
-| `broadcast.silent-by-default` | `false` |  |
+| `warnings.actions` | `["3:tempmute:1h", "5:tempban:1d"]` | Warn escalation: when a player's running warning count reaches a listed rung, the matching sanction is applied automatically (attributed to the server, not the staff member who landed the warning). |
+| `broadcast.silent-by-default` | `false` | The staff broadcast: a non-silent sanction announces a one-line "\<actor> banned \<target>" to every online player holding uxmessentials.moderation.broadcast.receive plus the console. |
+| `freeze.notice-interval-seconds` | `3` | Freeze: a frozen player who tries to walk is told why, at most once every notice-interval-seconds, because a held movement key fires the move event many times a second and an unthrottled notice would be the flood rather than the answer. |
 | `address-strictness` | `"NORMAL"` | NORMAL \| STRICT |
 | `discord-notify` | `false` | Discord notification: when true, each successful punishment additionally emits a formatted "who punished whom" line (staff, target, type, reason, duration) on the shared audit channel that the optional Discord bridge (uxmessentials-discord) forwards, so staff see readable, name-based punishment notices in Discord. Off by default, and a no-op when no bridge is installed (the line simply lands in the audit log). |
 | `censor-ip-addresses` | `false` | Privacy: when true, /seenip masks the address it shows (e.g. 203.*.*.* for IPv4, 2001:* for IPv6), keeping the alt accounts (which /seenip and /alts list by name, never by IP) visible to staff without exposing the raw address. Off by default so staff see full addresses; turn it on to reduce how much PII the moderation commands surface. The stored IP history is unaffected; this only changes what /seenip renders in chat. |

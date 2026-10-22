@@ -20,10 +20,8 @@ Both are optional soft-depends.
 ## Placeholders uxmEssentials Provides
 
 When PlaceholderAPI is installed, uxmEssentials registers a `%uxmessentials_<key>%`
-expansion carrying **170 keys** across 22 areas: economy, homes, warps, player warps,
-worlds, teleport, kits, vaults, vote, presence, player state, messaging, communication,
-moderation, staff, Discord linking, ranks, poses, holograms, menus, the scoreboard and
-the server metrics.
+expansion carrying every key in the [placeholder reference](../placeholders/reference.md), across every
+module and the player and server facts that belong to none.
 
 ```
 %uxmessentials_economy_balance%

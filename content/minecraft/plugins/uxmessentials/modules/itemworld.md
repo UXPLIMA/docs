@@ -182,9 +182,9 @@ Module `itemworld` · enabled by default · `modules/itemworld/config.conf`
 | `spawnmob-cap` | `64` | max mobs per /spawnmob |
 | `purge-max-radius` | `256` | max radius for /butcher, /killall, /remove |
 | `give-audit-threshold` | `64` | audit-log /give above this amount |
-| `item-edit.enabled` | `true` |  |
+| `item-edit.enabled` | `true` | /itemedit; the held-item editor (name, lore, enchant, flags, attributes, durability, model). |
 | `item-edit.allow-over-max-enchants` | `false` | let /itemedit enchant exceed an enchantment's vanilla max level |
-| `shulkers.enabled` | `true` |  |
+| `shulkers.enabled` | `true` | Shulkers: right-click a shulker box in the inventory to open its contents in place, written back on close. |
 | `shulkers.require-sneak` | `true` | on: sneak-right-click opens (plain right-click still places the box); off: any right-click opens |
 | `groups.item-utils.enabled` | `true` |  |
 | `groups.workstations.enabled` | `true` |  |

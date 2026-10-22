@@ -7,7 +7,7 @@ icon: list
 
 ## Overview
 
-With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 335 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
+With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 334 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
 
 Every key is declared once inside the plugin, in a single catalogue that a build-time guard resolves against the resolver in both directions. That is what this page is generated from, so a key listed here is a key this build answers.
 
@@ -99,6 +99,7 @@ Always answered, whatever is enabled: the kernel owns these. The account, sessio
 | `%uxmessentials_player_health_rounded%` | session | The player's health rounded to a whole number. |
 | `%uxmessentials_player_ip%` | session | The address the player is connected from, without the port. |
 | `%uxmessentials_player_kills%` | player | How many players the account has killed. |
+| `%uxmessentials_player_language%` | session | The language the player reads in, as tr or pt_br: the forced one, else their /lang choice, else their client's. |
 | `%uxmessentials_player_last_seen%` | player | When the account was last connected; empty while it is connected now. |
 | `%uxmessentials_player_last_seen_date%` | player | The same last-seen stamp, under the spelling a config may prefer. |
 | `%uxmessentials_player_level%` | session | The player's experience level. |
@@ -189,15 +190,6 @@ What the menu engine has open for this player.
 | `%uxmessentials_menu_opened%` | session | The id of the menu the player has open. |
 | `%uxmessentials_menu_page%` | session | The page the open menu is showing, counting from 1. |
 | `%uxmessentials_menu_rows%` | session | How many rows the open menu has. |
-
-## Discord Linking
-
-Whether the account is bound, and to whom.
-
-| Placeholder | Reads | What it renders |
-|-------------|-------|-----------------|
-| `%uxmessentials_discordlink_id%` | player | The bound Discord user id. |
-| `%uxmessentials_discordlink_linked%` | player | Whether the account is bound to a Discord user (yes/no). |
 
 ## Economy
 

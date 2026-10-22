@@ -671,16 +671,6 @@ The **tablist** and **nametags** modules register no commands: both are packet/c
 | `uxmessentials.module.tablist` | `op` | Hot-reload / inspect the tablist module (the player list header, footer and rows). |
 | `uxmessentials.module.nametags` | `op` | Hot-reload / inspect the nametags module (the name shown above a player). |
 
-## Discord Linking
-
-| Node | Default | What it grants |
-|------|---------|----------------|
-| `uxmessentials.discord.gui` | `true` | `/discordlink` gui (and the discordlink entry on the `/uxmess` gui hub) to open the link-status panel: your binding, a generate-code button, and a confirm-gated unlink. |
-| `uxmessentials.discord.link` | `true` | `/discordlink` (issue a code), `/discordlink` status (show your binding), and `/discordunlink` (remove it): all act only on your own account. |
-| `uxmessentials.module.discordlink` | `op` | Hot-reload / inspect the discordlink module (account linking and Discord notifications). |
-
-The `/link` redemption itself runs in the optional Discord bridge jar; the in-game commands work whether or not the bridge is installed.
-
 ## Sitting & Poses
 
 | Node | Default | What it grants |
@@ -949,7 +939,7 @@ Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, 
 Every bounded context is a first-class feature module. Each owns a node tier `uxmessentials.module.<id>` (default `op`): **not** the feature's runtime permission, but the per-module **administrative** gate: who may inspect and hot-reload that one module via `/uxmess reload <id>` without holding the blanket `uxmessentials.admin.reload`. `<id>` is the module id used everywhere else (config path `modules.<id>`, the reload command, the tier node):
 
 ```
-commandcontrol  communication  customcommands  custommenus  discordlink
+commandcontrol  communication  customcommands  custommenus
 economy  holograms
 homes  invrollback  itemworld  kits  messaging  moderation
 nametags  npc  playerstate  playerwarps  poses  presence

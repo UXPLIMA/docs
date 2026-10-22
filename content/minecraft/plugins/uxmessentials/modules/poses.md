@@ -42,12 +42,12 @@ Module `poses` · enabled by default · `modules/poses/config.conf`
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `features.sit` | `true` |  |
-| `features.player-sit` | `false` |  |
-| `features.lay` | `true` |  |
-| `features.bellyflop` | `true` |  |
-| `features.spin` | `true` |  |
-| `features.crawl` | `true` |  |
+| `features.sit` | `true` | Which pose verbs are available. |
+| `features.player-sit` | `false` | Which pose verbs are available. |
+| `features.lay` | `true` | Which pose verbs are available. |
+| `features.bellyflop` | `true` | Which pose verbs are available. |
+| `features.spin` | `true` | Which pose verbs are available. |
+| `features.crawl` | `true` | Which pose verbs are available. |
 | `sit-on-blocks` | `true` | Whether right-clicking a sittable block seats the player there. With this off, /sit only sits the player in place. |
 | `sittable-materials` | `[ "*_STAIRS", "*_SLAB", "*_CARPET" ]` | The block materials a player may sit on when sit-on-blocks is true. A leading or trailing * is a wildcard, so "*_STAIRS" matches every stair type. Add or remove entries to suit your build palette. |
 | `max-distance` | `2.0` | The furthest a player may be, in blocks, from the seat block they right-click. Keeps a player from sitting on a block across the room. Must be greater than zero. |

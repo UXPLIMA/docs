@@ -46,7 +46,7 @@ Module `vote` · disabled by default · `modules/vote/config.conf`, `vote.conf`
 | `name-validation.max-length` | `16` | The longest a voter name may be, inclusive (at least 1). 16 = the vanilla Minecraft name limit. On a Bedrock/Floodgate server, prefixed Bedrock names can exceed 16 characters or contain a ".": raise max-length and/or set a pattern that allows those names, or any name over the limit is rejected. |
 | `name-validation.pattern` | `""` | An optional whitelist regex the WHOLE name must match (java.util.regex). Blank = no pattern, so only the length check plus the always-on blank/"null" rejection apply. A malformed regex is logged once at startup and treated as blank (the whitelist is then off until you fix it). Example: "[A-Za-z0-9_]+". |
 | `offline-vote-limit` | `0` | Cap how many queued reward commands a single player may stack up offline while they are away (each offline vote's reward contributes its commands to this count, stored one row per command). 0 (the default) = unlimited. When a voter at or over the cap votes again while offline, the vote still counts toward totals and the vote party; only that vote's durable offline reward is dropped (logged at debug). Protects against a never-logging-in account hoarding an unbounded queue. |
-| `reward.disabled-worlds` | `[]` |  |
+| `reward.disabled-worlds` | `[]` | Worlds in which a vote earns NO rewards at all, matched case-insensitively. |
 | `claim.auto` | `true` | true (the default) drains a returning player's offline reward queue automatically on join. false leaves the queue untouched on join so the player pays it out on demand with /vote claim. |
 | `gui.list-display` | `"gui"` | The display mode for /vote (no-args) and /vote sites: gui \| chat. "chat" restores the pre-GUI chat-link list for all sources. |
 | `gui.votable-material` | `"PAPER"` | Material shown for a site the player can vote on right now. |
@@ -56,11 +56,11 @@ Module `vote` · disabled by default · `modules/vote/config.conf`, `vote.conf`
 | `reminders.login-delay-seconds` | `5` | Delay before the login reminder fires, in seconds. Allows the join sequence to settle first. |
 | `reminders.interval-minutes` | `0` | Send a reminder on a recurring interval while the player is online. Set to 0 to disable interval reminders (login nag only). Value is in minutes. |
 | `discord.webhook-url` | `""` | The Discord channel's incoming-webhook URL (Channel Settings -> Integrations -> Webhooks). Empty = off. |
-| `discord.vote.enabled` | `true` |  |
-| `discord.vote.template` | `"{player} just voted on {service}!"` |  |
-| `discord.party.enabled` | `true` |  |
-| `discord.party.template` | `"The vote party fired at {threshold} votes!"` |  |
-| `discord.top-voter.enabled` | `false` |  |
+| `discord.vote.enabled` | `true` | A per-vote embed posted each time an online voter is credited. |
+| `discord.vote.template` | `"{player} just voted on {service}!"` | A per-vote embed posted each time an online voter is credited. |
+| `discord.party.enabled` | `true` | A per-party embed posted each time the vote party fires. |
+| `discord.party.template` | `"The vote party fired at {threshold} votes!"` | A per-party embed posted each time the vote party fires. |
+| `discord.top-voter.enabled` | `false` | A scheduled leaderboard embed listing the top voters. |
 | `discord.top-voter.period` | `"MONTHLY"` | The window to rank over: DAILY \| WEEKLY \| MONTHLY \| ALLTIME. An unknown value falls back to MONTHLY. |
 | `discord.top-voter.limit` | `10` | How many ranked players to list (at least 1). |
 | `discord.top-voter.interval-minutes` | `1440` | How often to post, in minutes (at least 1). 1440 = once a day. |
@@ -73,12 +73,12 @@ Module `vote` · disabled by default · `modules/vote/config.conf`, `vote.conf`
 | `broadcast.type` | `"EVERY_VOTE"` | Who/when a credited vote announces itself: NONE - never broadcast (the vote is still recorded and rewarded silently). EVERY_VOTE - broadcast every credited vote, online or offline. ONLINE_ONLY - broadcast only when the voter is online. COOLDOWN_PER_PLAYER - broadcast for an online voter at most once per cooldown-seconds. FIRST_VOTE_OF_DAY - broadcast only the voter's first vote of the calendar day. An unknown value falls back to EVERY_VOTE. |
 | `broadcast.cooldown-seconds` | `0` | The per-player window (in seconds) used by COOLDOWN_PER_PLAYER. Ignored by the other types. |
 | `broadcast.channels` | `["CHAT"]` | The surfaces every broadcast is shown on. Any of: CHAT, ACTION_BAR, TITLE, SUBTITLE, BOSS_BAR. Unknown entries are skipped; an empty list falls back to CHAT. |
-| `broadcast.title.fade-in-ms` | `500` |  |
-| `broadcast.title.stay-ms` | `2000` |  |
-| `broadcast.title.fade-out-ms` | `500` |  |
-| `broadcast.boss-bar.color` | `"PURPLE"` |  |
-| `broadcast.boss-bar.overlay` | `"PROGRESS"` |  |
-| `broadcast.boss-bar.seconds` | `4` |  |
+| `broadcast.title.fade-in-ms` | `500` | Timing for the TITLE/SUBTITLE channels, in milliseconds. |
+| `broadcast.title.stay-ms` | `2000` | Timing for the TITLE/SUBTITLE channels, in milliseconds. |
+| `broadcast.title.fade-out-ms` | `500` | Timing for the TITLE/SUBTITLE channels, in milliseconds. |
+| `broadcast.boss-bar.color` | `"PURPLE"` | The BOSS_BAR channel's appearance. |
+| `broadcast.boss-bar.overlay` | `"PROGRESS"` | The BOSS_BAR channel's appearance. |
+| `broadcast.boss-bar.seconds` | `4` | The BOSS_BAR channel's appearance. |
 | `broadcast.sound` | `""` | Sound played to each recipient on a broadcast. Bukkit UPPER_SNAKE (ENTITY_PLAYER_LEVELUP) or dot-notation (entity.player.levelup). Blank = no sound. |
 | `broadcast.hidden-voters` | `[]` | Voter names (case-insensitive) whose votes are never announced; e.g. staff testing votes. |
 | `voteparty.threshold` | `25` | How many votes accumulate before a party fires. Must be at least one. |
@@ -88,7 +88,7 @@ Module `vote` · disabled by default · `modules/vote/config.conf`, `vote.conf`
 | `voteparty.reset` | `"none"` | Auto-reset the counter on a calendar boundary: none \| daily \| weekly. |
 | `voteparty.announce-at` | `[]` | Intermediate vote counts at which to broadcast a milestone announcement (VOTEPARTY_ANNOUNCE key). Empty list = no announcements. Example: [10, 20] announces when the counter reaches 10 and 20. |
 | `voteparty.sound` | `""` | Sound played to every online player when a party fires. Accepts Bukkit UPPER_SNAKE names (e.g. ENTITY_PLAYER_LEVELUP) or dot-notation keys (e.g. entity.player.levelup). Blank = no sound. |
-| `voteparty.particle` | `""` | Particle spawned around every online player when a party fires. Accepts UPPER_SNAKE or lowercase names (e.g. FIREWORK or firework). Blank = no particle. |
+| `voteparty.particle` | `""` | Particle spawned around every online player when a party fires. Accepts UPPER_SNAKE or lowercase names (e.g. FIREWORK or firework). A particle that needs data takes it after the name: "dust #ffaa00" for a coloured dust, "block gold_block" for a block. Blank = no particle. |
 {/* /generated */}
 
 ## Placeholders
@@ -121,4 +121,4 @@ Module `vote` · disabled by default · `modules/vote/config.conf`, `vote.conf`
 - **Run `/vote testreward` after every reward edit.** It runs the whole pipeline against you, so a broken
   reward shows up before a player finds it.
 
-Related: [Economy](economy.md), [Discord Link](discordlink.md), [Communication](communication.md)
+Related: [Economy](economy.md), [Communication](communication.md)

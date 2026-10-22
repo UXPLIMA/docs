@@ -31,19 +31,19 @@ Module `commandcontrol` · enabled by default · `modules/commandcontrol/config.
 |---|---|---|
 | `mode` | `blacklist` | How the command lists below are read: blacklist = the listed commands are DENIED, everything else is allowed (name the few commands to hide). whitelist = only the listed commands are ALLOWED, everything else is denied (a lock-down; name the full list a group may run). An empty whitelist denies every command, so populate it before switching. |
 | `use-unknown-command-message` | `true` | Which deny message to show when a command is blocked. true shows the vanilla-style "unknown command" line, so a hidden command reads as though it does not exist; false shows an honest "you don't have permission" line. The text of both lines lives in the message catalog (messages_\<lang>.conf, keys commandcontrol.unknown-command and commandcontrol.no-permission): edit it there. |
-| `commands.default` | `[ ]` |  |
-| `tab-completion.enabled` | `true` |  |
-| `plugin-hide.enabled` | `true` |  |
-| `plugin-hide.hidden-commands` | `[ "plugins", "pl", "?", "help", "ver", "version", "about", "icanhasbukkit" ]` |  |
-| `plugin-hide.deny-list-commands` | `true` |  |
+| `commands.default` | `[ ]` | The command lists, per permission group. |
+| `tab-completion.enabled` | `true` | Tab-completion filter. |
+| `plugin-hide.enabled` | `true` | Plugin-hide. |
+| `plugin-hide.hidden-commands` | `[ "plugins", "pl", "?", "help", "ver", "version", "about", "icanhasbukkit" ]` | Plugin-hide. |
+| `plugin-hide.deny-list-commands` | `true` | Plugin-hide. |
 | `block-namespace-bypass` | `true` | Namespace-bypass block. A player can otherwise dodge the lists above by prefixing a command with its namespace; "/minecraft:gamemode", "/bukkit:pl", "/somePlugin:cmd" all reach the same command as the bare form but read as a different label. With this on, the "namespace:command" form of any command whose bare form is denied is blocked too, so "/minecraft:gamemode" is treated exactly like "/gamemode". Holders of uxmessentials.commandcontrol.bypass may still use namespaced forms. Leave it on unless a plugin of yours legitimately relies on namespaced command input. |
 | `auto-lowercase-base-commands` | `true` | Auto-lowercase the base command label. When on, the leading command word is lowercased before every check and before the command runs, so "/GAMEMODE creative" is treated and executed exactly as "/gamemode creative". Only the base label is touched - arguments (a target player, a world name, a message body) keep their casing. Turn it off only if a plugin of yours registers a genuinely case-sensitive command label. |
-| `command-spam.enabled` | `false` |  |
-| `command-spam.max-per-window` | `40` |  |
-| `command-spam.window-seconds` | `2` |  |
-| `command-spam.action` | `BLOCK` |  |
-| `plugin-channel-hide.enabled` | `false` |  |
-| `plugin-channel-hide.allowed-channels` | `[ "minecraft:brand", "bungeecord:main", "velocity:main" ]` |  |
+| `command-spam.enabled` | `false` | Command-spam protection. |
+| `command-spam.max-per-window` | `40` | Command-spam protection. |
+| `command-spam.window-seconds` | `2` | Command-spam protection. |
+| `command-spam.action` | `BLOCK` | Command-spam protection. |
+| `plugin-channel-hide.enabled` | `false` | Plugin-channel hider. |
+| `plugin-channel-hide.allowed-channels` | `[ "minecraft:brand", "bungeecord:main", "velocity:main" ]` | Plugin-channel hider. |
 {/* /generated */}
 
 ## Placeholders

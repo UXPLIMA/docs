@@ -111,53 +111,53 @@ Module `teleport` · enabled by default · `modules/teleport/config.conf`
 | `teleport-to-center` | `true` | snap the destination to the block centre |
 | `arrival-title` | `true` | master toggle: flash a short title/message on the screen when a teleport lands |
 | `arrival-effects` | `true` | master toggle: play a sound/particle when a teleport lands |
-| `effects.home.enabled` | `true` |  |
-| `effects.home.sound` | `"ENTITY_ENDERMAN_TELEPORT"` |  |
-| `effects.home.sound-volume` | `1.0` |  |
-| `effects.home.sound-pitch` | `1.0` |  |
-| `effects.home.particle` | `"END_ROD"` |  |
-| `effects.home.particle-count` | `30` |  |
-| `effects.home.particle-spread` | `0.3` |  |
-| `effects.spawn.enabled` | `true` |  |
-| `effects.spawn.sound` | `"ENTITY_ENDERMAN_TELEPORT"` |  |
-| `effects.spawn.sound-volume` | `1.0` |  |
-| `effects.spawn.sound-pitch` | `1.0` |  |
-| `effects.spawn.particle` | `"END_ROD"` |  |
-| `effects.spawn.particle-count` | `30` |  |
-| `effects.spawn.particle-spread` | `0.3` |  |
-| `effects.rtp.enabled` | `true` |  |
-| `effects.rtp.sound` | `"ENTITY_ENDERMAN_TELEPORT"` |  |
-| `effects.rtp.sound-volume` | `1.0` |  |
-| `effects.rtp.sound-pitch` | `1.0` |  |
-| `effects.rtp.particle` | `"END_ROD"` |  |
-| `effects.rtp.particle-count` | `30` |  |
-| `effects.rtp.particle-spread` | `0.3` |  |
-| `effects.back.enabled` | `true` |  |
-| `effects.back.sound` | `"ENTITY_ENDERMAN_TELEPORT"` |  |
-| `effects.back.sound-volume` | `1.0` |  |
-| `effects.back.sound-pitch` | `1.0` |  |
-| `effects.back.particle` | `"END_ROD"` |  |
-| `effects.back.particle-count` | `20` |  |
-| `effects.back.particle-spread` | `0.3` |  |
-| `effects.warp.enabled` | `false` |  |
-| `effects.warp.sound` | `"ENTITY_ENDERMAN_TELEPORT"` |  |
-| `effects.warp.sound-volume` | `1.0` |  |
-| `effects.warp.sound-pitch` | `1.0` |  |
-| `effects.warp.particle` | `"END_ROD"` |  |
-| `effects.warp.particle-count` | `30` |  |
-| `effects.warp.particle-spread` | `0.3` |  |
-| `arrival-messages.home` | `[...]` |  |
+| `effects.home.enabled` | `true` | Per-verb arrival sound + particle. |
+| `effects.home.sound` | `"ENTITY_ENDERMAN_TELEPORT"` | Per-verb arrival sound + particle. |
+| `effects.home.sound-volume` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.home.sound-pitch` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.home.particle` | `"END_ROD"` | Per-verb arrival sound + particle. |
+| `effects.home.particle-count` | `30` | Per-verb arrival sound + particle. |
+| `effects.home.particle-spread` | `0.3` | Per-verb arrival sound + particle. |
+| `effects.spawn.enabled` | `true` | Per-verb arrival sound + particle. |
+| `effects.spawn.sound` | `"ENTITY_ENDERMAN_TELEPORT"` | Per-verb arrival sound + particle. |
+| `effects.spawn.sound-volume` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.spawn.sound-pitch` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.spawn.particle` | `"END_ROD"` | Per-verb arrival sound + particle. |
+| `effects.spawn.particle-count` | `30` | Per-verb arrival sound + particle. |
+| `effects.spawn.particle-spread` | `0.3` | Per-verb arrival sound + particle. |
+| `effects.rtp.enabled` | `true` | Per-verb arrival sound + particle. |
+| `effects.rtp.sound` | `"ENTITY_ENDERMAN_TELEPORT"` | Per-verb arrival sound + particle. |
+| `effects.rtp.sound-volume` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.rtp.sound-pitch` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.rtp.particle` | `"END_ROD"` | Per-verb arrival sound + particle. |
+| `effects.rtp.particle-count` | `30` | Per-verb arrival sound + particle. |
+| `effects.rtp.particle-spread` | `0.3` | Per-verb arrival sound + particle. |
+| `effects.back.enabled` | `true` | Per-verb arrival sound + particle. |
+| `effects.back.sound` | `"ENTITY_ENDERMAN_TELEPORT"` | Per-verb arrival sound + particle. |
+| `effects.back.sound-volume` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.back.sound-pitch` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.back.particle` | `"END_ROD"` | Per-verb arrival sound + particle. |
+| `effects.back.particle-count` | `20` | Per-verb arrival sound + particle. |
+| `effects.back.particle-spread` | `0.3` | Per-verb arrival sound + particle. |
+| `effects.warp.enabled` | `false` | Per-verb arrival sound + particle. |
+| `effects.warp.sound` | `"ENTITY_ENDERMAN_TELEPORT"` | Per-verb arrival sound + particle. |
+| `effects.warp.sound-volume` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.warp.sound-pitch` | `1.0` | Per-verb arrival sound + particle. |
+| `effects.warp.particle` | `"END_ROD"` | Per-verb arrival sound + particle. |
+| `effects.warp.particle-count` | `30` | Per-verb arrival sound + particle. |
+| `effects.warp.particle-spread` | `0.3` | Per-verb arrival sound + particle. |
+| `arrival-messages.home` | `[...]` | Per-command arrival message configurations. |
 | `arrival-messages.warp` | `[]` | disabled by default since warps configure their own welcome messages in warp editor |
-| `arrival-messages.spawn` | `[...]` |  |
-| `arrival-messages.rtp` | `[...]` |  |
-| `arrival-messages.back` | `[...]` |  |
-| `arrival-messages.request` | `[...]` |  |
-| `arrival-messages.positional` | `[...]` |  |
-| `cooldowns.back` | `-1` |  |
-| `cooldowns.home` | `-1` |  |
-| `cooldowns.warp` | `-1` |  |
-| `cooldowns.spawn` | `-1` |  |
-| `cooldowns.rtp` | `-1` |  |
+| `arrival-messages.spawn` | `[...]` | Per-command arrival message configurations. |
+| `arrival-messages.rtp` | `[...]` | Per-command arrival message configurations. |
+| `arrival-messages.back` | `[...]` | Per-command arrival message configurations. |
+| `arrival-messages.request` | `[...]` | Per-command arrival message configurations. |
+| `arrival-messages.positional` | `[...]` | Per-command arrival message configurations. |
+| `cooldowns.back` | `-1` | Per-verb cooldown overrides in seconds; -1 inherits default-cooldown. |
+| `cooldowns.home` | `-1` | Per-verb cooldown overrides in seconds; -1 inherits default-cooldown. |
+| `cooldowns.warp` | `-1` | Per-verb cooldown overrides in seconds; -1 inherits default-cooldown. |
+| `cooldowns.spawn` | `-1` | Per-verb cooldown overrides in seconds; -1 inherits default-cooldown. |
+| `cooldowns.rtp` | `-1` | Per-verb cooldown overrides in seconds; -1 inherits default-cooldown. |
 | `warmup.cancel-on-move` | `true` |  |
 | `warmup.cancel-on-rotate` | `false` |  |
 | `warmup.cancel-on-damage` | `false` |  |
@@ -171,7 +171,7 @@ Module `teleport` · enabled by default · `modules/teleport/config.conf`
 | `spawn.respawn` | `true` | manage death respawns through the chain below |
 | `spawn.respawn-chain` | `["bed", "anchor", "spawn"]` | the ordered death chain; the first step that resolves wins |
 | `spawn.exempt-permission` | `"uxmessentials.spawn.join.exempt"` | holders are left where they logged out |
-| `combat.block-teleport` | `true` |  |
+| `combat.block-teleport` | `true` | Reads the combat tag an installed combat plugin (CombatLogX, PvPManager) already keeps, and blocks the self-teleports that would escape a fight: /home, /warp, /spawn, /back, /rtp and /tpa. |
 {/* /generated */}
 
 ## Placeholders

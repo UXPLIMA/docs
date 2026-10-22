@@ -38,8 +38,8 @@ Module `invrollback` · disabled by default · `modules/invrollback/config.conf`
 | `capture.on-death` | `true` | snapshot the inventory when a player dies (read before the items drop) |
 | `capture.on-logout` | `true` | snapshot the inventory when a player leaves the server |
 | `include-enderchest` | `true` | Whether a snapshot also stores the player's ender chest alongside the main inventory, armor and offhand. |
-| `retention.max-per-player` | `10` |  |
-| `retention.max-age-days` | `30` |  |
+| `retention.max-per-player` | `10` | How long snapshots are kept, so the table stays bounded. |
+| `retention.max-age-days` | `30` | How long snapshots are kept, so the table stays bounded. |
 {/* /generated */}
 
 ## Placeholders

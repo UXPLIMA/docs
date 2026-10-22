@@ -25,12 +25,12 @@ Module `servertweaks` · enabled by default · `modules/servertweaks/config.conf
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `f3-brand.enabled` | `true` |  |
-| `f3-brand.brand` | `"uxmEssentials"` |  |
-| `console-filter.enabled` | `false` |  |
-| `console-filter.patterns` | `[ ]` |  |
-| `no-chat-reports.enabled` | `false` |  |
-| `signed-velocity.enabled` | `false` |  |
+| `f3-brand.enabled` | `true` | Custom F3 brand: the "server brand" line shown on a client's F3 debug screen (the minecraft:brand the server reports). |
+| `f3-brand.brand` | `"uxmEssentials"` | Custom F3 brand: the "server brand" line shown on a client's F3 debug screen (the minecraft:brand the server reports). |
+| `console-filter.enabled` | `false` | Console spam filter: drop known-benign, noisy lines from the console. |
+| `console-filter.patterns` | `[ ]` | Console spam filter: drop known-benign, noisy lines from the console. |
+| `no-chat-reports.enabled` | `false` | No chat reports: when on, PUBLIC chat is re-delivered to everyone as an UNSIGNED (system) message and the server's default signed delivery is cancelled. |
+| `signed-velocity.enabled` | `false` | Signed Velocity (backend): the backend half of a SignedVelocity setup. |
 {/* /generated */}
 
 ## Placeholders

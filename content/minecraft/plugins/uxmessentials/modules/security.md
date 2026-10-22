@@ -49,11 +49,11 @@ Module `security` · enabled by default · `modules/security/config.conf`
 |---|---|---|
 | `two-factor.enabled` | `true` | The master switch for two-factor enrolment. With this off, /2fa and /pin refuse to enrol (existing factors can still be removed with /2fa disable). |
 | `two-factor.totp` | `true` | Which factors a player may enrol. TOTP is an authenticator-app code; PIN is a short numeric code. Turn either off to offer only the other. |
-| `two-factor.pin` | `true` |  |
+| `two-factor.pin` | `true` | Two-factor enrolment. |
 | `two-factor.issuer` | `"uxmEssentials"` | The issuer label shown next to the account in the authenticator app (the "uxmEssentials (Steve)" heading). Set it to your server's name so a player with several servers can tell the entries apart. |
 | `two-factor.code-window` | `1` | How many 30-second time-steps of tolerance to allow when checking a submitted code, on either side of the current step. 1 (±30s) absorbs modest clock drift between the server and the player's phone; 0 is strictest. Capped at 5. |
 | `two-factor.pin-min-length` | `6` | The allowed length range for a PIN, in digits. A PIN outside this range is refused at /pin set. A PIN is always digits only, because the verification screen is a numeric keypad. Six is the shipped minimum because a four-digit PIN is only ten thousand guesses; lower it only if you accept that. |
-| `two-factor.pin-max-length` | `8` |  |
+| `two-factor.pin-max-length` | `8` | Two-factor enrolment. |
 | `two-factor.blocked-pins` | `[...]` | PINs refused outright, however well-formed they are. Length rules cannot catch these: 1234 is a perfectly valid four-digit PIN and also the first thing anybody guessing would try. Add your own (your server's founding year, its name spelled on a phone keypad) or set this to [] to refuse none. |
 | `join-verification.enabled` | `true` | The master switch for the join freeze. With this off, enrolment still works (/2fa, /pin) but nobody is frozen on join; useful if you want the second factor only for op-command protection in a later release. |
 | `join-verification.trust-devices` | `true` | Whether a successful verification remembers the device so the next join from the same address skips the keypad until the trust lapses. The address is stored only as a one-way hash, never in the clear. Turn this off to make every join re-verify. |
@@ -65,29 +65,29 @@ Module `security` · enabled by default · `modules/security/config.conf`
 | `join-verification.entry-timeout-seconds` | `60` | How long, in seconds, a frozen player has to prove their factor before they are kicked. Without a limit a player who walks away mid-prompt sits at the keypad forever, holding a slot on a full server and leaving their account logged in. 0 removes the limit. |
 | `join-verification.spectator-mode` | `adventure` | What to do with a player who has to verify while they are in spectator mode. A spectator cannot click any window the server opens for them, so a spectator shown the keypad can see every button and press none of them: they are stuck. This moves them into a mode that can click for the length of the freeze and puts their own mode back the moment they verify. adventure (they cannot edit the world) \| survival \| none (leave them stuck; know what you are choosing). |
 | `join-verification.safety-net` | `kick` | What happens to a joining player when the verification decision itself fails: the database is unreachable, the key-file is unreadable, or the lookup throws. Someone has to decide, because the freeze goes on before the decision runs. kick refuses the join with a "try again" message, so an outage keeps enrolled accounts shut rather than open. allow lifts the freeze and lets them in unverified, so an outage keeps the server playable and accepts that for its duration an enrolled account is protected by its password alone. |
-| `join-verification.restrictions.move` | `true` |  |
-| `join-verification.restrictions.commands` | `true` |  |
-| `join-verification.restrictions.chat` | `true` |  |
-| `join-verification.restrictions.interact` | `true` |  |
-| `join-verification.restrictions.drop` | `true` |  |
-| `join-verification.restrictions.pickup` | `true` |  |
-| `join-verification.restrictions.block-edit` | `true` |  |
-| `join-verification.restrictions.damage-taken` | `true` |  |
-| `join-verification.restrictions.damage-dealt` | `true` |  |
-| `join-verification.restrictions.mob-targeting` | `true` |  |
-| `join-verification.restrictions.teleport` | `true` |  |
-| `join-verification.restrictions.inventory` | `true` |  |
-| `join-verification.restrictions.consume` | `true` |  |
-| `join-verification.restrictions.hunger` | `true` |  |
+| `join-verification.restrictions.move` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.commands` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.chat` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.interact` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.drop` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.pickup` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.block-edit` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.damage-taken` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.damage-dealt` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.mob-targeting` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.teleport` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.inventory` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.consume` | `true` | What a frozen player is stopped from doing. |
+| `join-verification.restrictions.hunger` | `true` | What a frozen player is stopped from doing. |
 | `join-verification.holding-area` | `""` | Where a verifying player is held for the length of the freeze, as world,x,y,z or world,x,y,z,yaw,pitch. The freeze already stops them acting, but they are still standing wherever they logged out, in view of whoever walks past. Naming a spot here puts the unverified session somewhere deliberately empty and puts them back exactly where they were the moment they verify. Blank (the default) leaves them where they are. |
 | `join-verification.transfer-to` | `""` | A proxy backend to send the player to once they verify, by its name in the proxy config. This is for the network layout where players land on a small verification server first and are moved to the real one afterwards. Blank (the default) leaves them on this server. Needs a proxy in front; with none there is nothing to send them to and the transfer is a logged no-op. |
 | `join-verification.on-access-revoked` | `reverify` | What happens to a player who is online at the moment staff clear their second factor with /security reset. That command is the recovery door, for someone who lost their authenticator or forgot their PIN; it is also, from the other side, exactly what an account theft would want, so what it does to the session it lands in is your call. reverify; send them back through verification at once. With a factor left they prove it again; with none left and a required PIN they are shown the create pad, so a reset ends with a factor rather than without. kick: disconnect them, so nothing of the revoked session carries on and their next join decides afresh. nothing: leave them playing. Right when a reset is routine help-desk work. |
 | `join-verification.wait-for-login-plugin` | `true` | Whether to let an installed login plugin (AuthMe and its forks) finish authenticating the player before this module asks for a second factor. On an offline-mode server this ordering is the whole point: until the login plugin says so, the name is only what the client typed, and asking that stranger for the account holder's PIN is both wrong and useless. With no login plugin installed this changes nothing. |
 | `feedback.titles` | `true` | Whether the keypad title and the two outcome titles are shown at all. |
-| `feedback.sounds.prompt` | `"block.note_block.pling"` |  |
-| `feedback.sounds.key` | `"ui.button.click"` |  |
-| `feedback.sounds.success` | `"entity.player.levelup"` |  |
-| `feedback.sounds.failure` | `"entity.villager.no"` |  |
+| `feedback.sounds.prompt` | `"block.note_block.pling"` | The sound each step plays. |
+| `feedback.sounds.key` | `"ui.button.click"` | The sound each step plays. |
+| `feedback.sounds.success` | `"entity.player.levelup"` | The sound each step plays. |
+| `feedback.sounds.failure` | `"entity.villager.no"` | The sound each step plays. |
 | `op-protection.enabled` | `true` | The master switch for op-command protection. With this off, protected commands run without any re-auth check. |
 | `op-protection.reauth-window-seconds` | `60` | How long, in seconds, a successful verification (a join proof or an earlier re-auth) counts as recent, so a burst of protected commands only prompts once. 0 forces a fresh proof for every protected command. |
 | `op-protection.protected-commands` | `[...]` | The commands to protect, by root name. Matching ignores a leading slash, any arguments, and a namespace prefix, so "op" also catches "/op Steve" and "minecraft:op". Add your server's own dangerous commands here. |
@@ -127,4 +127,4 @@ Module `security` · enabled by default · `modules/security/config.conf`
 - **Op-command protection asks for a fresh proof** before the listed commands run, so a session left open on an
   unlocked computer cannot be used to `/op` anybody.
 
-Related: [Moderation](moderation.md), [Staff](staff.md), [Discord Link](discordlink.md)
+Related: [Moderation](moderation.md), [Staff](staff.md)

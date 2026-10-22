@@ -40,24 +40,24 @@ Module `villagers` · disabled by default · `modules/villagers/config.conf`
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `infinite-trading.enabled` | `true` |  |
-| `restock.enabled` | `true` |  |
-| `restock.interval-seconds` | `600` |  |
-| `instant-restock.enabled` | `false` |  |
-| `disable-trades.enabled` | `false` |  |
-| `trade-manager.enabled` | `true` |  |
-| `click-to-trade.enabled` | `true` |  |
-| `protect.enabled` | `true` |  |
+| `infinite-trading.enabled` | `true` | Infinite trading: a villager's trades never lock out from use. |
+| `restock.enabled` | `true` | Restock timer: instead of relying on the vanilla work-station cycle, a scheduled sweep restocks a villager's trades once its last restock is older than interval-seconds. |
+| `restock.interval-seconds` | `600` | Restock timer: instead of relying on the vanilla work-station cycle, a scheduled sweep restocks a villager's trades once its last restock is older than interval-seconds. |
+| `instant-restock.enabled` | `false` | Instant restock: the trade a player just used restocks immediately, with no cooldown. |
+| `disable-trades.enabled` | `false` | Disable trades: with enabled = true, every villager refuses to open its trade GUI (the right-click is cancelled and the player is told). |
+| `trade-manager.enabled` | `true` | Trade manager: with enabled = true, staff holding uxmessentials.villagers.manager run /villager manager to open the villager they are looking at (or the nearest within reach) and edit its trades: change a recipe's buy/sell items and amounts, add a recipe, remove one, or toggle that villager's disable flag. |
+| `click-to-trade.enabled` | `true` | Click-to-trade: with enabled = true, a player holding uxmessentials.villagers.trade who right-clicks a villager opens its trade window directly, even where the vanilla gate would refuse it (a professionless villager, one already busy with another trader). |
+| `protect.enabled` | `true` | Protection ("villager saver"): with enabled = true, a protected villager never dies to the deaths a settlement loses villagers to and is kept loaded so it never despawns. |
 | `protect.all` | `false` | Shield every villager, not only those marked with /villager protect. |
 | `protect.from-zombies` | `true` | Cancel a zombie infecting the villager into a zombie villager. |
 | `protect.from-lightning` | `true` | Cancel a lightning strike's damage and the villager-to-witch transform it triggers. |
 | `protect.from-damage` | `true` | Cancel other lethal damage: suffocation, fire, drowning, a mob's or player's blow. |
 | `protect.no-despawn` | `true` | Keep the villager loaded (mark it persistent) so it never despawns when no player is nearby. |
-| `bucket.enabled` | `false` |  |
-| `follow.enabled` | `true` |  |
-| `follow.speed` | `1.0` |  |
-| `follow.range` | `16` |  |
-| `leash.enabled` | `false` |  |
+| `bucket.enabled` | `false` | Villager-in-a-bucket: with enabled = true, a player holding uxmessentials.villagers.bucket sneak-right-clicks a villager to pick it up into a captured-villager item that stores the villager's profession, type, level, and trades. |
+| `follow.enabled` | `true` | Follow: with enabled = true, a player holding uxmessentials.villagers.follow runs /villager follow to make the villager they are looking at (or the nearest within reach) pathfind after them. |
+| `follow.speed` | `1.0` | Follow: with enabled = true, a player holding uxmessentials.villagers.follow runs /villager follow to make the villager they are looking at (or the nearest within reach) pathfind after them. |
+| `follow.range` | `16` | Follow: with enabled = true, a player holding uxmessentials.villagers.follow runs /villager follow to make the villager they are looking at (or the nearest within reach) pathfind after them. |
+| `leash.enabled` | `false` | Leash: with enabled = true, a player holding uxmessentials.villagers.leash right-clicks a villager with a lead in hand to leash it; something vanilla never allows. |
 {/* /generated */}
 
 ## Placeholders

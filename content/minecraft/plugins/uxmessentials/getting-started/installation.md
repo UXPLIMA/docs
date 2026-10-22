@@ -67,7 +67,7 @@ These are optional and only matter on a network.
 |---|---|---|
 | `uxmessentials-velocity` | The Velocity proxy | Cross-server sync of homes, warps, economy and more |
 | `uxmEssentials-redis` | Backend servers | The Redis transport for the same sync |
-| `uxmessentials-discord` | One backend server | The Discord bridge for notifications and `/link` |
+| `uxmessentials-discord` | One backend server | The Discord bridge for audit and economy notifications |
 
 Installing one changes nothing on its own. Cross-server sync stays off until you enable it in `config.conf`;
 see [Cross-Server](../cross-server/overview.md).

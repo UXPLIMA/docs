@@ -48,7 +48,7 @@ Module `npc` · enabled by default · `modules/npc/config.conf`
 | `look-at-player.range` | `12.0` | How close a player must be (in blocks, same world) before a looking NPC turns to face them. Beyond this the NPC keeps the fixed facing it was placed with. |
 | `look-at-player.tick-period` | `3` | How often the look loop re-aims every looking NPC at its nearby viewers, in ticks (20 ticks is one second). Lower is smoother but sends more rotation packets; 3 ticks (150 ms) reads as a natural head-turn. |
 | `click-cooldown-millis` | `500` | The per-player-per-NPC cooldown (milliseconds) that swallows a duplicate click so a single right-click runs the bound command once, not twice (the client reports the main and off hand separately, and a held button repeats). 0 disables the cooldown. |
-| `skin.mineskin-api-key` | `""` |  |
+| `skin.mineskin-api-key` | `""` | Skin sourcing. |
 {/* /generated */}
 
 ## Placeholders

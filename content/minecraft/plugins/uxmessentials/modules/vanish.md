@@ -55,8 +55,8 @@ Module `vanish` · enabled by default · `modules/vanish/config.conf`
 | `action-bar` | `true` | Show a persistent "You are vanished" action bar to a vanished player, refreshed once a second so it never fades. Its text is the vanish.actionbar entry in your message catalog (per-locale). Turn off to hide the indicator entirely. |
 | `join-vanished` | `true` | Let a player who holds uxmessentials.vanish.persist rejoin already vanished: on join they are re-hidden and their real join line is suppressed, so a staff member who relogs stays invisible instead of announcing themselves. |
 | `cross-server` | `false` | Cross-server vanish. When on (and the network bus in network.conf is enabled), a player's vanish state syncs across every backend: someone vanished on survival-1 arrives already hidden on survival-2, and /vanish list shows the hidden players across the whole network (still scoped to the caller's see level). Needs a Velocity proxy or Redis bus; ships OFF, and is inert with no behavioural change to same-server vanish when the bus is absent. |
-| `foreign.read-supervanish` | `true` |  |
-| `foreign.level` | `1` |  |
+| `foreign.read-supervanish` | `true` | Another plugin's vanish. |
+| `foreign.level` | `1` | Another plugin's vanish. |
 {/* /generated */}
 
 ## Placeholders

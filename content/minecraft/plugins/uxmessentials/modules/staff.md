@@ -41,27 +41,27 @@ Module `staff` · enabled by default · `modules/staff/config.conf`
 | `vanish-on-enter` | `true` | Whether entering staff mode also vanishes the staff member. Honoured when the presence module is enabled; with presence off this does nothing (no second vanish state is kept). |
 | `flight-on-enter` | `true` | Whether entering staff mode grants flight. The player's real pre-mode flight allowance is captured, so leaving reverts it exactly; a survival player loses the granted flight, a creative one keeps theirs. Staff need uxmessentials.playerstate.fly.allworlds to keep this flight in configured no-fly worlds. |
 | `night-vision-on-enter` | `true` | Whether entering staff mode grants night vision. It is cleared along with the rest of the in-mode effects when the player's real loadout is restored on exit. |
-| `gadgets.vanish.enabled` | `true` |  |
-| `gadgets.vanish.slot` | `0` |  |
-| `gadgets.vanish.material` | `"SLIME_BALL"` |  |
-| `gadgets.vanish.name` | `"<accent>ᴠᴀɴɪꜱʜ</accent>"` |  |
-| `gadgets.examine.enabled` | `true` |  |
-| `gadgets.examine.slot` | `1` |  |
-| `gadgets.examine.material` | `"BOOK"` |  |
-| `gadgets.examine.name` | `"<accent>ᴇxᴀᴍɪɴᴇ</accent>"` |  |
-| `gadgets.freeze.enabled` | `true` |  |
-| `gadgets.freeze.slot` | `2` |  |
-| `gadgets.freeze.material` | `"PACKED_ICE"` |  |
-| `gadgets.freeze.name` | `"<accent>ꜰʀᴇᴇᴢᴇ</accent>"` |  |
-| `gadgets.compass.enabled` | `true` |  |
-| `gadgets.compass.slot` | `3` |  |
-| `gadgets.compass.material` | `"COMPASS"` |  |
-| `gadgets.compass.name` | `"<accent>ɴᴀᴠɪɢᴀᴛᴏʀ</accent>"` |  |
-| `gadgets.follow.enabled` | `true` |  |
-| `gadgets.follow.slot` | `4` |  |
-| `gadgets.follow.material` | `"LEAD"` |  |
-| `gadgets.follow.name` | `"<accent>ꜰᴏʟʟᴏᴡ</accent>"` |  |
-| `follow.interval-ticks` | `10` |  |
+| `gadgets.vanish.enabled` | `true` | VANISH: right-click to toggle your own vanish (presence module). |
+| `gadgets.vanish.slot` | `0` | VANISH: right-click to toggle your own vanish (presence module). |
+| `gadgets.vanish.material` | `"SLIME_BALL"` | VANISH: right-click to toggle your own vanish (presence module). |
+| `gadgets.vanish.name` | `"<accent>ᴠᴀɴɪꜱʜ</accent>"` | VANISH: right-click to toggle your own vanish (presence module). |
+| `gadgets.examine.enabled` | `true` | EXAMINE: right-click to pick an online player and open their inventory (playerstate module). |
+| `gadgets.examine.slot` | `1` | EXAMINE: right-click to pick an online player and open their inventory (playerstate module). |
+| `gadgets.examine.material` | `"BOOK"` | EXAMINE: right-click to pick an online player and open their inventory (playerstate module). |
+| `gadgets.examine.name` | `"<accent>ᴇxᴀᴍɪɴᴇ</accent>"` | EXAMINE: right-click to pick an online player and open their inventory (playerstate module). |
+| `gadgets.freeze.enabled` | `true` | FREEZE: right-click a player to freeze or unfreeze them (moderation module; honours the exempt node and is audit-logged). |
+| `gadgets.freeze.slot` | `2` | FREEZE: right-click a player to freeze or unfreeze them (moderation module; honours the exempt node and is audit-logged). |
+| `gadgets.freeze.material` | `"PACKED_ICE"` | FREEZE: right-click a player to freeze or unfreeze them (moderation module; honours the exempt node and is audit-logged). |
+| `gadgets.freeze.name` | `"<accent>ꜰʀᴇᴇᴢᴇ</accent>"` | FREEZE: right-click a player to freeze or unfreeze them (moderation module; honours the exempt node and is audit-logged). |
+| `gadgets.compass.enabled` | `true` | COMPASS: right-click to open a navigator and pick an online player to teleport to, or right-click a player directly to go straight to them (teleport module). |
+| `gadgets.compass.slot` | `3` | COMPASS: right-click to open a navigator and pick an online player to teleport to, or right-click a player directly to go straight to them (teleport module). |
+| `gadgets.compass.material` | `"COMPASS"` | COMPASS: right-click to open a navigator and pick an online player to teleport to, or right-click a player directly to go straight to them (teleport module). |
+| `gadgets.compass.name` | `"<accent>ɴᴀᴠɪɢᴀᴛᴏʀ</accent>"` | COMPASS: right-click to open a navigator and pick an online player to teleport to, or right-click a player directly to go straight to them (teleport module). |
+| `gadgets.follow.enabled` | `true` | FOLLOW: right-click a player to start (or stop) continuously following them; following ends automatically when either of you leaves or you exit staff mode (teleport module not required; it uses a direct teleport). |
+| `gadgets.follow.slot` | `4` | FOLLOW: right-click a player to start (or stop) continuously following them; following ends automatically when either of you leaves or you exit staff mode (teleport module not required; it uses a direct teleport). |
+| `gadgets.follow.material` | `"LEAD"` | FOLLOW: right-click a player to start (or stop) continuously following them; following ends automatically when either of you leaves or you exit staff mode (teleport module not required; it uses a direct teleport). |
+| `gadgets.follow.name` | `"<accent>ꜰᴏʟʟᴏᴡ</accent>"` | FOLLOW: right-click a player to start (or stop) continuously following them; following ends automatically when either of you leaves or you exit staff mode (teleport module not required; it uses a direct teleport). |
+| `follow.interval-ticks` | `10` | The FOLLOW gadget re-teleports a following staff member onto their target on this interval (in ticks; 20 ticks is one second). |
 | `staff-chat.receive-node` | `"uxmessentials.staff.chat"` | The permission node identifying the staff-chat audience: every online holder of this node receives staff chat. Defaults to the same node that gates sending, so anyone who can send also receives. |
 {/* /generated */}
 
