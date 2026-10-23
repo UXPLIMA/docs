@@ -43,7 +43,7 @@ Module `holograms` · enabled by default · `modules/holograms/config.conf`
 {/* generated:settings */}
 | Key | Default | What it does |
 |---|---|---|
-| `click-reach` | `8.0` | How far off, in blocks, a hologram answers a click. A client sends a click on a hologram only within its own reach, three blocks in survival or adventure, and a board is read from further away, so the server works out what a click further off was aimed at. A click in the air with an empty hand reaches the server only as a left click, so from beyond the client's reach an empty hand turns a page with a left click. 0 turns the far click off. |
+| `click-reach` | `12.0` | How far off, in blocks, a hologram answers a click. A client sends a click on a hologram only within its own reach, three blocks in survival or adventure, and a board is read from further away, so the server works out what a click further off was aimed at. A click in the air with an empty hand reaches the server only as a left click, so from beyond the client's reach an empty hand turns a page with a left click. 0 turns the far click off. |
 | `damage-indicators.enabled` | `false` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
 | `damage-indicators.show-for-players` | `true` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
 | `damage-indicators.show-for-mobs` | `true` | Floating damage / healing numbers that pop at an entity when it is hurt or healed and vanish after a short duration. |
