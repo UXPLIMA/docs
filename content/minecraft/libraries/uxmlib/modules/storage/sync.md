@@ -66,6 +66,19 @@ sync.close();
 bridges the same contract across nodes. Code written against `DataSynchronizer` does not change when
 a server grows from one node to five.
 
+A network with no Redis still has the database its nodes share. `SqlDataSynchronizer` carries the same
+contract over a table in it:
+
+```java
+SqlDataSynchronizer sync = new SqlDataSynchronizer(db, storage.table("sync"), nodeId, Duration.ofMinutes(5));
+sync.start(scheduler, Duration.ofSeconds(2));   // or call sync.poll() yourself
+```
+
+`publish` writes a row, each poll reads what the other nodes wrote since the last one and deletes what
+is older than the keep window. A node never reads its own rows, and a node that starts reads nothing
+written before it. Treat a message as a hint to read the row again, never as the only copy of a change:
+a node that was down longer than the keep window misses what it missed.
+
 The umbrella parameter namespaces channels, so two plugins on one Redis do not collide.
 
 ## Message encoding
@@ -83,7 +96,7 @@ explicit.
 | Need | Use |
 |---|---|
 | Eventual consistency, no extra infrastructure | Row sync alone |
-| Immediate invalidation across nodes | A synchronizer |
+| Immediate invalidation across nodes | A synchronizer: Redis when you run it, the shared database otherwise |
 | Both | Publish on write, poll as the backstop |
 
 Row sync alone is often enough and needs nothing but the database you already have. Add a

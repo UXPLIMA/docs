@@ -18,8 +18,12 @@ Read on enable and on `/uxmglow reload`, and swapped in whole, so a reload is ne
 | `language.default` | `en` | What a player reads when nothing else answers |
 | `language.follow-client` | `true` | Whether a player who chose nothing reads their client's language |
 | `language.force` | empty | One language for everybody. Empty means none |
-| `storage.jdbc-url` | empty | Where the choices live. Blank means a SQLite file in the plugin folder |
-| `storage.username` / `storage.password` | empty | The connection, for a real database |
+| `storage.type` | `sqlite` | Where the choices live: `sqlite`, `mysql`, `mariadb` or `postgresql`. Any other word stops the plugin |
+| `storage.file` | `glow.db` | The SQLite file, inside the plugin folder |
+| `storage.host` / `storage.port` | `localhost` / `0` | The database server. A port of 0 is the engine's own |
+| `storage.database` | `minecraft` | The database on that server |
+| `storage.username` / `storage.password` | `minecraft` / empty | The connection, for a database server |
+| `storage.table-prefix` | `uxmglow_` | Written in front of every table, so two plugins can share one database |
 | `storage.pool-size` | `4` | Connections in the pool. A SQLite file is opened with one writer whatever this says |
 | `cycle.tick-ms` | `100` | How often the one shared animation task wakes |
 | `cycle.minimum-interval-ms` | `200` | The shortest step a player may ask for |

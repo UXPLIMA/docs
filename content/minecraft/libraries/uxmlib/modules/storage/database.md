@@ -5,7 +5,62 @@ description: The pooled connection source, SQLite defaults, network backends, tr
 icon: server
 ---
 
-## Building one
+## From a configuration block
+
+Most plugins should not build a URL at all. `StorageSettings` reads one named block and opens the
+store it describes:
+
+```hocon
+storage {
+  type         = "sqlite"      # sqlite, mysql, mariadb or postgresql
+  file         = "data.db"     # the SQLite file, inside the plugin folder
+  host         = "localhost"
+  port         = 0             # 0 is the engine's own: 3306, or 5432 for postgresql
+  database     = "minecraft"
+  username     = "minecraft"
+  password     = ""
+  table-prefix = "myplugin_"
+  pool-size    = 4
+}
+```
+
+```java
+StorageSettings storage = StorageSettings.read(config, "storage", "data.db", "myplugin_");
+Database db = storage.open(dataFolder, "myplugin");
+storage.migrate(db, migrations, "profile");     // {prefix} filled in, history kept under the prefix
+String table = storage.table("profile");        // "myplugin_profile"
+```
+
+A type nobody recognises stops the start instead of falling back to a file, because a server that
+believed it was on a network database and quietly wrote to SQLite splits the network in two.
+
+`migrate` writes `{prefix}` into every migration, keeps the history in `<prefix>schema_history`, and
+carries over what the shared `uxmlib_schema_history` already recorded for this schema, so a plugin that
+moves onto its own history runs nothing twice.
+
+### Drivers
+
+The server carries the MySQL and SQLite drivers. `StorageDrivers.coordinates()` names the MariaDB and
+PostgreSQL ones, for a Paper `PluginLoader` to fetch with `MavenLibraryResolver` when the server starts,
+so a plugin jar carries none of them.
+
+### Testing on every backend
+
+`uxmlib-storage-testing` runs a test once on each engine, on servers it starts in containers:
+
+```java
+@EveryBackend
+void aProfileComesBack(RealDatabase real) {
+    Database db = real.open();
+    real.settings().migrate(db, migrations, "profile");
+    // write through one store, read back through a new one
+}
+```
+
+The tests carry the tag `real-database`, so a build can run them in a task of their own. SQLite
+accepts almost anything, and a store proved only on it is a store nobody has seen work on the others.
+
+## Building one by hand
 
 ```java
 Database db = Database.builder()
