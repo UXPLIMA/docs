@@ -62,6 +62,10 @@ Module `communication` · enabled by default · `modules/communication/config.co
 |---|---|
 | `%uxmessentials_communication_broadcasts%` | Whether the player receives the rotating announcements (yes/no). |
 | `%uxmessentials_communication_chat_enabled%` | Whether public chat is open rather than locked by /togglechat (yes/no). |
+| `%uxmessentials_communication_prefix%` | The player's chat prefix, a catalogue-line prefix read in the player's own language. |
+| `%uxmessentials_communication_suffix%` | The player's chat suffix, read the same way. |
+| `%uxmessentials_prefix%` | The chat prefix of the player the line is about, a catalogue-line prefix read in the viewer's language. |
+| `%uxmessentials_suffix%` | The chat suffix of the player the line is about, read the same way. |
 {/* /generated */}
 
 ## Notes
