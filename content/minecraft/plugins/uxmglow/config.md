@@ -27,6 +27,7 @@ Read on enable and on `/uxmglow reload`, and swapped in whole, so a reload is ne
 | `storage.pool-size` | `4` | Connections in the pool. A SQLite file is opened with one writer whatever this says |
 | `storage.sync-seconds` | `2` | How often this server reads the colours the other servers on the same database changed for a player who is here. Ignored for a SQLite file; 0 turns it off |
 | `storage.local-only` | `false` | True keeps this one server on its SQLite file under the same prefix, whatever `storage.type` says: the creative or build server of a network that shares one database |
+| `storage.copy-from-file` | `false` | True copies the rows of the SQLite file into the empty tables of the network database when the plugin starts, and the log says how many. Set it with the move off `sqlite`; tables that already hold rows are left alone |
 | `cycle.tick-ms` | `100` | How often the one shared animation task wakes |
 | `cycle.minimum-interval-ms` | `200` | The shortest step a player may ask for |
 | `cycle.default-interval-ms` | `1000` | The step used when a player names no number |
