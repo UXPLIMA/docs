@@ -24,7 +24,7 @@ The plugin writes its files into `plugins/uxmClaims/` on first start; the folder
 
 You never replace your files after an update. The plugin brings them forward itself, on startup only:
 
-1. It reads the config version your files are at from `data/metadata.yml` (`version: 367` for 3.6.7).
+1. It reads the config version your files are at from `data/metadata.yml` (`version: 370` for 3.7.0).
    A folder without one counts as 3.4.4.
 2. It creates every missing file from the jar, in the [installed language](languages.md).
 3. It applies each release's patch newer than that version, oldest first, then records the new version.

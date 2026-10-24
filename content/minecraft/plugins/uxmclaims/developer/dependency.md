@@ -6,7 +6,7 @@ icon: package
 ---
 
 One artifact, `com.uxplima.claim:bukkit-api`, gives you the entry point, the facades, the command
-objects, the domain model and the events. The current version is `3.6.7`.
+objects, the domain model and the events. The current version is `3.7.0`.
 
 ## Gradle and Maven
 
@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.uxplima.claim:bukkit-api:3.6.7'
+    compileOnly 'com.uxplima.claim:bukkit-api:3.7.0'
 }
 ```
 
@@ -43,7 +43,7 @@ dependencies {
     <dependency>
         <groupId>com.uxplima.claim</groupId>
         <artifactId>bukkit-api</artifactId>
-        <version>3.6.7</version>
+        <version>3.7.0</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
