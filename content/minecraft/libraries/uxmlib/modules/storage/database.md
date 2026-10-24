@@ -21,6 +21,7 @@ storage {
   password     = ""
   table-prefix = "myplugin_"
   pool-size    = 4
+  local-only   = false         # true keeps this one server on its SQLite file
 }
 ```
 
@@ -37,6 +38,30 @@ believed it was on a network database and quietly wrote to SQLite splits the net
 `migrate` writes `{prefix}` into every migration, keeps the history in `<prefix>schema_history`, and
 carries over what the shared `uxmlib_schema_history` already recorded for this schema, so a plugin that
 moves onto its own history runs nothing twice.
+
+### Moving a file's rows to a network database
+
+A store that kept its rows in its SQLite file takes them along when its block names a network
+database. `StorageCopy.fromFile` opens the file the block names, runs the migrations on it, and copies
+every table under the prefix into the target:
+
+```java
+try {
+    StorageCopy.Copied copied =
+            StorageCopy.fromFile(storage, dataFolder, file -> storage.migrate(file, migrations, "profile"), db);
+    // copied.rows() is the count by table, copied.total() the sum
+} catch (StorageCopy.Refused refused) {
+    // ALREADY_ON_FILE, NO_FILE, TABLE_MISSING, COLUMN_MISSING or TARGET_HOLDS_ROWS
+}
+```
+
+The copy is one transaction, so a failure leaves the target as empty as it was. It fills empty tables
+only, so it never merges two sets of rows, and a table another one points at is filled first. The
+migration history and the notices between servers stay behind. On PostgreSQL a column that numbers
+itself carries on after the highest number copied. `StorageCopy.copy` does the same between any two
+open databases.
+
+`local-only = true` keeps one server on its file while the others share the network database.
 
 ### Drivers
 
