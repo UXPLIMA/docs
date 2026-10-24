@@ -97,7 +97,7 @@ Every requirement is a condition reference; a leading `!` inverts it.
 | `has-item:<item>` | The player is holding / carrying the item. |
 | `has-empty-slots:<n>` | At least N free inventory slots. |
 | `has-meta:<key>` | A metadata value is present / matches. |
-| `has-prev` · `has-next` · `on-page:<n>` | Pagination state (used on page-control tiles). |
+| `has-prev` · `has-next` · `has-page:<n>` · `on-page:<n>` | Pagination state (used on page-control tiles). `has-page:<n>` holds when page n exists. |
 | `cooldown:<key>` | A named cooldown has elapsed. |
 | `expr:<expression>` | A boolean expression (with placeholders) is true. |
 | `compare:` · `papi-compare:` | A numeric / placeholder comparison holds. |

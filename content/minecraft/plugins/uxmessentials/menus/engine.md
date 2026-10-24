@@ -58,7 +58,7 @@ These sit at the top of the file, outside `items { }`.
 | `refresh { enabled, interval-ticks }` | Auto re-render on a timer. `update-interval` is the shorthand. |
 | `placeholders { }` | Menu-scoped custom placeholders: `name = template`. A menu-scoped token overrides the global registry for this menu only. |
 | `click-cooldown` | Anti-spam window in milliseconds; two clicks closer than this count as one. |
-| `layout` / `patterns` / `fill-item` | Grid-string layout, reusable slot patterns, and the filler placed in empty slots. |
+| `layout` / `patterns` / `fill-item` | Grid-string layout, reusable slot patterns, and the filler placed in every slot nothing else drew. |
 | `bottom-inventory` | Extends the canvas into the player's own 36 slots (raw slots `rows*9 …`). Chest-only by construction. |
 | `chest-only` | Keep this menu on the chest path even for Bedrock viewers (see [Bedrock Forms](bedrock.md)). |
 | `bedrock { }` | An explicit native Bedrock form for this menu. |
@@ -80,7 +80,7 @@ Each entry under `items { }` is one tile, keyed by an id you choose.
 | `decor { }` | Rich extras: `model-data`, `glow`, item flags, enchantments, potion/banner/trim, damage, data-components, and the tooltip keys below. |
 | `view` | Visibility gate: hide the tile unless conditions pass (see below). |
 | `update` | `true` to re-render this tile on every refresh tick. |
-| `type` | Pagination role: `NONE`, `NEXT`, `PREVIOUS`, `JUMP`. |
+| `type` | Pagination role: `NONE`, `NEXT`, `PREVIOUS`, `JUMP`. See [Page arrows](#page-arrows). |
 | `list { }` | Expand one template tile across a data source (online players, worlds, …). See below. |
 | `click { }` | What each click gesture does (see below). |
 
@@ -171,6 +171,46 @@ players {
 | `template { }` | A normal item spec, stamped once per entry. |
 | `page-size` | Entries per page. Omit it (or `0`) to derive the page from the item's slot count. **Paged sources only.** |
 | `sorts` | The orderings the `list-sort` button cycles through. **Paged sources only.** |
+| `empty { }` | A normal item spec, drawn in each cell a page leaves without an entry. Omit it and those cells show the `fill-item`. |
+| `align` | `start` (the default) fills from the first slot. `center` puts the short last row of a page in the middle of its row. |
+
+`%position%` in the template or in the `empty` item is the place of that cell in the whole
+list, counted from one, so a leaderboard can number its rows and its empty places alike:
+
+```hocon
+board {
+  slots = ["10-16"]
+  list {
+    source = "kills:top"
+    align = center
+    template { material = "skull:%entry_name%", name = "<value>#%position% <body>%entry_name%" }
+    empty    { material = SKELETON_SKULL, name = "<muted>#%position% nobody yet" }
+  }
+}
+```
+
+### Page arrows
+
+An item with `type = next`, `previous` or `jump` is drawn on every page. When there is no page
+to go to, pressing it does nothing. The file decides everything else:
+
+| You want | Write |
+|---|---|
+| The arrow on every page (the default) | nothing |
+| The arrow only when it turns a page | `view = ["has-next"]`, `["has-previous"]` or, on a jump, `["has-page:3"]` |
+| Another look when there is no page | a second item in the same slot with `view = ["!has-next"]` and a lower `priority` |
+
+```hocon
+next    { slot = 23, type = next, material = ARROW, name = "@menu.button.next", priority = 10, view = ["has-next"] }
+no-next { slot = 23, material = GRAY_DYE, name = "@menu.button.no-next", priority = 9, view = ["!has-next"] }
+```
+
+### The fill
+
+`fill-item` is painted into every slot nothing else drew when the window is drawn: a list
+cell with no entry and no `empty` item, and the slot of an item its `view` hid. A content
+region the player puts items into is never painted. To keep one slot empty on purpose,
+put an item there with `material = AIR`.
 
 Built-in sources include `online-players`, `worlds`, `self-inventory`, `self-enderchest`
 and `luckperms-groups`; every module contributes its own (`kits:browse`, `warps:browse`,
@@ -279,7 +319,7 @@ open-requirement = ["perm:uxmessentials.vip"]
 # A tidy grey border around the edges.
 fill-item {
   material = GRAY_STAINED_GLASS_PANE
-  name = " "
+  decor { hide-tooltip = true }
 }
 
 items {
