@@ -25,6 +25,7 @@ Read on enable and on `/uxmglow reload`, and swapped in whole, so a reload is ne
 | `storage.username` / `storage.password` | `minecraft` / empty | The connection, for a database server |
 | `storage.table-prefix` | `uxmglow_` | Written in front of every table, so two plugins can share one database |
 | `storage.pool-size` | `4` | Connections in the pool. A SQLite file is opened with one writer whatever this says |
+| `storage.sync-seconds` | `2` | How often this server reads the colours the other servers on the same database changed for a player who is here. Ignored for a SQLite file; 0 turns it off |
 | `cycle.tick-ms` | `100` | How often the one shared animation task wakes |
 | `cycle.minimum-interval-ms` | `200` | The shortest step a player may ask for |
 | `cycle.default-interval-ms` | `1000` | The step used when a player names no number |
