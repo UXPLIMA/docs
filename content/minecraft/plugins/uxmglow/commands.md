@@ -36,7 +36,7 @@ it then refuses is a bad one.
 |---|---|---|
 | `/uxmglow reload` | Re-reads `config.conf`, the picker and the language files | `uxmglow.admin.reload` |
 | `/uxmglow version` | Reports the version | `uxmglow.admin.version` |
-| `/uxmglow doctor` | Asks the plugin how it is: storage, content, windows, placeholders | `uxmglow.admin.doctor` |
+| `/uxmglow doctor` | Asks the plugin how it is: the storage, named by its backend, place, prefix and schema version, then the windows and the placeholders | `uxmglow.admin.doctor` |
 
 ## Renaming
 
