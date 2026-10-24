@@ -79,6 +79,12 @@ is older than the keep window. A node never reads its own rows, and a node that 
 written before it. Treat a message as a hint to read the row again, never as the only copy of a change:
 a node that was down longer than the keep window misses what it missed.
 
+A store built from configuration asks `DataSynchronizers.forStore(storage, db, scheduler, every)`, with
+`every` read by `DataSynchronizers.every(config, "storage")` off `storage.sync-seconds`. A database server
+gets a started `SqlDataSynchronizer` on `<prefix>sync`. A SQLite file, or an interval of zero, gets
+`DataSynchronizers.none()`: a publish reaches nobody, not even the store's own handler. A store that heard
+its own notice would read back the row it had just written, over a newer value it already held.
+
 The umbrella parameter namespaces channels, so two plugins on one Redis do not collide.
 
 ## Message encoding
