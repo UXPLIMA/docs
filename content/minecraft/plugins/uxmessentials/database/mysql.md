@@ -93,10 +93,14 @@ It reports the active backend and whether the database is healthy.
 
 ## Migrating from SQLite
 
-Switching `backend` from `sqlite` to `mysql` starts a **fresh, empty schema** on the new
-database; it does not copy your SQLite data across. There is no built-in file-to-server
-converter. To carry data over, use a database export/import tool against each engine, or accept
-a clean start on the new backend.
+Set `type = "mysql"` (or `"mariadb"`) and `copy-from-file = true` in the same `storage` block,
+and restart once. The plugin builds the schema on the new database, brings the SQLite file up to
+date, and copies every table of it into the empty tables in one transaction. The log says how
+many rows came across. Set `copy-from-file` back to `false` afterwards; left on, it copies
+nothing twice, because the tables are no longer empty.
+
+If any table on the new database already holds rows, nothing is copied and the log says which
+table. Empty that database, or point the block at a fresh one, and restart again.
 
 <Callout type="warning" title="Back up first">
 

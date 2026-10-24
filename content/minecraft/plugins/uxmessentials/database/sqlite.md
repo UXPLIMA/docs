@@ -102,9 +102,9 @@ The cleanest backup is taken while the server is stopped:
 
 <Callout type="warning" title="Back up before switching backends">
 
-Moving from SQLite to a network backend starts a **fresh** schema on the new database;
-it does not copy your existing data across. Back up `uxmessentials.db` first, and plan how
-you will carry data over (or accept a clean slate) before you change `backend`.
+Moving from SQLite to a network backend copies your rows across when the `storage` block sets
+`copy-from-file = true` for the first start on the new database (see
+[MySQL / MariaDB](mysql.md#migrating-from-sqlite)). Back up `uxmessentials.db` first all the same.
 
 </Callout>
 

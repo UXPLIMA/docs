@@ -96,9 +96,10 @@ psql -U uxmessentials uxmessentials \< backup.sql
 
 <Callout type="warning" title="Back up before switching backends">
 
-Changing `backend` starts a **fresh, empty schema** on the new database; it does not copy
-your old data across. Back up your current database first (SQLite file or a `pg_dump`) before
-you change the value.
+Changing `type` builds a fresh schema on the new database. Coming from the SQLite file, set
+`copy-from-file = true` in the same block for the first start and the rows of the file are copied
+into the empty tables (see [MySQL / MariaDB](mysql.md#migrating-from-sqlite)). Coming from another
+server, nothing is copied. Back up your current database first (SQLite file or a `pg_dump`).
 
 </Callout>
 

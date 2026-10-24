@@ -41,6 +41,7 @@ storage {
   connection-timeout-ms = 5000
   table-prefix = "uxmessentials_"   # chosen before the first start
   local-only = false            # true keeps this one server on the SQLite file
+  copy-from-file = false        # true copies the SQLite file into an empty network database at start
 }
 ```
 
@@ -90,6 +91,14 @@ the plugin with a message rather than start on an empty set of tables.
 **Default:** `false`. It is for the server of a network that has no business in the shared
 data, a creative world or a build server: the `storage` block stays the same on every server
 and that one sets this line. Leave the cross-server bus off on it as well.
+
+#### copy-from-file
+
+**What it does:** `true` copies the rows of the SQLite file into the network database the block
+names, when the plugin starts. The schema is built first and the file is brought up to date, then
+every table is copied in one transaction. The log says how many rows came across.
+**Default:** `false`. Set it with the move off `sqlite` and restart once. Tables that already
+hold rows are left alone and nothing is copied, so leaving it on copies nothing twice.
 
 #### pool-size / connection-timeout-ms
 
