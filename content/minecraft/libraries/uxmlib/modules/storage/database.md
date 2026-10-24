@@ -63,9 +63,17 @@ itself carries on after the highest number copied. `StorageCopy.copy` does the s
 open databases.
 
 `copy-from-file = true` asks for the copy when the plugin starts. A plugin calls `StorageCopy.atStart`
-with the same arguments right after its migration: it does nothing unless the block asks, logs what it
-copied, and logs a refusal without stopping the start. An operator changes the type, sets the key and
-restarts once. Left on, it copies nothing twice, since the tables are no longer empty.
+in place of its migration:
+
+```java
+StorageCopy.atStart(storage, dataFolder, db -> storage.migrate(db, migrations, "profile"), opened);
+```
+
+It migrates the target in every case. When the block asks and none of the file's tables were in the
+target before this start, the schema there is brand new and holds only what the migrations seeded, so
+`StorageCopy.refill` empties it and fills it from the file in one transaction. A target that had the
+schema before is left alone and the log says so, which is why the key left on copies nothing twice.
+An operator changes the type, sets the key and restarts once.
 
 `local-only = true` keeps one server on its file while the others share the network database.
 
