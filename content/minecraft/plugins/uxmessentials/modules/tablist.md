@@ -45,6 +45,12 @@ Module `tablist` · disabled by default · `modules/tablist/config.conf`
   while they are online, and fetched from Mojang otherwise, so an offline-mode server still renders faces.
 - **Header and footer share the HUD content grammar:** built-in `{tokens}`, PlaceholderAPI placeholders when
   PAPI is present, and animations paced by the refresh setting.
+- **An animation frame can be a catalogue line.** Write a frame as `@custom.tab.store` and put the token alone
+  on its line (`footer = [ "%anim_links%" ]`): each viewer reads the frame in their own language, so a footer
+  that turns through Discord, the store and help keeps its words in `messages_<lang>.conf`. Two animations
+  with the same interval and frame count step together, so a second line can explain the link the first one
+  lights. `interval-ticks` counts refreshes: with `refresh-ticks = 20`, a value of 3 shows each frame for
+  three seconds.
 - **A filler grid can own every cell.** With `exact = true` on the filler block, all 80 cells are drawn,
   including the ones you did not author, so a designed grid keeps its shape instead of collapsing around the
   real player list. It needs `suppress-real-players = true` on the same format and refuses to switch itself on
