@@ -40,6 +40,19 @@ believed it was on a network database and quietly wrote to SQLite splits the net
 carries over what the shared `uxmlib_schema_history` already recorded for this schema, so a plugin that
 moves onto its own history runs nothing twice.
 
+### Saying where the rows are
+
+`storage.describe(db)` is the line a health check prints for an operator: the backend, where it is,
+the prefix and the schema version the migrations reached.
+
+```java
+storage.describe(db);   // "postgresql at db:5432/minecraft, prefix myplugin_, schema v4"
+                        // "sqlite file data.db, prefix myplugin_, no schema recorded"
+```
+
+It only reads. A store nothing has migrated is not given a history table for the asking, and the
+password is never part of the line.
+
 ### Moving a file's rows to a network database
 
 A store that kept its rows in its SQLite file takes them along when its block names a network
