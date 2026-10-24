@@ -407,8 +407,8 @@ everyone (`uxmessentials.menu.use`); the rest are admin-gated with
 | `/menu dump <menu>` | Print a menu's parsed structure (items, slots, clicks) | `.menu.admin` |
 | `/menu meta <menu>` | Print a menu's metadata summary | `.menu.admin` |
 
-**Reload after every edit.** Menu files are read on load and on `/menu reload`, never on a hot path, so nothing
-you type takes effect until you reload. `/menu reload shop` re-reads one file and
+**Reload after every edit.** Menu files are read on load, on `/menu reload` and on `/uxmess reload`, never on a
+hot path, so nothing you type takes effect until you reload. `/menu reload shop` re-reads one file and
 tells you in the log exactly where a syntax error is; a bad file is skipped and the
 others keep working.
 
