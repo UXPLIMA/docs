@@ -39,6 +39,7 @@ storage {
   password = ""
   pool-size = 8                 # network backends only; SQLite is fixed single-writer
   connection-timeout-ms = 5000
+  table-prefix = "uxmessentials_"   # chosen before the first start
   local-only = false            # true keeps this one server on the SQLite file
 }
 ```
@@ -73,6 +74,15 @@ by the network backends.
 
 **What they do:** The connection details for a network backend. A `port` of `0`, or no
 `port` at all, means the database's own: `3306` for MySQL and `5432` for PostgreSQL. These are ignored when `type = "sqlite"`.
+
+#### table-prefix
+
+**What it does:** Written in front of every table, so two plugins, or two copies of this one,
+can share a database. Letters, digits and underscores, at most 15.
+**Default:** `uxmessentials_` on a new install. A server that ran before the prefix existed
+has no such line and keeps its tables under their bare names; an update never adds the line.
+Choose it before the first start: a prefix written over an install that ran without one stops
+the plugin with a message rather than start on an empty set of tables.
 
 #### local-only
 
