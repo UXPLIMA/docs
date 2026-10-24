@@ -39,6 +39,7 @@ storage {
   password = ""
   pool-size = 8                 # network backends only; SQLite is fixed single-writer
   connection-timeout-ms = 5000
+  local-only = false            # true keeps this one server on the SQLite file
 }
 ```
 
@@ -72,6 +73,13 @@ by the network backends.
 
 **What they do:** The connection details for a network backend. A `port` of `0`, or no
 `port` at all, means the database's own: `3306` for MySQL and `5432` for PostgreSQL. These are ignored when `type = "sqlite"`.
+
+#### local-only
+
+**What it does:** `true` keeps this one server on its SQLite file, whatever `type` says.
+**Default:** `false`. It is for the server of a network that has no business in the shared
+data, a creative world or a build server: the `storage` block stays the same on every server
+and that one sets this line. Leave the cross-server bus off on it as well.
 
 #### pool-size / connection-timeout-ms
 
