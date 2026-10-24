@@ -22,6 +22,7 @@ storage {
   table-prefix = "myplugin_"
   pool-size    = 4
   local-only   = false         # true keeps this one server on its SQLite file
+  copy-from-file = false       # true copies the file's rows into an empty network database at start
 }
 ```
 
@@ -60,6 +61,11 @@ only, so it never merges two sets of rows, and a table another one points at is 
 migration history and the notices between servers stay behind. On PostgreSQL a column that numbers
 itself carries on after the highest number copied. `StorageCopy.copy` does the same between any two
 open databases.
+
+`copy-from-file = true` asks for the copy when the plugin starts. A plugin calls `StorageCopy.atStart`
+with the same arguments right after its migration: it does nothing unless the block asks, logs what it
+copied, and logs a refusal without stopping the start. An operator changes the type, sets the key and
+restarts once. Left on, it copies nothing twice, since the tables are no longer empty.
 
 `local-only = true` keeps one server on its file while the others share the network database.
 
