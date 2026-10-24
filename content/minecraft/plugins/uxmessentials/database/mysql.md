@@ -6,7 +6,7 @@ icon: database
 ---
 
 When one server outgrows SQLite, or several servers need the same data, point the storage backend at MySQL
-or MariaDB. Both speak the MySQL wire protocol, so `backend = "mysql"` drives either.
+or MariaDB. Both speak the MySQL wire protocol, so `type = "mysql"` drives either.
 
 ## Why MySQL / MariaDB?
 
@@ -44,13 +44,13 @@ Edit the `storage` block in `plugins/uxmEssentials/config.conf`:
 
 ```hocon
 storage {
-  backend = "mysql"                 # sqlite | mysql | postgres  (MariaDB uses "mysql")
+  type = "mysql"                    # sqlite | mysql | postgres  (MariaDB uses "mysql")
   host = "localhost"
   port = 3306                       # default 3306 for MySQL / MariaDB
   database = "uxmessentials"
   username = "uxmessentials"
   password = "your_secure_password"
-  read-pool-size = 8                # size of the read-connection pool
+  pool-size = 8                     # size of the read-connection pool
   connection-timeout-ms = 5000      # how long to wait for a connection before failing
 }
 ```
@@ -65,7 +65,7 @@ no raw URL to paste. For a remote database, point `host` at that machine and mak
 | `host` / `port` | Where the database server listens | `localhost` / `3306` |
 | `database` | The schema/database name from Step 1 | `uxmessentials` |
 | `username` / `password` | The account from Step 1 | - |
-| `read-pool-size` | Concurrent read connections | `8` |
+| `pool-size` | Concurrent read connections | `8` |
 | `connection-timeout-ms` | Wait before a connection attempt fails | `5000` |
 
 ## Connection Pool Sizing
@@ -73,7 +73,7 @@ no raw URL to paste. For a remote database, point `host` at that machine and mak
 Connections are pooled by **HikariCP**. On a network backend there is no single-writer pin:
 the database's own row-level locking keeps things safe, so reads and writes run in parallel.
 
-- `read-pool-size = 8` is a sensible default for most servers. Raising it helps a read-heavy
+- `pool-size = 8` is a sensible default for most servers. Raising it helps a read-heavy
   server (frequent balance/home/warp lookups); there is little point pushing it far past the
   number of cores your database can actually serve.
 - Keep `connection-timeout-ms` at `5000` unless you see timeout warnings on a slow or remote
@@ -113,6 +113,6 @@ empty database it will treat that as the source of truth. A backup is your only 
 | `Access denied` | Wrong `username`/`password`, or the user lacks privileges on the database |
 | `Unknown database` | The database from Step 1 does not exist or is misspelled |
 | `Connection refused` | The database is not running, or `host`/`port`/firewall is wrong |
-| Connection times out on join | `read-pool-size` too small for load, or a slow remote link |
+| Connection times out on join | `pool-size` too small for load, or a slow remote link |
 
 Related: [PostgreSQL Setup](postgresql.md), [Cross-Server](../cross-server/overview.md), [config.conf (Globals)](../config/global-config.md), [Economy](../modules/economy.md)

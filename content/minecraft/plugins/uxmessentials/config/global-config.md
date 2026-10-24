@@ -20,7 +20,7 @@ small.
    **restart-only** (noted below).
 
 **HOCON, not YAML.** This file is HOCON. Indentation is cosmetic, but braces and quotes are not.
-Comments start with `#`, keys are kebab-case, strings are quoted (`backend =
+Comments start with `#`, keys are kebab-case, strings are quoted (`type =
 "sqlite"`), numbers and booleans are bare (`port = 3306`, `enabled = true`).
 
 ## `storage`
@@ -30,19 +30,19 @@ setup, no external service.
 
 ```hocon
 storage {
-  backend = "sqlite"            # sqlite | mysql | postgres
+  type = "sqlite"               # sqlite | mysql | mariadb | postgresql. Any other word stops the plugin
   file = "uxmessentials.db"     # SQLite only: the database file under this folder
   host = "localhost"
-  port = 3306                   # default 3306 for mysql, 5432 for postgres
+  port = 0                      # 0 is the database's own: 3306 for mysql, 5432 for postgresql
   database = "uxmessentials"
   username = "uxmessentials"
   password = ""
-  read-pool-size = 8            # network backends only; SQLite is fixed single-writer
+  pool-size = 8                 # network backends only; SQLite is fixed single-writer
   connection-timeout-ms = 5000
 }
 ```
 
-#### backend
+#### type
 
 **What it does:** Selects the database engine.
 
@@ -50,11 +50,18 @@ storage {
 |---|---|
 | `sqlite` | Embedded file database (default). No server needed. |
 | `mysql` | MySQL / MariaDB. |
-| `postgres` | PostgreSQL. |
+| `mariadb` | MariaDB, the same driver as `mysql`. |
+| `postgresql` | PostgreSQL. `postgres` is read the same. |
 
 **Default:** `sqlite`. Choose a network backend only when you run more than one server
 against one dataset (or want central backups). It is a topology decision, not a
 capability one: every backend is a first-class, fully tested path.
+
+<Callout type="info" title="Older files say backend and read-pool-size">
+A `config.conf` written by an older version names these two keys `backend` and
+`read-pool-size`. Both still work, and an update does not add `type` or `pool-size` beside them,
+so your server keeps its database. When a file has both names, `type` and `pool-size` win.
+</Callout>
 
 #### file
 
@@ -63,12 +70,12 @@ by the network backends.
 
 #### host / port / database / username / password
 
-**What they do:** The connection details for a network backend. `port` defaults to
-`3306` for MySQL and `5432` for PostgreSQL. These are ignored when `backend = "sqlite"`.
+**What they do:** The connection details for a network backend. A `port` of `0`, or no
+`port` at all, means the database's own: `3306` for MySQL and `5432` for PostgreSQL. These are ignored when `type = "sqlite"`.
 
-#### read-pool-size / connection-timeout-ms
+#### pool-size / connection-timeout-ms
 
-**What they do:** `read-pool-size` sizes the read connection pool for network backends
+**What they do:** `pool-size` sizes the read connection pool for network backends
 (SQLite is fixed to a single writer). `connection-timeout-ms` is how long to wait for a
 connection before giving up.
 

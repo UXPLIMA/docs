@@ -30,15 +30,15 @@ the shipped default, so a new install already looks like this:
 
 ```hocon
 storage {
-  backend = "sqlite"            # sqlite | mysql | postgres
+  type = "sqlite"               # sqlite | mysql | postgres
   file = "uxmessentials.db"     # SQLite only: the database file name
   # host / port / database / username / password apply to network backends only
-  read-pool-size = 8            # network backends only; SQLite is fixed single-writer
+  pool-size = 8                 # network backends only; SQLite is fixed single-writer
   connection-timeout-ms = 5000
 }
 ```
 
-For SQLite only two keys matter: `backend = "sqlite"` and `file`, the name of the database
+For SQLite only two keys matter: `type = "sqlite"` and `file`, the name of the database
 file. The remaining keys are read only when you switch to a network backend.
 
 ## Where the File Lives

@@ -49,20 +49,20 @@ Edit the `storage` block in `plugins/uxmEssentials/config.conf`:
 
 ```hocon
 storage {
-  backend = "postgres"              # sqlite | mysql | postgres
+  type = "postgres"                 # sqlite | mysql | postgres
   host = "localhost"
   port = 5432                       # default 5432 for PostgreSQL
   database = "uxmessentials"
   username = "uxmessentials"
   password = "your_secure_password"
-  read-pool-size = 8
+  pool-size = 8
   connection-timeout-ms = 5000
 }
 ```
 
-The only differences from the [MySQL setup](mysql.md) are `backend = "postgres"` and the default
+The only differences from the [MySQL setup](mysql.md) are `type = "postgres"` and the default
 `port = 5432`. As with MySQL, uxmEssentials builds the JDBC connection for you from `host`,
-`port` and `database`: there is no raw URL to enter. Pool sizing (`read-pool-size`,
+`port` and `database`: there is no raw URL to enter. Pool sizing (`pool-size`,
 `connection-timeout-ms`) works identically; see [Connection Pool Sizing](mysql.md#connection-pool-sizing).
 
 ## Step 3: Restart and Verify

@@ -27,10 +27,10 @@ HOCON is forgiving about whitespace and indentation, and strict about structure:
 
 - Blocks open and close with **braces**: `storage { … }`. Every `{` needs a `}`.
 - **Comments start with `#`** and run to the end of the line.
-- String values are usually quoted: `backend = "sqlite"`. Numbers and `true`/`false`
+- String values are usually quoted: `type = "sqlite"`. Numbers and `true`/`false`
   are not: `port = 3306`, `enabled = true`.
 - Lists use square brackets: `disabled-worlds = ["arena", "spawn"]`.
-- Keys are **kebab-case** (`read-pool-size`, `default-locale`): never camelCase.
+- Keys are **kebab-case** (`pool-size`, `default-locale`): never camelCase.
 
 If a file will not load after an edit, it is almost always a missing `}` or a stray quote. The server log
 names the file and the line.
