@@ -659,7 +659,7 @@ The operator surface over the built-in [menu engine](../menus/engine.md).
 | `uxmessentials.voteparty.admin` | `op` | `/voteparty` force\|set\|add: force the party or adjust the party counter. |
 | `uxmessentials.voteparty.use` | `true` | `/voteparty` to see progress towards the next vote party. |
 
-## Scoreboard, Tablist & Nametags
+## Scoreboard, Tablist, Boss Bars & Nametags
 
 The **tablist** and **nametags** modules register no commands: both are packet/config-driven.
 
@@ -670,6 +670,10 @@ The **tablist** and **nametags** modules register no commands: both are packet/c
 | `uxmessentials.scoreboard.use` | `true` | `/scoreboard` (alias `/sb`) to toggle whether you see the scoreboard display. |
 | `uxmessentials.module.tablist` | `op` | Hot-reload / inspect the tablist module (the player list header, footer and rows). |
 | `uxmessentials.module.nametags` | `op` | Hot-reload / inspect the nametags module (the name shown above a player). |
+| `uxmessentials.module.bossbar` | `op` | Hot-reload / inspect the bossbar module (bars that stay up, timed bars and announced bars). |
+| `uxmessentials.bossbar.use` | `true` | `/bossbars`, `/bossbars toggle\|on\|off` to hide or show your own boss bars. |
+| `uxmessentials.bossbar.others` | `op` | `/bossbars toggle\|on\|off <player>` to hide or show another player's boss bars. |
+| `uxmessentials.bossbar.announce` | `op` | `/bossbars announce <bar> <time>` for everybody and `/bossbars send <player> <bar> <time>` for one player. |
 
 ## Sitting & Poses
 
@@ -680,6 +684,7 @@ The **tablist** and **nametags** modules register no commands: both are packet/c
 | `uxmessentials.lay.use` | `true` | `/lay`: lie down on your back where you stand. |
 | `uxmessentials.module.poses` | `op` | Hot-reload / inspect the poses module (built-in GSit-parity sitting and posing). |
 | `uxmessentials.playersit.use` | `true` | Right-click another player to sit on them (the stacking pose), when player-sit is enabled. |
+| `uxmessentials.poses.reveal` | `op` | `/poses reveal <player>`: end a pose the player is still in and give back a body an older version left invisible. The console may run it too. |
 | `uxmessentials.poses.gui` | `true` | `/poses` (or `/poses` gui): open your personal poses settings & status panel. |
 | `uxmessentials.poses.toggle` | `true` | `/poses` toggle: allow or refuse other players sitting on you. |
 | `uxmessentials.sit.use` | `true` | `/sit` and right-click-to-sit: sit down where you stand or on a sittable block. |
@@ -939,7 +944,7 @@ Bypass nodes let a trusted player cut through a gate (a cooldown, warmup, cost, 
 Every bounded context is a first-class feature module. Each owns a node tier `uxmessentials.module.<id>` (default `op`): **not** the feature's runtime permission, but the per-module **administrative** gate: who may inspect and hot-reload that one module via `/uxmess reload <id>` without holding the blanket `uxmessentials.admin.reload`. `<id>` is the module id used everywhere else (config path `modules.<id>`, the reload command, the tier node):
 
 ```
-commandcontrol  communication  customcommands  custommenus
+bossbar  commandcontrol  communication  customcommands  custommenus
 economy  holograms
 homes  invrollback  itemworld  kits  messaging  moderation
 nametags  npc  playerstate  playerwarps  poses  presence

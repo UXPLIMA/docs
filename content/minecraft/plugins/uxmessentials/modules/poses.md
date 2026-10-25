@@ -32,6 +32,7 @@ Module `poses` · enabled by default · `modules/poses/config.conf`
 | `uxmessentials.module.poses` | op | Hot-reload / inspect the poses module (built-in GSit-parity sitting and posing). |
 | `uxmessentials.playersit.use` | everyone | Right-click another player to sit on them (the stacking pose), when player-sit is enabled. |
 | `uxmessentials.poses.gui` | everyone | /poses (or /poses gui): open your personal poses settings & status panel. |
+| `uxmessentials.poses.reveal` | op | /poses reveal \<player>: give back a body a pose left unseen. |
 | `uxmessentials.poses.toggle` | everyone | /poses toggle: allow or refuse other players sitting on you. |
 | `uxmessentials.sit.use` | everyone | /sit and right-click-to-sit: sit down where you stand or on a sittable block. |
 | `uxmessentials.spin.use` | everyone | /spin: sit and spin in place. |

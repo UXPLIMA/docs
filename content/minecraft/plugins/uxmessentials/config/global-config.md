@@ -228,8 +228,9 @@ after changing it. Full walkthrough: [Velocity & Redis](../cross-server/overview
 
 ## `server-links`
 
-Native 1.21+ pause-menu server links. Each entry is either a built-in `type` or a custom
-`label`, plus a `url`. An empty list leaves the client's links untouched.
+Native 1.21+ pause-menu server links, under the "Server Links" button of the pause menu.
+Each entry is either a built-in `type` or a custom `label`, plus a `url`. An empty list
+leaves the client's links untouched.
 
 ```hocon
 server-links = [
@@ -240,7 +241,22 @@ server-links = [
 
 Built-in `type` values include `REPORT_BUG`, `SUPPORT`, `STATUS`, `FEEDBACK`,
 `COMMUNITY`, `WEBSITE`, `FORUMS`, `NEWS`, `ANNOUNCEMENTS`, and `COMMUNITY_GUIDELINES`.
-A malformed or empty entry is skipped with a warning.
+The client names a type in the player's own language. A malformed or empty entry is
+skipped with a warning.
+
+A `label` is MiniMessage in the theme's colours, or a catalogue line written as `@key`
+that each player reads in their own language:
+
+```hocon
+server-links = [
+  { label = "@custom.links.store", url = "https://store.example.com" }
+]
+```
+
+Each player is sent their own copy of the links when they join, when their client
+changes language, and within two seconds of choosing another language with `/lang`.
+`/uxmess reload` reads the list again and sends it to every player online; a list emptied
+by a reload takes the plugin's links away.
 
 ## `update-check`
 

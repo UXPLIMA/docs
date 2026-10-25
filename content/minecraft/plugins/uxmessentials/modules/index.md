@@ -14,6 +14,7 @@ Set `enabled = false` in a module's `config.conf` and restart, or edit and run `
 
 | Module | What it does | Default |
 |---|---|---|
+| [Boss Bars](bossbar.md) | Bars that stay up, run for an event, or are announced | off |
 | [Command Control](commandcontrol.md) | Decide which commands each player may run, and hide the rest | on |
 | [Communication](communication.md) | Chat format, join and quit lines, announcer, info pages | on |
 | [Custom Commands](customcommands.md) | Your own commands, declared in a file | on |
