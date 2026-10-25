@@ -551,6 +551,20 @@ player and only readable while they are here, which is why somebody who is away 
 default.
 
 
+## Boss bars
+
+`api.bossBar()` &rarr; `UxmBossBarQuery`
+
+| Method | Answers |
+|---|---|
+| `bars()` | the ids of the bars written in the module's file, top first |
+| `hidden(playerId)` | whether they have hidden their bars, or empty when they are offline |
+| `shown(playerId)` | the ids of the bars on their screen, top first; empty when they are offline or see none |
+| `remaining(playerId, barId)` | the time left on that bar for them: an announcement, or the bar's own end |
+
+`bars()` reads the file as it was last read, so it answers at once. The other three read the player on the thread that
+owns them, because the choice is kept on the player and the bars are drawn there.
+
 ## A worked example
 
 A `/profile` command in your own plugin, reading four surfaces, blocking on none of them, and behaving on a server

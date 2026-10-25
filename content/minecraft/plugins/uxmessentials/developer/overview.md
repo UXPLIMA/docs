@@ -104,6 +104,7 @@ reason is on the page the column links to.
 | npc | Yes | Yes | Yes | Yes |
 | holograms | Yes | Yes | Yes | Yes |
 | scoreboard | Yes | Yes | Yes | Yes |
+| bossbar | Yes | Yes | Yes | Yes |
 | tablist | | Yes | | Yes |
 | nametags | | Yes | | Yes |
 | staff | Yes | | Yes | Yes |

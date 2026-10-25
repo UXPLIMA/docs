@@ -87,6 +87,62 @@ bars = [
   `gamemode:<mode>`, a comparison such as `%server_online% >= 10`, negated with `!` and combined with `&&` or
   `||`.
 
+## A bar that turns through texts
+
+One bar can show several texts in turn, each for a while, with an animation whose frames are catalogue lines.
+Give the colour an animation with the same interval and the same number of frames, and the two turn together:
+
+```hocon
+bars = [
+  { id = "links", text = "%anim_links%", color = "%anim_links-colour%", style = "NOTCHED_20" }
+]
+
+animations {
+  links {
+    type = "FRAMES"
+    frames = [ "@custom.bar.website", "@custom.bar.store", "@custom.bar.discord" ]
+    interval-ticks = 5
+  }
+  links-colour {
+    type = "FRAMES"
+    frames = [ "GREEN", "YELLOW", "BLUE" ]
+    interval-ticks = 5
+  }
+}
+```
+
+`interval-ticks` counts refreshes: with `refresh-ticks = 20`, a value of 5 shows each text for five seconds. Each
+frame is read in the player's own language once the animation has picked it.
+
+## Placeholders
+
+{/* generated:placeholders */}
+| Placeholder | Renders |
+|---|---|
+| `%uxmessentials_bossbar_count%` | How many boss bars are on the player's screen. |
+| `%uxmessentials_bossbar_remaining_<bar>%` | The time left on a timed or announced bar for the player, in their words (5d 8h 52m), or a dash when it has no clock running. |
+| `%uxmessentials_bossbar_shown%` | The ids of the boss bars on the player's screen, top first, or a dash when they see none. |
+| `%uxmessentials_bossbar_visible%` | Whether the player has their boss bars showing (yes/no). |
+{/* /generated */}
+
+`%uxmessentials_bossbar_remaining_<bar>%` finds the bar whatever the case of its id, so
+`%uxmessentials_bossbar_remaining_double-xp%` reads the time left on the `double-xp` event in the reader's words.
+
+## API
+
+Another plugin reaches the bars through the uxmEssentials API: `UxmEssentialsApi.bossBar()` for the query and
+`UxmActions.bossBar()` for the actions, each empty while the module is switched off.
+
+- **Query:** `bars()` lists the bar ids written in the file; `hidden(player)`, `shown(player)` and
+  `remaining(player, bar)` read one player's choice, the bars on their screen and the time left on one bar.
+- **Actions:** `refresh`, `hide` and `show` for one player; `announce(bar, length)` for everybody and
+  `send(player, bar, length)` for one player. An unknown bar is refused as `not-found`, a length that is not
+  positive as `refused`, and a player who is away as `player-offline`.
+
+The REST adapter carries the same: `GET /api/v1/bossbars`, `POST /api/v1/bossbars/{bar}/announce`,
+`GET` and `POST /api/v1/players/{uuid}/bossbar`, `POST /api/v1/players/{uuid}/bossbar/refresh` and
+`POST /api/v1/players/{uuid}/bossbar/{bar}/send`. An announcement and a send take `{"seconds": 60}`.
+
 ## Notes
 
 - **A player's choice is kept.** `/bossbars` stores it with the player, so it survives a relog.

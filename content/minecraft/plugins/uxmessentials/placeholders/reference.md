@@ -7,7 +7,7 @@ icon: list
 
 ## Overview
 
-With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 334 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
+With **PlaceholderAPI** installed, uxmEssentials registers a `%uxmessentials_<key>%` expansion carrying the 349 keys below. Nothing to download and nothing to switch on: the expansion registers itself at startup.
 
 Every key is declared once inside the plugin, in a single catalogue that a build-time guard resolves against the resolver in both directions. That is what this page is generated from, so a key listed here is a key this build answers.
 
@@ -161,6 +161,17 @@ Always answered, whatever is enabled: the kernel owns these. The account, sessio
 | `%uxmessentials_server_worlds%` | global | How many worlds are loaded. |
 | `%uxmessentials_stat_<statistic>%` | player | Any vanilla statistic by name, as stat_jump or stat_damage_dealt; a statistic that counts per block, item or entity takes it on the end, as stat_mine_block_diamond_ore or stat_kill_entity_zombie. |
 
+## Boss Bars
+
+Whether the boss bars are showing, which are up, and the time left on one.
+
+| Placeholder | Reads | What it renders |
+|-------------|-------|-----------------|
+| `%uxmessentials_bossbar_count%` | session | How many boss bars are on the player's screen. |
+| `%uxmessentials_bossbar_remaining_<bar>%` | session | The time left on a timed or announced bar for the player, in their words (5d 8h 52m), or a dash when it has no clock running. |
+| `%uxmessentials_bossbar_shown%` | session | The ids of the boss bars on the player's screen, top first, or a dash when they see none. |
+| `%uxmessentials_bossbar_visible%` | session | Whether the player has their boss bars showing (yes/no). |
+
 ## Command Control
 
 Whether the player may run a given command where they stand.
@@ -171,12 +182,16 @@ Whether the player may run a given command where they stand.
 
 ## Communication
 
-The chat lock and the rotating announcer.
+The chat lock, the rotating announcer and the chat prefix and suffix.
 
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
 | `%uxmessentials_communication_broadcasts%` | session | Whether the player receives the rotating announcements (yes/no). |
 | `%uxmessentials_communication_chat_enabled%` | global | Whether public chat is open rather than locked by `/togglechat` (yes/no). |
+| `%uxmessentials_communication_prefix%` | session | The player's chat prefix, a catalogue-line prefix read in the player's own language. |
+| `%uxmessentials_communication_suffix%` | session | The player's chat suffix, read the same way. |
+| `%rel_uxmessentials_prefix%` | relational | The chat prefix of the player the line is about, a catalogue-line prefix read in the viewer's language. |
+| `%rel_uxmessentials_suffix%` | relational | The chat suffix of the player the line is about, read the same way. |
 
 ## Menus
 

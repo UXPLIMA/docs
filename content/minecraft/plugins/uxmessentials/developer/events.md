@@ -206,13 +206,14 @@ too and it has no UUID.
 | `UxmBroadcastOptOutEvent` | a player opted in or out of announcements | `isOptedOut()` |
 | `UxmAnnouncerReloadEvent` | the announcement list was reloaded | `getLineCount()` |
 
-### Staff, scoreboard and poses
+### Staff, scoreboard, boss bars and poses
 
 | Event | Fires when | Carries |
 |---|---|---|
 | `UxmStaffModeEvent` | staff mode was entered or left | `isEntered()` |
 | `UxmStaffChatEvent` | a staff-chat message was sent | `getMessage()` |
 | `UxmScoreboardVisibilityEvent` | a player hid or showed the scoreboard | `isHidden()` |
+| `UxmBossBarVisibilityEvent` | a player's boss bars were hidden or shown, by themselves, by staff or through the API | `isHidden()` |
 | `UxmPoseEvent` | a player sat, lay down or stood up | `isStarted()`, `getType()`, `getReturnLocation()`, `getTargetId()` |
 
 ### Worlds

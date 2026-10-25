@@ -584,6 +584,23 @@ across a relog until somebody brings it back. Both go through the same use case 
 player is told what happened and the visibility event fires exactly as it would have. Asking for the state they are
 already in is `already-in-state` rather than a silent flip to the opposite.
 
+## Boss bars
+
+`actions.bossBar()` &rarr; `UxmBossBarActions`
+
+| Method | Does |
+|---|---|
+| `refresh(playerId)` | draw their bars now rather than at the next refresh |
+| `hide(playerId)` | hide their bars, as `/bossbars off` does |
+| `show(playerId)` | show them again |
+| `announce(barId, length)` | put a bar up for everybody for that long, as `/bossbars announce` does |
+| `send(playerId, barId, length)` | put a bar up for one player for that long, as `/bossbars send` does |
+
+Hiding and showing write the same choice `/bossbars` keeps on the player, and asking for the state they are already in
+is `already-in-state`. A bar the file does not write is `not-found`, whatever the case it is asked for in; a length
+that is not positive is `refused`; a player who is away is `player-offline`. An announcement is kept in memory, so a
+restart ends it.
+
 ## Tab list
 
 `actions.tablist()` &rarr; `UxmTablistActions`

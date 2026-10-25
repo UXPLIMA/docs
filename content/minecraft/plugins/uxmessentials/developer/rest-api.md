@@ -270,12 +270,14 @@ Hologram text comes back as stored, before MiniMessage and before placeholders: 
 differently for every viewer, so there is no one rendered answer to send. The powertool routes read a live
 inventory, so an offline player answers empty rather than `404`.
 
-### The command gate and the sidebar
+### The command gate, the sidebar and the boss bars
 
 | Route | Answers |
 |---|---|
 | `GET /players/{uuid}/command-check?command=` | What the gate would do with that command, and which rule settled it |
 | `GET /players/{uuid}/scoreboard` | Whether they have put their sidebar away |
+| `GET /players/{uuid}/bossbar` | Whether they have hidden their boss bars, and the ids on their screen |
+| `GET /bossbars` | The ids of the boss bars written in the module's file |
 
 The command is a query parameter rather than a path segment, because a command root can carry a `namespace:` prefix
 and a colon in a path is a fight nobody needs to have. It is required: there is no useful default.
@@ -474,7 +476,7 @@ The one line route says all three edits. No `line` number adds `text` to the bot
 replaces that line, and a `line` number without it removes that line. Numbers count from one. Removing the last
 remaining line is refused: delete the hologram instead.
 
-### The sidebar, tab list and nametags
+### The sidebar, tab list, nametags and boss bars
 
 | Route | Body |
 |---|---|
@@ -482,6 +484,10 @@ remaining line is refused: delete the hologram instead.
 | `POST /players/{uuid}/scoreboard/refresh` | none |
 | `POST /players/{uuid}/tablist/refresh` | none |
 | `POST /players/{uuid}/nametag/refresh` | none |
+| `POST /players/{uuid}/bossbar` | `hidden` (defaults to true) |
+| `POST /players/{uuid}/bossbar/refresh` | none |
+| `POST /bossbars/{bar}/announce` | `seconds` (required) |
+| `POST /players/{uuid}/bossbar/{bar}/send` | `seconds` (required) |
 
 All three displays repaint on their own timer, so a panel that has just changed a rank or a placeholder does not
 have to do anything for the change to show up. The refresh routes are for when that wait is too long. The nametag
@@ -556,10 +562,11 @@ money is a money whichever way it arrived.
 
 ### What is carried
 
-Eighty-five events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
+Eighty-six events, named `context.thing`. Every notification event uxmEssentials publishes is on the stream:
 
 | Context | Names |
 |---|---|
+| `bossbar` | `visibility` |
 | `communication` | `announcer-reload`, `broadcast-opt-out` |
 | `economy` | `wallet-credit`, `wallet-debit`, `wallet-reject`, `bank-deposit`, `bank-withdraw`, `loan-disburse`, `loan-repay` |
 | `hologram` | `create`, `delete` |
