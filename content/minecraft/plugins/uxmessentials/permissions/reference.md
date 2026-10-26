@@ -814,7 +814,7 @@ the server's own disk. See the [Skin](../modules/skin.md) guide.
 | `uxmessentials.skin.drop` | `op` | `/skin` drop `<player>`: delete a stored skin, so their next join derives one afresh. |
 | `uxmessentials.skin.info` | `op` | `/skin` info `<player>`: which skin somebody wears, from where, and when it was set. |
 | `uxmessentials.skin.purge` | `op` | `/skin` purge `<name>`: forget a cached texture so the next lookup goes back to the source. |
-| `uxmessentials.skin.name.<skin>` | `true` | Wear the skin of one named account; only checked for the skins the operator restricted. |
+| `uxmessentials.skin.name.<skin>` | `true` | Wear one skin listed under limits.restricted-skins; a skin nobody restricted is open to everyone. |
 
 ## Server Tweaks
 

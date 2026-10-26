@@ -34,7 +34,7 @@ Module `skin` · disabled by default · `modules/skin/config.conf`
 | `uxmessentials.skin.drop` | op | /skin drop \<player>: delete a stored skin, so their next join derives one afresh. |
 | `uxmessentials.skin.file` | op | /skin file \<name>: wear one of the skins the operator dropped in the server's skin folder. |
 | `uxmessentials.skin.info` | op | /skin info \<player>: which skin somebody wears, from where, and when it was set. |
-| `uxmessentials.skin.name.<skin>` | everyone | Wear the skin of one named account; only checked for the skins the operator restricted. |
+| `uxmessentials.skin.name.<skin>` | everyone | Wear one skin listed under limits.restricted-skins; a skin nobody restricted is open to everyone. |
 | `uxmessentials.skin.other` | op | /skin set \<name> \<player> and /skin clear \<player>: dress or undress somebody else. |
 | `uxmessentials.skin.purge` | op | /skin purge \<name>: forget a cached texture so the next lookup goes back to the source. |
 | `uxmessentials.skin.update` | everyone | /skin update: re-fetch your skin, for an account whose skin changed at the source. |
@@ -58,6 +58,7 @@ Module `skin` · disabled by default · `modules/skin/config.conf`
 | `bedrock.retries` | `2` | how many times a failed lookup is retried before the join falls through undressed |
 | `limits.cooldown-seconds` | `30` | between one change and the next; 0 turns the cooldown off |
 | `limits.blocked-skins` | `[]` | names nobody may wear, matched without regard to case |
+| `limits.restricted-skins` | `[]` | names only the holder of uxmessentials.skin.name.\<skin> may wear; every other name is open |
 | `limits.allowed-url-hosts` | `["i.imgur.com", "textures.minecraft.net"]` | hosts /skin url accepts; empty allows any host |
 | `mineskin.api-key` | `""` | optional; without a key MineSkin rate-limits harder |
 | `mineskin.folder` | `"skins"` | the folder under the plugin's data folder /skin file reads a \<name>.png from |
@@ -89,6 +90,12 @@ Module `skin` · disabled by default · `modules/skin/config.conf`
   undressed rather than holding the connection.
 - **A link is uploaded to MineSkin to be signed,** because an unsigned texture renders wrongly for other players
   on some clients. `limits.allowed-url-hosts` decides which hosts are accepted; leave it empty to accept any.
+- **Every skin name is open until you restrict it.** List a name under `limits.restricted-skins` and only a
+  player holding `uxmessentials.skin.name.<skin>` may wear it, so a skin can be kept for a rank;
+  `limits.blocked-skins` keeps a name from everybody.
+- **The console dresses and undresses another player** with `/skin set <name> <player>` and
+  `/skin clear <player>`, so a command line another plugin runs works the same way. It needs no node, even for a
+  restricted skin.
 - **`/skin file` reads only from the configured folder.** A path that tries to leave it is refused without the
   file being read.
 - **Bedrock skins come from Floodgate and the public Geyser skin service.** Without Floodgate the step resolves
