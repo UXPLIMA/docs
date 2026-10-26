@@ -309,3 +309,22 @@ deliberately not passed through and its markers use BlueMap's own default icon. 
 them would give every marker a broken image instead.
 
 Related: [Per-Module Config](per-module.md), [SQLite (Default)](../database/sqlite.md), [Velocity & Redis](../cross-server/overview.md), [Config Overview](overview.md)
+
+## `menu`
+
+The three sounds the menu engine plays on its own, in every window: `click` for a button that does
+something, `page` for a page arrow and `denied` for a button the player may not use.
+
+```hocon
+menu {
+  sounds {
+    click  { name = "block.note_block.pling", volume = 0.6, pitch = 1.5 }
+    page   { name = "item.book.page_turn",    volume = 0.7, pitch = 1.0 }
+    denied { name = "block.note_block.bass",  volume = 0.6, pitch = 0.9 }
+  }
+}
+```
+
+A sound is named by its vanilla key, because the key is what the client plays. An empty `name`
+silences that sound. A button whose own line in a menu file plays a `sound:` plays that sound
+alone, never the click on top of it. `/uxmess reload` reads the block again.

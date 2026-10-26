@@ -144,9 +144,10 @@ written as plain text with no tag at all.
 
 **Sound** is part of the look. Every menu declares an open sound through the engine's
 `sound:<key> <volume> <pitch>` action on `open-actions`. Click feedback is automatic: the engine
-plays it for every gesture it accepts, so your own menus get it without writing anything. A slot
-with nothing bound to it stays silent, and a click that declares its own `sound:` effect replaces
-the default rather than stacking on top of it.
+plays it for every gesture it accepts, so your own menus get it without writing anything. The
+click, the page turn and the refusal are the three under `menu.sounds` in `config.conf`, and
+`/uxmess reload` reads them again. A slot with nothing bound to it stays silent, and a click
+that declares its own `sound:` effect replaces the click rather than stacking on top of it.
 
 | Event | Sound | volume / pitch |
 |---|---|---|

@@ -32,9 +32,16 @@ Read on enable and on `/uxmglow reload`, and swapped in whole, so a reload is ne
 | `cycle.minimum-interval-ms` | `200` | The shortest step a player may ask for |
 | `cycle.default-interval-ms` | `1000` | The step used when a player names no number |
 | `cycle.maximum-colours` | `8` | How many colours one cycle may hold |
+| `menu.sounds.click` | `block.note_block.pling`, 0.6, 1.5 | What a button that does something plays |
+| `menu.sounds.page` | `item.book.page_turn`, 0.7, 1.0 | What a page arrow plays |
+| `menu.sounds.denied` | `block.note_block.bass`, 0.6, 0.9 | What a button the player may not use plays |
 
 One task drives every cycling player, not one task per player. The cost of the feature is the
 number of players who are cycling, and it does not grow with the number of colours they chose.
+
+Each menu sound has a `name`, a `volume` and a `pitch`, and the name is the vanilla key. An empty
+name silences that sound. A button whose own line in a menu file plays a sound plays that sound
+alone, never the click on top of it.
 
 ### Effects
 
