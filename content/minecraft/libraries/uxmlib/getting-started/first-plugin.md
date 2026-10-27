@@ -47,7 +47,7 @@ final class MenuCommand {
 
         menu.filler().fillBorder(GuiItem.display(
                 ItemBuilder.of(Material.GRAY_STAINED_GLASS_PANE)
-                        .name(Component.empty())
+                        .hideTooltip(true)
                         .build()));
 
         menu.set(2, 5, GuiItem.button(
