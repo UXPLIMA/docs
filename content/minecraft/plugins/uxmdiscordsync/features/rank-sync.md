@@ -1,16 +1,17 @@
 ---
 title: Rank and nickname sync
 order: 32
-description: Mapping LuckPerms groups to Discord roles, and formatting nicknames.
+description: LuckPerms groups as Discord roles, rank rewards for linking, and the Discord nickname format.
 icon: users-round
 ---
 
-Rank sync maps LuckPerms groups to Discord roles and keeps them in step. Nickname sync sets the
-linked user's Discord nickname from a format string you write.
-
-Both live in `rank-sync.yml`.
+Rank sync gives a linked member the Discord roles of their LuckPerms groups and takes them away again
+when the groups change. Nickname sync sets their Discord nickname from a format you write. Both are
+in `rank-sync.yml`, and each has its own switch.
 
 ## Rank sync
+
+Needs LuckPerms, and the bot needs **Manage Roles** with its own role above every mapped role.
 
 ```yaml
 rank-sync:
@@ -21,96 +22,109 @@ rank-sync:
   remove-old-roles: true
 ```
 
-| Key | Meaning |
+| Setting | Meaning |
 |---|---|
 | `sync-on-link` | Sync the moment an account is linked |
-| `sync-on-join` | Sync when the player joins the server |
-| `sync-interval` | Seconds between automatic sweeps; `0` disables them |
-| `remove-old-roles` | Take away mapped roles the player no longer qualifies for |
+| `sync-on-join` | Sync when the player joins |
+| `sync-interval` | Seconds between syncs of every online player. `0` turns them off |
+| `remove-old-roles` | Take away mapped roles of groups the player is no longer in |
 
-`remove-old-roles: true` is what makes this a *sync* rather than a grant. With it off, a player
-demoted in Minecraft keeps their Discord role forever.
+Only players who are online are synced. A player demoted while offline keeps their role until they
+next join.
 
-It only ever removes roles that appear in `rank-mappings`. Roles the plugin does not know about are
-never touched, so a manually assigned decoration role is safe.
+`remove-old-roles` only ever removes roles that appear in `rank-mappings`. A role you gave by hand
+and did not map is never touched. With `remove-old-roles: false`, the plugin only adds roles, and a
+demoted player keeps theirs.
 
 ## Mappings
 
 ```yaml
-rank-mappings:
-  - minecraft-group: "owner"
-    discord-role-id: "OWNER_ROLE_ID"
-    priority: 100
-    post-link-commands:
-      - "give %player% diamond 64"
+  rank-mappings:
+    - minecraft-group: "vip"
+      discord-role-id: "123456789012345678"
+      priority: 50
+      post-link-commands:
+        - "give %player% diamond 8"
 
-  - minecraft-group: "vip"
-    discord-role-id: "VIP_ROLE_ID"
-    priority: 50
-    post-link-commands:
-      - "give %player% diamond 8"
+    - minecraft-group: "default"
+      discord-role-id: "234567890123456789"
+      priority: 1
+      post-link-commands: []
 ```
 
-A player in several groups gets every matching role: the mapping is not exclusive. `priority`
-decides which group counts as their *primary* rank, which is what `%primary_rank%` resolves to in a
-nickname format.
+| Key | Meaning |
+|---|---|
+| `minecraft-group` | The LuckPerms group name |
+| `discord-role-id` | The role it gives |
+| `priority` | Higher wins where one rank has to be picked: the rank rewards and `%primary_rank%` |
+| `post-link-commands` | Run once, on the player's first link, for the highest-priority rank they have |
 
-The `default` group should be mapped too, so that every linked player receives a member role.
+A player in several mapped groups gets every one of their roles. Two groups may share a role: it
+stays as long as the player is in either group.
 
-### post-link-commands
+The plugin reads the groups the player is in directly, as `/lp user <name> parent info` lists them.
+A group the player only gets because another group inherits it does not count. Players who were
+given a rank with `parent set` are no longer in `default`, so map every rank you want a role for.
 
-Run once, when an account is linked, for the highest-priority group the player is in at that moment.
-This is the rank-specific link reward; `linking.post-link-commands` in `config.yml` is the one
-everyone gets.
+The rank rewards run after `linking.post-link-commands` in `config.yml`, which everyone gets. With
+the example above, a VIP gets 8 diamonds for linking and a default player nothing extra.
+
+## What you see
+
+After a sync that changed something, the console shows `Rank sync completed for`, the player and the
+roles added and removed, and the `rank-sync` audit log records it. A sync that changed nothing is
+silent.
+
+If Discord refuses a role, the console names it once and says to move the bot's role above it; the
+other roles still go through. The warning comes back after `/dsadmin reload`.
+
+`/dsadmin forcesync <player>` syncs one online player now. Use it after editing the mappings, and to
+test a new role id before trusting it.
 
 ## Nickname sync
 
 ```yaml
-nickname-sync:
-  enabled: true
-  sync-on-link: true
-  sync-on-join: true
-  sync-interval: 300
-  format: "%player_name% (@%server_name%)"
-  reset-on-unlink: true
-  skip-on-permission-error: true
-  max-length: 32
-  truncation-suffix: "..."
+  nickname-sync:
+    enabled: true
+    sync-on-link: true
+    sync-on-join: true
+    sync-interval: 300
+    format: "%player_name% (@%server_name%)"
+    reset-on-unlink: true
+    skip-on-permission-error: true
+    max-length: 32
+    truncation-suffix: "..."
 ```
 
-Format placeholders:
+Needs **Manage Nicknames**. The nickname is also updated after every rank change, because the
+format can contain the rank.
 
 | Placeholder | Value |
 |---|---|
-| `%player_name%` | Minecraft username |
+| `%player_name%` | Minecraft name |
 | `%player_displayname%` | Minecraft display name |
 | `%discord_name%` | Discord username |
-| `%discord_global_name%` | Discord global name, if set |
+| `%discord_global_name%` | Discord display name, or the username if none is set |
 | `%server_name%` | `plugin.server-name` |
-| `%primary_rank%` | Highest-priority group from `rank-mappings` |
-| `%all_ranks%` | Every group, comma separated |
+| `%primary_rank%` | The highest-priority mapped group the player is in, or one of their groups if none is mapped |
+| `%all_ranks%` | Every group the player is in, separated by commas |
 
-Discord caps nicknames at 32 characters. `max-length` and `truncation-suffix` handle names that
-exceed it, so a long username becomes `VeryLongMinecraftNa... ` rather than a rejected API call.
+Without LuckPerms, both rank placeholders are empty.
 
-`reset-on-unlink: true` restores the Discord username when the accounts are separated.
+| Setting | Meaning |
+|---|---|
+| `max-length` | Discord allows 32 characters. A longer nickname is cut and ends in `truncation-suffix` |
+| `reset-on-unlink` | Remove the nickname on unlinking, so the member's own name shows again |
+| `skip-on-permission-error` | Skip members the bot may not rename without a console warning |
 
-<Callout type="warning" title="Two things a bot cannot do">
+Discord never lets a bot rename the server owner or a member whose highest role is at or above the
+bot's. With `skip-on-permission-error: true` those members are skipped quietly instead of filling
+the console every five minutes.
 
-It cannot change the guild owner's nickname, and it cannot manage anyone whose highest role is at or
-above its own. Both are Discord rules, not plugin limitations. Move the bot's role to the top of the
-list, and keep `skip-on-permission-error: true` so the owner's unchangeable nickname does not spam
-your console every five minutes.
+## Several servers
 
-</Callout>
+Each server syncs the players who are on it, from its own LuckPerms data. With
+`remove-old-roles: true`, two servers with different mappings for one role undo each other's
+changes. Keep `rank-mappings` the same everywhere, or share LuckPerms' database.
 
-## Forcing a sync
-
-```
-/uxmdiscordsync forcesync            # everyone online
-/uxmdiscordsync forcesync <player>   # one player
-```
-
-Run this after editing `rank-mappings` rather than waiting for `sync-interval`, and use it to check
-your role ids before assuming they are right, because a wrong id is indistinguishable from a
-permission problem until you look.
+Related: [Account linking](account-linking.md), [Logging](logging.md#audit-log)
