@@ -1,6 +1,6 @@
 ---
 title: Upgrading to 2.6.3
-order: 14
+order: 15
 description: What to check before moving a 2.6.2 server to uxmDragonEvent 2.6.3, and what behaves differently afterwards.
 icon: circle-arrow-up
 ---
@@ -23,7 +23,7 @@ The configuration carries over. On the first start, new settings and messages ar
 | Area | 2.6.2 | 2.6.3 |
 |---|---|---|
 | `/dragon reset` | Rebuilt the event world | Removed. The world is rebuilt before every event by itself |
-| Starting an event | A second start while the world was being rebuilt ran a second event | Refused with `already-starting`. Staff see `starting` while the world is built, and `start-failed` if it cannot be |
+| Starting an event | A second start while the world was being rebuilt ran a second event | Refused with `already-starting`. The staff member who started it sees `starting` while the world is built; staff online see `start-failed` if it cannot be |
 | Commands with a plugin prefix | `/essentials:fly` slipped past the list | Blocked during an event by the new `block-namespaced-commands: true` |
 | Hitting the dragon | Anyone in the event world counted | Only players in the event can damage it. Staff watching are refused |
 | Damage on the killing blow | The whole hit was counted | Only the health the dragon had left is counted |

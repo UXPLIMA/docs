@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 13
+order: 14
 description: Events, rebirths, sessions, damage, statistics and the three worlds.
 icon: lightbulb
 ---
