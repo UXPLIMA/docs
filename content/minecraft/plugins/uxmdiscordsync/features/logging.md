@@ -1,113 +1,114 @@
 ---
 title: Logging
 order: 38
-description: Chat, join/leave and audit logs, each through its own webhook.
+description: The chat log, join and leave logs and the audit log, each posted through its own webhook.
 icon: scroll-text
 ---
 
-Three logs, all in `logging.yml`, all posted through webhooks rather than the bot: chat, join/leave,
-and audit.
+Three logs, all in `logging.yml`, all posted through Discord webhooks instead of the bot. Each has
+its own `webhook-url`, so each can go to a channel with its own permissions. How to make a webhook is
+on [Creating the bot](../getting-started/discord-bot.md#webhooks).
 
-Each section takes its own `webhook-url`, so each can go to a different channel with different
-permissions, which is the point of separating them.
+A webhook URL must start with `https://discord.com/api/webhooks/`. A channel link, or the default
+`YOUR_WEBHOOK_URL_HERE`, turns that log off with a warning in the console.
 
-## Chat logging
+## Chat log
 
 ```yaml
 chat-logging:
   enabled: true
-  webhook-url: "YOUR_WEBHOOK_URL_HERE"
+  webhook-url: "https://discord.com/api/webhooks/..."
   format: "**[%server_name%]** %player%: %message%"
   use-embed: false
+  filter:
+    ignore-prefixes: ["/", "!", "#"]
+    min-length: 1
+    max-length: 500
+    ignored-permission: ""
+  rate-limit:
+    enabled: true
+    max-messages-per-minute: 30
 ```
 
-Placeholders: `%player%`, `%player_displayname%`, `%message%`, `%server_name%`, `%world%`,
-`%timestamp%`.
+| Setting | Meaning |
+|---|---|
+| `format` | One line per message. `%player%`, `%player_displayname%`, `%message%`, `%server_name%`, `%world%`, `%timestamp%` |
+| `use-embed` | `true` posts an embed from `embed` instead, which also takes `%player_uuid%` |
+| `ignore-prefixes` | Messages starting with one of these are not logged |
+| `min-length`, `max-length` | Messages shorter or longer are not logged at all. A long message is skipped, not cut |
+| `ignored-permission` | Players with this permission are not logged. Empty turns it off |
+| `max-messages-per-minute` | Messages past this many in a minute are not logged |
 
-`use-embed: true` switches to an embed with the player's head as the author icon. Plain text is
-denser and easier to search; embeds read better. For a log you actually scroll through looking for
-something, plain text wins.
+A message another plugin cancels, such as a muted player's, is not logged. Discord lets a webhook
+post 30 messages a minute; a higher limit only means Discord drops them instead.
 
-### Filtering
-
-```yaml
-filter:
-  ignore-prefixes: ["/", "!", "#"]
-  min-length: 1
-  max-length: 500
-  ignored-permission: ""
-```
-
-`ignore-prefixes` keeps commands out of the chat log, including any typed as `/msg`, which is why
-`/` is there by default. Setting `ignored-permission` to something like
-`uxmdiscordsync.chatlog.ignore` exempts staff from being logged.
-
-`max-length: 500` truncates rather than dropping.
-
-### Rate limiting
-
-```yaml
-rate-limit:
-  enabled: true
-  max-messages-per-minute: 30
-```
-
-Thirty is Discord's own webhook allowance. Raising it does not raise Discord's limit: it only means
-messages get dropped by Discord instead of by the plugin.
+Plain lines are denser and easier to search, embeds easier to read. For a log you search through,
+plain lines win.
 
 ## Join and leave
 
-Two independent sections: `join-leave-logging.minecraft` for the game server, and
-`join-leave-logging.discord` for guild membership. Each has its own webhook and its own join and
-leave messages, in plain text or embed form.
+Two separate logs: `join-leave-logging.minecraft` for players on the server and
+`join-leave-logging.discord` for members of your Discord server. Each has its own webhook and its
+own `join` and `leave` texts, as a plain `message` or, with `use-embed: true`, an `embed`.
 
-Minecraft placeholders: `%player%`, `%player_displayname%`, `%player_uuid%`, `%server_name%`,
-`%online_players%`, `%max_players%`.
+| Log | Placeholders |
+|---|---|
+| Minecraft | `%player%`, `%player_displayname%`, `%player_uuid%`, `%server_name%`, `%online_players%`, `%max_players%` |
+| Discord | `%user%`, `%user_id%`, `%user_avatar_url%`, `%member_count%` |
 
-Discord placeholders: `%user%`, `%user_tag%`, `%user_id%`, `%user_avatar_url%`, `%member_count%`.
+The counts are the ones after the join or leave.
 
-Discord member logging requires the **Server Members** intent.
+For the Minecraft log, keep `use-embed: true`. With `false`, the plugin posts a fixed line, the
+player's name followed by `joined the server` or `left the server`, and does not read your `message`.
 
-## Audit logging
+With several servers, every server logs its own players, and Discord members are logged once.
+
+## Audit log
+
+The audit log is the record you go back to when something is disputed: who linked to which Discord
+account and when, who claimed a boost reward, which roles a sync gave.
 
 ```yaml
 audit:
   enabled: true
   account-link:
     enabled: true
-    webhook-url: "..."
-  account-unlink:
-    enabled: true
-  boost-claim:
-    enabled: true
-  rank-sync:
-    enabled: true
+    webhook-url: "https://discord.com/api/webhooks/..."
+    embed: ...
+  account-unlink: ...
+  boost-claim: ...
+  rank-sync: ...
 ```
 
-Four event types, each with its own webhook and its own embed. These are the records you go back to
-when something is disputed: who linked to which Discord account and when, who claimed a boost
-reward, what roles a sync actually changed.
+`audit.enabled: false` turns all four off.
 
-Point them at a staff-only channel. `%player_uuid%` and `%discord_id%` in the default embeds are
-what make an entry identifiable months later, and neither belongs in a public channel.
+| Event | Posted when | Placeholders |
+|---|---|---|
+| `account-link` | An account is linked, also with `forcelink` | `%player_name%`, `%player_uuid%`, `%discord_user%`, `%discord_id%`, `%server_name%`, `%timestamp%` |
+| `account-unlink` | A link is removed | The same |
+| `boost-claim` | A boost reward is claimed | The same |
+| `rank-sync` | A sync changed someone's roles | `%player_name%`, `%player_uuid%`, `%minecraft_ranks%`, `%discord_roles%`, `%server_name%`, `%timestamp%` |
 
-`rank-sync` fills `%minecraft_ranks%` and `%discord_roles%` with what the player had at the time,
-which turns "the plugin removed my role" into a question with an answer.
+`%minecraft_ranks%` lists the player's groups at the time and `%discord_roles%` the roles they map
+to, which turns "the plugin took my role" into a question with an answer.
 
-## Retention
+Send the audit log to a staff-only channel: player ids and Discord ids belong there, not in public.
 
-```yaml
-cleanup:
-  delete-old-logs-after-days: 30
-```
+Links, unlinks, boost claims and rank syncs are also kept in the database, and the plugin never
+deletes them.
 
-in `advanced.yml`. Applies to audit records held in the database; the webhook posts in Discord stay
-until you delete them. Set it to `0` to keep everything.
+## Sending and retrying
 
-<Callout type="note" title="Webhook URLs are credentials">
+| Setting in `config.yml` | Default | Meaning |
+|---|---|---|
+| `discord.webhooks.rate-limit-delay` | `2000` | Milliseconds between two audit messages to the same webhook. Messages that come sooner wait their turn |
+| `discord.webhooks.max-retries` | `3` | How often a log message is sent again after a network error or a Discord outage. `0` turns retries off |
+| `discord.webhooks.retry-delay` | `5000` | Milliseconds between those attempts |
 
-A webhook URL is enough for anyone to post in that channel as the webhook, no bot, no token, no
-membership. Keep `logging.yml` out of public repositories and out of pastes in support channels, and
-delete and recreate the webhook if one leaks.
+An audit message is only dropped when the queue for its webhook is more than five minutes long. A
+message Discord refuses, for example because the webhook was deleted, is not sent again.
 
-</Callout>
+`%timestamp%` is written in `localization.formats.datetime` and `localization.timezone`; see
+[config.yml](../config/config-yml.md#localization).
+
+Related: [Chat bridge](chat-bridge.md), [Rank and nickname sync](rank-sync.md)
