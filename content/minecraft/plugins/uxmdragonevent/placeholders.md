@@ -1,49 +1,50 @@
 ---
 title: Placeholders
 order: 60
-description: The event, both leaderboards and the schedule, as placeholders.
+description: The running event, both leaderboards and the schedule, as PlaceholderAPI placeholders.
 icon: braces
 ---
 
-The PlaceholderAPI expansion registers under the identifier `DragonEvent`, so every placeholder is
+The PlaceholderAPI expansion is built in and registers as `dragonevent`, so every placeholder is
 written `%dragonevent_...%`. Names are not case sensitive.
 
-## The current event
+## The running event
 
-| Placeholder | Returns |
-|---|---|
-| `%dragonevent_remaining_game%` | Time left in the event, formatted by `ingame-remaining-time-format` |
-| `%dragonevent_current_health%` | The dragon's current health, two decimals |
-| `%dragonevent_rebirths%` | Kills still required |
-| `%dragonevent_required_kills%` | Kills required in total |
-| `%dragonevent_players%` | How many players are in the event |
-| `%dragonevent_health%` | Same as `rebirths` (kept for compatibility) |
+| Placeholder | Returns | With no event running |
+|---|---|---|
+| `%dragonevent_remaining_game%` | Time left, formatted by `ingame-remaining-time-format` | `0m` |
+| `%dragonevent_current_health%` | The dragon's health, up to two decimals | Empty |
+| `%dragonevent_rebirths%` | Kills still needed to end the event, the current dragon included | Empty |
+| `%dragonevent_required_kills%` | Kills needed in total | The configured `required-kills` |
+| `%dragonevent_players%` | Players in the event | `0` |
+| `%dragonevent_health%` | Same as `rebirths`, kept for older setups | `0` |
 
-With no event running, `remaining_game` returns `0m` and `current_health` and `rebirths` return
-empty strings. Guard for that on a scoreboard that is always visible.
+`remaining_game` shows whole minutes, `14m` with 14 minutes and some seconds left, and switches to
+seconds in the last minute.
 
-`%dragonevent_current_health%` returns `200` if the dragon has not spawned yet.
+`current_health` shows `200` in the moment between the event starting and the dragon appearing,
+whatever its real health will be.
 
-<Callout type="note" title="health does not mean health">
+<Callout type="note" title="health is not the dragon's health">
 
-`%dragonevent_health%` returns the remaining **kill count**, not hit points: it is an older name for
-what `rebirths` returns. For the dragon's actual health, use `%dragonevent_current_health%`.
+`%dragonevent_health%` returns the kills still needed, like `rebirths`. For the dragon's hit points,
+use `%dragonevent_current_health%`.
 
 </Callout>
 
-## The event leaderboard
+On a scoreboard that is always visible, plan for the empty values: show the event lines only while
+an event runs, or use a placeholder that has a value either way.
 
-Damage in the current event:
+## The event leaderboard
 
 ```
 %dragonevent_top_name_<place>%
 %dragonevent_top_damage_<place>%
 ```
 
-Places count from 1. An empty place returns the `leaderboard-empty-entry` message rather than
-nothing.
-
-The default `end` message uses places 1 to 3; there is no cap.
+Damage in the running event, places counting from 1, with no upper limit. An empty place, or any
+place with no event running, returns the `leaderboard-empty-entry` message. See
+[Leaderboards](features/leaderboards.md#the-event-leaderboard).
 
 ## All-time leaderboards
 
@@ -64,22 +65,24 @@ The default `end` message uses places 1 to 3; there is no cap.
 %dragonevent_leaderboard_win_value_2%
 ```
 
-Damage values carry two decimals; kills and wins are whole numbers. Rebuilt with `/dragon refresh`.
+Updated every 10 minutes, or with `/dragon save` and `/dragon refresh`. See
+[Leaderboards](features/leaderboards.md#when-they-update).
 
 ## The schedule
 
 | Placeholder | Returns |
 |---|---|
-| `%dragonevent_remaining%` | Time until the next scheduled event, formatted by `remaining-time-format` |
-| `%dragonevent_next%` | When the next one is, formatted by `next-event-time-format` |
-| `%dragonevent_last%` | When the last one was |
+| `%dragonevent_remaining%` | Time until the next scheduled event, formatted by `remaining-time-format`. `N/A` while no next event is known |
+| `%dragonevent_next%` | When the next scheduled event starts, formatted by `next-event-time-format` |
+| `%dragonevent_last%` | When the last scheduled event started. Shows a date in 1970 until the first one has run |
 
-These require `auto-start.enabled`. Without a schedule there is no next event to report.
+All three need `auto-start.enabled: true` and return an empty value without it. Times are shown in
+`auto-start.timezone`. An event started with `/dragon start` does not change `last`.
 
 ## Where to use them
 
-The plugin resolves placeholders in its own configuration: the dragon's nametag, the boss bar name,
-the messages and the Discord embeds all accept them:
+The plugin reads placeholders in its own texts: the dragon's name, the boss bar, the messages, the
+titles, the rewards and the Discord messages all accept them.
 
 ```yaml
 dragon:
@@ -89,6 +92,6 @@ boss-bar:
   name: "Remaining Rebirths: %dragonevent_rebirths%"
 ```
 
-Outside the plugin, anywhere PlaceholderAPI reaches. `%dragonevent_remaining%` on a spawn hologram
-or a scoreboard is the single most useful one: an event nobody knows is coming is an event nobody
+Outside the plugin, they work anywhere PlaceholderAPI reaches. `%dragonevent_remaining%` on a spawn
+hologram or a scoreboard is the most useful one: an event nobody knows is coming is an event nobody
 attends.

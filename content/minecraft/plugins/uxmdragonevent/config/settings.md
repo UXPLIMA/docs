@@ -26,8 +26,8 @@ settings:
 | `next-event-time-format` | `%dragonevent_next%` and `%dragonevent_last%`. A Java date pattern: `dd/MM HH:mm` gives `28/10 20:00` |
 | `ingame-remaining-time-format` | `%dragonevent_remaining_game%`, the time left in the running event |
 
-The time left in the event is shown in minutes, rounded up, until less than a minute remains; then
-it switches to seconds.
+The time left in the event is shown in whole minutes until less than a minute remains; then it
+switches to seconds.
 
 ## Joining
 

@@ -1,15 +1,29 @@
 ---
 title: Concepts
 order: 14
-description: Events, rebirths, sessions, damage, statistics and the three worlds.
+description: How an event starts and ends, rebirths, a player's part in the event, damage and the five statistics.
 icon: lightbulb
 ---
 
 ## The event
 
-One event runs at a time. It starts on the schedule or with `/dragon start`, lasts
-`settings.dragon-event-time` minutes, and ends when the dragon has been killed the required number of
-times, or when the clock runs out, in which case nobody wins.
+One event runs at a time. It starts on the [schedule](../features/scheduling.md) or with
+`/dragon start`:
+
+1. The event world is rebuilt.
+2. The dragon spawns, the start message, title and sound go to the whole server, the `commands.start`
+   commands run, and Discord is told.
+3. Players join through the entrance for the next `settings.dragon-event-time` minutes.
+
+It ends in one of three ways:
+
+| How it ends | Rewards | Statistics |
+|---|---|---|
+| The dragon is killed `required-kills` times | Given | Everyone in the event gets a win |
+| The time runs out | None. Everyone is told `timed-out` | Everyone in the event gets a loss |
+| `/dragon stop`, `/dragon reload`, or the server stopping | None. Everyone is told `force-stop` | Nothing recorded |
+
+In every case, the players in the event are sent to the lobby spawn.
 
 ## Rebirths
 
@@ -18,68 +32,60 @@ dragon:
   required-kills: 2
 ```
 
-The dragon has to die more than once. Each death but the last is a **rebirth**: the dragon respawns,
-the last player to hit it gets the `each-last-hit` reward, and the fight continues. The final kill
-ends the event and pays out the leaderboard.
+The dragon has to die more than once. Each death but the last is a **rebirth**: the dragon comes back
+with full health, the player who landed the killing blow gets the `each-last-hit` reward, and the
+fight goes on. The last death ends the event and pays out the leaderboard.
 
-This is what turns a dragon fight into an event. One kill is over in a minute with enough players;
-two or three means the fight has phases, and the last-hit rewards give people something to compete
-for in each one.
+One kill is over in a minute on a busy server. Two or three give the fight rounds, and the
+killing-blow rewards give players something to compete for in each one.
 
-## The session
+## A player's part in the event
 
-A player who joins gets a session: their damage, kills and deaths for this event. It ends when the
-event does, or when they leave.
+From the moment a player joins until they leave, the plugin counts the damage they deal to the
+dragon. A player leaves by `/dragon leave`, by dying, by falling into the void, or by quitting the
+server. Whether their damage is kept for when they come back is up to `keep-stats-on-leave`; see
+[Joining](../features/joining.md#coming-back).
 
-```yaml
-settings:
-  keep-stats-on-leave: true
-  auto-join-after-leaving: true
-```
-
-`keep-stats-on-leave` means a player who disconnects and comes back keeps the damage they had done,
-without it, a crash costs them the event. `auto-join-after-leaving` puts them straight back in on
-rejoin rather than making them find the portal again.
+Only players in the event when it ends are ranked, rewarded and given a win or a loss.
 
 ## Damage and the leaderboard
 
-Every point of damage dealt to the dragon is recorded against the player who dealt it. At the end,
-the top three by damage get the `places` rewards and everyone else gets `every-other-player`.
+Every hit a player in the event lands on the dragon is added to their damage. At the end, players
+are ranked by damage: the `places` rewards go to the top of that ranking and `every-other-player` to
+the rest.
 
-Damage is the metric rather than kills because a dragon killed by one lucky arrow should not pay the
-same as one worn down over ten minutes.
+Damage decides the ranking rather than kills, so a dragon finished by one lucky arrow does not pay
+the archer the same as the players who wore it down for ten minutes. The lucky arrow still gets the
+killing-blow reward.
 
 ## Statistics
 
-Five persistent statistics survive the event and accumulate across all of them:
+Five statistics are kept per player across every event:
 
-| Statistic | Meaning |
+| Statistic | Counts |
 |---|---|
-| `dragon_kill` | Killing blows landed |
-| `dragon_damage` | Total damage dealt |
-| `death` | Deaths in events |
-| `win` | Events finished on the winning side |
-| `lose` | Events lost or timed out |
+| `dragon_kill` | Killing blows, one for every death of the dragon, rebirths included |
+| `dragon_damage` | All damage dealt to event dragons |
+| `death` | Deaths during events |
+| `win` | Events the player was in when the dragon was killed for the last time |
+| `lose` | Events the player was in when the time ran out |
 
-Players see their own with `/dragon stats`. They are stored in `data/stats.yml` and feed the
-all-time [leaderboards](../features/leaderboards.md).
+A win means being there at the end of a successful event, whatever the damage. Players see their own
+with `/dragon stats`. The all-time [leaderboards](../features/leaderboards.md) rank damage, killing
+blows and wins.
 
 ## Worlds
 
-Three worlds matter:
-
-| Setting | Role |
+| World | Role |
 |---|---|
-| `lobby-world-name` | Where players return to |
-| `event-world-name` | Where the fight happens |
-| `end-portals.world-list` | Which worlds' end portals lead to the event |
+| `lobby-world-name` | Holds the entrance region |
+| The lobby spawn | Where players are sent when they leave or the event ends. Set with `/dragon setlobbyspawn` |
+| `event-world-name` | Where the fight happens. Built by the plugin and rebuilt before every event |
 
-The event world is reset by the plugin. Everything else is left alone.
+See [Worlds and the border](../features/worlds.md).
 
 ## End rules
 
-Inside the event world, the plugin overrides vanilla behaviour: PvP, damage, keepInventory, block
-breaking, elytra, potions and about a dozen others. See [End rules](../features/end-rules.md).
-
-The defaults make the event a co-operative fight (no PvP, no player damage, items kept on death)
-which is the shape most servers want. Every one of them can be turned the other way.
+Inside the event world the plugin overrides vanilla behaviour: PvP, damage, keeping items, block
+breaking, elytra, potions and more. The defaults make the event a co-operative fight with no risk.
+See [End rules](../features/end-rules.md).
