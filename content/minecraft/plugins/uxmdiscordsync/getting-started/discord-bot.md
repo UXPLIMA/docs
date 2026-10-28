@@ -1,71 +1,81 @@
 ---
 title: Creating the bot
 order: 11
-description: Creating the application, the intents it needs, and where the IDs come from.
+description: The Discord application, the two intents it needs, its permissions and where the ids come from.
 icon: bot
 ---
 
+The bot is a Discord application you create once. The plugin logs in as it; no second program has
+to run anywhere.
+
 ## The application
 
-1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and create a
-   new application.
-2. Open **Bot** and copy the token. This is the value for `discord.token`: treat it as a password.
-3. On the same page, enable the **Privileged Gateway Intents** the plugin needs:
-   - **Server Members Intent**: required for rank sync, nickname sync and member join/leave
-     logging.
-   - **Message Content Intent**: required for the chat bridge, text-level XP and chat-style
-     custom commands (`!ip`).
-4. Open **OAuth2 → URL Generator**, tick `bot` and `applications.commands`, pick the permissions
-   below, and use the generated URL to invite the bot.
+1. Open the [Discord Developer Portal](https://discord.com/developers/applications) and create a new
+   application.
+2. Open **Bot**, reset the token and copy it. It goes into `discord.token` in `config.yml`. Treat it
+   like a password: whoever has it controls the bot.
+3. On the same page, under **Privileged Gateway Intents**, turn on **Server Members Intent** and
+   **Message Content Intent**.
+4. Open **OAuth2**, then **URL Generator**. Tick the scopes `bot` and `applications.commands`, tick
+   the permissions from the table below, and open the generated link to add the bot to your Discord
+   server.
 
-<Callout type="warning" title="Missing intents fail quietly">
+<Callout type="warning" title="Both intents are required">
 
-Without the Server Members intent, rank sync appears to run and assigns nothing. Without Message
-Content, the chat bridge sees empty messages. Neither produces an obvious error, if a feature does
-nothing at all, check the intents first.
+The plugin always asks Discord for both intents. With either one switched off in the portal, Discord
+refuses the login, the console shows `Failed to start Discord bot`, and every Discord feature stays
+off until the intent is on and the server restarts.
 
 </Callout>
 
-## Bot permissions in the guild
+## Permissions
 
 | Permission | Needed for |
 |---|---|
-| View Channels, Send Messages, Embed Links | Everything |
-| Manage Roles | Rank sync |
+| View Channels, Send Messages, Embed Links | Everything the bot posts |
+| Read Message History | The link channel. The bot looks for its own link message there and does not post one without this |
+| Manage Roles | The linked roles and rank sync |
 | Manage Nicknames | Nickname sync |
-| Ban Members, Kick Members, Moderate Members | Punishment sync |
-| Connect | The voice-channel presence feature |
-| Use Application Commands | Slash commands |
+| Connect | Parking the bot in a voice channel |
 
-The bot's own role must sit **above** every role it assigns and above every member whose nickname it
-changes. Discord refuses both operations otherwise, and it refuses them silently: a bot cannot
-manage a role equal to or higher than its own.
+The bot's own role must sit above every role it gives and above every member whose nickname it
+changes. Discord refuses both otherwise. Move the bot's role near the top of the role list in
+**Server Settings**, then **Roles**.
 
-The guild owner's nickname can never be changed by a bot. `nickname-sync.skip-on-permission-error:
-true` is what stops that from filling your console.
+Nobody can change the server owner's nickname, a bot included.
 
-## Getting IDs
+The bot also sends direct messages: the 2FA request, the message after linking and the level-up
+message. A member who blocks direct messages from server members does not receive them, and for 2FA
+that means their login times out.
 
-Turn on **Settings → Advanced → Developer Mode** in your Discord client. Right-clicking anything then
-offers **Copy ID**. You need:
+## Getting ids
+
+In Discord, open **User Settings**, then **Advanced**, and turn on **Developer Mode**. Right-clicking
+a server, channel, role or user then offers **Copy ID**.
 
 | Id | Where it goes |
 |---|---|
-| Guild | `discord.guild-id` |
-| Linking channel | `discord.linking.channel-id` |
-| Linked roles | `discord.linking.linked-role-ids` |
-| Rank roles | `rank-sync.yml → rank-mappings` |
-| Chat bridge channel | `chat-bridge.discord-channel-id` |
-| Stats channel | `server-stats.channel-id` |
-| Your own user | `discord-server-command.authorized-users` |
+| Your Discord server | `discord.guild-id` in `config.yml` |
+| The link channel | `discord.linking.channel-id` |
+| Roles every linked member gets | `discord.linking.linked-role-ids` |
+| Roles for each rank | `rank-mappings` in `rank-sync.yml` |
+| The chat bridge channel | `chat-bridge.discord-channel-id` |
+| The stats channel | `server-stats.channel-id` |
+| Staff allowed to use `/servercommand` and `/broadcast` | `authorized-users` in `config.yml` |
+| Channels that earn XP | `text-level.channels` and `voice-level.channels` in `level-system.yml` |
 
-Ids are strings. Keep the quotes: an 18-digit number written without them loses precision in YAML.
+Keep ids in quotes: `"123456789012345678"`. Written without them, YAML reads an 18-digit id as a
+number and can change its last digits.
+
+The bot only works in the Discord server named by `discord.guild-id`. If you add it to other
+servers, it ignores them.
 
 ## Webhooks
 
-Logging uses webhooks rather than the bot, so log volume does not consume the bot's rate limit.
-Create one per channel under **Channel → Edit Channel → Integrations → Webhooks**, copy the URL, and
-paste it into the matching `webhook-url` in `logging.yml`.
+The logs are not posted by the bot but through webhooks, so a busy log never slows the bot down. Make
+one webhook per log channel: **Edit Channel**, **Integrations**, **Webhooks**, **New Webhook**, then
+**Copy Webhook URL**. Paste the URL into the matching `webhook-url` in `logging.yml`; see
+[Logging](../features/logging.md).
 
-A webhook URL is a credential: anyone holding it can post to that channel as the webhook. Do not
-commit `logging.yml` to a public repository.
+A webhook URL is a password too: anyone who has it can post in that channel. If one leaks, delete the
+webhook in Discord and make a new one.

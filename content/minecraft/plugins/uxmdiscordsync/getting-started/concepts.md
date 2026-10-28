@@ -1,72 +1,80 @@
 ---
 title: Concepts
 order: 13
-description: The link, server names, link and reward modes, and webhooks versus the bot.
+description: The link, first-link rewards, server names, the embed format every file shares and the two placeholder styles.
 icon: lightbulb
 ---
 
 ## The link
 
-One Minecraft UUID paired with one Discord user id. Everything else in the plugin reads that pair:
-rank sync needs to know which Discord user to give a role to, 2FA needs to know who to ask, boost
-rewards need to know whose boost it is.
+A link pairs one Minecraft account with one Discord account, in both directions: a Minecraft account
+has at most one Discord account, and a Discord account at most one Minecraft account. Every other
+feature reads this pair. Rank sync needs to know whose roles to change, 2FA whom to ask, and boost
+rewards whose boost it is.
 
-A link is created by the player: `/link` in Minecraft produces a code, and the button in the linking
-channel takes it. Staff can create one directly with `/uxmdiscordsync forcelink`.
+A player creates the link with a code from `/link`, entered in Discord. The code is made in game,
+where the player has already proven who they are, so someone who only has the Discord account cannot
+claim a Minecraft account. Staff can also link two accounts directly with `/dsadmin forcelink`.
 
-Codes expire after `discord.linking.code-expiration` seconds (300 by default) and a player may
-generate at most `security.code-generation-rate-limit` of them per minute.
+To move a link to another Discord account, the player unlinks first, then links again.
+
+## First-link rewards
+
+The commands in `linking.post-link-commands`, and those of the player's rank in `rank-sync.yml`, run
+once per account, ever. A Minecraft account that was linked before gets nothing when it links again,
+and neither does a Discord account that was linked to another Minecraft account. Unlinking and
+linking again, or moving a Discord account to an alt, pays nothing.
+
+A player who is offline when their code is entered gets these rewards the next time they join.
 
 ## Server name
 
-`plugin.server-name` identifies this server. On a single server it is cosmetic: it appears in
-messages and embeds. On a network it decides who is who, and every server must have a different one.
-
-## Link mode and reward mode
-
-With `multi-server.enabled: true`, two settings decide how servers share:
-
-| Setting | Value | Meaning |
-|---|---|---|
-| `link-mode` | `shared` | The player links once and is linked everywhere |
-| | `separate` | The player links on each server independently |
-| `reward-mode` | `per-server` | A reward can be claimed once per server |
-| | `global` | A reward can be claimed once, ever |
-
-`separate` combined with `global` is contradictory in practice and `shared` with `per-server` is the
-combination most networks want: one identity, and rewards that are worth claiming on each server
-you play.
-
-<Callout type="warning" title="Rewards multiply if you get this wrong">
-
-`link-mode: separate` with `reward-mode: per-server` means a player can claim the link reward once
-per server. With five servers that is five diamonds, or five rank grants. Decide this before you
-open the plugin to players, not after.
-
-</Callout>
-
-## Webhooks versus the bot
-
-Two different paths reach Discord:
-
-- **The bot** does anything interactive: buttons, modals, slash commands, roles, nicknames, bans.
-- **Webhooks** do one-way logging: chat, join/leave, audit events.
-
-They have separate rate limits, which is the point. A busy chat log posting through a webhook does
-not slow down the bot's ability to answer a slash command. `discord.webhooks.rate-limit-delay`
-throttles webhook posts to stay inside Discord's 30-per-minute allowance.
+`plugin.server-name` names this server in embeds, logs and placeholders. On a single server it is a
+label. When several servers share the bot it is how they tell each other apart, so every server needs
+its own; see [Multi-server](../features/multi-server.md).
 
 ## Embeds
 
-Almost everything the plugin posts is a configurable embed: a title, a description, a colour, a
-thumbnail, a footer and optional fields. Colours are hex strings with a leading `#`, and the shared
-palette lives under `embeds.colors` in `config.yml`.
+Almost everything the bot posts is an embed you can edit. Every embed in every file takes the same
+keys; leave a key empty or remove it and that part is left out.
 
-Descriptions accept placeholders, `%player_name%`, `%discord_user%`, `%server_name%`,
-`%timestamp%` and others depending on the event.
+| Key | What it is |
+|---|---|
+| `title` | The title |
+| `description` | The main text. Discord formatting works: `**bold**`, `*italic*`, line breaks |
+| `color` | The bar on the left, as `"#5865F2"`. The `#` is required; without it no colour is set |
+| `thumbnail-url` | The small picture at the top right. `thumbnail` works too |
+| `image-url` | The large picture at the bottom. `image` works too |
+| `author-name`, `author-icon-url`, `author-url` | The line above the title, its icon and its link |
+| `footer-text`, `footer-icon-url` | The line at the bottom and its icon. `footer` and `footer-icon` work too |
+| `timestamp` | `true` shows the time of posting next to the footer |
+| `fields` | A list of `name`, `value` and `inline`. A field with an empty name or value is skipped |
 
-## Databases
+Pictures and links must be full `https://` addresses. Discord allows 25 fields and 1024 characters
+per field value.
 
-Five backends: `flatfile`, `sqlite`, `mysql`, `mariadb` and `postgresql`. Flatfile is the default
-and stores JSON in the plugin folder. Anything shared between servers needs a real database: see
-[Database](../config/database.md).
+## Two placeholder styles
+
+| Style | Used in |
+|---|---|
+| `%name%` | Config files: embeds, commands, formats |
+| `{name}` | Language files, the chat bridge formats and the level-up message |
+
+When you edit a text, keep the style it already uses: `{player}` in a config embed is printed as it
+is. The placeholders each text accepts are listed on [Placeholders](../placeholders.md).
+
+## The bot and webhooks
+
+The bot does everything that answers someone: the link button, slash commands, roles, nicknames,
+direct messages and the chat bridge. The logs go through webhooks instead, so a busy chat log never
+slows down the bot's answers.
+
+The bot never pings anyone by accident. Text it repeats from players or Discord users cannot
+mention `@everyone`, `@here` or a role, and chat bridged from the game cannot mention anyone at all.
+A role ping in an embed you write does not ping either.
+
+## Storage
+
+The plugin keeps links, codes, levels and cooldowns in a database. SQLite, a single file in the
+plugin folder, is the default and needs no setup. Several servers sharing one bot need MySQL,
+MariaDB or PostgreSQL. See [Database](../config/database.md).
