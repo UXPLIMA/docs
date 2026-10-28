@@ -15,6 +15,9 @@ Everything about the fight is configurable: where it happens, how hard the drago
 vanilla end rules apply inside, which commands players may use while they are in there, and the
 whole thing can announce itself in Discord without a second plugin.
 
+These pages describe uxmDragonEvent 2.6.3. Coming from 2.6.2, read
+[Upgrading to 2.6.3](getting-started/upgrading.md) first.
+
 - [Getting Started](getting-started/)
 - [Commands](commands.md)
 - [Features](features/)
