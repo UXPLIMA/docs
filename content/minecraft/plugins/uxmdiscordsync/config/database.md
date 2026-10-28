@@ -1,129 +1,145 @@
 ---
 title: Database
 order: 52
-description: The five backends, connection pooling, and what multi-server requires.
+description: The five storage types, connecting to MySQL and PostgreSQL, and moving an old flatfile server to SQL.
 icon: database
 ---
 
-Five backends. `type` picks one and only that backend's section is read.
+The database holds the links, the link codes, levels, boost cooldowns and the history of links,
+boost claims and rank syncs. It is set in the `database` section of `config.yml`, and only the section
+of the chosen `type` is read.
 
 ```yaml
 database:
-  type: "flatfile"   # flatfile, sqlite, mysql, mariadb, postgresql
+  type: "sqlite"
 ```
 
-| Type | Use when |
+| `type` | Use it when |
 |---|---|
-| `flatfile` | Single server, small player base, no external database available |
-| `sqlite` | Single server, want a real database without running one |
-| `mysql` / `mariadb` | Anything shared between servers |
-| `postgresql` | Large networks, or where PostgreSQL is what you already run |
+| `sqlite` | One server. A single file, nothing to install. The default |
+| `mysql`, `mariadb` | Several servers share the bot, or you already run MySQL or MariaDB |
+| `postgresql` | Several servers share the bot and PostgreSQL is what you run |
+| `flatfile` | Only for servers that already use it. Use `sqlite` instead |
 
-Multi-server support requires `mysql`, `mariadb` or `postgresql`. Flatfile and SQLite are files on
-one machine and cannot be shared, no matter what `multi-server.enabled` says.
+Several servers sharing one bot need `mysql`, `mariadb` or `postgresql`: SQLite and flatfile are files
+on one machine, and the plugin does not start on them in multi-server mode.
 
-## Flatfile
-
-```yaml
-flatfile:
-  data-folder: "data"
-  pretty-print: true
-  backup:
-    enabled: true
-    interval: 86400
-    max-backups: 7
-```
-
-JSON files under the plugin folder. `pretty-print: true` makes them readable and larger: worth
-keeping while you are setting things up, and worth turning off once you have thousands of links.
-
-Backups are taken every `interval` seconds and `max-backups` are kept. This is the only backend with
-built-in backups; the others rely on your own database tooling.
+Changing the database needs a restart. If the database cannot be reached at startup, or `type` is
+misspelled, the plugin does not start, and the console says why; it never runs on an empty
+replacement where every player would look unlinked.
 
 ## SQLite
 
 ```yaml
-sqlite:
-  file-name: "database.db"
+  sqlite:
+    file-name: "database.db"
 ```
 
-One file in the plugin folder. Do not copy it while the server is running: stop the server first,
-or you may get a file that opens and is missing recent writes.
+The file is in the plugin folder. Copy it only while the server is stopped; a copy taken while it
+runs can miss the last changes.
 
 ## MySQL and MariaDB
 
 ```yaml
-mysql:
-  host: "localhost"
-  port: 3306
-  database: "uxmdiscordsync"
-  username: "root"
-  password: "change_me_please"
-  pool:
-    maximum-pool-size: 10
-    minimum-idle: 5
-    connection-timeout: 30000
-    max-lifetime: 1800000
-    keepalive-time: 60000
-  ssl:
-    enabled: false
-    trust-certificate: true
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "uxmdiscordsync"
+    username: "root"
+    password: "change_me_please"
+    pool:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 10000
+      max-lifetime: 1800000
+      keepalive-time: 60000
+    ssl:
+      enabled: false
+      trust-certificate: true
 ```
 
-`maximum-pool-size: 10` is generous for this plugin: its queries are small and infrequent. If
-several plugins share a database server, the sum of their pools is what matters, and ten connections
-each adds up quickly. Five is usually plenty here.
+`mariadb` reads the same `mysql` section. Create the database and a user for it first; the plugin
+creates its own tables, all starting with `uxm_`.
 
-`max-lifetime: 1800000` (30 minutes) must stay **below** your MySQL `wait_timeout`, otherwise the
-pool hands out connections the server has already closed. This is the usual cause of a "communications
-link failure" an hour after startup.
+```sql
+CREATE DATABASE uxmdiscordsync CHARACTER SET utf8mb4;
+CREATE USER 'uxmds'@'%' IDENTIFIED BY 'a-strong-password';
+GRANT ALL PRIVILEGES ON uxmdiscordsync.* TO 'uxmds'@'%';
+```
 
-Set `ssl.enabled: true` for any database not on the same machine. `trust-certificate: true` accepts a
-self-signed certificate: acceptable on a private network, not over the internet.
+| Setting | Meaning |
+|---|---|
+| `maximum-pool-size` | Connections kept open. The plugin's queries are small; 5 is usually enough, and every plugin's pool counts against the database's limit |
+| `connection-timeout` | Milliseconds to wait for a connection before giving up |
+| `max-lifetime` | Milliseconds before a connection is replaced. Keep it below the database's `wait_timeout`, or the plugin is handed connections the database already closed |
+| `ssl.enabled` | Always encrypt the connection; a database without TLS is refused |
+| `ssl.trust-certificate` | `true` encrypts without checking the certificate, so a self-signed one works. `false` also checks that the certificate is trusted and matches the host |
 
-<Callout type="warning" title="Change the default password">
+Turn on `ssl` for a database on another machine. `trust-certificate: true` is fine on a private
+network, not across the internet.
 
-The shipped file has `username: "root"` and `password: "change_me_please"`. Create a dedicated user
-with rights to only this database. The plugin never needs `root`, and a shared root password in a
-config file is how one compromised plugin folder becomes every database on the host.
-
-</Callout>
+The shipped `root` and `change_me_please` are placeholders. Give the plugin a user with rights to its
+own database only, never `root`.
 
 ## PostgreSQL
 
 ```yaml
-postgresql:
-  host: "localhost"
-  port: 5432
-  database: "uxmdiscordsync"
-  username: "postgres"
-  password: "change_me_please"
-  schema: "public"
-  pool:
-    maximum-pool-size: 10
-    minimum-idle: 5
-    connection-timeout: 30000
-    max-lifetime: 1800000
-  ssl:
-    enabled: false
-    mode: "prefer"
+  postgresql:
+    host: "localhost"
+    port: 5432
+    database: "uxmdiscordsync"
+    username: "postgres"
+    password: "change_me_please"
+    schema: "public"
+    pool: ...
+    ssl:
+      enabled: false
+      mode: "prefer"
 ```
 
-`schema` lets several plugins share a database cleanly. SSL `mode` takes `disable`, `allow`,
-`prefer`, `require`, `verify-ca` or `verify-full`; `require` is the minimum for a remote database and
-`verify-full` is the one that actually checks the certificate.
+`schema` lets the plugin keep its tables apart in a database other plugins use. `ssl.mode` takes
+`disable`, `allow`, `prefer`, `require`, `verify-ca` or `verify-full`: `require` is the least for a
+remote database, and `verify-full` the one that checks the certificate.
 
-## Checking the connection
+## Flatfile
 
+```yaml
+  flatfile:
+    data-folder: "data"
+    pretty-print: true
+    backup:
+      enabled: true
+      interval: 86400
+      max-backups: 7
 ```
-/uxmdiscordsync database
-```
 
-Reports the active type, the connection state and how much data is stored. Run it after any change
-here: a database that failed to connect at startup leaves the plugin running with no storage, and
-this is the fastest way to see that.
+JSON files in `data/`. A copy is made into `data/backups/` when data is saved and `interval` seconds
+have passed since the last one, and the newest `max-backups` are kept. If a file cannot be read, the
+plugin does not start and points at the backups.
 
-## Switching backends
+## Moving off flatfile
 
-There is no built-in migration between types. Changing `type` starts an empty store; the old data
-stays where it was. Decide before you have players linked, or plan a manual migration.
+The import copies links, link history, levels, level rewards taken, boost cooldowns and the logs from
+flatfile into the SQL database you switch to. Link codes are left out; they expire in minutes.
+
+1. Put the server in maintenance, for example with the whitelist. A player who joins between the
+   switch and the import can claim rewards again and lose XP.
+2. Set `database.type` to `sqlite`, `mysql`, `mariadb` or `postgresql`, fill in its section, and
+   restart.
+3. Run `/dsadmin database importflatfile`. It counts what it found and changes nothing.
+4. Run `/dsadmin database importflatfile confirm` within 30 seconds.
+
+While it runs, the plugin does nothing else: logins are refused, commands answer that an import is
+running, and Discord is ignored. When it is done, it says how much it copied. Lift the maintenance.
+
+Everything goes in one step: if the import fails, nothing is copied. Rows the SQL database already
+has, such as a link made since the switch, are kept over the flatfile ones. The flatfile files stay
+where they are, and `data/imported-to-sql.txt` next to them stops a second import; delete it to import
+again.
+
+## Checking
+
+`/dsadmin stats` shows the database type and the number of linked accounts. A count of zero right
+after a change of database means the plugin is reading a new, empty one.
+
+Related: [Multi-server](../features/multi-server.md), [Upgrading to 2.2.0](../getting-started/upgrading.md)

@@ -1,62 +1,72 @@
 ---
 title: Languages
 order: 55
-description: The Minecraft message files, and the Discord text that lives elsewhere.
+description: The message files, adding a language, and which texts live in the config files instead.
 icon: languages
 ---
 
-Every message the plugin sends in Minecraft lives in `languages/<code>.yml`. Two ship (`en_US` and
-`tr_TR`) and `plugin.language` picks one.
+Every message the plugin sends in game, and the short answers the bot gives in Discord, are in
+`languages/<language>.yml`. `en_US` and `tr_TR` ship, and `plugin.language` in `config.yml` picks
+one. A change applies on `/dsadmin reload`.
 
 ```yaml
 plugin:
   language: "en_US"
-localization:
-  language: "en_US"
 ```
-
-Both keys are read. Set them to the same value.
 
 ## The format
 
-MiniMessage throughout, with a shared `prefix`:
+Messages in game are written in MiniMessage, and most start with the shared `prefix`:
 
 ```yaml
 prefix: "<#00a2ff>uxmDiscordSync</#00a2ff> <dark_gray>►</dark_gray> "
-no-permission: "<gradient:#FF6B6B:#C0392B>❌ You don't have permission to use this command!</gradient>"
-cooldown: "<gradient:#FF6B6B:#C0392B>⏰ Please wait <yellow>{time}</yellow> seconds!</gradient>"
+cooldown: "<gradient:#FF6B6B:#C0392B>Please wait <yellow>{time}</yellow> seconds!</gradient>"
 ```
 
-Message placeholders use `{braces}` (`{code}`, `{time}`, `{player}`) and are filled in by the
-plugin. This is a different convention from the config files, which use `%percent%` for their
-placeholders. When editing a message, keep whatever braces are already there.
+Values the plugin fills in are written in braces, such as `{code}`, `{time}` or `{player}`. When you
+edit a message, keep the braces that are there; a placeholder you add in braces that the message does
+not offer is shown as written. PlaceholderAPI placeholders such as `%player_name%` also work in
+messages sent to a player.
 
-Messages are grouped by feature: `linking`, `boost`, `rank-sync`, `two-factor` and so on.
+The answers the bot gives in Discord, under `discord-commands`, `network`, `level-system` and
+similar sections, are plain text with Discord formatting, not MiniMessage.
+
+| Section | Holds |
+|---|---|
+| `linking`, `status` | `/link`, `/unlink` and `/linkstatus` |
+| `boost`, `discord-reward` | `/boostprize` and `/discordreward` |
+| `admin`, `stats`, `network` | `/dsadmin` and its subcommands |
+| `two-factor` | The freeze, the kick messages, the notice to staff, and the location words in the 2FA request |
+| `discord-commands`, `server-commands`, `broadcast` | Bot answers to custom commands, `/servercommand` and `/broadcast` |
+| `level-system` | Bot answers to `/level` and `/leaderboard`, and the leaderboard lines |
 
 ## Adding a language
 
-Copy `en_US.yml` to a new file, translate the values, and point `language` at the new name without
-`.yml`.
+1. Set `plugin.language` to the new name, such as `de_DE`, and restart. The plugin creates
+   `languages/de_DE.yml` as a copy of `en_US.yml`.
+2. Translate the values in it, keeping the keys and the braces.
+3. Run `/dsadmin reload`.
 
-Keep every key. A key you delete has no fallback: the message becomes empty rather than reverting to
-English.
+A message missing from your file is taken from the shipped English text, so a key you deleted shows in
+English, not as nothing. New messages that come with an update are added to `en_US.yml` and
+`tr_TR.yml` only; compare your own file with `en_US.yml` after an update.
 
-After a plugin update, compare your file against the shipped `en_US.yml`: new messages are written to
-the shipped files only, and a missing key shows as nothing at all.
+## Texts that are not in the language files
 
-## What is not here
-
-Discord-side text is not in the language file. Embeds, button labels, modal fields and slash command
-descriptions are configured where the feature is:
+The embeds, buttons and other texts that belong to one feature are set where that feature is, so a
+full translation means editing those too:
 
 | Text | Where |
 |---|---|
-| Link embed, button, modal | `config.yml → discord.linking` |
-| 2FA embed and buttons | `two-factor.yml → embed`, `buttons` |
-| Stats embed | `config.yml → server-stats.embed` |
-| Log and audit embeds | `logging.yml` |
-| Custom command replies | `discord-commands/*.yml` |
-| Level-up DM | `level-system.yml → notifications` |
+| The link message, button, window and its answers | `discord.linking` in `config.yml` |
+| The 2FA request, its buttons and status words, the kick messages | `two-factor.yml` |
+| The stats message and its field names | `server-stats.embed` in `config.yml` |
+| The bot's status | `discord.presence.messages` in `config.yml` |
+| `/servercommand` and `/broadcast` confirmations, the broadcast prefix | `config.yml` |
+| The level-up message, `/level` and `/leaderboard` embeds | `level-system.yml` |
+| Every log message | `logging.yml` |
+| Custom command answers | `discord-commands/` |
+| The chat bridge formats | `chat-bridge` in `config.yml` |
+| Slash command descriptions of the built-in commands | Fixed, in English |
 
-This is deliberate (those strings are part of a feature's configuration, not of a translation) but
-it does mean translating the plugin fully means editing more than one file.
+Related: [config.yml](config-yml.md), [Placeholders](../placeholders.md)

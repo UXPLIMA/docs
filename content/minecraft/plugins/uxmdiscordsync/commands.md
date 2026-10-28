@@ -37,7 +37,7 @@ own permission as well. Typed without a subcommand, it lists them all.
 | `forcesync <player>` | Syncs an online player's ranks to Discord now |
 | `boostowner <player>` | Gives the boost rewards of the player's Discord account to this Minecraft account |
 | `network` | Shows the multi-server status. See [Multi-server](features/multi-server.md#checking-the-network) |
-| `debug` | Turns debug output on or off until the next restart |
+| `debug` | Turns debug output on or off until the next reload or restart |
 | `database importflatfile` | Copies old flatfile data into the SQL database. See [Database](config/database.md#moving-off-flatfile) |
 
 ### forcelink

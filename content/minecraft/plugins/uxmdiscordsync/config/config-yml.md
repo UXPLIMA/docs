@@ -1,9 +1,16 @@
 ---
 title: config.yml
 order: 51
-description: The bot, multi-server, linking, localization and the embed palette.
+description: The plugin section, the bot, times and dates, and the Discord commands that act on the server.
 icon: file-cog
 ---
+
+`config.yml` holds the settings the whole plugin shares. The larger sections have pages of their own:
+`database` on [Database](database.md), `multi-server` on [Multi-server](../features/multi-server.md),
+`discord.linking` and `linking` on [Account linking](../features/account-linking.md),
+`discord.presence`, `discord.voice` and `server-stats` on
+[Server stats and presence](../features/server-stats.md), `chat-bridge` on
+[Chat bridge](../features/chat-bridge.md). This page covers the rest.
 
 ## plugin
 
@@ -13,7 +20,6 @@ plugin:
   debug: false
   server-name: "main"
   language: "en_US"
-  auto-save-interval: 300
   version-checker:
     enabled: true
     check-interval: 3600
@@ -21,74 +27,49 @@ plugin:
     notify-permission: "uxmdiscordsync.admin"
 ```
 
-`server-name` must be unique per server on a network: it is the identity everything multi-server
-keys off. `auto-save-interval: 0` disables periodic saving, which is not recommended: data is then
-only written on shutdown, and a crash loses everything since the last restart.
+| Setting | Meaning |
+|---|---|
+| `license-key` | Your license key. Without a valid one the plugin does not start |
+| `debug` | Detailed console output. `/dsadmin debug` switches it until the next reload or restart |
+| `server-name` | This server's name: letters, digits, spaces, `-` and `_`, at most 50 characters. Read once at startup |
+| `language` | The language file for messages in game: `en_US`, `tr_TR` or one you add. See [Languages](languages.md) |
+| `version-checker.enabled` | Check uxplima.com for new versions and tell the console |
+| `version-checker.check-interval` | Seconds between checks, at least 60. `0` turns the check off |
+| `version-checker.notify-on-join` | Also tell players with `notify-permission` when they join |
 
-`language` here and `localization.language` further down are both read; keep them the same.
+The license is checked when the server starts. If it stops being valid while the server runs, the
+plugin keeps running and warns; the next start needs a valid license again.
 
 ## discord
 
-Bot token, guild id, presence, voice, linking and webhook rate limiting. Covered on:
-
-- [Creating the bot](../getting-started/discord-bot.md): token, guild, intents
-- [Account linking](../features/account-linking.md): the `linking` section
-- [Server stats and presence](../features/server-stats.md): `presence` and `voice`
-
 ```yaml
 discord:
-  webhooks:
-    rate-limit-delay: 2000
-    max-retries: 3
-    retry-delay: 5000
+  token: ""
+  guild-id: ""
 ```
 
-`rate-limit-delay` is milliseconds between webhook posts. 2000 keeps you inside Discord's 30-per-
-minute limit with room to spare. Lower it and Discord starts returning 429s, which the plugin then
-has to retry: slower overall than waiting in the first place.
-
-## multi-server
-
-```yaml
-multi-server:
-  enabled: false
-  link-mode: "shared"
-  reward-mode: "per-server"
-```
-
-Explained in [Concepts](../getting-started/concepts.md#link-mode-and-reward-mode). Requires a shared
-database: see [Database](database.md).
-
-## linking
-
-```yaml
-linking:
-  post-link-commands:
-    - "give %player% diamond 1"
-  allow-unlink: true
-  post-unlink-commands:
-    - "tellraw %player% {\"text\":\"Your account has been unlinked.\"}"
-```
-
-The commands every linked player gets. Rank-specific ones live in `rank-sync.yml`.
+The bot token and the id of your Discord server, from [Creating the bot](../getting-started/discord-bot.md).
+Both need a restart. `discord.webhooks` sets how the logs are sent; see
+[Logging](../features/logging.md#sending-and-retrying).
 
 ## localization
 
 ```yaml
 localization:
-  language: "en_US"
   formats:
-    date: "yyyy-MM-dd"
-    time: "HH:mm:ss"
     datetime: "yyyy-MM-dd HH:mm:ss"
   timezone: "server"
 ```
 
-Java `SimpleDateFormat` patterns. `timezone` takes `server` or a zone id such as `UTC`,
-`Europe/Istanbul` or `America/New_York`.
+`%timestamp%` in the logs and the 2FA request is written in `datetime` and shown in `timezone`.
 
-Set it explicitly rather than leaving `server` if your host is in a different timezone from your
-players: timestamps in audit logs are only useful if everyone reads them the same way.
+| Setting | Values |
+|---|---|
+| `datetime` | A Java date pattern: `dd.MM.yyyy HH:mm` gives `28.10.2026 20:00`. An invalid pattern falls back to the default |
+| `timezone` | `server` for the machine's own timezone, or a region such as `Europe/Istanbul`, `Europe/London` or `UTC`. An unknown one counts as `server` |
+
+Set the timezone your players and staff live in if the server is hosted somewhere else: a log is only
+useful if everyone reads its times the same way.
 
 ## discord-server-command
 
@@ -97,9 +78,21 @@ discord-server-command:
   enabled: false
   authorized-users:
     - "123456789012345678"
+  allowed-channels: []
+  embed: ...
 ```
 
-Console access from Discord. See the warning on [Commands](../commands.md#discord-slash-commands).
+Turns on `/servercommand` in Discord, which runs a console command on a server you pick. Read the
+warning on [Commands](../commands.md#discord-slash-commands) before you do.
+
+| Setting | Meaning |
+|---|---|
+| `authorized-users` | Discord user ids allowed to use it. Nobody else is, whatever their roles |
+| `allowed-channels` | Channel ids it works in. Empty means every channel |
+| `embed` | The confirmation. `%command%`, `%server%`, `%executor_mention%` and `%executor_id%` |
+
+The server named in the command checks these against its own `config.yml`, so each server decides
+for itself who may run commands on it.
 
 ## discord-broadcast
 
@@ -109,39 +102,20 @@ discord-broadcast:
   authorized-users:
     - "123456789012345678"
   prefix: "<gradient:#FFD700:#FF8C00>[Discord Broadcast]</gradient> <gray>►</gray> "
+  embed: ...
 ```
 
-`/broadcast` sends a message to every player. The prefix is MiniMessage and should say plainly that
-the message came from Discord: a broadcast that looks like a server announcement is a good way for
-one compromised Discord account to cause a lot of confusion.
+Turns on `/broadcast`, which sends a message to every player on a server you pick.
 
-## server-stats and chat-bridge
+| Setting | Meaning |
+|---|---|
+| `authorized-users` | Discord user ids allowed to use it |
+| `prefix` | Put in front of the message in game, in MiniMessage |
+| `embed` | The confirmation. `%message%`, `%sender%`, `%sender_mention%` and `%sender_id%` |
 
-Documented on [Server stats](../features/server-stats.md) and
-[Chat bridge](../features/chat-bridge.md).
-
-## embeds
-
-```yaml
-embeds:
-  colors:
-    success: "#57F287"
-    error: "#ED4245"
-    warning: "#FEE75C"
-    info: "#5865F2"
-    boost: "#EB459E"
-    link: "#00CED1"
-    unlink: "#FFA500"
-    rank-sync: "#9B59B6"
-```
-
-The shared palette. Individual embeds can override their own colour; these are the defaults, and
-setting them once is how the whole bot ends up looking like it belongs to your server.
+The prefix should say plainly that the message comes from Discord. A broadcast that looks like a
+server announcement lets one stolen Discord account cause a lot of confusion.
 
 ## config-version
 
-```yaml
-config-version: 1
-```
-
-Used for automatic migration between plugin versions. Do not edit it.
+Do not change it. The plugin writes its own version here and uses it to update your files.
