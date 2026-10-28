@@ -1,77 +1,62 @@
 ---
 title: Permissions
 order: 60
-description: Command nodes, the two Discord-side authorisation lists, and suggested groups.
+description: The permission nodes, who has them by default, and the Discord-side lists that permissions do not cover.
 icon: shield-check
 ---
 
-uxmDiscordSync declares no permissions in `plugin.yml`. Every command permission comes from
-`commands.yml`, which means the nodes below are defaults you can change, including to nothing.
+Every node below is declared by the plugin with a default, so operators have the staff nodes and
+every player has `uxmdiscordsync.boostreward` without any setup. The command nodes are the ones
+`commands.yml` ships with: if you rename one there, grant the new name instead.
 
-## Command permissions
+## Nodes
 
-| Permission | Grants | Default in `commands.yml` |
+| Permission | Default | Grants |
 |---|---|---|
-| n/a | `/link`, `/unlink`, `/linkstatus`, `/discordreward` | No permission required |
-| `uxmdiscordsync.boostreward` | `/boostprize` | Required |
-| `uxmdiscordsync.2fa` | `/2fa` | Required |
-| `uxmdiscordsync.admin` | `/uxmdiscordsync` | Required |
-| `uxmdiscordsync.admin.reload` | `reload` | Required |
-| `uxmdiscordsync.admin.stats` | `stats` | Required |
-| `uxmdiscordsync.admin.forcelink` | `forcelink` | Required |
-| `uxmdiscordsync.admin.forceunlink` | `forceunlink` | Required |
-| `uxmdiscordsync.admin.forcesync` | `forcesync` | Required |
-| `uxmdiscordsync.admin.debug` | `debug` | Required |
-| `uxmdiscordsync.admin.database` | `database` | Required |
+| `uxmdiscordsync.boostreward` | Everyone | `/boostprize` |
+| `uxmdiscordsync.admin` | Operators | `/dsadmin`, `/linkstatus <player>`, and the in-game notice of a new version |
+| `uxmdiscordsync.admin.reload` | Operators | `reload` |
+| `uxmdiscordsync.admin.stats` | Operators | `stats` |
+| `uxmdiscordsync.admin.forcelink` | Operators | `forcelink` |
+| `uxmdiscordsync.admin.forceunlink` | Operators | `forceunlink` |
+| `uxmdiscordsync.admin.forcesync` | Operators | `forcesync` |
+| `uxmdiscordsync.admin.boostowner` | Operators | `boostowner` |
+| `uxmdiscordsync.admin.network` | Operators | `network` |
+| `uxmdiscordsync.admin.debug` | Operators | `debug` |
+| `uxmdiscordsync.admin.database` | Operators | `database importflatfile` |
+| `uxmdiscordsync.admin.notify` | Operators | Hears about a denied 2FA login. See [Two-factor login](features/two-factor.md#denied-and-timed-out) |
+| `uxmdiscordsync.2fa.required` | Nobody | Is asked for 2FA, when `two-factor.require-permission` is `true` |
+| `uxmdiscordsync.admin.*` | Operators | Every `uxmdiscordsync.admin` node above |
+| `uxmdiscordsync.*` | Operators | Everything except `uxmdiscordsync.2fa.required` |
 
-Since nothing is declared in `plugin.yml`, these nodes are unknown to Bukkit until you grant them:
-operators have them implicitly, and nobody else does.
+`/link`, `/unlink`, `/linkstatus` and `/discordreward` need no permission.
 
-`uxmdiscordsync.boostreward` is required by default, which means a fresh install has boost rewards
-that no player can claim. Grant it to your default group, or clear the `permission` field for that
-command in `commands.yml`.
+`uxmdiscordsync.*` leaves out `uxmdiscordsync.2fa.required` on purpose: with
+`require-permission: true`, a wildcard would otherwise put every operator under 2FA without anyone
+deciding it. Grant the node itself to whoever should be asked.
 
-## Other permissions
+## Nodes you name yourself
 
-| Permission | Effect |
+Three settings take a permission of your choosing:
+
+| Setting | Effect |
 |---|---|
-| `uxmdiscordsync.admin.notify` | Receives 2FA denial alerts, if `on-deny.notify-admins` is on |
-| `uxmdiscordsync.chatlog.ignore` | Chat is not logged, if set as `chat-logging.filter.ignored-permission` |
+| `two-factor.on-deny.admin-permission` in `two-factor.yml` | Who hears about a denied 2FA login. Ships as `uxmdiscordsync.admin.notify` |
+| `plugin.version-checker.notify-permission` in `config.yml` | Who is told about a new version on join. Ships as `uxmdiscordsync.admin` |
+| `chat-logging.filter.ignored-permission` in `logging.yml` | Players holding it are left out of the chat log. Ships empty, which turns it off |
 
-Both are configurable: the first is `two-factor.yml → on-deny.admin-permission` and the second is
-`logging.yml → chat-logging.filter.ignored-permission`, which is empty by default. The nodes above
-are the suggested values, not fixed ones.
+## Permissions Discord decides
 
-`plugin.version-checker.notify-permission` decides who is told about a new plugin version on join:
-`uxmdiscordsync.admin` by default.
+Some things are decided by Discord ids, not by permissions:
 
-## Discord-side authorisation
+| Who | Set in |
+|---|---|
+| Who may use `/servercommand` | `discord-server-command.authorized-users` in `config.yml` |
+| Who may use `/broadcast` | `discord-broadcast.authorized-users` in `config.yml` |
+| Who may use a custom command | `required-roles` and `required-user-ids` in its file. See [Custom Discord commands](config/custom-commands.md#who-may-use-it) |
 
-Two features are gated by Discord **user id**, not by permission or role:
-
-```yaml
-discord-server-command:
-  authorized-users: ["123456789012345678"]
-
-discord-broadcast:
-  authorized-users: ["123456789012345678"]
-```
-
-Being an administrator in the guild grants neither. This is intentional: `/servercommand` is console
-access, and it should be held by named people rather than by whoever currently has a role.
-
-Custom Discord commands are gated per file by `required-roles` and `required-user-ids`: see
-[Custom Discord commands](config/custom-commands.md#restricting-a-command).
-
-## A working default group
-
-```
-uxmdiscordsync.boostreward
-uxmdiscordsync.2fa
-```
-
-Linking, unlinking, status and level rewards need nothing, so those two are all a normal player
-requires.
+Administrator rights in Discord grant none of these. `/servercommand` is console access, and it
+should belong to named people rather than to whoever holds a role this week.
 
 ## A staff group
 
@@ -79,8 +64,9 @@ requires.
 uxmdiscordsync.admin
 uxmdiscordsync.admin.stats
 uxmdiscordsync.admin.forcesync
+uxmdiscordsync.admin.network
 uxmdiscordsync.admin.notify
 ```
 
-Enough to diagnose and fix a sync problem. `forcelink`, `forceunlink`, `reload`, `debug` and
-`database` change state or reveal connection details, and belong to a smaller group.
+Enough to look into a sync problem. `forcelink`, `forceunlink`, `boostowner`, `reload`, `debug` and
+`database` change data or settings, and belong to a smaller group.
