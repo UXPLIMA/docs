@@ -1,7 +1,7 @@
 ---
 title: The dragon
 order: 31
-description: Health, damage, rebirths, glow, piñata mode and custom models.
+description: Name, glow, health and how it scales, damage, rebirths, piñata mode and custom models.
 icon: flame
 ---
 
@@ -18,13 +18,15 @@ dragon:
   glow-color: RED
 ```
 
-`name` is MiniMessage and accepts placeholders, so the nametag can be a live health readout.
-`name-visible` shows it above the dragon; `boss-bar-visible` shows the vanilla boss bar.
+| Key | Effect |
+|---|---|
+| `name` | The nametag, in MiniMessage. Placeholders work and are updated on every hit, so it can show the health live |
+| `name-visible` | Shows the nametag above the dragon |
+| `boss-bar-visible` | Shows the vanilla dragon boss bar |
+| `glow` | Outlines the dragon so it can be seen through the terrain, for everyone online, including players who log in later |
+| `glow-color` | `BLACK`, `DARK_BLUE`, `DARK_GREEN`, `DARK_AQUA`, `DARK_RED`, `DARK_PURPLE`, `GOLD`, `GRAY`, `DARK_GRAY`, `BLUE`, `GREEN`, `AQUA`, `RED`, `LIGHT_PURPLE`, `YELLOW`, `WHITE` |
 
-`glow-color` takes any of `BLACK`, `DARK_BLUE`, `DARK_GREEN`, `DARK_AQUA`, `DARK_RED`,
-`DARK_PURPLE`, `GOLD`, `GRAY`, `DARK_GRAY`, `BLUE`, `GREEN`, `AQUA`, `RED`, `LIGHT_PURPLE`,
-`YELLOW`, `WHITE`. Glow makes the dragon visible through the end's terrain, which matters more than
-it sounds when forty players are looking for it.
+A second, configurable boss bar is described in [Presentation](presentation.md#the-second-boss-bar).
 
 ## Health
 
@@ -36,25 +38,29 @@ dragon:
     health-per-player: 0.0
 ```
 
-`health` is the base. `health-per-player` scales it with the number of players in the event:
+`health` is the dragon's health. `health-per-player` adds to it based on how many players are
+**online on the server** when the dragon spawns, which is when the event starts:
 
-- `add-as-extra: true`. Final health is `health + (players × health-per-player)`
-- `add-as-extra: false`. Final health is `players × health-per-player`, and `health` is ignored
+| `add-as-extra` | The dragon's health |
+|---|---|
+| `true` | `health` + online players × `health-per-player` |
+| `false` | online players × `health-per-player`; `health` is not used |
 
-`health-per-player: 0.0` disables scaling.
+`health-per-player: 0.0` turns this off. With 40 players online, `health: 200` and
+`health-per-player: 25` give a dragon with 1,200 health.
 
-Scaling is the setting that makes an event work at both twenty players and two hundred. Without it,
-you are tuning a fixed number against an attendance you cannot predict.
+The count is taken from the whole server, not from the event, because nobody has joined yet when the
+dragon appears. A busy server gets a stronger dragon even if only part of it takes part.
 
-<Callout type="warning" title="2048 is a hard ceiling by default">
+<Callout type="warning" title="The server caps health at 2048">
 
-Spigot caps entity health at 2048. A configured value above that is clamped, not honoured: raise
-`maxHealth` in `spigot.yml` first if you need more. With `health-per-player` on a busy server it is
-easy to cross that line without noticing.
+Paper limits every creature's health to `settings.attribute.maxHealth.max` in `spigot.yml`, 2048 by
+default. A higher value is lowered to that limit and the console warns once. With
+`health-per-player` on a busy server this is easy to reach: raise the limit in `spigot.yml` first.
 
 </Callout>
 
-## Damage
+## Damage to players
 
 ```yaml
 dragon:
@@ -64,14 +70,20 @@ dragon:
     multiplier: 1.0
 ```
 
-| Key | Effect |
-|---|---|
-| `base-damage` | The damage to work from; `0.0` uses vanilla damage |
-| `multiplier` | Multiplies it; `1.0` is unmodified |
-| `add-base-to-final-damage` | Adds `base-damage` to the result instead of replacing it |
+The modifier changes the damage the dragon's own hits deal to players in the event. Its breath and
+fireballs deal their normal damage.
 
-With `disableDamage: true` in the end rules (the default) none of this reaches players. Turn that
-off first if you want the dragon to be dangerous.
+| `base-damage` | `add-base-to-final-damage` | A hit deals |
+|---|---|---|
+| `0.0` | any | The normal damage × `multiplier` |
+| above `0.0` | `false` | `base-damage` × `multiplier`, whatever the normal damage was |
+| above `0.0` | `true` | (normal damage + `base-damage`) × `multiplier` |
+
+`multiplier: 1.0` leaves the damage as it is. `multiplier: 0.0` turns the whole modifier off,
+`base-damage` included, so use `1.0` when you only want `base-damage`.
+
+With `end-rules.disableDamage: true`, the default, players take no damage at all and none of this
+applies. Turn that off first if you want the dragon to be dangerous.
 
 ## Rebirths
 
@@ -80,11 +92,22 @@ dragon:
   required-kills: 2
 ```
 
-How many times the dragon must die. Every death but the last respawns it and pays the
-`each-last-hit` reward; the last one ends the event.
+How many times the dragon must die. Every death but the last brings it straight back with full
+health: players in the event see the `respawn` title, and the player who landed the killing blow gets
+the `each-last-hit` reward. The last death ends the event. The lowest value is `1`.
 
-Two or three is the usual range. More than that and the later rebirths feel like repetition rather
-than escalation, because the dragon does not get stronger between them.
+The dragon does not get stronger between rebirths. Two or three is the usual range; more and the
+later rounds feel like repetition rather than a climax.
+
+## Who can hurt it
+
+Only players in the event damage the dragon. A hit from someone watching, such as staff who used
+`/dragon teleport`, is refused. Every hit is added to the player's damage for the leaderboard; the
+killing blow only counts the health the dragon had left, so one big hit at the end does not inflate
+anyone's score.
+
+The plugin removes any other dragon that appears in the event world, and spawns its dragon again if
+it disappears while players are in the event.
 
 ## Piñata mode
 
@@ -93,9 +116,9 @@ dragon:
   pinata: false
 ```
 
-The dragon stays where it spawned and does not move. Worth considering for a large event: a moving
-dragon in the end spends most of the fight out of reach, and a hundred players chasing it is not a
-fight so much as a queue.
+With `true`, the dragon hovers where it spawned instead of flying its circles. Worth considering for
+a large event: a moving dragon spends most of the fight out of reach, and a hundred players chasing it
+is more a queue than a fight.
 
 ## Custom models
 
@@ -106,15 +129,15 @@ dragon:
     model-id: unknown
 ```
 
-| Value | Uses |
+| `model-plugin` | Uses |
 |---|---|
-| `DEFAULT` | The vanilla dragon; the model system does nothing |
-| `MODEL_ENGINE` | ModelEngine V4 |
-| `ITEMS_ADDER` | ItemsAdder V4 |
-| `BETTER_MODEL` | The latest BetterModel |
+| `DEFAULT` | The vanilla dragon |
+| `MODEL_ENGINE` | A ModelEngine 4 model. Nexo and Oraxen models go through ModelEngine too |
+| `ITEMS_ADDER` | An ItemsAdder 4 custom entity |
+| `BETTER_MODEL` | A BetterModel model |
 
-Nexo and Oraxen both render through ModelEngine: use `MODEL_ENGINE` for those. `model-id` is the
-model's id in whichever plugin you chose.
+`model-id` is the model's id in that plugin. If the plugin is not installed, or the value is not one
+of these, the console warns and the vanilla dragon is used.
 
 ## Custom NBT
 
@@ -123,7 +146,6 @@ dragon:
   custom-nbt: ""
 ```
 
-Extra NBT applied to the dragon entity, for attributes or tags other plugins read. Write the contents
-**without** the surrounding braces, `{` and `}` at either end will not parse.
-
-Requires NBTAPI.
+Extra NBT for the dragon, for tags or attributes other plugins read. Write it **without** the outer
+braces: `{` and `}` at the start and end break it. Needs NBTAPI; without it the console warns and the
+NBT is ignored.
