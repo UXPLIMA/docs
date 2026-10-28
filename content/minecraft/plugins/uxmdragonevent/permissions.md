@@ -1,68 +1,66 @@
 ---
 title: Permissions
 order: 70
-description: The seven permissions, and which of them are safe to give away.
+description: The seven permissions, what each one really allows, and which are safe to give away.
 icon: shield-check
 ---
 
-Seven permissions, all defaulting to operators.
+Seven permissions, all given to operators by default.
 
 | Permission | Grants |
 |---|---|
-| `dragonevent.admin` | Every admin command |
-| `dragonevent.fly` | `/dragon fly`, and automatic flight when `auto-flight` is on |
+| `dragonevent.admin` | Every admin command, and entering the event world without joining |
+| `dragonevent.fly` | `/dragon fly`, and flight on arrival when `auto-flight` is on |
 | `dragonevent.joinevent` | Joining at all, when `settings.permission-required` is on |
 | `dragonevent.joincommand` | `/dragon join`, when `join-command.require-permission` is on |
-| `dragonevent.usecmds` | Bypasses `command-blocking` entirely |
-| `dragonevent.teleport.bypass` | Bypasses the block on teleporting out of the event world |
-| `dragonevent.fly.bypass` | Bypasses flight being disabled on join and on finish |
+| `dragonevent.usecmds` | Every command during an event, ignoring `command-blocking` |
+| `dragonevent.teleport.bypass` | Teleporting into the event world without joining |
+| `dragonevent.fly.bypass` | Keeping your own flight when you join, leave or the event ends |
 
 ## What players need
 
-Nothing. `/dragon`, `/dragon leave` and `/dragon stats` require no permission, and joining through
-the portal is open unless you turn on `permission-required`.
+Nothing. `/dragon`, `/dragon leave` and `/dragon stats` need no permission, and the entrance is open
+unless you turn on `permission-required`.
 
-The two conditional permissions only apply when their setting is on:
+The two join permissions only matter when their setting is on:
 
-- `dragonevent.joinevent` matters only with `settings.permission-required: true`
-- `dragonevent.joincommand` matters only with `join-command.enabled: true` and
-  `require-permission: true`
+- `dragonevent.joinevent` only with `settings.permission-required: true`
+- `dragonevent.joincommand` only with `join-command.enabled: true` and `require-permission: true`
 
 ## Flight as a perk
 
-`dragonevent.fly` is the one permission worth thinking about as a reward. It grants `/dragon fly`
-and, with `auto-flight: true`, flight from the moment a player enters.
-
-It is a real advantage in a dragon fight, not a cosmetic one: a flying player reaches the dragon
-whenever they want and never falls. If your leaderboard pays out meaningfully, giving flight to a
-donor rank is giving them the leaderboard.
+`dragonevent.fly` is the one permission to think about before giving it as a reward. It grants
+`/dragon fly` and, with `auto-flight: true`, flight from the moment a player arrives. In a dragon
+fight that is a real advantage, not a cosmetic one. See [Joining](features/joining.md#flight).
 
 ## The two bypasses
 
-`dragonevent.teleport.bypass` and `dragonevent.fly.bypass` exist for staff who need to move around
-and keep flying while an event runs. Both weaken the event's rules for whoever holds them.
+`dragonevent.teleport.bypass` lets a player who is not in the event teleport into the event world,
+for example to watch or to moderate. It does not let a player in the event teleport out: nobody can,
+and players leave with `/dragon leave`. A player in the event world without joining cannot damage the
+dragon.
 
-`dragonevent.teleport.bypass` in particular lets a player teleport out of the event world while still
-holding a session. Keep it on staff groups only.
+`dragonevent.fly.bypass` stops the plugin from taking flight away. Without it, flight a player
+brought from another plugin is removed when they arrive, and flight is turned off when they leave or
+the event ends.
 
 ## dragonevent.usecmds
 
-Bypasses `command-blocking` completely. A player with it can use `/home`, `/tpa` or any shop command
-mid-fight, which is precisely what the blocking exists to prevent.
-
-Staff need it to moderate an event. Nobody else should have it.
+Lets a player in the event use any command: `/home`, `/tpa`, a shop. That is exactly what
+`command-blocking` exists to prevent. Staff need it to moderate an event from inside; nobody else
+should have it.
 
 ## A staff group
 
 ```
 dragonevent.admin
 dragonevent.usecmds
-dragonevent.teleport.bypass
 dragonevent.fly
 dragonevent.fly.bypass
 ```
 
-Everything needed to run, watch and fix an event from inside it.
+Everything needed to run, watch and fix an event. `dragonevent.admin` already covers entering the
+event world without joining.
 
 ## A donor group
 
@@ -70,4 +68,4 @@ Everything needed to run, watch and fix an event from inside it.
 dragonevent.joincommand
 ```
 
-Skipping the walk to the portal is a fair perk. `dragonevent.fly` is not: see above.
+Skipping the walk to the entrance is a fair perk. `dragonevent.fly` is not.

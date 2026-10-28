@@ -1,20 +1,18 @@
 ---
 title: Joining
 order: 33
-description: The portal, the command, the entry fee, the IP limit and flight.
+description: The entrances, the checks a player passes on the way in, the entry price, leaving, coming back and flight.
 icon: door-open
 ---
 
-Three ways in (a portal, a command, or neither) and several gates in front of them.
+## The entrance
 
-## The portal
+Players join by walking into the WorldGuard region at spawn, or through end portals, depending on
+`settings.end-portals.all-end-portals-leads-to-event`. Both are set up in
+[Setting up the event](../getting-started/setup.md#3-the-entrance).
 
-The intended entrance. Either a WorldGuard region around a portal at spawn, or end portals in
-specific worlds. Both are set up in [Setting up the event](../getting-started/setup.md#4-the-portal).
-
-A portal is better than a command for the same reason a door is better than a teleport: everyone
-gathers in the same place, it is visible from spawn, and a player who has never heard of the event
-can see it happening.
+A visible entrance at spawn works better than a command alone: players gather in one place, and
+someone who has never heard of the event sees it happening.
 
 ## The command
 
@@ -25,8 +23,25 @@ settings:
     require-permission: true
 ```
 
-`/dragon join`, off by default. `require-permission: true` gates it behind
-`dragonevent.joincommand`, which makes skipping the walk to spawn a rank perk.
+`/dragon join` works next to the entrance once `enabled` is `true`. With `require-permission: true`
+it needs `dragonevent.joincommand`, which makes skipping the walk to spawn a rank perk. Players
+without it are told `join-command-no-perm`.
+
+## The checks on the way in
+
+A player is let in only if all of these pass, in this order:
+
+| Check | Message when it fails |
+|---|---|
+| An event is running | `not-active` |
+| `same-ip-limit` is not reached | `same-ip-limit-reached` |
+| The event world and its spawn are ready | `can-not-join` |
+| `permission-required` is off, or they have `dragonevent.joinevent` | `join-no-perm` |
+| They are not already in the event | `already-playing` |
+| The entry price can be paid | `economy-not-available` or `not-enough-money` |
+
+A player turned away at an entrance is sent to the lobby spawn. On the way in they are told
+`joined-with-price` when a price is set, and `joined-free` otherwise.
 
 ## Permission
 
@@ -35,8 +50,8 @@ settings:
   permission-required: false
 ```
 
-With this on, joining at all needs `dragonevent.joinevent`: whichever door they use. This is how you
-run the event for a subset of the server.
+With this on, joining needs `dragonevent.joinevent` whichever way the player comes in. This is how
+you run the event for part of the server only.
 
 ## Price
 
@@ -47,12 +62,14 @@ settings:
   price-required-for-every-join: true
 ```
 
-Charged through Vault. `price-required-for-every-join: true` charges again when a player who left
-comes back, which is what stops the entry fee being a one-off.
+Charged through Vault. The first time a player enters an event they pay `event-price`. Coming back
+after leaving, they pay again only with `price-required-for-every-join: true`.
 
-An entry fee makes the event a sink rather than a source: money comes out of the economy at the door
-and the rewards put some of it back. If your rewards pay more than the fee (as the defaults do)
-the event is still net inflation, just less of it.
+If Vault or an economy plugin is missing, players with a price to pay are told `economy-not-available`
+and stay out. Set `price-required: false` if you run no economy.
+
+The entry price takes money out of the economy and the rewards put money back. If the rewards pay
+more than the price, as the defaults do, the event still adds money overall, only less of it.
 
 ## Same-IP limit
 
@@ -61,13 +78,28 @@ settings:
   same-ip-limit: 0
 ```
 
-How many players from one address may be in the event at once. `0` disables the check.
+How many players from one address may be in the event at once. `0` turns the check off.
 
-This is an alt-account limit, and it is the one worth setting if rewards are worth anything: a
-leaderboard where one person occupies three of the top places is not a leaderboard. `1` or `2`
-covers most households; be aware that shared connections and VPN users are affected too.
+Set it if the rewards are worth anything: a leaderboard where one person holds three of the top
+places is not a leaderboard. `1` or `2` covers most households, but players behind a shared
+connection or a VPN are affected too.
 
-## Leaving and coming back
+## Leaving
+
+A player leaves the event when they:
+
+- run `/dragon leave`
+- die
+- fall into the void
+- quit the server
+
+Each one ends their part in the event. `/dragon leave` and the void send the player to the lobby
+spawn. A player who died keeps their items only with `end-rules.keepInventory: true`.
+
+While in the event, a player cannot teleport out of the event world: they are told
+`can-not-leave-event-world` and have to use `/dragon leave`.
+
+## Coming back
 
 ```yaml
 settings:
@@ -75,16 +107,17 @@ settings:
   auto-join-after-leaving: true
 ```
 
-`keep-stats-on-leave` means a disconnect does not cost a player their damage. `auto-join-after-leaving`
-puts them straight back in when they reconnect, without the portal.
+| Setting | Effect |
+|---|---|
+| `keep-stats-on-leave` | A player who left and comes back to the same event carries on with the damage they had done. Off, they start from zero |
+| `auto-join-after-leaving` | A player who quit the server is put back into the event when they log in again, without walking to the entrance. Needs `keep-stats-on-leave` |
 
-Both on is the forgiving configuration and the right default: a server hiccup should not eliminate
-someone from an event they paid to enter.
+Only players in the event when it ends are ranked and rewarded. A player who left and did not come
+back gets nothing for the damage they did, even with `keep-stats-on-leave` on.
 
-## Leaving the world
-
-A player in the event cannot teleport out. The `can-not-leave-event-world` message tells them to use
-`/dragon leave` instead. `dragonevent.teleport.bypass` exempts staff.
+`auto-join-after-leaving` only covers quitting the server. A player who used `/dragon leave` or died
+comes back through the entrance. Coming back costs the price again when
+`price-required-for-every-join` is on, including when the plugin puts a player back in by itself.
 
 ## Flight
 
@@ -93,15 +126,17 @@ settings:
   auto-flight: false
 ```
 
-With this on, players holding `dragonevent.fly` get flight automatically on entry. Everyone with the
-permission can also toggle it with `/dragon fly`.
-
-Flight is disabled on join and on finish for everyone else; `dragonevent.fly.bypass` exempts a player
-from that, which is what you give staff who need to keep flying.
+| | |
+|---|---|
+| `auto-flight: true` | Players with `dragonevent.fly` can fly as soon as they arrive |
+| `/dragon fly` | Players with `dragonevent.fly` turn flight on and off themselves |
+| Flight from other plugins | Taken away on arrival, unless the player has `dragonevent.fly` or `dragonevent.fly.bypass` |
+| Leaving or the event ending | Flight is turned off, unless the player has `dragonevent.fly.bypass` |
 
 <Callout type="note" title="Flight changes the fight">
 
-A dragon fight where players can fly is a different event: the platform, the pillars and the
-approach all stop mattering. Giving flight to a donor rank is a real advantage, not a cosmetic one.
+A flying player reaches the dragon whenever they want and never falls, so the platform, the pillars
+and the approach stop mattering. If the leaderboard pays out well, giving flight to a donor rank
+gives them the leaderboard.
 
 </Callout>

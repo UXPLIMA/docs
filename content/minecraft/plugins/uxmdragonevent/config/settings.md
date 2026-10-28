@@ -1,7 +1,7 @@
 ---
 title: settings
 order: 51
-description: The settings block in full, and the command-blocking rules beside it.
+description: The settings block of config.yml in full, with a pointer to the page for each part.
 icon: sliders-horizontal
 ---
 
@@ -22,12 +22,12 @@ settings:
 | Key | Meaning |
 |---|---|
 | `dragon-event-time` | Event length in minutes |
-| `remaining-time-format` | Countdown to the next event; `%days%`, `%hours%`, `%minutes%`, `%seconds%` |
-| `next-event-time-format` | `SimpleDateFormat` pattern for `%dragonevent_next%` and `_last%` |
-| `ingame-remaining-time-format` | The in-event clock, shown as minutes until under one, then seconds |
+| `remaining-time-format` | `%dragonevent_remaining%`, the time until the next scheduled event |
+| `next-event-time-format` | `%dragonevent_next%` and `%dragonevent_last%`. A Java date pattern: `dd/MM HH:mm` gives `28/10 20:00` |
+| `ingame-remaining-time-format` | `%dragonevent_remaining_game%`, the time left in the running event |
 
-The in-event clock switches from `minutes` to `seconds` automatically in the last minute: the two
-formats are the same value rendered differently, not two different timers.
+The time left in the event is shown in minutes, rounded up, until less than a minute remains; then
+it switches to seconds.
 
 ## Joining
 
@@ -40,76 +40,64 @@ settings:
   price-required: true
   event-price: 500
   price-required-for-every-join: true
-  same-ip-limit: 0
   keep-stats-on-leave: true
   auto-join-after-leaving: true
+  same-ip-limit: 0
+  auto-flight: false
 ```
 
-Documented on [Joining](../features/joining.md).
+See [Joining](../features/joining.md).
 
-## Worlds
+## The entrance
 
 ```yaml
 settings:
   lobby-world-name: world
-  event-world-name: 'dragonevent_end'
   worldguard-region-name: dragonportal
-  spawn-type: PLATFORM
-  delete-end-crystals: true
   end-portals:
     all-end-portals-leads-to-event: false
     include-all-worlds: false
     list-type: WHITELIST
     world-list:
       - "world_the_end"
+    portal-behavior-when-event-is-inactive: REGION_CHECK
     accepted-portal-types:
       - END_PORTAL
 ```
 
-Documented on [Worlds](../features/worlds.md) and
-[Setting up the event](../getting-started/setup.md#4-the-portal).
+See [Setting up the event](../getting-started/setup.md#3-the-entrance).
 
-## Flight
+## The event world
 
 ```yaml
 settings:
-  auto-flight: false
+  event-world-name: 'dragonevent_end'
+  spawn-type: PLATFORM
+  delete-end-crystals: true
 ```
 
-Gives flight on entry to players holding `dragonevent.fly`. See
-[Joining](../features/joining.md#flight).
-
-## Command blocking
-
-```yaml
-command-blocking:
-  disable-all-commands: true
-  list-type: WHITELIST
-  list:
-    - "/example"
-```
-
-Not inside `settings`, but closely related.
-
-`/dragon` subcommands are always allowed. Players with `dragonevent.usecmds` bypass everything here.
-
-| `list-type` | The list contains |
-|---|---|
-| `WHITELIST` | Commands players **may** use |
-| `BLACKLIST` | Commands players **may not** use |
-
-Use a whitelist. A blacklist has to enumerate every teleport, home, warp and shop command on the
-server, including the ones another plugin adds next month, and each one you miss is a way for a
-player to leave the arena while still holding an event session.
-
-`disable-all-commands: false` means the lists are not consulted at all.
+See [Worlds and the border](../features/worlds.md).
 
 ## Top of the file
 
 ```yaml
-config-version: "..."
+config-version: "2.6.3"
 license-key: ""
 ```
 
-`config-version` is written by the plugin and used for migration between versions: leave it.
-`license-key` comes from your UXPLIMA panel.
+`config-version` is written by the plugin and tells it which settings to add on an update: leave it
+alone. `license-key` is the key from your UXPLIMA purchase.
+
+## Debug output
+
+When something does not work and the console says nothing, add these two lines to the top of
+`config.yml` and run `/dragon reload`:
+
+```yaml
+debug: true
+debug-to-ops: false
+```
+
+`debug` writes what the plugin is doing to the console, including every Discord error.
+`debug-to-ops: true` sends the same lines to operators in game. Remove both when you are done; the
+next plugin update removes them anyway.
