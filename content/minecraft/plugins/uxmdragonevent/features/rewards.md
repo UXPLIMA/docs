@@ -1,7 +1,7 @@
 ---
 title: Rewards
 order: 36
-description: Who gets rewarded, and the three ways to write rewards.yml - fixed, picked at random, or rolled by chance.
+description: Who gets rewarded, and the three ways to write rewards.yml, as fixed rewards, random picks or chance rolls.
 icon: gift
 ---
 

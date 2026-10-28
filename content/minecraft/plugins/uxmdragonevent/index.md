@@ -24,3 +24,4 @@ These pages describe uxmDragonEvent 2.6.3. Coming from 2.6.2, read
 - [Configuration](config/)
 - [Placeholders](placeholders.md)
 - [Permissions](permissions.md)
+- [Troubleshooting](troubleshooting.md)
