@@ -1,43 +1,45 @@
 ---
 title: Storage & Selling
 order: 32
-description: Virtual and XP storage, capacity tiers and selling from the menu.
+description: Virtual and XP storage, the limits and their tiers, withdrawing, and selling from the menu.
 icon: archive
 ---
 
-## Virtual storage
+A spawner keeps what it produces. The owner, or a friend, opens it, takes items out or sells them on
+the spot. Nothing lies on the ground, so a busy farm costs the server one block instead of hundreds of
+item entities.
 
-Each spawner holds what it produces. A player opens the spawner, sees the stack of each item and
-either withdraws it or sells it on the spot. Nothing lies on the ground, so a busy farm costs the
-server one block entity rather than three hundred item entities.
+## Virtual storage and XP storage
+
+`modules/settings.yml`:
 
 ```yaml
 virtual-storage:
   default: true
   force-default: false
   permission: uxmspawners.settings.togglestorage
-```
 
-Turning storage off for a spawner makes it drop items into the world instead, which is what you
-want for the ITEM-mode spawners you actually want players to walk through.
-
-## XP storage
-
-XP is kept the same way and withdrawn from the menu.
-
-```yaml
 xp-storage:
   default: true
   force-default: false
   permission: uxmspawners.settings.togglexp
 ```
 
-`disable-xp-drops` in `config.yml` stops spawner mobs dropping XP on the floor at all.
+| Setting | Meaning |
+|---|---|
+| `default` | Whether a newly placed spawner has it on |
+| `force-default` | Players cannot change it. Pressing the button sets the spawner back to `default` |
+| `permission` | What a player needs to switch it in the spawner's settings menu |
+
+With virtual storage off, items drop on the ground around the spawner; with XP storage off, XP orbs
+do. `disable-xp-drops: true` in `config.yml` stops spawner mobs giving XP at all, stored or dropped.
+
+`force-default` does not change spawners already placed: one that has storage off keeps it off until
+someone presses the button.
 
 ## Limits
 
-`modules/storage_limits.yml` caps how much a spawner can hold, per item and for XP, with
-permission tiers on top:
+`modules/storage_limits.yml`:
 
 ```yaml
 storage-limit:
@@ -47,28 +49,51 @@ storage-limit:
   permissions:
     uxmspawners-storage1: 5000
     uxmspawners-storage2: 10000
-    uxmspawners-storage3: 20000
   xpPermissions:
     uxmspawners-xpstorage1: 15000
     uxmspawners-xpstorage2: 20000
-    uxmspawners-xpstorage3: 25000
 ```
 
-Keep the lists in ascending order. A player holding several of these gets the highest.
+| Setting | Meaning |
+|---|---|
+| `default` | How many of each item type a spawner holds. Rotten flesh and bones each have their own 2000 |
+| `xpLimit` | How much XP a spawner holds |
+| `permissions`, `xpPermissions` | Bigger limits for players with these nodes. The highest one a player holds counts |
+| `enabled` | `false` ignores the permission lists. `default` and `xpLimit` still apply |
+
+A spawner's limits come from its owner's permissions, and are worked out again every time the owner
+opens its menu. A rank bought later raises the limit of spawners already placed, from their next
+opening. What comes in while the storage is full is lost.
+
+A newly placed spawner stores no XP until its owner opens its menu for the first time. Open each
+spawner once after placing it.
+
+## The storage menu
+
+| Click | Does |
+|---|---|
+| Left-click an item | Takes 64, or what is there |
+| Right-click an item | Takes as many as fit in the inventory |
+| The sell button | Sells everything in the storage |
+
+The XP button in the main menu gives all stored XP to whoever presses it. Item spawners have no XP
+button.
 
 ## Selling
 
-The sell button is per spawner type (`spawnerInfo.sell_button`) and prices come from
-`itemPrices.priceProvider`:
+The sell button sells the whole storage at once, at the prices from [Prices](../config/prices.md),
+multiplied by the seller's multiplier. The money goes to whoever pressed it: a friend who sells
+gets the money, with their own multiplier.
 
-| Provider | Where prices come from |
-|---|---|
-| `CUSTOM` | The `itemPrices` list in `config.yml` |
-| `SHOPGUIPLUS` | ShopGUIPlus |
-| `ECONOMYSHOPGUI` | EconomyShopGUI, free or premium |
-| `EXCELLENTSHOP` | ExcellentShop |
+<Callout type="danger" title="Selling empties the whole storage">
 
-Money is paid through Vault. `modules/multipliers.yml` adds permission-based sell multipliers:
+Items without a price are sold for nothing and are gone with the rest. If players should keep
+something, give it no sell price and tell them to take it out first, or turn the sell button off for
+that spawner type with `sell_button: false`.
+
+</Callout>
+
+`modules/multipliers.yml`:
 
 ```yaml
 multipliers:
@@ -78,13 +103,11 @@ multipliers:
     uxmspawners-1-50x: 1.50
 ```
 
-Ascending order again, highest wins. `modules/other.yml → title-messages` decides whether the
-money and XP amounts are shown as a title on screen.
+The highest multiplier a player holds counts, and a player with none sells at 1. A value below 1
+never applies.
 
-<Callout type="note" title="A price provider is a contract with another plugin">
+With `title-messages.money-title` and `xp-title` on in `modules/other.yml`, selling and taking XP show
+the amount as a title on screen. Their texts are `sellItemsTitle` and `takeXpTitle` in the language
+file.
 
-With a shop provider selected, uxmSpawners does not keep its own prices: change a price in the
-shop plugin and spawners follow. If the shop plugin has no price for an item, it cannot be sold
-from a spawner either.
-
-</Callout>
+Related: [Prices](../config/prices.md), [Friends](friends.md), [Permissions](../permissions.md)
