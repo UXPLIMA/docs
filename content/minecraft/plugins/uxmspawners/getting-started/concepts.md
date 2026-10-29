@@ -1,65 +1,68 @@
 ---
 title: Basic Concepts
 order: 14
-description: Spawner types, storage, modules and how a spawner differs from a vanilla one.
+description: Ownership, how a spawner runs, its two modes, levels and what one cycle produces.
 icon: lightbulb
 ---
 
-## A spawner is an item with an owner
+## A spawner belongs to a player
 
-A uxmSpawners spawner is a normal block carrying NBT that names its type. Placing it registers it
-to the player who placed it; that ownership is what the menus, the friends list and the breaking
-rules all check.
+A uxmSpawners spawner is a spawner item that carries its type. Placing it registers it to the player
+who placed it. Only that owner, and the friends they add, can open its menu; anyone else who
+right-clicks it gets nothing. Only the owner, or staff with
+`uxmspawners.breakallspawners`, can break it.
 
-## Storage instead of drops
+## It runs on its own timer
 
-By default a spawner does not litter the ground. Mobs are killed by the auto-kill module, their
-drops go into the spawner's own virtual storage, and the player opens a menu to sell or withdraw
-them. XP is stored the same way.
+The vanilla spawner logic is switched off for these blocks. Instead, the plugin runs every spawner
+every `delay` seconds, as long as:
 
-`modules/settings.yml` decides whether new spawners start with virtual storage and XP storage on,
-and whether players may change it:
+| Condition | Note |
+|---|---|
+| The chunk is loaded | An unloaded chunk produces nothing |
+| A player is within `range` blocks | Any player, not only the owner. A WildLoaders chunk loader in the chunk counts too |
 
-```yaml
-virtual-storage:
-  default: true
-  force-default: false
-  permission: uxmspawners.settings.togglestorage
-```
+The vanilla rules do not apply: light, free space and the number of mobs nearby make no difference.
 
-With `force-default: true` the choice is yours, not theirs.
+## Two modes
 
-## Two modes: ENTITY and ITEM
+| `mode` | Produces |
+|---|---|
+| `ENTITY` | Mobs, or their loot directly with auto-kill |
+| `ITEM` | An item, such as the shipped `diamond` spawner. Auto-kill and XP do not apply |
 
-A spawner type spawns either a mob or an item:
+The type of a spawner is set by its file entry. See [Spawner Types](../config/spawner-types.md).
 
-```yaml
-spawnerInfo:
-  mode: ENTITY    # or ITEM
-  material: ZOMBIE
-  range: 16
-  delay: 8
-```
+## Levels
 
-`ENTITY` uses the material as an entity type; `ITEM` uses it as an item and produces that item
-directly, which is how the shipped `diamond` spawner works.
+Identical spawners stack: the owner opens the menu, presses **Level Up**, and every matching spawner
+in their inventory is merged into the placed one, one level each. A spawner at level 5 produces what
+five separate spawners would, from one block and one storage. See [Levels](../features/levels.md).
 
-## Modern auto-kill
+## What one cycle produces
 
-With `use-modern-autokill.enabled: true` on 1.16+, nothing is spawned at all. The plugin resolves
-what the mob *would* have dropped and adds it to storage. No entity is created, killed or ticked,
-which is the difference between a spawner farm the server notices and one it does not.
+| Setup | Result |
+|---|---|
+| `ENTITY` with auto-kill, modern | No mob appears. The loot of one mob, times the level, times (1 + spawn-amount boost), goes straight to storage |
+| `ENTITY` with auto-kill, classic | 1 + spawn-amount boost mobs appear and die at once. Each one's drops are multiplied by the level |
+| `ENTITY` without auto-kill | 1 + spawn-amount boost mobs appear. When anyone kills one, its drops are multiplied by the level |
+| `ITEM` | Level times (1 + spawn-amount boost) items |
 
-<Callout type="tip" title="Loot tables apply here">
+Boosts are on [Boosts](../features/boosts.md), auto-kill on [Auto-Kill](../features/auto-kill.md).
 
-`modules/autokill.yml → loottable-only-autokill` is on by default: your custom loot tables apply
-to auto-killed mobs, while a mob a player kills by hand drops what vanilla says. Turn it off to
-make loot tables apply to both.
+## Storage
 
-</Callout>
+With virtual storage on, which is the default, everything goes into the spawner: items up to the
+storage limit for each item type, and XP up to the XP limit. What does not fit is lost. The owner
+withdraws or sells it from the menu. With it off, items and XP drop on the ground around the
+spawner. See [Storage & Selling](../features/storage.md).
 
-## Levels and boosts
+Mobs from a spawner drop what your [loot table](../config/loot-tables.md) for that mob says, or their
+normal drops if there is none, however they die.
 
-A spawner has a level, capped by `modules/other.yml → spawner-level-limit.level-limit` (256 by
-default). On top of that, boost items apply a temporary multiplier to either the amount spawned or
-the delay between spawns. Boosts are consumable items you hand out or sell.
+## What is kept
+
+Placed spawners, their levels, friends, boosts and storage are kept in `database.db`. Changes are
+written every `auto-save.interval` seconds and when the server stops.
+
+Breaking a spawner at level 1 removes it with everything in its storage. Empty the storage first.
