@@ -11,7 +11,7 @@ database schema is updated by itself.
 
 ## Before you start
 
-1. Check the server: Paper 1.21.11 or newer, on Java 21.
+1. Check the server: Paper 1.21.11, on Java 21.
 2. Back up `plugins/uxmFarmer/` and, on MySQL, the database. The first start merges duplicate
    product and statistics rows and adds new columns; the backup is your way back to 3.x.x.
 3. On a network, stop every server and upgrade them all together. 4.0.0 renamed its Redis channels,

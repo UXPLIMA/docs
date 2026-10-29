@@ -9,7 +9,7 @@ uxmBlacksmith replaces "put items in a grid, get an item" with a contract. The p
 to the blacksmith, the work takes **real time**, it can **fail**, and finishing it earns **experience**
 in a progression system with levels, per-category masteries and a perk tree.
 
-Requires **Minecraft 1.16 or newer**.
+Requires **Minecraft 1.16 to 1.21.11**.
 
 ## The four ideas
 
