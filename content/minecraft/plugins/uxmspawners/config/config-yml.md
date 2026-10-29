@@ -1,52 +1,49 @@
 ---
 title: config.yml
 order: 52
-description: Worlds, blocks, mob behaviour, auto-save and the spawner list.
+description: The license, language, worlds, block behaviour and saving, with links to the larger sections.
 icon: file-cog
 ---
+
+`config.yml` holds the settings the whole plugin shares, the spawner types and the prices. Changes
+apply with `/uxmspawners reload`.
 
 ## Top level
 
 ```yaml
 license-key: ""
 config:
-  version: ...
-  lang: en          # en, tr, pl, de, fr
+  version: 4.2.0
+  lang: en
 database:
-  type: SQLITE      # leave as SQLITE
+  type: SQLITE
 ```
 
-`config.version` is written by the plugin: leave it alone. `database.type` currently has one
-supported value; do not change it.
+| Setting | Meaning |
+|---|---|
+| `license-key` | Your license key. Without a valid one the plugin does not start |
+| `config.version` | Written by the plugin to update your files when a new version is installed. Do not change it |
+| `config.lang` | `en`, `tr`, `pl`, `de` or `fr`. The language of messages, menus and mob names. See [Language and Menus](languages.md) |
+| `database.type` | `SQLITE` is the only one. Leave it |
 
-## World and block behaviour
+## Worlds and blocks
 
-| Option | Default | What it does |
+| Setting | Default | Meaning |
 |---|---|---|
-| `disabled-worlds` | `[testWorld]` | No spawner, vanilla or otherwise, may be placed or broken here |
-| `open-gui-on-click` | `true` | Right-clicking a spawner opens its menu |
-| `disable-xp-drops` | `false` | Spawner mobs drop no XP on the ground |
-| `disable-vanilla-spawners-spawning` | `false` | Vanilla spawners stop producing entirely |
-| `protect-spawners-from-explosions` | `false` | Explosions cannot destroy spawners |
+| `disabled-worlds` | `[testWorld]` | Worlds where no spawner, vanilla ones included, can be placed or broken. Staff with `uxmspawners.bypassplace` can still place |
+| `open-gui-on-click` | `true` | Right-clicking a spawner opens its menu. With `false` there is no way to open it, so storage cannot be emptied |
+| `disable-xp-drops` | `false` | Spawner mobs give no XP, neither stored nor dropped |
+| `disable-vanilla-spawners-spawning` | `false` | Vanilla spawners stop spawning anything |
+| `protect-spawners-from-explosions` | `false` | Explosions leave uxmSpawners spawners alone. Off, an explosion destroys one with its storage |
 
-## Mob behaviour
+## Mobs
 
-```yaml
-nerf-spawner-mobs:
-  enabled: false
-  nerf-every-mob: false
-  mobs: [ZOMBIE]
+| Section | Page |
+|---|---|
+| `use-modern-autokill` | [Auto-Kill](../features/auto-kill.md#modern-and-classic) |
+| `nerf-spawner-mobs`, `no-equipment` | [Auto-Kill](../features/auto-kill.md#mobs-that-do-spawn) |
 
-no-equipment:
-  enabled: false
-
-use-modern-autokill:
-  enabled: true
-```
-
-Covered in [Auto-Kill](../features/auto-kill.md).
-
-## Auto-save
+## Saving
 
 ```yaml
 auto-save:
@@ -54,14 +51,15 @@ auto-save:
   console-log: true
 ```
 
-Spawner data is written every `interval` seconds. This is the window you lose in a crash, 300 is
-the recommended value, and lowering it below about 60 buys little for the write cost. Keep
-`console-log: true`: it is where you find out that saving is failing.
+What spawners hold, their levels and their settings are written to `database.db` every `interval`
+seconds, and when the server stops. A crash loses at most that long. Placing a spawner is written at
+once.
 
-## spawners
+`console-log: true` writes a line for each save. Keep it on: it is how you see that saving works,
+and a failing save shows up there first.
 
-The spawner type definitions. See [Spawner Types](spawner-types.md).
+## spawners and itemPrices
 
-## itemPrices
+The spawner types are on [Spawner Types](spawner-types.md), the prices on [Prices](prices.md).
 
-Where sell prices come from. See [Prices](prices.md).
+Related: [Configuration](index.md), [Installation](../getting-started/installation.md)

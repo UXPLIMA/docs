@@ -1,7 +1,7 @@
 ---
 title: Prices
 order: 60
-description: Where sale prices come from, and the four price providers.
+description: What spawner output sells for, from your own list or a shop plugin, and what happens to items without a price.
 icon: coins
 ---
 
@@ -15,27 +15,43 @@ itemPrices:
   DIAMOND: 2
 ```
 
-`priceProvider` decides where a sell price comes from:
+in `config.yml`. `priceProvider` decides where a price comes from:
 
 | Provider | Source |
 |---|---|
-| `CUSTOM` | The list in this file |
-| `SHOPGUIPLUS` | ShopGUIPlus |
-| `ECONOMYSHOPGUI` | EconomyShopGUI, free or premium |
-| `EXCELLENTSHOP` | ExcellentShop |
+| `CUSTOM` | The list under it, material by material |
+| `SHOPGUIPLUS` | The sell price in ShopGUIPlus |
+| `ECONOMYSHOPGUI` | The sell price in EconomyShopGUI, free or premium |
+| `EXCELLENTSHOP` | The best sell price in ExcellentShop's virtual shop |
 
-With anything other than `CUSTOM`, the list below is ignored entirely.
+With a shop provider, the list is ignored and the shop's price changes follow automatically. If the
+shop plugin named is not installed, the console says so at startup and the list is used instead.
+Switching back to `CUSTOM` needs a restart; a reload keeps the shop.
 
-Keys are Bukkit material names and values are the price for one item. An item with no price cannot
-be sold from a spawner, which is a usable way to force a material to be withdrawn and used rather
-than turned into money.
+## How a price is used
 
-Payment goes through Vault, multiplied by whatever `modules/multipliers.yml` grants the player.
+| Rule | Note |
+|---|---|
+| By material | Keys are material names. A renamed or enchanted item sells as its material |
+| Per item | The price of one item, times how many are stored |
+| Multiplied | By the seller's multiplier from `modules/multipliers.yml` |
+| Rounded | To two decimals, and paid through Vault |
 
-<Callout type="note" title="Spawner farms are an economy, not a feature">
+An item with no price, here or in the shop, is worth 0. With a shop provider, the console and
+`logs/errors.txt` note each missing price whenever a total is worked out. With `CUSTOM` nothing is
+noted, so check the list against what your spawners and loot tables produce.
 
-These few numbers set the income of every farm on the server. Work out what one spawner earns per
-hour at your `delay` and `range` before opening it: that figure, not the price of the spawner,
-is what decides whether your economy holds.
+<Callout type="danger" title="Sell everything throws away items without a price">
+
+The sell button empties the whole storage and pays only for what has a price. Give every item your
+spawners produce a price, or tell players to take out what they want to keep before they sell.
 
 </Callout>
+
+## Setting prices
+
+These few numbers set the income of every farm on the server. Work out what one spawner makes in an
+hour at its `delay`, its level and your loot tables before players have many of them: that figure,
+more than the price of a spawner, decides whether your economy holds.
+
+Related: [Storage & Selling](../features/storage.md#selling), [Integrations](../integrations.md)

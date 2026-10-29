@@ -1,12 +1,13 @@
 ---
 title: Spawner Types
 order: 54
-description: Defining a spawner type in ENTITY or ITEM mode.
+description: The spawners section of config.yml, the default type every mob falls back on, and item spawners.
 icon: boxes
 ---
 
-Every spawner in the game is one entry in the `spawners` section. `default` is the fallback: any
-mob without its own entry is built from it.
+Every spawner type is an entry in the `spawners` section of `config.yml`. `default` is the one every
+mob without an entry of its own is built from, so a fresh install already has a spawner for every
+mob in the game.
 
 ```yaml
 spawners:
@@ -25,11 +26,32 @@ spawners:
       sell_button: true
 ```
 
+## Keys
+
+| Key | Meaning |
+|---|---|
+| `name`, `lore` | The spawner item's name and lore, in MiniMessage |
+| `disable-item-flags` | Hides the item's extra tooltip lines |
+| `model-data` | `ITEM` mode only: custom model data, or an item model such as `myserver:ruby`, for the item shown inside the spawner and the items it produces |
+| `spawnerInfo.mode` | `ENTITY` spawns mobs, `ITEM` produces an item |
+| `spawnerInfo.material` | A mob in `ENTITY` mode, such as `ZOMBIE`; an item in `ITEM` mode, such as `DIAMOND` |
+| `spawnerInfo.range` | Blocks within which a player has to be for the spawner to run |
+| `spawnerInfo.delay` | Seconds between cycles |
+| `spawnerInfo.sell_button` | Whether the storage menu has a sell button |
+| `spawnerInfo.details` | `ITEM` mode only: the `name` and `lore` of the items produced |
+
+`{entity_name}` and `{entity_name_lang}` only work in `default`: the mob's name, and its translated
+name from `translates` in the language file. Leave `material: {entity_name}` as it is there.
+
+Write `range` and `delay` in every type. A type without `delay` uses the one from `default`, but a type
+without `range` gets a range of 0 and practically never runs.
+
 ## Adding a type
 
-1. Copy the whole `default` block.
-2. Rename it: the key is the id `/uxmspawners give` takes.
-3. Change `material` and whatever else differs.
+1. Copy the whole `default` block under `spawners`.
+2. Rename the key. It is the name `/uxmspawners give` takes, written exactly as here.
+3. Change `name`, `lore` and `spawnerInfo` to what this type should be.
+4. Run `/uxmspawners reload`.
 
 ```yaml
   diamond:
@@ -49,32 +71,40 @@ spawners:
           - "<gray>This is a very cool diamond!"
 ```
 
-## Keys
+A mob spawner with its own type, such as a slower `zombie`, works the same way with `mode: ENTITY` and
+`material: ZOMBIE`.
 
-| Key | Meaning |
+## Changing a type later
+
+| Change | Placed spawners |
 |---|---|
-| `name` | Item name, MiniMessage. `{entity_name}` is the entity |
-| `lore` | Item lore. `{entity_name_lang}` is the translated entity name |
-| `disable-item-flags` | Hides vanilla item flags on the spawner item |
-| `model-data` | Custom model data |
-| `spawnerInfo.mode` | `ENTITY` spawns creatures, `ITEM` produces items |
-| `spawnerInfo.material` | An entity type in `ENTITY` mode, an item in `ITEM` mode |
-| `spawnerInfo.range` | Blocks a player must be within for the spawner to run |
-| `spawnerInfo.delay` | Seconds between spawn attempts |
-| `spawnerInfo.sell_button` | Whether the menu offers selling |
-| `spawnerInfo.details` | `ITEM` mode only (the name and lore of the produced item) |
+| `delay`, `range`, `material`, `details`, `sell_button` | Follow the new value after a reload |
+| `name`, `lore` | Keep the old ones on items already handed out, and those no longer level up with new ones |
 
-<Callout type="warning" title="Leave material alone in default">
+Do not remove a type while spawners of it are placed: they read their settings from it on every
+cycle.
 
-`material: {entity_name}` in the `default` block is what makes one definition cover every mob. A
-literal material there turns every unconfigured spawner into that one thing.
+## Item spawners
 
-</Callout>
+An `ITEM` spawner produces its item, level times per cycle, into its storage or onto the ground. It
+has no auto-kill and no XP. The produced items sell by their material: a renamed diamond sells as a
+diamond.
 
-<Callout type="tip" title="Seeing ITEM spawners actually drop">
+The comment above `details` in the shipped `config.yml` mentions `modules/settings.yml` and `force:`.
+The setting is `force-default`, see [Storage & Selling](../features/storage.md). With virtual storage
+off, the items drop around the spawner where players can see them.
 
-An `ITEM` spawner's output goes to virtual storage like everything else. To see items falling
-around the spawner, set `virtual-storage.default: false` and `force: true` in
-`modules/settings.yml`, which disables virtual storage for all spawners.
+## ItemsAdder
 
-</Callout>
+With ItemsAdder installed, `material` can name an ItemsAdder item or mob:
+
+```yaml
+    spawnerInfo:
+      mode: ITEM
+      material: "IA-myserver:ruby"
+```
+
+`IA-` followed by `namespace:id` produces that item in `ITEM` mode, or spawns that custom mob in
+`ENTITY` mode.
+
+Related: [Basic Concepts](../getting-started/concepts.md), [Prices](prices.md), [Loot Tables](loot-tables.md)
