@@ -9,7 +9,7 @@ icon: download
 
 | Requirement | Detail |
 |---|---|
-| Server | Paper 1.21.4 to 1.21.11, or a fork of Paper |
+| Server | Paper 1.21.4 or newer, or a fork of Paper |
 | Java | 21 or newer |
 | Vault | Required, with an economy plugin and a permission plugin such as LuckPerms behind it |
 | NBTAPI | Required. Spawner, boost and pickaxe items are told apart by data stored on the item |

@@ -9,7 +9,7 @@ icon: download
 
 | | |
 |---|---|
-| Server | Paper or Folia 1.21.11, or Paper or Folia 26.x.x |
+| Server | Paper or Folia 1.21.11 or newer, 26.x.x included |
 | Java | 21 or newer for 1.21.11, 25 or newer for 26.x.x |
 | Required | WorldGuard and PlaceholderAPI. Without either, the plugin turns itself off |
 | Required on Folia and 26.x.x | A world plugin: Worlds by TheNextLvl, or MyWorlds on Paper 26.x.x |

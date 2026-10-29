@@ -9,7 +9,7 @@ icon: download
 
 | | |
 |---|---|
-| Server | Paper 1.21.4 to 1.21.11. Folia is supported |
+| Server | Paper 1.21.11 or newer. Folia is supported |
 | Java | 21 or newer |
 | Optional | PlaceholderAPI, for the [placeholders](../placeholders.md) and for placeholders in rewards |
 | Optional | MySQL or MariaDB, instead of the built-in SQLite file |

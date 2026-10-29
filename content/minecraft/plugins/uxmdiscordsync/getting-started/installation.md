@@ -9,7 +9,7 @@ icon: download
 
 | | |
 |---|---|
-| Server | Paper 1.21 to 1.21.11, or a fork of Paper. Spigot is not supported |
+| Server | Paper 1.21.11 or newer, or a fork of Paper. Spigot is not supported |
 | Java | 21 or newer |
 | License | A uxmDiscordSync license key from UXPLIMA |
 | Discord | A bot made as in [Creating the bot](discord-bot.md) |

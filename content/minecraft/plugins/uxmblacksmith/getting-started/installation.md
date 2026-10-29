@@ -9,7 +9,7 @@ icon: download
 
 | | |
 |---|---|
-| Server | Bukkit, Spigot or Paper, 1.16 to 1.21.11 |
+| Server | Bukkit, Spigot or Paper, 1.16 or newer |
 | Database | SQLite, bundled (nothing to install) |
 
 ## Optional plugins

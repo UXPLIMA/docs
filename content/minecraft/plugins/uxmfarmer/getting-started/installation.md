@@ -9,7 +9,7 @@ icon: download
 
 | | |
 |---|---|
-| Server | Paper 1.21.11. Folia is supported |
+| Server | Paper 1.21.11 or newer. Folia is supported |
 | Java | 21 or newer |
 | Required | A region plugin from the [supported list](../integrations.md#region-hook) |
 | Recommended | PlaceholderAPI, Vault, an NPC plugin |

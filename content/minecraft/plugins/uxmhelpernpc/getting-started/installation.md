@@ -9,7 +9,7 @@ icon: download
 
 | Requirement | Detail |
 |---|---|
-| Server | Paper 1.21 to 1.21.11 (`api-version: 1.21`) |
+| Server | Paper 1.21.11 or newer |
 | Java | Whatever your Paper build requires |
 | Folia | Supported (the plugin declares `folia-supported: true`) |
 | Region plugin | One of the supported claim or skyblock plugins, see [Integrations](../integrations.md) |
