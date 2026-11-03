@@ -16,7 +16,7 @@ levels, a cosmetic shop, renting and selling, snapshots, and protection against 
 | [Plot worlds](../features/worlds.md) | One file per world: grid, layers, walls, roads, flags, entity caps, prices, looks |
 | [Claiming](../features/claiming.md) | Claim, auto claim, limits by node, bought slots, homes and visiting |
 | [Members and visitors](../features/members.md) | Four grades of trust, bans, who may visit, building sessions |
-| [Flags](../features/flags.md) | Thirty two switches per plot, with world defaults and locks |
+| [Flags](../features/flags.md) | Thirty four switches per plot, with world defaults and locks |
 | [Protection](../features/protection.md) | Roads, forbidden blocks, cross-boundary tricks, lag machines, crash items, WorldEdit |
 | [Shaping a plot](../features/shaping.md) | Floor, wall, border, ground, biome, clear, reset, snapshots, templates, merging |
 | [Gallery](../features/gallery.md) | Ratings that resist friends, visits, trending, tags, pinned and sponsored rows |
