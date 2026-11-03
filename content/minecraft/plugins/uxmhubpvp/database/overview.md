@@ -27,7 +27,7 @@ Every table name starts with `storage.table-prefix`, `uxmhubpvp_` by default.
 | `uxmhubpvp_inventory` | One row per player who is fighting: their own items, the slot they held, and when it was saved. Deleted when the items are back |
 | `uxmhubpvp_board` | One row per player, board, period and window: the score and when it was reached |
 | `uxmhubpvp_name` | The name each player last played under, for the boards and `reset` |
-| `uxmlib_schema_history` | The version the tables are at |
+| `uxmhubpvp_schema_history` | The version the tables are at |
 
 `/uxmhubpvp doctor` names the backend, where the rows are, the prefix and the schema version.
 

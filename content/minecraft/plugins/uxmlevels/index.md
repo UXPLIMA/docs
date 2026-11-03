@@ -1,13 +1,16 @@
 ---
-title: "uxmLevels"
+title: uxmLevels
 order: 380
-description: "Experience and levels on as many tracks as a server wants."
+description: Experience and levels on as many tracks as a server wants, earned by playing, with rewards, prestige, boosts, boards and a heads-up display.
 icon: trending-up
 ---
 
-Paper 26.2+, Folia ready. uxmLib is shaded into the jar, so the plugin needs nothing else on the server.
-
-| Page | What it covers |
-|---|---|
-| [Guide](usage.md) | How uxmLevels works, how to set it up and what each file holds. |
-| [Reference](reference.md) | Every command, permission, placeholder and file of uxmLevels. |
+- [Getting Started](getting-started/)
+- [Commands](commands/)
+- [Tracks](tracks/)
+- [Menus](menus/)
+- [Configuration](config/)
+- [Permissions](permissions/)
+- [Placeholders](placeholders/)
+- [Integrations](integrations/)
+- [Database](database/)

@@ -27,7 +27,7 @@ Every table name starts with `storage.table-prefix`, `uxmeggs_` by default.
 | `uxmeggs_discovery` | One row per player and egg found: when it was last found, for cooldowns |
 | `uxmeggs_board` | One row per player, board, period and window: the score and when it was reached |
 | `uxmeggs_name` | The name each player last played under, for the board and `reset` |
-| `uxmlib_schema_history` | The version the tables are at |
+| `uxmeggs_schema_history` | The version the tables are at |
 
 `/uxmeastereggs doctor` names the backend, where the rows are, the prefix and the schema version.
 

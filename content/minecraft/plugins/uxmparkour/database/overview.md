@@ -26,7 +26,7 @@ Every table name starts with `storage.table-prefix`, `uxmparkour_` by default.
 | `uxmparkour_profile` | One row per player: best run, total jumps, total runs, chosen theme, chosen difficulty |
 | `uxmparkour_board` | One row per player, board, period and window: the score and when it was reached |
 | `uxmparkour_name` | The name each player last ran under, for the boards and `reset` |
-| `uxmlib_schema_history` | The version the tables are at |
+| `uxmparkour_schema_history` | The version the tables are at |
 
 `/uxmparkour doctor` names the backend, where the rows are, the prefix and the schema version.
 
