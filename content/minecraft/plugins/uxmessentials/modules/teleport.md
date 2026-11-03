@@ -29,8 +29,8 @@ Module `teleport` · enabled by default · `modules/teleport/config.conf`
 | `/mirrorspawn` | Redirect this world's spawn to another world. | `uxmessentials.spawn.set` |
 | `/removespawn` | Clear this world's own spawn. | `uxmessentials.spawn.set` |
 | `/rtp` (`/wild`) | Randomly teleport within the world. | `uxmessentials.rtp.use` |
-| `/setmainspawn` | Set the global main spawn. | `uxmessentials.spawn.set` |
-| `/setspawn` | Set the server spawn. | `uxmessentials.spawn.set` |
+| `/setmainspawn` | Set the main spawn for worlds without their own. | `uxmessentials.spawn.set` |
+| `/setspawn` | Set this world's spawn. | `uxmessentials.spawn.set` |
 | `/settpr` | Set the random-teleport zone for the running /rtp. | `uxmessentials.teleport.settpr` |
 | `/spawn` | Teleport to spawn. | `uxmessentials.spawn.use` |
 | `/thru` | /top, /bottom, /jump, /up, /down, /ascend, /descend, /thru vertical teleports. | `uxmessentials.tp.vertical` |
@@ -211,6 +211,9 @@ Module `teleport` · enabled by default · `modules/teleport/config.conf`
   claim or a WorldGuard region is rejected. Both need no setup beyond installing the other plugin.
 - **Spawns are plural.** There is a main spawn, any number of named ones reachable with `/spawn <name>`, and
   `/mirrorspawn <world>` to hand a new world off to an existing spawn instead of a fresh one.
+- **`/setspawn` only sets the world you stand in.** `/spawn` prefers the current world's own spawn, so a world
+  with a `/setspawn` of its own keeps players there. For one spawn across the whole server, stand in your spawn
+  world and run `/setmainspawn`, then run `/removespawn` in every other world that has a spawn of its own.
 - **Join and death placement live in one `spawn` block.** `first-join` places a genuinely new player at the
   resolved spawn, `every-join` does it on every login, and `respawn` decides whether deaths are managed at all.
   Every one of them walks the same chain `/spawn` does: a mirror redirect, then the world's own `/setspawn`,
