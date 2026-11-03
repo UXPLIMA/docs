@@ -1,6 +1,6 @@
 ---
 title: Market
-order: 311
+order: 411
 description: Selling a plot, renting one out, and taking one for a while.
 icon: badge-dollar-sign
 ---

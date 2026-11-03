@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 203
+order: 303
 description: Every /uxmminions subcommand, with its arguments, node and what it does.
 icon: shield
 ---

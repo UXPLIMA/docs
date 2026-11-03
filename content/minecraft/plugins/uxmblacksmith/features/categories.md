@@ -1,6 +1,6 @@
 ---
 title: Categories
-order: 201
+order: 301
 description: Grouping trades, gating them by permission, and capping concurrency.
 icon: folder
 ---

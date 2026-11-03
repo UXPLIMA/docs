@@ -1,6 +1,6 @@
 ---
 title: Bedrock menus
-order: 411
+order: 511
 description: Native Bedrock forms in place of chests, anvils and chat prompts.
 icon: smartphone
 ---

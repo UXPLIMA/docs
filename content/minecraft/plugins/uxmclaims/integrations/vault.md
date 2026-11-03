@@ -1,6 +1,6 @@
 ---
 title: Vault
-order: 802
+order: 902
 description: Charging for claims, chunks, warps and time, and picking a currency.
 icon: coins
 ---

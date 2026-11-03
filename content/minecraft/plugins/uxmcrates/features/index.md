@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Crates, rewards, keys, opening, reveals, envoys, rerolls, milestones, claims, the log and the editor.
 icon: sparkles
 ---

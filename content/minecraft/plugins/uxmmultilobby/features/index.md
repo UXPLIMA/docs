@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Live counts, moving, load balancing, the hotbar tool and outcomes.
 icon: sparkles
 ---

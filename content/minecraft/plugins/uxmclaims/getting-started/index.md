@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: What uxmClaims is, how to install it, and the ideas it is built on.
 icon: rocket
 ---

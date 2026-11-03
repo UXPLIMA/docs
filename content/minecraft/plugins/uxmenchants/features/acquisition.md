@@ -1,6 +1,6 @@
 ---
 title: Acquisition
-order: 306
+order: 406
 description: How the table, villagers, loot chests, fishing, mob drops and raids hand out enchantments, with caps and reductions.
 icon: dice-5
 ---

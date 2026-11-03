@@ -1,6 +1,6 @@
 ---
 title: opening.conf
-order: 502
+order: 602
 description: Who sees a reveal, skipping, the bulk cap, the panes of the reveal windows, and the preview wait.
 icon: play
 ---

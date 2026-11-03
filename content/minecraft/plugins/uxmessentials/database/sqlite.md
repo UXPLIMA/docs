@@ -1,6 +1,6 @@
 ---
 title: SQLite (Default)
-order: 1560
+order: 1660
 description: 'The default backend: no setup, one file, and when it stops being enough.'
 icon: database
 ---

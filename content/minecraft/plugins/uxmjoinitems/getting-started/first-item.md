@@ -1,6 +1,6 @@
 ---
 title: Your first item
-order: 104
+order: 204
 description: A profile item in slot 2 that runs a command and plays a sound.
 icon: flag
 ---

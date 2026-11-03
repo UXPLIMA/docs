@@ -1,6 +1,6 @@
 ---
 title: Staff tools
-order: 311
+order: 411
 description: Info, history, perf, console-only commands, alerts, Discord, the login history and the purge.
 icon: user-cog
 ---

@@ -1,6 +1,6 @@
 ---
 title: States
-order: 301
+order: 401
 description: What each state shows, who counts as important, and how the view is kept right as players come and go.
 icon: layers
 ---

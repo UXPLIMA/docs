@@ -1,6 +1,6 @@
 ---
 title: The version text
-order: 305
+order: 405
 description: Replacing the protocol name with your own text, and why it ships off.
 icon: tag
 ---

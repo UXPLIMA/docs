@@ -1,6 +1,6 @@
 ---
 title: Community
-order: 308
+order: 408
 description: Guestbooks, tips, following builders, plot chat and reports.
 icon: message-circle
 ---

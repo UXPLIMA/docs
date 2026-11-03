@@ -1,6 +1,6 @@
 ---
 title: Lobbies
-order: 401
+order: 501
 description: One icon per lobby with its count and state, the page arrows, colouring by load, and hiding locked lobbies.
 icon: layers
 ---

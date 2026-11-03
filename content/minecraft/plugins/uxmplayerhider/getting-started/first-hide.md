@@ -1,6 +1,6 @@
 ---
 title: Your first hide
-order: 104
+order: 204
 description: Use the tool, read the status, make a player important, and limit the plugin to the lobby.
 icon: play
 ---

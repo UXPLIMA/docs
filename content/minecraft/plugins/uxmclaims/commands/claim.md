@@ -1,6 +1,6 @@
 ---
 title: Claim commands
-order: 202
+order: 302
 description: The root command and the subcommands that create, run and leave a claim.
 icon: land-plot
 ---

@@ -1,6 +1,6 @@
 ---
 title: Clicks
-order: 303
+order: 403
 description: Left and right click actions, the two verbs of this plugin, the shared action lines and the old title form.
 icon: mouse-pointer-click
 ---

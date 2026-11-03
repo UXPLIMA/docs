@@ -1,6 +1,6 @@
 ---
 title: LuckPerms
-order: 1510
+order: 1610
 description: What LuckPerms adds, and why a permission plugin stays optional.
 icon: key
 ---

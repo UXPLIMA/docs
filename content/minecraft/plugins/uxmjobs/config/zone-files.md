@@ -1,6 +1,6 @@
 ---
 title: Zone files
-order: 506
+order: 606
 description: The keys of zones/<id>.conf, written by the wand.
 icon: map
 ---

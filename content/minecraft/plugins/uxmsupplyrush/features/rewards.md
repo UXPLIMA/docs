@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 34
+order: 134
 description: Fixed, random and chance-based rewards for each rank, and how winners get them.
 icon: gift
 ---

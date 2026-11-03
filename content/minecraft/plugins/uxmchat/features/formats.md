@@ -1,6 +1,6 @@
 ---
 title: Formats
-order: 302
+order: 402
 description: How a line is drawn from parts, the placeholders, hovers and clicks, and which format a line takes.
 icon: brush
 ---

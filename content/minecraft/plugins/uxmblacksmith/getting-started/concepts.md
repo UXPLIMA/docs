@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Categories, trades, requirements, slots, burn and progression.
 icon: lightbulb
 ---

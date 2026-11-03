@@ -1,6 +1,6 @@
 ---
 title: Mounts
-order: 411
+order: 511
 description: Every shipped piece of the mounts family, with its id, rarity and price.
 icon: rabbit
 ---

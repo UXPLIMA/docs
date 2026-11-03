@@ -1,6 +1,6 @@
 ---
 title: Admin
-order: 208
+order: 308
 description: Inspecting other players' claims, the bulk operations, and reloading the configuration.
 icon: shield-check
 ---

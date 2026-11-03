@@ -1,6 +1,6 @@
 ---
 title: Action types
-order: 302
+order: 402
 description: All thirty behaviours a price table may name, and what the target word means for each.
 icon: list-tree
 ---

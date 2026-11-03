@@ -1,6 +1,6 @@
 ---
 title: Experience and boosts
-order: 306
+order: 406
 description: Multipliers, rank nodes, the boost calendar, timed boosts, marked items and what land is worth.
 icon: zap
 ---

@@ -1,6 +1,6 @@
 ---
 title: Catalogue commands
-order: 202
+order: 302
 description: /shop, /sell and /value.
 icon: shopping-cart
 ---

@@ -1,6 +1,6 @@
 ---
 title: Passwords
-order: 302
+order: 402
 description: Name and password rules, the common list, the breach check, the hashing algorithms and the lane.
 icon: key-round
 ---

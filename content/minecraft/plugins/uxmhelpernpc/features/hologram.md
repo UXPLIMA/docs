@@ -1,6 +1,6 @@
 ---
 title: Hologram
-order: 34
+order: 134
 description: "The text above the NPC: content, placement, visibility and per-entity offsets."
 icon: text-cursor
 ---

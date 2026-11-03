@@ -1,6 +1,6 @@
 ---
 title: The personal menu
-order: 402
+order: 502
 description: The hub a player sees outside their own land.
 icon: house
 ---

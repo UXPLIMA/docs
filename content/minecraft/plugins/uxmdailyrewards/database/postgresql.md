@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL
-order: 904
+order: 1004
 description: Connecting to PostgreSQL to share each player's streak across servers.
 icon: server
 ---

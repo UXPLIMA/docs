@@ -1,6 +1,6 @@
 ---
 title: Editor windows
-order: 412
+order: 512
 description: The editor list, the property editor of one job, and the list window.
 icon: pencil-ruler
 ---

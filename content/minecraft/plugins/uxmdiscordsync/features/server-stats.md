@@ -1,6 +1,6 @@
 ---
 title: Server stats and presence
-order: 37
+order: 137
 description: The live stats message, the bot's rotating status and parking the bot in a voice channel.
 icon: activity
 ---

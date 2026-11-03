@@ -1,6 +1,6 @@
 ---
 title: Group files
-order: 502
+order: 602
 description: The keys of groups/<id>.conf, at group, quest and task level.
 icon: file-text
 ---

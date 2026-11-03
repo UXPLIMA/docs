@@ -1,6 +1,6 @@
 ---
 title: Bedrock
-order: 305
+order: 405
 description: Floodgate players in without a password, linked accounts, and native forms.
 icon: smartphone
 ---

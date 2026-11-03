@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 60
+order: 160
 description: The protection, shop, hologram, stacker and item plugins uxmSpawners works with, and what each one does.
 icon: plug
 ---

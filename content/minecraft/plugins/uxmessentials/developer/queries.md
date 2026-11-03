@@ -1,6 +1,6 @@
 ---
 title: Query API
-order: 1640
+order: 1740
 description: 'Reading uxmEssentials state: homes, balances, punishments, presence, worlds.'
 icon: search
 ---

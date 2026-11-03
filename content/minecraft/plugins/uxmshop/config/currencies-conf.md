@@ -1,6 +1,6 @@
 ---
 title: currencies.conf
-order: 502
+order: 602
 description: The keys of a currency entry and its display block.
 icon: coins
 ---

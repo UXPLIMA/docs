@@ -1,6 +1,6 @@
 ---
 title: The vault
-order: 410
+order: 510
 description: The claim's shared storage, and the lock that keeps it consistent.
 icon: archive
 ---

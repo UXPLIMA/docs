@@ -1,6 +1,6 @@
 ---
 title: Triggers and events
-order: 302
+order: 402
 description: The four moments that hand items out, their event files, delays and actions.
 icon: zap
 ---

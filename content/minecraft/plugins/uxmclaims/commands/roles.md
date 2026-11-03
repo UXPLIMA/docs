@@ -1,6 +1,6 @@
 ---
 title: Roles
-order: 206
+order: 306
 description: Creating roles, ordering them by priority, and granting permissions.
 icon: shield-user
 ---

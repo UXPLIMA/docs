@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Every /enchants subcommand, with its arguments, node and what it does.
 icon: user
 ---

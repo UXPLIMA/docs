@@ -1,6 +1,6 @@
 ---
 title: Your first pad
-order: 104
+order: 204
 description: Use a shipped pad, aim one by hand, and write a pad type of your own.
 icon: flag
 ---

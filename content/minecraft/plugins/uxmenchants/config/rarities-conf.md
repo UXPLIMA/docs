@@ -1,6 +1,6 @@
 ---
 title: rarities.conf
-order: 502
+order: 602
 description: The three shipped rarities, every key of a rarity, and chances that scale with the level.
 icon: gem
 ---

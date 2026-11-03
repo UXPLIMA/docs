@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Every /minions subcommand, with its arguments and what it does.
 icon: user
 ---

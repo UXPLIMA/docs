@@ -1,6 +1,6 @@
 ---
 title: Emotes and gadgets
-order: 309
+order: 409
 description: Bursts of particles, sounds and faces played on a click, cooldowns, and the 44 gadget actions.
 icon: party-popper
 ---

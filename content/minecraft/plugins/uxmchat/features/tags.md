@@ -1,6 +1,6 @@
 ---
 title: Tags
-order: 309
+order: 409
 description: Tags held by rank, given, bought or made by players; categories, rarities, variants, animation, defaults, surfaces and effects.
 icon: tag
 ---

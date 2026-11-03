@@ -1,6 +1,6 @@
 ---
 title: Contract
-order: 409
+order: 509
 description: "One contract: sign it, follow it, or cancel it."
 icon: handshake
 ---

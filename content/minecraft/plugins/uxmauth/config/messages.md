@@ -1,6 +1,6 @@
 ---
 title: Messages
-order: 510
+order: 610
 description: How a line is written, and the blocks every screen, reply and effect reads.
 icon: message-square
 ---

@@ -1,6 +1,6 @@
 ---
 title: In-game editors
-order: 318
+order: 418
 description: Changing channels, tags and announcements in a window, with the changes reaching every server.
 icon: pencil
 ---

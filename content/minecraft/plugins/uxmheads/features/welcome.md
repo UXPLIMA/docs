@@ -1,6 +1,6 @@
 ---
 title: The welcome
-order: 302
+order: 402
 description: The first-join and join greetings, their delay, and their lines.
 icon: party-popper
 ---

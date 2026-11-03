@@ -1,6 +1,6 @@
 ---
 title: Your minions
-order: 403
+order: 503
 description: Every minion you placed, with the priced teleport, the pocket and the store.
 icon: list
 ---

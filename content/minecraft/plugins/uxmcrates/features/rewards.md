@@ -1,6 +1,6 @@
 ---
 title: Rewards and groups
-order: 302
+order: 402
 description: Groups, weights, rarities, what a reward gives, limits, guarantees, linked and fallback rewards, luck and shared rewards.
 icon: gift
 ---

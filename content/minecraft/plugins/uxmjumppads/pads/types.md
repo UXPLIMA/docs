@@ -1,6 +1,6 @@
 ---
 title: Pad types
-order: 301
+order: 401
 description: The two shipped types, every key of a type, how far a speed carries, and a type for some players only.
 icon: shapes
 ---

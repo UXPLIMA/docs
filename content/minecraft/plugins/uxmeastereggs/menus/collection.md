@@ -1,6 +1,6 @@
 ---
 title: Collection
-order: 402
+order: 502
 description: "The window /eggs opens: one tile per egg type, and the player's progress on the whole map."
 icon: library
 ---

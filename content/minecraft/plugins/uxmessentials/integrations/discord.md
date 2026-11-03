@@ -1,6 +1,6 @@
 ---
 title: Discord
-order: 1550
+order: 1650
 description: The companion jar and what it mirrors into Discord.
 icon: message-circle
 ---

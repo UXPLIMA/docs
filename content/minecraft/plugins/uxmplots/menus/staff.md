@@ -1,6 +1,6 @@
 ---
 title: Staff windows
-order: 407
+order: 507
 description: The report queue, the inactive list and the staff bench.
 icon: user-cog
 ---

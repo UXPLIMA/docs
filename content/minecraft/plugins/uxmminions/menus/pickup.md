@@ -1,6 +1,6 @@
 ---
 title: Pickup
-order: 411
+order: 511
 description: The question asked before a minion is picked up.
 icon: hand
 ---

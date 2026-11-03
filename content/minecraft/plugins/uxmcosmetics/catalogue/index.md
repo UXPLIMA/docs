@@ -1,6 +1,6 @@
 ---
 title: Catalogue
-order: 40
+order: 140
 description: Every one of the 234 shipped cosmetics, family by family, with its id, rarity and price.
 icon: library
 ---

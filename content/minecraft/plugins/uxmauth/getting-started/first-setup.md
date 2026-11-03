@@ -1,6 +1,6 @@
 ---
 title: Your first setup
-order: 104
+order: 204
 description: A lone server in five minutes, then the five choices that matter.
 icon: flag
 ---

@@ -1,6 +1,6 @@
 ---
 title: Your first hunt
-order: 104
+order: 204
 description: Place a few eggs, check them, and set the rewards of the hunt.
 icon: flag
 ---

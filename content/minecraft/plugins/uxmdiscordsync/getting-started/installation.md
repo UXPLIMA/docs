@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 12
+order: 112
 description: Requirements, the first start, the files you fill in and what ships turned on.
 icon: download
 ---

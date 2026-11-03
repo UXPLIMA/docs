@@ -1,6 +1,6 @@
 ---
 title: Output
-order: 304
+order: 404
 description: The three destinations, the storage window, price sources, banking and smelting.
 icon: package
 ---

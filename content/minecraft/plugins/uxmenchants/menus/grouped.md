@@ -1,6 +1,6 @@
 ---
 title: Grouped wiki
-order: 403
+order: 503
 description: One tile per rarity, type and target instead of one per enchantment.
 icon: library
 ---

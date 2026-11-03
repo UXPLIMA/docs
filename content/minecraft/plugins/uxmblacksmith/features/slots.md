@@ -1,6 +1,6 @@
 ---
 title: Slots
-order: 205
+order: 305
 description: How many trades a player runs at once, and how to turn the system off.
 icon: layout-grid
 ---

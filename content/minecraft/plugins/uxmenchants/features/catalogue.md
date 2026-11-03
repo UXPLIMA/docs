@@ -1,6 +1,6 @@
 ---
 title: The shipped enchantments
-order: 314
+order: 414
 description: The twelve example enchantments, with rarity, type, targets, levels, trigger, numbers and routes.
 icon: book-open
 ---

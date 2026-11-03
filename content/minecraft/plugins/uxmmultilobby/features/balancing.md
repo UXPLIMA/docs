@@ -1,6 +1,6 @@
 ---
 title: Load balancing
-order: 303
+order: 403
 description: How /quicklobby picks a lobby, what weight does, and ties.
 icon: scale
 ---

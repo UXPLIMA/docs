@@ -1,6 +1,6 @@
 ---
 title: Your first entry
-order: 104
+order: 204
 description: Replace the shipped entries with your network's, add an icon, and check it in a client.
 icon: flag
 ---

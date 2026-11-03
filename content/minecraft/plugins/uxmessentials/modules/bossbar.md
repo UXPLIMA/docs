@@ -1,6 +1,6 @@
 ---
 title: Boss Bars
-order: 9265
+order: 9365
 description: Bars at the top of the screen that stay up, run for an event's dates, or are announced for a while.
 icon: panel-top
 ---

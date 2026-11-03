@@ -1,6 +1,6 @@
 ---
 title: Operator commands
-order: 202
+order: 302
 description: Every /uxmbackup subcommand, its permission, its arguments and what it answers.
 icon: shield
 ---

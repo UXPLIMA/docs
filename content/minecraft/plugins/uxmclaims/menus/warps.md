@@ -1,6 +1,6 @@
 ---
 title: Warps
-order: 409
+order: 509
 description: Creating warps in a claim, and publishing them to the server.
 icon: map-pin
 ---

@@ -1,6 +1,6 @@
 ---
 title: Sections and lines
-order: 301
+order: 401
 description: Section keys, line keys and types, item blocks, rotation, refusals, and the shipped sections.
 icon: layout-list
 ---

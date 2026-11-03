@@ -1,6 +1,6 @@
 ---
 title: packages.yml
-order: 302
+order: 402
 description: Shop categories and the packages on sale.
 icon: package
 ---

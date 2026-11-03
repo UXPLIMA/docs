@@ -1,6 +1,6 @@
 ---
 title: Expiry and staff
-order: 314
+order: 414
 description: Inactive plots, the report queue, the staff bench and the staff commands.
 icon: user-cog
 ---

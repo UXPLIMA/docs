@@ -1,6 +1,6 @@
 ---
 title: Holograms
-order: 9060
+order: 9160
 description: Floating displays built from native display entities, with pages, click actions and per-player visibility.
 icon: text-cursor
 ---

@@ -1,6 +1,6 @@
 ---
 title: Leaderboard
-order: 403
+order: 503
 description: "The window /eggs top opens: the players who found the most eggs."
 icon: trophy
 ---

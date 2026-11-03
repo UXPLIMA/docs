@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: What uxmChat answers for tab lists, scoreboards and nametags, and the relational forms.
 icon: hash
 ---

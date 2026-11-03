@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 50
+order: 150
 description: The four windows, what opens each, and what each slot and click does.
 icon: layout-grid
 ---

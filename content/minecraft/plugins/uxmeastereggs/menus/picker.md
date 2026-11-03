@@ -1,6 +1,6 @@
 ---
 title: Type picker
-order: 405
+order: 505
 description: The operator window that chooses the type of an egg about to be placed.
 icon: list-checks
 ---

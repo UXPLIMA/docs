@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: The plot you stand in, contests, your own plots, and the boards.
 icon: braces
 ---

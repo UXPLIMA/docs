@@ -1,6 +1,6 @@
 ---
 title: A network
-order: 303
+order: 403
 description: Sharing the choice through one database, instant changes through Redis, and keeping one server apart.
 icon: network
 ---

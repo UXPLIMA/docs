@@ -1,6 +1,6 @@
 ---
 title: config.yml
-order: 51
+order: 151
 description: Hooks, worlds, cooldowns, sounds, farmer logs and debug.
 icon: file-cog
 ---

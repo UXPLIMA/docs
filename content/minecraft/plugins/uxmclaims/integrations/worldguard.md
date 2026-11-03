@@ -1,6 +1,6 @@
 ---
 title: WorldGuard
-order: 803
+order: 903
 description: Keeping claims out of WorldGuard regions and disabled worlds.
 icon: shield-alert
 ---

@@ -1,6 +1,6 @@
 ---
 title: Setting up the event
-order: 12
+order: 112
 description: The lobby spawn, the entrance players join through, and a test run before the schedule takes over.
 icon: map-pin
 ---

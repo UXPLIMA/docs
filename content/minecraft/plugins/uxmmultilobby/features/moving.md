@@ -1,6 +1,6 @@
 ---
 title: Moving
-order: 302
+order: 402
 description: What happens when a player clicks a lobby or names one, the checks, and the cooldown.
 icon: arrow-right-left
 ---

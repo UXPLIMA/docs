@@ -1,6 +1,6 @@
 ---
 title: commands.conf
-order: 504
+order: 604
 description: Renaming, aliasing and switching off every command and branch, and words per language.
 icon: terminal
 ---

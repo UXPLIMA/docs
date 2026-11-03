@@ -1,6 +1,6 @@
 ---
 title: Staff commands
-order: 203
+order: 303
 description: Every /uxmauth subcommand, its node, and the seven that run only from the console.
 icon: shield
 ---

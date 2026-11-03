@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Matched pads and set pads, what a step reads, the cooldown, one throw per arrival, and the fall grace.
 icon: lightbulb
 ---

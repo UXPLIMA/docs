@@ -1,6 +1,6 @@
 ---
 title: boosts.conf
-order: 504
+order: 604
 description: Permission multipliers, the mode, and the calendar.
 icon: rocket
 ---

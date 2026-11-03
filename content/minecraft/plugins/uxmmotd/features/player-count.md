@@ -1,6 +1,6 @@
 ---
 title: The player count
-order: 303
+order: 403
 description: Real, fixed or one short of full, and the offset.
 icon: users
 ---

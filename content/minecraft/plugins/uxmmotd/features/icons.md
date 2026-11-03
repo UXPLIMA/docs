@@ -1,6 +1,6 @@
 ---
 title: Icons
-order: 306
+order: 406
 description: The picture beside the entry, the shipped ones, sizes, fallbacks and the maintenance icon.
 icon: image
 ---

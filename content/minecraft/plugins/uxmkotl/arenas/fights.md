@@ -1,6 +1,6 @@
 ---
 title: Fights
-order: 303
+order: 403
 description: The knockback stick, what a death inside an arena does, and how a kill is credited.
 icon: swords
 ---

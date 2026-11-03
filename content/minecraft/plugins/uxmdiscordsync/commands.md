@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The game commands from commands.yml, the admin command and the Discord slash commands.
 icon: terminal
 ---

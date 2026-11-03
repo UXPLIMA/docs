@@ -1,6 +1,6 @@
 ---
 title: Configuration
-order: 50
+order: 150
 description: Every file the plugin writes, which ones the proxy reads, reloading, and what an update does.
 icon: settings
 ---

@@ -1,6 +1,6 @@
 ---
 title: Members and roles
-order: 406
+order: 506
 description: The member list, per-member overrides, and the role editor.
 icon: users
 ---

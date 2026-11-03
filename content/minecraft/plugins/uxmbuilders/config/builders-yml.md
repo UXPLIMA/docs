@@ -1,6 +1,6 @@
 ---
 title: builders.yml
-order: 303
+order: 403
 description: Every builder, its levels, its NPC appearance and its unlock rules.
 icon: hard-hat
 ---

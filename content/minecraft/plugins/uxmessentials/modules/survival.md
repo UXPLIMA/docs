@@ -1,6 +1,6 @@
 ---
 title: Survival
-order: 9250
+order: 9350
 description: Tree-feller, veinminer, auto-pickup, auto-smelt, auto-sell, one-player sleep and the rest, each its own switch.
 icon: heart
 ---

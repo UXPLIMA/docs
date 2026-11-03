@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Arenas, the course generator, what a player chooses, the life of a run, and the boards.
 icon: lightbulb
 ---

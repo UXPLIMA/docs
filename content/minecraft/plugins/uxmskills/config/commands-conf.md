@@ -1,6 +1,6 @@
 ---
 title: commands.conf
-order: 506
+order: 606
 description: Names, aliases, switches, the skill shortcuts and words per language.
 icon: terminal
 ---

@@ -1,6 +1,6 @@
 ---
 title: Panel
-order: 402
+order: 502
 description: "What a click on a minion opens: status, storage, upgrade, fuel, destination, skin, trust, facing and more."
 icon: panel-top
 ---

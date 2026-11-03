@@ -1,6 +1,6 @@
 ---
 title: Currencies
-order: 309
+order: 409
 description: The nine currency types, the shipped four, placeholder and bridge currencies, and how an amount is written.
 icon: coins
 ---

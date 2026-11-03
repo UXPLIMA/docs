@@ -1,6 +1,6 @@
 ---
 title: Language
-order: 401
+order: 501
 description: One flag per language, the follow-my-client button, and the file that draws it.
 icon: flag
 ---

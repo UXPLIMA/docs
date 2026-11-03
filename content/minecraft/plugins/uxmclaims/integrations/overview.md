@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 801
+order: 901
 description: Every optional plugin, what it adds, and the switch that controls it.
 icon: plug-zap
 ---

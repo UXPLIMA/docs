@@ -1,6 +1,6 @@
 ---
 title: Screens
-order: 401
+order: 501
 description: The register, login, replace, captcha, code, recover and pin dialogs, and their Bedrock forms.
 icon: app-window
 ---

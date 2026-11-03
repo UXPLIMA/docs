@@ -1,6 +1,6 @@
 ---
 title: Prestige
-order: 304
+order: 404
 description: Resetting a finished track for a permanent multiplier and a badge, what it costs, and the rules.
 icon: star
 ---

@@ -1,6 +1,6 @@
 ---
 title: Requirements
-order: 203
+order: 303
 description: Every requirement type, item matching, and PlaceholderAPI conditions.
 icon: list-checks
 ---

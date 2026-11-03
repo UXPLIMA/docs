@@ -1,6 +1,6 @@
 ---
 title: Guards and regions
-order: 305
+order: 405
 description: Holding an item back while another plugin says the player is busy, and giving it only in some regions.
 icon: shield
 ---

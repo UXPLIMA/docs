@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 1001
+order: 1101
 description: What is stored, the tables, sharing one database across servers, keeping one server apart, and moving off SQLite.
 icon: database
 ---

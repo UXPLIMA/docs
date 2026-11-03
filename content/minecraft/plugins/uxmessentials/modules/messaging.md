@@ -1,6 +1,6 @@
 ---
 title: Messaging
-order: 9110
+order: 9210
 description: Private messages, offline mail, ignore lists, social spy and support requests.
 icon: mail
 ---

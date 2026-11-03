@@ -1,6 +1,6 @@
 ---
 title: Wiki
-order: 402
+order: 502
 description: The window /enchants opens, with a slot you drop an item into to see what fits it.
 icon: book
 ---

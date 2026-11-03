@@ -1,6 +1,6 @@
 ---
 title: Rerolls and milestones
-order: 307
+order: 407
 description: Rolling an opening again from a rank ladder, a grant or a price, and rewards for opening enough crates.
 icon: repeat
 ---

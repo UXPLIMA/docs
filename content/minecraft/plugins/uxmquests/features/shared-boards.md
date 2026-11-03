@@ -1,6 +1,6 @@
 ---
 title: Shared boards
-order: 308
+order: 408
 description: One board the whole server works on, with each player paid for their own share.
 icon: users
 ---

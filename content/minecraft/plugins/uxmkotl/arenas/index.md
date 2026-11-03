@@ -1,6 +1,6 @@
 ---
 title: Arenas and the crown
-order: 30
+order: 130
 description: Arenas, joining and leaving, the crown and its rules, fights and kills, rewards, and the moments.
 icon: crown
 ---

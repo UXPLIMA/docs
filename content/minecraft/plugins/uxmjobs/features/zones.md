@@ -1,6 +1,6 @@
 ---
 title: Zones
-order: 311
+order: 411
 description: Work zones drawn with a wand, their multipliers and requirements, and blocks that grow back.
 icon: map
 ---

@@ -1,6 +1,6 @@
 ---
 title: Menu API
-order: 1660
+order: 1760
 description: Teaching the menu engine your own actions, requirements, sources and icons.
 icon: layout-grid
 ---

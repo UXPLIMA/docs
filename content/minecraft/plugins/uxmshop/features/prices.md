@@ -1,6 +1,6 @@
 ---
 title: Prices
-order: 303
+order: 403
 description: Dynamic bands, ranks, modifiers, the order they apply in, rounding and tax.
 icon: badge-dollar-sign
 ---

@@ -1,6 +1,6 @@
 ---
 title: Two-factor login
-order: 33
+order: 133
 description: Approving a login from Discord, the checks before the request, the freeze, country rules and what a denial does.
 icon: shield-check
 ---

@@ -1,6 +1,6 @@
 ---
 title: economy.conf
-order: 503
+order: 603
 description: Money backends for requirements, costs and rewards.
 icon: coins
 ---

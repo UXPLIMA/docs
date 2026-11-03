@@ -1,6 +1,6 @@
 ---
 title: Protection
-order: 311
+order: 411
 description: Worlds where nothing happens, the nineteen claim plugins, the block break treaty, and blocks no effect touches.
 icon: shield-check
 ---

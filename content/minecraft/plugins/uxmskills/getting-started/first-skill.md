@@ -1,6 +1,6 @@
 ---
 title: Your first skill
-order: 104
+order: 204
 description: A twelfth skill from a copy, with its own sources and an ability.
 icon: footprints
 ---

@@ -1,6 +1,6 @@
 ---
 title: Conditions and actions
-order: 304
+order: 404
 description: The three condition shapes, every action, and making an enchantment cost money to fire.
 icon: git-branch
 ---

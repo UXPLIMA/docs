@@ -1,6 +1,6 @@
 ---
 title: Reward files
-order: 510
+order: 610
 description: Every key of a reward, the item format, and shared rewards under rewards/.
 icon: gift
 ---

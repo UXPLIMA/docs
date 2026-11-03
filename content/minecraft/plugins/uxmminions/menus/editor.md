@@ -1,6 +1,6 @@
 ---
 title: Editor windows
-order: 413
+order: 513
 description: The editor list, the property editor of one type, and the list window.
 icon: pencil-ruler
 ---

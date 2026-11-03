@@ -1,6 +1,6 @@
 ---
 title: Arena editor
-order: 404
+order: 504
 description: One arena, a row per piece, and the switch that opens it to players.
 icon: pencil-ruler
 ---

@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 203
+order: 303
 description: Reload, version, doctor, and another player's language.
 icon: wrench
 ---

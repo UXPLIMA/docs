@@ -1,6 +1,6 @@
 ---
 title: Network and Discord
-order: 315
+order: 415
 description: Servers on one database hearing from each other, and webhook lines for plot and contest events.
 icon: network
 ---

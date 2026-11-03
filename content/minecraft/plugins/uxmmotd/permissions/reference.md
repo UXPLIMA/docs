@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every permission node of uxmMOTD, its default on each platform, and what it allows.
 icon: list-checks
 ---

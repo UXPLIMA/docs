@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 11
+order: 111
 description: Requirements, the two hooks it cannot work without, and verifying the install.
 icon: download
 ---

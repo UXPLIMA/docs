@@ -1,6 +1,6 @@
 ---
 title: advanced.yml
-order: 54
+order: 154
 description: The link cache, the limit on link codes, stack traces and the cleanup of expired codes.
 icon: gauge
 ---

@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: The PlaceholderAPI placeholders for other plugins, and which placeholders each of the plugin's own texts accepts.
 icon: braces
 ---

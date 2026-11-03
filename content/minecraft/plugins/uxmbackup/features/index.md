@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Sets and schedules, storages, retention, what a run does, databases, verifying, restoring, and alerts.
 icon: sparkles
 ---

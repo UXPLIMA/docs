@@ -1,6 +1,6 @@
 ---
 title: Chat bridge
-order: 36
+order: 136
 description: Game chat in one Discord channel and that channel's messages in game, and what each side can and cannot send.
 icon: messages-square
 ---

@@ -1,6 +1,6 @@
 ---
 title: Emoji
-order: 405
+order: 505
 description: Every emoji you may use, one click to copy.
 icon: message-circle
 ---

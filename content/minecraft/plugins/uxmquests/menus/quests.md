@@ -1,6 +1,6 @@
 ---
 title: Quests and board
-order: 402
+order: 502
 description: The group list and a group's board, with their tokens, phases and actions.
 icon: scroll
 ---

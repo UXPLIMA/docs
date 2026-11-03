@@ -1,6 +1,6 @@
 ---
 title: Site preparation
-order: 204
+order: 304
 description: Clearing the footprint and laying a foundation before the first block.
 icon: shovel
 ---

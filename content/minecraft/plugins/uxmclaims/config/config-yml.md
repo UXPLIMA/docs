@@ -1,6 +1,6 @@
 ---
 title: config.yml
-order: 500
+order: 600
 description: Language, claim rules, integrations, dialogs, Bedrock forms, borders, claim blocks, holograms and the database.
 icon: file-cog
 ---

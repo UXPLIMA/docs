@@ -1,6 +1,6 @@
 ---
 title: Anti-abuse
-order: 308
+order: 408
 description: Placed blocks that pay nothing, idle players, the hourly cap, and the cooldown of an event.
 icon: shield-alert
 ---

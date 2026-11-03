@@ -1,6 +1,6 @@
 ---
 title: Builders
-order: 203
+order: 303
 description: Crews with levels, unlock prices, package affinity and an NPC appearance.
 icon: hard-hat
 ---

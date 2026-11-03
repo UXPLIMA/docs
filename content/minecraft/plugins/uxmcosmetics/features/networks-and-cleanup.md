@@ -1,6 +1,6 @@
 ---
 title: Networks and cleanup
-order: 310
+order: 410
 description: Sharing wardrobes across servers, keeping one server apart, and sweeping leftover entities.
 icon: network
 ---

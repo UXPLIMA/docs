@@ -1,6 +1,6 @@
 ---
 title: Editor windows
-order: 405
+order: 505
 description: The editor list, the property editor of one enchantment, and the list window.
 icon: pencil-ruler
 ---

@@ -1,6 +1,6 @@
 ---
 title: The calendar
-order: 301
+order: 401
 description: The length, the claim window and the grace, how the streak counts, and what happens at the end of the calendar.
 icon: calendar
 ---

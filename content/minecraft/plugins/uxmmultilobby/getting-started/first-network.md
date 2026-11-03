@@ -1,6 +1,6 @@
 ---
 title: Your first network
-order: 104
+order: 204
 description: Two public lobbies and a staff lobby, with counts by ping.
 icon: flag
 ---

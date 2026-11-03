@@ -1,6 +1,6 @@
 ---
 title: Colours
-order: 406
+order: 506
 description: The presets with a preview in your name, the styles, and plain words.
 icon: palette
 ---

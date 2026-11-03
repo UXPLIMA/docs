@@ -1,6 +1,6 @@
 ---
 title: Poses
-order: 9170
+order: 9270
 description: Sit, lay, belly-flop, spin and crawl, with claim and WorldGuard gating.
 icon: person-standing
 ---

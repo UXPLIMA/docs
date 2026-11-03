@@ -1,6 +1,6 @@
 ---
 title: Colours and cycles
-order: 301
+order: 401
 description: Solid colours, cycles, their limits, intervals and the shared clock.
 icon: palette
 ---

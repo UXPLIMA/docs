@@ -1,6 +1,6 @@
 ---
 title: The waiting room
-order: 301
+order: 401
 description: Where a player waits before logging in, what they may not do, timeouts, the dialogs, chat input and the pin pad.
 icon: door-closed
 ---

@@ -1,6 +1,6 @@
 ---
 title: Menu files
-order: 505
+order: 605
 description: The keys of a window file, tiles, sources, conditions and actions.
 icon: layout-template
 ---

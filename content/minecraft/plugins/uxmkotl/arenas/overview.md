@@ -1,6 +1,6 @@
 ---
 title: Arenas
-order: 301
+order: 401
 description: What an arena holds, its states, how a player gets in and out, and what entry does to them.
 icon: box
 ---

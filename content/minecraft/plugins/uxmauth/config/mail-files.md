@@ -1,6 +1,6 @@
 ---
 title: Mail files
-order: 509
+order: 609
 description: The three mails, one file per kind and language.
 icon: mail
 ---

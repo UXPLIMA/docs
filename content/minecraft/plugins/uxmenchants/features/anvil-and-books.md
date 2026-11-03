@@ -1,6 +1,6 @@
 ---
 title: Anvil and books
-order: 307
+order: 407
 description: Books, combining two items, the anvil cost, overpowering, recharging, and applying a book by clicking.
 icon: anvil
 ---

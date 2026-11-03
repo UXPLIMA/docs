@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: Create the bot, install the plugin and link the first account.
 icon: rocket
 ---

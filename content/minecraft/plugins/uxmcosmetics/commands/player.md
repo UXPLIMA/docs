@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Every /cosmetics subcommand, what it opens or does, and what it answers.
 icon: user
 ---

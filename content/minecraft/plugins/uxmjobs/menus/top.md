@@ -1,6 +1,6 @@
 ---
 title: Leaderboard
-order: 406
+order: 506
 description: The all time board as a window.
 icon: trophy
 ---

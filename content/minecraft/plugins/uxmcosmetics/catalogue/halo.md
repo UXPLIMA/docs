@@ -1,6 +1,6 @@
 ---
 title: Halos
-order: 403
+order: 503
 description: Every shipped piece of the halos family, with its id, rarity and price.
 icon: circle
 ---

@@ -1,6 +1,6 @@
 ---
 title: effects.conf
-order: 505
+order: 605
 description: The effects block, its moments, and per-server lines.
 icon: sparkles
 ---

@@ -1,6 +1,6 @@
 ---
 title: Tools and skins
-order: 310
+order: 410
 description: Tool wear, enchantments that drive yield, speed and wear, and suits as rank perks.
 icon: shirt
 ---

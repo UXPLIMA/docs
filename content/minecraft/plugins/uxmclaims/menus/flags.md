@@ -1,6 +1,6 @@
 ---
 title: Flags
-order: 405
+order: 505
 description: Turning the claim-wide rules on and off.
 icon: flag
 ---

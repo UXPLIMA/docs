@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: The five modules, the storage and level system, members and ranks,
   conversions and appearance.
 icon: layers

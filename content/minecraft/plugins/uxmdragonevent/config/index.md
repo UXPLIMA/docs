@@ -1,6 +1,6 @@
 ---
 title: Configuration
-order: 50
+order: 150
 description: The files, and which page documents each part of config.yml.
 icon: settings
 ---

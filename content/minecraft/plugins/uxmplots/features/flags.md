@@ -1,6 +1,6 @@
 ---
 title: Flags
-order: 304
+order: 404
 description: The thirty four flags, world defaults, locked flags, and what levels unlock.
 icon: toggle-left
 ---

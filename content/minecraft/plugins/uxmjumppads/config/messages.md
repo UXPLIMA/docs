@@ -1,6 +1,6 @@
 ---
 title: Messages
-order: 404
+order: 504
 description: How a line is written, the roles and prefixes it uses, and every block of keys with the values each fills in.
 icon: message-square
 ---

@@ -1,6 +1,6 @@
 ---
 title: The chunk map
-order: 404
+order: 504
 description: The grid of chunks around your claim, and buying land from it.
 icon: map
 ---

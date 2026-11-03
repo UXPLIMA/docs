@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 36
+order: 136
 description: Who gets rewarded, and the three ways to write rewards.yml, as fixed rewards, random picks or chance rolls.
 icon: gift
 ---

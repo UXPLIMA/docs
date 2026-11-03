@@ -1,6 +1,6 @@
 ---
 title: Discord announcements
-order: 38
+order: 138
 description: The built-in bot, the countdown, start and end messages, and every key an embed takes.
 icon: megaphone
 ---

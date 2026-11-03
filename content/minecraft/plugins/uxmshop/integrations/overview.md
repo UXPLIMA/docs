@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 801
+order: 901
 description: The economies, PlaceholderAPI, mcMMO, Floodgate, Geyser and claim plugins.
 icon: plug
 ---

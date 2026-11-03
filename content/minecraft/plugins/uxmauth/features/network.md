@@ -1,6 +1,6 @@
 ---
 title: A network
-order: 313
+order: 413
 description: Velocity and every server behind it as one door, signed claims, routing, Redis and the proxy's own waiting world.
 icon: network
 ---

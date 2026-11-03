@@ -1,6 +1,6 @@
 ---
 title: Menu files
-order: 503
+order: 603
 description: The keys of menus/glow.conf, the tile line, the tokens and the actions.
 icon: layout-template
 ---

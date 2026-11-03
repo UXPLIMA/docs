@@ -1,6 +1,6 @@
 ---
 title: Category
-order: 403
+order: 503
 description: The tabs of the house.
 icon: folder
 ---

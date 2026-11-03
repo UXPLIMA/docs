@@ -1,6 +1,6 @@
 ---
 title: Custom Menus
-order: 9030
+order: 9130
 description: 'The operator surface over the menu engine: your own menus, behind /menu.'
 icon: layout-grid
 ---

@@ -1,6 +1,6 @@
 ---
 title: uxmSpawners
-order: 30
+order: 12
 description: Spawners that store what they produce, stack into levels, take boosts and sell
   straight from a menu.
 icon: box

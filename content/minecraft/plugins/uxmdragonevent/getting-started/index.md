@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: Install the plugin, set the lobby spawn and the entrance, and run the first event.
 icon: rocket
 ---

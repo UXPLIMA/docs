@@ -1,6 +1,6 @@
 ---
 title: Custom commands
-order: 314
+order: 414
 description: Commands of your own with permissions, argument counts, conditions, actions, cooldowns and argument tokens.
 icon: square-terminal
 ---

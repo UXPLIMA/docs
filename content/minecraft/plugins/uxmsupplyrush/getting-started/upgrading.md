@@ -1,6 +1,6 @@
 ---
 title: Upgrading to 1.1.0
-order: 14
+order: 114
 description: What happens to a 1.0.0 server's settings, events and running tournament on the first start of 1.1.0.
 icon: circle-arrow-up
 ---

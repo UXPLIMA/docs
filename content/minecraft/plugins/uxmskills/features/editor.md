@@ -1,6 +1,6 @@
 ---
 title: The editor
-order: 311
+order: 411
 description: Changing content files and message lines in game, and the file watcher.
 icon: pencil
 ---

@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-order: 80
+order: 180
 description: What to check when the plugin does not start, the bot stays offline, linking fails or a feature does nothing.
 icon: life-buoy
 ---

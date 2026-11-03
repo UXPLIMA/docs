@@ -1,6 +1,6 @@
 ---
 title: Banners
-order: 413
+order: 513
 description: Every shipped piece of the banners family, with its id, rarity and price.
 icon: flag
 ---

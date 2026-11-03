@@ -1,6 +1,6 @@
 ---
 title: Velocity & Redis
-order: 1590
+order: 1690
 description: What syncs across backends, the two transports, and how to turn it on.
 icon: book-open
 ---

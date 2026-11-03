@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: The three states, who is important, the world list, the cooldown, and where a choice is kept.
 icon: lightbulb
 ---

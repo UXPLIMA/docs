@@ -1,6 +1,6 @@
 ---
 title: Friends, ignore and mail
-order: 311
+order: 411
 description: A friends list across the network, ignoring what a player says, and letters to players who are away.
 icon: users
 ---

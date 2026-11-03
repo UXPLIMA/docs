@@ -1,6 +1,6 @@
 ---
 title: Claiming
-order: 302
+order: 402
 description: Claiming, growing, giving up, merging, splitting, names, the map and borders.
 icon: map
 ---

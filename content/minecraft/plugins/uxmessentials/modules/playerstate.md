@@ -1,6 +1,6 @@
 ---
 title: Player State
-order: 9150
+order: 9250
 description: 'The everyday self-and-target verbs: heal, feed, fly, game mode, speed, personal time and weather.'
 icon: heart-pulse
 ---

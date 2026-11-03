@@ -1,6 +1,6 @@
 ---
 title: Ability permissions
-order: 602
+order: 702
 description: The uxmclaims.ability.* nodes, which command each gates, and the wildcards.
 icon: key-round
 ---

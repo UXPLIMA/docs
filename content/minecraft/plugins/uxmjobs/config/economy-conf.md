@@ -1,6 +1,6 @@
 ---
 title: economy.conf
-order: 503
+order: 603
 description: The cost order, batching, the Treasury wait, the placeholder backend and bridges.
 icon: landmark
 ---

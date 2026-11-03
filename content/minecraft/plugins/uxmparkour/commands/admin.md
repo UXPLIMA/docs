@@ -1,6 +1,6 @@
 ---
 title: Operator commands
-order: 203
+order: 303
 description: Building, opening, editing and deleting arenas, erasing a runner, reload, doctor and version.
 icon: shield
 ---

@@ -1,6 +1,6 @@
 ---
 title: Roulette
-order: 505
+order: 605
 description: The strip that spins while a box opens, and its settings.
 icon: dices
 ---

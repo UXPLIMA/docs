@@ -1,6 +1,6 @@
 ---
 title: Welcome
-order: 101
+order: 201
 description: Buy a blueprint, place it, and watch an NPC crew put the structure up.
 icon: door-open
 ---

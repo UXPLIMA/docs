@@ -1,6 +1,6 @@
 ---
 title: uxmChat
-order: 1488
+order: 1588
 description: Which chat features uxmEssentials leaves to uxmChat when both are installed.
 icon: message-square
 ---

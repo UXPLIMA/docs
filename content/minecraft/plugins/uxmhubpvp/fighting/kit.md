@@ -1,6 +1,6 @@
 ---
 title: The kit
-order: 302
+order: 402
 description: What a fighter is handed, where their own items go while they fight, and how they come back.
 icon: shield-half
 ---

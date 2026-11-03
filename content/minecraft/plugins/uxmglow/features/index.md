@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Colours and cycles, restoring a glow, the moments, and the shared nametag.
 icon: sparkles
 ---

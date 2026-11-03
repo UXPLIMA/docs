@@ -1,6 +1,6 @@
 ---
 title: Custom items
-order: 803
+order: 903
 description: Naming an Oraxen, Nexo, ItemsAdder or CraftEngine item in a crate, reward or key file.
 icon: gem
 ---

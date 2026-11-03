@@ -1,6 +1,6 @@
 ---
 title: Rewards and milestones
-order: 307
+order: 407
 description: Reward action lines, spans, set rewards, and milestones per group and over a record.
 icon: gift
 ---

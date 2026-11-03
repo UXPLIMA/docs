@@ -1,6 +1,6 @@
 ---
 title: Languages
-order: 501
+order: 601
 description: The eight shipped languages, how to switch, and what a switch rewrites.
 icon: languages
 ---

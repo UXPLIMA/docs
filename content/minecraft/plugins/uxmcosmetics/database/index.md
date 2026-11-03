@@ -1,6 +1,6 @@
 ---
 title: Database
-order: 100
+order: 200
 description: Where the cosmetics each player owns and wears are kept, and the three backends.
 icon: database
 ---

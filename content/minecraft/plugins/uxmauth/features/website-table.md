@@ -1,6 +1,6 @@
 ---
 title: Website table
-order: 312
+order: 412
 description: Keeping a website's login table beside the plugin's own, in the shape many website panels read.
 icon: globe
 ---

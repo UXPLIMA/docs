@@ -1,6 +1,6 @@
 ---
 title: text-input.conf
-order: 508
+order: 608
 description: How the editor asks a player to type.
 icon: keyboard
 ---

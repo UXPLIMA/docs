@@ -1,6 +1,6 @@
 ---
 title: Warps
-order: 9330
+order: 9430
 description: Server-wide destinations staff create, with costs, locks, passwords, ratings and signs.
 icon: map-pin
 ---

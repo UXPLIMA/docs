@@ -1,6 +1,6 @@
 ---
 title: Menu layouts
-order: 507
+order: 607
 description: The 28 menu files, their shared structure, and how to re-skin a screen.
 icon: layout-grid
 ---

@@ -1,6 +1,6 @@
 ---
 title: Bulk summary
-order: 408
+order: 508
 description: "What one /crates massopen produced, counted by reward."
 icon: layers
 ---

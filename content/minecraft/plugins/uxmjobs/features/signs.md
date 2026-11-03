@@ -1,6 +1,6 @@
 ---
 title: Signs
-order: 312
+order: 412
 description: Join signs and top list signs, how to hang one, and how they are drawn.
 icon: signpost
 ---

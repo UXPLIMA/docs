@@ -1,6 +1,6 @@
 ---
 title: uxmLang
-order: 305
+order: 40
 description: One language per player for every UXM plugin, kept for the whole server or a network that shares a database.
 icon: languages
 ---

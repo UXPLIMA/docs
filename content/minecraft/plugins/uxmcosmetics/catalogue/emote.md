@@ -1,6 +1,6 @@
 ---
 title: Emotes
-order: 407
+order: 507
 description: Every shipped piece of the emotes family, with its id, rarity and price.
 icon: person-standing
 ---

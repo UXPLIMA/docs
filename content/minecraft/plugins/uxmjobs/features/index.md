@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Jobs, prices, actions, joining, payments, protections, caps, boosters, contracts, rewards, the shop, zones, signs, boards, display, economy and tools.
 icon: layers
 ---

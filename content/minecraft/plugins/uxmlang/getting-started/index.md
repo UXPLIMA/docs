@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: What uxmLang is, how to install it, how a player's language is decided, and the first setup.
 icon: rocket
 ---

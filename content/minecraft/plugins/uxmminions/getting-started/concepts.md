@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: The two rules, the identity, types and levels, scopes, destinations and fuel.
 icon: lightbulb
 ---

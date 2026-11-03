@@ -1,6 +1,6 @@
 ---
 title: Bedrock Forms
-order: 1110
+order: 1210
 description: How a menu renders as a native Bedrock form, and where it stays a chest.
 icon: smartphone
 ---

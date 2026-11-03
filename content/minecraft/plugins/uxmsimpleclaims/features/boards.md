@@ -1,6 +1,6 @@
 ---
 title: Boards
-order: 312
+order: 412
 description: The chunks, members and visits boards.
 icon: trophy
 ---

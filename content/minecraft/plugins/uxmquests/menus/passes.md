@@ -1,6 +1,6 @@
 ---
 title: Passes and pass
-order: 403
+order: 503
 description: The pass list and one pass's ladder, with tiers, standing and claiming.
 icon: ticket
 ---

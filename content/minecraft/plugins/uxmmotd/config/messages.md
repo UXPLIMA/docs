@@ -1,6 +1,6 @@
 ---
 title: Messages
-order: 503
+order: 603
 description: The command replies and the kick screen, one file per language.
 icon: message-square
 ---

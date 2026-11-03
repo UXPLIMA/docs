@@ -1,6 +1,6 @@
 ---
 title: Analytics and the audit trail
-order: 211
+order: 311
 description: Every trade event recorded, queryable in chat, a menu, or a CSV export.
 icon: chart-column
 ---

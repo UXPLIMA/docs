@@ -1,6 +1,6 @@
 ---
 title: Restoring and lapsing
-order: 302
+order: 402
 description: What happens to a glow at quit, at join, and when a rank expires.
 icon: undo-2
 ---

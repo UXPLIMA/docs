@@ -1,6 +1,6 @@
 ---
 title: The log and housekeeping
-order: 309
+order: 409
 description: The opening log with the chance of every win, the log file, purging players who left, and trimming old rows.
 icon: scroll-text
 ---

@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 501
+order: 601
 description: Every node uxmPlayerHider declares, its default, and what it grants.
 icon: list
 ---

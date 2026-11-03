@@ -1,6 +1,6 @@
 ---
 title: Creating the bot
-order: 11
+order: 111
 description: The Discord application, the two intents it needs, its permissions and where the ids come from.
 icon: bot
 ---

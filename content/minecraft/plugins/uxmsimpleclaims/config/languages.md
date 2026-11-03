@@ -1,6 +1,6 @@
 ---
 title: Languages
-order: 506
+order: 606
 description: The seven shipped languages, how a player's language is chosen, adding a language, and uxmLang.
 icon: languages
 ---

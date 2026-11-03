@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 290
+order: 390
 description: WorldEdit, the economy, land protection, PlaceholderAPI and Discord.
 icon: plug
 ---

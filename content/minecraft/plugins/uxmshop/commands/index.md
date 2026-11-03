@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The catalogue, player shop, operator and editor commands.
 icon: terminal
 ---

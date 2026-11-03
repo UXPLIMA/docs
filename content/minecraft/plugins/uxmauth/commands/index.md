@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The player commands of the door and the staff command.
 icon: terminal
 ---

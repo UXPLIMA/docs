@@ -1,6 +1,6 @@
 ---
 title: config.yml
-order: 52
+order: 152
 description: The license, language, worlds, block behaviour and saving, with links to the larger sections.
 icon: file-cog
 ---

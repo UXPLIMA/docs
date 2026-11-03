@@ -1,6 +1,6 @@
 ---
 title: Categories
-order: 308
+order: 408
 description: The tabs of the house, item id patterns, order, the fallback, and the shipped ten.
 icon: folder
 ---

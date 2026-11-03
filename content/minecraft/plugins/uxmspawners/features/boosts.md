@@ -1,6 +1,6 @@
 ---
 title: Boosts
-order: 36
+order: 136
 description: Boost items that raise a spawner's output or speed for a while, how they stack and what they cost to define.
 icon: zap
 ---

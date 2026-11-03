@@ -1,6 +1,6 @@
 ---
 title: Custom Items & Heads
-order: 1540
+order: 1640
 description: Using ItemsAdder, Oraxen, Nexo, CraftEngine, MMOItems, ExecutableItems and custom heads as icons.
 icon: sword
 ---

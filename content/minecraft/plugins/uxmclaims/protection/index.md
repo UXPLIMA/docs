@@ -1,6 +1,6 @@
 ---
 title: Protection
-order: 30
+order: 130
 description: How a protected action is decided, every flag, and every role permission.
 icon: shield
 ---

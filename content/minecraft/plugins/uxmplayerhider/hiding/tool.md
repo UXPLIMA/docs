@@ -1,6 +1,6 @@
 ---
 title: The tool
-order: 302
+order: 402
 description: The hotbar item, its three icons, its words, when it is handed out, and the lock that keeps it in its slot.
 icon: wand
 ---

@@ -1,6 +1,6 @@
 ---
 title: Automatic starts
-order: 35
+order: 135
 description: A weekly schedule in auto-start.yml that starts events without anyone online.
 icon: alarm-clock
 ---

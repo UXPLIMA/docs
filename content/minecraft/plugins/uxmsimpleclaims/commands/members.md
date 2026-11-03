@@ -1,6 +1,6 @@
 ---
 title: Members
-order: 203
+order: 303
 description: Invites, kicks, bans, roles and leaving.
 icon: users
 ---

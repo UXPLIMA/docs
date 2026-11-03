@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: The fourteen windows of uxmSimpleClaims.
 icon: layout-grid
 ---

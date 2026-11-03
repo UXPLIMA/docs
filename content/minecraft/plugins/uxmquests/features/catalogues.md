@@ -1,6 +1,6 @@
 ---
 title: Catalogues
-order: 303
+order: 403
 description: Every quest on offer, categories, prerequisites, cooldowns and manual claiming.
 icon: library
 ---

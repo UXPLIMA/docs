@@ -1,6 +1,6 @@
 ---
 title: Trail
-order: 304
+order: 404
 description: The line of particles behind the arrow in flight, how smooth it is, and what it costs.
 icon: sparkle
 ---

@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 70
+order: 170
 description: The plugins uxmHubPvP detects and what each turns on.
 icon: plug
 ---

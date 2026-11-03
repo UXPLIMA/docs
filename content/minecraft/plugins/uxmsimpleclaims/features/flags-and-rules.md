@@ -1,6 +1,6 @@
 ---
 title: Flags and rules
-order: 305
+order: 405
 description: The thirteen flags, their defaults, locks and nodes, and the block and mob lists.
 icon: toggle-left
 ---

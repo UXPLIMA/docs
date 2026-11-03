@@ -1,6 +1,6 @@
 ---
 title: Ranks
-order: 9190
+order: 9290
 description: A rankup ladder with requirements, costs, prestige and an optional automatic promotion scan.
 icon: crown
 ---

@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Items, triggers and events, clicks, locking, guards and regions, cooldowns.
 icon: sparkles
 ---

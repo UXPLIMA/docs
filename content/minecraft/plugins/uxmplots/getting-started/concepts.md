@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: The grid, plot ids, owners and grades, visit policies, and things worked out from the clock.
 icon: lightbulb
 ---

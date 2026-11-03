@@ -1,6 +1,6 @@
 ---
 title: Depositing
-order: 31
+order: 131
 description: How players hand in items, and what keeps every deposit safe.
 icon: package-plus
 ---

@@ -1,6 +1,6 @@
 ---
 title: Per-Module Config
-order: 1160
+order: 1260
 description: The per-module folders, the enabled key, and what lives in each one.
 icon: file-cog
 ---

@@ -1,6 +1,6 @@
 ---
 title: screens.conf
-order: 506
+order: 606
 description: The waiting room keys and the label keys of every dialog.
 icon: app-window
 ---

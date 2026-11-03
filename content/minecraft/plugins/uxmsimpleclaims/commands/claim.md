@@ -1,6 +1,6 @@
 ---
 title: The claim itself
-order: 204
+order: 304
 description: Name, words, looks, spawn, flags and time.
 icon: flag
 ---

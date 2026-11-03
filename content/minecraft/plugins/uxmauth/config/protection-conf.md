@@ -1,6 +1,6 @@
 ---
 title: protection.conf
-order: 502
+order: 602
 description: The protection block, key by key.
 icon: shield
 ---

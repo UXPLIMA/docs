@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 305
+order: 405
 description: Milestones, the economies a milestone pays into, broadcasts, and what a player is told.
 icon: coins
 ---

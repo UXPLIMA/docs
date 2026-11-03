@@ -1,6 +1,6 @@
 ---
 title: roles.conf
-order: 502
+order: 602
 description: The four starting roles and the role grammar.
 icon: shield
 ---

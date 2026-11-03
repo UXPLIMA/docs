@@ -1,6 +1,6 @@
 ---
 title: Cloaks
-order: 404
+order: 504
 description: Every shipped piece of the cloaks family, with its id, rarity and price.
 icon: feather
 ---

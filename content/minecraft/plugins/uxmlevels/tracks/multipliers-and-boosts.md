@@ -1,6 +1,6 @@
 ---
 title: Multipliers and boosts
-order: 305
+order: 405
 description: The four multipliers an earned amount passes through, permission multipliers, and timed boosts.
 icon: x
 ---

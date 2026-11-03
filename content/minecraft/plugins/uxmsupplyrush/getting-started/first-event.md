@@ -1,6 +1,6 @@
 ---
 title: Your first event
-order: 13
+order: 113
 description: Create an event, choose its items, give it rewards and start it.
 icon: flag
 ---

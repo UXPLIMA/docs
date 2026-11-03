@@ -1,6 +1,6 @@
 ---
 title: rating.conf
-order: 503
+order: 603
 description: Standing time, rating changes, trending and the confidence weighting.
 icon: star
 ---

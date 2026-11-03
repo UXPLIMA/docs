@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Selling, bidding, orders, watches, the mailbox, fees, currencies, categories, history, notices, operators and networks.
 icon: sparkles
 ---

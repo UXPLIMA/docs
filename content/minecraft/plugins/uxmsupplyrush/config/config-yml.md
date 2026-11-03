@@ -1,6 +1,6 @@
 ---
 title: config.yml
-order: 51
+order: 151
 description: License, language, database, network, number format and debug.
 icon: file-cog
 ---

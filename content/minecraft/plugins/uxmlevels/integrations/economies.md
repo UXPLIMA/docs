@@ -1,6 +1,6 @@
 ---
 title: Economies
-order: 802
+order: 902
 description: The economies a prestige is charged against and a reward pays into, what each needs, and what happens without one.
 icon: wallet
 ---

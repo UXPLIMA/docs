@@ -1,6 +1,6 @@
 ---
 title: The ten jobs
-order: 302
+order: 402
 description: What each job does with its targets, range and level.
 icon: hammer
 ---

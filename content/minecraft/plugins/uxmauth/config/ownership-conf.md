@@ -1,6 +1,6 @@
 ---
 title: ownership.conf
-order: 503
+order: 603
 description: The ownership block, key by key.
 icon: badge-check
 ---

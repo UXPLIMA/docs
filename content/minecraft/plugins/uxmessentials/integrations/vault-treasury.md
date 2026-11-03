@@ -1,6 +1,6 @@
 ---
 title: Vault & Treasury
-order: 1490
+order: 1590
 description: Serving our economy to other plugins, and running on somebody else's.
 icon: landmark
 ---

@@ -1,6 +1,6 @@
 ---
 title: Trails
-order: 402
+order: 502
 description: Every shipped piece of the trails family, with its id, rarity and price.
 icon: sparkle
 ---

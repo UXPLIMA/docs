@@ -1,6 +1,6 @@
 ---
 title: Vote
-order: 9320
+order: 9420
 description: Turn votes on listing sites into rewards, streaks, milestones and a server-wide vote party.
 icon: thumbs-up
 ---

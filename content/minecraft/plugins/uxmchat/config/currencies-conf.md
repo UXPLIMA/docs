@@ -1,6 +1,6 @@
 ---
 title: currencies.conf
-order: 505
+order: 605
 description: The currencies a tag can be bought with, their types and how an amount is written.
 icon: coins
 ---

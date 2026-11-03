@@ -1,6 +1,6 @@
 ---
 title: Your first glow
-order: 104
+order: 204
 description: Giving ranks their colours, letting a rank cycle, and changing the picker.
 icon: footprints
 ---

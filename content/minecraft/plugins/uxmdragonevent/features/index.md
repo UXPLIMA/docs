@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: The dragon, the schedule, joining, worlds, end rules, rewards,
   leaderboards and Discord.
 icon: layers

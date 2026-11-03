@@ -1,6 +1,6 @@
 ---
 title: Worlds and the border
-order: 34
+order: 134
 description: The three ways to provide the event world, what happens to it between events, the border and the crystals.
 icon: globe
 ---

@@ -1,6 +1,6 @@
 ---
 title: colours.conf
-order: 508
+order: 608
 description: Presets and their keys, named colours, group defaults and effects.
 icon: palette
 ---

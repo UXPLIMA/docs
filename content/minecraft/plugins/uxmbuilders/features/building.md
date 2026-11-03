@@ -1,6 +1,6 @@
 ---
 title: Building and performance
-order: 201
+order: 301
 description: How blocks are placed, in what order, and how the server stays at 20 TPS.
 icon: gauge
 ---

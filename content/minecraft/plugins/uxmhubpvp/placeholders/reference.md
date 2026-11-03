@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every %uxmhubpvp_...% placeholder, the leaderboard grammar, and what an empty place answers.
 icon: braces
 ---

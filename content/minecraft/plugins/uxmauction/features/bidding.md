@@ -1,6 +1,6 @@
 ---
 title: Bidding
-order: 302
+order: 402
 description: Auctions, the bid step, anti-sniping, refunds and winning.
 icon: trending-up
 ---

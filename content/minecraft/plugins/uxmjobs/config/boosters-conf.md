@@ -1,6 +1,6 @@
 ---
 title: boosters.conf
-order: 507
+order: 607
 description: How boosters combine, and permission boosters.
 icon: rocket
 ---

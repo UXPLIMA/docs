@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The lobby command, the quick lobby command and the operator command.
 icon: terminal
 ---

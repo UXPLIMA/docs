@@ -1,6 +1,6 @@
 ---
 title: Perks
-order: 209
+order: 309
 description: "The buyable upgrade tree: effect types, costs, and the shipped nine."
 icon: git-branch
 ---

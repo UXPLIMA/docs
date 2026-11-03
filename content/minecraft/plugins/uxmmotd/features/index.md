@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Entries, centring and colours, the player count, the hover list, the version text, icons and maintenance.
 icon: sparkles
 ---

@@ -1,6 +1,6 @@
 ---
 title: Top players
-order: 405
+order: 505
 description: "The top players window of one track: a head per place with the level, experience and prestige."
 icon: trophy
 ---

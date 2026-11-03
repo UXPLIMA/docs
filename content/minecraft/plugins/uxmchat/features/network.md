@@ -1,6 +1,6 @@
 ---
 title: A network
-order: 319
+order: 419
 description: One chat across every server behind Velocity, through the proxy's broker or Redis, with the steps to set it up.
 icon: network
 ---

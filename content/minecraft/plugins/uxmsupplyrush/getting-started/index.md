@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: Install the plugin, learn the few words these pages use, and run your first event.
 icon: rocket
 ---

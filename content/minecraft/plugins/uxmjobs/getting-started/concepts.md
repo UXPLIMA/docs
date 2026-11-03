@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Jobs, price rows, the three currencies, levels, the payment order and the protections.
 icon: lightbulb
 ---

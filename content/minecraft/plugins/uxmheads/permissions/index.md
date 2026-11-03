@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 60
+order: 160
 description: Every permission node and its default.
 icon: key
 ---

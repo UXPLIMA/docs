@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 280
+order: 380
 description: The PlaceholderAPI expansion, and the tokens available inside menus.
 icon: braces
 ---

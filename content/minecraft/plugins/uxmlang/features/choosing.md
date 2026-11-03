@@ -1,6 +1,6 @@
 ---
 title: Choosing a language
-order: 301
+order: 401
 description: The window, the command, following the client, forcing a language, and what a choice does.
 icon: mouse-pointer-click
 ---

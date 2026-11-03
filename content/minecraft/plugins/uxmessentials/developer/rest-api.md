@@ -1,6 +1,6 @@
 ---
 title: REST API
-order: 1670
+order: 1770
 description: HTTP and WebSocket access for panels, bots, webhooks and scripts.
 icon: globe
 ---

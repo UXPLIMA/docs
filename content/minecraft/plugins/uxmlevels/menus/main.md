@@ -1,6 +1,6 @@
 ---
 title: Levels
-order: 402
+order: 502
 description: "The levels window: one tile per track with the level, progress, multiplier and prestige, and the prestige star."
 icon: layout-dashboard
 ---

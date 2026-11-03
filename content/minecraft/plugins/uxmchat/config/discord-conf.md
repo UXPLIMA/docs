@@ -1,6 +1,6 @@
 ---
 title: discord.conf
-order: 519
+order: 619
 description: "Every key of the Discord add-on: the bot, bridges, events, the moderation log, the avatar and the texts."
 icon: message-square-share
 ---

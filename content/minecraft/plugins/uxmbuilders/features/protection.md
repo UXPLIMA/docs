@@ -1,6 +1,6 @@
 ---
 title: Land protection
-order: 206
+order: 306
 description: Refusing to build where the player cannot, and stopping when the land changes hands.
 icon: shield
 ---

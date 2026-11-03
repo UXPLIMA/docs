@@ -1,6 +1,6 @@
 ---
 title: Menu files
-order: 514
+order: 614
 description: The keys of a window file, the tokens and actions each window knows, and the two editor layouts.
 icon: layout-template
 ---

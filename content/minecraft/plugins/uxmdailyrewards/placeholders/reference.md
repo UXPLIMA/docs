@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 701
+order: 801
 description: Every %uxmdailyrewards_...% placeholder, what it renders, and what it answers for a player who is away.
 icon: braces
 ---

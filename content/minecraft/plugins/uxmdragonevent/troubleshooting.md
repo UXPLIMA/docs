@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-order: 80
+order: 180
 description: What to check when the plugin will not start, an event will not run, players cannot join or Discord stays quiet.
 icon: life-buoy
 ---

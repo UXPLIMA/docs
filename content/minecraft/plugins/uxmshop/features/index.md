@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Sections, matching, prices, stock, selling, trade effects, player shops, the hologram, currencies and the editor.
 icon: layers
 ---

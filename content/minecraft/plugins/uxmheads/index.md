@@ -1,6 +1,6 @@
 ---
 title: uxmHeads
-order: 345
+order: 48
 description: A player's face drawn in chat from their skin, a welcome with the face at every join, and the rows for every other plugin.
 icon: skull
 ---

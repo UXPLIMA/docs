@@ -1,6 +1,6 @@
 ---
 title: The editor
-order: 310
+order: 410
 description: Changing the catalogue and window tiles in game, what it refuses and what a save costs.
 icon: pencil
 ---

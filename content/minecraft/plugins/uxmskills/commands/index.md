@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The player command /skills, the operator command /uxmskills and the editor /skillsedit.
 icon: terminal
 ---

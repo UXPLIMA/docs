@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 30
+order: 130
 description: The calendar and the streak, the day files, rewards per rank, the reminder and the celebration.
 icon: gift
 ---

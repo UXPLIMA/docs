@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: The economy plugins, PlaceholderAPI, Discord and the other plugins uxmAuction works with.
 icon: plug
 ---

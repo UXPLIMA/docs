@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 202
+order: 302
 description: Giving, giving all, clearing, reload, version, doctor and another player's language.
 icon: wrench
 ---

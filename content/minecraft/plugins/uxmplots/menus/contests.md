@@ -1,6 +1,6 @@
 ---
 title: Contests, scorecard and hall of fame
-order: 406
+order: 506
 description: The contest list, the voting scorecard and the hall of fame.
 icon: trophy
 ---

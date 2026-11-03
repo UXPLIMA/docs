@@ -1,6 +1,6 @@
 ---
 title: Nametags
-order: 9130
+order: 9230
 description: 'The name above each player''s head: prefixes, suffixes, colours and distance-based hiding.'
 icon: tag
 ---

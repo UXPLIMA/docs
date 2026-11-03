@@ -1,6 +1,6 @@
 ---
 title: arenas.conf
-order: 502
+order: 602
 description: The arenas, as the admin commands and the editor write them, and editing them by hand.
 icon: map
 ---

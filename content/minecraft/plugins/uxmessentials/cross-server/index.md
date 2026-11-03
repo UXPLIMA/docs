@@ -1,6 +1,6 @@
 ---
 title: Cross-Server
-order: 159
+order: 259
 description: Keeping homes, warps, economy and vaults in step across a network.
 icon: network
 ---

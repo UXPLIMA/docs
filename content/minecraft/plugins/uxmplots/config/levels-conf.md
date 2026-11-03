@@ -1,6 +1,6 @@
 ---
 title: levels.conf
-order: 510
+order: 610
 description: The curve, the weights and the unlocks.
 icon: trending-up
 ---

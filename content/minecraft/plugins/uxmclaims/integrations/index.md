@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: Vault, WorldGuard, PlaceholderAPI and the four web-map plugins.
 icon: plug
 ---

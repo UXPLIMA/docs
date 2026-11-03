@@ -1,6 +1,6 @@
 ---
 title: Leaderboard
-order: 403
+order: 503
 description: "The window /kotl top opens: the players who held the crown longest, with their longest reigns."
 icon: trophy
 ---

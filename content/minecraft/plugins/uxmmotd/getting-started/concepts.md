@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: What a client asks for, entries, colour roles, the two platforms, and languages on the server list.
 icon: lightbulb
 ---

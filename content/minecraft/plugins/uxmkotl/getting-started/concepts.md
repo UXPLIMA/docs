@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Arenas and their states, how a player gets in and out, the crown and a reign, the record, and the boards.
 icon: lightbulb
 ---

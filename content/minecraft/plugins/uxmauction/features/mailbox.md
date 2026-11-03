@@ -1,6 +1,6 @@
 ---
 title: The mailbox
-order: 305
+order: 405
 description: What waits for a player, and taking it out.
 icon: inbox
 ---

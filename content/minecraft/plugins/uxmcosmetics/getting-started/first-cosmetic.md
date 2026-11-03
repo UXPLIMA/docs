@@ -1,6 +1,6 @@
 ---
 title: Your first cosmetic
-order: 104
+order: 204
 description: Adding a halo of your own, selling it, putting it in a box and placing a box station.
 icon: footprints
 ---

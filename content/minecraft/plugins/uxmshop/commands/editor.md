@@ -1,6 +1,6 @@
 ---
 title: Editor commands
-order: 205
+order: 305
 description: Every /shopedit branch.
 icon: pencil
 ---

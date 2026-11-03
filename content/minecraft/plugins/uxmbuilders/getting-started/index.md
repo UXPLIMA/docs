@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: What the plugin does, how to install it, and the vocabulary.
 icon: rocket
 ---

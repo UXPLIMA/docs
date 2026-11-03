@@ -1,6 +1,6 @@
 ---
 title: Languages and menus
-order: 55
+order: 155
 description: The eight languages, the message file and the 13 menu files.
 icon: languages
 ---
