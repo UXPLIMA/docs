@@ -26,7 +26,7 @@ Every table name starts with `storage.table-prefix`, `uxmkotl_` by default.
 | `uxmkotl_stats` | One row per player: name, time held, longest reign, crowns and kills |
 | `uxmkotl_board` | One row per player, board, period and window: the score and when it was reached |
 | `uxmkotl_name` | The name each player last played under, for the boards |
-| `uxmlib_schema_history` | The version the tables are at |
+| `uxmkotl_schema_history` | The version the tables are at |
 
 `/uxmkotl doctor` names the backend, where the rows are, the prefix and the schema version.
 

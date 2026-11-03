@@ -1,0 +1,10 @@
+---
+title: Integrations
+order: 80
+description: Every plugin uxmLevels works with, and what each turns on.
+icon: plug
+---
+
+- [Overview](overview.md)
+- [Economies](economies.md)
+- [PlaceholderAPI](placeholderapi.md)

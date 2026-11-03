@@ -24,7 +24,7 @@ Every table name starts with `storage.table-prefix`, `uxmdailyrewards_` by defau
 | Table | Holds |
 |---|---|
 | `uxmdailyrewards_progress` | One row per player who has claimed: `player_id`, `streak`, and `claimed_at` in milliseconds |
-| `uxmlib_schema_history` | The version the table is at |
+| `uxmdailyrewards_schema_history` | The version the table is at |
 
 A player who never claimed, or whom an operator reset, has no row. `/uxmdailyrewards doctor` names the backend, where
 the rows are, the prefix and the schema version.

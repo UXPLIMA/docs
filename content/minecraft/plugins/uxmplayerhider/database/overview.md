@@ -25,7 +25,7 @@ Every table name starts with `storage.table-prefix`, `uxmplayerhider_` by defaul
 | Table | Holds |
 |---|---|
 | `uxmplayerhider_state` | One row per player who hides anyone: the player's id and `important` or `none` |
-| `uxmlib_schema_history` | The version the table is at |
+| `uxmplayerhider_schema_history` | The version the table is at |
 
 A player's row is read while they log in, before they arrive, and written off the main thread when they change. A
 row that cannot be read is logged, and that player starts showing everybody. `/uxmplayerhider doctor` names the
