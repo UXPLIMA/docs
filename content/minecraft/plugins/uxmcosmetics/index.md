@@ -1,6 +1,6 @@
 ---
 title: uxmCosmetics
-order: 250
+order: 260
 description: A wardrobe of 234 cosmetics in twelve families, from trails and pets to emotes and gadgets, with mystery boxes and box stations.
 icon: shirt
 ---

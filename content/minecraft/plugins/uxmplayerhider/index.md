@@ -1,6 +1,6 @@
 ---
 title: uxmPlayerHider
-order: 335
+order: 330
 description: A hotbar item and a command to show everybody, only the important players, or nobody, remembered per player and shared across a network.
 icon: eye-off
 ---

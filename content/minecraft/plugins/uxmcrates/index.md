@@ -1,6 +1,6 @@
 ---
 title: uxmCrates
-order: 220
+order: 235
 description: Crates whose odds a player can read, with reveal animations, keys, rerolls, milestones, envoys and an in-game editor.
 icon: package
 ---
