@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: Every PlaceholderAPI placeholder of uxmBackup.
 icon: braces
 ---

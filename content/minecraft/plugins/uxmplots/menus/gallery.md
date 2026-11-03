@@ -1,6 +1,6 @@
 ---
 title: Gallery and boards
-order: 403
+order: 503
 description: The gallery with its pinned and sponsored rows, sorting, search and filters, and the boards window.
 icon: images
 ---

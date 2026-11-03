@@ -1,6 +1,6 @@
 ---
 title: Boosters
-order: 307
+order: 407
 description: Permission boosters, the timed boost, scheduled boosters, and how two combine.
 icon: rocket
 ---

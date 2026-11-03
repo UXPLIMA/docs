@@ -1,6 +1,6 @@
 ---
 title: Claims, map, market and inbox
-order: 402
+order: 502
 description: The claims list with its tabs, the land map, the market and the inbox.
 icon: list
 ---

@@ -1,6 +1,6 @@
 ---
 title: config.conf (Globals)
-order: 1150
+order: 1250
 description: Storage, locale, lookup, claims, links and every other setting in the root config file.
 icon: file-cog
 ---

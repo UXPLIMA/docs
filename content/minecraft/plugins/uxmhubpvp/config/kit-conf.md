@@ -1,6 +1,6 @@
 ---
 title: kit.conf
-order: 402
+order: 502
 description: The kit a fighter is handed, every piece, and every key an item takes.
 icon: shield-half
 ---

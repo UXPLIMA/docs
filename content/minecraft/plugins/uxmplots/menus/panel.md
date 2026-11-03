@@ -1,6 +1,6 @@
 ---
 title: Panel, members and flags
-order: 402
+order: 502
 description: The plot panel, the flag switches, the member list and one member's grades.
 icon: layout-dashboard
 ---

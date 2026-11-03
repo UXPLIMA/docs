@@ -1,6 +1,6 @@
 ---
 title: Second factor
-order: 308
+order: 408
 description: An authenticator app or a code by mail, backup codes, requiring it for staff, and the sealed secrets.
 icon: smartphone-nfc
 ---

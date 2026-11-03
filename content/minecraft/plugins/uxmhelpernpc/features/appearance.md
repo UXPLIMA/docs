@@ -1,6 +1,6 @@
 ---
 title: Appearance
-order: 32
+order: 132
 description: Entity type, skins, glow, models and what players may change themselves.
 icon: palette
 ---

@@ -1,6 +1,6 @@
 ---
 title: uxmDiscordSync
-order: 50
+order: 14
 description: Account linking, rank sync, Discord-side 2FA, level rewards, a chat bridge and audit logs
   from one Discord bot.
 icon: link

@@ -1,6 +1,6 @@
 ---
 title: Storages
-order: 302
+order: 402
 description: The five storage types and the keys each takes.
 icon: hard-drive
 ---

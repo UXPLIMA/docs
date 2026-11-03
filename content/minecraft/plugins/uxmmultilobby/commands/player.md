@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Opening the window, joining a lobby by name, the quick lobby, and the language branch.
 icon: user
 ---

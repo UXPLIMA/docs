@@ -1,6 +1,6 @@
 ---
 title: Levels
-order: 404
+order: 504
 description: The reward table of one job, marked by where you stand.
 icon: list-ordered
 ---

@@ -1,6 +1,6 @@
 ---
 title: custom-commands.conf
-order: 512
+order: 612
 description: The keys of a custom command and the three shipped ones.
 icon: square-terminal
 ---

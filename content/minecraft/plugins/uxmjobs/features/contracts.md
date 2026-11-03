@@ -1,6 +1,6 @@
 ---
 title: Contracts
-order: 308
+order: 408
 description: "Documents a player pays for: working hours, in-shift and out-of-shift pay, promotions and cancelling."
 icon: scroll
 ---

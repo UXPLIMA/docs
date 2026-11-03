@@ -1,6 +1,6 @@
 ---
 title: Announcements
-order: 312
+order: 412
 description: Bundles of announcements on chat, action bar, title, boss bar or sound, with conditions, centring and playtime gates.
 icon: megaphone
 ---

@@ -1,6 +1,6 @@
 ---
 title: Your first plot
-order: 104
+order: 204
 description: Claim a plot, trust a friend, shape it, tag it and put it in the gallery.
 icon: sparkles
 ---

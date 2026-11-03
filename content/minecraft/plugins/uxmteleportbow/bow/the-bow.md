@@ -1,6 +1,6 @@
 ---
 title: The bow and the arrow
-order: 301
+order: 401
 description: The two items the plugin hands out, when they are handed out, how they look, and the lock that keeps them in place.
 icon: package
 ---

@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: /lang and its subcommands, with what each answers.
 icon: user
 ---

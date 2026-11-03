@@ -1,6 +1,6 @@
 ---
 title: Scoreboard
-order: 9210
+order: 9310
 description: A per-player sidebar drawn from packets, with animated lines and no vanilla objective conflicts.
 icon: list-ordered
 ---

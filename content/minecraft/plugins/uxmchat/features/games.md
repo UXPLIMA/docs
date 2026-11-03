@@ -1,6 +1,6 @@
 ---
 title: Chat games
-order: 315
+order: 415
 description: Seven kinds of round, timing, rewards, the winners' table, word and trivia files per language, and networks.
 icon: gamepad-2
 ---

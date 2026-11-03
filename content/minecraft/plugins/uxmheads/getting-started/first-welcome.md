@@ -1,6 +1,6 @@
 ---
 title: Your first welcome
-order: 104
+order: 204
 description: Changing the welcome, turning it off for another plugin's greeting, and previewing a face.
 icon: footprints
 ---

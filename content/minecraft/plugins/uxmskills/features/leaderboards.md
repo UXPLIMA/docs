@@ -1,6 +1,6 @@
 ---
 title: Leaderboards
-order: 309
+order: 409
 description: Boards per skill, total and average, the four periods, and hiding.
 icon: trophy
 ---

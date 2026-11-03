@@ -1,6 +1,6 @@
 ---
 title: Section files
-order: 503
+order: 603
 description: The keys of shops/<section>.conf.
 icon: file-text
 ---

@@ -1,6 +1,6 @@
 ---
 title: Your first arena
-order: 104
+order: 204
 description: Build an arena from nothing, open it, and run it, from a menu or by typing.
 icon: flag
 ---

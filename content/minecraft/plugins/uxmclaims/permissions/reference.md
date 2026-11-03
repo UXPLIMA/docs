@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every permission node uxmClaims reads, and what each one unlocks.
 icon: list
 ---

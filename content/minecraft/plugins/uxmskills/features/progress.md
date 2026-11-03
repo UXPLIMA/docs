@@ -1,6 +1,6 @@
 ---
 title: Progress and rewards
-order: 308
+order: 408
 description: Notifications, level up and capstone actions, specialisation, death and the activator block.
 icon: bell
 ---

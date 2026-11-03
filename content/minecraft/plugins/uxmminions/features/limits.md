@@ -1,6 +1,6 @@
 ---
 title: Limits
-order: 307
+order: 407
 description: The total per scope, quotas per type, per chunk, worlds, the bypass and granted slots.
 icon: gauge
 ---

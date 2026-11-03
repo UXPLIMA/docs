@@ -1,6 +1,6 @@
 ---
 title: Core Concepts
-order: 920
+order: 1020
 description: Modules, the config layout, permissions, messages and threading.
 icon: lightbulb
 ---

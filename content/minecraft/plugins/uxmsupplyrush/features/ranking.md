@@ -1,6 +1,6 @@
 ---
 title: Ranking
-order: 33
+order: 133
 description: How the leaderboard is ordered, and what happens when players tie.
 icon: list-ordered
 ---

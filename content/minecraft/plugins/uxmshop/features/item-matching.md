@@ -1,6 +1,6 @@
 ---
 title: Item matching
-order: 302
+order: 402
 description: The four match modes and the fields that may be ignored.
 icon: scan
 ---

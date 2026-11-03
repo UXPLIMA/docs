@@ -1,6 +1,6 @@
 ---
 title: webhooks.yml
-order: 505
+order: 605
 description: Posting claim events to Discord as embeds.
 icon: webhook
 ---

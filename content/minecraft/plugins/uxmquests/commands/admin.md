@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 203
+order: 303
 description: Every /uxmquests branch, its node and what it does.
 icon: shield
 ---

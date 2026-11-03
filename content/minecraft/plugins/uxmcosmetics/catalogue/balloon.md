@@ -1,6 +1,6 @@
 ---
 title: Balloons
-order: 408
+order: 508
 description: Every shipped piece of the balloons family, with its id, rarity and price.
 icon: wind
 ---

@@ -1,6 +1,6 @@
 ---
 title: display.conf
-order: 504
+order: 604
 description: Every key of display.conf with its default.
 icon: monitor
 ---

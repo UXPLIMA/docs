@@ -1,6 +1,6 @@
 ---
 title: Your first sale
-order: 104
+order: 204
 description: List an item, buy it with another player, and collect the money.
 icon: flag
 ---

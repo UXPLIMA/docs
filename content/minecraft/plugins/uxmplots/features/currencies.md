@@ -1,6 +1,6 @@
 ---
 title: Currencies
-order: 316
+order: 416
 description: The five currency types, the shipped diamonds, and how prices, fees, rents and tips pick one.
 icon: coins
 ---

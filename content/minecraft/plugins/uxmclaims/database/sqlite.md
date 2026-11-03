@@ -1,6 +1,6 @@
 ---
 title: SQLite
-order: 902
+order: 1002
 description: The zero-setup default, and when to move off it.
 icon: file
 ---

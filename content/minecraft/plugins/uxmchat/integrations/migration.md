@@ -1,6 +1,6 @@
 ---
 title: Migration
-order: 803
+order: 903
 description: Moving from uxm-tags and uxm-chat-color, and from an older uxmChat folder.
 icon: arrow-right-left
 ---

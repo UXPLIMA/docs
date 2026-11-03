@@ -1,6 +1,6 @@
 ---
 title: skins.conf
-order: 506
+order: 606
 description: The suits, their colours, heads and nodes.
 icon: shirt
 ---

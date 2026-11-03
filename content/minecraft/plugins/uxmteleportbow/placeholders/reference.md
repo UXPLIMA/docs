@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every %uxmteleportbow_...% placeholder, what it renders, and what it answers for a player who is away.
 icon: braces
 ---

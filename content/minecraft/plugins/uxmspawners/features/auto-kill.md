@@ -1,6 +1,6 @@
 ---
 title: Auto-Kill
-order: 34
+order: 134
 description: Turning a spawner into a farm nobody has to stand at, the modern and classic ways it works, and the mobs that do spawn.
 icon: swords
 ---

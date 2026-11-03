@@ -1,6 +1,6 @@
 ---
 title: Emoji
-order: 307
+order: 407
 description: Shortcuts that become glyphs, the shipped emoji, the window, and per-emoji permissions.
 icon: message-circle
 ---

@@ -1,6 +1,6 @@
 ---
 title: Vaults
-order: 9300
+order: 9400
 description: Personal chest-style storage kept in the database, so it survives a world rollback.
 icon: archive
 ---

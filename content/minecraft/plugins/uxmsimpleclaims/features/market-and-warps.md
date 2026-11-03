@@ -1,6 +1,6 @@
 ---
 title: Market and warps
-order: 307
+order: 407
 description: Selling claims, public warps with fees, visits and favourites.
 icon: store
 ---

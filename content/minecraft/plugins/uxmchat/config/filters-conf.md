@@ -1,6 +1,6 @@
 ---
 title: filters.conf
-order: 506
+order: 606
 description: The allowlist, every filter and its keys, the ladder, automatic replies, commands read as chat, and the word files.
 icon: funnel
 ---

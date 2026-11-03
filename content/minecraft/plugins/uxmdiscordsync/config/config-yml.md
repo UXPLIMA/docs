@@ -1,6 +1,6 @@
 ---
 title: config.yml
-order: 51
+order: 151
 description: The plugin section, the bot, times and dates, and the Discord commands that act on the server.
 icon: file-cog
 ---

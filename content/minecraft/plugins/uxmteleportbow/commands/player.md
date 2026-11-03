@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: The language subcommands a player uses.
 icon: user
 ---

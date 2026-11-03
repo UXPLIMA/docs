@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: The sixteen colours, solid and cycling glows, how a glow is drawn, and why it is global.
 icon: lightbulb
 ---

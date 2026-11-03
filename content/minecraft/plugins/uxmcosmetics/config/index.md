@@ -1,6 +1,6 @@
 ---
 title: Configuration
-order: 60
+order: 160
 description: Every file the plugin writes, what belongs in it, reloading, and what an update does to your files.
 icon: settings
 ---

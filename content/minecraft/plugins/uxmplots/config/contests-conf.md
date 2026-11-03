@@ -1,6 +1,6 @@
 ---
 title: contests.conf
-order: 504
+order: 604
 description: The contest boss bar and the daily vote reward.
 icon: trophy
 ---

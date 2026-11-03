@@ -1,6 +1,6 @@
 ---
 title: Events
-order: 302
+order: 402
 description: The seven event types, every key of an event, how several events pay at once, and the shipped ten.
 icon: zap
 ---

@@ -1,6 +1,6 @@
 ---
 title: Upgrades
-order: 306
+order: 406
 description: Buying a level, the requirement list, rewards, and consuming one minion into another.
 icon: circle-arrow-up
 ---

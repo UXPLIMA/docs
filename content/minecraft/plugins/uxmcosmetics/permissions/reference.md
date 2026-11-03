@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 701
+order: 801
 description: Every permission node of uxmCosmetics with its default and what it allows.
 icon: list-checks
 ---

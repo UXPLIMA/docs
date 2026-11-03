@@ -1,6 +1,6 @@
 ---
 title: In-game editor
-order: 314
+order: 414
 description: Making, changing and deleting minion types from inside the game.
 icon: pencil
 ---

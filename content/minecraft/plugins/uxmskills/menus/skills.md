@@ -1,6 +1,6 @@
 ---
 title: Skills windows
-order: 402
+order: 502
 description: The skills window, a skill, levels, sources, abilities, stats, rate and top.
 icon: zap
 ---

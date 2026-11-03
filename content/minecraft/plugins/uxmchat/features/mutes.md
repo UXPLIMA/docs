@@ -1,6 +1,6 @@
 ---
 title: Mutes
-order: 306
+order: 406
 description: uxmChat's own mutes, the punishment plugins it hands mutes to, and the chat lock.
 icon: volume-x
 ---

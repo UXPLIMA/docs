@@ -1,6 +1,6 @@
 ---
 title: Mystery boxes
-order: 303
+order: 403
 description: Boxes, their tables and weights, the roulette, duplicates, refunds, and who may open a box.
 icon: package-open
 ---

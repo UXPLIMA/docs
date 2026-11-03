@@ -1,6 +1,6 @@
 ---
 title: Prestige
-order: 404
+order: 504
 description: "The prestige window: one tile per track with what a prestige needs and gives, and prestiging with a click."
 icon: star
 ---

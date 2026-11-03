@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 401
+order: 501
 description: The fourteen window files, who opens them, refresh blocks, view gates and Bedrock.
 icon: layout-template
 ---

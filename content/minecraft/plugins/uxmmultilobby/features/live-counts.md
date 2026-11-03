@@ -1,6 +1,6 @@
 ---
 title: Live counts
-order: 301
+order: 401
 description: The three sources of a lobby's count, how often they refresh, and when an answer stops being trusted.
 icon: activity
 ---

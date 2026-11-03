@@ -1,6 +1,6 @@
 ---
 title: commands.conf
-order: 506
+order: 606
 description: The name, aliases and switch of every command and subcommand, and words per language.
 icon: square-terminal
 ---

@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL
-order: 1004
+order: 1104
 description: Connecting to PostgreSQL to share jobs, points and the ledger across servers.
 icon: server
 ---

@@ -1,6 +1,6 @@
 ---
 title: Personality and shop
-order: 309
+order: 409
 description: Music, ambience, time, weather and sign looks for a plot, and the shop that sells looks and patterns.
 icon: sparkle
 ---

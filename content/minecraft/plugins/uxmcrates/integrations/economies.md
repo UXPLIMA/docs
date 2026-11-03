@@ -1,6 +1,6 @@
 ---
 title: Economies
-order: 802
+order: 902
 description: Every currency name a cost, a requirement or a reward can use, placeholder currencies, and bridges to any economy.
 icon: wallet
 ---

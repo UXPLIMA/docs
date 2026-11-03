@@ -1,6 +1,6 @@
 ---
 title: Developer API
-order: 100
+order: 200
 description: The architecture, the facade, the events and the domain model.
 icon: code
 ---

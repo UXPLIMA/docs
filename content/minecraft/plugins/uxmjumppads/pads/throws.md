@@ -1,6 +1,6 @@
 ---
 title: Throws and landings
-order: 303
+order: 403
 description: When a pad throws, the direction, the cooldown, one throw per arrival, and the fall grace.
 icon: move-up-right
 ---

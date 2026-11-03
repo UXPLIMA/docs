@@ -1,6 +1,6 @@
 ---
 title: Currencies
-order: 307
+order: 407
 description: The nine currency types, what ships, readiness, whole numbers, paying players who are away, and how an amount is written.
 icon: coins
 ---

@@ -1,6 +1,6 @@
 ---
 title: items.yml
-order: 54
+order: 154
 description: The egg and the other items the plugin hands out.
 icon: package
 ---

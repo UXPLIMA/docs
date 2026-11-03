@@ -1,6 +1,6 @@
 ---
 title: History and logs
-order: 36
+order: 136
 description: Past runs for players, summary files for admins, and the log of everything that happened.
 icon: scroll-text
 ---

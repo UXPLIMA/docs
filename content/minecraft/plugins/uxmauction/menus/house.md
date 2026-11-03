@@ -1,6 +1,6 @@
 ---
 title: House
-order: 402
+order: 502
 description: The shelf, sorting, tabs, search, your listings and the mailbox.
 icon: store
 ---

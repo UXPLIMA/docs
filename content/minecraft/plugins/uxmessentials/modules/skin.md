@@ -1,6 +1,6 @@
 ---
 title: Skin
-order: 9235
+order: 9335
 description: Player skins by name, by link or from a file, with Bedrock and cracked servers covered.
 icon: shirt
 ---

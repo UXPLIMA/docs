@@ -1,6 +1,6 @@
 ---
 title: The hover list
-order: 304
+order: 404
 description: The lines a client shows over the player count, and their limits.
 icon: mouse-pointer
 ---

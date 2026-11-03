@@ -1,6 +1,6 @@
 ---
 title: Bedrock (Floodgate)
-order: 1530
+order: 1630
 description: What Bedrock players get, and what Floodgate has to be installed for.
 icon: smartphone
 ---

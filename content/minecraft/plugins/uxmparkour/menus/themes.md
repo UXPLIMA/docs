@@ -1,6 +1,6 @@
 ---
 title: Theme picker
-order: 402
+order: 502
 description: The window a player picks the blocks of their course from.
 icon: palette
 ---

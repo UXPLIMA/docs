@@ -1,6 +1,6 @@
 ---
 title: Mentions and tokens
-order: 304
+order: 404
 description: Mentioning players, @here and @everyone, how a mention is told, and the item, inventory, position, money and other tokens.
 icon: at-sign
 ---

@@ -1,6 +1,6 @@
 ---
 title: Hotbar items
-order: 305
+order: 405
 description: The wardrobe opener, the gadget slot, and the rules every cosmetic item follows.
 icon: hand
 ---

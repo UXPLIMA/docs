@@ -1,6 +1,6 @@
 ---
 title: Domain model
-order: 1005
+order: 1105
 description: Claim and the objects hanging off it, and the one method worth knowing.
 icon: box
 ---

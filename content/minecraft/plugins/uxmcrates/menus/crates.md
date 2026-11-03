@@ -1,6 +1,6 @@
 ---
 title: Crate list
-order: 402
+order: 502
 description: "The /crates window: every crate with the keys held and the wait, and buttons to the keys and the waiting rewards."
 icon: package
 ---

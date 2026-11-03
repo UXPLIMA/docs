@@ -1,6 +1,6 @@
 ---
 title: Info
-order: 402
+order: 502
 description: One account as staff read it, its logins and the other accounts on its addresses.
 icon: id-card
 ---

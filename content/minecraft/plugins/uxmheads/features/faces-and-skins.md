@@ -1,6 +1,6 @@
 ---
 title: Faces and skins
-order: 301
+order: 401
 description: How a skin is found, fetched, kept and turned into a face.
 icon: scan-face
 ---

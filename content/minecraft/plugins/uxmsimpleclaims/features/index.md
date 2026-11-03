@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Worlds, claiming, prices, members, flags, sub areas, the market, upkeep, entering, staff tools, networks and boards.
 icon: layers
 ---

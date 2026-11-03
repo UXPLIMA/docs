@@ -1,6 +1,6 @@
 ---
 title: Retention
-order: 303
+order: 403
 description: The three limits per storage, and the archive that is never removed.
 icon: hourglass
 ---

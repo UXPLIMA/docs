@@ -1,6 +1,6 @@
 ---
 title: categories.conf
-order: 503
+order: 603
 description: The keys of a category, patterns, and the fallback.
 icon: folder
 ---

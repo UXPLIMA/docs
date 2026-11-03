@@ -1,6 +1,6 @@
 ---
 title: Bans
-order: 408
+order: 508
 description: The ban list, and what a ban actually blocks.
 icon: user-x
 ---

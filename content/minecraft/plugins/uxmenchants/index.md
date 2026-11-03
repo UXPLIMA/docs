@@ -1,6 +1,6 @@
 ---
 title: uxmEnchants
-order: 265
+order: 32
 description: Custom enchantments, one file each, woven into the enchanting table, villager trades, loot, the anvil and books.
 icon: wand
 ---

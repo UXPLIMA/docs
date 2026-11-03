@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Every /levels subcommand, with its arguments, what it does and the permission it needs.
 icon: user
 ---

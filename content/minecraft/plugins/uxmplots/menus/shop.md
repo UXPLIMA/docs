@@ -1,6 +1,6 @@
 ---
 title: Shop
-order: 405
+order: 505
 description: The decoration shop, its shelves, buying, using, and how a row reads.
 icon: shopping-bag
 ---

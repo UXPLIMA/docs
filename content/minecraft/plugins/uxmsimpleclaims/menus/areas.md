@@ -1,6 +1,6 @@
 ---
 title: Sub areas
-order: 405
+order: 505
 description: The sub areas list and one sub area.
 icon: layout-grid
 ---

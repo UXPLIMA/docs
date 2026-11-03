@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: The PlaceholderAPI placeholders of uxmJobs.
 icon: braces
 ---

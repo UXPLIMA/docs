@@ -1,6 +1,6 @@
 ---
 title: Discord notifications
-order: 212
+order: 312
 description: Posting build starts, completions and cancellations to a Discord webhook.
 icon: bell
 ---

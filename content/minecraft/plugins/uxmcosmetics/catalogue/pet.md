@@ -1,6 +1,6 @@
 ---
 title: Pets
-order: 410
+order: 510
 description: Every shipped piece of the pets family, with its id, rarity and price.
 icon: dog
 ---

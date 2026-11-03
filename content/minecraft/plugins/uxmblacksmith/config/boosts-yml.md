@@ -1,6 +1,6 @@
 ---
 title: modules/boosts.yml
-order: 304
+order: 404
 description: The boost item definitions, and the one thing to keep stable.
 icon: zap
 ---

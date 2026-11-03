@@ -1,6 +1,6 @@
 ---
 title: Runs
-order: 304
+order: 404
 description: Joining, the session items, what is locked while a player runs, every way a run ends, and arena protection.
 icon: activity
 ---

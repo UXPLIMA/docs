@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: Player and admin commands, in Turkish and English, with their permissions.
 icon: terminal
 ---

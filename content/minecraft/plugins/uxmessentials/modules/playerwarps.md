@@ -1,6 +1,6 @@
 ---
 title: Player Warps
-order: 9160
+order: 9260
 description: Player-owned public destinations with entry fees, ratings, rent and sponsored slots.
 icon: map-pin
 ---

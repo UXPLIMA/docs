@@ -1,6 +1,6 @@
 ---
 title: Combat tag
-order: 303
+order: 403
 description: What tags a fighter, the commands a tagged fighter may still type, and what quitting while tagged costs.
 icon: timer
 ---

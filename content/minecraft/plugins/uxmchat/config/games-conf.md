@@ -1,6 +1,6 @@
 ---
 title: games.conf
-order: 513
+order: 613
 description: Kinds, timing, the host on a network, rewards, and the words and trivia files.
 icon: gamepad-2
 ---

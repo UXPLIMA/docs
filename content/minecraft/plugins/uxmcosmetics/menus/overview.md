@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 501
+order: 601
 description: The four windows, their files, what opens each, and the shape every tile shares.
 icon: layout-dashboard
 ---

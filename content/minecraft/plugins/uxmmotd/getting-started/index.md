@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: What uxmMOTD is, which jar goes where, and writing the first entry.
 icon: rocket
 ---

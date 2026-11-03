@@ -1,6 +1,6 @@
 ---
 title: End rules
-order: 35
+order: 135
 description: The rules that decide what kind of fight happens in the event world, and the block and item blacklists.
 icon: scale
 ---

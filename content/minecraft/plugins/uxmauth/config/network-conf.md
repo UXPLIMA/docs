@@ -1,6 +1,6 @@
 ---
 title: network.conf
-order: 504
+order: 604
 description: The network block, key by key, and which side reads each.
 icon: network
 ---

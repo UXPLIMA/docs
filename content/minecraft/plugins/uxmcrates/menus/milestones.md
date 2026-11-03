@@ -1,6 +1,6 @@
 ---
 title: Milestones
-order: 406
+order: 506
 description: The rungs of a milestone ladder, the player's progress, and taking a rung.
 icon: flag
 ---

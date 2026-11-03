@@ -1,6 +1,6 @@
 ---
 title: Your first shot
-order: 104
+order: 204
 description: Shoot the bow, see a refusal, change the cooldown, and close a world to it.
 icon: play
 ---

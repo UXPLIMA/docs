@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 290
+order: 390
 description: Every hook, what it adds, and the two-step enable.
 icon: plug
 ---

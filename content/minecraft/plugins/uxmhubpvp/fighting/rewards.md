@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 305
+order: 405
 description: What a kill pays, the money lines, and what the killer is told.
 icon: coins
 ---

@@ -1,6 +1,6 @@
 ---
 title: Quests and tasks
-order: 304
+order: 404
 description: A quest, its tasks, amounts and spans, filters and draws, and how names are found.
 icon: list-checks
 ---

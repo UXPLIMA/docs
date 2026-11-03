@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 13
+order: 113
 description: The link, first-link rewards, server names, the embed format every file shares and the two placeholder styles.
 icon: lightbulb
 ---

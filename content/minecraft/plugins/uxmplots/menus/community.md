@@ -1,6 +1,6 @@
 ---
 title: Guestbook and sessions
-order: 404
+order: 504
 description: A plot's guestbook and the list of open building sessions.
 icon: book-open
 ---

@@ -1,6 +1,6 @@
 ---
 title: Content files
-order: 505
+order: 605
 description: Skill, source, ability, stat and resource files.
 icon: folder
 ---

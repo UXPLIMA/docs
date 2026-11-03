@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 701
+order: 801
 description: The tags that work in the server list lines, and why there is no PlaceholderAPI.
 icon: list
 ---

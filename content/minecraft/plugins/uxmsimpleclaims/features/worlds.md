@@ -1,6 +1,6 @@
 ---
 title: Worlds
-order: 301
+order: 401
 description: World modes, protected heights and the rules of the wilderness.
 icon: globe
 ---

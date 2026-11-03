@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: Every plugin uxmQuests reads when it is installed.
 icon: plug
 ---

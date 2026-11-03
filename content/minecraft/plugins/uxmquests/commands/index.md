@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The player command /quests and the operator command /uxmquests.
 icon: terminal
 ---

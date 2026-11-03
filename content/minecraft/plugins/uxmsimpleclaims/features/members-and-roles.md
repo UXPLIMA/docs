@@ -1,6 +1,6 @@
 ---
 title: Members and roles
-order: 304
+order: 404
 description: Invites, timed memberships, bans, transfers, roles, priorities and the thirty six role permissions.
 icon: users
 ---

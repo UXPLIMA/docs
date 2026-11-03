@@ -1,6 +1,6 @@
 ---
 title: Punishment plugins
-order: 802
+order: 902
 description: Handing /mute to the punishment plugin you run, reading its mutes, and the ladder's mutes.
 icon: gavel
 ---

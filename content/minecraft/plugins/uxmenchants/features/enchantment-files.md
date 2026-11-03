@@ -1,6 +1,6 @@
 ---
 title: Enchantment files
-order: 301
+order: 401
 description: Every key of an enchantment file, item lists, conflicts, exclusive groups and routes.
 icon: file-text
 ---

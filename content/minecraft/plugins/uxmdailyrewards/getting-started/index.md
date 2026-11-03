@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: What uxmDailyRewards is, how to install it, the ideas it is built on, and your first claim.
 icon: rocket
 ---

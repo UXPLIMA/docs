@@ -1,6 +1,6 @@
 ---
 title: SQLite
-order: 802
+order: 902
 description: The default backend, where the file lives, and backing it up.
 icon: file
 ---

@@ -1,6 +1,6 @@
 ---
 title: Private messages
-order: 303
+order: 403
 description: /msg across the network, offline delivery, replies, conversations, quick replies, the recent lines window and who may message whom.
 icon: mail
 ---

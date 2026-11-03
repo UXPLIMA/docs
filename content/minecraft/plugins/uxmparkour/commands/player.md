@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Joining, leaving, choosing a theme and a difficulty, the record, the boards and the language.
 icon: user
 ---

@@ -1,6 +1,6 @@
 ---
 title: languages.conf
-order: 503
+order: 603
 description: The name each language is written with, and the icon the window draws it with.
 icon: list
 ---

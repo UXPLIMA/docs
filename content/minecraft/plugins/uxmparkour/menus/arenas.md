@@ -1,6 +1,6 @@
 ---
 title: Arena list
-order: 403
+order: 503
 description: Every arena on the server, finished or not, for operators.
 icon: list
 ---

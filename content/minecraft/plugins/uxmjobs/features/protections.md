@@ -1,6 +1,6 @@
 ---
 title: Protections
-order: 305
+order: 405
 description: The placed block ledger, decay, farm grades, creative, fertiliser, generators, vehicles, damage share, claims and worlds.
 icon: shield-check
 ---

@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 303
+order: 403
 description: Rewards at a level, manual and automatic, the lines they run, and when they can be taken again.
 icon: gift
 ---

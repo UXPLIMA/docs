@@ -1,6 +1,6 @@
 ---
 title: API
-order: 803
+order: 903
 description: Reaching uxmAuth from another plugin, and the events on Paper and Velocity.
 icon: code
 ---

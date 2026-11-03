@@ -1,6 +1,6 @@
 ---
 title: Set pads
-order: 302
+order: 402
 description: A pad on one block that throws one fixed way, how to set, list and remove it, and the pads.conf file.
 icon: map-pin
 ---

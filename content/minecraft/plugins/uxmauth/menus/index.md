@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: The dialogs a waiting player reads, and the staff info window.
 icon: layout-grid
 ---

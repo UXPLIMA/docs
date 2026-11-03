@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every node uxmDailyRewards declares, its default, what it grants, and the rank nodes.
 icon: list
 ---

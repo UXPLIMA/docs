@@ -1,6 +1,6 @@
 ---
 title: Search, history and profile
-order: 410
+order: 510
 description: Search results, what an item has sold for, and a seller's shelf.
 icon: search
 ---

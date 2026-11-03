@@ -1,6 +1,6 @@
 ---
 title: Burn and risk
-order: 204
+order: 304
 description: Success chance, the permission multipliers, bypasses and mastery bonuses.
 icon: flame
 ---

@@ -1,6 +1,6 @@
 ---
 title: Stats and resources
-order: 305
+order: 405
 description: The six stats and their traits, stat modifiers, and mana and stamina.
 icon: chart-column
 ---

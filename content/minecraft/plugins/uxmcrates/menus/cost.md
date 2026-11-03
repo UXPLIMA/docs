@@ -1,6 +1,6 @@
 ---
 title: Cost
-order: 407
+order: 507
 description: Every line a crate takes before it opens, and whether the player can pay it.
 icon: coins
 ---

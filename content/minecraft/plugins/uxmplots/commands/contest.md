@@ -1,6 +1,6 @@
 ---
 title: Contest commands
-order: 203
+order: 303
 description: Every /contest subcommand, with its arguments, node and what it does.
 icon: trophy
 ---

@@ -1,6 +1,6 @@
 ---
 title: Numbers and descriptions
-order: 303
+order: 403
 description: Fixed numbers, modifier blocks, the three curves, and descriptions that name a level's numbers.
 icon: calculator
 ---

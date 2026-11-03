@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 60
+order: 160
 description: Every node the plugin declares, its default, and what it grants.
 icon: key
 ---

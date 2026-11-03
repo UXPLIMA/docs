@@ -1,6 +1,6 @@
 ---
 title: Welcome
-order: 101
+order: 201
 description: What a round of King of the Ladder is, and what comes with the plugin.
 icon: door-open
 ---

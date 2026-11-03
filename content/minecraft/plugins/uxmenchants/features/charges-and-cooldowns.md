@@ -1,6 +1,6 @@
 ---
 title: Charges and cooldowns
-order: 310
+order: 410
 description: Items that spend charges and are refilled with fuel at the anvil, the banded tooltip line, and persistent cooldowns.
 icon: battery
 ---

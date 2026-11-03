@@ -1,6 +1,6 @@
 ---
 title: Villagers
-order: 9310
+order: 9410
 description: Trades that never lock out, a restock timer, a trade editor, protection, pickup, follow and leash.
 icon: user-round
 ---

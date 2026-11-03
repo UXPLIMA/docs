@@ -1,6 +1,6 @@
 ---
 title: uxmJobs
-order: 225
+order: 24
 description: Jobs that pay players for breaking, placing, killing, fishing, smelting and more, with an economy that protects itself.
 icon: briefcase
 ---

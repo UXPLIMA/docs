@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: Counts of the house and of the reader, earnings, categories and top prices.
 icon: hash
 ---

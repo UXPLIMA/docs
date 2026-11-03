@@ -1,6 +1,6 @@
 ---
 title: Sets and schedules
-order: 301
+order: 401
 description: What a set takes, the cron and period schedules, and excludes.
 icon: calendar-clock
 ---

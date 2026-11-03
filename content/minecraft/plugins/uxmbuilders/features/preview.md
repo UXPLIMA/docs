@@ -1,6 +1,6 @@
 ---
 title: Preview
-order: 202
+order: 302
 description: The structure drawn in the player's client before anything is placed.
 icon: scan-eye
 ---

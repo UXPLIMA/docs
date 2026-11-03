@@ -1,6 +1,6 @@
 ---
 title: Trade
-order: 9280
+order: 9380
 description: A shared window where two players swap items, money and experience, with nothing moving until both confirm.
 icon: handshake
 ---

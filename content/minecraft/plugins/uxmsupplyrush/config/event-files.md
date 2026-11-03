@@ -1,6 +1,6 @@
 ---
 title: Event files
-order: 53
+order: 153
 description: What each events/<key>.yml holds, the announcements, and the placeholders they can use.
 icon: file-text
 ---

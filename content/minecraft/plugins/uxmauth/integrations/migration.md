@@ -1,6 +1,6 @@
 ---
 title: Moving accounts
-order: 802
+order: 902
 description: Bringing accounts over from another login plugin once, premium lists, and moving the database.
 icon: arrow-right-left
 ---

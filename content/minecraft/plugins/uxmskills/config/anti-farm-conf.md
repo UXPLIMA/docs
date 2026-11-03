@@ -1,6 +1,6 @@
 ---
 title: anti-farm.conf
-order: 502
+order: 602
 description: The anti-farm block and its terms.
 icon: shield-check
 ---

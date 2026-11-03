@@ -1,6 +1,6 @@
 ---
 title: In-Game Editor
-order: 1130
+order: 1230
 description: Building and editing menus in-game, without touching a config file.
 icon: square-pen
 ---

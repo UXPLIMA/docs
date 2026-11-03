@@ -1,6 +1,6 @@
 ---
 title: Setting up the fight
-order: 104
+order: 204
 description: The settings a lobby changes first, and a test with two players.
 icon: flag
 ---

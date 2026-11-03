@@ -1,6 +1,6 @@
 ---
 title: The editor
-order: 310
+order: 410
 description: Building crates, rewards and keys in windows, what it writes, and turning it off.
 icon: pencil
 ---

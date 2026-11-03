@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 102
+order: 202
 description: Requirements, the files that appear, and checking the install.
 icon: download
 ---

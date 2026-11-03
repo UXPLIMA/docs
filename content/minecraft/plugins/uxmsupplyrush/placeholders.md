@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: The five PlaceholderAPI placeholders, all about the running tournament.
 icon: braces
 ---

@@ -1,6 +1,6 @@
 ---
 title: Tablist
-order: 9260
+order: 9360
 description: The tab-list header, footer, column layout and player skins, drawn from packets.
 icon: table
 ---

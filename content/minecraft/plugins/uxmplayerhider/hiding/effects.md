@@ -1,6 +1,6 @@
 ---
 title: Effects
-order: 304
+order: 404
 description: What happens when a player moves into a state, the shipped lines, and how an action line is written.
 icon: sparkles
 ---

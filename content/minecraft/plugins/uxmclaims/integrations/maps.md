@@ -1,6 +1,6 @@
 ---
 title: Map plugins
-order: 804
+order: 904
 description: Drawing claims on Dynmap, BlueMap, Pl3xMap and squaremap.
 icon: map
 ---

@@ -1,6 +1,6 @@
 ---
 title: Configuration
-order: 114
+order: 214
 description: The config tree, the global file, per-module files, command names and messages.
 icon: settings
 ---

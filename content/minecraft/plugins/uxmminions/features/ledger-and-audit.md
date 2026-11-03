@@ -1,6 +1,6 @@
 ---
 title: Ledger and audit
-order: 312
+order: 412
 description: What minions produced and paid, and who moved a minion.
 icon: notebook
 ---

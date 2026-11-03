@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 801
+order: 901
 description: PlaceholderAPI, Vault, CoreProtect, mcMMO, uxmShop, Floodgate and Geyser.
 icon: plug
 ---

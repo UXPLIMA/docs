@@ -1,6 +1,6 @@
 ---
 title: uxmEssentials
-order: 804
+order: 904
 description: Which chat features uxmEssentials hands to uxmChat, and which way mutes go.
 icon: handshake
 ---

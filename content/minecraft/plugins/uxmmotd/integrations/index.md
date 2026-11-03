@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: Paper, Velocity, and the other UXM plugins.
 icon: plug
 ---

@@ -1,6 +1,6 @@
 ---
 title: Followers
-order: 307
+order: 407
 description: Pets, balloons, mounts and morphs, how each is moved, and what keeps a cosmetic mob a costume.
 icon: dog
 ---

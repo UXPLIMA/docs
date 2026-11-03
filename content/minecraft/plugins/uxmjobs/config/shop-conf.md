@@ -1,6 +1,6 @@
 ---
 title: shop.conf
-order: 510
+order: 610
 description: The keys of a shop line, and the nine shipped lines.
 icon: store
 ---

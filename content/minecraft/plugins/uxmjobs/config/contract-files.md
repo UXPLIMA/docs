@@ -1,6 +1,6 @@
 ---
 title: Contract files
-order: 505
+order: 605
 description: The keys of contracts/<id>.conf.
 icon: scroll
 ---

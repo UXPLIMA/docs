@@ -1,6 +1,6 @@
 ---
 title: In-game editor
-order: 312
+order: 412
 description: Making, changing and deleting enchantments from inside the game, and what the editor writes.
 icon: pencil
 ---

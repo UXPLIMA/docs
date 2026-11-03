@@ -1,6 +1,6 @@
 ---
 title: Reveals
-order: 305
+order: 405
 description: The six reveal kinds, the fourteen shipped animations, Bedrock fallbacks, and the reel's faithfulness.
 icon: clapperboard
 ---

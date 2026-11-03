@@ -1,6 +1,6 @@
 ---
 title: Hats
-order: 405
+order: 505
 description: Every shipped piece of the hats family, with its id, rarity and price.
 icon: hard-hat
 ---

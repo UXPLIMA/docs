@@ -1,6 +1,6 @@
 ---
 title: Sessions
-order: 303
+order: 403
 description: Skipping the password from the same address, the three modes, and what ends a session.
 icon: log-in
 ---

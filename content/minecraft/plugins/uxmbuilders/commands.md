@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 260
+order: 360
 description: One root command, the player subcommands, and the admin tree.
 icon: terminal
 ---

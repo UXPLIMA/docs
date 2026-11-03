@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Faces and skins, the welcome, and Bedrock players.
 icon: sparkles
 ---

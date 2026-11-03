@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: "The four windows: your record, the leaderboard, the arena list and the arena editor."
 icon: layout-grid
 ---

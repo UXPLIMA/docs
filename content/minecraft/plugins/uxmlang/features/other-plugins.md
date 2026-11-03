@@ -1,6 +1,6 @@
 ---
 title: Other plugins
-order: 302
+order: 402
 description: How every UXM plugin reads the choice, what happens to their own language commands, and plugins without a file.
 icon: puzzle
 ---

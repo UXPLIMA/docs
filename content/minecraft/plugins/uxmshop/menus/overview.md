@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 401
+order: 501
 description: Every window, its file, its size and what opens it.
 icon: layout-grid
 ---

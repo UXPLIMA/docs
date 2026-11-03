@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Skills, sources, curves, stats, traits, abilities, resources and the rate.
 icon: lightbulb
 ---

@@ -1,6 +1,6 @@
 ---
 title: Your first track
-order: 104
+order: 204
 description: Add a woodcutting track, an event that pays into it, and a reward at level 5.
 icon: play
 ---

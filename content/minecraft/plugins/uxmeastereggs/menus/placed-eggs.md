@@ -1,6 +1,6 @@
 ---
 title: Placed eggs
-order: 404
+order: 504
 description: The operator window that lists every egg on the map, to go to one or remove it.
 icon: map-pinned
 ---

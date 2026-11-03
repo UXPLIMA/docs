@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: Every window of uxmChat, what each square does, and the file that draws it.
 icon: layout-grid
 ---

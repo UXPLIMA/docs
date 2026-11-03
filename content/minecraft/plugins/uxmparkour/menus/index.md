@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: The theme picker players open, and the arena list and editor operators build with.
 icon: layout-grid
 ---

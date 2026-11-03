@@ -1,6 +1,6 @@
 ---
 title: Trade effects and the log
-order: 306
+order: 406
 description: What every trade says and plays, and the audit trail.
 icon: bell
 ---

@@ -1,6 +1,6 @@
 ---
 title: commands.conf
-order: 503
+order: 603
 description: Command and branch words, aliases and the Turkish words.
 icon: terminal
 ---

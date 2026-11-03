@@ -1,6 +1,6 @@
 ---
 title: Day files
-order: 302
+order: 402
 description: Every key of a day file, the lines a reward is written in, the values they can use, and the shipped 28 days.
 icon: file-text
 ---

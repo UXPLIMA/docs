@@ -1,6 +1,6 @@
 ---
 title: Modules
-order: 94
+order: 194
 description: Every feature ships as a module you can switch off. One page each.
 icon: blocks
 ---

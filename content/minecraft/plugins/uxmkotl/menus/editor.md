@@ -1,6 +1,6 @@
 ---
 title: Arena editor
-order: 405
+order: 505
 description: The operator window that builds one arena, one button per piece and switch.
 icon: pencil-ruler
 ---

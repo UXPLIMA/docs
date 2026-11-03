@@ -1,6 +1,6 @@
 ---
 title: Welcome
-order: 101
+order: 201
 description: Crafting that takes real time, can fail, and levels the player up.
 icon: door-open
 ---

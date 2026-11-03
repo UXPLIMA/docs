@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: What uxmHubPvP is, how to install it, the ideas it is built on, and setting up the lobby fight.
 icon: rocket
 ---

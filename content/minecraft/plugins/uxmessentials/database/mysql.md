@@ -1,6 +1,6 @@
 ---
 title: MySQL / MariaDB
-order: 1570
+order: 1670
 description: Pointing uxmEssentials at MySQL or MariaDB, and what changes when you do.
 icon: database
 ---

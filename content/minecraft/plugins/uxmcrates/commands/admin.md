@@ -1,6 +1,6 @@
 ---
 title: Operator commands
-order: 203
+order: 303
 description: Every /uxmcrates subcommand, its permission, its arguments and what it answers.
 icon: shield
 ---

@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: Every %uxmdailyrewards_...% placeholder, for scoreboards, holograms and chat.
 icon: braces
 ---

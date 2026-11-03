@@ -1,6 +1,6 @@
 ---
 title: Upgrade
-order: 407
+order: 507
 description: The next level, each requirement in your own words, buying, and consuming.
 icon: circle-arrow-up
 ---

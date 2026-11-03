@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every one of the 109 permission nodes of uxmChat, with its default and what it allows.
 icon: list-checks
 ---

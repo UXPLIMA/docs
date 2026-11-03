@@ -1,6 +1,6 @@
 ---
 title: Auto Sell
-order: 34
+order: 134
 description: Selling a product the moment its storage fills, and the tax that applies.
 icon: banknote
 ---

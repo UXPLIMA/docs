@@ -1,6 +1,6 @@
 ---
 title: Prices and limits
-order: 303
+order: 403
 description: The currency, the four price curves, refunds, caps and limit groups.
 icon: badge-dollar-sign
 ---

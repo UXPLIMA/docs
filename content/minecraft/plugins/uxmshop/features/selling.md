@@ -1,6 +1,6 @@
 ---
 title: Selling
-order: 305
+order: 405
 description: /sell hand, all and window, /value, and the blacklist.
 icon: hand-coins
 ---

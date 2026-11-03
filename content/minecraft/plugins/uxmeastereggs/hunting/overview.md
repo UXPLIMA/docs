@@ -1,6 +1,6 @@
 ---
 title: Eggs and finds
-order: 301
+order: 401
 description: Placing an egg, what a click does, the protection of an egg block, and what a player is told.
 icon: search
 ---

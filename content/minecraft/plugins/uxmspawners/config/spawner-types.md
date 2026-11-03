@@ -1,6 +1,6 @@
 ---
 title: Spawner Types
-order: 54
+order: 154
 description: The spawners section of config.yml, the default type every mob falls back on, and item spawners.
 icon: boxes
 ---

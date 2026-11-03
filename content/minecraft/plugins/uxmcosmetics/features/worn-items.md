@@ -1,6 +1,6 @@
 ---
 title: Worn items
-order: 308
+order: 408
 description: Hats, suits and banners, the armour slots, colours, models, and banner patterns.
 icon: hard-hat
 ---

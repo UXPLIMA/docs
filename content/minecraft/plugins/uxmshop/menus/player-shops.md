@@ -1,6 +1,6 @@
 ---
 title: Player shop windows
-order: 403
+order: 503
 description: The list of shops and one shop, for visitors and owners.
 icon: store
 ---

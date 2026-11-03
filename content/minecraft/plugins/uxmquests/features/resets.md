@@ -1,6 +1,6 @@
 ---
 title: Resets
-order: 302
+order: 402
 description: When a board is thrown away and a new one drawn, and why the timezone is in the file.
 icon: clock
 ---

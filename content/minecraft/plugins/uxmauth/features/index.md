@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Everything the door does, page by page.
 icon: sparkles
 ---

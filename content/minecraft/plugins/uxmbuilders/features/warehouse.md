@@ -1,6 +1,6 @@
 ---
 title: Warehouse
-order: 205
+order: 305
 description: A per-player material store that construction draws from, block by block.
 icon: warehouse
 ---

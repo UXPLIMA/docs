@@ -1,6 +1,6 @@
 ---
 title: Nicknames
-order: 310
+order: 410
 description: The name a player goes by in chat, its rules, and finding who is behind one.
 icon: id-card
 ---

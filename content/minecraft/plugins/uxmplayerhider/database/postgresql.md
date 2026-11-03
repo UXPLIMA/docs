@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL
-order: 804
+order: 904
 description: Connecting to PostgreSQL to share each player's choice across servers.
 icon: server
 ---

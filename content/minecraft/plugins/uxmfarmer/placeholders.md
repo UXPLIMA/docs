@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: Every placeholder the expansion registers, per farmer, product and statistic.
 icon: braces
 ---

@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 89
+order: 189
 description: Install uxmEssentials, learn how it is put together, and bring your old data across.
 icon: rocket
 ---

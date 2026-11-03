@@ -1,6 +1,6 @@
 ---
 title: PlaceholderAPI
-order: 805
+order: 905
 description: The uxmclaims expansion, which claim it describes, and its fallbacks.
 icon: braces
 ---

@@ -1,6 +1,6 @@
 ---
 title: Your first setup
-order: 104
+order: 204
 description: A server with one language, a server where players choose, and a network.
 icon: flag
 ---

@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Storage and selling, levels, auto-kill, boosts, friends, breaking rules and holograms.
 icon: sparkles
 ---

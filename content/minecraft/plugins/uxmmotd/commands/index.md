@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The one operator command and its subcommands.
 icon: terminal
 ---

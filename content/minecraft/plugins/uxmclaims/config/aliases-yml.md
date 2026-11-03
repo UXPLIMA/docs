@@ -1,6 +1,6 @@
 ---
 title: aliases.yml
-order: 506
+order: 606
 description: Mapping short commands onto /claim subcommands.
 icon: link-2
 ---

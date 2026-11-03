@@ -1,6 +1,6 @@
 ---
 title: theme.conf
-order: 505
+order: 605
 description: The colours, roles, wheel, gradients, glyphs, prefixes and small capitals every UXM plugin shares.
 icon: palette
 ---

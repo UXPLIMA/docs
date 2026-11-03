@@ -1,6 +1,6 @@
 ---
 title: Centring and colours
-order: 302
+order: 402
 description: Centring by font pixels, colour roles, painting a name across the wheel, small capitals and plain words.
 icon: type
 ---

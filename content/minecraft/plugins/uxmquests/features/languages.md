@@ -1,6 +1,6 @@
 ---
 title: Languages
-order: 313
+order: 413
 description: How a quest, group or pass reads in each player's language, and the content keys.
 icon: languages
 ---

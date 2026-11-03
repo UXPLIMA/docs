@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 203
+order: 303
 description: Cancel, return, purge, log, restore, stats, lookup, lock, reload, version, doctor and another player's language.
 icon: wrench
 ---

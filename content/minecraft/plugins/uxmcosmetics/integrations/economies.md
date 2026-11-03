@@ -1,6 +1,6 @@
 ---
 title: Economies
-order: 902
+order: 1002
 description: The currencies a price can use, the number format, and duplicate refunds.
 icon: wallet
 ---

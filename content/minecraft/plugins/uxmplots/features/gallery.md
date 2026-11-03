@@ -1,6 +1,6 @@
 ---
 title: Gallery
-order: 307
+order: 407
 description: Ratings that resist friends, visits, trending, tags, hiding, and the pinned and sponsored rows.
 icon: images
 ---

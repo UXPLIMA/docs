@@ -1,6 +1,6 @@
 ---
 title: Opening
-order: 304
+order: 404
 description: What happens from the click to the reward, visibility, skipping, bulk opening, pick crates and pending rewards.
 icon: play
 ---

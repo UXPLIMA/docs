@@ -1,6 +1,6 @@
 ---
 title: Menu files
-order: 606
+order: 706
 description: Every key a window file takes, the tile line, the lists, clicks and actions.
 icon: layout-template
 ---

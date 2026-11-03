@@ -1,6 +1,6 @@
 ---
 title: Sources
-order: 303
+order: 403
 description: The price list, the seventeen source types, entry keys and categories.
 icon: list
 ---

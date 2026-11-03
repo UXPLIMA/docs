@@ -1,6 +1,6 @@
 ---
 title: Messages
-order: 607
+order: 707
 description: How a line is written, the prefixes, and every block of keys with the values each fills in.
 icon: message-square
 ---

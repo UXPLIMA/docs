@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 701
+order: 801
 description: Every %uxmenchants_...% placeholder, what it returns, and which need a player.
 icon: list
 ---

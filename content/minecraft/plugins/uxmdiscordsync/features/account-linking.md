@@ -1,6 +1,6 @@
 ---
 title: Account linking
-order: 31
+order: 131
 description: How a code becomes a link, the link button and window, the rewards for linking and what unlinking undoes.
 icon: link-2
 ---

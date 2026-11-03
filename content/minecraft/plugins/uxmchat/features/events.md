@@ -1,6 +1,6 @@
 ---
 title: Server lines
-order: 313
+order: 413
 description: Join, first join, quit, death, kick, advancement and unknown command lines, per group and per cause, and network lines.
 icon: door-open
 ---

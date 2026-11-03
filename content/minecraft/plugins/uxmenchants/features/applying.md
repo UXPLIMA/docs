@@ -1,6 +1,6 @@
 ---
 title: Applying
-order: 305
+order: 405
 description: The one rule every route follows, the refusals, the limit and its nodes, and removed enchantments.
 icon: anvil
 ---

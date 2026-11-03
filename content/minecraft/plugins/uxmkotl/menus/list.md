@@ -1,6 +1,6 @@
 ---
 title: Arena list
-order: 404
+order: 504
 description: The operator window that lists every arena, finished or not, and creates new ones.
 icon: list
 ---

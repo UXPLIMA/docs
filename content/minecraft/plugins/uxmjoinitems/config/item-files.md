@@ -1,6 +1,6 @@
 ---
 title: Item files
-order: 502
+order: 602
 description: Every key of an item file, with its default and what it does.
 icon: package
 ---

@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Worlds, claiming, members, flags, protection, shaping, the gallery, community, the shop, levels, the market, contests, boards, staff, the network and editors.
 icon: layers
 ---

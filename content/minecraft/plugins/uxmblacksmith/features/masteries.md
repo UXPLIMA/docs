@@ -1,6 +1,6 @@
 ---
 title: Masteries
-order: 208
+order: 308
 description: Per-category levels that passively speed up crafts and cut burn.
 icon: award
 ---

@@ -1,6 +1,6 @@
 ---
 title: Invites
-order: 205
+order: 305
 description: The invitation flow, from sending to accepting, and the inbox.
 icon: mail
 ---

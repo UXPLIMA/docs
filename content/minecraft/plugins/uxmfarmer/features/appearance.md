@@ -1,6 +1,6 @@
 ---
 title: Appearance
-order: 39
+order: 139
 description: The NPC, its skin, the hologram and the default click action.
 icon: palette
 ---

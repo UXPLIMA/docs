@@ -1,6 +1,6 @@
 ---
 title: Events
-order: 1004
+order: 1104
 description: The event bus, the 35 events and their getters, and which thread they arrive on.
 icon: zap
 ---

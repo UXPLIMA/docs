@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 102
+order: 202
 description: The jars, requirements, the first start, the files that appear, a start that fails, updating and the doctor.
 icon: download
 ---

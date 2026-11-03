@@ -1,6 +1,6 @@
 ---
 title: Family
-order: 503
+order: 603
 description: The pieces of one family, their state, price and rarity, and what a click does.
 icon: layout-list
 ---

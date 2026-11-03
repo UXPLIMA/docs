@@ -1,6 +1,6 @@
 ---
 title: Discord
-order: 320
+order: 420
 description: Bridging channels to Discord by webhook or bot, posting events and staff actions, and the /online and /playerlist commands.
 icon: message-square-share
 ---

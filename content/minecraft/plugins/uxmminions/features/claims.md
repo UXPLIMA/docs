@@ -1,6 +1,6 @@
 ---
 title: Claims
-order: 308
+order: 408
 description: Placing on claimed land, working inside the claim, the leader bypass, and what happens when the land is lost.
 icon: map
 ---

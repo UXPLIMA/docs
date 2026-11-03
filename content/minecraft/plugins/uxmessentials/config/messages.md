@@ -1,6 +1,6 @@
 ---
 title: Messages & Languages
-order: 1180
+order: 1280
 description: Editing player-facing text, per language, in MiniMessage.
 icon: message-square
 ---

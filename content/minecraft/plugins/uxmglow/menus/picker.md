@@ -1,6 +1,6 @@
 ---
 title: Picker
-order: 401
+order: 501
 description: "The /glow window: sixteen dyed squares, their states, and the off button."
 icon: palette
 ---

@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 900
+order: 1000
 description: Requirements, the first start, the files you get, and how to verify the install.
 icon: download
 ---

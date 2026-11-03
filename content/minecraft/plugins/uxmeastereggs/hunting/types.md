@@ -1,6 +1,6 @@
 ---
 title: Types
-order: 302
+order: 402
 description: What an egg type is, the two shipped types, repeatable eggs, and adding or removing a type.
 icon: shapes
 ---

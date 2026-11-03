@@ -1,6 +1,6 @@
 ---
 title: announcements.conf
-order: 510
+order: 610
 description: The bundles a new database starts with, and every key of a bundle and an announcement.
 icon: megaphone
 ---

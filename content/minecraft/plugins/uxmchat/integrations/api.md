@@ -1,6 +1,6 @@
 ---
 title: API
-order: 805
+order: 905
 description: Reaching uxmChat from another plugin, and the events it fires.
 icon: code
 ---

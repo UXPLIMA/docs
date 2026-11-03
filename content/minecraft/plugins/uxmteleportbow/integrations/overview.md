@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 701
+order: 801
 description: Every plugin uxmTeleportBow detects, and what it turns on.
 icon: book-open
 ---

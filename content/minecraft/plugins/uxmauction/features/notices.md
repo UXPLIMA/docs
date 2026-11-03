@@ -1,6 +1,6 @@
 ---
 title: Notices
-order: 310
+order: 410
 description: Effects for every moment, the Discord webhook, and events for other plugins.
 icon: bell
 ---

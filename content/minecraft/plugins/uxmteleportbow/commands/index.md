@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The one command, its subcommands, and the permission each needs.
 icon: square-terminal
 ---

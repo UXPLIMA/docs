@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: The player windows and the editor windows, what opens each, and what each slot and click does.
 icon: layout-grid
 ---

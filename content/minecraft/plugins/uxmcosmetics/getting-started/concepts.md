@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Families, pieces, how a player has a piece, wearing one per family, and what keeps cosmetics harmless.
 icon: lightbulb
 ---

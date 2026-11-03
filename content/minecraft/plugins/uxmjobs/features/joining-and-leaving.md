@@ -1,6 +1,6 @@
 ---
 title: Joining and leaving
-order: 303
+order: 403
 description: Slots, seats, requirements, join fees, dialogs, the leave cost, the archive and the rejoin cooldown.
 icon: door-open
 ---

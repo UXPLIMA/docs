@@ -1,6 +1,6 @@
 ---
 title: Display
-order: 309
+order: 409
 description: How enchantments are drawn on items, descriptions, collapsing, order, vanilla lines and struck-through lines.
 icon: eye
 ---

@@ -1,6 +1,6 @@
 ---
 title: The shop hologram
-order: 308
+order: 408
 description: Text over a player shop, sent as packets, its keys and its tags.
 icon: type
 ---

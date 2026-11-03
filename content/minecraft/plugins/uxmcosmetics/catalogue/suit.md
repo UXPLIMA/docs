@@ -1,6 +1,6 @@
 ---
 title: Suits
-order: 406
+order: 506
 description: Every shipped piece of the suits family, with its id, rarity and price.
 icon: shirt
 ---

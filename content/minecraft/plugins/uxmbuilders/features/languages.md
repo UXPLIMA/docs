@@ -1,6 +1,6 @@
 ---
 title: Languages
-order: 213
+order: 313
 description: Every message and menu in eight languages, chosen with one setting.
 icon: languages
 ---

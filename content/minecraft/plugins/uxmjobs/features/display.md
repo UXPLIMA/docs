@@ -1,6 +1,6 @@
 ---
 title: Display
-order: 314
+order: 414
 description: The action bar, the progress bar, the chat prefix, dialogs, the level up, payment actions and milestones.
 icon: monitor
 ---

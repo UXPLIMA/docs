@@ -1,6 +1,6 @@
 ---
 title: Order
-order: 406
+order: 506
 description: "Opening a buy order with clicks: price, amount, time, currency, match and auto."
 icon: shopping-cart
 ---

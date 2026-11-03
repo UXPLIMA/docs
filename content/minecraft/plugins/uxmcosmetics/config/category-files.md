@@ -1,6 +1,6 @@
 ---
 title: Category files
-order: 602
+order: 702
 description: Every key a piece takes in categories/<family>.conf, common and by kind.
 icon: folder-tree
 ---

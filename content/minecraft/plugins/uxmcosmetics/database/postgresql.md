@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL
-order: 1004
+order: 1104
 description: Connecting to PostgreSQL to share what players own and wear across servers.
 icon: server
 ---

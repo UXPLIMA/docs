@@ -1,6 +1,6 @@
 ---
 title: WorldGuard and Towny
-order: 702
+order: 802
 description: How a WorldGuard region or a Towny town closes a place to the bow.
 icon: map
 ---

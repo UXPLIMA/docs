@@ -1,6 +1,6 @@
 ---
 title: Your first claim
-order: 104
+order: 204
 description: Claim, grow, invite, set flags and open a warp, step by step.
 icon: footprints
 ---

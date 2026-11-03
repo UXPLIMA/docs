@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 201
+order: 301
 description: The three commands, their aliases, the skill shortcuts and how a missing permission is answered.
 icon: terminal
 ---

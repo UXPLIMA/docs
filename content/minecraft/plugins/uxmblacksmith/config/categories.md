@@ -1,6 +1,6 @@
 ---
 title: Category files
-order: 302
+order: 402
 description: The trade files under categories/, how they are generated, and their shape.
 icon: folder-open
 ---

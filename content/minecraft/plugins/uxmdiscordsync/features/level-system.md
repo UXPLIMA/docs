@@ -1,6 +1,6 @@
 ---
 title: Level system
-order: 34
+order: 134
 description: Text and voice XP in Discord, the level table, and rewards claimed in game.
 icon: trophy
 ---

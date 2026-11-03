@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Every /glow subcommand, its permission, its arguments and what it answers.
 icon: user
 ---

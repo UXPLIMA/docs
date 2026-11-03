@@ -1,6 +1,6 @@
 ---
 title: Friends
-order: 404
+order: 504
 description: Your friends as heads, with where each one is, to message or pin.
 icon: users
 ---

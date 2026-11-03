@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: How each part of uxmChat behaves, what it asks of the server, and the keys that shape it.
 icon: sparkles
 ---

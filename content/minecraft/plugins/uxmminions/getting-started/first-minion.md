@@ -1,6 +1,6 @@
 ---
 title: Your first minion
-order: 104
+order: 204
 description: Give a miner, place it, fuel it, read its panel and upgrade it.
 icon: sparkles
 ---

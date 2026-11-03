@@ -1,6 +1,6 @@
 ---
 title: Economy
-order: 9050
+order: 9150
 description: Balances, payments and the leaderboard, plus banks, loans, banknotes and a sell price per item.
 icon: coins
 ---

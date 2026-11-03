@@ -1,6 +1,6 @@
 ---
 title: Your first arena
-order: 104
+order: 204
 description: Build a tower, mark the box, the plate, the spawn and the exit, and open it to players.
 icon: flag
 ---

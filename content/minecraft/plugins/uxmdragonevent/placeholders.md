@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 60
+order: 160
 description: The running event, both leaderboards and the schedule, as PlaceholderAPI placeholders.
 icon: braces
 ---

@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL
-order: 1004
+order: 1104
 description: Connecting to PostgreSQL to share each player's glow across servers.
 icon: server
 ---

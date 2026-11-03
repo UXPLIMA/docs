@@ -1,6 +1,6 @@
 ---
 title: Deaths and kills
-order: 304
+order: 404
 description: What a death does to a fighter, how a kill is credited, streaks, the ratio, and respawning.
 icon: skull
 ---

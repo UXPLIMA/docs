@@ -1,6 +1,6 @@
 ---
 title: Your first chat
-order: 104
+order: 204
 description: Pick the modules, shape the channels and the format, give ranks their tags, and check it in game.
 icon: flag
 ---

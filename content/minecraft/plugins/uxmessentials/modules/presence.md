@@ -1,6 +1,6 @@
 ---
 title: Presence
-order: 9180
+order: 9280
 description: AFK, the online list, nicknames, /whois and the server-health readout.
 icon: radio
 ---

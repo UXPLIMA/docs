@@ -1,6 +1,6 @@
 ---
 title: Types and levels
-order: 301
+order: 401
 description: Every key of a type file and of a level, requirements and rewards.
 icon: file-text
 ---

@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Rows, where a face comes from, and what a player without a skin sees.
 icon: lightbulb
 ---

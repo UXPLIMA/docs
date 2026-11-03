@@ -1,6 +1,6 @@
 ---
 title: Gadgets
-order: 409
+order: 509
 description: Every shipped piece of the gadgets family, with its id, rarity and price.
 icon: wand
 ---

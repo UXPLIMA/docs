@@ -1,6 +1,6 @@
 ---
 title: Fees
-order: 306
+order: 406
 description: The four charges, flat or percent, floors, caps and group rates.
 icon: receipt
 ---

@@ -1,6 +1,6 @@
 ---
 title: Mail and recovery
-order: 309
+order: 409
 description: The SMTP server, linking an address, recovering a forgotten password, and the mail texts.
 icon: mail
 ---

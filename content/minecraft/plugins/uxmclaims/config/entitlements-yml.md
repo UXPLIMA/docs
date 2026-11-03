@@ -1,6 +1,6 @@
 ---
 title: entitlements.yml
-order: 503
+order: 603
 description: "Limits, costs, delays and cooldowns: their defaults, strategies and rates."
 icon: sliders-horizontal
 ---

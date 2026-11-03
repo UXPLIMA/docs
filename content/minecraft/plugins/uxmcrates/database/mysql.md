@@ -1,6 +1,6 @@
 ---
 title: MySQL and MariaDB
-order: 903
+order: 1003
 description: Connecting to MySQL or MariaDB to share keys, limits and boards across servers.
 icon: server
 ---

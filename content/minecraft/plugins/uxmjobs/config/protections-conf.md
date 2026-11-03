@@ -1,6 +1,6 @@
 ---
 title: protections.conf
-order: 502
+order: 602
 description: Every key of protections.conf with its default.
 icon: shield
 ---

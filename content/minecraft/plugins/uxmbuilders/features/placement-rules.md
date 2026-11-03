@@ -1,6 +1,6 @@
 ---
 title: Placement rules
-order: 207
+order: 307
 description: Which worlds builds may go in, between which heights, and how far from spawn.
 icon: map-pin
 ---

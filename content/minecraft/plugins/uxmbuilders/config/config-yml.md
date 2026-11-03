@@ -1,6 +1,6 @@
 ---
 title: config.yml
-order: 301
+order: 401
 description: The license, the language, performance, preview, economy, protection and every other switch.
 icon: file-cog
 ---

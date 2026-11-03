@@ -1,6 +1,6 @@
 ---
 title: Progression
-order: 207
+order: 307
 description: The blacksmith level, the XP formula, and the reward policy you can tune.
 icon: trending-up
 ---

@@ -1,6 +1,6 @@
 ---
 title: Permission Reference
-order: 1600
+order: 1700
 description: Every permission node, its default, and what it grants, by module.
 icon: list
 ---

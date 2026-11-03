@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 102
+order: 202
 description: Which jar goes where, requirements, the files that appear, updating and checking the install.
 icon: download
 ---

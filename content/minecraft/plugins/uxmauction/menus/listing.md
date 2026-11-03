@@ -1,6 +1,6 @@
 ---
 title: Listing
-order: 404
+order: 504
 description: One listing, buying all or one, bidding, and your own listing.
 icon: square
 ---

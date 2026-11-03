@@ -1,6 +1,6 @@
 ---
 title: Reroll
-order: 409
+order: 509
 description: Look at what an opening gave, keep it, or spend a roll on another draw.
 icon: dice-5
 ---

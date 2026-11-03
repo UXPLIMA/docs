@@ -1,6 +1,6 @@
 ---
 title: Boost rewards
-order: 35
+order: 135
 description: Rewarding a Discord server boost in game, the cooldown, and taking the reward back when the boost ends.
 icon: rocket
 ---

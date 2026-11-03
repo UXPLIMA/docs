@@ -1,6 +1,6 @@
 ---
 title: Effects
-order: 302
+order: 402
 description: The sixteen effects, their arguments, targets, chance, cooldown, delay and material filters.
 icon: zap
 ---

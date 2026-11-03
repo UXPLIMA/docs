@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 801
+order: 901
 description: Running on Paper or Velocity, and the other plugins uxmMOTD sits beside.
 icon: plug
 ---

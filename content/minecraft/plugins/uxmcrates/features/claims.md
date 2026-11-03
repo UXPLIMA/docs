@@ -1,6 +1,6 @@
 ---
 title: Claims
-order: 308
+order: 408
 description: How land protection decides who may place and open a crate, the nineteen claim plugins, and turning one off.
 icon: map
 ---

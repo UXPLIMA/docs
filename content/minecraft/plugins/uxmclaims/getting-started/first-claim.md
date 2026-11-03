@@ -1,6 +1,6 @@
 ---
 title: Your first claim
-order: 104
+order: 204
 description: "Claim a chunk, invite a friend, set the rules: start to finish."
 icon: play
 ---

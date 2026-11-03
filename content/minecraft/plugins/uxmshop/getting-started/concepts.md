@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Sections, lines, directions, the till, offers and currencies.
 icon: lightbulb
 ---

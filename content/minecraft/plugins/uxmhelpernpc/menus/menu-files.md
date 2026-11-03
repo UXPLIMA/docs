@@ -1,6 +1,6 @@
 ---
 title: Menu Files
-order: 42
+order: 142
 description: "The shape of a menu file: title, rows, items, slots and conditions."
 icon: file-cog
 ---

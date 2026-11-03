@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Depositing, running events, ranking, rewards, the schedule, history and networks.
 icon: layers
 ---

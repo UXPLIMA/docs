@@ -1,6 +1,6 @@
 ---
 title: Box stations
-order: 304
+order: 404
 description: Binding a block in the world to the mystery boxes, its particle figure and sign, and keeping it intact.
 icon: map-pin
 ---

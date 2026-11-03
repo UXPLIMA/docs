@@ -1,6 +1,6 @@
 ---
 title: Members and visitors
-order: 303
+order: 403
 description: The four grades of trust, bans, visit policies and shared building sessions.
 icon: users
 ---

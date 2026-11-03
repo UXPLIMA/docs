@@ -1,6 +1,6 @@
 ---
 title: Restarts and refunds
-order: 208
+order: 308
 description: What happens to a build when the server stops, and what each kind of cancel pays back.
 icon: life-buoy
 ---

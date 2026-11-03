@@ -1,6 +1,6 @@
 ---
 title: Items & World
-order: 9090
+order: 9190
 description: 'The item, block, entity and environment toolbox: roughly 65 commands in seven switchable groups.'
 icon: sword
 ---

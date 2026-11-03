@@ -1,6 +1,6 @@
 ---
 title: Custom Commands
-order: 9025
+order: 9125
 description: 'Your own commands, declared in a file and running the actions the menu engine already speaks.'
 icon: terminal
 ---

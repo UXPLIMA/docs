@@ -1,6 +1,6 @@
 ---
 title: Loot Tables
-order: 58
+order: 158
 description: Replacing what a spawner mob drops, the line format, XP, and which mobs a table applies to.
 icon: list
 ---

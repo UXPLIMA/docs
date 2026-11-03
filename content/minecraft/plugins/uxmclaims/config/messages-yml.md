@@ -1,6 +1,6 @@
 ---
 title: messages.yml
-order: 504
+order: 604
 description: Every message the plugin sends, its delivery type, sound and the shared formats.
 icon: message-square
 ---

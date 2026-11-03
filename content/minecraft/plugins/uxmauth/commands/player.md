@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Every command of the door, with its arguments, node and what it does.
 icon: user
 ---

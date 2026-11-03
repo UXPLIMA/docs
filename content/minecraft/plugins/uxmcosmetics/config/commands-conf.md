@@ -1,6 +1,6 @@
 ---
 title: commands.conf
-order: 605
+order: 705
 description: The name, aliases and switch of every command and subcommand.
 icon: square-terminal
 ---

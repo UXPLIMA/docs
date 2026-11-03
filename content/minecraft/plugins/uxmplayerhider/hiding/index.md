@@ -1,6 +1,6 @@
 ---
 title: Hiding
-order: 30
+order: 130
 description: The three states, the hotbar tool, the worlds and the cooldown, and the effects of each state.
 icon: eye-off
 ---

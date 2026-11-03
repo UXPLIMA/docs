@@ -1,6 +1,6 @@
 ---
 title: Arenas and runs
-order: 30
+order: 130
 description: How an arena is shaped, how its course is built, and what a run does from the first jump to the last.
 icon: mountain
 ---

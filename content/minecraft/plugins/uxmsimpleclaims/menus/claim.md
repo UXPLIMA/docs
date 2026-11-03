@@ -1,6 +1,6 @@
 ---
 title: The claim window
-order: 403
+order: 503
 description: The claim window's buttons, and the flags, rules and history windows.
 icon: layout-dashboard
 ---

@@ -1,6 +1,6 @@
 ---
 title: Settings
-order: 402
+order: 502
 description: The player's own chat settings, one square each, and the mention style.
 icon: sliders-horizontal
 ---

@@ -1,6 +1,6 @@
 ---
 title: Levels
-order: 33
+order: 133
 description: Stacking identical spawners into one, what a level multiplies, and breaking levels off again.
 icon: layers
 ---

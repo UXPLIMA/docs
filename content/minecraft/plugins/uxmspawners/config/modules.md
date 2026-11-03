@@ -1,6 +1,6 @@
 ---
 title: Modules
-order: 56
+order: 156
 description: The files in modules/, what each holds, and the permission lists four of them share.
 icon: blocks
 ---

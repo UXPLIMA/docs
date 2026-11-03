@@ -1,6 +1,6 @@
 ---
 title: Task types
-order: 305
+order: 405
 description: All fifty four task types, the facts each filters on, triggers, checked and sampled types.
 icon: target
 ---

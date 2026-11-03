@@ -1,6 +1,6 @@
 ---
 title: Boosts
-order: 206
+order: 306
 description: Time multipliers and instant completions, defined in modules/boosts.yml.
 icon: zap
 ---

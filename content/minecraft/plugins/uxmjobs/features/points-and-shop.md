@@ -1,6 +1,6 @@
 ---
 title: Points and the shop
-order: 310
+order: 410
 description: Job points, the shop lines, gating by job level, total level and node, and buying.
 icon: store
 ---

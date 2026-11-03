@@ -1,6 +1,6 @@
 ---
 title: Shaping a plot
-order: 306
+order: 406
 description: Floors, walls, borders, ground and biomes, clear and reset, snapshots, templates, merging and the work queue.
 icon: paintbrush
 ---

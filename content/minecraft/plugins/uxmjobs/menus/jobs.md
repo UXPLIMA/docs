@@ -1,6 +1,6 @@
 ---
 title: Job board
-order: 402
+order: 502
 description: "The window /jobs opens: every job, to open, join or leave."
 icon: briefcase
 ---

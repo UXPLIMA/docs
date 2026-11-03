@@ -1,6 +1,6 @@
 ---
 title: Invitations
-order: 407
+order: 507
 description: Sending invitations and cancelling ones that have not been answered.
 icon: mail
 ---

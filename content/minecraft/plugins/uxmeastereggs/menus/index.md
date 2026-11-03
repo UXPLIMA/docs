@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: "The four windows: the collection, the leaderboard, the placed eggs and the type picker."
 icon: layout-grid
 ---

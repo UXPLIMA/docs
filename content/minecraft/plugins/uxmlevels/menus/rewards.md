@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 403
+order: 503
 description: "The rewards window of one track: every reward by level, its state, and claiming with a click."
 icon: gift
 ---

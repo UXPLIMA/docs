@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: The three states a player is in, what entering and leaving do to the inventory, tags, the record, and the boards.
 icon: lightbulb
 ---

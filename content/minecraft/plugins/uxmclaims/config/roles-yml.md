@@ -1,6 +1,6 @@
 ---
 title: roles.yml
-order: 502
+order: 602
 description: The roles every new claim is created with, and their starting permissions.
 icon: shield-user
 ---

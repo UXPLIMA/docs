@@ -1,6 +1,6 @@
 ---
 title: Abilities
-order: 304
+order: 404
 description: The keys of an ability file, points, and the twenty eight shipped abilities.
 icon: sparkles
 ---

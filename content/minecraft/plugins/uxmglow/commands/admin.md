@@ -1,6 +1,6 @@
 ---
 title: Operator commands
-order: 203
+order: 303
 description: Every /uxmglow subcommand and its permission.
 icon: shield
 ---

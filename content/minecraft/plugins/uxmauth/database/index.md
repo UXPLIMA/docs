@@ -1,6 +1,6 @@
 ---
 title: Database
-order: 90
+order: 190
 description: Where accounts, sessions, bans, factors and the login history are kept, and the backends.
 icon: database
 ---

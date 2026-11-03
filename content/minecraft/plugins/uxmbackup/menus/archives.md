@@ -1,6 +1,6 @@
 ---
 title: Archives
-order: 401
+order: 501
 description: "The /uxmbackup menu window: every recent run, its state and size, and verifying one."
 icon: archive
 ---

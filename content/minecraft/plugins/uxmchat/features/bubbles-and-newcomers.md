@@ -1,6 +1,6 @@
 ---
 title: Bubbles and newcomers
-order: 317
+order: 417
 description: Words over a player's head, and the badge and limits for players new to the server.
 icon: message-circle
 ---

@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 102
+order: 202
 description: Requirements, the optional plugins, the first start, the files that appear, updating and checking the install.
 icon: download
 ---
