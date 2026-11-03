@@ -2,7 +2,7 @@
 title: Restoring and lapsing
 order: 302
 description: What happens to a glow at quit, at join, and when a rank expires.
-icon: history
+icon: undo-2
 ---
 
 The choice is stored in the database. At quit the outline is taken down; nothing is lost.

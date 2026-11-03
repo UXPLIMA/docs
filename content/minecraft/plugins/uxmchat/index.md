@@ -1,6 +1,6 @@
 ---
 title: uxmChat
-order: 315
+order: 215
 description: Chat for one server or a network, with channels, formats, private messages, filters, friends, tags, colours, announcements and Discord.
 icon: message-square
 ---

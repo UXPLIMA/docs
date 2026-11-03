@@ -2,7 +2,7 @@
 title: Stats and resources
 order: 305
 description: The six stats and their traits, stat modifiers, and mana and stamina.
-icon: bar-chart
+icon: chart-column
 ---
 
 A stat's value is its points (`value = "level"`), paid by skills' `stat-points`; its traits turn each point into an

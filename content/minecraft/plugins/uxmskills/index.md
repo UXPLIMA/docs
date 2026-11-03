@@ -1,6 +1,6 @@
 ---
 title: uxmSkills
-order: 430
+order: 225
 description: Skills that level as players mine, fight, farm, fish and more, with stats, abilities and an anti-farm layer.
 icon: zap
 ---

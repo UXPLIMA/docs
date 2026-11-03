@@ -2,7 +2,7 @@
 title: Filters
 order: 303
 description: The worlds the bow works in, and the WorldGuard regions or Towny towns a player may not leave or land in.
-icon: filter
+icon: funnel
 ---
 
 ## Worlds

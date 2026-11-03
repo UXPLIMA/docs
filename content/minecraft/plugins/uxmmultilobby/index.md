@@ -1,6 +1,6 @@
 ---
 title: uxmMultiLobby
-order: 395
+order: 300
 description: A menu of your lobbies with live player counts, load balancing, and one click to move between them.
 icon: layers
 ---

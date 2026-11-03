@@ -1,6 +1,6 @@
 ---
 title: uxmBuilders
-order: 270
+order: 80
 description: Structures that build themselves block by block while an NPC crew works the site.
 icon: construction
 ---

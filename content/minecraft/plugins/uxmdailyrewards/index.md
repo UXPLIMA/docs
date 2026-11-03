@@ -1,6 +1,6 @@
 ---
 title: uxmDailyRewards
-order: 330
+order: 305
 description: A calendar of daily rewards with streaks, a reward per rank, a reminder on join, and a window that shows every day.
 icon: calendar-check
 ---

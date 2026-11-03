@@ -1,6 +1,6 @@
 ---
 title: uxmAuction
-order: 300
+order: 240
 description: An auction house with fixed prices, bids, buy orders, watches and a mailbox, in several currencies, on one server or a network.
 icon: gavel
 ---

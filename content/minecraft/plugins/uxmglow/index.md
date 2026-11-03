@@ -1,6 +1,6 @@
 ---
 title: uxmGlow
-order: 260
+order: 315
 description: A glowing outline a player picks for themselves, visible through walls, in the sixteen colours a Minecraft client can draw.
 icon: sparkles
 ---

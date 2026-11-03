@@ -2,7 +2,7 @@
 title: Retention
 order: 303
 description: The three limits per storage, and the archive that is never removed.
-icon: trash-2
+icon: hourglass
 ---
 
 Every storage has three retention limits. Whichever is reached first removes the oldest archives:

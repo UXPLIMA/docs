@@ -1,6 +1,6 @@
 ---
 title: uxmLevels
-order: 380
+order: 270
 description: Experience and levels on as many tracks as a server wants, earned by playing, with rewards, prestige, boosts, boards and a heads-up display.
 icon: trending-up
 ---

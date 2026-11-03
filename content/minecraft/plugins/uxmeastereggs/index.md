@@ -1,6 +1,6 @@
 ---
 title: uxmEasterEggs
-order: 335
+order: 290
 description: Eggs hidden around the map for players to hunt, with types, rewards, a radar, milestones and leaderboards.
 icon: egg
 ---

@@ -1,6 +1,6 @@
 ---
 title: uxmMinions
-order: 385
+order: 235
 description: Small workers that mine, chop, farm, fish, fight, collect, feed, sell, drive spawners and heal while their owner plays.
 icon: pickaxe
 ---

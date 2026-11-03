@@ -2,7 +2,7 @@
 title: Filters
 order: 305
 description: The eleven filters, what each does when it catches a line, the ladder of points, automatic replies and the AI review.
-icon: filter
+icon: funnel
 ---
 
 Module: `filters`. The filters read public lines, private messages and mail, and with `filter-surfaces = true` in

@@ -1,6 +1,6 @@
 ---
 title: uxmEssentials
-order: 89
+order: 200
 description: An all-in-one Paper suite, 35 modules in one jar.
 icon: wrench
 ---

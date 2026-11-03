@@ -2,7 +2,7 @@
 title: Build history
 order: 211
 description: Every finished and cancelled build, with what was paid and refunded.
-icon: history
+icon: clock
 ---
 
 `/builders history`, or **Build History** in the main menu, lists a player's completed and cancelled
