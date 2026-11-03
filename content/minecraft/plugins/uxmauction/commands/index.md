@@ -1,0 +1,10 @@
+---
+title: Commands
+order: 20
+description: The player command and the operator command, with every subcommand, argument, flag and node.
+icon: terminal
+---
+
+- [Overview](overview.md)
+- [Player commands](player.md)
+- [Admin commands](admin.md)
