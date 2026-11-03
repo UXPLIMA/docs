@@ -5,8 +5,8 @@ description: Every node uxmJumpPads declares, its default, what it grants, and t
 icon: list
 ---
 
-Using a pad needs no node unless its type names one. A node on a command hides it: a sender without it does not see
-the command.
+Using a pad needs no node unless its type names one. A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
 
 ## Declared nodes
 

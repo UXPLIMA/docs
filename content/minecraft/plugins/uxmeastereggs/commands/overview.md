@@ -70,7 +70,9 @@ player, and `create` or `delete` with no block or egg named reads where a player
 
 ## Permissions
 
-The node on a root guards every branch under it, and a sender without it does not see the command at all. Every
+The node on a root guards every branch under it. A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
+Every
 `/eggs` command needs `uxmeastereggs.use`, which everyone has. Every `/uxmeastereggs` command needs
 `uxmeastereggs.admin` and, for most subcommands, a node of its own as well. See the
 [permission reference](../permissions/reference.md).

@@ -25,7 +25,9 @@ changes; the name on the right is yours. A subcommand set to `enabled = false` l
 
 ## Permissions
 
-A sender without a subcommand's node does not see it, in the help page or in tab completion. Every operator
+A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
+A hidden subcommand is missing from the help page and from tab completion. Every operator
 subcommand has its own `uxmteleportbow.admin.<action>` node, all `op` by default; the three language subcommands
 need `uxmteleportbow.language`, which everyone has. See the [permission reference](../permissions/reference.md).
 

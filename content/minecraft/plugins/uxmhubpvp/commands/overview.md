@@ -67,8 +67,9 @@ console.
 
 ## Permissions
 
-The node on a root guards every branch under it, and a sender without a node does not see the command at all: it is
-missing from tab completion and the server answers as if it did not exist. Every `/pvp` command needs
+The node on a root guards every branch under it. A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
+A hidden command is missing from tab completion and the server answers as if it did not exist. Every `/pvp` command needs
 `uxmhubpvp.use`; `stats` and `top` need `uxmhubpvp.stats` and `uxmhubpvp.top` as well. Every operator command has its
 own `uxmhubpvp.admin.<action>` node. See the [permission reference](../permissions/reference.md).
 

@@ -6,7 +6,10 @@ icon: list
 ---
 
 Using the bow needs no node: a player who holds it shoots it. What the server decides is who is given one, through
-`item.give` and the world filter. A node on a command hides it: a sender without it does not see the command.
+`item.give` and the world filter.
+
+A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
 
 | Node | Default | Grants |
 |---|---|---|

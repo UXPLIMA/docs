@@ -31,7 +31,9 @@ experience to a player who is away. A name the server has never seen answers `er
 
 ## Permissions
 
-A sender without a subcommand's node does not see it. Each `/levels` subcommand carries its own node; each operator
+A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
+Each `/levels` subcommand carries its own node; each operator
 subcommand its own `uxmlevels.admin.<action>` node, all `op` by default. See the
 [permission reference](../permissions/reference.md).
 

@@ -26,7 +26,9 @@ else under `/hide` is about the sender's own view, so it needs a player.
 
 ## Permissions
 
-A sender without a command's node does not see it. `/hide` and every subcommand under it need `uxmplayerhider.use`,
+A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
+`/hide` and every subcommand under it need `uxmplayerhider.use`,
 which everyone has; the language subcommands need their own node as well. Every operator subcommand has its own
 `uxmplayerhider.admin.<action>` node, all `op` by default. See the [permission reference](../permissions/reference.md).
 
