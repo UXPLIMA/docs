@@ -2,7 +2,7 @@
 title: Applying
 order: 305
 description: The one rule every route follows, the refusals, the limit and its nodes, and removed enchantments.
-icon: check-square
+icon: anvil
 ---
 
 The table, the anvil, a clicked book, loot and `/uxmenchants apply` all pass through one rule, which is the only way

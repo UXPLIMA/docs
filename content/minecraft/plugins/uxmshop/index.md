@@ -1,6 +1,6 @@
 ---
 title: uxmShop
-order: 420
+order: 245
 description: A server shop from a catalogue and player shops, in one plugin.
 icon: store
 ---

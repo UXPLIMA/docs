@@ -1,6 +1,6 @@
 ---
 title: uxmHelperNPC
-order: 200
+order: 20
 description: A per-player helper NPC that stands on the player's own island or claim
   and opens the menus you give it.
 icon: bot

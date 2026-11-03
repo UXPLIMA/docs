@@ -1,6 +1,6 @@
 ---
 title: uxmBackup
-order: 310
+order: 280
 description: Backups taken from inside the server, worlds, files and databases in checked zip archives, sent to local, SFTP, S3, WebDAV or FTPS storages.
 icon: archive
 ---

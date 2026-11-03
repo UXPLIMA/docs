@@ -1,6 +1,6 @@
 ---
 title: uxmJumpPads
-order: 365
+order: 345
 description: Jump pads that throw a player where they point, matched by their blocks or set on one block, with no fall damage on landing.
 icon: arrow-up
 ---

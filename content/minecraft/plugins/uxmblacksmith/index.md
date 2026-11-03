@@ -1,6 +1,6 @@
 ---
 title: uxmBlacksmith
-order: 250
+order: 70
 description: Time-gated crafting with burn risk, levels, masteries and a perk tree.
 icon: hammer
 ---

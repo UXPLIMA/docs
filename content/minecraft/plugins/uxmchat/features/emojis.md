@@ -2,7 +2,7 @@
 title: Emoji
 order: 307
 description: Shortcuts that become glyphs, the shipped emoji, the window, and per-emoji permissions.
-icon: smile
+icon: message-circle
 ---
 
 Module: `emojis`. A player types a shortcut and readers see the glyph. `:heart:` becomes a red heart.

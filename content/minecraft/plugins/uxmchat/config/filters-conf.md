@@ -2,7 +2,7 @@
 title: filters.conf
 order: 506
 description: The allowlist, every filter and its keys, the ladder, automatic replies, commands read as chat, and the word files.
-icon: filter
+icon: funnel
 ---
 
 `modules/filters/filters.conf`, read at start and on every reload.

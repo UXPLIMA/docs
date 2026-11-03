@@ -2,7 +2,7 @@
 title: Emotes
 order: 407
 description: Every shipped piece of the emotes family, with its id, rarity and price.
-icon: smile
+icon: person-standing
 ---
 
 A face over the head, a burst and a sound, played on click. `categories/emote.conf` ships 20 pieces. The node of each is `uxmcosmetics.emote.<id>`. Prices are in

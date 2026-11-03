@@ -2,7 +2,7 @@
 title: Emoji
 order: 405
 description: Every emoji you may use, one click to copy.
-icon: smile
+icon: message-circle
 ---
 
 `/emoji`, node `uxmchat.emoji`. Six rows; the emoji sit as paper in slots 10 to 16, 19 to 25, 28 to 34 and 37 to 43,

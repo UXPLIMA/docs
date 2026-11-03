@@ -1,6 +1,6 @@
 ---
 title: uxmAuth
-order: 305
+order: 210
 description: Login and registration for offline-mode servers and networks on Paper, Folia and Velocity, with premium names, Bedrock, a second factor and imports from eleven plugins.
 icon: shield-check
 ---
