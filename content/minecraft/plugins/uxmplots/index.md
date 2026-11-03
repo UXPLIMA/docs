@@ -1,6 +1,6 @@
 ---
 title: uxmPlots
-order: 410
+order: 22
 description: Plot worlds for creative and building servers, with a gallery, contests, renting, shaping and protection.
 icon: grid-3x3
 ---

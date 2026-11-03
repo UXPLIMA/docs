@@ -1,6 +1,6 @@
 ---
 title: Upgrading to 2.2.0
-order: 14
+order: 114
 description: What to check before moving a 2.1.x server to uxmDiscordSync 2.2.0, and what behaves differently afterwards.
 icon: circle-arrow-up
 ---

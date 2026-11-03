@@ -1,6 +1,6 @@
 ---
 title: Your first section
-order: 104
+order: 204
 description: A section of ores with a moving price and a daily allowance, step by step.
 icon: footprints
 ---

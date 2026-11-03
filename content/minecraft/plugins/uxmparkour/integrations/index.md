@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: The plugins uxmParkour works with, and what each one turns on.
 icon: plug
 ---

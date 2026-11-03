@@ -1,6 +1,6 @@
 ---
 title: Channels
-order: 301
+order: 401
 description: Global, local and world channels, network and server scope, speaking and hearing, shortcuts, markers, locks and slowmode.
 icon: hash
 ---

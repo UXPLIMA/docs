@@ -1,6 +1,6 @@
 ---
 title: settings
-order: 51
+order: 151
 description: The settings block of config.yml in full, with a pointer to the page for each part.
 icon: sliders-horizontal
 ---

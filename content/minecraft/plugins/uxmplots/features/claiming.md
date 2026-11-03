@@ -1,6 +1,6 @@
 ---
 title: Claiming
-order: 302
+order: 402
 description: Claiming, auto claim, limits by node, bought slots, giving a plot back, homes and travel.
 icon: flag
 ---

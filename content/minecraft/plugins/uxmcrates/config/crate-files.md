@@ -1,6 +1,6 @@
 ---
 title: Crate files
-order: 509
+order: 609
 description: Every key of crates/<id>.conf, with its default and meaning.
 icon: package
 ---

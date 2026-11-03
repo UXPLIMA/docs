@@ -1,6 +1,6 @@
 ---
 title: Database
-order: 90
+order: 190
 description: Where minions, their stock, banks, trust, the ledger and the audit are kept, and the three backends.
 icon: database
 ---

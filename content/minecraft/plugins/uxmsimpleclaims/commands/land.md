@@ -1,6 +1,6 @@
 ---
 title: Land
-order: 202
+order: 302
 description: Claiming, giving up, merging, splitting, seeing and moving.
 icon: map
 ---

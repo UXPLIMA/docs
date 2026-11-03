@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 11
+order: 111
 description: Requirements, the license key, and the files the plugin creates.
 icon: download
 ---

@@ -1,6 +1,6 @@
 ---
 title: Land Claims
-order: 1520
+order: 1620
 description: How land-claim plugins gate homes, the RTP search and poses.
 icon: land-plot
 ---

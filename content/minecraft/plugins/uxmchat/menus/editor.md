@@ -1,6 +1,6 @@
 ---
 title: Editors
-order: 408
+order: 508
 description: The list of objects, the properties of one, and the window a list of lines is edited in.
 icon: pencil
 ---

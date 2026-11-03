@@ -1,6 +1,6 @@
 ---
 title: Hunting
-order: 30
+order: 130
 description: Eggs and finds, types, rewards, the radar and the idle particles, and the moments.
 icon: egg
 ---

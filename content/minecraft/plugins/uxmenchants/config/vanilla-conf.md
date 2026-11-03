@@ -1,8 +1,8 @@
 ---
 title: vanilla.conf
-order: 505
+order: 605
 description: Vanilla enchantments drawn in our block, with their names, descriptions and type.
-icon: book-marked
+icon: book
 ---
 
 The display hides the client's own enchantment lines, so the vanilla enchantments are drawn in our block, after ours,

@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 12
+order: 112
 description: Requirements, the first start, the files and the settings to check before players place spawners.
 icon: download
 ---

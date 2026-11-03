@@ -1,6 +1,6 @@
 ---
 title: pads.conf
-order: 402
+order: 502
 description: The file of the pads set on single blocks.
 icon: map-pin
 ---

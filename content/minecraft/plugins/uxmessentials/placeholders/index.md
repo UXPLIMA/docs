@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 162
+order: 262
 description: Every placeholder uxmEssentials publishes, by module.
 icon: braces
 ---

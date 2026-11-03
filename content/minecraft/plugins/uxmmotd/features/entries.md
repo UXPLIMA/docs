@@ -1,6 +1,6 @@
 ---
 title: Entries
-order: 301
+order: 401
 description: The two lines and the icon of an entry, the list, and rotation.
 icon: list
 ---

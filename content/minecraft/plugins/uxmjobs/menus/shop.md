@@ -1,6 +1,6 @@
 ---
 title: Shop
-order: 410
+order: 510
 description: The job shop, where points are spent.
 icon: store
 ---

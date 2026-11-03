@@ -1,6 +1,6 @@
 ---
 title: Particles
-order: 306
+order: 406
 description: Trails, halos and cloaks, the six patterns, colours, rainbow, and the per-player particle cap.
 icon: sparkle
 ---

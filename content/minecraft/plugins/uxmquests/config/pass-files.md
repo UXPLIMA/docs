@@ -1,6 +1,6 @@
 ---
 title: Pass files
-order: 503
+order: 603
 description: The keys of passes/<id>.conf.
 icon: ticket
 ---

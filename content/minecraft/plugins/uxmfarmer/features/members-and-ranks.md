@@ -1,6 +1,6 @@
 ---
 title: Members and Ranks
-order: 37
+order: 137
 description: Ranks, their permissions, adding members and following the region.
 icon: users
 ---

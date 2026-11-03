@@ -1,6 +1,6 @@
 ---
 title: Scheduling
-order: 32
+order: 132
 description: The weekly timetable, its timezone, the monthly cap, and telling players when the next event is.
 icon: calendar-clock
 ---

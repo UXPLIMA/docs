@@ -1,6 +1,6 @@
 ---
 title: Staff
-order: 9240
+order: 9340
 description: An on-duty mode that swaps a moderator's inventory for a gadget hotbar and hands it back on exit.
 icon: shield-user
 ---

@@ -1,6 +1,6 @@
 ---
 title: Upkeep
-order: 308
+order: 408
 description: Taxes, time limited claims and inactivity, each off by default.
 icon: hourglass
 ---

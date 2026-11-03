@@ -1,6 +1,6 @@
 ---
 title: Chat colours
-order: 308
+order: 408
 description: Presets, gradients, rainbow, sequence and random colours, named and hex colours, styles, group defaults and effects.
 icon: palette
 ---

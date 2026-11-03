@@ -1,6 +1,6 @@
 ---
 title: Offline Mode (Cracked)
-order: 930
+order: 1030
 description: How accounts, name lookups and skins behave on a cracked server.
 icon: wifi-off
 ---

@@ -1,6 +1,6 @@
 ---
 title: Entering and teleports
-order: 309
+order: 409
 description: What a player sees walking in and out, and what other plugins' teleports may do.
 icon: log-in
 ---

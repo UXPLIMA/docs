@@ -1,6 +1,6 @@
 ---
 title: Migrating
-order: 313
+order: 413
 description: Bringing another plugin's enchantments across with import, stripping ours from a world, and export.
 icon: arrow-right-left
 ---

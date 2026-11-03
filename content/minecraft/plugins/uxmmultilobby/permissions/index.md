@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 60
+order: 160
 description: The player nodes, the operator branch, and lobby nodes of your own.
 icon: key
 ---

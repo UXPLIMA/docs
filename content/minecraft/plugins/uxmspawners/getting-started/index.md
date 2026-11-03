@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: Installation, and how a uxmSpawners spawner differs from a vanilla one.
 icon: rocket
 ---

@@ -1,6 +1,6 @@
 ---
 title: Regions
-order: 9200
+order: 9300
 description: 'An in-game manager for WorldGuard regions: browse, create, edit flags, and manage rosters.'
 icon: land-plot
 ---

@@ -1,6 +1,6 @@
 ---
 title: Rank and nickname sync
-order: 32
+order: 132
 description: LuckPerms groups as Discord roles, rank rewards for linking, and the Discord nickname format.
 icon: users-round
 ---

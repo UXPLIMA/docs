@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 206
+order: 306
 description: Every /claimadmin branch, its node and what it does.
 icon: shield
 ---

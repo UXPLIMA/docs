@@ -1,8 +1,8 @@
 ---
 title: Upgrade
-order: 407
+order: 507
 description: The next level, each requirement in your own words, buying, and consuming.
-icon: arrow-up-circle
+icon: circle-arrow-up
 ---
 
 `menus/upgrade.conf`: five rows, redrawn every 20 ticks.

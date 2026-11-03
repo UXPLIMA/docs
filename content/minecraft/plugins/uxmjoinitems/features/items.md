@@ -1,6 +1,6 @@
 ---
 title: Items
-order: 301
+order: 401
 description: How an item looks, the house tooltip, language keys and the three shipped items.
 icon: package
 ---

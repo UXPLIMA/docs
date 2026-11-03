@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 148
+order: 248
 description: The 51 plugins uxmEssentials detects, and what each detection turns on.
 icon: plug
 ---

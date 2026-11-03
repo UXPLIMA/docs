@@ -1,6 +1,6 @@
 ---
 title: uxmSupplyRush
-order: 280
+order: 18
 description: Timed item tournaments where players deposit items for points and the top
   contributors win rewards.
 icon: trophy

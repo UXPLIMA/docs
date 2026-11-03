@@ -1,6 +1,6 @@
 ---
 title: Your first backup
-order: 104
+order: 204
 description: A nightly copy to another machine over SFTP, checked and kept for two weeks.
 icon: footprints
 ---

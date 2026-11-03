@@ -1,6 +1,6 @@
 ---
 title: Watches
-order: 304
+order: 404
 description: Waiting for an item and being told when it is listed.
 icon: eye
 ---

@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Crates, groups, weights, keys, the decided reward, the reveal and pending rewards, in one page.
 icon: lightbulb
 ---

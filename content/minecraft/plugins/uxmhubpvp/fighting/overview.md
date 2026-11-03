@@ -1,6 +1,6 @@
 ---
 title: Turning PvP on and off
-order: 301
+order: 401
 description: The toggle item, the warm-ups in and out, who may hit whom, and the glow and hit particles.
 icon: toggle-right
 ---

@@ -1,6 +1,6 @@
 ---
 title: The hotbar tool
-order: 304
+order: 404
 description: The item that opens the window, its slot, locking, when it is given and in which worlds.
 icon: compass
 ---

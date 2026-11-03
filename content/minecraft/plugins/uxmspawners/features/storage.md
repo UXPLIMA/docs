@@ -1,6 +1,6 @@
 ---
 title: Storage & Selling
-order: 32
+order: 132
 description: Virtual and XP storage, the limits and their tiers, withdrawing, and selling from the menu.
 icon: archive
 ---

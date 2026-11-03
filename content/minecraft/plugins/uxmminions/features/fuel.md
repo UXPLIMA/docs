@@ -1,6 +1,6 @@
 ---
 title: Fuel
-order: 305
+order: 405
 description: Fuel grades, the budget in actions, what spends it, and turning it off.
 icon: flame
 ---

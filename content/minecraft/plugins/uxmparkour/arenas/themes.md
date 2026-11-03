@@ -1,6 +1,6 @@
 ---
 title: Themes
-order: 303
+order: 403
 description: The blocks a course is built from, the picker icon, and writing your own.
 icon: paintbrush
 ---

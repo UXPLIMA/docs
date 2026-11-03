@@ -1,6 +1,6 @@
 ---
 title: Heads-up
-order: 306
+order: 406
 description: The experience bar, the boss bar and the action bar, which track each shows, and the gain notice.
 icon: gauge
 ---

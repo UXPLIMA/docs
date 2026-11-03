@@ -1,6 +1,6 @@
 ---
 title: NPCs
-order: 9140
+order: 9240
 description: Packet-rendered characters with skins, click action chains, nameplates and player ownership.
 icon: user-round
 ---

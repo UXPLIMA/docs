@@ -1,6 +1,6 @@
 ---
 title: currencies.conf
-order: 509
+order: 609
 description: The five currency types and their keys.
 icon: coins
 ---

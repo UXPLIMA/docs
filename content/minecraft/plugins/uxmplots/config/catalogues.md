@@ -1,6 +1,6 @@
 ---
 title: Catalogues
-order: 508
+order: 608
 description: shop.conf, personality.conf and tags.conf.
 icon: book-open
 ---

@@ -1,6 +1,6 @@
 ---
 title: World files
-order: 506
+order: 606
 description: The keys of worlds/<world>.conf, with the shipped creative world.
 icon: globe
 ---

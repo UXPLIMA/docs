@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 60
+order: 160
 description: The language node and the operator branch.
 icon: key
 ---

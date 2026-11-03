@@ -1,8 +1,8 @@
 ---
 title: Sessions
-order: 303
+order: 403
 description: Skipping the password from the same address, the three modes, and what ends a session.
-icon: history
+icon: log-in
 ---
 
 `sessions` in [config.conf](../config/config-conf.md#sessions):

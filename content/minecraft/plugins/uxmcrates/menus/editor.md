@@ -1,6 +1,6 @@
 ---
 title: Editor
-order: 411
+order: 511
 description: The editor windows, their slots, and how each button writes a value.
 icon: pencil
 ---

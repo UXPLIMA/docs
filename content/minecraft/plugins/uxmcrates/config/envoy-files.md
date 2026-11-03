@@ -1,8 +1,8 @@
 ---
 title: Envoy files
-order: 513
+order: 613
 description: Every key of envoys/<id>.conf.
-icon: parachute
+icon: package-open
 ---
 
 One file per envoy under `envoys/`; `supply-drop.conf` ships.

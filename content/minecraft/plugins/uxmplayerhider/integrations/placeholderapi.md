@@ -1,6 +1,6 @@
 ---
 title: PlaceholderAPI
-order: 702
+order: 802
 description: The uxmplayerhider expansion, and placeholders from other plugins inside this one.
 icon: braces
 ---

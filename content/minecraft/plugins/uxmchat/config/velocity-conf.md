@@ -1,6 +1,6 @@
 ---
 title: Velocity config
-order: 518
+order: 618
 description: The proxy plugin's config.conf and secrets.conf.
 icon: server
 ---

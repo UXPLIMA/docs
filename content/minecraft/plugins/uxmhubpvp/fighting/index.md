@@ -1,6 +1,6 @@
 ---
 title: Fighting
-order: 30
+order: 130
 description: Turning PvP on and off, the kit and the safe inventory, combat tags, deaths and kills, rewards, and the moments.
 icon: swords
 ---

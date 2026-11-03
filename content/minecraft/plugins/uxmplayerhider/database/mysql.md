@@ -1,6 +1,6 @@
 ---
 title: MySQL and MariaDB
-order: 803
+order: 903
 description: Connecting to MySQL or MariaDB to share each player's choice across servers.
 icon: server
 ---

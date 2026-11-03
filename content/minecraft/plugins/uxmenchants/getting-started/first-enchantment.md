@@ -1,6 +1,6 @@
 ---
 title: Your first enchantment
-order: 104
+order: 204
 description: Write a sword enchantment that heals the wielder on a kill, give yourself the book, and apply it.
 icon: sparkles
 ---

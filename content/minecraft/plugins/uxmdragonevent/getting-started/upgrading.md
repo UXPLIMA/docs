@@ -1,6 +1,6 @@
 ---
 title: Upgrading to 2.6.3
-order: 15
+order: 115
 description: What to check before moving a 2.6.2 server to uxmDragonEvent 2.6.3, and what behaves differently afterwards.
 icon: circle-arrow-up
 ---

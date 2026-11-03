@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Listings, auctions, orders, watches, the mailbox, ids, currencies that never convert, and the closed house.
 icon: lightbulb
 ---

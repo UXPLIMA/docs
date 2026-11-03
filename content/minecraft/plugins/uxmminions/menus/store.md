@@ -1,6 +1,6 @@
 ---
 title: Store
-order: 405
+order: 505
 description: Where a player buys a minion, and why it ships closed.
 icon: store
 ---

@@ -1,6 +1,6 @@
 ---
 title: Operator commands
-order: 203
+order: 303
 description: Every /uxmcosmetics subcommand, its permission, its arguments and what it answers.
 icon: shield
 ---

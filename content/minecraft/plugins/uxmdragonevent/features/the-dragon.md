@@ -1,6 +1,6 @@
 ---
 title: The dragon
-order: 31
+order: 131
 description: Name, glow, health and how it scales, damage, rebirths, piñata mode and custom models.
 icon: flame
 ---

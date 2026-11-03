@@ -1,6 +1,6 @@
 ---
 title: Key files
-order: 511
+order: 611
 description: Every key of keys/<id>.conf, with its default and meaning.
 icon: key-round
 ---

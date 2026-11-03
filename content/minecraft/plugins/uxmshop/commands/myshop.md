@@ -1,6 +1,6 @@
 ---
 title: Player shop commands
-order: 203
+order: 303
 description: Every /myshop branch, its node and what it does.
 icon: store
 ---

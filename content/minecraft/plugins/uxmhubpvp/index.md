@@ -1,6 +1,6 @@
 ---
 title: uxmHubPvP
-order: 350
+order: 39
 description: Sword fights in the lobby for the players who choose them, with a kit, a safe inventory, combat tags and boards.
 icon: swords
 ---

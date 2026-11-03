@@ -1,6 +1,6 @@
 ---
 title: Boards and signs
-order: 313
+order: 413
 description: The six boards, planting a board in the world, and the sign over every plot.
 icon: trophy
 ---

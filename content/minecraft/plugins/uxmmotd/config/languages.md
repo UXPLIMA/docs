@@ -1,6 +1,6 @@
 ---
 title: Languages
-order: 504
+order: 604
 description: The seven shipped languages, which one a viewer reads, and adding a language.
 icon: languages
 ---

@@ -1,6 +1,6 @@
 ---
 title: Log
-order: 410
+order: 510
 description: "The opening log window: every win that matches, with the chance it had."
 icon: scroll-text
 ---

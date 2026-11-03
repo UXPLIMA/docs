@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 80
+order: 180
 description: The player permission, one permission per admin command, and the two extras.
 icon: shield-check
 ---

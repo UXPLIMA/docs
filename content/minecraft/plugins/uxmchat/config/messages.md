@@ -1,6 +1,6 @@
 ---
 title: Messages
-order: 515
+order: 615
 description: How a line is written, the prefixes, every block of keys, and language keys used in content.
 icon: message-square
 ---

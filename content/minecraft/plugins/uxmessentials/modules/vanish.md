@@ -1,6 +1,6 @@
 ---
 title: Vanish
-order: 9290
+order: 9390
 description: Layered invisibility with see and use levels, fake join and quit lines, and cross-server sync.
 icon: eye-off
 ---

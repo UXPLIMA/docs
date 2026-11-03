@@ -1,6 +1,6 @@
 ---
 title: Difficulties
-order: 302
+order: 402
 description: The range of jumps a difficulty allows, the jumps a player can physically make, and writing your own.
 icon: gauge
 ---

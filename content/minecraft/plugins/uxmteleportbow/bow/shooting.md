@@ -1,6 +1,6 @@
 ---
 title: Shooting
-order: 302
+order: 402
 description: Every step from the release of the bow to the arrival, with the cooldown, the landing checks and the fall protection.
 icon: move-up-right
 ---

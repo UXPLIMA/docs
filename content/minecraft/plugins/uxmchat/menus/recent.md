@@ -1,8 +1,8 @@
 ---
 title: Recent
-order: 403
+order: 503
 description: The last lines said to you, to answer in private or ignore.
-icon: history
+icon: clock
 ---
 
 `/recent`, node `uxmchat.recent`. Three rows; the last five lines said to you sit in slots 11 to 15, as paper.

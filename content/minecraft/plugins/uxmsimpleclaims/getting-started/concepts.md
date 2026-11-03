@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Claims, chunks, roles, flags, rules, sub areas and the wilderness.
 icon: lightbulb
 ---

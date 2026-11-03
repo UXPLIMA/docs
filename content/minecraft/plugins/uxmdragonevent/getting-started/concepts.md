@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 14
+order: 114
 description: How an event starts and ends, rebirths, a player's part in the event, damage and the five statistics.
 icon: lightbulb
 ---

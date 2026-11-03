@@ -1,6 +1,6 @@
 ---
 title: hologram.conf
-order: 502
+order: 602
 description: The hologram over a minion.
 icon: type
 ---

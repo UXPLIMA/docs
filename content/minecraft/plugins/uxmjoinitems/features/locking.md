@@ -1,6 +1,6 @@
 ---
 title: Locking
-order: 304
+order: 404
 description: Items that stay where they were put and are kept on death.
 icon: lock
 ---

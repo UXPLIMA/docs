@@ -1,6 +1,6 @@
 ---
 title: Staff commands
-order: 203
+order: 303
 description: Moderation, channel control, announcements, editors, polls and every other staff command, with its node.
 icon: shield
 ---

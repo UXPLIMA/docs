@@ -1,6 +1,6 @@
 ---
 title: uxmDragonEvent
-order: 240
+order: 15
 description: A scheduled Ender Dragon fight in its own world, with rebirths, damage
   leaderboards, rewards and Discord announcements.
 icon: flame

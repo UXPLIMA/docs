@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: The five %uxmshop_...% placeholders.
 icon: braces
 ---

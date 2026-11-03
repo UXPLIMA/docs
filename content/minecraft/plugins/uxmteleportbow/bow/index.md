@@ -1,6 +1,6 @@
 ---
 title: The bow
-order: 30
+order: 130
 description: The bow and its arrow, what happens from the shot to the landing, the filters, the trail and the effects.
 icon: target
 ---

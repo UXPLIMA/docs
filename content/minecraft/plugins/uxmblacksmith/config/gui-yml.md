@@ -1,6 +1,6 @@
 ---
 title: gui.yml
-order: 303
+order: 403
 description: The layout grammar, click actions, and every menu you can re-skin.
 icon: layout-dashboard
 ---

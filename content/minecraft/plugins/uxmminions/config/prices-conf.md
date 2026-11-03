@@ -1,6 +1,6 @@
 ---
 title: prices.conf
-order: 505
+order: 605
 description: The seller's own price table.
 icon: tag
 ---

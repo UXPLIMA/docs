@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Groups, boards, assignments, phases, claiming, sharing and passes.
 icon: lightbulb
 ---

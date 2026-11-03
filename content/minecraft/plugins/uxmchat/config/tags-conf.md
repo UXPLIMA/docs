@@ -1,6 +1,6 @@
 ---
 title: tags.conf
-order: 509
+order: 609
 description: The wrapper, surfaces, effects, import, categories, rarities, player-made rules and every key of a tag.
 icon: tag
 ---

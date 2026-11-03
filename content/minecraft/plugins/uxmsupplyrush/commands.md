@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The player command and every admin command, with what each one needs.
 icon: terminal
 ---

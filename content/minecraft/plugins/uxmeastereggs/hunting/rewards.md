@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 303
+order: 403
 description: What a find, a milestone and completing the map pay, the money lines, and commands.
 icon: coins
 ---

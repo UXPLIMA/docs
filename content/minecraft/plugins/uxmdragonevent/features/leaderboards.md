@@ -1,6 +1,6 @@
 ---
 title: Leaderboards
-order: 37
+order: 137
 description: The damage ranking of the running event, the all-time leaderboards, and when they update.
 icon: trophy
 ---

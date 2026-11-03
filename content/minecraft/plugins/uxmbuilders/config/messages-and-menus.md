@@ -1,6 +1,6 @@
 ---
 title: Messages and menus
-order: 304
+order: 404
 description: Where every line players read lives, how a message is delivered, and how menus are laid out.
 icon: message-square
 ---

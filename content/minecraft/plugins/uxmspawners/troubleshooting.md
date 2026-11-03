@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-order: 80
+order: 180
 description: What to check when the plugin does not start, a spawner produces nothing, storage stays empty or breaking goes wrong.
 icon: life-buoy
 ---

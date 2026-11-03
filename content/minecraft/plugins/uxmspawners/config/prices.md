@@ -1,6 +1,6 @@
 ---
 title: Prices
-order: 60
+order: 160
 description: What spawner output sells for, from your own list or a shop plugin, and what happens to items without a price.
 icon: coins
 ---

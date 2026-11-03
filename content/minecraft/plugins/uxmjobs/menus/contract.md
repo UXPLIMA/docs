@@ -1,8 +1,8 @@
 ---
 title: Contract
-order: 409
+order: 509
 description: "One contract: sign it, follow it, or cancel it."
-icon: file-signature
+icon: handshake
 ---
 
 `menus/contract.conf`: five rows. Each button is drawn only when it means something.

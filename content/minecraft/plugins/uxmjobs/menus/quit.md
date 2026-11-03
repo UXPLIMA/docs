@@ -1,6 +1,6 @@
 ---
 title: Leave
-order: 405
+order: 505
 description: The confirmation that shows the leave cost and what the archive keeps.
 icon: log-out
 ---

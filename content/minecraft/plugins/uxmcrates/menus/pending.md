@@ -1,6 +1,6 @@
 ---
 title: Waiting rewards
-order: 405
+order: 505
 description: Rewards that were decided and not yet delivered, and taking them.
 icon: inbox
 ---

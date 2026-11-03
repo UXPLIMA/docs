@@ -1,6 +1,6 @@
 ---
 title: uxmMOTD
-order: 390
+order: 42
 description: The server list entry of a server or a network, with rotating lines, the hover list, icons, the player count and a maintenance switch.
 icon: monitor
 ---

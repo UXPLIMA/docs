@@ -1,6 +1,6 @@
 ---
 title: The crown
-order: 302
+order: 402
 description: Claiming the plate, the claim cooldown, how a reign ends, the ring over the king, and the push off a protected plate.
 icon: crown
 ---

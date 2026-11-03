@@ -1,6 +1,6 @@
 ---
 title: Battle pass
-order: 311
+order: 411
 description: Pass files, the premium track, seasons, unclaimed rewards and tiers, with the shipped season pass.
 icon: ticket
 ---

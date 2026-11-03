@@ -1,6 +1,6 @@
 ---
 title: uxmParkour
-order: 400
+order: 35
 description: Endless parkour that builds itself in front of the player, with themes, difficulties, rewards and leaderboards.
 icon: footprints
 ---

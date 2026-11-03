@@ -1,6 +1,6 @@
 ---
 title: Upgrading to 4.0.0
-order: 13
+order: 113
 description: What to do before and after moving a 3.x.x server to uxmFarmer 4.0.0.
 icon: circle-arrow-up
 ---

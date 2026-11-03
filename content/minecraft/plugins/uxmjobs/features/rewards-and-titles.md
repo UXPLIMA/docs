@@ -1,6 +1,6 @@
 ---
 title: Rewards and titles
-order: 309
+order: 409
 description: What a level gives, automatic rewards, permissions granted by level, and the title ladder.
 icon: award
 ---

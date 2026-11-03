@@ -1,6 +1,6 @@
 ---
 title: Anti-glitch
-order: 306
+order: 406
 description: Three levels that stop a player placing and breaking the same block, and the bypass.
 icon: shield-check
 ---

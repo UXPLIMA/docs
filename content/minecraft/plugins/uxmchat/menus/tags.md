@@ -1,6 +1,6 @@
 ---
 title: Tags
-order: 407
+order: 507
 description: The tag categories, the tags of one category, wearing, buying and pinning.
 icon: tag
 ---

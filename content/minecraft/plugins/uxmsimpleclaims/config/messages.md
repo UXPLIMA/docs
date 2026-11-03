@@ -1,6 +1,6 @@
 ---
 title: Messages
-order: 505
+order: 605
 description: How a line is written and where the window words live.
 icon: message-square
 ---

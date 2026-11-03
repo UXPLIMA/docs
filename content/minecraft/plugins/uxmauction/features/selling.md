@@ -1,6 +1,6 @@
 ---
 title: Selling
-order: 301
+order: 401
 description: Fixed-price listings, retail stacks, durations, the price band, repricing, cancelling and how a seller is paid.
 icon: tag
 ---

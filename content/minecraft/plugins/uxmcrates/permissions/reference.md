@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every permission node of uxmCrates with its default, what it allows, and the nodes a server names itself.
 icon: list-checks
 ---

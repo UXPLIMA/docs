@@ -1,6 +1,6 @@
 ---
 title: Pocket
-order: 404
+order: 504
 description: The minions a player picked up and has not placed again.
 icon: archive
 ---

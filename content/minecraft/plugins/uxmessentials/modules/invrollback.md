@@ -1,6 +1,6 @@
 ---
 title: Inventory Rollback
-order: 9080
+order: 9180
 description: Snapshots of a player's inventory at death and logout, restorable from a menu.
 icon: undo-2
 ---

@@ -1,6 +1,6 @@
 ---
 title: config.conf
-order: 501
+order: 601
 description: Every block of config.conf, its keys and defaults, and the page that explains each.
 icon: file-cog
 ---

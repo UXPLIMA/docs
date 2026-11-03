@@ -1,6 +1,6 @@
 ---
 title: Economy
-order: 309
+order: 409
 description: The balance sales pay into, experience per action, the three closed loops, and outcome effects.
 icon: landmark
 ---

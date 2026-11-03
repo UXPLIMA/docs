@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 1140
+order: 1240
 description: How the config tree is organised, and how to edit and reload it safely.
 icon: book-open
 ---

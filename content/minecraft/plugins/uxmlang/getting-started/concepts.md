@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Which language a player reads, what a language is, and how the choice reaches every plugin and server.
 icon: lightbulb
 ---

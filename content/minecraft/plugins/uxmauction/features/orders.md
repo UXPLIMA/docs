@@ -1,6 +1,6 @@
 ---
 title: Buy orders
-order: 303
+order: 403
 description: Asking the house to buy, matching strictness, filling by itself or by hand, and holding the money.
 icon: shopping-cart
 ---

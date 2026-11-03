@@ -1,6 +1,6 @@
 ---
 title: Basic Concepts
-order: 14
+order: 114
 description: Ownership, how a spawner runs, its two modes, levels and what one cycle produces.
 icon: lightbulb
 ---

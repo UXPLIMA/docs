@@ -1,6 +1,6 @@
 ---
 title: uxmKotl
-order: 370
+order: 36
 description: King of the Ladder. Climb to the plate, hold the crown, knock the others off, and climb the boards.
 icon: crown
 ---

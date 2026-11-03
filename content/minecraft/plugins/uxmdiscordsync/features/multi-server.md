@@ -1,6 +1,6 @@
 ---
 title: Multi-server
-order: 39
+order: 139
 description: Running one bot on several servers with Redis and a shared database, and which server does what.
 icon: network
 ---

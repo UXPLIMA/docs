@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Groups, resets, catalogues, quests, task types, anti-glitch, rewards, shared boards, feedback, ranks, passes and languages.
 icon: layers
 ---

@@ -1,6 +1,6 @@
 ---
 title: tool.conf
-order: 503
+order: 603
 description: Tool wear and the enchantments that drive yield, speed and wear.
 icon: wrench
 ---

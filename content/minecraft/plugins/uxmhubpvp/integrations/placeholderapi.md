@@ -1,6 +1,6 @@
 ---
 title: PlaceholderAPI
-order: 704
+order: 804
 description: The uxmhubpvp expansion, and placeholders from other plugins inside this one.
 icon: braces
 ---

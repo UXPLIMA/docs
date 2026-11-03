@@ -1,6 +1,6 @@
 ---
 title: Admin log
-order: 411
+order: 511
 description: The audit log in a window, with one click to give an item back.
 icon: scroll
 ---

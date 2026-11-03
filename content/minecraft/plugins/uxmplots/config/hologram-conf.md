@@ -1,6 +1,6 @@
 ---
 title: hologram.conf
-order: 512
+order: 612
 description: The sign over a plot, its lines, themes and the full appearance block.
 icon: type
 ---

@@ -1,6 +1,6 @@
 ---
 title: Getting cosmetics
-order: 302
+order: 402
 description: The four ways a player gets a piece, prices, purchase safety, and permission nodes.
 icon: wallet
 ---

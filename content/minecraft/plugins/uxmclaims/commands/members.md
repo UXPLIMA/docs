@@ -1,6 +1,6 @@
 ---
 title: Members
-order: 204
+order: 304
 description: Removing members, moving them between roles, per-member overrides and ownership transfer.
 icon: users
 ---

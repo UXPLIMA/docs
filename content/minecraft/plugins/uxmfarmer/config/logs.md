@@ -1,6 +1,6 @@
 ---
 title: Logs
-order: 57
+order: 157
 description: Farmer logs, the plugin's own log files, and operations the database did not confirm.
 icon: scroll-text
 ---

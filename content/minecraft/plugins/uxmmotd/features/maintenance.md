@@ -1,6 +1,6 @@
 ---
 title: Maintenance
-order: 307
+order: 407
 description: Closing the server with one command, what the list shows, who still gets in, and the kick screen.
 icon: construction
 ---

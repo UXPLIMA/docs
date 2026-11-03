@@ -1,6 +1,6 @@
 ---
 title: Security
-order: 9220
+order: 9320
 description: A self-service second factor, a join freeze, op-command protection and a same-IP alt guard.
 icon: lock
 ---

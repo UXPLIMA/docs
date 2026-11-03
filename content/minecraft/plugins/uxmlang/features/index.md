@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Choosing a language, what other plugins read, and sharing the choice across a network.
 icon: sparkles
 ---

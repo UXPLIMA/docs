@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Skills, curves, sources, abilities, stats, experience, anti-farm, progress, boards, data and the editor.
 icon: layers
 ---

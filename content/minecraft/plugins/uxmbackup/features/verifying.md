@@ -1,6 +1,6 @@
 ---
 title: Verifying
-order: 306
+order: 406
 description: Reading an archive back against its manifest.
 icon: shield-check
 ---

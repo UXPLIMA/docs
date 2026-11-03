@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL
-order: 1580
+order: 1680
 description: Connecting uxmEssentials to PostgreSQL, and what changes when you do.
 icon: database
 ---

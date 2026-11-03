@@ -1,6 +1,6 @@
 ---
 title: Wardrobe
-order: 502
+order: 602
 description: "The /cosmetics window: the twelve families with how many of each the player has."
 icon: shirt
 ---

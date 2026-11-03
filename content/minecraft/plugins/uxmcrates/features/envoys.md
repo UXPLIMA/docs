@@ -1,8 +1,8 @@
 ---
 title: Envoys
-order: 306
+order: 406
 description: Crates that fall across an area on a schedule, how they are collected, and what happens to the ground.
-icon: parachute
+icon: package-open
 ---
 
 An envoy drops ordinary crates across an area and takes them away again after a while. `envoys/<id>.conf` names the

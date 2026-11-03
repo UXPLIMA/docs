@@ -1,6 +1,6 @@
 ---
 title: Grindstone, types and targets
-order: 308
+order: 408
 description: What a grindstone takes off, how a type draws and caps an enchantment, targets and slots, and every trigger.
 icon: shapes
 ---

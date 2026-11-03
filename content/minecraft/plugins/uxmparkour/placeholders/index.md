@@ -1,6 +1,6 @@
 ---
 title: Placeholders
-order: 70
+order: 170
 description: The uxmparkour PlaceholderAPI expansion and the leaderboard keys.
 icon: braces
 ---

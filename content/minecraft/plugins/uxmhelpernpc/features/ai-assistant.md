@@ -1,6 +1,6 @@
 ---
 title: AI Assistant
-order: 36
+order: 136
 description: "The Gemini-backed assistant: setup, prompts, limits and what it costs."
 icon: bot
 ---

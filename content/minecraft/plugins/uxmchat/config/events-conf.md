@@ -1,6 +1,6 @@
 ---
 title: events.conf
-order: 511
+order: 611
 description: The line of each server event, per group and per cause, and the network block.
 icon: door-open
 ---

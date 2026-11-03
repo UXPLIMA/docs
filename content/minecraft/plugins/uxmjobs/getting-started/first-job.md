@@ -1,6 +1,6 @@
 ---
 title: Your first job
-order: 104
+order: 204
 description: Write a job that pays for breaking sand and gravel, load it, preview it and join it.
 icon: sparkles
 ---

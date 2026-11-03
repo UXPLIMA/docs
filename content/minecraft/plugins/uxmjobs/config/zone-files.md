@@ -1,8 +1,8 @@
 ---
 title: Zone files
-order: 506
+order: 606
 description: The keys of zones/<id>.conf, written by the wand.
-icon: box-select
+icon: map
 ---
 
 One zone per file under `zones/`, written whole by `/uxmjobs zone define`; the file name is the id.

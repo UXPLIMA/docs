@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: Every screen the GUI offers, and what each one does.
 icon: layout-grid
 ---

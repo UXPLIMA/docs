@@ -1,6 +1,6 @@
 ---
 title: MySQL and MariaDB
-order: 1003
+order: 1103
 description: Connecting to MySQL or MariaDB to share each player's description toggle and cooldowns across servers.
 icon: server
 ---

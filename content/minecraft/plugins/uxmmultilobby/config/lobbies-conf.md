@@ -1,6 +1,6 @@
 ---
 title: lobbies.conf
-order: 502
+order: 602
 description: Every key of a lobby, the shipped five, slots, and naming a lobby in each language.
 icon: list
 ---

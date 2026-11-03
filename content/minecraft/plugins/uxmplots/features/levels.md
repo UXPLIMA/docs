@@ -1,6 +1,6 @@
 ---
 title: Levels
-order: 310
+order: 410
 description: What raises a plot's level, the curve, and what a level unlocks.
 icon: trending-up
 ---

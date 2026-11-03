@@ -1,6 +1,6 @@
 ---
 title: boxes.conf
-order: 603
+order: 703
 description: Every key of a mystery box and its table.
 icon: package-open
 ---

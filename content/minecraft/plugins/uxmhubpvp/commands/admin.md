@@ -1,6 +1,6 @@
 ---
 title: Operator commands
-order: 203
+order: 303
 description: Every /uxmhubpvp subcommand, with its arguments, what it does and the permission it needs.
 icon: shield
 ---

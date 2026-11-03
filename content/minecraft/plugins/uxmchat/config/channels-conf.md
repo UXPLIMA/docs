@@ -1,6 +1,6 @@
 ---
 title: channels.conf
-order: 503
+order: 603
 description: Every key of a channel and the six shipped channels.
 icon: hash
 ---

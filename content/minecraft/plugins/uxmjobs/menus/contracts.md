@@ -1,6 +1,6 @@
 ---
 title: Contracts
-order: 408
+order: 508
 description: The contracts this server offers, and the ones the viewer signed.
 icon: scroll
 ---

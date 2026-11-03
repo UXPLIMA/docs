@@ -1,6 +1,6 @@
 ---
 title: How protection works
-order: 301
+order: 401
 description: Which rule decides each action inside a claim, in what order, and who bypasses it.
 icon: shield-check
 ---

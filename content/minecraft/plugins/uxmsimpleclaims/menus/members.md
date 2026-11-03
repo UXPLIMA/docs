@@ -1,6 +1,6 @@
 ---
 title: Members and roles
-order: 404
+order: 504
 description: The members, bans, roles and role windows.
 icon: users
 ---

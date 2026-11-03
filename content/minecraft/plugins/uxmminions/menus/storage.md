@@ -1,6 +1,6 @@
 ---
 title: Storage
-order: 406
+order: 506
 description: A live view over a minion's stock, with take, toggle, mode and sort.
 icon: package-open
 ---

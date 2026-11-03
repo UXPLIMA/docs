@@ -1,6 +1,6 @@
 ---
 title: Database
-order: 70
+order: 170
 description: SQLite, MySQL and the Redis layer that keeps several servers in step.
 icon: database
 ---

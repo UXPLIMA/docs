@@ -1,6 +1,6 @@
 ---
 title: Adding the dependency
-order: 1002
+order: 1102
 description: The repository, the artifact, and declaring the soft dependency.
 icon: package
 ---

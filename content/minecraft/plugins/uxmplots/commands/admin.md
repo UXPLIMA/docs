@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 204
+order: 304
 description: Every /uxmplots subcommand, with its arguments, node and what it does.
 icon: shield
 ---

@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 12
+order: 112
 description: "Events, runs, items, points, ranks and rewards: the words the other pages use."
 icon: lightbulb
 ---

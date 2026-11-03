@@ -1,6 +1,6 @@
 ---
 title: Welcome
-order: 101
+order: 201
 description: What lobby PvP is with uxmHubPvP, and what comes with the plugin.
 icon: door-open
 ---

@@ -1,6 +1,6 @@
 ---
 title: Restoring
-order: 307
+order: 407
 description: The three restore levels, the five protections, every refusal, and the restore log.
 icon: undo-2
 ---

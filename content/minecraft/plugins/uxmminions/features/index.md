@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Types, jobs, placing, output, fuel, upgrades, limits, claims, economy, tools, skins, drawing, the ledger, migrating and the editor.
 icon: layers
 ---

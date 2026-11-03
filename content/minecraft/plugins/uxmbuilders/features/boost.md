@@ -1,6 +1,6 @@
 ---
 title: Speed boost
-order: 210
+order: 310
 description: Paying to run one build faster for a while.
 icon: zap
 ---

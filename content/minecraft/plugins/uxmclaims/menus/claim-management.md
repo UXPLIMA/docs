@@ -1,6 +1,6 @@
 ---
 title: Claim management
-order: 403
+order: 503
 description: The settings panel for one claim, and everything reachable from it.
 icon: settings-2
 ---

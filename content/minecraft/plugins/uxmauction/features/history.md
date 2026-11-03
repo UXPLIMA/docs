@@ -1,8 +1,8 @@
 ---
 title: History
-order: 309
+order: 409
 description: What an item has sold for, and how long sales are kept.
-icon: history
+icon: clock
 ---
 
 Every finished sale writes one row of its own, and that row outlives the listing it came from. `/auction history` opens

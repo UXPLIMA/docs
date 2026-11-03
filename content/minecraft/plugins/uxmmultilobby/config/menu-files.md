@@ -1,6 +1,6 @@
 ---
 title: Menu file
-order: 504
+order: 604
 description: The keys of menus/lobbies.conf, the tile line, the tokens, the condition and the actions.
 icon: layout-template
 ---

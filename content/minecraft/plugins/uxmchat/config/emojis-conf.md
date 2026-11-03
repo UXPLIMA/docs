@@ -1,8 +1,8 @@
 ---
 title: emojis.conf
-order: 507
+order: 607
 description: The per-line limit and the keys of an emoji.
-icon: smile
+icon: message-circle
 ---
 
 `modules/emojis/emojis.conf`, read at start and on every reload.

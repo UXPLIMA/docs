@@ -1,6 +1,6 @@
 ---
 title: PlaceholderAPI
-order: 1500
+order: 1600
 description: Publishing our placeholders, and resolving other plugins' inside our text.
 icon: braces
 ---

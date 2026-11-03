@@ -1,6 +1,6 @@
 ---
 title: Your record
-order: 402
+order: 502
 description: "The window /kotl stats opens: a player's time held, longest reign, crowns and kills."
 icon: user-round
 ---

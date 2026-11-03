@@ -1,6 +1,6 @@
 ---
 title: Protection
-order: 306
+order: 406
 description: Address bans, attempt limits, connection and account limits, shared-address filters and countries.
 icon: shield
 ---

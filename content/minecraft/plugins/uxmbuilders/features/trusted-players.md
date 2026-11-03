@@ -1,6 +1,6 @@
 ---
 title: Trusted players
-order: 209
+order: 309
 description: Friends who can watch, pause, resume, boost and stock your builds.
 icon: users
 ---

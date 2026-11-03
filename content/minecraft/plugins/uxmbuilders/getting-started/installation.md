@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 102
+order: 202
 description: Requirements, the license key, the first start, and the files that appear.
 icon: download
 ---

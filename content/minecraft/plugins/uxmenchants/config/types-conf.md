@@ -1,6 +1,6 @@
 ---
 title: types.conf
-order: 503
+order: 603
 description: The two shipped types, every key of a type, and the format tokens.
 icon: type
 ---

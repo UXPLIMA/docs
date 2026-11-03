@@ -1,6 +1,6 @@
 ---
 title: Installation
-order: 11
+order: 111
 description: Which of the three jars to use, the plugins it cannot start without, and the files it writes.
 icon: download
 ---

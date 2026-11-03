@@ -1,6 +1,6 @@
 ---
 title: Nametags
-order: 304
+order: 404
 description: Why the glow shares the player's name with a chat tag, and what a clash looks like.
 icon: tag
 ---

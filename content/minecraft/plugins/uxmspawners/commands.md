@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The admin command, what each subcommand gives, and the one-way WildStacker convert.
 icon: terminal
 ---

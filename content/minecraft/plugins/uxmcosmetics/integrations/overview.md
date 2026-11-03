@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 901
+order: 1001
 description: Every plugin uxmCosmetics works with, what it adds, and what happens when it is missing.
 icon: plug
 ---

@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: The calendar, the claim window and the grace, the streak, the four states of a day, and ranks.
 icon: lightbulb
 ---

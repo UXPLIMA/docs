@@ -1,6 +1,6 @@
 ---
 title: Auto Kill
-order: 33
+order: 133
 description: Killing configured mobs, natural and spawner switches, and what a kill pays.
 icon: swords
 ---

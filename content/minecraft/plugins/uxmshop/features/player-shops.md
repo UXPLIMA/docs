@@ -1,6 +1,6 @@
 ---
 title: Player shops
-order: 307
+order: 407
 description: Opening a shop, stock in the database, the claim check, limits, staff and server shops.
 icon: store
 ---

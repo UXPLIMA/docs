@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: Every player and admin command, with the permission each one checks.
 icon: terminal
 ---

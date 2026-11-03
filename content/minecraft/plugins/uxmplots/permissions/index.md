@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 60
+order: 160
 description: Player nodes, staff nodes, limit nodes and the looks behind a node.
 icon: key
 ---

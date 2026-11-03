@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: The bow and its arrow, the three checks a shot passes, the cooldown, the fall protection, and moments.
 icon: lightbulb
 ---

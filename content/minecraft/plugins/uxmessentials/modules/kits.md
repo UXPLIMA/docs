@@ -1,6 +1,6 @@
 ---
 title: Kits
-order: 9100
+order: 9200
 description: Item bundles players claim on a cooldown, built and edited from a menu.
 icon: gift
 ---

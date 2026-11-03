@@ -1,6 +1,6 @@
 ---
 title: Report and tools
-order: 316
+order: 416
 description: The payout report, income alerts, preview, inspect, prune and the explore table.
 icon: clipboard-list
 ---

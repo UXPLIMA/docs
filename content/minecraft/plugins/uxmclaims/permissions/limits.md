@@ -1,6 +1,6 @@
 ---
 title: Limits and costs
-order: 603
+order: 703
 description: The numeric nodes, their defaults, and how a player's grants combine into one number.
 icon: sliders-horizontal
 ---

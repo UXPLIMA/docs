@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The player command and the operator command, with every subcommand and node.
 icon: terminal
 ---

@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: PlaceholderAPI, permission plugins, uxmChat nametags, Bedrock and uxmLang.
 icon: plug
 ---

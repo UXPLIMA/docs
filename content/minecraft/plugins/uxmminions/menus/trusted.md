@@ -1,6 +1,6 @@
 ---
 title: Trusted
-order: 410
+order: 510
 description: Who may use a minion, and taking them off.
 icon: users
 ---

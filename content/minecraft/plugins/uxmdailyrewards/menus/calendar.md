@@ -1,6 +1,6 @@
 ---
 title: Calendar window
-order: 402
+order: 502
 description: The calendar window slot by slot, the four states of a day, the icons, and the streak tile.
 icon: calendar-days
 ---

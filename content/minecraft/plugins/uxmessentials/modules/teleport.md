@@ -1,6 +1,6 @@
 ---
 title: Teleport
-order: 9270
+order: 9370
 description: Requests, back, random teleport, spawns and staff teleports under one warmup and cooldown system.
 icon: move-3d
 ---

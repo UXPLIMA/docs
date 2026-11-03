@@ -1,6 +1,6 @@
 ---
 title: protection.conf
-order: 502
+order: 602
 description: Roads, refusals, forbidden blocks, redstone limits and cross-boundary switches.
 icon: shield
 ---

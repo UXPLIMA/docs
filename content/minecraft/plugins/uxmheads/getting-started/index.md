@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: What uxmHeads is, how to install it, how a face is made, and your first welcome.
 icon: rocket
 ---

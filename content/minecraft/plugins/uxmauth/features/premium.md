@@ -1,6 +1,6 @@
 ---
 title: Premium names
-order: 304
+order: 404
 description: Checking a name at Mojang, the four ownership rules, the four UUID schemes, settling a name two players want, and the backup password.
 icon: badge-check
 ---

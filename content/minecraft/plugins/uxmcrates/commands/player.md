@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Every /crates subcommand, what it opens or does, and how it refuses.
 icon: user
 ---

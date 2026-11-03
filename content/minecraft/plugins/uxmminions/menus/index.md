@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: The panel, your minions, the pocket, the store, storage, upgrade, fuel, skins, trust, pickup, the admin list and the editor.
 icon: layout-grid
 ---

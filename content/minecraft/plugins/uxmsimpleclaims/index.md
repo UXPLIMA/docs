@@ -1,6 +1,6 @@
 ---
 title: uxmSimpleClaims
-order: 425
+order: 23
 description: Chunk claims with roles, flags, sub areas with rent, a market, warps, taxes and time limits.
 icon: map-pin
 ---

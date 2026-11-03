@@ -1,6 +1,6 @@
 ---
 title: Editor windows
-order: 403
+order: 503
 description: Folders, files, keys, languages and lines.
 icon: pencil
 ---

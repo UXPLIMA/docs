@@ -1,6 +1,6 @@
 ---
 title: Homes
-order: 9070
+order: 9170
 description: Private teleport points each player saves in a slot grid.
 icon: house
 ---

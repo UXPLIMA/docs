@@ -1,6 +1,6 @@
 ---
 title: Plot worlds
-order: 301
+order: 401
 description: Every key of a world file, from the grid, layers, walls, roads, edits, pre-generation, game mode, flags, entities, price and looks.
 icon: globe
 ---

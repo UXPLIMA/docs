@@ -1,6 +1,6 @@
 ---
 title: Role permissions
-order: 303
+order: 403
 description: All 48 role permissions, what each one gates, and which the built-in roles hold.
 icon: key
 ---

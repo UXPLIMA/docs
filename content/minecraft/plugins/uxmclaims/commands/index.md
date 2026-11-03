@@ -1,6 +1,6 @@
 ---
 title: Commands
-order: 20
+order: 120
 description: The whole /claim tree, grouped by what each branch manages.
 icon: terminal
 ---

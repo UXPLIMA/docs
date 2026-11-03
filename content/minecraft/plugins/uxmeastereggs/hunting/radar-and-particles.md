@@ -1,6 +1,6 @@
 ---
 title: Radar and particles
-order: 304
+order: 404
 description: The radar hint, the idle particle on unfound eggs, and what each costs the server.
 icon: radar
 ---

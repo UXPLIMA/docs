@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Enchantment files, effects, numbers, conditions, applying, acquisition, the anvil, display, charges, protection, the editor and migrating.
 icon: layers
 ---

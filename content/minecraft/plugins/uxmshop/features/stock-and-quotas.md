@@ -1,6 +1,6 @@
 ---
 title: Stock and quotas
-order: 304
+order: 404
 description: Server stock that refills, per player allowances, and what is not guaranteed.
 icon: package
 ---

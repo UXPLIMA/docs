@@ -1,6 +1,6 @@
 ---
 title: Morphs
-order: 412
+order: 512
 description: Every shipped piece of the morphs family, with its id, rarity and price.
 icon: venetian-mask
 ---

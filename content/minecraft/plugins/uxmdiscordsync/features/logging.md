@@ -1,6 +1,6 @@
 ---
 title: Logging
-order: 38
+order: 138
 description: The chat log, join and leave logs and the audit log, each posted through its own webhook.
 icon: scroll-text
 ---

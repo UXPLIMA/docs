@@ -1,6 +1,6 @@
 ---
 title: Chunks and the claim block
-order: 203
+order: 303
 description: Growing and shrinking a claim, and the block that marks it.
 icon: box
 ---

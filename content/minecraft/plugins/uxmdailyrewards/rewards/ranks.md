@@ -1,6 +1,6 @@
 ---
 title: Ranks
-order: 303
+order: 403
 description: Where a player's rank comes from, the ladder, and how a day gives a rank something else.
 icon: medal
 ---

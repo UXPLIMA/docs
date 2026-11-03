@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: Install uxmFarmer, pick the two hooks it cannot work without, and learn
   the vocabulary the rest of these pages use.
 icon: rocket

@@ -1,6 +1,6 @@
 ---
 title: Pads
-order: 30
+order: 130
 description: Pad types, pads set on one block, throws and landings, and the effects of a throw.
 icon: arrow-up
 ---

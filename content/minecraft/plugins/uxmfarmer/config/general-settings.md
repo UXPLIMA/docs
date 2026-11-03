@@ -1,6 +1,6 @@
 ---
 title: general-settings.yml
-order: 52
+order: 152
 description: Prices, limits, collection rules, members and notifications.
 icon: sliders-horizontal
 ---

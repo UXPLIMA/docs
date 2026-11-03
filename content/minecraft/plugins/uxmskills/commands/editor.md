@@ -1,6 +1,6 @@
 ---
 title: Editor commands
-order: 204
+order: 304
 description: Every /skillsedit branch.
 icon: pencil
 ---

@@ -1,6 +1,6 @@
 ---
 title: Sub areas and rent
-order: 306
+order: 406
 description: Areas inside a claim with their own members and flags, offered for rent.
 icon: layout-grid
 ---

@@ -1,6 +1,6 @@
 ---
 title: Placing and using
-order: 303
+order: 403
 description: The minion item, placing, the panel, facing, trust, names, teleporting, pickup and the pocket.
 icon: mouse-pointer-click
 ---

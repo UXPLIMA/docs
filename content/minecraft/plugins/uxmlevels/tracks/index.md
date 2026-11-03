@@ -1,6 +1,6 @@
 ---
 title: Tracks
-order: 30
+order: 130
 description: Tracks and their curves, the events that pay into them, rewards, prestige, multipliers, the heads-up surfaces, boards and anti-abuse.
 icon: trending-up
 ---

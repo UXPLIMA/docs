@@ -1,6 +1,6 @@
 ---
 title: Configuration
-order: 50
+order: 150
 description: config.yml, items.yml and the language files.
 icon: settings
 ---

@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Chunks, the claim lifecycle, roles, flags, entitlements and abilities.
 icon: lightbulb
 ---

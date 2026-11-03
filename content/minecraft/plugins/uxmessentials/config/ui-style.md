@@ -1,6 +1,6 @@
 ---
 title: UI Style
-order: 1190
+order: 1290
 description: The palette, glyphs and text formats the built-in messages and menus follow.
 icon: palette
 ---

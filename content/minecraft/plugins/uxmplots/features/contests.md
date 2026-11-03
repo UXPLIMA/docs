@@ -1,6 +1,6 @@
 ---
 title: Contests
-order: 312
+order: 412
 description: A contest file, phases from the clock, own or fresh plots, teams, judging, rewards, the boss bar, the archive and the hall of fame.
 icon: trophy
 ---

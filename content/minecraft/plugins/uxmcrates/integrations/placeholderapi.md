@@ -1,6 +1,6 @@
 ---
 title: PlaceholderAPI
-order: 804
+order: 904
 description: The uxmcrates placeholders, and other plugins' placeholders in a requirement line.
 icon: braces
 ---

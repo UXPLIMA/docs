@@ -1,6 +1,6 @@
 ---
 title: economy.conf
-order: 503
+order: 603
 description: The economy block, Treasury's wait, placeholder currencies and bridges.
 icon: wallet
 ---

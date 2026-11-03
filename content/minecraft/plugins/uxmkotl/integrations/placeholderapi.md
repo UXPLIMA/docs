@@ -1,6 +1,6 @@
 ---
 title: PlaceholderAPI
-order: 803
+order: 903
 description: The uxmkotl expansion, and placeholders from other plugins inside this one.
 icon: braces
 ---

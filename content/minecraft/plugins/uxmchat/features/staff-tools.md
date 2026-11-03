@@ -1,6 +1,6 @@
 ---
 title: Staff tools
-order: 316
+order: 416
 description: Spy, the chat log and staff actions, removing lines, clearing and locking, broadcast, boss bars, polls, rules, helpop, macros and the staff list.
 icon: shield
 ---

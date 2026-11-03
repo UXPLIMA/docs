@@ -1,6 +1,6 @@
 ---
 title: Outcomes
-order: 305
+order: 405
 description: The eight outcomes of a move, the action lines each runs, the verbs and the placeholders.
 icon: message-circle
 ---

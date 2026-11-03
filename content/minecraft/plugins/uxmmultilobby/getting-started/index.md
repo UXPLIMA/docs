@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: What uxmMultiLobby is, how to install it on every lobby, and the ideas it is built on.
 icon: rocket
 ---

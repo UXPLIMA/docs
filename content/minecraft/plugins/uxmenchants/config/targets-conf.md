@@ -1,6 +1,6 @@
 ---
 title: targets.conf
-order: 504
+order: 604
 description: Extra enchantable items, named item sets, and every target with its slots and items.
 icon: crosshair
 ---

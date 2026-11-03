@@ -1,6 +1,6 @@
 ---
 title: Sub areas, market and warps
-order: 205
+order: 305
 description: Sub areas and rent, selling and buying, and public warps.
 icon: store
 ---

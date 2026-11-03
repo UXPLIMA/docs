@@ -1,6 +1,6 @@
 ---
 title: Catalogue windows
-order: 402
+order: 502
 description: The hub, a section, the quantity window and the sell window.
 icon: shopping-cart
 ---

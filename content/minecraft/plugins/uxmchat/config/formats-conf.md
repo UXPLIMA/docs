@@ -1,6 +1,6 @@
 ---
 title: formats.conf
-order: 504
+order: 604
 description: The default format, the group order, group formats and the seven shipped formats.
 icon: brush
 ---

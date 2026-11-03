@@ -1,6 +1,6 @@
 ---
 title: fuel.conf
-order: 504
+order: 604
 description: The fuel grades.
 icon: flame
 ---

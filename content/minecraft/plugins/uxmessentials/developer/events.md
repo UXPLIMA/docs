@@ -1,6 +1,6 @@
 ---
 title: Events
-order: 1630
+order: 1730
 description: The events uxmEssentials publishes, and the ones you can cancel.
 icon: zap
 ---

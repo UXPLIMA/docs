@@ -1,6 +1,6 @@
 ---
 title: Cooldowns
-order: 306
+order: 406
 description: The time before a click works again, per item and by default.
 icon: timer
 ---

@@ -1,6 +1,6 @@
 ---
 title: network.conf
-order: 505
+order: 605
 description: The transport, the server name and the Redis settings.
 icon: network
 ---

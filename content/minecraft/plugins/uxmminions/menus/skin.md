@@ -1,6 +1,6 @@
 ---
 title: Skin
-order: 409
+order: 509
 description: Choosing a suit, with locked suits drawn rather than hidden.
 icon: shirt
 ---

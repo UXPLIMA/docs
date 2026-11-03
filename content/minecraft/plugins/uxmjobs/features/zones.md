@@ -1,8 +1,8 @@
 ---
 title: Zones
-order: 311
+order: 411
 description: Work zones drawn with a wand, their multipliers and requirements, and blocks that grow back.
-icon: box-select
+icon: map
 ---
 
 A zone is a box of the world that scales what work inside it is worth. It is a bonus layer and never a gate: nothing

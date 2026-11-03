@@ -1,6 +1,6 @@
 ---
 title: Other games
-order: 702
+order: 802
 description: Leaving the hits of another plugin's game to that game, with hands-off-when.
 icon: puzzle
 ---

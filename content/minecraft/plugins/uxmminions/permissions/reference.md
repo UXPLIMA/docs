@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every permission node of uxmMinions with its default and what it allows.
 icon: list-checks
 ---

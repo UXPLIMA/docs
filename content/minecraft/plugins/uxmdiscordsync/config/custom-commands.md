@@ -1,6 +1,6 @@
 ---
 title: Custom Discord commands
-order: 53
+order: 153
 description: One file per Discord command, who may use it, the player it is about, and its placeholders.
 icon: message-square-code
 ---

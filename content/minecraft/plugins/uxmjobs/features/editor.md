@@ -1,6 +1,6 @@
 ---
 title: In-game editor
-order: 317
+order: 417
 description: Making, changing and deleting jobs from inside the game, and what the editor writes.
 icon: pencil
 ---

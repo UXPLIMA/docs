@@ -1,6 +1,6 @@
 ---
 title: Player commands
-order: 202
+order: 302
 description: Every /auction subcommand, with its arguments, flags, node and what it does.
 icon: user
 ---

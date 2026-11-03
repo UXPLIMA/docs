@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 60
+order: 160
 description: The permission nodes, who has them by default, and the Discord-side lists that permissions do not cover.
 icon: shield-check
 ---

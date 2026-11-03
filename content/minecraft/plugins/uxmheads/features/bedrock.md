@@ -1,6 +1,6 @@
 ---
 title: Bedrock
-order: 303
+order: 403
 description: How a face is drawn for a Bedrock player.
 icon: smartphone
 ---

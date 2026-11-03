@@ -1,6 +1,6 @@
 ---
 title: Mailbox
-order: 408
+order: 508
 description: What the house owes you, one click each.
 icon: inbox
 ---

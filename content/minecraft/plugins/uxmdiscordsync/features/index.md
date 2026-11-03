@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Linking, rank and nickname sync, two-factor login, levels, boosts, the chat bridge, stats, logs
   and running one bot on several servers.
 icon: layers

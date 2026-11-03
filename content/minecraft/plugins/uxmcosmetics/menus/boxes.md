@@ -1,6 +1,6 @@
 ---
 title: Mystery boxes
-order: 504
+order: 604
 description: Every box with its price, and opening one.
 icon: package-open
 ---

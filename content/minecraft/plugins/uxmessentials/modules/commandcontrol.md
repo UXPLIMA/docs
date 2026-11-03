@@ -1,6 +1,6 @@
 ---
 title: Command Control
-order: 9010
+order: 9110
 description: Decide which commands each player may run, hide the rest, and close the namespace escape.
 icon: terminal
 ---

@@ -1,6 +1,6 @@
 ---
 title: Architecture
-order: 1001
+order: 1101
 description: Hexagonal layers, CQRS commands, and why the API looks the way it does.
 icon: layers
 ---

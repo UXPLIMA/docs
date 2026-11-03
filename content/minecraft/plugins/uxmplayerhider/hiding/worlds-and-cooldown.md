@@ -1,6 +1,6 @@
 ---
 title: Worlds and cooldown
-order: 303
+order: 403
 description: The worlds the plugin works in, what happens outside them, and the gap between two changes.
 icon: globe
 ---

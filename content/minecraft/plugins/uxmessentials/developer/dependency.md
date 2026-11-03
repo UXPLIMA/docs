@@ -1,6 +1,6 @@
 ---
 title: Adding Dependency
-order: 1620
+order: 1720
 description: The repository and coordinate to compile against, for Maven and Gradle.
 icon: package
 ---

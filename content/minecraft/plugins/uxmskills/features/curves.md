@@ -1,6 +1,6 @@
 ---
 title: Curves and formulas
-order: 302
+order: 402
 description: The shared curve, presets, formulas, lists, and the formula grammar.
 icon: trending-up
 ---

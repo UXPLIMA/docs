@@ -1,6 +1,6 @@
 ---
 title: config.yml
-order: 301
+order: 401
 description: Settings, hooks, burn, vanilla crafting, progression and categories.
 icon: file-cog
 ---

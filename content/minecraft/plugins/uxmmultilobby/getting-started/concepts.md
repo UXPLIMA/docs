@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Lobbies and their ids, this lobby, where counts come from, the states of a lobby, and outcomes.
 icon: lightbulb
 ---

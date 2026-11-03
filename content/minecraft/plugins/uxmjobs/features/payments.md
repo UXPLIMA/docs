@@ -1,6 +1,6 @@
 ---
 title: Payments
-order: 304
+order: 404
 description: The one order every wage passes, the six multipliers, batching, and /jobs why.
 icon: coins
 ---

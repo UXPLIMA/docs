@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: PlaceholderAPI, skin services, Bedrock and uxmLang.
 icon: plug
 ---

@@ -1,6 +1,6 @@
 ---
 title: currencies.conf
-order: 502
+order: 602
 description: Every key of a currency, the shipped four, and the placeholder and bridge types.
 icon: coins
 ---

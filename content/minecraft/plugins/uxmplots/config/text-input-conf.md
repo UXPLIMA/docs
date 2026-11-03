@@ -1,6 +1,6 @@
 ---
 title: text-input.conf
-order: 513
+order: 613
 description: How the plugin asks a player to type.
 icon: keyboard
 ---

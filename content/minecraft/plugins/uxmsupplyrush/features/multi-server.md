@@ -1,6 +1,6 @@
 ---
 title: Multiple servers
-order: 37
+order: 137
 description: One tournament across a whole network, with shared scores and rewards paid once.
 icon: network
 ---

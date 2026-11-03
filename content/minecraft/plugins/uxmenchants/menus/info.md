@@ -1,6 +1,6 @@
 ---
 title: Enchantment page
-order: 404
+order: 504
 description: Every fact about one enchantment on one tile.
 icon: file-search
 ---

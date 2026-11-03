@@ -1,6 +1,6 @@
 ---
 title: Mine, bids and orders
-order: 407
+order: 507
 description: Your listings, the auctions you lead and your buy orders, as three tabs.
 icon: user
 ---

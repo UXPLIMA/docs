@@ -1,6 +1,6 @@
 ---
 title: Server Tweaks
-order: 9230
+order: 9330
 description: 'Small server-side adjustments: the F3 brand, a console log filter, unsigned chat and SignedVelocity.'
 icon: wrench
 ---

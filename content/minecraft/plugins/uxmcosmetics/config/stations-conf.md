@@ -1,6 +1,6 @@
 ---
 title: stations.conf
-order: 604
+order: 704
 description: The box stations, written by the plugin, and every key of one.
 icon: map-pin
 ---

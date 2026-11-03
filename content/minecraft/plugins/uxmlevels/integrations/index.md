@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: Every plugin uxmLevels works with, and what each turns on.
 icon: plug
 ---

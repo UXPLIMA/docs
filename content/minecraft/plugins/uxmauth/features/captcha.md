@@ -1,6 +1,6 @@
 ---
 title: Captcha
-order: 307
+order: 407
 description: When the captcha shows, as text or drawn on a map.
 icon: scan-text
 ---

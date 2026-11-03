@@ -1,6 +1,6 @@
 ---
 title: Menu files
-order: 503
+order: 603
 description: Every key the window file takes, the calendar's own placeholders, list and click actions, and changing the shipped window.
 icon: layout-template
 ---

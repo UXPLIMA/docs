@@ -1,6 +1,6 @@
 ---
 title: config.conf
-order: 401
+order: 501
 description: Every key of the main file, with its shipped value and what it does.
 icon: file-cog
 ---

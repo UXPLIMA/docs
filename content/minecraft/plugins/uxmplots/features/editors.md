@@ -1,6 +1,6 @@
 ---
 title: In-game editors
-order: 317
+order: 417
 description: The world editor, the contest editor, and how typing is asked for.
 icon: pencil
 ---

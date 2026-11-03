@@ -1,6 +1,6 @@
 ---
 title: Operator commands
-order: 203
+order: 303
 description: Every operator subcommand of /uxmteleportbow, with its arguments, what it does and the permission it needs.
 icon: shield
 ---

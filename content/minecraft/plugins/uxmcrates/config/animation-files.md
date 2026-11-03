@@ -1,6 +1,6 @@
 ---
 title: Animation files
-order: 512
+order: 612
 description: Every key of an animation file, world paths, and the window a file lays out itself.
 icon: clapperboard
 ---

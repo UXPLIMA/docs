@@ -1,6 +1,6 @@
 ---
 title: Effects
-order: 310
+order: 410
 description: The lines run at every moment of the door, per way in, per server, and the countdown bar.
 icon: sparkles
 ---

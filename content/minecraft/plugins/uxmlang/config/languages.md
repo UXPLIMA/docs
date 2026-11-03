@@ -1,6 +1,6 @@
 ---
 title: Languages
-order: 506
+order: 606
 description: The seven shipped languages, adding a language, and what every other UXM plugin needs for it.
 icon: languages
 ---

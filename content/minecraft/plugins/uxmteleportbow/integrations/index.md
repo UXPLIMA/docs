@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 70
+order: 170
 description: Every plugin uxmTeleportBow works with, and what each turns on.
 icon: plug
 ---

@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 20
+order: 120
 description: Building, preview, builders, warehouse, protection, recovery and the extras around them.
 icon: sparkles
 ---

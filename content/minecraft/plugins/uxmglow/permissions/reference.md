@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 601
+order: 701
 description: Every permission node of uxmGlow with its default.
 icon: list-checks
 ---

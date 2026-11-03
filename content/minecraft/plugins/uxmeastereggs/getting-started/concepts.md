@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Eggs and types, what a find counts, repeat finds, milestones and completion, and the board.
 icon: lightbulb
 ---

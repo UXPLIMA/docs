@@ -1,6 +1,6 @@
 ---
 title: Joining
-order: 33
+order: 133
 description: The entrances, the checks a player passes on the way in, the entry price, leaving, coming back and flight.
 icon: door-open
 ---

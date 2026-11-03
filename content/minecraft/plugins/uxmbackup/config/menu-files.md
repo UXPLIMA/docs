@@ -1,6 +1,6 @@
 ---
 title: Menu files
-order: 503
+order: 603
 description: The keys of menus/archives.conf, the tokens and the actions.
 icon: layout-template
 ---

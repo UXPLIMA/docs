@@ -1,6 +1,6 @@
 ---
 title: Rewards
-order: 304
+order: 404
 description: What a crown and a kill pay, the money lines, reward commands, and what the player is told.
 icon: coins
 ---

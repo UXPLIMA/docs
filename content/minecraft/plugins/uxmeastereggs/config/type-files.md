@@ -1,6 +1,6 @@
 ---
 title: Type files
-order: 502
+order: 602
 description: The file of one egg type under types/, every key, and what a missing or wrong key does.
 icon: file-type
 ---

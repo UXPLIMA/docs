@@ -1,6 +1,6 @@
 ---
 title: Worlds
-order: 9340
+order: 9440
 description: Create, import, load and delete worlds, tune their rules, and gate them behind a permission or a fee.
 icon: earth
 ---

@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 50
+order: 150
 description: Every node uxmHubPvP declares, and a working setup for each kind of staff.
 icon: key-round
 ---

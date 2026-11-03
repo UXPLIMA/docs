@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 20
+order: 120
 description: Trades, requirements, burn, slots, boosts, progression and analytics.
 icon: sparkles
 ---

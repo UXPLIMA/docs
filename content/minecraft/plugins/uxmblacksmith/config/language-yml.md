@@ -1,6 +1,6 @@
 ---
 title: language.yml
-order: 305
+order: 405
 description: Every message, in English and Turkish, in one file.
 icon: languages
 ---

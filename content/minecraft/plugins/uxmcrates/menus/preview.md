@@ -1,6 +1,6 @@
 ---
 title: Preview
-order: 403
+order: 503
 description: Every reward of a crate with its weight and the reader's real chance, one page per group.
 icon: eye
 ---

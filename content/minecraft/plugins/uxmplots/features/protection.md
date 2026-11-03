@@ -1,6 +1,6 @@
 ---
 title: Protection
-order: 305
+order: 405
 description: Roads and unclaimed land, refusals, forbidden blocks, cross-boundary tricks, lag machines, crash items and the bypass.
 icon: shield-check
 ---

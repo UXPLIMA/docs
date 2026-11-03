@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: The fifteen windows of uxmPlots and the commands that open them.
 icon: layout-grid
 ---

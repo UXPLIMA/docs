@@ -1,6 +1,6 @@
 ---
 title: Your first claim
-order: 104
+order: 204
 description: Claim day one, read the window, give yourself another day, and change what a day gives.
 icon: play
 ---

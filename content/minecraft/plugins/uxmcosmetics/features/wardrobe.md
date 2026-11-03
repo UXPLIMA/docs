@@ -1,6 +1,6 @@
 ---
 title: The wardrobe
-order: 301
+order: 401
 description: Wearing one piece per family, what a click does in each state, taking things off, and what happens at join and quit.
 icon: shirt
 ---

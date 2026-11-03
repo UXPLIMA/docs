@@ -1,6 +1,6 @@
 ---
 title: Languages
-order: 55
+order: 155
 description: The message files, adding a language, and which texts live in the config files instead.
 icon: languages
 ---

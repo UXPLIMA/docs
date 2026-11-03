@@ -1,6 +1,6 @@
 ---
 title: Income cap and tax
-order: 306
+order: 406
 description: The soft income cap per window, the tax by node and its bypass, and the server account.
 icon: gauge
 ---

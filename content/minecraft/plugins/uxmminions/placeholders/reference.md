@@ -1,6 +1,6 @@
 ---
 title: Reference
-order: 701
+order: 801
 description: Every %uxmminions_...% placeholder, per player and per minion.
 icon: list
 ---

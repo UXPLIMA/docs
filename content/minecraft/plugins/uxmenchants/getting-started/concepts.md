@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: The item is the truth, enchantment files, rarities, types, targets, triggers, routes and the limit.
 icon: lightbulb
 ---

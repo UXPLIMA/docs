@@ -1,6 +1,6 @@
 ---
 title: Vanilla crafting gates
-order: 210
+order: 310
 description: Requiring a blacksmith level before a crafting-table recipe works.
 icon: table-2
 ---

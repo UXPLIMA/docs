@@ -1,6 +1,6 @@
 ---
 title: PlaceholderAPI
-order: 903
+order: 1003
 description: Publishing the uxmcosmetics placeholders.
 icon: braces
 ---

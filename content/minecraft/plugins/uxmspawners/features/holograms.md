@@ -1,6 +1,6 @@
 ---
 title: Holograms
-order: 42
+order: 142
 description: The text above a spawner, what it shows, which hologram plugin draws it and how FancyHolograms displays it.
 icon: text-cursor
 ---

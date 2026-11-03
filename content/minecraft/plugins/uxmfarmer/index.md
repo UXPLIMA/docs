@@ -1,6 +1,6 @@
 ---
 title: uxmFarmer
-order: 220
+order: 13
 description: A hired farmhand NPC that harvests, kills, collects XP and sells, with
   per-product levels and a member system.
 icon: sprout

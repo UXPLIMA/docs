@@ -1,6 +1,6 @@
 ---
 title: Admin
-order: 412
+order: 512
 description: Another player's minions, by id, for an operator.
 icon: shield
 ---

@@ -1,6 +1,6 @@
 ---
 title: PlaceholderAPI
-order: 703
+order: 803
 description: The uxmteleportbow expansion, and placeholders from other plugins inside this one.
 icon: braces
 ---

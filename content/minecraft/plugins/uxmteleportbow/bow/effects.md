@@ -1,6 +1,6 @@
 ---
 title: Effects
-order: 305
+order: 405
 description: The nine moments of the bow, what each does by default, how an action line is written, and the values it can use.
 icon: sparkles
 ---

@@ -1,6 +1,6 @@
 ---
 title: Auto Harvest
-order: 32
+order: 132
 description: Harvesting and replanting crops, the piston requirement, and full storage.
 icon: wheat
 ---

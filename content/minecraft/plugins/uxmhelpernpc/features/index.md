@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Appearance, the hologram above the NPC, and the AI assistant.
 icon: sparkles
 ---

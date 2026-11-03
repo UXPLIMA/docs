@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 60
+order: 160
 description: The four hooks, the plugins each supports, and what uxmFarmer notices unprompted.
 icon: plug
 ---

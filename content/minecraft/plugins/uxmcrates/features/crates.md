@@ -1,6 +1,6 @@
 ---
 title: Crates
-order: 301
+order: 401
 description: What a crate is, its two shapes, placing it, the link tool, the hologram, the idle effect, worlds and protection.
 icon: package
 ---

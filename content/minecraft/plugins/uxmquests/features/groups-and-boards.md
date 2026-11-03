@@ -1,6 +1,6 @@
 ---
 title: Groups and boards
-order: 301
+order: 401
 description: The group block, modes, claiming, sharing, rerolls, rules and rarities, with the shipped daily group.
 icon: layout-list
 ---

@@ -1,6 +1,6 @@
 ---
 title: Boards
-order: 307
+order: 407
 description: The boards of every track by all time, month, week and day, how often they are read, and where they show.
 icon: trophy
 ---

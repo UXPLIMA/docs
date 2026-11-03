@@ -1,6 +1,6 @@
 ---
 title: uxmClaims
-order: 2
+order: 10
 description: Chunk-based land protection with roles, flags and a GUI for everything.
 icon: land-plot
 ---

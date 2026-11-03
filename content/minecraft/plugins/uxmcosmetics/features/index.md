@@ -1,6 +1,6 @@
 ---
 title: Features
-order: 30
+order: 130
 description: Wearing cosmetics, getting them, mystery boxes, box stations, the hotbar items, and how each family behaves.
 icon: sparkles
 ---

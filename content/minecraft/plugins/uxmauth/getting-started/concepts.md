@@ -1,6 +1,6 @@
 ---
 title: Concepts
-order: 103
+order: 203
 description: Accounts and their kinds, names, the door, ways in, the lane, and what is kept where.
 icon: lightbulb
 ---

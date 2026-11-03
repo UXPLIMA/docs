@@ -1,6 +1,6 @@
 ---
 title: Ranks
-order: 310
+order: 410
 description: Bigger boards and more rerolls by a number on a permission node.
 icon: award
 ---

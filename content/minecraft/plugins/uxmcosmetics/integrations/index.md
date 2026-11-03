@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 90
+order: 190
 description: Economies, PlaceholderAPI, permissions, Bedrock and uxmLang.
 icon: plug
 ---

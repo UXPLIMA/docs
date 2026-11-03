@@ -1,6 +1,6 @@
 ---
 title: Skills
-order: 301
+order: 401
 description: The keys of a skill file, gates, loot, and the eleven shipped skills.
 icon: zap
 ---

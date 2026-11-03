@@ -1,6 +1,6 @@
 ---
 title: Integrations
-order: 80
+order: 180
 description: Economies, claim plugins, custom items, PlaceholderAPI, and migrating from another crate plugin.
 icon: plug
 ---

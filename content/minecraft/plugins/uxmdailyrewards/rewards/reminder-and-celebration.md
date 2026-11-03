@@ -1,6 +1,6 @@
 ---
 title: Reminder and celebration
-order: 304
+order: 404
 description: The nudge a player gets on join with a reward waiting, and the lines that run after every claim.
 icon: bell
 ---

@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 202
+order: 302
 description: Reload, version, maintenance and doctor, with their nodes and replies.
 icon: wrench
 ---

@@ -1,6 +1,6 @@
 ---
 title: Flags
-order: 302
+order: 402
 description: All 32 flags, what each permits, and which are on for a new claim.
 icon: flag
 ---

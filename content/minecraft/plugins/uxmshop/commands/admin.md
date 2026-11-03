@@ -1,6 +1,6 @@
 ---
 title: Admin commands
-order: 204
+order: 304
 description: Every /uxmshop branch, its node and what it does.
 icon: shield
 ---

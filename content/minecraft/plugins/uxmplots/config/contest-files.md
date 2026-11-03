@@ -1,6 +1,6 @@
 ---
 title: Contest files
-order: 507
+order: 607
 description: The keys of contests/<id>.conf, with the shipped example.
 icon: trophy
 ---

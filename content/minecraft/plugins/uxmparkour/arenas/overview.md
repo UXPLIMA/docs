@@ -1,6 +1,6 @@
 ---
 title: Arenas
-order: 301
+order: 401
 description: The box, the start block and the heading, how the course is built inside them, and an arena's state.
 icon: box
 ---

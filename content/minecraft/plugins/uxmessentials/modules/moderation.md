@@ -1,6 +1,6 @@
 ---
 title: Moderation
-order: 9120
+order: 9220
 description: Bans, mutes, jails, warnings with escalation, freeze, lockdown and the disciplinary history behind them.
 icon: gavel
 ---

@@ -1,6 +1,6 @@
 ---
 title: The shipped types
-order: 315
+order: 415
 description: The ten example types, their intervals, targets, ladders and upgrade costs.
 icon: book-open
 ---

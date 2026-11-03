@@ -1,6 +1,6 @@
 ---
 title: general-settings.yml
-order: 52
+order: 152
 description: "The tournament rules: removed items, ties, warnings, creative mode, chat and the log cleaner."
 icon: sliders-horizontal
 ---

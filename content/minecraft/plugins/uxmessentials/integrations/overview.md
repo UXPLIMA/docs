@@ -1,6 +1,6 @@
 ---
 title: Overview
-order: 1480
+order: 1580
 description: Every plugin uxmEssentials detects, by family, and what each one turns on.
 icon: book-open
 ---

@@ -1,6 +1,6 @@
 ---
 title: Communication
-order: 9020
+order: 9120
 description: The public chat format, join and quit lines, the rotating announcer, info pages and broadcasts.
 icon: megaphone
 ---

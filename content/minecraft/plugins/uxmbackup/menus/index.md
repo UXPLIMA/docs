@@ -1,6 +1,6 @@
 ---
 title: Menus
-order: 40
+order: 140
 description: The archives window.
 icon: layout-grid
 ---

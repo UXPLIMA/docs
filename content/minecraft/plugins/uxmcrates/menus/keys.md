@@ -1,6 +1,6 @@
 ---
 title: Keys
-order: 404
+order: 504
 description: Every key the player holds, the crates each opens, and where to get one.
 icon: key-round
 ---

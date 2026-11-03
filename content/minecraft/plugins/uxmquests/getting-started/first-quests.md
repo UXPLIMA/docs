@@ -1,6 +1,6 @@
 ---
 title: Your first quests
-order: 104
+order: 204
 description: A weekly group with two quests and rewards, step by step.
 icon: footprints
 ---
