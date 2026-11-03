@@ -1,0 +1,8 @@
+---
+title: Integrations
+order: 80
+description: PlaceholderAPI, permission plugins, uxmChat nametags, Bedrock and uxmLang.
+icon: plug
+---
+
+- [Overview](overview.md)
