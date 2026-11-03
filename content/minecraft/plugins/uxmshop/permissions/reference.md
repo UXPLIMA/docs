@@ -18,7 +18,7 @@ A player node is held by everybody, so its command stays visible and a player wi
 | `uxmshop.sell.all` | true | `/sell all` |
 | `uxmshop.sell.window` | true | `/sell window` |
 | `uxmshop.myshop` | true | `/myshop` and its branches |
-| `uxmshop.shops` | true | Declared as browsing player shops; nothing asks it. It is the prefix of the shop limit |
+| `uxmshop.shops` | true | Opens a player shop somebody else runs; the owner reaches their own through `uxmshop.myshop`. It is also the prefix of the shop limit |
 
 `/shop lang`, `lang set`, `lang reset`, `/myshop close` and `/myshop staff` need no node.
 
@@ -26,7 +26,7 @@ A player node is held by everybody, so its command stays visible and a player wi
 
 | Node | Default | Gives |
 |---|---|---|
-| `uxmshop.section.<section>` | op (`section.*`) | Opens that section with `/shop open <section>` |
+| `uxmshop.section.<section>` | op (`section.*`) | The usual node to write in a section's `permission` |
 | `uxmshop.rank.<rank>` | op (`rank.*`) | A rank written in `shop.ranks`, unless it names its own `permission` |
 | `uxmshop.bypass.blacklist.<material>` | op (`bypass.blacklist`) | Trades one blacklisted material |
 | `uxmshop.shops.<n>` | undeclared | Owns `n` player shops; `uxmshop.shops.*` is no limit; without one, `player-shops.limit` |
@@ -34,13 +34,8 @@ A player node is held by everybody, so its command stays visible and a player wi
 A section or line may also name `permission`, `buy-permission` and `sell-permission` nodes in its file; the hub shows a
 section whose own `permission` is empty or held.
 
-<Callout type="warning" title="/shop open asks a node the hub does not">
-
-The hub opens any section whose file names no `permission`, but `/shop open <section>` always asks
-`uxmshop.section.<section>`, which only operators hold. Grant `uxmshop.section.<section>` (or the wildcard) to players
-who should open sections by command, from a sign or from another plugin's button.
-
-</Callout>
+The hub, `/shop open <section>` and a shortcut line ask the same thing: the section's own `permission`, or nothing
+when it names none.
 
 ## Staff
 
@@ -58,6 +53,6 @@ who should open sections by command, from a sign or from another plugin's button
 | `uxmshop.admin.version` | op | `version` and the bare command |
 | `uxmshop.admin.reload` | op | `reload` |
 | `uxmshop.admin.language` | op | `/shop lang set-player`, `lang reset-player` |
-| `uxmshop.admin.*` | op | Declared with no children: grant the nodes above, or use your permission plugin's wildcard |
+| `uxmshop.admin.*` | op | Every `uxmshop.admin` node above |
 
 Related: [Commands](../commands/overview.md)

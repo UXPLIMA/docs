@@ -8,7 +8,8 @@ icon: ticket
 ## Passes
 
 Passes in slots 10 to 16 (`quests:passes`), each an enchanted book showing tier, experience and track; a click opens its
-[ladder](#pass) (`quests:pass-open`). Paging at 18 and 26. See the overview for adding a button that opens it.
+[ladder](#pass) (`quests:pass-open`). Paging at 18 and 26, and the feather at 22 goes back to the quests window
+(`quests:back`). It is opened by the star of the quests window.
 
 ## Pass
 

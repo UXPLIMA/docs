@@ -8,7 +8,8 @@ icon: scroll
 ## Quests
 
 `/quests`. Groups in slots 10 to 16 (`quests:groups`), each a written book; a click opens its [board](#board)
-(`quests:open`). Paging at 18 and 26.
+(`quests:open`). Paging at 18 and 26. The star at 22 (`quests:passes`) opens the [passes](passes.md) window and is drawn
+only while a pass runs (`quests:has-passes`).
 
 ## Board
 

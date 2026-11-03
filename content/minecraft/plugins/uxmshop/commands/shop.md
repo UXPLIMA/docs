@@ -10,7 +10,7 @@ icon: shopping-cart
 | Command | Node | Does |
 |---|---|---|
 | `/shop` | `uxmshop.use` | Opens the [hub](../menus/catalogue.md) |
-| `/shop open <section>` | `uxmshop.use` and `uxmshop.section.<section>` | Opens one section |
+| `/shop open <section>` | `uxmshop.use`, and the section's `permission` when it names one | Opens one section |
 | `/shop lang` | none | The language you read, and what the server has |
 | `/shop lang set <language>` | none | Chooses your language |
 | `/shop lang reset` | none | Follows the client again |

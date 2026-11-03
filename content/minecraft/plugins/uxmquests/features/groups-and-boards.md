@@ -62,8 +62,9 @@ Four quests a board, paid at once, one reroll, drawn again at 04:00 Istanbul tim
 | `glass-and-panes` | rare | 32 to 64 glass smelted, then 16 to 32 panes crafted, in order |
 | `the-deep-dark` | rare | 3 to 6 diamond ore |
 
-Every shipped quest has `rewards = []`, and the group's `rewards.set` and `milestones` are empty: write what your
-server pays.
+Every shipped quest pays vanilla experience with a level up sound: a common quest 40 to 80 points, a rare one 120 to
+200, drawn once per payment. Finishing the whole board pays 300 more (`rewards.set`); `milestones` ships empty. Each is a
+`[console] minecraft:xp add {player} ...` line, so swap in what your server pays.
 
 ## The board
 

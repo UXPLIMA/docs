@@ -71,7 +71,7 @@ group file may write.
 
 - **A reload says the groups were kept.** A group file does not parse. The running groups stay as they were, and the
   console and `/uxmquests problems` name the file.
-- **A quest pays nothing.** The shipped quests have `rewards = []`. Write the lines; see [Rewards](../features/rewards.md).
+- **A quest pays only experience.** The shipped quests pay vanilla experience. Write your own lines; see [Rewards](../features/rewards.md).
 - **A walking or jumping task never moves.** `objectives.sampling` is off.
 - **The premium track is empty for a player.** They lack the node named by the pass file's `premium`.
 - **A renamed command is unchanged.** `commands.conf` is read at start only.

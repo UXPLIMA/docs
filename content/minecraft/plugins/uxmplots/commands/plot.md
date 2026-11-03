@@ -105,7 +105,7 @@ Every node here is given to everyone by default except `uxmplots.template.save`.
 | `/plot rent cancel` | `uxmplots.rent` | Takes the rent sign down; anybody renting keeps their time |
 | `/plot renting`, `/plot renting mine` | `uxmplots.rent` | What you rent and rent out |
 | `/plot shop [kind]` | `uxmplots.shop` | Opens the [shop](../menus/shop.md), or lists one kind |
-| `/plot buy` | `uxmplots.shop` | Buys the plot you stand on, when it is for sale |
+| `/plot buy` | `uxmplots.sell` | Buys the plot you stand on, when it is for sale |
 | `/plot buy <kind> <entry>` | `uxmplots.shop` | Buys a shop entry, for good |
 | `/plot owned` | `uxmplots.shop` | What you have bought |
 | `/plot sponsor` | `uxmplots.sponsor` | What a sponsored place in the gallery costs |
