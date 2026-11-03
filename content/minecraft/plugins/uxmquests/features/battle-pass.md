@@ -24,7 +24,7 @@ pass {
   tasks     { groups = [ daily ], per-quest = 50 }
 }
 tiers = [
-  { tier = 1, at = 100,  free = ["[message] @pass.tier.reached tier=1"] }
+  { tier = 1, at = 100,  free = ["[console] minecraft:xp add {player} 50 points", "[message] @pass.tier.reached tier=1"] }
   { tier = 3, at = 500,  free = ["..."], premium = ["..."] }
 ]
 ```
@@ -38,15 +38,16 @@ tiers = [
 | `tiers` | A list: `tier`, `at` (the experience it asks for), `free` and `premium` action lines |
 
 - **Premium is a permission and nothing else.** The plugin never learns about money: a timed sale is a timed
-  permission your permission plugin grants and expires. The premium node is not declared, so operators hold it.
+  permission your permission plugin grants and expires. The plugin declares the premium node with no default, so nobody holds it until it is
+  granted, operators included.
 - **The season resets when it is looked at.** Nothing sweeps a table at midnight. The season experience and the claims
   go; the all-time total stays.
 
 ## The shipped season pass
 
 `passes/season.conf`: started 1 September 2026, 90 days, unclaimed rewards held 7 days, 50 experience per finished
-daily quest. Five tiers at 100, 250, 500, 900 and 1500; tiers 3 and 5 have premium lines. Every line is a message, so
-write the real rewards.
+daily quest. Five tiers at 100, 250, 500, 900 and 1500; tiers 3 and 5 have premium lines. A free line pays 50 experience per tier number and a
+premium line 100, through the vanilla `xp` command, beside its message; change them to what your server pays.
 
 ## Players
 

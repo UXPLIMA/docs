@@ -8,7 +8,7 @@ icon: lightbulb
 | Word | Means |
 |---|---|
 | Catalogue | Every section under `shops/`; the server is the counterparty |
-| Section | One file; its file name is its id, the argument of `/shop open` and the end of `uxmshop.section.<section>` |
+| Section | One file; its file name is its id, the argument of `/shop open`; open to everybody unless its `permission` names a node |
 | Line | One product of a section |
 | Direction | `buy` (the player pays) or `sell` (the player is paid); leaving a price out turns that direction off |
 | Till | The one path every trade takes, whichever command or window started it, so every rule holds everywhere |

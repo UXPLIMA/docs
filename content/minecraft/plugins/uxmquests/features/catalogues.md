@@ -27,10 +27,10 @@ it with `/quests start <group> <quest>` or from the board.
 
 `groups/catalogue.conf`, claimed by hand:
 
-| Quest | Category | Asks for |
-|---|---|---|
-| `gather-wood` | gathering | 64 oak, birch or spruce logs |
-| `build-a-shelter` | building | 100 blocks placed, after `gather-wood` |
-| `feed-the-village` | farming | 32 crops harvested, again every 12 hours |
+| Quest | Category | Asks for | Pays |
+|---|---|---|---|
+| `gather-wood` | gathering | 64 oak, birch or spruce logs | 100 experience |
+| `build-a-shelter` | building | 100 blocks placed, after `gather-wood` | 200 experience |
+| `feed-the-village` | farming | 32 crops harvested, again every 12 hours | 150 experience |
 
 Related: [Groups and boards](groups-and-boards.md)

@@ -24,5 +24,6 @@ icon: map
 | `/claim inbox` | `kutu` | Reads what happened while you were away |
 | `/claim favourite` | `favori` | Keeps the claim you stand in among your favourites |
 | `/claim lang`, `lang set <language>`, `lang reset` | `dil`, `sec`, `sifirla` | Your language. Needs `uxmsimpleclaims.language` |
+| `/claim lang set-player <player> <language>`, `lang reset-player <player>` | `oyuncusec`, `oyuncusifirla` | Another player's language, applied at their next join when they are away. Needs `uxmsimpleclaims.admin.language` |
 
 Related: [Claiming](../features/claiming.md)

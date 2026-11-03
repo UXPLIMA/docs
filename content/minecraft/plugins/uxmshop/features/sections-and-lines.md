@@ -5,8 +5,10 @@ description: Section keys, line keys and types, item blocks, rotation, refusals,
 icon: layout-list
 ---
 
-A section is a file under `shops/`. Its file name is its id: the argument of `/shop open <section>` and the end of the
-node `uxmshop.section.<section>`. Each file holds the section's settings and a `lines` block, one entry per product.
+A section is a file under `shops/`. Its file name is its id, the argument of `/shop open <section>`. A section is open
+to everybody unless its `permission` names a node; `uxmshop.section.<section>` is the usual name for that node, and the
+hub, `/shop open` and a shortcut line all ask the same one. Each file holds the section's settings and a `lines` block,
+one entry per product.
 Every shipped section explains the grammar in a comment at the top.
 
 ## Section keys
@@ -71,8 +73,9 @@ Both price in `experience`, so a bare server trades.
 | `blocks` | 64 glass | 128 | 32 | `material` |
 | `tools` | Iron pickaxe | 350 | 90 | `full-meta-ignoring:damage` |
 | `tools` | 64 cobblestone | 32 | 8 | `material` |
-| `tools` | Repair kit (a command line) | 500 | | |
+| `tools` | Miner's Haste (a command line) | 500 | | |
 
-The repair kit's only action is a message: write the command that mends the tool before you sell it.
+Miner's Haste runs `[effect] haste 600 2` and `[message] @content.haste-given`: Haste II for ten minutes, on Paper and
+Folia alike. It is the example of a line that sells something other than an item.
 
 Related: [Section files](../config/section-files.md)

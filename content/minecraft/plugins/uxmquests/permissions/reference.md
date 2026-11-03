@@ -29,8 +29,8 @@ The highest number wins and the group file's number is the floor. The prefixes a
 
 ## The premium track
 
-The node a pass file names in `premium`, such as `uxmquests.pass.season.premium` for the shipped `season.conf`. It is
-not declared, so operators hold it until you give it to others.
+The node a pass file names in `premium`, such as `uxmquests.pass.season.premium` for the shipped `season.conf`. The plugin
+declares it when it reads the file, held by nobody until you grant it, operators included.
 
 ## Staff
 
@@ -46,6 +46,6 @@ not declared, so operators hold it until you give it to others.
 | `uxmquests.admin.doctor` | op | `doctor` |
 | `uxmquests.admin.version` | op | `version` and the bare command |
 | `uxmquests.admin.reload` | op | `reload` |
-| `uxmquests.admin.*` | op | Declared with no children: grant the nodes above, or use your permission plugin's wildcard |
+| `uxmquests.admin.*` | op | Every `uxmquests.admin` node above |
 
 Related: [Commands](../commands/overview.md)

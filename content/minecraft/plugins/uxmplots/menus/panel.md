@@ -42,7 +42,8 @@ early on a right click.
 | `%member_grades%` | What a member may do here |
 | `%plot_session%`, `%plot_session_left%` | Whether a session is open, and its minutes left |
 
-`plots:ban-lift` lets a banned player back in with no grade; the shipped file does not use it.
+A row's click names both `plots:member-open` and `plots:ban-lift`, and each acts only on its own kind of row: a member's
+opens their grades, a banned player's lets them back in with no grade.
 
 ## Member
 

@@ -44,8 +44,7 @@ A player node is held by everybody, so its command stays visible and a player wi
 | `uxmsimpleclaims.admin.reload` | op | `reload` |
 | `uxmsimpleclaims.admin.doctor` | op | `doctor` |
 | `uxmsimpleclaims.admin.version` | op | `version` and the bare command |
+| `uxmsimpleclaims.admin.language` | op | `/claim lang set-player`, `lang reset-player` |
 | `uxmsimpleclaims.admin.*` | op | Every node above |
-
-There is no node to set another player's language.
 
 Related: [Commands](../commands/overview.md)

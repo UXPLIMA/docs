@@ -45,8 +45,8 @@ A node held by default (`true`) keeps its command visible to everybody; a player
 | `uxmplots.template` | true | Put a layout the server keeps down on a plot of yours |
 | `uxmplots.merge` | true | Merge and unmerge |
 | `uxmplots.rent` | true | Rent a plot out, or take one |
-| `uxmplots.sell` | true | Sell a plot and read the market |
-| `uxmplots.shop` | true | The shop, `/plot buy` (a catalogue entry or the plot for sale you stand on), `/plot owned` |
+| `uxmplots.sell` | true | Sell a plot, read the market and buy the plot for sale you stand on |
+| `uxmplots.shop` | true | The shop, `/plot buy <kind> <entry>`, `/plot owned` |
 | `uxmplots.sponsor` | true | Buy a sponsored place in the gallery |
 | `uxmplots.feel` | true | Choose what a plot sounds and looks like |
 | `uxmplots.follow` | true | Follow, unfollow, mute and unmute builders |
@@ -86,12 +86,13 @@ A node held by default (`true`) keeps its command visible to everybody; a player
 | `uxmplots.admin.lag` | op | Be told when a plot's redstone is paused |
 | `uxmplots.gamemode.keep` | false | Keep your own game mode in a world that forces one |
 
-`uxmplots.admin.*` is declared (op) but has no children: granting it to a non-op gives nothing. Grant the
-`uxmplots.admin.` nodes you want one by one, or with a wildcard your permission plugin expands.
+`uxmplots.admin.*` (op) grants every `uxmplots.admin.` node above.
 
 ## Nodes you name
 
-None of these is declared, so each is held by operators alone until you give it.
+Each is held by operators alone until you give it. The three shipped examples (`floor.gold-veined`, `biome.snowy`,
+`music.pigstep`) are declared that way so a permissions editor lists them; the others are undeclared, which Bukkit
+treats the same.
 
 | Node | Gives |
 |---|---|

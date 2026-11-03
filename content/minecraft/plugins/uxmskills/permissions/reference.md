@@ -15,10 +15,11 @@ A player node is held by everybody, so its command stays visible and a player wi
 | `uxmskills.use` | true | The windows and your own skills |
 | `uxmskills.top` | true | The leaderboards |
 | `uxmskills.language` | true | `/uxmskills lang`, `lang set`, `lang reset` |
-| `uxmskills.skill.<id>` | true for the shipped eleven | Earning in that skill |
+| `uxmskills.skill.<id>` | true | Earning in that skill |
 | `uxmskills.hidden` | false | Keeping this account off every board |
 
-A skill you add has an undeclared node, held by operators only until you grant it.
+A skill you add as a file gets its node declared when the plugin reads it, true for everybody like the shipped
+eleven; revoke it to keep a skill for a rank.
 
 ## Nodes you name
 
@@ -45,6 +46,6 @@ A skill you add has an undeclared node, held by operators only until you grant i
 | `uxmskills.admin.stats` | op | `statgive`, `stattake` |
 | `uxmskills.admin.edit` | op | `/skillsedit` |
 | `uxmskills.admin.language` | op | `lang set-player`, `lang reset-player` |
-| `uxmskills.admin.*` | op | Only `admin.version` and `admin.reload`: grant the others one by one, or with your permission plugin's wildcard |
+| `uxmskills.admin.*` | op | Every `uxmskills.admin` node above |
 
 Related: [Commands](../commands/overview.md)
