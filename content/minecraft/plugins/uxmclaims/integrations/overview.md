@@ -63,7 +63,7 @@ forms and their files are on [Bedrock menus](../menus/bedrock.md).
 
 - uxmClaims is itself a protection provider other plugins can query. uxmEssentials, for instance,
   reads it when deciding whether a home may be set: see
-  [uxmEssentials](../../uxmessentials/index.md).
+  [uxmEssentials claims](../../uxmessentials/integrations/claims.md).
 - Your own plugin does the same through the [developer API](../developer/index.md).
 
 Related: [config.yml](../config/config-yml.md), [Limits and costs](../permissions/limits.md)
