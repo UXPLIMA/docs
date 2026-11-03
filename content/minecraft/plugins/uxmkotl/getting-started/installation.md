@@ -6,7 +6,8 @@ icon: download
 ---
 
 uxmKotl is one jar with uxmLib inside it. Put it in `plugins/`, start once, then build an arena. This manual
-describes uxmKotl 0.0.1.
+describes uxmKotl after 0.1.0: German, Spanish, French, Portuguese and Russian arrive with the next release, and
+0.1.0 itself reads English and Turkish.
 
 ## Requirements
 
