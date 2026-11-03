@@ -1,13 +1,12 @@
 ---
-title: "uxmJumpPads"
+title: uxmJumpPads
 order: 365
-description: "Jump pads that throw a player where they point."
+description: Jump pads that throw a player where they point, matched by their blocks or set on one block, with no fall damage on landing.
 icon: arrow-up
 ---
 
-Paper 26.2+, Folia ready.
-
-| Page | What it covers |
-|---|---|
-| [Guide](usage.md) | How uxmJumpPads works, how to set it up and what each file holds. |
-| [Reference](reference.md) | Every command, permission, placeholder and file of uxmJumpPads. |
+- [Getting Started](getting-started/)
+- [Commands](commands/)
+- [Pads](pads/)
+- [Configuration](config/)
+- [Permissions](permissions/)
