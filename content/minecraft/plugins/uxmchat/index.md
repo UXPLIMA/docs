@@ -1,13 +1,16 @@
 ---
-title: "uxmChat"
+title: uxmChat
 order: 315
-description: "Chat for one server or a network: channels, formats, private messages, friends, tags and colours."
+description: Chat for one server or a network, with channels, formats, private messages, filters, friends, tags, colours, announcements and Discord.
 icon: message-square
 ---
 
-Paper 26.2+, Folia ready, Velocity networks, Geyser and Floodgate players, online and offline mode. uxmLib is
-
-| Page | What it covers |
-|---|---|
-| [Guide](usage.md) | How uxmChat works, how to set it up and what each file holds. |
-| [Reference](reference.md) | Every command, permission, placeholder and file of uxmChat. |
+- [Getting Started](getting-started/)
+- [Commands](commands/)
+- [Features](features/)
+- [Menus](menus/)
+- [Configuration](config/)
+- [Permissions](permissions/)
+- [Placeholders](placeholders/)
+- [Integrations](integrations/)
+- [Database](database/)
