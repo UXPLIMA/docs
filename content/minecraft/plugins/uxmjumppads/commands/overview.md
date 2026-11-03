@@ -26,7 +26,9 @@ and `remove` read the block a player stands on, so they need a player.
 
 ## Permissions
 
-A sender without a command's node does not see it. Every operator subcommand has its own `uxmjumppads.admin.<action>`
+A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
+Every operator subcommand has its own `uxmjumppads.admin.<action>`
 node, all `op` by default. See the [permission reference](../permissions/reference.md).
 
 ## Notes

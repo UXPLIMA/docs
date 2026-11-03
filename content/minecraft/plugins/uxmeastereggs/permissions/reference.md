@@ -6,8 +6,10 @@ icon: list
 ---
 
 Every node is declared in the plugin, so a permission plugin lists them all. Players can hunt on a fresh install
-without any setup, and finding an egg needs no node at all. A node on a command hides it: a player without it does
-not see the command, and the server answers as if it did not exist.
+without any setup, and finding an egg needs no node at all.
+
+A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
 
 ## Players
 

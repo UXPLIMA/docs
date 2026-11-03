@@ -26,7 +26,9 @@ console. Opening the calendar, claiming and choosing your own language need a pl
 
 ## Permissions
 
-A sender without a command's node does not see it. `/dailyrewards` and every subcommand under it need
+A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
+`/dailyrewards` and every subcommand under it need
 `uxmdailyrewards.use`, which everyone has; the language subcommands need their own node as well. Every operator
 subcommand has its own `uxmdailyrewards.admin.<action>` node, all `op` by default. See the
 [permission reference](../permissions/reference.md).

@@ -5,7 +5,8 @@ description: Every node uxmDailyRewards declares, its default, what it grants, a
 icon: list
 ---
 
-A node on a command hides it: a sender without it does not see the command.
+A node held by everybody (`default: true`) keeps its command visible, and a sender without it is refused with
+`command.no-permission`; any other node hides its command from a sender without it.
 
 ## Players
 
