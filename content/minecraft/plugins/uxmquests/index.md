@@ -1,6 +1,6 @@
 ---
 title: uxmQuests
-order: 260
+order: 250
 description: Quests in any number of languages, dealt per player or shared, with catalogues, milestones and a battle pass.
 icon: scroll
 ---
