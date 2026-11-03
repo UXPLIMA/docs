@@ -55,9 +55,10 @@ show a value in a line of your own, add the line to the messages files and name 
 | `[broadcast]` | `<text>` | Sends the text to the players in the table above, each in their own language. Never the whole server |
 | `[actionbar]` | `<text>` | Shows the text over the hotbar |
 | `[title]` | `<text>` | Shows the text across the middle of the screen |
-| `[subtitle]` | `<title> \| <subtitle> [in stay out]` | A title with a line under it, each half its own text or `@key`, the times in ticks |
+| `[subtitle]` | `<title> \| <subtitle> [in stay out]` | A title with a line under it, each half its own text or `@key`. The fade in, stay and fade out are in seconds, `0.5 3.5 1` when left out |
 | `[bossbar]` | `<seconds> [colour] [overlay] [drain] \| <text>` | A bar across the top of the screen for that long |
 | `[sound]` | `<key> [volume] [pitch]` | Plays a vanilla sound to the player, such as `entity.player.levelup` |
+| `[effect]` | `<effect> <seconds> [level] [hidden]` | Gives a potion effect, such as `speed 10 2`; level 1 is the plain effect, `hidden` hides the swirls |
 | `[particle]` | `<name> [count] [spread] [data]` | A puff of particles where the player stands; data is a colour `#ff0000`, a block or an item |
 | `[console]` | `<command>` | Runs a command as the server, without the slash |
 | `[player]` | `<command>` | Runs a command as the player |
