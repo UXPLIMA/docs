@@ -444,17 +444,21 @@ Where the player stands on the ladder.
 
 ## Regions
 
-The protected region under the player, its roster, and how many cover them.
+The [guard](../modules/guard.md) region under the player, its roster, and what the player may do there. Every
+`regions_` placeholder also answers as `guard_`, so `%uxmessentials_guard_here%` reads the same as
+`%uxmessentials_regions_here%`.
 
 | Placeholder | Reads | What it renders |
 |-------------|-------|-----------------|
-| `%uxmessentials_regions_available%` | global | Whether a region provider is reachable at all (yes/no). |
+| `%uxmessentials_regions_available%` | global | Whether the guard module is on (yes/no). |
 | `%uxmessentials_regions_count%` | session | How many regions cover the player at once. |
 | `%uxmessentials_regions_here%` | session | The region the player is standing in, highest priority first when they overlap. |
-| `%uxmessentials_regions_here_members%` | session | Who may build in the region the player is standing in, comma separated. |
+| `%uxmessentials_regions_here_members%` | session | The players with a role other than owner in that region, comma separated. |
 | `%uxmessentials_regions_here_owners%` | session | Who owns the region the player is standing in, comma separated. |
 | `%uxmessentials_regions_here_priority%` | session | That region's priority, which is what decides an overlap. |
-| `%uxmessentials_regions_inside%` | session | Whether the player is standing in a protected region (yes/no). |
+| `%uxmessentials_regions_here_role%` | session | The player's role in that region (owner, manager, member, guest), or empty. |
+| `%uxmessentials_regions_allowed_<action>%` | session | Whether the player may do that [action](../guard/actions.md) where they stand (yes/no), such as `regions_allowed_break`. |
+| `%uxmessentials_regions_inside%` | session | Whether the player is standing in a region (yes/no). |
 | `%uxmessentials_regions_world_count%` | session | How many regions are defined in the world the player is in. |
 
 ## Scoreboard

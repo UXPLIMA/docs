@@ -85,10 +85,13 @@ uxmClaims, our own claim plugin, is detected too and needs no declaration.
 
 ## Regions
 
+Region protection is built in: the [Guard](../modules/guard.md) module needs no other plugin.
+
 | Plugin | What it turns on |
 |---|---|
-| WorldGuard | Region membership and flags gate teleports, poses and menu requirements. |
-| WorldEdit | Defines a region from your current WorldEdit selection. |
+| WorldGuard | Read for teleports, poses and menu requirements while it is installed, and imported into guard with `/guard import worldguard`. See [Importing WorldGuard](../guard/worldguard.md). |
+| WorldEdit, FAWE | Guard uses your WorldEdit selection when you define a region, and keeps WorldEdit edits out of locked regions. |
+| uxmSimpleClaims | Refuses a claim inside a guard region or within `claims.guard-distance` of one. |
 
 ## Web maps
 

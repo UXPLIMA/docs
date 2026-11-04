@@ -161,4 +161,4 @@ claim plugin and never touch this key.
 - **Homes, `/rtp` and poses are independent.** Turning claims off for homes does not turn
   them off for random teleport.
 
-Related: [Homes](../modules/homes.md), [Teleport & RTP](../modules/teleport.md), [Poses](../modules/poses.md), [Regions](../modules/regions.md)
+Related: [Homes](../modules/homes.md), [Teleport & RTP](../modules/teleport.md), [Poses](../modules/poses.md), [Guard](../modules/guard.md)

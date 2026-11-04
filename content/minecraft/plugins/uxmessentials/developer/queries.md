@@ -337,27 +337,57 @@ guess.
 
 ## Regions
 
-`api.regions()` &rarr; `UxmRegionsQuery`
+`api.regions()` &rarr; `UxmRegionsQuery`, empty when the guard module is off
 
 | Method | Answers |
 |---|---|
-| `available()` | whether WorldGuard is installed and reachable |
+| `available()` | whether the guard module is running |
 | `in(worldName)` | every region defined in a world |
 | `region(worldName, id)` | one region by id |
 | `at(location)` | every region covering a point, highest priority first |
 
-A convenience rather than a second source of truth. WorldGuard owns region state and has its own API; this exists so
-a plugin that already depends on us can ask "what covers this spot" without taking a second dependency.
+A read of the [guard module](../modules/guard.md)'s regions. Every answer is a future so a caller never depends on
+which thread holds them; `available()` is the exception and answers where you stand, because it is the question you
+ask first. When it is false the others answer empty rather than failing.
 
-Every answer is a future because the region container is read on the server thread rather than on a worker: those
-maps are live server state, and reading them from a pool thread is not something WorldGuard's API promises to
-survive. `available()` is the exception and answers where you stand, because it is the question you ask first. When
-it is false the others answer empty rather than failing.
+A region carries its priority, both rosters (owners, and every other role as members, as UUIDs) and its flags: its
+rules written as `<action> <target>` with the value `allow` or `deny`, then its behaviours by key. The shape is not
+published. There is no write surface: editing a region is an operator act with its own command, permissions and
+history.
 
-A region carries its priority, both rosters and the flags it sets. The roster entries are identifiers rather than
-players (a uuid, an old name, or a group written `g:name`), because that is what a region holds. The shape is not
-published: a region may be a cuboid, a polygon or the whole world, and a corner pair would be a lie for two of the
-three.
+## Guard
+
+`api.guard()` &rarr; `UxmGuardQuery`, empty when the guard module is off
+
+| Method | Answers |
+|---|---|
+| `allowed(player, action, location)` | whether that player may do the [action](../guard/actions.md) there; an offline player is checked with roles but no permissions |
+| `allowedWorld(action, location)` | whether nature may do a `world.*` action there |
+| `isAction(action)` | whether the id names an action in the tree, built in or registered |
+| `within(location, radius)` | regions whose bounds come within the radius on the horizontal plane, at any height, nearest first |
+| `claimDistance()` | how far claims must keep from a region (`claims.guard-distance`) |
+| `behaviour(player, key)` | the value of a [behaviour](../guard/behaviours.md) where an online player stands, or empty |
+| `registerActions(ids)` | adds your own actions (and their parents) to the tree |
+
+Checks read an immutable snapshot and are safe from any thread; they never wait. An unknown action or an unloaded
+world answers `true`, since nothing protects it: check `isAction` first when the id comes from a person.
+
+Your own protections use the same tree. Register a branch once at enable, then check it where your feature acts:
+
+```java
+UxmGuardQuery guard = api.guard().orElse(null);
+if (guard != null) {
+    guard.registerActions(List.of("myplugin.portal.use", "myplugin.portal.create"));
+}
+// later, where a player uses one of your portals
+if (guard != null && !guard.allowed(player.getUniqueId(), "myplugin.portal.use", where)) {
+    return; // refused here
+}
+```
+
+An operator then writes rules for it like any other action: `/guard rule spawn myplugin.portal everyone deny`. A
+stored rule for an action that is not registered (your plugin is not installed yet, or not enabled) is kept and
+applies again as soon as the action is registered.
 
 ## Inventory snapshots
 

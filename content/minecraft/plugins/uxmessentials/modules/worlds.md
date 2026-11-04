@@ -149,4 +149,4 @@ Module `worlds` · enabled by default · `modules/worlds/config.conf`
 - **Auto-unload is off by default.** Switched on, a world with no players is unloaded after `idle-minutes`,
   skipping anything in `excluded-worlds`.
 
-Related: [Teleport](teleport.md), [Regions](regions.md), [Menus](../menus/engine.md)
+Related: [Teleport](teleport.md), [Guard](guard.md), [Menus](../menus/engine.md)

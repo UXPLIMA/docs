@@ -44,7 +44,7 @@ opens, under the same permission node:
 | Economy, Moderation, Item world, Communication | `/eco`, `/mod`, `/itemworld`, the communication admin panel |
 | Teleport, Presence, Messaging (settings + mailbox) | `/tpsettings`, `/presencesettings`, `/msgsettings`, `/mail` |
 | Holograms, NPCs, Scoreboard, Custom menus | `/hologram list`, `/npc list`, `/scoreboard gui`, `/menu editor` |
-| Survival, Poses, Ranks, Vote, Regions, Staff, Discord | `/survival`, `/poses`, `/ranks`, `/vote`, `/regions`, `/stafflist`, the Discord status panel |
+| Survival, Poses, Ranks, Vote, Guard, Staff, Discord | `/survival`, `/poses`, `/ranks`, `/vote`, `/guard menu`, `/stafflist`, the Discord status panel |
 
 A few modules are deliberately absent:
 

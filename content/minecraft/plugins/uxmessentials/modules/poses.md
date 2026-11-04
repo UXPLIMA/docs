@@ -89,4 +89,4 @@ Module `poses` · enabled by default · `modules/poses/config.conf`
 - **Sitting on another player needs both sides to allow it,** which is what keeps it a joke between friends
   rather than a way to pin somebody.
 
-Related: [Player State](playerstate.md), [Regions](regions.md), [Survival](survival.md)
+Related: [Player State](playerstate.md), [Guard](guard.md), [Survival](survival.md)
