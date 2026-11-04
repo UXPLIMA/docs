@@ -225,15 +225,17 @@ Not being in a trade is an answer rather than a miss, so it is `null` in the env
 
 | Route | Answers |
 |---|---|
-| `GET /regions` | Whether region support is installed at all |
-| `GET /worlds/{name}/regions` | Every region in the world, or those covering a point with `?x=&y=&z=` |
+| `GET /regions` | Whether the guard module is on |
+| `GET /worlds/{name}/regions` | Every guard region in the world, or those covering a point with `?x=&y=&z=` |
 | `GET /worlds/{name}/regions/{id}` | One region, or `null` |
+| `GET /worlds/{name}/guard/check?action=&x=&y=&z=[&player=]` | `{"action", "allowed"}`: whether the player (a UUID) may do the action at the point, or without `player` whether nature may. An action outside the [action tree](../guard/actions.md) is a `400` |
 | `GET /players/{uuid}/snapshots` | The inventory snapshots held for them, newest first |
 | `GET /players/{uuid}/security` | Which factors are on file, and whether they are locked out |
 | `GET /players/{uuid}/skin` | The skin they chose, or `404` when they chose none |
 
-Ask `GET /regions` before the others. With no WorldGuard installed every region read answers empty, which looks
-exactly like a world nobody has protected; that route is what tells the two apart.
+Ask `GET /regions` before the others. With the guard module off every region read answers empty, which looks
+exactly like a world nobody has protected; that route is what tells the two apart. A player who is not online is
+checked with their roles but without permissions.
 
 The covering set comes back highest priority first, which is the order that decides an overlap. A partial
 coordinate is a `400`: a point needs all three. No factor material is in the security answer and none ever will be.

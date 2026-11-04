@@ -20,6 +20,7 @@ Set `enabled = false` in a module's `config.conf` and restart, or edit and run `
 | [Custom Commands](customcommands.md) | Your own commands, declared in a file | on |
 | [Custom Menus](custommenus.md) | Your own menus, behind `/menu` | on |
 | [Economy](economy.md) | Balances, `/pay`, `/baltop`, banks, loans, banknotes | on |
+| [Guard](guard.md) | Region protection: rules, roles, behaviours, WorldGuard import | on |
 | [Holograms](holograms.md) | Floating displays with pages and click actions | on |
 | [Homes](homes.md) | Private teleport points in a slot grid | on |
 | [Inventory Rollback](invrollback.md) | Snapshots of an inventory at death and logout | off |
@@ -34,7 +35,6 @@ Set `enabled = false` in a module's `config.conf` and restart, or edit and run `
 | [Poses](poses.md) | Sit, lay, belly-flop, spin and crawl | on |
 | [Presence](presence.md) | AFK, `/list`, nicknames, `/whois`, server health | on |
 | [Ranks](ranks.md) | A rankup ladder with prestige and autorank | on |
-| [Regions](regions.md) | An in-game manager for WorldGuard regions | off |
 | [Scoreboard](scoreboard.md) | The per-player sidebar | off |
 | [Security](security.md) | Two-factor, join verification, op protection, alt guard | on |
 | [Server Tweaks](servertweaks.md) | F3 brand, console filter, unsigned chat | on |

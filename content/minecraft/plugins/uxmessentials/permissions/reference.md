@@ -776,23 +776,50 @@ Inventory snapshot and restore: the plugin freezes a player's inventory on death
 | `uxmessentials.invrollback.teleport` | `op` | `/invrestore` tp `<player> <index>` teleports you to where the snapshot was captured. |
 | `uxmessentials.module.invrollback` | `op` | Hot-reload / inspect the invrollback module (inventory snapshots and restore). |
 
-## Regions
+## Guard
 
-WorldGuard region management: a menu over an installed WorldGuard to browse regions,
-define cuboids, cycle their state flags, and edit their member/owner rosters. WorldGuard is
-a **soft-dependency**: with it absent the module is inert and every command answers
-*"WorldGuard not installed"* (WorldEdit is a further optional soft-depend, used only for
-selection-based `/regions create`). Region management is staff work, so all five action
-nodes default to `op`. See the [Regions](../modules/regions.md) guide.
+Region protection: regions with rules (who may do which action), roles, and behaviours applied to the players
+inside. What every player may do in their own region (see where they stand, ask why, run the roster of a region
+they own or manage) defaults to `true`; defining and editing regions is staff work and defaults to `op`.
+`uxmessentials.guard.bypass.gamemode` is held by nobody by default. See the [Guard](../modules/guard.md) module
+page and the [Guard manual](../guard/index.md).
 
 | Node | Default | What it grants |
 |------|---------|----------------|
-| `uxmessentials.module.regions` | `op` | Hot-reload / inspect the regions module (WorldGuard region management). |
-| `uxmessentials.regions.admin` | `op` | `/regions` priority `<id> <value>`: set a WorldGuard region priority. |
-| `uxmessentials.regions.create` | `op` | `/regions` create `<id>` (and `/regions` pos1\|pos2): define a cuboid WorldGuard region. |
-| `uxmessentials.regions.flags` | `op` | `/regions` flags `<id>`: open the per-region flag editor GUI. |
-| `uxmessentials.regions.list` | `op` | `/regions [world]`: open the WorldGuard region-list GUI for a world. |
-| `uxmessentials.regions.members` | `op` | `/regions` members `<id>` and `/regions` addmember\|addowner `<id> <player>`: manage a region roster. |
+| `uxmessentials.guard.backups` | `op` | /guard backups [restore \<file>]: list the region backups, or put a backup's regions back. |
+| `uxmessentials.guard.bypass` | `op` | /guard bypass: toggle ignoring every guard rule. |
+| `uxmessentials.guard.bypass.gamemode` | `false` | Keep your own game mode in a region whose gamemode behaviour would change it. |
+| `uxmessentials.guard.define` | `op` | /guard define, redefine, wand, pos1, pos2, point, clear, expand: draw and define regions. |
+| `uxmessentials.guard.family` | `op` | /guard family \<region> \<name\|clear>: group regions so their borders open to each other. |
+| `uxmessentials.guard.here` | `true` | /guard here: the regions you stand in and your role there. |
+| `uxmessentials.guard.history` | `op` | /guard history \<region>: the change history of a region. |
+| `uxmessentials.guard.import` | `op` | /guard import worldguard: import WorldGuard regions, with dry-run and undo. |
+| `uxmessentials.guard.info` | `op` | /guard info \<region>: a region's shape, rules, roles and behaviours. |
+| `uxmessentials.guard.inspect` | `op` | /guard inspect: click a block to read what a player with no role may do there, and see why each of your own refusals happened. |
+| `uxmessentials.guard.list` | `op` | /guard list [world]: list the regions of a world. |
+| `uxmessentials.guard.lock` | `op` | /guard lock and unlock; edit and WorldEdit inside a locked region. |
+| `uxmessentials.guard.log` | `op` | /guard log [player]: recent denied actions. |
+| `uxmessentials.guard.member` | `true` | /guard member \<region> \<player> \<member\|guest\|clear>: owners and managers edit their own region's roster. |
+| `uxmessentials.guard.menu` | `op` | See the region list in /guard menu; without it a region owner or manager gets the roles window of the region they stand in. |
+| `uxmessentials.guard.near` | `op` | /guard near [radius]: list regions around you. |
+| `uxmessentials.guard.notify` | `op` | Receive staff alerts when players repeatedly hit guard denials. |
+| `uxmessentials.guard.parent` | `op` | /guard parent \<region> \<parent\|clear>: inherit rules from another region. |
+| `uxmessentials.guard.priority` | `op` | /guard priority \<region> \<value>: set a region's priority. |
+| `uxmessentials.guard.reload` | `op` | /guard reload: reload the guard config and recompile every world. |
+| `uxmessentials.guard.remove` | `op` | /guard remove and restore: delete a region or bring a removed one back. |
+| `uxmessentials.guard.role` | `op` | /guard role \<region> \<player> \<role\|clear>: give any role on any region. |
+| `uxmessentials.guard.rule` | `op` | /guard rule \<region> \<action> \<target> \<allow\|deny\|clear>: edit a region's rules. |
+| `uxmessentials.guard.scope` | `op` | /guard scope \<region> \<server\|set:name>: choose which servers a region applies on. |
+| `uxmessentials.guard.set` | `op` | /guard set \<region> \<behaviour> \<value>: set a region behaviour. |
+| `uxmessentials.guard.show` | `op` | /guard show and hide: draw region borders for yourself. |
+| `uxmessentials.guard.status` | `op` | /guard status: engine counters and memory use. |
+| `uxmessentials.guard.tag` | `op` | /guard tag \<region> add\|remove\|bulk: tag regions and edit them by tag. |
+| `uxmessentials.guard.template` | `op` | /guard template \<region> \<template\|clear>: apply a rule template. |
+| `uxmessentials.guard.test` | `op` | /guard test \<player> \<action> [region]: check a verdict for another player. |
+| `uxmessentials.guard.undo` | `op` | /guard undo \<history id>: undo one change from a region's history. |
+| `uxmessentials.guard.use` | `true` | /guard and /guard help, actions: the base of every guard command. |
+| `uxmessentials.guard.why` | `true` | /guard why \<action>: explain the verdict for an action where you stand. |
+| `uxmessentials.module.guard` | `op` | Hot-reload / inspect the guard module (region protection). |
 
 ## Skin
 

@@ -48,11 +48,10 @@ default-limit = 3
 - Disabling a module **never deletes stored data.** Its rows stay in the database and
   return untouched when you re-enable it.
 
-Most modules start `enabled = true`. Nine start `enabled = false`: the HUD trio
-(`scoreboard`, `tablist`, `nametags`), the gameplay-changing `survival` and
-`villagers`, the ones that need an external service (`vote`,
-`regions`), the snapshot-writing `invrollback`, and the one-shot data
-importer (`migration`). Each one says why in the comment at the top of its own file.
+Most modules start `enabled = true`. Ten start `enabled = false`: the HUD four
+(`scoreboard`, `tablist`, `nametags`, `bossbar`), the gameplay-changing `survival`,
+`villagers` and `skin`, the one that needs an external service (`vote`), the
+snapshot-writing `invrollback`, and the one-shot data importer (`migration`). Each one says why in the comment at the top of its own file.
 `/uxmess status` prints the live state of every module, and
 [Modules & Reloading](../modules/index.md) has the full roster with the reasons.
 

@@ -7,6 +7,7 @@ icon: wrench
 
 - [Getting Started](getting-started/)
 - [Modules](modules/)
+- [Guard](guard/)
 - [Menus](menus/)
 - [Configuration](config/)
 - [Integrations](integrations/)
