@@ -50,8 +50,12 @@ nothing, so the importer writes that default out as rules: everyone is denied th
 members and member groups are allowed it. The build family is `break`, `place`, `use`, `interact`,
 `damage.animal`, `damage.villager`, `damage.armor-stand`, `damage.hanging`, `damage.vehicle`, `vehicle.place`,
 `vehicle.destroy`, `hanging.place`, `hanging.break`, `item.use.bucket`, `item.use.lighter`, `item.use.bone-meal`,
-`item.use.spawn-egg` and `trample`. A region with `passthrough: allow` or a `build` flag of its own skips this, and
-so does the global region.
+`item.use.spawn-egg` and `trample`. A region with `passthrough: allow` or a `build` flag of its own skips this.
+The global region skips it too, unless it has `passthrough: deny`, the usual WorldGuard way to protect a whole
+world: then only its members build anywhere no other region decides.
+
+A flag the region sets itself beats this default, as in WorldGuard: `use: allow` lets everyone use, and
+`block-break: deny` stops members as well.
 
 ## Flags to rules
 
