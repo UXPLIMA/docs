@@ -24,6 +24,7 @@ Changing it and running `/claim reload` rewrites the texts you have not edited. 
 |---|---|---|
 | `expireMode` | `true` | Delete claims when their lifetime runs out |
 | `expireTime` | `2592000` | Lifetime of a new claim, in seconds (30 days) |
+| `timeCostMode` | `PER_CHUNK` | How added time is priced: `PER_CHUNK` charges `uxmclaims.cost.time` per second for every chunk, `PER_CLAIM` per second whatever the claim's size |
 | `minDistance` | `2` | Chunks of empty land required between different players' claims; `0` allows adjacent claims |
 | `defaultBlock` | `'block1'` | Which `blocks` style a new claim uses |
 | `defaultName` | `'Claim of %player.name%'` | Name given to a new claim; `%player.*%` placeholders work |
