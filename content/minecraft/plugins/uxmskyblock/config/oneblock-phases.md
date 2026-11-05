@@ -1,0 +1,129 @@
+---
+title: OneBlock phases
+order: 690
+description: "One file per phase: oneblock/phases/<name>.conf, shown with plains.conf as shipped."
+icon: square
+---
+
+The shipped phases, in the order an island goes through them:
+
+| Phase | Breaks | Biome | Icon |
+|---|---|---|---|
+| `plains` | 400 | `plains` | `GRASS_BLOCK` |
+| `underground` | 600 | `dripstone_caves` | `STONE` |
+| `snow` | 600 | `snowy_plains` | `SNOW_BLOCK` |
+| `ocean` | 700 | `warm_ocean` | `PRISMARINE` |
+| `jungle` | 700 | `jungle` | `JUNGLE_LOG` |
+| `nether` | 900 | `nether_wastes` | `NETHERRACK` |
+| `end` | 1000 | `the_end` | `END_STONE` |
+
+Every phase file takes the keys below. They are shown as `plains.conf` ships them; the other files differ in their
+values. Add a phase by writing a file and naming it in `phases` of [oneblock.conf](oneblock-conf.md).
+
+The OneBlock phase "plains". Its name is this file's name, and the key its title is read by in the language files, under oneblock.phases. modules/oneblock.conf lists the phases in the order an island goes through them.
+
+A block or creature name is the server's own, such as "IRON_ORE" or "cow". A name the server does not know is left out with a warning in the console.
+
+Another plugin's block is written with its word in front, "itemsadder:`<namespace>`:`<id>`", "nexo:`<id>`" or "craftengine:`<namespace>`:`<id>`", and a MythicMobs creature as "mythicmobs:`<id>`", quoted, as "nexo:amber" = 2. It is read while that plugin is on the server and left out with a warning when it is not. A block the plugin cannot lay comes as dirt, said once in the console.
+
+The file is `plugins/uxmSkyblock/oneblock/phases/plains.conf`. Every default below is the shipped value.
+
+| Key | Default | What it does |
+|---|---|---|
+| `icon` | `GRASS_BLOCK` | What the phases menu shows for this phase: any item the server knows. |
+| `preview` | `@oneblock.previews.plains` | What the phases menu says this phase holds, in your own words or a @key of the language files. Left out, the menu says nothing of it. |
+| `biome` | `plains` | The biome this phase gives the island when it begins: any biome the server knows. Left out, the island keeps the biome it has. |
+| `length` | `400` | Where it goes: "island", every block of the island, or a number, the blocks that close to the block. Left out, the whole island. biome-area = "island" How many breaks this phase lasts. |
+
+## `blocks`
+
+How long the block stays bedrock once this phase begins, with a countdown over it, as "30s" or "1h30m". Left out, the phase begins at once. The wait goes on after a restart. wait = "30s"
+
+The phases that may follow this one. Left out, the phase after it in modules/oneblock.conf follows. Name two or more and each island picks its way in menus/oneblock-branch.conf; the pick is its way for good. Name none, next = [], and the way ends here. A phase only a branch reaches goes on to the phase after it in the list, so name its own next when that is not the way. next = ["underground", "ocean"]
+
+What must hold before this phase begins. Until it does, an island waits at the end of the phase before, and each break tells the breaker what is missing. Each line is had or taken, from the breaker or from the island bank, which only a member allowed to spend from it pays out of:
+
+```text
+take money 5000            have money 20000 island
+take currency gems 10      take item oak_log 64
+have level 25              have permission oneblock.plains
+```
+
+requires = [ "have level 25", "take money 5000" ]
+
+What the block turns into. A weight of 4 comes up four times as often as a weight of 1.
+
+A block may carry its states, written in quotes: "oak_stairs[facing=north]" = 2. An entry written as an object places a spawner of a chosen creature:
+
+```text
+keeper { weight = 1, block = "SPAWNER", spawns = "zombie" }
+```
+
+A chest, a barrel or a shulker box drawn is filled from the loot table "loot" names below, the first time a player opens it. An entry may name its own table, or none with loot = "", and a rarity of that table, whose effects in modules/effects.conf fire for the breaker when the entry is drawn:
+
+```text
+wreck { weight = 1, block = "CHEST", loot = "treasure", rarity = "rare" }
+```
+
+| Key | Default | What it does |
+|---|---|---|
+| `GRASS_BLOCK` | `20` |  |
+| `DIRT` | `12` |  |
+| `OAK_LOG` | `8` |  |
+| `BIRCH_LOG` | `4` |  |
+| `MELON` | `1` |  |
+| `PUMPKIN` | `1` |  |
+
+## `moments`
+
+The loot table of loot/ a container drawn in this phase is filled from. Left out, it is filled from none. loot = "treasure"
+
+What happens at exact breaks of this phase, each keyed by how many of its blocks are broken when it happens: 0 is the phase's first block, and the last is one short of its length. A moment may give
+
+```text
+block      the block, as the pool names one or an entry of this phase, in place of the one drawn
+creature   a creature, as the pool names one or an entry of this phase, besides any drawn
+loot       a loot table of loot/ a container block is filled from when first opened
+actions    a list run for the breaker, as an effect list in modules/effects.conf is, with
+           %phase% and %break%; oneblock-moment there runs for every moment
+text       a line over the block, MiniMessage or a @key of the language files, read in the
+           breaker's language; a Bedrock player reads it on the action bar
+text-time  how long the line stays, "10s" when left out
+```
+
+## `moments.100`
+
+| Key | Default | What it does |
+|---|---|---|
+| `block` | `CHEST` |  |
+| `loot` | `treasure` |  |
+| `text` | `@oneblock.moments.plains_chest` |  |
+
+## `lucky`
+
+What runs when this phase begins, when it finishes, and when an island finishes it for the first time, before the phases go round again. Each holds two lists, written as an effect list in modules/effects.conf is:
+
+```text
+breaker   run once, for the player whose break it was: commands and rewards
+members   run for every member of the island who is online, the breaker among them
+```
+
+%phase% is this phase's name and %cycle% which round of the phases the island is on, from 1, so a line may run only from the second round on: [message] `(if=%cycle% >= 2)` ... began also knows %blocks%, its length. A phase that writes nothing for began or finished runs oneblock-phase-began or oneblock-phase-finished of modules/effects.conf instead.
+
+```text
+began { members = [ "[title] @oneblock.lists.plains_began" ] }
+finished { breaker = [ "[give-money] 100" ] }
+```
+
+A lucky break: as often as chance says, from 0 to 1, a break of this phase runs these lists, or oneblock-lucky-break of modules/effects.conf when it writes none. The break that finishes this phase is a break of it. %break% is how many of this phase's blocks were broken.
+
+| Key | Default | What it does |
+|---|---|---|
+| `chance` | `0.01` |  |
+| `breaker` | `[console] minecraft:give %player_name% minecraft:diamond 1` |  |
+| `first-finished.members` | `[message] @oneblock.lists.plains_first` |  |
+| `creature-chance` | `0.05` | How likely one break is to bring a creature onto the block, from 0 to 1. A creature written as an object comes with a name over its head, MiniMessage or a @key of the language files read in the breaker's language, a size against its usual one from 0.0625 to 16, and what it wears and holds, by slot: head, chest, legs, feet, hand and off-hand. What it wears never drops. keeper ( weight = 1, type = "zombie", name = "`<red>`Keeper", scale = 1.5, equipment `( head = "IRON_HELMET", hand = "IRON_SWORD" )` ) |
+| `creatures.cow` | `3` |  |
+| `creatures.sheep` | `3` |  |
+| `creatures.chicken` | `2` |  |
+| `creatures.pig` | `2` |  |

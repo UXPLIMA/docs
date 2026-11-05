@@ -1,0 +1,66 @@
+---
+title: boxed.conf
+order: 616
+description: "Boxed: the box, its growth, its side and what growth costs."
+icon: box
+---
+
+Boxed: an island played on land the server makes the usual way, inside a box. The box starts small and every advancement one of the island's players makes pushes it out. Each advancement counts once for an island, whoever on it makes it. Players see where their box ends as a world border, and nobody builds, breaks or walks outside it.
+
+The boxed preset in presets.conf names the world Boxed islands are made in, "boxed" as shipped. Make that world the server's usual way, with generated terrain, not with this plugin's empty generator.
+
+The file is `plugins/uxmSkyblock/modules/boxed.conf`. Every default below is the shipped value.
+
+## `land`
+
+The land a new Boxed island plays on. from = "template", as shipped, lays the same land on every new island, so no island starts on better land than another: the land around x and z of template, in the island's own world, copied around the island's centre. from = "world" leaves a new island on the land its world made where it stands. An island keeps the land it was made on: one made on the template keeps getting it as its box grows, even after from changes. Pick a template no island reaches, and leave it where it is once islands are made on it. The land is copied ahead blocks past the box, from 0 to 128, so the land a player sees past the box is the land it grows into. Keep it above what one advancement grows the box by, so the land is laid before the box reaches it.
+
+| Key | Default | What it does |
+|---|---|---|
+| `from` | `template` |  |
+| `template.x` | `1000000` |  |
+| `template.z` | `1000000` |  |
+| `ahead` | `16` |  |
+| `enabled` | `true` | Whether islands can be made as Boxed islands. |
+| `box.start-radius` | `5` | How far the box reaches from the island's centre when the island is made. 5 is a box 11 across. |
+| `box.blocks-per-advancement` | `1` | How far an advancement pushes the box out, unless it has a worth of its own below. |
+| `box.max-radius` | `400` | How far the box can ever reach. Keep it inside half the grid spacing, so two boxes never meet. |
+
+## `advancements`
+
+Advancements with a worth of their own, by key. 0 grows nothing.
+
+## `scoring`
+
+What an advancement with no worth of its own above is worth. by = "depth", as shipped: the box grows blocks-per-advancement for each step the advancement lies from the root of its tab, so one deep in a tab, hard to reach, is worth more than one beside its root. by = "flat": blocks-per-advancement each. root is what a tab's first advancement is worth, which every player is given on joining. recipes is what a recipe unlocked is worth, which the game keeps as an advancement. hidden is what one with no place in the advancements screen is worth, as data packs keep behind the scenes.
+
+Advancements a data pack adds count as the game's own do, whatever namespace they live in: each by its depth in the pack's own tab, the tab's root as root, one the screen does not show as hidden, and the pack's recipe unlocks, under recipes/ in its namespace, as recipes. Each counts once for an island, whoever on it makes it. Give one a worth of its own under advancements above, by its full key, as "mypack:quests/dragon_slayer" = 25. Leave a whole pack out by adding its namespace to ignore below, as "mypack:". A pack is loaded the server's usual way, in the world's datapacks folder; an advancement it no longer has stays counted for the islands that made it.
+
+| Key | Default | What it does |
+|---|---|---|
+| `by` | `depth` |  |
+| `root` | `0` |  |
+| `recipes` | `0` |  |
+| `hidden` | `0` |  |
+
+## `buy`
+
+Growth an island buys with /is boxbuy, on top of what advancements earn. Each purchase grows the box blocks, from 1 to 400, and asks the lines, each had or taken, from the buyer or from the island bank, which only a member allowed to spend from it pays out of:
+
+```text
+take money 2500            take money 10000 island
+take currency gems 5       take item diamond 4
+have level 10              have permission boxed.buy
+```
+
+most is how many times an island may buy, 0 for no end. lines = [] turns buying off. A box with a side chosen with /is boxside grows toward it, bought or earned: the opposite edge stays where it is.
+
+| Key | Default | What it does |
+|---|---|---|
+| `blocks` | `1` |  |
+| `lines` | `take money 2500` |  |
+| `most` | `50` |  |
+| `visitors-earn` | `false` | Whether an advancement a player makes while on another island grows their own box. false, as shipped: a visitor earns nothing there, so nobody grows their box on land another island opened. |
+| `ignore` | `minecraft:recipes/` | Advancements under these key prefixes are worth nothing. Recipe unlocks are advancements too. A namespace alone, as "mypack:", leaves out every advancement a data pack adds. |
+| `border-every` | `1s` | How often each player on a Boxed island is shown where their box ends. |
+| `bypass-permission` | empty | A permission node whose holder is not kept inside a box. Empty for nobody. |

@@ -5,7 +5,7 @@ description: uxmClaims, uxmHelperNPC, uxmSpawners, uxmFarmer, uxmDiscordSync, ux
   uxmSupplyRush, uxmEssentials, uxmChat, uxmAuth, uxmPlots, uxmSimpleClaims, uxmJobs, uxmSkills, uxmCrates,
   uxmAuction, uxmShop, uxmQuests, uxmMinions, uxmCosmetics, uxmEnchants, uxmLevels, uxmBackup, uxmParkour,
   uxmKotl, uxmEasterEggs, uxmDailyRewards, uxmHubPvP, uxmLang, uxmMultiLobby, uxmMOTD, uxmJoinItems, uxmGlow,
-  uxmPlayerHider, uxmTeleportBow, uxmJumpPads and uxmHeads.
+  uxmPlayerHider, uxmTeleportBow, uxmJumpPads, uxmHeads and uxmSkyblock.
 icon: puzzle
 ---
 
@@ -50,3 +50,4 @@ icon: puzzle
 | [uxmTeleportBow](uxmteleportbow/) | A bow whose arrow carries the player to where it lands |
 | [uxmJumpPads](uxmjumppads/) | Jump pads that throw a player where they point |
 | [uxmHeads](uxmheads/) | A player's face drawn in chat from their skin |
+| [uxmSkyblock](uxmskyblock/) | Skyblock with eleven game modes, island teams, a shared bank, upgrades, missions and leaderboards |

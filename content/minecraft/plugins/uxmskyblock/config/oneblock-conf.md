@@ -1,0 +1,35 @@
+---
+title: oneblock.conf
+order: 633
+description: "OneBlock: the block, its phases, the progress bar and branches."
+icon: square
+---
+
+OneBlock: an island that starts as one block. Break it and it comes back as something else, drawn from the phase the island has reached. Each phase lasts a number of breaks, counted over the whole life of the island.
+
+Each phase is a file of its own, oneblock/phases/`<name>`.conf: its icon, its length, the blocks it draws and the creatures that may appear. The list below names the phases, and an island goes through them in the order they are written. A phase's name is also the key its title is read by in the language files, under oneblock.phases.
+
+/is reload reads this file and the phase files again, and an island goes on with them where it stands. Each line that cannot be read as written is said with its file and line, at a reload as at the start. enabled and save-interval change at the next restart.
+
+A file from before the phases had files of their own, with each phase written inside the list, is moved into the files on the first start, and kept beside itself as oneblock.conf.bak.
+
+The file is `plugins/uxmSkyblock/modules/oneblock.conf`. Every default below is the shipped value.
+
+| Key | Default | What it does |
+|---|---|---|
+| `enabled` | `true` | Whether islands can be made as OneBlock islands. |
+| `after-last-phase` | `repeat` | What an island does after its last phase: "stay" keeps it in the last phase, "repeat" starts again from the first. |
+| `save-interval` | `30s` | How often the breaks counted in memory are added to each island's stored count. A crash loses at most this much progress; nothing but the phase depends on the count. |
+| `choose-within` | `60s` | How long an island at the end of a phase that branches has to pick the way on, in menus/oneblock-branch.conf, before the first way is taken at its next break. A phase branches when its file names the phases that may follow it, as next = ["snow", "ocean"]. |
+
+## `progress`
+
+How a player sees their island's progress while they break its block.
+
+| Key | Default | What it does |
+|---|---|---|
+| `bar` | `bossbar` | Where it shows until a player switches it in /is oneblock: bossbar, actionbar or none. |
+| `linger` | `10s` | How long the boss bar stays after the last break. |
+| `line` | `true` | Whether a line over the block shows the phase and how far into it the island is. A Bedrock player, who is shown no line in the world, reads it on the action bar. |
+| `creature-warning` | `5` | How many breaks before a hostile creature comes its island is told, the breaker in chat and with oneblock-creature-coming in modules/effects.conf. The blocks and creatures are drawn that many breaks ahead. 0 tells nothing. |
+| `phases` | `plains`, `underground`, `snow`, `ocean`, `jungle`, `nether`, `end` |  |

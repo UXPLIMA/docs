@@ -1,0 +1,123 @@
+---
+title: effects.conf
+order: 623
+description: "What every interaction fires: sounds, particles, titles and lines."
+icon: sparkles
+---
+
+What every interaction fires.
+
+An interaction is a name here and a list of action lines under it. They happen in the order they are written. An interaction this file does not name fires nothing, and so does one written as an empty list: the first is a server that never asked for it, the second is one that turned it off, and both are quiet.
+
+The lines are the action lines every UXM plugin reads, so a line copied out of another UXM plugin's file means here what it means there:
+
+```text
+[message] <MiniMessage line>
+[title] <line>
+[subtitle] <line>
+[actionbar] <line>
+[bossbar] <line> <colour> <seconds>
+[sound] <sound key> <volume> <pitch>
+[particle] <name> <count> <spread>
+[effect] <potion> <seconds> <level>
+[broadcast] <MiniMessage line>      said to everybody on the server
+[console] <command>                 run by the console, without the slash
+[player] <command>                  run by the player, without the slash
+[take-money] <amount>               charged through the economy plugin
+[give-money] <amount>               paid through the economy plugin
+[take-item] <item> <amount>         taken from the player's inventory
+[close]                             closes the window the player has open
+```
+
+A price that cannot be paid stops the whole list before anything in it runs.
+
+Any line may carry options in braces straight after the verb. Separate them with commas. Every one of them is optional:
+
+```text
+delay=<ticks>          wait before the line runs
+repeat=<times>         run it more than once
+every=<ticks>          the wait between repeats
+chance=<0 to 1>        run it only this often
+if=<condition>         run it only when the condition holds; a
+                       %placeholder% is read through PlaceholderAPI, and
+                       a skill level through mcMMO, when either is there
+```
+
+For example:
+
+```text
+[message] {delay=40} <green>Two seconds later.
+[sound] {repeat=3, every=5} ui.button.click 1.0 1.0
+[console] {chance=0.25, delay=20} say %player_name% got lucky
+[message] {if=%player_level% >= 10} <gold>A veteran made it.
+```
+
+Some interactions say what happened in placeholders of their own, listed above each one, such as %phase% or %time%. They are read in every line before any other placeholder is, and so is %player_name%, the player's name, with or without PlaceholderAPI.
+
+A line this engine cannot read is logged and skipped. The rest of the list still fires, and the thing the interaction was about always happens.
+
+The file is `plugins/uxmSkyblock/modules/effects.conf`. Every default below is the shipped value.
+
+## `effects`
+
+| Key | Default | What it does |
+|---|---|---|
+| `kinetic-ward` | `[sound] entity.player.attack.sweep 1.0 1.2`, `[particle] CRIT 20 0.8` | A player arrives somewhere and hostile mobs around them are pushed back. |
+| `obsidian-recovery` | `[sound] item.bucket.fill_lava 1.0 1.0`, `[particle] CAMPFIRE_COSY_SMOKE 6 0.2` | Lava a player poured is turned to obsidian rather than left to run. |
+| `limit-refused` | `[sound] block.note_block.bass 1.0 0.5` | A block a player placed is refused because the island is at one of its limits. |
+| `mission-completed` | `[sound] ui.toast.challenge_complete 1.0 1.0` | A mission is finished. |
+| `island-created` | `[sound] ui.toast.challenge_complete 1.0 1.2` | The milestones below are what a server decorates. The command still gives its own reply out of messages/; this is what happens beside it, and it is yours to write. A player's island is made. |
+| `member-joined` | `[sound] entity.player.levelup 1.0 1.4` | A player joins an island they were invited to. |
+| `upgrade-bought` | `[sound] entity.player.levelup 1.0 1.0` | An upgrade is bought out of the island bank. |
+| `oneblock-phase-finished` | `[sound] block.amethyst_block.chime 1.0 1.0` | A OneBlock island's block finishes a phase, just before the next begins. %phase% is the key of the phase finished, %cycle% which round of the phases it was, from 1. |
+| `oneblock-moment` | `[sound] block.note_block.bell 1.0 1.2` | One of the moments a OneBlock phase file writes happens, besides the moment's own list. %phase% is the key of the phase, %break% how many of its blocks were broken, %cycle% which round of the phases it is, from 1. |
+| `oneblock-lucky-break` | `[sound] entity.player.levelup 0.8 1.6`, `[particle] HAPPY_VILLAGER 20 0.6`, `[message] @oneblock.lucky` | A break of a OneBlock phase is lucky, as often as the phase file's lucky.chance says, and the file writes no lists for it. %phase% is the key of the phase, %break% how many of its blocks were broken, %cycle% which round of the phases it is, from 1. |
+| `oneblock-creature-coming` | `[sound] block.note_block.didgeridoo 0.8 0.6` | A hostile creature is drawn for the OneBlock island's block, a few breaks before it comes, as creature-warning in modules/oneblock.conf sets. The chat line comes out of messages/. %creature% is the creature, %breaks% how many breaks from now it comes. |
+| `oneblock-phase-began` | `[sound] ui.toast.challenge_complete 1.0 0.8`, `[particle] TOTEM_OF_UNDYING 30 0.6` | A OneBlock island's block starts a new phase. The chat line comes out of messages/. %phase% is the key of the phase begun, %blocks% how many breaks it lasts, %cycle% which round of the phases it begins, from 1. |
+| `acid-sea-burns` | `[sound] block.fire.extinguish 0.5 1.6`, `[particle] SMOKE 8 0.3` | The acid sea burns a player on an AcidIsland island, at each check. The damage is dealt anyway. |
+| `acid-rain-burns` | `[sound] block.fire.extinguish 0.3 1.9` | Acid rain burns a player on an AcidIsland island, at each check. |
+| `acid-water-drunk` | `[sound] entity.generic.drink 1.0 0.6` | A player drinks a bottle of acid water on an AcidIsland island. The chat line comes out of messages/. |
+| `acid-clean-water-drunk` | `[sound] entity.generic.drink 1.0 1.2`, `[particle] HEART 3 0.4` | A player drinks a bottle of clean water on an AcidIsland island. The chat line comes out of messages/. %healed% is the health it gave back. |
+| `acid-clean-water-filled` | `[sound] item.bottle.fill 1.0 1.0` | A player fills a clean bottle from a cauldron on an AcidIsland island. The plugin fills it in the server's place, so the server's own sound does not play and this is what the player hears. |
+| `acid-vent-fumes` | `[particle] CAMPFIRE_COSY_SMOKE 4 0.4` | A player on an AcidIsland island breathes the fumes of a sulfur vent, at each check. |
+| `acid-item-dissolved` | `[sound] block.lava.extinguish 0.4 1.8` | The acid sea dissolves an item, said to the player near it whose check found it. %item% is what dissolved and %amount% how many. |
+| `acid-tide-rising` | `[sound] ambient.underwater.enter 0.6 0.7` | The acid tide rises a block, for each player on an AcidIsland island. The chat line, as it turns to rise, comes out of messages/. %level% is how many blocks above its surface the sea stands now. |
+| `acid-tide-falling` | `[sound] ambient.underwater.exit 0.6 0.7` | The acid tide falls a block, for each player on an AcidIsland island. %level% as above. |
+| `acid-vent-offering` | `[sound] block.respawn_anchor.charge 0.8 1.4`, `[particle] LAVA 6 0.3` | A vent takes an offering on an AcidIsland island, for the player it answers. The chat line comes out of messages/. %item% is what was taken and %amount% how many. |
+| `boxed-grew` | `[sound] entity.player.levelup 0.8 1.6` | An advancement grows a Boxed island's box. The chat line comes out of messages/. %blocks% is how far it grew, %size% how wide the box is now. |
+| `boxed-moved` | `[sound] entity.enderman.teleport 0.8 1.2` | An ender pearl thrown from inside the box moved it, for the player who threw it. %x% and %z% are how far the box's middle lies from the island's centre now. |
+| `brix-plot-entered` | `[sound] block.beacon.activate 0.6 1.4` | A player steps onto a Brix plot and what they brought is kept aside. The chat line comes out of messages/. |
+| `brix-plot-left` | `[sound] block.beacon.deactivate 0.6 1.4` | A player leaves a Brix plot and has what they brought back. |
+| `parkour-course-entered` | `[sound] block.beacon.activate 0.6 1.4` | A player steps onto a Parkour course and what they brought is kept aside. The chat line comes out of messages/. |
+| `parkour-course-left` | `[sound] block.beacon.deactivate 0.6 1.4` | A player leaves a Parkour course and has what they brought back. |
+| `parkour-run-started` | `[sound] block.note_block.pling 0.8 1.2` | A runner starts a run on a Parkour course. The chat line comes out of messages/. |
+| `parkour-ghost` | `[sound] entity.allay.ambient_without_item 0.6 0.8` | A run starts against a ghost, which retraces a run of %time%, %millis% in milliseconds. |
+| `parkour-run-voided` | `[sound] block.note_block.bass 0.8 0.6` | A run on a Parkour course ends for a check it broke: %check% is flight, teleport or speed. The chat line comes out of messages/. |
+| `parkour-checkpoint` | `[sound] block.note_block.bell 0.8 1.5` | A runner reaches a checkpoint on a Parkour course. The first time in a run, %time% is how long the run took to it and %millis% the same in milliseconds, and %diff% how far ahead of the runner's best there, as -0:01.250, or behind, as +0:00.300; each is empty when there is none. |
+| `parkour-finished` | `[sound] entity.player.levelup 0.8 1.2` | A runner reaches the finish of a Parkour course. %time% is the run's time as the chat writes it, %millis% the same in milliseconds. |
+| `parkour-record` | `[sound] ui.toast.challenge_complete 0.8 1.0`, `[particle] TOTEM_OF_UNDYING 20 0.5` | A runner sets their best time on a Parkour course, the first or a faster one. %time% and %millis% as for parkour-finished; %was%, the time beaten, when there was one. |
+| `poseidon-dry-air` | `[sound] entity.player.breath 0.6 0.7` | Dry air hurts a player out of the water on a Poseidon island, at each check. |
+| `poseidon-sun-burns` | `[sound] block.fire.extinguish 0.4 0.8`, `[particle] SMOKE 6 0.3` | The sun burns a player out of the water on a Poseidon island, at each check. |
+| `poseidon-still-drowns` | `[sound] entity.player.hurt_drown 0.8 1.0`, `[particle] BUBBLE 10 0.4` | The water hurts a Poseidon player who stays still in it too long, at each check. |
+| `poseidon-boss-rises` | a list of 3 | The deep boss rises beside a swimmer on a Poseidon island, for every player on the island. |
+| `poseidon-boss-slain` | `[message] @poseidon.boss.slain`, `[sound] ui.toast.challenge_complete 1.0 1.0` | The deep boss is slain, for every player on the island. |
+| `poseidon-boss-sinks` | `[message] @poseidon.boss.sinks`, `[sound] entity.elder_guardian.ambient 0.8 0.6` | Nobody slew the deep boss in time and it sank back, for every player on the island. |
+| `loot-rare` | `[sound] entity.experience_orb.pickup 1.0 1.2`, `[particle] HAPPY_VILLAGER 12 0.5` | A loot roll lands on a rare thing, for the player who finds it. |
+| `loot-legendary` | `[sound] ui.toast.challenge_complete 1.0 1.4`, `[particle] TOTEM_OF_UNDYING 30 0.6` | A loot roll lands on a legendary thing, for the player who finds it. |
+| `vessel-sailed` | `[sound] entity.boat.paddle_water 1.0 0.8` | The crew of a TradeWinds vessel sets sail. The chat line comes out of messages/. %port% is the id of the port it sails for, %seconds% how long the voyage lasts. |
+| `vessel-contract-taken` | `[sound] item.book.page_turn 1.0 1.0` | The crew of a TradeWinds vessel takes a contract, delivers one, or lets one run out of time. The chat lines come out of messages/. %contract% is the contract's id, %item% and %count% what it carries, and %port% where it is delivered. A contract's own reward runs beside delivered. failed fires for every member of the vessel's island who is online. |
+| `vessel-contract-delivered` | `[sound] entity.player.levelup 0.8 1.2` |  |
+| `vessel-contract-failed` | `[sound] block.note_block.bass 1.0 0.6` |  |
+| `vessel-storm` | `[sound] entity.lightning_bolt.thunder 0.6 1.0` | A vessel at sea meets what its voyage held, as voyage-events in modules/tradewinds.conf rolls it. Each fires for every member of the vessel's island who is online, and the chat lines come out of messages/. %port% is where the voyage is bound. vessel-storm knows %seconds%, the time it lost; vessel-pirates-toll knows %toll%, what the bank paid; vessel-find and vessel-find-lost know %items%, how many items the find held. |
+| `vessel-pirates-toll` | `[sound] block.chain.break 1.0 0.8` |  |
+| `vessel-pirates-boarded` | `[sound] event.raid.horn 1.0 1.0` |  |
+| `vessel-find` | `[sound] entity.player.levelup 0.6 1.6` |  |
+| `vessel-find-lost` | `[sound] entity.generic.splash 1.0 1.0` |  |
+| `vessel-customs-seized` | `[sound] block.iron_door.close 1.0 0.7` | Customs board a vessel arriving at a lawful port, as modules/tradewinds.conf says. seized fires when they took contraband, with %items%, how many items, and %standing%, the standing it cost; cleared fires for a clean hold. Each fires for every member online, with %port%. |
+| `vessel-customs-cleared` | `[sound] block.note_block.chime 0.8 1.2` |  |
+| `vessel-plunder` | `[sound] entity.pillager.celebrate 1.0 1.0` | A crew plunders another vessel at sea, while piracy in modules/tradewinds.conf is on. vessel-plunder fires for the raiders' crew online, vessel-plundered for the crew robbed. %items% is how many items changed holds. |
+| `vessel-plundered` | `[sound] entity.pillager.ambient 1.0 0.8` |  |
+| `upside-down-mirrored` | `[sound] block.sculk.spread 0.4 0.6` | Land is mirrored into the Upside Down the first time its chunk is made, for every player in the Upside Down standing near it. %chunk_x% and %chunk_z% are the chunk's. |
+| `island-fly-on` | `[sound] entity.phantom.flap 0.8 1.4` | A member took to the air on their island with /is fly, or came down by the same command. |
+| `island-fly-off` | `[sound] entity.phantom.flap 0.8 0.8` |  |
+| `island-fly-lost` | `[sound] block.note_block.bass 1.0 0.6` | A flying member left the ground where they may fly, and was set down. |
