@@ -1,0 +1,103 @@
+---
+title: levels.conf
+order: 629
+description: "Island worth and level: block values and the level curve."
+icon: trending-up
+---
+
+Island worth and level: what each block an island holds adds, and how points become levels.
+
+The file is `plugins/uxmSkyblock/modules/levels.conf`. Every default below is the shipped value.
+
+| Key | Default | What it does |
+|---|---|---|
+| `points-per-level` | `100` | How many points make one island level. |
+| `bank-minor-units-per-point` | `10000` | How much money in the island bank makes one point, in hundredths: 10000 is 100.00. |
+| `default-spawner-weight` | `25` | The points a spawner adds when its creature is not listed under spawners below. |
+| `quest-weight` | `50` | The points each island mission finished once adds. |
+| `leaderboard-freshness` | `60s` | How long a leaderboard is answered from memory before it is built again. Building one is a sort across every island, and /is top and the web endpoint can both be asked for it as fast as anybody cares to. Shorten it and the board catches up sooner at the cost of more sorts; write 0 and it is built every time. |
+| `leaderboard-rebuild-interval` | `5m` | How often every board is built again in the background, so the first player to ask after a restart is not the one who pays for the sort. The announcement to Discord, if a webhook is set for it, goes out from here and only when the leading island has actually changed. |
+| `recalculation-cooldown` | `60s` | How long an island waits between two /is level recalculate runs. A rescan reads every block the island covers at every height, so a player who could send it as fast as they type could keep their whole region busy. Only one rescan of an island runs at a time whatever this says. Write 0 to drop the wait. |
+| `damping-factor` | `0.85` | The share of each block's price under prices below that counts towards island worth, above 0 and up to 1. |
+
+## `blocks`
+
+The points each block adds. A block not listed adds none.
+
+| Key | Default | What it does |
+|---|---|---|
+| `minecraft:diamond_block` | `900` |  |
+| `minecraft:emerald_block` | `1200` |  |
+| `minecraft:iron_block` | `90` |  |
+| `minecraft:gold_block` | `450` |  |
+| `minecraft:netherite_block` | `15000` |  |
+| `minecraft:beacon` | `5000` |  |
+| `minecraft:crying_obsidian` | `250` |  |
+| `minecraft:ancient_debris` | `2500` |  |
+| `minecraft:amethyst_block` | `30` |  |
+| `minecraft:copper_block` | `20` |  |
+| `minecraft:lapis_block` | `100` |  |
+| `minecraft:redstone_block` | `50` |  |
+| `minecraft:obsidian` | `15` |  |
+| `minecraft:sea_lantern` | `25` |  |
+| `minecraft:glowstone` | `15` |  |
+| `minecraft:prismarine` | `10` |  |
+| `minecraft:dark_prismarine` | `20` |  |
+| `minecraft:shulker_box` | `150` |  |
+| `minecraft:ender_chest` | `100` |  |
+| `minecraft:enchanting_table` | `150` |  |
+| `minecraft:anvil` | `100` |  |
+| `minecraft:respawn_anchor` | `500` |  |
+| `minecraft:lodestone` | `1000` |  |
+
+## `prices`
+
+What each block is worth, in hundredths: 90000 is 900.00. The island worth adds these up.
+
+| Key | Default | What it does |
+|---|---|---|
+| `minecraft:diamond_block` | `90000` |  |
+| `minecraft:emerald_block` | `120000` |  |
+| `minecraft:iron_block` | `9000` |  |
+| `minecraft:gold_block` | `45000` |  |
+| `minecraft:netherite_block` | `1500000` |  |
+| `minecraft:beacon` | `500000` |  |
+| `minecraft:crying_obsidian` | `25000` |  |
+| `minecraft:ancient_debris` | `250000` |  |
+| `minecraft:amethyst_block` | `3000` |  |
+| `minecraft:copper_block` | `2000` |  |
+| `minecraft:lapis_block` | `10000` |  |
+| `minecraft:redstone_block` | `5000` |  |
+| `minecraft:obsidian` | `1500` |  |
+| `minecraft:sea_lantern` | `2500` |  |
+| `minecraft:glowstone` | `1500` |  |
+| `minecraft:prismarine` | `1000` |  |
+| `minecraft:dark_prismarine` | `2000` |  |
+| `minecraft:shulker_box` | `15000` |  |
+| `minecraft:ender_chest` | `10000` |  |
+| `minecraft:enchanting_table` | `15000` |  |
+| `minecraft:anvil` | `10000` |  |
+| `minecraft:respawn_anchor` | `50000` |  |
+| `minecraft:lodestone` | `100000` |  |
+
+## `spawners`
+
+Custom mob spawner point valuations mapped by entity identifier
+
+| Key | Default | What it does |
+|---|---|---|
+| `minecraft:iron_golem` | `5000` |  |
+| `minecraft:blaze` | `1000` |  |
+| `minecraft:enderman` | `1500` |  |
+| `minecraft:witch` | `1200` |  |
+| `minecraft:creeper` | `400` |  |
+| `minecraft:skeleton` | `250` |  |
+| `minecraft:zombie` | `200` |  |
+| `minecraft:spider` | `150` |  |
+| `minecraft:cave_spider` | `175` |  |
+| `minecraft:slime` | `300` |  |
+| `minecraft:magma_cube` | `350` |  |
+| `minecraft:cow` | `50` |  |
+| `minecraft:pig` | `50` |  |
+| `minecraft:sheep` | `50` |  |
+| `minecraft:chicken` | `50` |  |

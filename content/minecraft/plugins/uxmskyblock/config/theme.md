@@ -1,0 +1,116 @@
+---
+title: theme.conf
+order: 605
+description: The colours, glyphs and small capitals every UXM plugin shares.
+icon: palette
+---
+
+The look of this server: the colours, the glyphs, and the writing of the interface.
+
+It has three layers, and only the middle one is shared with the files that write text.
+
+```text
+palette   the colours of this server, under whatever names this server likes
+roles     the jobs a colour does. A message file names a job and never a colour
+wheel     the colours decoration is taken from, in order
+```
+
+Every plugin of ours reads this one file. A plugin's own theme.conf, in its own folder, is read on top of it key by key, for the server that wants one plugin to differ. A key left out anywhere keeps the shipped value, so three lines is a valid file.
+
+The file is `plugins/uxmSkyblock/theme.conf`. Every default below is the shipped value.
+
+## `palette`
+
+The colours, under our own names: the smooth pastel rainbow, seven colours of the same softness on the neutrals a tooltip is drawn in. Nothing outside this file speaks these names, so rename one, delete one or add ten and no message anybody wrote breaks.
+
+| Key | Default | What it does |
+|---|---|---|
+| `rose` | `#FF6B8B` | The rainbow, in wheel order. |
+| `peach` | `#FFA07A` |  |
+| `butter` | `#FFE66D` |  |
+| `mint` | `#4ECCA3` |  |
+| `sky` | `#48CAE4` |  |
+| `corn` | `#6C8DFB` |  |
+| `lilac` | `#B388FF` |  |
+| `white` | `#FFFFFF` | The neutrals, lightest to darkest. |
+| `mist` | `#DDE8F0` |  |
+| `steel` | `#9AA5BE` |  |
+| `stone` | `#8A93A1` |  |
+| `slate` | `#6B7886` |  |
+| `ash` | `#565F6B` |  |
+| `cyan` | `#4FD6E8` | One cool note that is not the brand, for a line that states a fact. |
+
+## `roles`
+
+The jobs. A message writes `<accent>`, `<value>` or `<good>`, and this block says which colour that is. The value on the right is a palette name or a hex code. The list is open: write a job of your own here and your own files may use it as a tag.
+
+| Key | Default | What it does |
+|---|---|---|
+| `accent` | `sky` | The brand. It carries the prefix of a message, a header, and the accent of a menu. Sky is the coolest of the seven, so a prefix recedes and the words after it read first. |
+| `body` | `white` | The reading colours. Body is the text of a message, subtext a description in a menu, muted a counter or a date, dim a separator or something that cannot be used. |
+| `subtext` | `mist` |  |
+| `muted` | `steel` |  |
+| `dim` | `slate` |  |
+| `icon` | `stone` | The furniture of a menu: the glyph at the start of a line, and the category line under a title. |
+| `crumb` | `ash` |  |
+| `value` | `butter` | A name, a number, a duration, an amount of anything that is not money. A value is the thing a player came to read, so it is the one warm colour in every line of every screen. |
+| `good` | `mint` | The three reflexes. Mint is positive, rose is negative, peach wants attention. Peach rather than butter for a warning: a warning that reads in the colour of a value is a warning nobody sees. |
+| `bad` | `rose` |  |
+| `warn` | `peach` |  |
+| `money` | `butter` | Money and the word "click" are the same butter as a value. A level is lilac, with a rank, because a level is a rank you earned. Separate jobs so one can move without the others. |
+| `level` | `lilac` |  |
+| `cta` | `butter` |  |
+| `info` | `cyan` | A neutral note, a rank, and an event or a bonus. |
+| `rank` | `lilac` |  |
+| `event` | `corn` |  |
+| `wheel` | `rose`, `peach`, `butter`, `mint`, `sky`, `corn`, `lilac` | The wheel: the colours decoration takes, in order. A menu asks for the arc at a position and gets that colour and the next one, so a screen of twelve tiles reads as twelve headings and no layout file names a colour. The wheel wraps, so a menu longer than the wheel keeps working. Take a colour out and every screen follows. |
+
+## `gradients`
+
+Named gradients. A heading painted across two colours is what makes it read as finished rather than merely coloured. One stop is a flat colour, which is how you switch a gradient off without deleting the key.
+
+"header" is the one name the library asks for. It paints a `<h:'TITLE'>` token: the header of a lore block, a chat heading, and a tile title that names nothing else. It ships as one flat colour, the warm butter of a value. Write two or more stops for a heading that sweeps.
+
+| Key | Default | What it does |
+|---|---|---|
+| `header` | `butter` |  |
+
+## `glyphs`
+
+The glyphs the structure is drawn with. They are furniture rather than words, which is why they live here and not in a language file: changing one changes every plugin at once, and a translator never has to copy a character they cannot type.
+
+| Key | Default | What it does |
+|---|---|---|
+| `separator` | `"▶"   # between a message's category word and the sentence` |  |
+| `title` | `"◆"   # the first line of a menu tile` |  |
+| `description` | `"✎"   # the description header of a tile` |  |
+| `details` | `"≡"   # the details header of a tile` |  |
+| `row` | `"•"   # one fact under the details header` |  |
+| `status` | `"•"   # one state under the details header` |  |
+| `action` | `"→"   # the line that says what a click does` |  |
+
+## `prefix.categories`
+
+The colour of a category. The name on the left is the word in the message file, the value on the right is a role from the block above. A category that is not named here reads in the accent colour.
+
+| Key | Default | What it does |
+|---|---|---|
+| `error` | `bad` |  |
+| `money` | `good` |  |
+| `shop` | `good` |  |
+| `event` | `event` |  |
+
+## `small-caps`
+
+Small capitals are the writing of the interface: ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ.
+
+They exist for the twenty-six Latin letters only. Any other letter keeps its own shape, and a capital among them is written in lower case so that it stands at the height of the rest: Turkish keeps ç, ğ, ı, ö, ş and ü. A language whose writing is not Latin has nothing to convert.
+
+| Key | Default | What it does |
+|---|---|---|
+| `en` | `true` |  |
+| `tr` | `true` |  |
+| `de` | `true` |  |
+| `es` | `true` |  |
+| `fr` | `true` |  |
+| `pt` | `true` |  |

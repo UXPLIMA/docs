@@ -1,0 +1,311 @@
+---
+title: presets.conf
+order: 638
+description: The islands a player may start, and what each starts with.
+icon: layout-template
+---
+
+Starter Presets.
+
+This file is the list of islands a player may start with. Add a block here and the choice appears in /is create and in its suggestions.
+
+display-name and description are catalogue keys. A key beginning with @ is looked up in the language files, so every language answers it in its own words. Write a key here, and the sentence in messages_en.conf, messages_tr.conf and every other language file you ship.
+
+schematic is a path under the plugin's data folder: the Sponge schematic that "uxm:platform" pastes, its centre on the block players arrive standing on. The plugin writes the platform it ships to that path on its first start, so the file is there to change, with WorldEdit, FAWE or /is schematic save, and none of them needs to be installed for the island to paste. Without the file the shipped platform is laid. biome is one of the IslandBiome values, and an unknown one falls back to PLAINS.
+
+mode is the game mode the island plays: one of the modes listed under modes below. An unknown one is skyblock.
+
+start lists what builds the island, in order. "uxm:platform" lays the starter platform and is what a preset without a start list gets. "uxm:oneblock" sets a OneBlock island's single block, and exists while modules/oneblock.conf is enabled. "uxm:chunkblock" starts a ChunkBlock island's territory as the one chunk its centre stands in, and exists while modules/chunkblock.conf is enabled. "uxm:acid-sea" lays the acid sea around an AcidIsland island, and exists while modules/acidisland.conf is enabled. "uxm:cavern" encloses a CaveBlock island in rock with its cave carved out, and exists while modules/caveblock.conf is enabled. "uxm:skygrid" makes the island a sparse grid of blocks, and exists while modules/skygrid.conf is enabled. "uxm:boxed" makes the island a Boxed island, its box grown by advancements, and exists while modules/boxed.conf is enabled. "uxm:ocean" lays the ocean a Poseidon island lies at the bottom of, and exists while modules/poseidon.conf is enabled. "uxm:shipwreck", "uxm:ruin" and "uxm:ruins" lay the wrecks and ruins modules/poseidon.conf names, each while it is enabled. "uxm:upside-down" makes the island a StrangerRealms island and mirrors its land into the Upside Down, and exists while modules/strangerrealms.conf is enabled. "uxm:course" makes the island a Parkour course with its start plate, and exists while modules/parkour.conf is enabled. "uxm:vessel" makes the island a TradeWinds vessel on a sea of its own, and exists while modules/tradewinds.conf is enabled. A preset whose start names an action this server does not provide is not offered.
+
+world is the world the preset's islands are made in. Leave it out and they are made in the server's island world, the one config.conf names. A mode played on land of its own names a world the server makes the usual way. Each such world is an island world: its islands are protected, kept alive and scanned there.
+
+dimensions says how the island starts in every other dimension, by dimension id: the_nether, the_end, or one a server adds such as myserver:mining_realm. Each names its own start list and the height players arrive standing on. A preset without a dimensions block lays a platform at height 64 in the Nether and the End. One with it builds only in the dimensions it names.
+
+```text
+dimensions {
+  the_nether { start = ["uxm:dimension-platform"], height = 70 }
+}
+```
+
+icon is the item the preset's tile wears in the window a player picks an island from, menus/island-create.conf. permission is a node a player needs to start the preset. Leave it out and every player may. Name any node you like and give it to whom you like: the tile of a preset a player may not start says it is locked. order is where its tile stands in that window, the lowest first. A preset that names none stands after every one that does.
+
+The file is `plugins/uxmSkyblock/modules/presets.conf`. Every default below is the shipped value.
+
+## `presets`
+
+| Key | Default | What it does |
+|---|---|---|
+| `modes` | `skyblock` | The game modes this server offers. Only the kinds of these modes are shown in the window and made by /is create, so a classic server shows its skyblock islands and nothing else. A OneBlock server writes ["oneblock"], and a server that plays several writes each: ["skyblock", "oneblock", "chunkblock"]. "all" offers every mode. A mode left out still runs for the islands that play it already, so taking one away strands nobody. The words are the mode values the entries below name: skyblock, oneblock, chunkblock, acid_island, caveblock, skygrid, boxed, poseidon, stranger_realms, parkour, brix and tradewinds. When one kind is left to offer, /is makes it at once with no window. |
+| `default` | `classic` | The preset a player who names none gets. One of a mode the line above leaves out gives way to the first kind it offers. |
+| `when-no-island` | `menu` | What /is does for a player who has no island yet. "menu" opens the window of presets, menus/island-create.conf. "create" makes the default preset at once. "help" lists the commands. |
+| `create-without-type` | `menu` | What /is create does when no preset is written after it. "menu" opens the window of presets, "default" makes the default preset at once. |
+
+## `presets.preview`
+
+A look at a kind before choosing it. A right click on a kind in the window, or Preview in a Bedrock player's form, shows its start island from above as a spectator for time, then puts the player back where they stood, as they were. Each kind's start island stands in a showroom of its own: the first at x and z, the next spacing blocks further along x, laid at height y, in world, the server's island world when left blank. Pick a corner no island reaches. A spectator who drifts radius blocks from the middle is put back over it, and cannot leave for another player. cooldown is the wait between two looks. A player hurt within calm, falling or on fire cannot look, so a look is no way out of a fight or a fall.
+
+| Key | Default | What it does |
+|---|---|---|
+| `enabled` | `true` |  |
+| `time` | `20s` |  |
+| `radius` | `48` |  |
+| `cooldown` | `30s` |  |
+| `calm` | `10s` |  |
+| `world` | empty |  |
+| `x` | `-1000000` |  |
+| `z` | `-1000000` |  |
+| `y` | `100` |  |
+| `spacing` | `1024` |  |
+
+## `presets.paste`
+
+How a schematic is put down: a preset's island, a dimension's platform and /is schematic paste alike. A paste works each chunk on the thread that owns it, blocks-per-tick positions a tick, chunks-at-once chunks at a time, so a large island spreads over ticks rather than stopping one. paste-air false leaves standing whatever the schematic's air would clear. entities and biomes say whether those saved in the file are carried.
+
+| Key | Default | What it does |
+|---|---|---|
+| `blocks-per-tick` | `2048` |  |
+| `chunks-at-once` | `4` |  |
+| `paste-air` | `false` |  |
+| `entities` | `true` |  |
+| `biomes` | `true` |  |
+| `presets.entries.classic.display-name` | `@presets.classic.name` |  |
+| `presets.entries.classic.description` | `@presets.classic.description` |  |
+| `presets.entries.classic.icon` | `OAK_SAPLING` |  |
+| `presets.entries.classic.order` | `10` |  |
+| `presets.entries.classic.schematic` | `schematics/classic.schem` |  |
+| `presets.entries.classic.biome` | `PLAINS` |  |
+| `presets.entries.desert.display-name` | `@presets.desert.name` |  |
+| `presets.entries.desert.description` | `@presets.desert.description` |  |
+| `presets.entries.desert.icon` | `SAND` |  |
+| `presets.entries.desert.order` | `20` |  |
+| `presets.entries.desert.schematic` | `schematics/desert.schem` |  |
+| `presets.entries.desert.biome` | `DESERT` |  |
+| `presets.entries.nether.display-name` | `@presets.nether.name` |  |
+| `presets.entries.nether.description` | `@presets.nether.description` |  |
+| `presets.entries.nether.icon` | `NETHERRACK` |  |
+| `presets.entries.nether.order` | `30` |  |
+| `presets.entries.nether.schematic` | `schematics/nether.schem` |  |
+| `presets.entries.nether.biome` | `NETHER_WASTES` |  |
+| `presets.entries.cave.display-name` | `@presets.cave.name` |  |
+| `presets.entries.cave.description` | `@presets.cave.description` |  |
+| `presets.entries.cave.icon` | `DEEPSLATE` |  |
+| `presets.entries.cave.order` | `40` |  |
+| `presets.entries.cave.schematic` | `schematics/cave.schem` |  |
+| `presets.entries.cave.biome` | `PLAINS` |  |
+| `presets.entries.oneblock.display-name` | `@presets.oneblock.name` |  |
+| `presets.entries.oneblock.description` | `@presets.oneblock.description` |  |
+| `presets.entries.oneblock.icon` | `GRASS_BLOCK` |  |
+| `presets.entries.oneblock.order` | `50` |  |
+| `presets.entries.oneblock.schematic` | `schematics/oneblock.schem` |  |
+| `presets.entries.oneblock.biome` | `PLAINS` |  |
+| `presets.entries.oneblock.mode` | `oneblock` |  |
+| `presets.entries.oneblock.start` | `uxm:oneblock` |  |
+| `presets.entries.chunkblock.display-name` | `@presets.chunkblock.name` |  |
+| `presets.entries.chunkblock.description` | `@presets.chunkblock.description` |  |
+| `presets.entries.chunkblock.icon` | `MOSS_BLOCK` |  |
+| `presets.entries.chunkblock.order` | `60` |  |
+| `presets.entries.chunkblock.schematic` | `schematics/chunkblock.schem` |  |
+| `presets.entries.chunkblock.biome` | `PLAINS` |  |
+| `presets.entries.chunkblock.mode` | `chunkblock` |  |
+| `presets.entries.chunkblock.start` | `uxm:oneblock`, `uxm:chunkblock` | The magic block, then the one chunk around it. The chunks beside it open with the level. |
+
+## `presets.entries.chunkblock.dimensions`
+
+The island's Nether and End each start as one chunk on a platform, a web of their own: their chunks open the way the overworld's do, priced by the same grades, and are walled and signed apart. Take a dimension out to keep a ChunkBlock island out of it.
+
+## `presets.entries.chunkblock.dimensions.acid_island`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.acid_island.name` |  |
+| `description` | `@presets.acid_island.description` |  |
+| `icon` | `SLIME_BLOCK` |  |
+| `order` | `70` |  |
+| `schematic` | `schematics/acid_island.schem` |  |
+| `biome` | `PLAINS` |  |
+| `mode` | `acid_island` |  |
+| `start` | `uxm:platform`, `uxm:acid-sea` | The starter platform, then the acid sea around it. |
+| `presets.entries.chunkblock.dimensions.caveblock.display-name` | `@presets.caveblock.name` |  |
+| `presets.entries.chunkblock.dimensions.caveblock.description` | `@presets.caveblock.description` |  |
+| `presets.entries.chunkblock.dimensions.caveblock.icon` | `POINTED_DRIPSTONE` |  |
+| `presets.entries.chunkblock.dimensions.caveblock.order` | `80` |  |
+| `presets.entries.chunkblock.dimensions.caveblock.schematic` | `schematics/caveblock.schem` |  |
+| `presets.entries.chunkblock.dimensions.caveblock.biome` | `PLAINS` |  |
+| `presets.entries.chunkblock.dimensions.caveblock.mode` | `caveblock` |  |
+| `presets.entries.chunkblock.dimensions.caveblock.start` | `uxm:platform`, `uxm:cavern` | The starter platform, then the rock around it with the room it stands in carved out. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions`
+
+In the Nether and the End the island is enclosed in that dimension's own rock.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.boxed`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.boxed.name` |  |
+| `description` | `@presets.boxed.description` |  |
+| `icon` | `COMPOSTER` |  |
+| `order` | `90` |  |
+| `schematic` | `schematics/boxed.schem` |  |
+| `biome` | `PLAINS` |  |
+| `mode` | `boxed` |  |
+| `world` | `boxed` | Generated land, in a world the server makes the usual way. Make a world called boxed, or name the one you have. |
+| `start` | `uxm:boxed` | Nothing is built: the island is the land, inside a box advancements grow. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.boxed.dimensions`
+
+The Nether and the End stay closed to a Boxed island until a dimension is named here.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.poseidon.name` |  |
+| `description` | `@presets.poseidon.description` |  |
+| `icon` | `PRISMARINE` |  |
+| `order` | `100` |  |
+| `schematic` | `schematics/poseidon.schem` |  |
+| `biome` | `WARM_OCEAN` |  |
+| `mode` | `poseidon` |  |
+| `start` | `uxm:platform`, `uxm:ocean`, `uxm:shipwreck` | The starter platform, the ocean over it, then a shipwreck on the sea floor. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions`
+
+The Nether of a Poseidon island is flooded.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.poseidon_ruin.name` |  |
+| `description` | `@presets.poseidon_ruin.description` |  |
+| `icon` | `CRACKED_STONE_BRICKS` |  |
+| `order` | `110` |  |
+| `schematic` | `schematics/poseidon.schem` |  |
+| `biome` | `WARM_OCEAN` |  |
+| `mode` | `poseidon` |  |
+| `start` | `uxm:platform`, `uxm:ocean`, `uxm:shipwreck`, `uxm:ruin` | As poseidon, with one big ruin further out. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions`
+
+The Nether of a Poseidon island is flooded.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.poseidon_ruins.name` |  |
+| `description` | `@presets.poseidon_ruins.description` |  |
+| `icon` | `MOSSY_STONE_BRICKS` |  |
+| `order` | `120` |  |
+| `schematic` | `schematics/poseidon.schem` |  |
+| `biome` | `WARM_OCEAN` |  |
+| `mode` | `poseidon` |  |
+| `start` | `uxm:platform`, `uxm:ocean`, `uxm:shipwreck`, `uxm:ruins` | As poseidon, with a ring of small ruins further out. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions`
+
+The Nether of a Poseidon island is flooded.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.poseidon_monument.name` |  |
+| `description` | `@presets.poseidon_monument.description` |  |
+| `icon` | `PRISMARINE_BRICKS` |  |
+| `order` | `125` |  |
+| `schematic` | `schematics/poseidon.schem` |  |
+| `biome` | `DEEP_LUKEWARM_OCEAN` |  |
+| `mode` | `poseidon` |  |
+| `start` | `uxm:platform`, `uxm:ocean`, `uxm:monument`, `uxm:shipwreck` | As poseidon, standing over a sunken temple: the monument group of modules/poseidon.conf, laid from schematics/monument.schem. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions`
+
+The Nether of a Poseidon island is flooded.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.stranger_realms.name` |  |
+| `description` | `@presets.stranger_realms.description` |  |
+| `icon` | `CRYING_OBSIDIAN` |  |
+| `order` | `130` |  |
+| `schematic` | `schematics/stranger_realms.schem` |  |
+| `biome` | `PLAINS` |  |
+| `mode` | `stranger_realms` |  |
+| `world` | `realms` | A world of real land the server makes the usual way, as for Boxed. Make it, or name the one you have. |
+| `start` | `uxm:upside-down` | Nothing is built: the island is the land, and its Upside Down is mirrored from it. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions`
+
+The Upside Down takes the place of the Nether. The End is the End.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions.parkour`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.parkour.name` |  |
+| `description` | `@presets.parkour.description` |  |
+| `icon` | `LIGHT_WEIGHTED_PRESSURE_PLATE` |  |
+| `order` | `140` |  |
+| `schematic` | `schematics/parkour.schem` |  |
+| `biome` | `PLAINS` |  |
+| `mode` | `parkour` |  |
+| `start` | `uxm:platform`, `uxm:course` | The starter platform with the course's start plate at its edge. The team builds on from it. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions.parkour.dimensions`
+
+A course has no Nether and no End.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions.brix`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.brix.name` |  |
+| `description` | `@presets.brix.description` |  |
+| `icon` | `BRICKS` |  |
+| `order` | `150` |  |
+| `schematic` | `schematics/brix.schem` |  |
+| `biome` | `PLAINS` |  |
+| `mode` | `brix` |  |
+| `start` | `uxm:plot` | Flat ground from modules/brix.conf, which the team builds on in creative. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions.brix.dimensions`
+
+A plot has no Nether and no End.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions.tradewinds`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.tradewinds.name` |  |
+| `description` | `@presets.tradewinds.description` |  |
+| `icon` | `OAK_BOAT` |  |
+| `order` | `160` |  |
+| `schematic` | `schematics/tradewinds.schem` |  |
+| `biome` | `OCEAN` |  |
+| `mode` | `tradewinds` |  |
+| `start` | `uxm:vessel` | A sea of its own with the vessel on it, players arriving on its deck. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions.tradewinds.dimensions`
+
+A vessel has no Nether and no End: it sails between ports.
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions.skygrid`
+
+| Key | Default | What it does |
+|---|---|---|
+| `display-name` | `@presets.skygrid.name` |  |
+| `description` | `@presets.skygrid.description` |  |
+| `icon` | `GLASS` |  |
+| `order` | `170` |  |
+| `schematic` | `schematics/skygrid.schem` |  |
+| `biome` | `PLAINS` |  |
+| `mode` | `skygrid` |  |
+| `start` | `uxm:skygrid` | A sparse grid of blocks, with players arriving on a safe block at its centre. |
+
+## `presets.entries.chunkblock.dimensions.caveblock.dimensions.poseidon.dimensions.poseidon_ruin.dimensions.poseidon_ruins.dimensions.poseidon_monument.dimensions.stranger_realms.dimensions.skygrid.dimensions`
+
+The Nether and the End are grids of their own blocks.
