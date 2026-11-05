@@ -37,7 +37,8 @@ Both are read at startup. Without Vault installed, nothing is charged.
 | Adding time | `uxmclaims.cost.time.<price>` | `5.0` |
 
 Out of the box only chunks and time cost anything. Time is priced per second **per chunk**: adding one
-hour to a four-chunk claim at the shipped `5.0` costs 72,000. Removing time costs nothing and refunds
+hour to a four-chunk claim at the shipped `5.0` costs 72,000. With `claimSettings.timeCostMode` set to
+`PER_CLAIM` it costs 18,000 whatever the claim's size. Removing time costs nothing and refunds
 nothing.
 
 A granted price node replaces the default, so it can raise a price as well as lower it. With LuckPerms

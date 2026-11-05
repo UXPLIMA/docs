@@ -127,7 +127,7 @@ every online admin. When nobody receives it you get `errorClaimChatNoOnlineMembe
 | `uxmclaims.limit.claim.<n>` | Claims a player may own, checked on `create` and for the `transfer` target | `1` |
 | `uxmclaims.cost.claim.<level>.<price>` | Price of a new claim | `0.0` |
 | `uxmclaims.cost.rename.<price>` | Price of a rename | `0.0` |
-| `uxmclaims.cost.time.<price>` | Price of `extend`, per second and per chunk | `5.0` |
+| `uxmclaims.cost.time.<price>` | Price of `extend`, per second and per chunk (per claim with `timeCostMode: PER_CLAIM`) | `5.0` |
 | `uxmclaims.limit.time.<n>` | Most seconds a claim may have left after `extend` | `2592000` |
 | `uxmclaims.limit.ban.<n>` | Bans per claim | `25` |
 | `uxmclaims.delay.rename.<n>` | Seconds between renames | `30` |
@@ -143,7 +143,8 @@ command. See [Limits, costs and delays](../permissions/limits.md).
 
 `uxmclaims.cost.time` ships at `5.0` per second per chunk, so one extra day on a one-chunk claim costs
 432000. Set a lower `defaultValue` in [entitlements.yml](../config/entitlements-yml.md) before
-players use `/claim extend` or the time menu.
+players use `/claim extend` or the time menu, and set `claimSettings.timeCostMode` to `PER_CLAIM` if
+large claims should not pay more for their time.
 
 </Callout>
 

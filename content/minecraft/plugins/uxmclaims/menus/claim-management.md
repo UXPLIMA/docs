@@ -59,7 +59,8 @@ minute, an hour and a day, and an emerald showing the total and the cost. Click 
 
 ![The time dialog: days and hours sliders, the time left and the price per day](time-dialog.jpg)
 
-The price is `uxmclaims.cost.time` **per second, per chunk** of the claim, defaulting to `5.0`. A week
+The price is `uxmclaims.cost.time` **per second, per chunk** of the claim, defaulting to `5.0`, or per
+second only when `claimSettings.timeCostMode` is `PER_CLAIM`. A week
 on a one-chunk claim is 604 800 seconds, so at the shipped price that is three million of your
 currency. Set the cost node before you let players near the button. The total remaining time cannot
 pass the owner's `uxmclaims.limit.time` (30 days by default). With `claimSettings.expireMode` off,

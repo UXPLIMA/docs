@@ -38,7 +38,7 @@ and means none allowed for the others.
 | `uxmclaims.cost.invite.<n>.<price>` | Inviting when the claim would reach `n` members | `0.0` |
 | `uxmclaims.cost.warptp.<public\|private>.<price>` | Teleporting to a public or a private warp | `0.0` |
 | `uxmclaims.cost.rename.<price>` | Renaming a claim | `0.0` |
-| `uxmclaims.cost.time.<price>` | Extending a claim, per second per chunk | `5.0` |
+| `uxmclaims.cost.time.<price>` | Extending a claim, per second per chunk (per claim with `timeCostMode: PER_CLAIM`) | `5.0` |
 
 Costs are always read from the player who acts. Write a decimal price with an underscore,
 `uxmclaims.cost.chunk.1.12_5` for 12.5, because a dot would be read as a separator. A `*` in place of

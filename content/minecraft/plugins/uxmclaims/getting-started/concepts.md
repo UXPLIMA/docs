@@ -28,7 +28,7 @@ and no selection wands.
 | Create | `/claim` or `/claim create [name]`. The chunk must be free, outside `minDistance` of other players' claims and off any WorldGuard region. The creator pays `uxmclaims.cost.claim` and must be under `uxmclaims.limit.claim`. |
 | Claim block | Set where the creator stood, using `claimSettings.defaultBlock`, with a hologram above it. Nothing can break, blow up or push it. Right-clicking it opens the claim menu for members. `/claim block` moves, restyles or removes it. |
 | Starting state | Flags from `claimSettings.defaultFlags`, roles from [`roles.yml`](../config/roles-yml.md), and an expiry date `claimSettings.expireTime` seconds away (30 days). |
-| Time | `/claim extend <duration>` or the *Extend Time* menu adds time. It costs `uxmclaims.cost.time` per second per chunk, and the time left afterwards may not exceed `uxmclaims.limit.time` (30 days by default). |
+| Time | `/claim extend <duration>` or the *Extend Time* menu adds time. It costs `uxmclaims.cost.time` per second per chunk, or per claim with [`timeCostMode`](../config/config-yml.md) set to `PER_CLAIM`, and the time left afterwards may not exceed `uxmclaims.limit.time` (30 days by default). |
 | Expiry | With `claimSettings.expireMode: true`, a claim whose time runs out is deleted within seconds and `broadcastClaimExpired` is announced. Owners get a reminder in the last `generalSettings.reminderThresholdSeconds` (one day). |
 | Delete, transfer | Only the owner may delete the claim or hand it to a member. |
 

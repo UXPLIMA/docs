@@ -114,7 +114,8 @@ With `claimSettings.expireMode: true` (the default), a claim is deleted when its
 
 The duration accepts `d`, `h`, `m` and `s`, combined as in `1d12h30m`. The price is
 `uxmclaims.cost.time` per second per chunk: the default `5.0` makes one day on a one-chunk claim cost
-432,000, so set it to suit your economy. The time left after extending may not exceed
+432,000, so set it to suit your economy. With `claimSettings.timeCostMode: PER_CLAIM` the size of the
+claim no longer matters. The time left after extending may not exceed
 `uxmclaims.limit.time`, 30 days by default, so a brand new claim cannot be extended until some of its
 time has passed. Owners get a reminder once less than `generalSettings.reminderThresholdSeconds` (one
 day) is left.
