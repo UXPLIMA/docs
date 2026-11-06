@@ -8,9 +8,9 @@ icon: monitor
 | Switch | Screen | What a Bedrock player gets |
 |---|---|---|
 | `tab-list` | Player list | Tab shows Java's tab: header, footer, names, faces, ping and scores, laid out as on Java |
-| `java-chat` | Chat | Narrow and low on the screen as on Java, on the PC layout |
+| `java-chat` | Chat | Narrow and low on the screen as on Java, on the PC layout; lines nine units apart in Java's font, players' messages included |
 | `scoreboard` | Sidebar | Polished lines, blank and repeated lines kept; the score numbers Java does not show are hidden |
-| `scoreboard-art` | Sidebar | The title's picture, and the background made see-through |
+| `scoreboard-art` | Sidebar | Placed, spaced and darkened as Java's sidebar, for any number of lines; the title's picture |
 | `titles` | Titles, subtitles, action bar, boss bars | Polished text |
 | `name-tags` | Name tags | Gradients, faces and pictures from whatever plugin sets them |
 | `holograms` | Text displays | Polished text |

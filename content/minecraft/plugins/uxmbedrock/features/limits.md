@@ -8,6 +8,7 @@ icon: circle-alert
 | Java has | On Bedrock | What uxmBedrock does |
 |---|---|---|
 | A line through or under text | Bedrock draws no lines and leaves a unit after every letter of the pack | Lines are drawn into the letters; a run of spaces is drawn four to a letter, so a rule shows a small gap every 16 units |
+| Symbols drawn in half units (unifont: the coin, the four pointed star, most arrows) | A letter of the pack is never finer than one unit | Drawn from the pack's font at Java's size and detail, in the nearest of Bedrock's sixteen colours |
 | Space letters that move text left | Bedrock text cannot move left | HUD pictures keep their order without the left moves |
 | Custom biome colours | Geyser maps every custom biome onto a vanilla Bedrock biome | Not converted |
 | Riding and seat camera from jump and sneak | Needs Geyser's input internals | Not changed |
