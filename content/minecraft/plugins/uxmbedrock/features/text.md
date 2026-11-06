@@ -30,6 +30,13 @@ be, so these symbols are not painted: they show at Java's size with all their li
 sixteen colours. A line holding a letter the pack has no glyph for is drawn whole in Bedrock's own font, which is why
 the pack holds them all.
 
+Bedrock has no pages past the first plane, so Java's pictographs from `U+1F000` to `U+1FBFF` (the bow, the dagger,
+the shield and the other emoji Java draws) are drawn on the pages of `U+3400` to `U+3FFF`, and a Bedrock player is
+sent the moved letter. A server pack that draws them in its default font is drawn as it draws them. A rare ideograph
+of that range in a server's text shows the pictograph on Bedrock.
+
+A letter that leaves the charset gives its glyph slots back at the next build, so other colours can take them.
+
 Chat gets faces and font pictures but not exact colours: a colour there is the one of Bedrock's sixteen that looks
 most like it, so a bluish grey stays grey. Everything else a player reads gets all of them.
 
