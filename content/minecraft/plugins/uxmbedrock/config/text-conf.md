@@ -9,7 +9,7 @@ icon: palette
 
 | Key | Default | Meaning |
 |---|---|---|
-| `charset` | `""` | The letters a colour sheet holds. Empty: printable ASCII with Turkish and the common European accents. At most 256; fewer letters fit more colours on a page |
+| `charset` | `""` | The letters a colour sheet holds. Empty: printable ASCII with Turkish and the common European accents, small capitals, and every symbol, Greek and Cyrillic letter Java draws from its bitmaps. Each letter takes a glyph in every colour, so fewer letters leave room for more colours |
 | `tolerance` | `6000` | How close two colours must be to share a sheet, as a squared distance in RGB. `0` gives every colour its own sheet until the pages are full |
 
 ## glyph-pages

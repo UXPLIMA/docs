@@ -17,11 +17,28 @@ icon: type
 ## Colour sheets
 
 A sheet holds the letters of `exact-colours.charset` in [text.conf](../config/text-conf.md): printable ASCII with the
-Turkish and common European accents when the line is empty. A letter outside the set keeps its colour, which Geyser
-draws in the nearest of Bedrock's sixteen. Colours closer than `exact-colours.tolerance` share one sheet, so a long
-gradient uses few sheets and keeps its shape.
+Turkish and common European accents, small capitals, and every symbol, Greek and Cyrillic letter Java draws from its
+bitmaps (dots, quotes, arrows, stars, hearts, swords, blocks) when the line is empty. A letter outside the set keeps
+its colour, which Geyser draws in the nearest of Bedrock's sixteen. Colours closer than `exact-colours.tolerance`
+share one sheet, so a long gradient uses few sheets and keeps its shape.
 
-Chat gets faces and font pictures but not exact colours. Everything else a player reads gets all of them.
+## Java's symbols
+
+With `java-font` on, the pack holds every letter of Java's font, the symbols Java draws from unifont included (the
+coin, the four pointed star, most arrows and dingbats). Unifont draws in half units, finer than a sheet's letter can
+be, so these symbols are not painted: they show at Java's size with all their lines, in the nearest of Bedrock's
+sixteen colours. A line holding a letter the pack has no glyph for is drawn whole in Bedrock's own font, which is why
+the pack holds them all.
+
+Bedrock has no pages past the first plane, so Java's pictographs from `U+1F000` to `U+1FBFF` (the bow, the dagger,
+the shield and the other emoji Java draws) are drawn on the pages of `U+3400` to `U+3FFF`, and a Bedrock player is
+sent the moved letter. A server pack that draws them in its default font is drawn as it draws them. A rare ideograph
+of that range in a server's text shows the pictograph on Bedrock.
+
+A letter that leaves the charset gives its glyph slots back at the next build, so other colours can take them.
+
+Chat gets faces and font pictures but not exact colours: a colour there is the one of Bedrock's sixteen that looks
+most like it, so a bluish grey stays grey. Everything else a player reads gets all of them.
 
 ## Click words
 
