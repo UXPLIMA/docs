@@ -1,25 +1,28 @@
 ---
 title: The database
 order: 405
-description: SQLite or MySQL, what is stored, and moving from one to the other.
+description: SQLite, MySQL, MariaDB or PostgreSQL, what is stored, several servers on one database, and moving from SQLite.
 icon: database
 ---
 
 Profiles, builder levels, jobs, warehouses, trust and the audit trail are stored in a database. SQLite
-works with no setup; MySQL is for networks or large servers.
+works with no setup; MySQL 8+, MariaDB and PostgreSQL 13+ are for networks or large servers. The drivers
+are downloaded on the first start, into `libs/`.
 
 ## Settings
 
 | Key | Default | Meaning |
 |---|---|---|
-| `database.type` | `AUTO` | `SQLITE`, `MYSQL`, or `AUTO` to decide from the URL |
+| `database.type` | `AUTO` | `SQLITE`, `MYSQL`, `POSTGRES`, or `AUTO` to decide from the URL |
 | `database.url` | `jdbc:sqlite:./plugins/uxmBuilders/data/uxmbuilders.db` | The JDBC URL |
-| `database.username`, `password` | `root`, empty | MySQL only |
-| `database.poolSize` | `8` | MySQL connections |
-| `database.saveIntervalSeconds` | `300` | How often running builds and warehouses are written |
+| `database.username`, `password` | `root`, empty | Not used by SQLite |
+| `database.poolSize` | `8` | Connections in the pool, at least 2; not used by SQLite |
+| `database.saveIntervalSeconds` | `300` | How often running builds are checkpointed |
 | `database.crashRecovery` | `true` | Ask owners about unfinished builds after a restart |
+| `database.serverId` | `default` | This server's name in a database shared with others |
 
-For MySQL:
+<Tabs>
+<Tab label="MySQL or MariaDB">
 
 ```yaml
 database:
@@ -29,40 +32,76 @@ database:
   password: 'change_me_please'
 ```
 
-MariaDB servers work through a `jdbc:mysql://` URL. A `jdbc:mariadb://` URL is refused with a message
-saying so, because the server ships the MySQL driver only.
+A `jdbc:mariadb://` URL works too: it is handed to the MySQL driver as `jdbc:mysql://`.
+
+</Tab>
+<Tab label="PostgreSQL">
+
+```yaml
+database:
+  type: 'AUTO'
+  url: 'jdbc:postgresql://localhost:5432/uxmbuilders'
+  username: 'uxmbuilders'
+  password: 'change_me_please'
+```
+
+</Tab>
+</Tabs>
+
+With SQLite, a URL that is empty or not a `jdbc:sqlite:` URL falls back to `data/uxmbuilders.db`. The
+file's folder is created if it is missing.
 
 ## What is stored
 
 | Table | Holds |
 |---|---|
-| `ub_players` | Selected builder, total builds and blocks |
-| `ub_player_builders` | Owned builders and their levels |
-| `ub_jobs` | Every build: position, rotation, order, progress, price, refund, reason, boost |
-| `ub_warehouse` | Material balances |
-| `ub_trusted` | Who trusts whom |
-| `ub_audit` | Purchases, starts, cancels, refunds, boosts and trust changes, when `logging.audit` is on |
-| `ub_schema_version` | The schema version; upgrades are applied in order at startup |
+| `uxmbuilders_players` | Selected builder, total builds and blocks |
+| `uxmbuilders_player_builders` | Owned builders and their levels |
+| `uxmbuilders_jobs` | Every build: server, position, rotation, order, progress, price, refund, reason, pause reason, boost |
+| `uxmbuilders_warehouse` | Material balances |
+| `uxmbuilders_trust` | Who trusts whom |
+| `uxmbuilders_audit` | Purchases, starts, cancels, refunds, boosts, trust and admin changes, when `logging.audit` is on |
+| `uxmbuilders_schema_migrations` | The schema version; upgrades are applied in order at startup |
 
-Writes from the build loop go through one background writer in order, so a slow disk never stalls a
-tick. State changes (complete, cancel) are written before money moves, so a crash between the two never
-refunds twice.
+The `uxmbuilders_` prefix keeps the tables apart from other plugins', so uxmBuilders can share a database
+with uxmClaims. Tables a 1.0.0 server left behind (`ub_*`) are not read; see
+[Upgrading from 1.0.0](../getting-started/upgrading.md).
 
-## Moving from SQLite to MySQL
+Checkpoints go through one background writer in order, so a slow disk never stalls a tick. The end of a
+build is written before money moves or the build is counted: a refund is paid only once the cancelled
+build is stored, so a crash between the two never refunds twice. If the database refuses that write,
+nothing is paid, the owner is told the refund failed, and the build comes back after the next restart.
+
+## Several servers on one database
+
+Point every server at the same MySQL or PostgreSQL database and give each its own `database.serverId`.
+A server brings back after a restart only the builds it started itself, so two servers never resume the
+same build.
+
+| Shared | Note |
+|---|---|
+| Crews and warehouses | Stored by player and read when the player joins a server. A crew is written as it changes, a warehouse every 30 seconds and when its owner leaves |
+| Build history | Lists a player's builds from every server |
+| Trust lists | Read once at startup: a change made on another server is seen after a restart |
+
+## Moving from SQLite to MySQL or PostgreSQL
 
 1. Stop the server and keep a copy of `data/uxmbuilders.db`.
-2. Point `database.url` at MySQL and start the server. The plugin creates the schema there.
-3. Run `/builders admin migrate sqlite-to-mysql`.
+2. Point `database.url` at MySQL or PostgreSQL and start the server. The plugin creates its tables
+   there.
+3. With nobody online, run `/builders admin migrate sqlite-to-mysql` from the console.
 
-It copies the old SQLite file into the live MySQL database. Rows already in MySQL, such as profiles of
-players who joined since the switch, are kept. It refuses to run if MySQL already holds builds, and it
-leaves the SQLite file untouched.
+It copies the SQLite file into the live database in one transaction: all of it, or nothing. It refuses
+to run while SQLite is still the live database, when `data/uxmbuilders.db` is missing, while players are
+online (an online player's crew is held in memory and would be written back over the copy), and when the
+target already holds builds, warehouse stock, trust or audit rows. Player and builder rows written by
+players who only joined are replaced. The SQLite file is left untouched as a backup.
 
 ## Notes
 
-- MySQL servers that require primary keys on every table, the default on several managed hosts, are
-  supported.
-- `data/` also holds `license.cache`, `instance.id` and `pending-returns.yml`. Delete none of them while
-  the server runs.
+- `data/` also holds `metadata.yml`, `license.cache`, `instance.id` and `pending-returns.yml`. Delete
+  none of them while the server runs.
+- Every table has a primary key, so MySQL servers that require one, the default on several managed
+  hosts, are supported.
 
 Related: [Restarts and refunds](../features/recovery.md), [config.yml](config-yml.md)
