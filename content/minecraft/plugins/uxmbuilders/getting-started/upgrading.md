@@ -28,7 +28,7 @@ the new files.
 |---|---|
 | Your `.schem` files | Sponge schematics, versions 1 to 3, are read by the plugin itself. MCEdit `.schematic` files are not read. A file name may hold letters, digits, `_`, `.` and `-`, up to 64 characters, with no sub-folders |
 | Package and builder entries | `packages.yml` and `builders.yml` use the same keys as 1.0.0, so entries can be copied across into the new files by hand |
-| Permission nodes | The same names; `uxmbuilders.admin.wand` and `uxmbuilders.warehouse.pages.<n>` are new |
+| Permission nodes | The same names; `uxmbuilders.admin.wand` is new |
 | Blueprints players hold | They carry the same item data, so they place the package of the same id once it exists again |
 | The license key | Goes into the new `config.yml` |
 
