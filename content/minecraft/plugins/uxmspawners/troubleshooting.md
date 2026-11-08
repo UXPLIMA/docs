@@ -1,74 +1,80 @@
 ---
 title: Troubleshooting
-order: 180
-description: What to check when the plugin does not start, a spawner produces nothing, storage stays empty or breaking goes wrong.
+order: 80
+description: What to check when the plugin does not start, a spawner produces nothing, storage stays empty, selling or breaking goes wrong.
 icon: life-buoy
 ---
 
-Start with the console and `logs/errors.txt` in the plugin folder: the plugin writes most problems to
-one or both.
+Start with the console, and for a single spawner with `/usp debug` while you look at it: it says who
+owns the spawner, what it produces, when it last ran and why it waits. Problems with single spawners
+are also written to the files in `logs/`.
 
 ## The plugin does not start
 
 | Console says | Fix |
 |---|---|
 | `License key is not set` | Set `license-key` in `config.yml`. No key yet: open a ticket in the UXPLIMA Discord |
-| `License validation failed` | The key is wrong or not valid for this server. Ask UXPLIMA |
+| `License validation failed` | The key is wrong, not valid for this server, or UXPLIMA could not be reached |
+| `Failed to load the runtime libraries` | The server could not download them from Maven Central. Allow it internet access for the first start |
 | `Vault or an economy plugin could not be found` | Install Vault and an economy plugin |
-| `NBT-API could not be found` | Install NBTAPI |
-| An error about permissions while enabling | Vault has no permission plugin behind it. Install LuckPerms or another one |
+| `... is not compatible with this version of uxmSpawners` | Update the plugin it names, or uxmSpawners |
+| `Failed to load configuration` | A file has an error. The same line names the file and the problem |
+| `v5.0.0 migration failed, refusing to start` | See [Upgrading to 5.0.0](getting-started/upgrading.md#the-update). Your 4.2.0 files and database were put back |
 
 ## A spawner produces nothing
 
 | Cause | Fix |
 |---|---|
 | Nobody is within `range` | A player has to be close, or a WildLoaders chunk loader has to be in the chunk |
-| The type has no `range` | Add `range` to that type in `config.yml`; without it the range is 0 |
 | The chunk is not loaded | Spawners only run in loaded chunks |
-| A `SPAWN_TIME` boost with `amount: 0` | It stops the spawner until it ends |
-| Real mobs appear instead of loot | Auto-kill is off on that spawner. Turn it on from its menu, with `uxmspawners.autokill` |
+| It is stopped | The owner starts it again with the button in the bottom right of its menu |
+| It has `max-living-mobs` alive | Kill its mobs, or turn Auto Kill on |
+| Real mobs appear instead of loot | Auto Kill is off on that spawner. Turn it on from its menu, with `uxmspawners.autokill` |
 
 ## Storage stays empty or stops growing
 
 | Cause | Fix |
 |---|---|
-| The storage is full | The limit is per item type. Raise it, or sell |
-| No XP is stored on a new spawner | Its owner has not opened it yet. Open it once |
-| Virtual storage is off | Items fall on the ground around it. Switch it in the settings menu |
+| The storage is full | The limit is per item type. Raise it, give a rank, or sell |
+| Virtual Storage is off | Items fall on the ground around it. Switch it in the Settings menu |
 | `disable-xp-drops: true` | No XP at all, by design |
-| A RoseStacker stack counts as one mob | Set `trigger-death-event-for-entire-stack-kill: true` in RoseStacker |
-| The limit did not go up after a rank | Limits are worked out when the owner opens the menu. Open it again |
+| A rank did not raise the limit | Limits follow the owner's permissions when they open the spawner or join. Ranks count only when given, not for being op |
+| Mobs a player kills drop their normal loot | `loot-table-only-auto-kill: true` applies loot tables only to Auto Kill |
 
-## The menu
-
-| Problem | Cause and fix |
-|---|---|
-| Right-click does nothing | You are not the owner or a friend, or `open-gui-on-click` is `false` |
-| Level Up finds nothing | The spawners in the inventory differ from the placed one, often because its name or lore was changed in the config after they were given out |
-| Level Up refuses | A spawner is in the off hand or an armour slot |
-| Selling pays less than expected | Items without a price count as 0, and are thrown away with the rest. See [Prices](config/prices.md) |
-| The chat swallows a message | The player pressed **Add Friend** and the next message is read as a name. Type `cancel` |
-
-## Breaking
+## The menu and selling
 
 | Problem | Cause and fix |
 |---|---|
-| Refused without a message | `break-management` wants the pickaxe. The mode names are misleading; see the table on [Breaking Rules](features/breaking.md#requiring-a-tool) |
-| `Silk touch is required` | The mode wants a Silk Touch tool for this spawner |
-| The spawner vanished | `block: false` without the right tool, or a failed drop chance roll |
-| A vanilla spawner drops as vanilla | That is the default. `support-on-break: false` turns it into a uxmSpawners spawner instead |
-| Spawners in a world cannot be placed or broken | The world is in `disabled-worlds` |
-| A spawner and its storage disappeared after an explosion | Turn on `protect-spawners-from-explosions` |
+| Right-click does nothing | You are not the owner or a friend, the claim plugin refuses you, or `open-gui-on-click` is `false`. Staff are reminded of `/usp bypass` |
+| Level Up finds nothing | The spawners in the inventory differ from the placed one, often because its name or lore was changed after they were given out |
+| Items stay after **Sell All** | They have no price. With `price-items-by: ITEM`, renamed items and the output of item spawners have none. See [Prices](config/prices.md) |
+| No **Sell All** button | The spawner type has `sell-button: false` |
+| Add Friend says the player was not found | They have never played on the server, or the name is misspelt |
+| The chat swallows a message | The owner pressed **Add Friend** and the next line is read as a name. Type `cancel` |
+| Players cannot add friends or toggle settings | They lack `uxmspawners.friends` or the toggle permissions, which are for ops until granted |
+
+## Breaking and placing
+
+| Problem | Cause and fix |
+|---|---|
+| `Empty this spawner first` | `break-with-storage: BLOCK`. Take or sell the storage, or change the setting |
+| `You need a Spawner Pickaxe` or `Silk Touch` | `break-management.mode` asks for it. See [Breaking Rules](features/breaking.md#requiring-a-tool) |
+| `This item was not made by the server` | The item fails its signature: made in creative mode, edited, or from before a lost database. See [Item Signing](features/item-signing.md) |
+| `Spawners are disabled in` a world | The world is in `world-management` |
+| `You can't place spawners here` | The claim plugin refuses it, or `disable-placement-outside-claims` is on |
+| `No luck this time` | The drop chance roll failed. See [Breaking Rules](features/breaking.md#drop-chance) |
+| A broken spawner gave a plain spawner, and its levels are gone | RoseStacker or WildStacker spawner stacking is on. See [Integrations](integrations.md#stackers) |
+| Breaking is refused for a moment after a restart | The world's spawners are still loading |
 
 ## Holograms
 
 | Problem | Fix |
 |---|---|
-| No holograms at all | Install FancyHolograms, DecentHolograms or CMI, or set `hologram.enabled: false` |
-| One spawner has none | Its hologram was switched off from its menu |
-| The storage bar is behind | It is redrawn from time to time, not on every change |
+| No holograms at all | Install PacketEvents and restart, or set `enabled: false` in `hologram.yml` |
+| One spawner has none | Its owner switched it off in the Settings menu |
+| Old hologram text above spawners after the update | It belongs to the hologram plugin 4.2.0 used. Remove those holograms there |
 
 ## Still stuck
 
 Open a ticket in the UXPLIMA Discord with the plugin and server versions, the console from startup,
-`logs/errors.txt`, and the settings you changed.
+the output of `/usp debug` on the spawner, today's file from `logs/`, and the settings you changed.
