@@ -5,11 +5,12 @@ description: Buy a blueprint, place it, and watch an NPC crew put the structure 
 icon: door-open
 ---
 
-uxmBuilders turns a WorldEdit schematic into something players buy and watch go up. A player buys a
+uxmBuilders turns a `.schem` schematic into something players buy and watch go up. A player buys a
 **blueprint** in the shop, right-clicks the ground, adjusts a live preview, and confirms. A builder NPC
 walks the site and lays the structure block by block, over minutes instead of one frame.
 
-Requires **Paper 1.21.1 to 1.21.8, or 26.2**, and **WorldEdit**. Folia is not supported.
+Runs on **Paper or Folia 1.21.1 to 1.21.8, or 26.2**, with a jar for each. WorldEdit is optional: the
+plugin reads schematics itself and has its own selection wand.
 
 ## The five ideas
 
@@ -34,21 +35,26 @@ the construction while keeping the materials economy intact.
 ## Everything in the box
 
 - Construction spread over many ticks under a shared time budget that shrinks when TPS drops
+- Paper and Folia; on Folia each build runs on the thread of its own region
 - Packet-based NPCs and previews: no server entities, no mob AI, no entity-count cost
 - A live preview that turns red, and says why, where the build is not allowed
 - Builders with levels, unlock prices, per-package speed affinity and a selectable NPC appearance
 - Site preparation: obstacles cleared and a foundation laid under the floor before the first block
-- Land protection through WorldGuard, GriefPrevention, Towny, PlotSquared and a generic fallback
+- Land protection through WorldGuard, GriefPrevention, Towny, PlotSquared, uxmClaims and a generic fallback
 - Placement rules for worlds, heights and distance from spawn
-- Crash recovery that asks the owner instead of resuming blindly
+- Crash recovery that asks the owner instead of resuming blindly; a refund is paid only once the
+  cancelled build is stored
 - Trusted players, paid speed boosts, a build history and Discord notifications
-- Eight languages, SQLite or MySQL storage, PlaceholderAPI and a developer API with events
+- A selection wand and `/builders admin save`, so new packages need no WorldEdit
+- Eight languages; SQLite, MySQL, MariaDB or PostgreSQL, and several servers on one database
+- PlaceholderAPI, update notices for staff, and a developer API with its own events
 
 ## Where to go next
 
 | You want | Page |
 |---|---|
 | Install it | [Installation](installation.md) |
+| Move a server from 1.0.0 | [Upgrading from 1.0.0](upgrading.md) |
 | Learn the vocabulary | [Concepts](concepts.md) |
 | Sell your first structure | [Your first build](first-build.md) |
 | Understand the performance model | [Building and performance](../features/building.md) |

@@ -20,8 +20,8 @@ packages:
     price: 1500
 ```
 
-Every package gets a generated permission, `uxmbuilders.package.<id>`, used when its `permission` is
-set to that node.
+Every package gets a generated permission, `uxmbuilders.package.<id>`, which grants that package on its
+own, whatever its `permission` says.
 
 ## Blueprint
 
