@@ -1,65 +1,108 @@
 ---
 title: config.yml
-order: 152
-description: The license, language, worlds, block behaviour and saving, with links to the larger sections.
+order: 52
+description: The license, language, database, worlds, the Auto Kill mode and the debug messages.
 icon: file-cog
 ---
 
-`config.yml` holds the settings the whole plugin shares, the spawner types and the prices. Changes
-apply with `/uxmspawners reload`.
+`config.yml` holds the settings the whole plugin shares. The rest is in
+[general-settings.yml](general-settings.md).
 
-## Top level
+## License and language
 
 ```yaml
 license-key: ""
+
 config:
-  version: 4.2.0
+  version: 5.0.0
   lang: en
-database:
-  type: SQLITE
 ```
 
 | Setting | Meaning |
 |---|---|
 | `license-key` | Your license key. Without a valid one the plugin does not start |
 | `config.version` | Written by the plugin to update your files when a new version is installed. Do not change it |
-| `config.lang` | `en`, `tr`, `pl`, `de` or `fr`. The language of messages, menus and mob names. See [Language and Menus](languages.md) |
-| `database.type` | `SQLITE` is the only one. Leave it |
+| `config.lang` | `en`, `tr`, `pl`, `de`, `fr`, or a language you added. See [Language and Menus](languages.md) |
 
-## Worlds and blocks
-
-| Setting | Default | Meaning |
-|---|---|---|
-| `disabled-worlds` | `[testWorld]` | Worlds where no spawner, vanilla ones included, can be placed or broken. Staff with `uxmspawners.bypassplace` can still place |
-| `open-gui-on-click` | `true` | Right-clicking a spawner opens its menu. With `false` there is no way to open it, so storage cannot be emptied |
-| `disable-xp-drops` | `false` | Spawner mobs give no XP, neither stored nor dropped |
-| `disable-vanilla-spawners-spawning` | `false` | Vanilla spawners stop spawning anything |
-| `protect-spawners-from-explosions` | `false` | Explosions leave uxmSpawners spawners alone. Off, an explosion destroys one with its storage |
-
-## Mobs
-
-| Section | Page |
-|---|---|
-| `use-modern-autokill` | [Auto-Kill](../features/auto-kill.md#modern-and-classic) |
-| `nerf-spawner-mobs`, `no-equipment` | [Auto-Kill](../features/auto-kill.md#mobs-that-do-spawn) |
-
-## Saving
+## Database
 
 ```yaml
-auto-save:
-  interval: 300
-  console-log: true
+database:
+  type: SQLITE
+  host: "localhost"
+  port: 3306
+  database: "database"
+  username: ""
+  password: ""
+  use-ssl: false
+  use-extra-flags: false
+  flush-interval-seconds: 5
 ```
 
-What spawners hold, their levels and their settings are written to `database.db` every `interval`
-seconds, and when the server stops. A crash loses at most that long. Placing a spawner is written at
-once.
+| Setting | Meaning |
+|---|---|
+| `type` | `SQLITE` keeps everything in a file in the plugin folder. `MYSQL` uses a MySQL or MariaDB server. Any other value is read as `SQLITE` |
+| `database` | With SQLite, the file name: `database` is `database.db`. With MySQL, the schema, which has to exist |
+| `host`, `port`, `username`, `password` | MySQL only |
+| `use-ssl` | MySQL only: connect over SSL |
+| `use-extra-flags` | MySQL only: two extra driver flags some hosts need. Leave it off unless the connection fails without them |
+| `flush-interval-seconds` | How often what spawners produce is written. What players do is written at once |
 
-`console-log: true` writes a line for each save. Keep it on: it is how you see that saving works,
-and a failing save shows up there first.
+The plugin keeps every spawner in memory and the database follows it. A crash loses at most
+`flush-interval-seconds` of production, never a placed spawner or a player's change. Every server
+needs a database of its own: two servers on one overwrite and delete each other's spawners.
 
-## spawners and itemPrices
+Changing the database needs a restart. Switching from SQLite to MySQL starts on an empty database:
+the plugin does not copy spawners between them. When a new version changes the tables, a SQLite file
+is copied to `backups/` first; back up a MySQL database yourself before updating.
 
-The spawner types are on [Spawner Types](spawner-types.md), the prices on [Prices](prices.md).
+## Worlds
+
+```yaml
+world-management:
+  world-list:
+    - testWorld
+  list-type: BLACKLIST
+```
+
+| `list-type` | Spawners can be placed and broken |
+|---|---|
+| `BLACKLIST` | Everywhere except the worlds in `world-list` |
+| `WHITELIST` | Only in the worlds in `world-list` |
+
+This applies to vanilla spawners too. In a disabled world, `uxmspawners.bypassplace` still places and
+`uxmspawners.bypassbreak` or bypass mode still breaks, with the owner and break rules applied.
+Spawners already in a disabled world keep producing and their menus still open. World names are
+matched exactly, case included.
+
+## Auto Kill mode
+
+```yaml
+use-modern-auto-kill:
+  enabled: true
+```
+
+Leave it on. See [Auto Kill](../features/auto-kill.md#modern-and-legacy).
+
+## Debug
+
+```yaml
+debug: false
+debug-categories:
+  - NONE
+ignore: []
+debug-targets: []
+```
+
+| Setting | Meaning |
+|---|---|
+| `debug` | Turns the debug messages on. They go to the console and to players with `uxmspawners.seedebugs` |
+| `debug-categories` | Which ones: `ALL`, or any of `PRODUCTION`, `AUTO_KILL`, `STORAGE`, `SELL`, `BREAK`, `PLACE`, `STACK`, `BOOST`, `HOLOGRAM`, `REGION`, `SAVE`, `GENERAL` |
+| `ignore` | Messages to leave out, by name, such as `PRODUCTION_CYCLE` |
+| `debug-targets` | Only these spawners, as `world,x,y,z`, and players, by UUID. Empty is all of them |
+
+Turn it on when UXPLIMA asks you to, for one category and one spawner at a time: `ALL` on a busy
+server writes thousands of lines a minute. For a single spawner, `/usp debug` is quicker. See
+[Commands](../commands.md#debug).
 
 Related: [Configuration](index.md), [Installation](../getting-started/installation.md)
