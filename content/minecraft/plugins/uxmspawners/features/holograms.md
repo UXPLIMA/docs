@@ -1,81 +1,81 @@
 ---
 title: Holograms
-order: 142
-description: The text above a spawner, what it shows, which hologram plugin draws it and how FancyHolograms displays it.
+order: 42
+description: The text above a spawner, what it shows, how it looks, and what it needs to run.
 icon: text-cursor
 ---
 
 A hologram above each spawner shows its type, level, owner and how full its storage is. uxmSpawners
-does not draw holograms itself; it uses whichever supported plugin is installed:
+draws holograms itself, as packets: nothing is saved in the world and no hologram plugin is needed.
+They need the [PacketEvents](https://modrinth.com/plugin/packetevents) plugin. Without it the plugin
+starts with a warning and holograms stay off.
 
-| Plugin | Picked |
-|---|---|
-| FancyHolograms 2 or 3 | First |
-| DecentHolograms | If FancyHolograms is not installed |
-| CMI | If neither is |
-
-`modules/hologram.yml`:
+## hologram.yml
 
 ```yaml
-hologram:
-  enabled: true
-  hologram-height: 1.5
+enabled: true
+
+see-through-blocks: false
+shadow: true
+text-opacity: 255
+background-color: "#644C4F4B"
+brightness: -1
+view-range: 1
+height: 1.5
+scale: 1, 1, 1
+translation: 0, 0, 0
+billboard: CENTER
+text-alignment: CENTER
+
+content:
+  - "<spawner> <#8A93A6>· <#FFD166>Lv. <level>"
+  - "<#7FD1FF>Owner <#FFFFFF><owner>"
+  - "<storage_bar> <#9EF0B0><storage_percentage>%"
+  - "<#FFB86B>Right-click to open"
 ```
 
-`hologram-height` is how many blocks above the spawner the text floats. With `enabled: true` and none
-of the three installed, the console warns at startup and no hologram appears; set it to `false`.
-Turning it off with a reload removes every hologram.
+| Setting | Meaning |
+|---|---|
+| `enabled` | `false` removes every hologram and hides the **Hologram** button |
+| `see-through-blocks` | Readable through walls |
+| `shadow` | Shadow under the letters |
+| `text-opacity` | `26` to `255`, `255` fully opaque |
+| `background-color` | `0` for none, `#RRGGBB`, `#AARRGGBB` with the opacity first, or an ARGB number |
+| `brightness` | `0` to `15` keeps the text that bright at night. `-1` uses the world's light |
+| `view-range` | How far players see it: `1` is 64 blocks |
+| `height` | Blocks above the spawner |
+| `scale` | Size along x, y and z, `1, 1, 1` normal |
+| `translation` | Offset in blocks along x, y and z |
+| `billboard` | `CENTER` faces the player, `HORIZONTAL` turns sideways only, `VERTICAL` up and down only, `FIXED` never turns |
+| `text-alignment` | `CENTER`, `LEFT` or `RIGHT` |
+
+Changes apply with `/usp reload`, `enabled` included. Installing PacketEvents needs a restart.
 
 ## The text
 
-The lines are in the language file, under `lang.hologram`:
-
-```yaml
-hologram:
-  - "<dark_gray>(<white>{level}x<dark_gray>) <white>{spawner}"
-  - ""
-  - "<white>Owner <gray>➡ <white>{owner}"
-  - "<white>Storage <gray>➡ <white>{storage_bar}"
-  - ""
-  - "<gray><italic>Right-click to access menu."
-```
+`content` holds the lines, in MiniMessage. They are the same for every language.
 
 | Placeholder | Shows |
 |---|---|
-| `{spawner}` | The spawner's name, as on its item |
-| `{level}` | Its level |
-| `{owner}` | The owner's name |
-| `{storage_bar}` | Ten characters coloured by how full the storage is, from `lang.storage-bar` |
+| `<spawner>` | The spawner's name, as on its item |
+| `<level>` | Its level |
+| `<owner>` | The owner's name |
+| `<storage_bar>`, `<storage_percentage>` | How full the item storage is, as a bar and in percent |
+| `<xp_storage_bar>`, `<xp_percentage>` | The same for XP |
 
-The bar counts every item type together: two types at a limit of 2000 each fill it at 4000.
-
-The hologram is redrawn when the spawner is placed, levelled up or toggled, and from time to time as
-it produces, so the bar can lag a little behind the storage.
+The item bar counts every item type together: two types at a limit of 2000 each fill it at 4000.
+Its length, character and colours are `storage-bar` in the language file.
 
 ## Per spawner
 
-The **Hologram** button in the menu turns a spawner's hologram off and on. New spawners start with
-it on. The owner and friends can press it.
+The **Hologram** button in the Settings menu turns a spawner's hologram off and on. New spawners
+start with it on. Only the owner can press it.
 
-## FancyHolograms display
+## Cost
 
-With FancyHolograms, the `fancyholograms` section shapes how the text looks:
-
-| Setting | Values |
-|---|---|
-| `background` | `transparent`, `default`, a colour name such as `black`, or `#RRGGBB` / `#AARRGGBB` |
-| `background-opacity` | `0.0` to `1.0`, or `0` to `255`. `-1` keeps the colour's own |
-| `billboard` | `center` faces the player, `horizontal` turns sideways only, `vertical` up and down only, `fixed` never turns |
-| `text-alignment` | `center`, `left` or `right` |
-| `text-shadow` | Shadow under the letters |
-| `see-through` | Readable through walls |
-| `scale` | Size along `x`, `y` and `z`, `1.0` normal |
-| `translation` | Offset in blocks along `x`, `y` and `z` |
-| `brightness` | `block` and `sky` light from 0 to 15, so the text stays bright at night. `-1` uses the world's light |
-| `shadow-radius`, `shadow-strength` | The shadow on the ground. A radius of `0.0` turns it off |
-| `visibility-distance` | Blocks from which it is visible. `-1` uses FancyHolograms' default |
-| `update-text-interval` | Ticks between text refreshes by FancyHolograms. `-1` leaves it to uxmSpawners |
-
-DecentHolograms and CMI use their own defaults for how text looks.
+A hologram is redrawn only when what it shows has changed, and only for players near enough to see
+it. Changes from production are gathered for a second before they are drawn, so the bar can lag that
+much behind the storage. A server with thousands of spawners pays for the ones players are standing
+near.
 
 Related: [Language and Menus](../config/languages.md), [Integrations](../integrations.md)

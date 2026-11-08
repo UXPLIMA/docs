@@ -1,16 +1,18 @@
 ---
 title: Features
-order: 130
-description: Storage and selling, levels, auto-kill, boosts, friends, breaking rules and holograms.
+order: 30
+description: Production, storage and selling, levels, Auto Kill, boosts, friends, breaking rules, holograms and item signing.
 icon: sparkles
 ---
 
 | Feature | File |
 |---|---|
-| [Storage & Selling](storage.md) | `modules/settings.yml`, `modules/storage_limits.yml`, `modules/multipliers.yml` |
-| [Levels](levels.md) | `modules/other.yml` |
-| [Auto-Kill](auto-kill.md) | `modules/autokill.yml`, `config.yml` |
-| [Boosts](boosts.md) | `modules/boosts.yml` |
-| [Friends](friends.md) | `modules/friends.yml` |
-| [Breaking Rules](breaking.md) | `modules/other.yml`, `config.yml` |
-| [Holograms](holograms.md) | `modules/hologram.yml` |
+| [Production](production.md) | `spawners/`, `general-settings.yml` |
+| [Storage & Selling](storage.md) | `general-settings.yml`, `prices.yml` |
+| [Levels](levels.md) | `general-settings.yml` |
+| [Auto Kill](auto-kill.md) | `general-settings.yml`, `config.yml` |
+| [Boosts](boosts.md) | `boosts.yml` |
+| [Friends](friends.md) | `general-settings.yml` |
+| [Breaking Rules](breaking.md) | `general-settings.yml`, `config.yml` |
+| [Holograms](holograms.md) | `hologram.yml` |
+| [Item Signing](item-signing.md) | `general-settings.yml` |
