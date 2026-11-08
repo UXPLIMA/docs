@@ -11,7 +11,8 @@ what it produces in its own storage instead of dropping it on the floor, can kil
 nobody has to stand next to it, and sells the result at prices you set or that your shop plugin
 already knows. Stacking identical spawners into one raises its level and multiplies its output.
 
-These pages describe uxmSpawners 4.2.0.
+These pages describe uxmSpawners 5.0.0. Coming from 4.2.0, read
+[Upgrading to 5.0.0](getting-started/upgrading.md) before you replace the jar.
 
 - [Getting Started](getting-started/)
 - [Commands](commands.md)

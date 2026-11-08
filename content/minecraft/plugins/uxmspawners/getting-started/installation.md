@@ -9,40 +9,45 @@ icon: download
 
 | Requirement | Detail |
 |---|---|
-| Server | Paper 1.21.11 or newer, or a fork of Paper |
+| Server | Paper 1.21.11 or newer, or a fork of Paper. Folia is supported |
 | Java | 21 or newer |
-| Vault | Required, with an economy plugin and a permission plugin such as LuckPerms behind it |
-| NBTAPI | Required. Spawner, boost and pickaxe items are told apart by data stored on the item |
+| Vault | Required, with an economy plugin behind it |
+| PacketEvents | Optional. Holograms need it, see [Holograms](../features/holograms.md) |
+| LuckPerms | Optional. Lets storage limits and sell multipliers follow the ranks of owners who are offline |
 | License | A uxmSpawners license key from UXPLIMA |
+| Internet on the first start | The plugin downloads its libraries from Maven Central and checks the license with UXPLIMA |
 
-Without Vault, an economy plugin or NBTAPI, the plugin turns itself off at startup and says which one
-is missing. Without a permission plugin registered in Vault it fails to start with an error.
-
-Everything else is optional. See [Integrations](../integrations.md).
+Without Vault or an economy plugin, the plugin turns itself off at startup and says so. NBTAPI and a
+hologram plugin are no longer needed. Everything else is optional; see [Integrations](../integrations.md).
 
 ## First start
 
-1. Put the jar into `plugins/`, next to Vault and NBTAPI, and start the server. It writes
-   `config.yml` and stops, because no license key is set yet.
+1. Put the jar into `plugins/`, next to Vault, and start the server. It writes its files and stops,
+   because no license key is set yet.
 2. Set `license-key` in `config.yml`. If you do not have one, open a ticket in the UXPLIMA Discord.
 3. Set `config.lang` to `en`, `tr`, `pl`, `de` or `fr`.
-4. Start the server again. The rest of the files are written now.
+4. Start the server again.
 
 ```
 plugins/uxmSpawners/
-├── config.yml          license, language, worlds, spawner types, prices
-├── modules/            one file per feature
-├── lang/               lang_en.yml and the others: messages, menus, mob names
-├── loottables/         custom drops per mob, with an example
-├── database.db         every placed spawner, written by the plugin
-└── logs/errors.txt     problems the plugin wrote down, such as a missing price
+├── config.yml            license, language, database, worlds, Auto Kill mode, debug
+├── general-settings.yml  storage, breaking, friends, Auto Kill, multipliers and the rest
+├── prices.yml            sell prices and the shop plugin to take them from
+├── boosts.yml            boost items
+├── hologram.yml          how holograms look, and their lines
+├── spawners/             one file per spawner type: default.yml, diamond.yml
+├── loottables/           custom drops per mob, with an example
+├── languages/            one folder per language: messages.yml and menus/
+├── database.db           every placed spawner, written by the plugin
+├── logs/                 a file a day about problems with single spawners
+└── backups/              copies the plugin made before updating your files
 ```
 
-<Callout type="danger" title="RoseStacker needs one setting changed">
+<Callout type="danger" title="One database per server">
 
-With RoseStacker installed, set `trigger-death-event-for-entire-stack-kill: true` in RoseStacker's
-config. Otherwise a stack killed at once counts as one mob, and spawner storage quietly receives a
-fraction of what it should. The console warns about it each time it happens.
+uxmSpawners keeps the spawners in memory and writes them to its database. Two servers on one MySQL
+database overwrite and delete each other's spawners. Give every server a database, or a schema, of
+its own.
 
 </Callout>
 
@@ -50,20 +55,23 @@ fraction of what it should. The console warns about it each time it happens.
 
 | Setting | File | Why |
 |---|---|---|
-| `disabled-worlds` | `config.yml` | Nobody can place or break a spawner there, vanilla ones included. The default lists `testWorld` |
-| `use-modern-autokill` | `config.yml` | Leave it on: auto-killed spawners make their loot directly instead of spawning and killing mobs |
-| `itemPrices` | `config.yml` | What a spawner's output sells for. See [Prices](../config/prices.md) |
-| `break-management.mode` | `modules/other.yml` | Whether a tool is needed to break spawners. See [Breaking Rules](../features/breaking.md) |
-| `vanilla-spawner-support` | `modules/other.yml` | What happens to spawners that were already in the world |
-| `storage-limit` | `modules/storage_limits.yml` | How much one spawner holds |
-| `auto-save.interval` | `config.yml` | Seconds between saves of what spawners hold. 300 is the default |
+| `world-management` | `config.yml` | Worlds where nobody can place or break a spawner, vanilla ones included. The default lists `testWorld` |
+| `use-modern-auto-kill` | `config.yml` | Leave it on: Auto Kill then makes the loot directly instead of spawning and killing mobs |
+| `default-prices`, `price-provider` | `prices.yml` | What a spawner's output sells for. See [Prices](../config/prices.md) |
+| `break-management.mode` | `general-settings.yml` | Whether a tool is needed to break spawners. See [Breaking Rules](../features/breaking.md) |
+| `vanilla-spawner-support.on-break` | `general-settings.yml` | What a natural spawner drops when broken. A uxmSpawners spawner by default |
+| `break-with-storage` | `general-settings.yml` | Whether a spawner with something in storage can be broken. Not by default |
+| `storage-limit` | `general-settings.yml` | How much one spawner holds |
+| The player permissions | Your permission plugin | Auto Kill, the storage switches and friends are for ops until you grant them. See [Permissions](../permissions.md) |
+
+A claim, island or region plugin is found on its own: the plugin uses the first one installed and
+names it in the console. See [Integrations](../integrations.md#claims-islands-and-regions).
 
 ## Testing
 
-Give yourself a spawner with `/uxmspawners give <you> zombie`, place it, and right-click it: the
-menu opens. Turn auto-kill on from the menu, which needs `uxmspawners.autokill`, and stay within 16
-blocks: the storage fills every 8 seconds.
+Give yourself a spawner with `/usp give <you> zombie`, place it, and right-click it: the menu opens.
+Turn Auto Kill on from the menu and stay within 16 blocks: the storage fills every 8 seconds.
 
-Changes to the files apply with `/uxmspawners reload`.
+Changes to the files apply with `/usp reload`.
 
 Related: [Basic Concepts](concepts.md), [config.yml](../config/config-yml.md)

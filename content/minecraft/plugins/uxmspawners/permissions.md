@@ -1,52 +1,67 @@
 ---
 title: Permissions
-order: 170
-description: Staff nodes, the player nodes from the module files, the tier lists and a working default group.
+order: 70
+description: Staff nodes, the player nodes and their defaults, the rank lists and a working default group.
 icon: key
 ---
 
-Most permission names are set in the module files, so the nodes below are the shipped defaults and
-you can rename them. None are declared by the plugin: grant them with your permission plugin.
+Every node below is declared by the plugin with the default shown. The player nodes are the shipped
+names: each one is set in `general-settings.yml`, so you can rename it.
 
 ## Staff
 
-| Node | Grants | Set in |
+| Node | Default | Grants |
 |---|---|---|
-| `uxmspawners.admin` | `/uxmspawners` and every subcommand. Also breaking vanilla spawners while `disable-vanilla-breaking` is on | Fixed |
-| `uxmspawners.bypassplace` | Placing spawners in `disabled-worlds` and where a protection plugin would refuse it | Fixed |
-| `uxmspawners.breakallspawners` | Breaking a spawner that belongs to someone else | `break-spawners.permission` in `modules/other.yml` |
-| `uxmspawners.bypassbreak` | Breaking without the pickaxe or silk touch that `break-management` asks for | `break-management.exempt` in `modules/other.yml` |
+| `uxmspawners.admin` | op | Every node in this table down to `uxmspawners.seedebugs`. Also breaking vanilla spawners while `disable-vanilla-breaking` is on |
+| `uxmspawners.command.give` | op | `/usp give` |
+| `uxmspawners.command.giveboost` | op | `/usp giveboost` |
+| `uxmspawners.command.givepickaxe` | op | `/usp givepickaxe` |
+| `uxmspawners.command.reload` | op | `/usp reload` |
+| `uxmspawners.command.debug` | op | `/usp debug` |
+| `uxmspawners.command.convert` | op | `/usp convert` |
+| `uxmspawners.bypass` | op | `/usp bypass`: using every spawner as its owner |
+| `uxmspawners.seedebugs` | op | Seeing the debug messages turned on in `config.yml` |
+| `uxmspawners.breakallspawners` | no one | Breaking other players' spawners. `break-spawners.permission` |
+| `uxmspawners.bypassbreak` | no one | Breaking without the item `break-management` asks for, and breaking in disabled worlds. `break-management.exempt` |
+| `uxmspawners.bypassplace` | no one | Placing in disabled worlds and where a claim plugin would refuse it |
+
+The last three are not given to ops on their own, so an op testing the server breaks and places
+like a player. Grant them on purpose.
 
 ## Players
 
-| Node | Grants | Set in |
+| Node | Default | Grants | Set in `general-settings.yml` |
+|---|---|---|---|
+| `uxmspawners.autokill` | op | Turning Auto Kill on and off | `auto-kill.permission` |
+| `uxmspawners.settings.togglestorage` | op | Turning Virtual Storage on and off | `virtual-storage.permission` |
+| `uxmspawners.settings.togglexp` | op | Turning XP Storage on and off | `xp-storage.permission` |
+| `uxmspawners.friends` | op | Adding friends to a spawner | `friends.permission` |
+| `uxmspawners.spawnegg` | op | Changing a natural spawner's mob with a spawn egg | `vanilla-spawner-support.spawn-eggs.permission` |
+| `uxmspawners.autopickup` | op | A broken spawner goes into the inventory, while `auto-pickup.enabled` is on | `auto-pickup.permission` |
+
+Leave one of these settings empty and everyone may use that feature. An empty `exempt` or
+`break-spawners.permission` works the other way: nobody gets past it.
+
+Placing, opening and using your own spawner, levelling it up, selling, taking items and XP,
+stopping it and turning its hologram on or off need no permission.
+
+## Ranks
+
+Four lists give more to players holding a node. The names are examples; write your own, such as
+`rank.vip.spawnerstorage`.
+
+| Gives | Example nodes | Set in `general-settings.yml` |
 |---|---|---|
-| `uxmspawners.autokill` | Turning auto-kill on and off from the menu | `modules/autokill.yml` |
-| `uxmspawners.settings.togglestorage` | Turning virtual storage on and off | `modules/settings.yml` |
-| `uxmspawners.settings.togglexp` | Turning XP storage on and off | `modules/settings.yml` |
-| `uxmspawners.autopickup` | A broken spawner goes into the inventory, while `auto-pickup` is on | `modules/other.yml` |
-
-Placing, opening and using your own spawner, levelling it up, selling and managing friends need no
-permission. `friends.permission` in `modules/friends.yml` is not checked in 4.2.0: every owner can add
-friends.
-
-## Tiers
-
-Four lists give more to players holding a node. The names are examples; write your own.
-
-| Gives | Example nodes | Set in |
-|---|---|---|
-| A bigger item storage | `uxmspawners-storage1` to `3` | `modules/storage_limits.yml` |
-| A bigger XP storage | `uxmspawners-xpstorage1` to `3` | `modules/storage_limits.yml` |
-| A sell multiplier | `uxmspawners-1-25x`, `uxmspawners-1-50x` | `modules/multipliers.yml` |
-| A chance to keep a broken spawner | `uxmspawners-drop1`, `uxmspawners-drop2` | `modules/other.yml` |
+| A bigger item storage | `uxmspawners-storage1` to `3` | `storage-limit.permissions` |
+| A bigger XP storage | `uxmspawners-xpstorage1` to `3` | `storage-limit.xp-permissions` |
+| A sell multiplier | `uxmspawners-1-25x`, `uxmspawners-1-50x` | `multipliers.permissions` |
+| A chance to keep a broken spawner | `uxmspawners-drop1`, `uxmspawners-drop2` | `spawner-drop-chance.permissions` and `vanilla-permissions` |
 
 A player holding several nodes of one list gets the highest value, not the sum, so the order in the
-file does not matter. Staff with `*` in their permission plugin hold every node and get the highest
-of each list.
+file does not matter. A value below the list's default is never used.
 
-Names like `rank.vip.spawnerstorage` work as well as the shipped ones, and make the permission plugin
-easier to read.
+These nodes count only when they are given to the player, so being op does not give the best rank.
+A `*` node in LuckPerms does count as giving them.
 
 ## A default group
 
@@ -54,9 +69,10 @@ easier to read.
 uxmspawners.autokill
 uxmspawners.settings.togglestorage
 uxmspawners.settings.togglexp
+uxmspawners.friends
 ```
 
-Without `uxmspawners.autokill`, players can never turn auto-kill on, and their spawners spawn real
+Without `uxmspawners.autokill`, players can never turn Auto Kill on, and their spawners spawn real
 mobs. Leave the storage toggles out if every spawner should keep its storage.
 
 Related: [Commands](commands.md), [Breaking Rules](features/breaking.md)
