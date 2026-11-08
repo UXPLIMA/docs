@@ -1,6 +1,6 @@
 ---
 title: Storage & Selling
-order: 32
+order: 132
 description: Virtual and XP storage, the limits and their ranks, taking items out, and selling from the menu.
 icon: archive
 ---

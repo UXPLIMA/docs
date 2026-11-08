@@ -1,6 +1,6 @@
 ---
 title: Spawner Types
-order: 54
+order: 154
 description: The spawners folder, the default type every mob falls back on, types of your own and item spawners.
 icon: boxes
 ---

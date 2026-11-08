@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 10
+order: 110
 description: Installation, how a uxmSpawners spawner differs from a vanilla one, and the update from 4.2.0.
 icon: rocket
 ---

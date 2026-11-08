@@ -1,6 +1,6 @@
 ---
 title: Breaking Rules
-order: 40
+order: 140
 description: Who may break a spawner, the tool it asks for, the chance of getting it back, the storage of a spawner that goes, and natural spawners.
 icon: pickaxe
 ---

@@ -1,6 +1,6 @@
 ---
 title: Upgrading to 5.0.0
-order: 16
+order: 116
 description: Moving a 4.2.0 server to uxmSpawners 5.0.0, what the update does on its own, where every file went, and what behaves differently afterwards.
 icon: circle-arrow-up
 ---

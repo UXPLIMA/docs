@@ -1,6 +1,6 @@
 ---
 title: Permissions
-order: 70
+order: 170
 description: Staff nodes, the player nodes and their defaults, the rank lists and a working default group.
 icon: key
 ---

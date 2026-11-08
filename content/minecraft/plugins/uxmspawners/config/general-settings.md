@@ -1,6 +1,6 @@
 ---
 title: general-settings.yml
-order: 56
+order: 156
 description: Every section of general-settings.yml, the page that explains it, and the few settings that live only here.
 icon: sliders-horizontal
 ---

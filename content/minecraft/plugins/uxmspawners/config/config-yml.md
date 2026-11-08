@@ -1,6 +1,6 @@
 ---
 title: config.yml
-order: 52
+order: 152
 description: The license, language, database, worlds, the Auto Kill mode and the debug messages.
 icon: file-cog
 ---

@@ -1,6 +1,6 @@
 ---
 title: Production
-order: 31
+order: 131
 description: When a spawner runs, how much one cycle makes, what a level multiplies, stopping a spawner, and keeping many spawners cheap.
 icon: factory
 ---

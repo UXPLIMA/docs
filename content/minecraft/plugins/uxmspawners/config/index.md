@@ -1,6 +1,6 @@
 ---
 title: Configuration
-order: 50
+order: 150
 description: Every file in the plugin folder, the page that explains it, and what an update changes in them.
 icon: settings
 ---
