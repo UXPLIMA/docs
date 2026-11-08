@@ -30,21 +30,25 @@ Each level sets three things:
 | `efficiency` | The chance a placed block takes no material from the warehouse |
 | `price` | What buying this level costs |
 
-`blocksPerSecond` may not fall from one level to the next; the file is refused at load if it does.
-However fast a builder is, `performance.blocksPerTick` is the ceiling.
+`blocksPerSecond` may not fall from one level to the next; a builder that breaks this is skipped at load,
+with `UB-061` in the console. However fast a builder is, `performance.blocksPerTick` is the ceiling.
 
 ## Owning and upgrading
 
 | Action | How |
 |---|---|
-| Buy a builder | `/builders crew buy <builder>` or the crew menu; pays `unlock.price` and checks `unlock.permission` |
-| Select it | `/builders crew select <builder>`; only owned builders, and only with `builders.allowSwitching` |
-| Upgrade it | `/builders crew upgrade <builder>`; pays the next level's `price` |
-| Grant it | `uxmbuilders.builder.<id>` or `uxmbuilders.builder.<id>.level.<n>` count as owned |
-| Set it as staff | `/builders admin setbuilder <player> <builder> [level]` |
+| Buy a builder | `/builders crew buy [builder]`, or click a locked builder in the crew menu; pays `unlock.price` and checks `unlock.permission` |
+| Select it | `/builders crew select [builder]`, or left-click in the crew menu; only owned builders, and only with `builders.allowSwitching` |
+| Upgrade it | `/builders crew upgrade [builder]`, or right-click in the crew menu; pays the next level's `price` |
+| Grant it | `uxmbuilders.builder.<id>` or `uxmbuilders.builder.<id>.level.<n>` count as owned, for as long as the player holds the node |
+| Set it as staff | `/builders admin setbuilder <player> <builder> [level]`, which also selects it |
 
-New players start with `builders.default`. A running build keeps the builder and level it started with;
-upgrading speeds up the next build, not the current one.
+A `crew` command without a builder acts on the selected one. New players start with
+`builders.defaultBuilder`. A running build keeps the builder and level it started with; upgrading speeds
+up the next build, not the current one.
+
+Levels granted by permission are read each time they matter, so taking the node away puts the player
+back at the level they bought. A selected builder the player no longer owns falls back to the default.
 
 ## Package affinity
 

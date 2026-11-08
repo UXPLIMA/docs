@@ -6,54 +6,49 @@ icon: bell
 ---
 
 uxmBuilders can post a line to a Discord channel, or any service that accepts Discord's webhook format,
-when a build starts, finishes or is cancelled.
+when a build starts, finishes or is cancelled. The settings and the texts are in
+[webhooks.yml](../config/webhooks-yml.md).
 
 ## Setting it up
 
 1. In Discord: channel settings, **Integrations**, **Webhooks**, **New Webhook**, copy its URL.
-2. In `config.yml`:
+2. In `plugins/uxmBuilders/webhooks.yml`:
 
 ```yaml
-notifications:
-  webhook:
-    enabled: true
-    url: 'https://discord.com/api/webhooks/...'
-    username: 'uxmBuilders'
-    events: [ START, COMPLETE, CANCEL ]
+enabled: true
+url: 'https://discord.com/api/webhooks/...'
+username: 'uxmBuilders'
+events: [ START, COMPLETE, CANCEL ]
 ```
 
 3. `/builders admin reload`.
 
 ## Events
 
-| Event | Posted when | Message key |
+| Event | Posted when | Text |
 |---|---|---|
-| `START` | A build has really started, money taken and job queued | `webhookBuildStarted` |
-| `COMPLETE` | The last block is placed | `webhookBuildCompleted` |
-| `CANCEL` | A build is cancelled, for any reason | `webhookBuildCancelled` |
+| `START` | A build has really started: money taken and job queued | `buildStarted` |
+| `COMPLETE` | The last block is placed | `buildCompleted` |
+| `CANCEL` | A build is cancelled, for any reason | `buildCancelled` |
 
-The text lives in `messages.yml`, in your language, with its colour tags stripped. Discord markdown
-and emoji codes work:
+Builds started by staff with `/builders admin build` are posted too. The texts are in your language,
+with colour tags stripped; Discord markdown and emoji codes work:
 
 ```yaml
-webhookBuildCompleted: ':white_check_mark: %player.name% finished **%package.name%** (#%job.id%)'
+buildCompleted: ':white_check_mark: %player.name% finished **%package.name%** (#%job.id%)'
 ```
 
-| Placeholder | Value |
-|---|---|
-| `%player.name%` | The owner |
-| `%package.name%` | The package's display name |
-| `%job.id%`, `%job.total%`, `%job.progress%` | The job |
-| `%location.world%`, `%location.x%`, `%location.y%`, `%location.z%` | Where it is |
-| `%economy.refund%`, `%reason%` | Cancellations only |
+Every placeholder is listed on the [webhooks.yml](../config/webhooks-yml.md) page.
 
 ## Notes
 
 - Posts go out one at a time on a background thread; a slow or unreachable webhook never touches the
-  main thread.
-- A rate limit from Discord is honoured once with its retry delay. A backlog of more than 100 posts is
-  dropped with a warning rather than held in memory.
+  main thread or a build.
+- A rate limit from Discord is waited out once, for as long as Discord asks, up to a minute. A longer
+  wait drops the posts until it is over, with one warning. A backlog of more than 100 posts is dropped
+  with a warning rather than held in memory.
+- Posts still queued when the server stops get up to three seconds to go out.
 - Mentions are disabled: a player who names a package `@everyone` pings nobody.
 - An empty or invalid URL logs one warning and posts nothing.
 
-Related: [Messages and menus](../config/messages-and-menus.md)
+Related: [webhooks.yml](../config/webhooks-yml.md), [Messages and menus](../config/messages-and-menus.md)

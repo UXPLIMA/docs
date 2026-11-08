@@ -49,16 +49,19 @@ moment of confirming, so a spot that just turned red cannot slip through.
 ## When it closes
 
 The preview closes when the blueprint leaves the main hand: switching slots, dropping it, moving it in
-the inventory, swapping hands, or dying. Holding another blueprint switches the preview to that package.
+the inventory, swapping hands, or dying. It also closes when the player leaves. Holding another
+blueprint switches the preview to that package.
 
 `/builders preview <package>` opens a preview without a blueprint, so a player can see a package on the
-ground before buying it. `/builders preview` with no argument closes it.
+ground before buying it. It does not depend on the hand; `/builders preview` with no argument closes
+it. It only accepts packages the player may use. Turning `preview.enabled` off and
+reloading closes every open preview.
 
 ## Settings
 
 | Key | Default | Meaning |
 |---|---|---|
-| `preview.enabled` | `true` | Off means a blueprint right-click builds where the player looks, facing away from them |
+| `preview.enabled` | `true` | Off means a blueprint right-click builds where the player looks, facing away from them, and `/builders preview` is refused |
 | `preview.mode` | `SILHOUETTE` | `SILHOUETTE` or `BOX` |
 | `preview.refreshTicks` | `10` | How often the colour and outline refresh |
 | `preview.maxDistance` | `64` | How far away the player may aim |
