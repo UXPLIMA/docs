@@ -5,7 +5,8 @@ description: SQLite, MySQL, MariaDB or PostgreSQL, what is stored, several serve
 icon: database
 ---
 
-Profiles, builder levels, jobs, warehouses, trust and the audit trail are stored in a database. SQLite
+Profiles, builder levels, jobs, warehouses, trust, the player market and the audit trail are stored in a
+database. SQLite
 works with no setup; MySQL 8+, MariaDB and PostgreSQL 13+ are for networks or large servers. The drivers
 are downloaded on the first start, into `libs/`.
 
@@ -57,10 +58,17 @@ file's folder is created if it is missing.
 |---|---|
 | `uxmbuilders_players` | Selected builder, total builds and blocks |
 | `uxmbuilders_player_builders` | Owned builders and their levels |
-| `uxmbuilders_jobs` | Every build: server, position, rotation, order, progress, price, refund, reason, pause reason, boost |
+| `uxmbuilders_jobs` | Every build: server, position, rotation, order, progress, price, refund, reason, pause reason, boost, and the design it builds |
 | `uxmbuilders_warehouse` | Material balances |
 | `uxmbuilders_trust` | Who trusts whom |
-| `uxmbuilders_audit` | Purchases, starts, cancels, refunds, boosts, trust and admin changes, when `logging.audit` is on |
+| `uxmbuilders_audit` | Purchases, starts, cancels, refunds, boosts, trust, admin changes and market activity, when `logging.audit` is on |
+| `uxmbuilders_market_snapshots` | The designs listed on the market, each stored once |
+| `uxmbuilders_market_listings` | Listings: seller, title, price, stock, status, where the design was captured, reports |
+| `uxmbuilders_market_purchases` | Every purchase: buyer, price, commission, builds used, the blueprint's current copy |
+| `uxmbuilders_market_earnings` | What the market owes and paid each seller and the commission account |
+| `uxmbuilders_market_reports` | Reports and how they were resolved |
+| `uxmbuilders_market_notifications` | Sales and decisions waiting for players who were away |
+| `uxmbuilders_market_bans` | Market bans |
 | `uxmbuilders_schema_migrations` | The schema version; upgrades are applied in order at startup |
 
 The `uxmbuilders_` prefix keeps the tables apart from other plugins', so uxmBuilders can share a database
@@ -83,6 +91,7 @@ same build.
 | Crews and warehouses | Stored by player and read when the player joins a server. A crew is written as it changes, a warehouse every 30 seconds and when its owner leaves |
 | Build history | Lists a player's builds from every server |
 | Trust lists | Read once at startup: a change made on another server is seen after a restart |
+| The player market | One market for every server: see [Player market](../features/market/index.md#several-servers) |
 
 ## Moving from SQLite to MySQL or PostgreSQL
 
@@ -94,13 +103,16 @@ same build.
 It copies the SQLite file into the live database in one transaction: all of it, or nothing. It refuses
 to run while SQLite is still the live database, when `data/uxmbuilders.db` is missing, while players are
 online (an online player's crew is held in memory and would be written back over the copy), and when the
-target already holds builds, warehouse stock, trust or audit rows. Player and builder rows written by
+target already holds builds, warehouse stock, trust, audit or market rows. The market's tables are copied
+with the rest. Player and builder rows written by
 players who only joined are replaced. The SQLite file is left untouched as a backup.
 
 ## Notes
 
 - `data/` also holds `metadata.yml`, `license.cache`, `instance.id` and `pending-returns.yml`. Delete
   none of them while the server runs.
+- `data/market-cache/` keeps a copy of market designs read from the database, so they are not read
+  again. It can be deleted while the server is stopped; the database holds the designs.
 - Every table has a primary key, so MySQL servers that require one, the default on several managed
   hosts, are supported.
 

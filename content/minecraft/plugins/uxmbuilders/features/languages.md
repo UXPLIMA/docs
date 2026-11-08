@@ -34,6 +34,7 @@ There is one set of files, at the usual paths, written in the language in use:
 | `menu/*.yml` | Every menu |
 | `builders.yml` | Builder names, descriptions and level names |
 | `packages.yml` | Category names |
+| `market.yml` | The market's category names |
 | `webhooks.yml` | The Discord texts |
 | `config.yml` | The NPC nameplate format and the seed name for new packages |
 

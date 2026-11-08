@@ -68,6 +68,15 @@ One file per menu under `menu/`:
 | `crew.yml` | Builders: select, buy, upgrade |
 | `warehouse.yml` | The material store |
 | `history.yml` | Finished and cancelled builds |
+| `market-browse.yml` | The [player market](../features/market/index.md): category tabs, sort, search and listings |
+| `market-listing.yml` | One listing: details, buy, preview, materials |
+| `market-confirm.yml` | The purchase confirmation of a design |
+| `market-designs.yml` | My designs: what a player bought |
+| `market-sell.yml` | A listing before it is published: icon, category, fee, publish |
+| `market-mine.yml` | A seller's listings and earnings |
+| `market-manage.yml` | One of the seller's listings: price, texts, category, icon, pause, withdraw |
+| `market-reports.yml` | Reported listings, for moderators |
+| `market-inspect.yml` | One listing as moderators see it, with their decisions |
 
 ```yaml
 title: '<white>Construction #%job.id%</white>'
@@ -92,8 +101,8 @@ items:
 |---|---|
 | `title` | MiniMessage, with the tokens the file's header lists |
 | `size` | Rows, 1 to 6 |
-| `itemSlots` | The slots a list fills (packages, builds, builders, history entries, materials), in the order written |
-| `storageSlots` | In `warehouse.yml`, the slots that hold real items |
+| `itemSlots` | The slots a list fills (packages, builds, builders, history entries, materials, listings), in the order written |
+| `storageSlots` | In `warehouse.yml`, the slots that hold real items; in `market-browse.yml`, the category tabs |
 | `items` | The menu's buttons and the templates its lists are drawn from |
 | `otherItems` | Decoration: an entry with a slot is drawn there; the one without a slot fills every empty slot |
 

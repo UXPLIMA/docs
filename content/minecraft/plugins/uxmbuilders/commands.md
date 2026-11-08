@@ -51,6 +51,30 @@ whose refund is the whole unbuilt share. The confirmation waits `start.confirmTi
 The menu buttons check the same nodes as the commands, so denying `uxmbuilders.command.cancel` also
 disables the cancel button.
 
+## Market
+
+The [player market](features/market/index.md). A `<code>` is a listing's six-character code.
+
+| Command | Does | Node |
+|---|---|---|
+| `/builders market`, `market browse [category]` | Open the market, on a category if one is named | `uxmbuilders.market.use` |
+| `/builders market search <words>` | Open it on the listings whose title, description or seller holds the words | `uxmbuilders.market.use` |
+| `/builders market view <code>` | Open one listing | `uxmbuilders.market.use` |
+| `/builders market preview <code>` | Preview a listing where you look | `uxmbuilders.market.use` |
+| `/builders market buy <code>` | Buy it, through the confirmation | `uxmbuilders.market.buy` |
+| `/builders market designs` (`library`) | The designs you bought; get a blueprint again | `uxmbuilders.market.use` |
+| `/builders market wand` | Get the selection wand | `uxmbuilders.market.wand` |
+| `/builders market pos1`, `pos2` | Mark the block you look at as the first or second corner | `uxmbuilders.market.wand` |
+| `/builders market clear` | Forget the corners | `uxmbuilders.market.wand` |
+| `/builders market sell` | Capture the selection and fill in the listing | `uxmbuilders.market.sell` |
+| `/builders market mine` (`listings`) | Your listings and earnings | `uxmbuilders.market.sell` |
+| `/builders market earnings` | What the market earned you: paid, owed and held | `uxmbuilders.market.sell` |
+| `/builders market claim` | Pay out what you are owed now | `uxmbuilders.market.sell` |
+| `/builders market report <code> <reason> [note]` | Report a listing | `uxmbuilders.market.report` |
+
+The market commands need a player; `/builders market` from the console prints its usage. With the
+market turned off, `designs`, `earnings` and `claim` still work.
+
 ## Admin
 
 Everything below needs `uxmbuilders.admin`, or the single action's node `uxmbuilders.admin.<action>`.
@@ -76,9 +100,21 @@ Everything below needs `uxmbuilders.admin`, or the single action's node `uxmbuil
 | `/builders admin npc [list\|killall]` | List builder NPCs and their viewers, or remove them all while builds continue |
 | `/builders admin debug [on\|off\|dump]` | Turn debug logging on or off until the next restart; no argument toggles it. `dump` prints `perf`, `protection`, `npc` and `cache` at once |
 | `/builders admin migrate sqlite-to-mysql` | Copy the SQLite data into MySQL or PostgreSQL; see [The database](config/database.md) |
+| `/builders admin market remove <code> [--revoke] [reason]` | Take a listing down; `--revoke` also takes back every licence it sold |
+| `/builders admin market restore <code>` | Put a hidden or removed listing back |
+| `/builders admin market reports [page]` | The reported listings, the one waiting longest first |
+| `/builders admin market resolve <report> dismiss\|action` | Close one report |
+| `/builders admin market inspect <code>` | A listing's reports, licences, origin and seller |
+| `/builders admin market tp <code>` | Teleport to where a listing was captured |
+| `/builders admin market ban <player> [duration] [reason]` | Ban a seller from the market, for a time such as `7d` or for good |
+| `/builders admin market unban <player>` | Lift the ban and release the held earnings |
+| `/builders admin market refund <purchase> [--revoke]` | Take back one licence and refund its buyer; with `--revoke`, as `moderation.revokeRefund` says |
+| `/builders admin market payout <player>` | Pay what the market owes a player now |
 
-`wand` and `save` need a player. `admin build` from the console builds on behalf of the first online
-player. `setbuilder` also finds players who are offline but have played before. With debug on, every
-build event and every refused command is written to the console.
+`wand`, `save` and `market tp` need a player. `admin build` from the console builds on behalf of the
+first online player. `setbuilder` and the `market` actions also find players who are offline but have
+played before. With debug on, every build event and every refused command is written to the console.
+The `market` actions, all under `uxmbuilders.admin.market`, are explained on
+[Market moderation](features/market/moderation.md).
 
 Related: [Permissions](permissions.md)

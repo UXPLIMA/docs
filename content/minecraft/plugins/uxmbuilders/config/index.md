@@ -11,3 +11,4 @@ icon: settings
 - [Messages and menus](messages-and-menus.md)
 - [The database](database.md)
 - [webhooks.yml](webhooks-yml.md)
+- [market.yml](market-yml.md)

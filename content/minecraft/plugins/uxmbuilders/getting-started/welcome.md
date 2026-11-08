@@ -45,6 +45,7 @@ the construction while keeping the materials economy intact.
 - Crash recovery that asks the owner instead of resuming blindly; a refund is paid only once the
   cancelled build is stored
 - Trusted players, paid speed boosts, a build history and Discord notifications
+- A player market: players capture their own builds, sell them as designs, and buy each other's
 - A selection wand and `/builders admin save`, so new packages need no WorldEdit
 - Eight languages; SQLite, MySQL, MariaDB or PostgreSQL, and several servers on one database
 - PlaceholderAPI, update notices for staff, and a developer API with its own events

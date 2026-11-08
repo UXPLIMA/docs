@@ -1,7 +1,7 @@
 ---
 title: Features
 order: 120
-description: Building, preview, builders, warehouse, protection, recovery and the extras around them.
+description: Building, preview, builders, warehouse, protection, recovery, the player market and the extras around them.
 icon: sparkles
 ---
 
@@ -18,3 +18,4 @@ icon: sparkles
 - [Build history](history.md)
 - [Discord notifications](notifications.md)
 - [Languages](languages.md)
+- [Player market](market/index.md)

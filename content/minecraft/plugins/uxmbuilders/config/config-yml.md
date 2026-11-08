@@ -153,9 +153,9 @@ language.
 | `admin.newPackage.display`, `icon` | `<white>%id%</white>`, `PAPER` | Seeds for `/builders admin package create` |
 | `gui.confirmDelayTicks` | `40` | Before the purchase button unlocks |
 | `api.fireBlockEvents` | `false` | Fire `BuildBlockPlaceEvent` for every block |
-| `logging.audit` | `true` | Write purchases, starts, cancels, refunds, boosts, trust and admin changes to the audit table |
+| `logging.audit` | `true` | Write purchases, starts, cancels, refunds, boosts, trust, admin changes and market activity to the audit table |
 
 The menus' filler pane is no longer a setting here: it is the entry without a slot under `otherItems`
 in each [menu file](messages-and-menus.md).
 
-Related: [packages.yml](packages-yml.md), [builders.yml](builders-yml.md), [webhooks.yml](webhooks-yml.md)
+Related: [packages.yml](packages-yml.md), [builders.yml](builders-yml.md), [webhooks.yml](webhooks-yml.md), [market.yml](market-yml.md)

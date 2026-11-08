@@ -82,15 +82,60 @@ what you want. The node itself can be renamed with `protection.bypassPermission`
 
 </Callout>
 
+## Market
+
+The [player market](features/market/index.md)'s nodes. A category's `permission` in `market.yml` is a
+node you name yourself.
+
+| Node | Grants | Default |
+|---|---|---|
+| `uxmbuilders.market.use` | `market`, `browse`, `search`, `view`, `preview`, `designs` | everyone |
+| `uxmbuilders.market.buy` | Buying designs | everyone |
+| `uxmbuilders.market.sell` | `sell`, `mine`, `earnings`, `claim`: capturing and listing builds | everyone |
+| `uxmbuilders.market.wand` | `wand`, `pos1`, `pos2`, `clear`, and marking corners with the wand | everyone |
+| `uxmbuilders.market.report` | `report` | everyone |
+| `uxmbuilders.market.fee.exempt` | Listing without the listing fee | operators |
+| `uxmbuilders.market.notify` | Being told of reports, with a link to inspect the listing | operators |
+
+## Market limits
+
+Numeric, like the [limits](#limits) above.
+
+| Node | Meaning | Without one |
+|---|---|---|
+| `uxmbuilders.market.listings.<n>` | `n` live listings at once; paused, sold-out and under-review listings count. `.*` is no limit | `listing.maxLiveDefault` |
+| `uxmbuilders.market.size.<n>` | The largest selection one capture may hold, in blocks of volume; it never goes above `capture.maxVolume` | `capture.maxVolume` |
+| `uxmbuilders.market.commission.<n>` | `n` percent commission on the player's sales, at most 100; of several held, the **lowest** wins | `economy.commissionPercent` |
+
+`market.size.<n>` can only lower the volume `market.yml` allows: to sell bigger captures as a rank, give
+your default group a lower value and the rank a higher one. A commission node is read when a copy sells,
+and only while the seller is online on that server; otherwise `economy.commissionPercent` applies.
+
+Operators hold `market.listings.*` and `market.size.*`, as these nodes are not registered, but no
+commission node: they pay the commission from `market.yml`.
+
+## Market bypasses
+
+| Node | Skips | Default |
+|---|---|---|
+| `uxmbuilders.market.bypass.protection` | The land check of a capture, and the wilderness rule | operators |
+| `uxmbuilders.market.bypass.cooldown` | The waits between listings, purchases, reports and blueprints issued again | operators |
+| `uxmbuilders.market.bypass.filter` | The word filter on titles, descriptions and sign text | operators |
+| `uxmbuilders.market.bypass.limit` | `market.listings.<n>`, `market.size.<n>` and the copies-per-buyer limit; the size limits in `market.yml` still hold | operators |
+
 ## Admin
 
 | Node | Grants | Default |
 |---|---|---|
 | `uxmbuilders.admin` | Every admin action, acting on any player's build, and update notices on join | operators |
 | `uxmbuilders.admin.<action>` | One admin action: `reload`, `wand`, `save`, `package`, `give`, `build`, `cancel`, `setbuilder`, `protection`, `cache`, `perf`, `npc`, `debug`, `migrate` | through `uxmbuilders.admin` |
+| `uxmbuilders.admin.market` | Every `/builders admin market` action: [market moderation](features/market/moderation.md) | through `uxmbuilders.admin` |
 
 Give a moderator `uxmbuilders.admin.cancel` and `uxmbuilders.admin.perf` without handing them `give` or
 `build`. Holding any one action's node is enough for `admin` to show in `/builders help`. The selection
 wand marks corners for holders of `uxmbuilders.admin.wand` or `uxmbuilders.admin.save`.
+
+A market moderator usually wants `uxmbuilders.admin.market` and `uxmbuilders.market.notify` together:
+the first to decide, the second to hear of reports as they come in.
 
 Related: [Commands](commands.md)

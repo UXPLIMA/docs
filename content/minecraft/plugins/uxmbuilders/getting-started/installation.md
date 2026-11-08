@@ -64,13 +64,15 @@ plugins/uxmBuilders/
 ├── builders.yml        builders, their levels and appearance
 ├── packages.yml        shop categories and packages
 ├── webhooks.yml        the Discord webhook and its texts
-├── menu/*.yml          the nine menus: titles, slots, items, names and lore
+├── market.yml          the player market: money, listing rules, capture, moderation, categories
+├── menu/*.yml          every menu: titles, slots, items, names and lore
 ├── schematics/         your .schem files
 ├── data/
 │   ├── uxmbuilders.db  the SQLite database, when SQLite is the backend
 │   ├── metadata.yml    the files' version and language; do not edit
 │   ├── license.cache   license state, with instance.id
-│   └── pending-returns.yml  blueprints owed to players who were offline
+│   ├── pending-returns.yml  blueprints owed to players who were offline
+│   └── market-cache/   copies of market designs read from the database
 ├── libs/               downloaded libraries
 └── backups/            copies taken before a language switch
 ```
@@ -90,7 +92,7 @@ itself before touching the database. A key the license server refuses ends with
 ## Reloading
 
 `/builders admin reload` re-reads `config.yml`, `messages.yml`, `builders.yml`, `packages.yml`,
-`webhooks.yml` and the nine menus. It also:
+`webhooks.yml`, `market.yml` and every menu. It also:
 
 - switches the language, if `general.language` changed;
 - clears the schematic cache and registers the generated permissions again;

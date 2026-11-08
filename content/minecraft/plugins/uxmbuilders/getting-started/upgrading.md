@@ -78,6 +78,7 @@ the new files.
 | Databases | PostgreSQL besides SQLite and MySQL; `jdbc:mariadb:` URLs work |
 | Several servers on one database | `database.serverId`; each server brings back only the builds it started |
 | `webhooks.yml` | The Discord webhook settings and texts in their own file, in every language |
+| Player market | Players sell their own builds as designs and buy each other's; see [Player market](../features/market/index.md) |
 | Update check | `general.updateCheck`; the console and staff hear about a new release |
 | uxmClaims | A native protection provider, `uxmclaims` |
 | `/builders warehouse <player>` | Stock the warehouse of an owner who trusts you through a window |
