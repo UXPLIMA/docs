@@ -68,9 +68,9 @@ The [player market](features/market/index.md). A `<code>` is a listing's six-cha
 | `/builders market clear` | Forget the corners | `uxmbuilders.market.wand` |
 | `/builders market sell` | Capture the selection and fill in the listing | `uxmbuilders.market.sell` |
 | `/builders market mine` (`listings`) | Your listings and earnings | `uxmbuilders.market.sell` |
-| `/builders market earnings` | What the market earned you: paid, owed and held | `uxmbuilders.market.sell` |
+| `/builders market earnings` | What the market earned you: paid, owed and held, or what you owe back after refunds | `uxmbuilders.market.sell` |
 | `/builders market claim` | Pay out what you are owed now | `uxmbuilders.market.sell` |
-| `/builders market report <code> <reason> [note]` | Report a listing | `uxmbuilders.market.report` |
+| `/builders market report <code> <reason> [note]` | Report a listing; without a reason, lists the reasons | `uxmbuilders.market.report` |
 
 The market commands need a player; `/builders market` from the console prints its usage. With the
 market turned off, `designs`, `earnings` and `claim` still work.
@@ -103,13 +103,13 @@ Everything below needs `uxmbuilders.admin`, or the single action's node `uxmbuil
 | `/builders admin market remove <code> [--revoke] [reason]` | Take a listing down; `--revoke` also takes back every licence it sold |
 | `/builders admin market restore <code>` | Put a hidden or removed listing back |
 | `/builders admin market reports [page]` | The reported listings, the one waiting longest first |
-| `/builders admin market resolve <report> dismiss\|action` | Close one report |
+| `/builders admin market resolve <report> dismiss\|action` | Close one report, which then no longer counts towards hiding the listing |
 | `/builders admin market inspect <code>` | A listing's reports, licences, origin and seller |
 | `/builders admin market tp <code>` | Teleport to where a listing was captured |
 | `/builders admin market ban <player> [duration] [reason]` | Ban a seller from the market, for a time such as `7d` or for good |
 | `/builders admin market unban <player>` | Lift the ban and release the held earnings |
 | `/builders admin market refund <purchase> [--revoke]` | Take back one licence and refund its buyer; with `--revoke`, as `moderation.revokeRefund` says |
-| `/builders admin market payout <player>` | Pay what the market owes a player now |
+| `/builders admin market payout <player>` | Pay what the market owes a player now, lifting a market ban that has run out |
 
 `wand`, `save` and `market tp` need a player. `admin build` from the console builds on behalf of the
 first online player. `setbuilder` and the `market` actions also find players who are offline but have

@@ -22,9 +22,11 @@ moderation:   # seller bans and revokes
 cooldowns:    # waits between a player's actions
 text:         # the word filter
 cache:        # several servers on one database
-webhook:      # not read; see below
 categories:   # the market's categories
 ```
+
+The market's Discord posts are switched and routed in [webhooks.yml](webhooks-yml.md), with `events`
+and `moderationUrl`; `market.yml` has no webhook section.
 
 Block ids may leave out `minecraft:`, and a `*` in an id stands for any text: `minecraft:*shulker_box`
 is every shulker box. Amounts are in the server's money.
@@ -34,7 +36,7 @@ is every shulker box. Amounts are in the server's money.
 | Key | Default | Meaning |
 |---|---|---|
 | `enabled` | `true` | Off: nothing can be captured, listed or bought; bought designs stay buildable |
-| `economy.commissionPercent` | `10.0` | The market's share of each sale; `uxmbuilders.market.commission.<n>` sets it per player |
+| `economy.commissionPercent` | `10.0` | The market's share of each sale; `uxmbuilders.market.commission.<n>` sets it per player. Each listing keeps the rate its seller had when listing, so a change applies to new listings |
 | `economy.commissionAccount` | empty | A player name or UUID credited with commissions and listing fees; empty destroys them. An unknown name is warned about and treated as empty |
 | `economy.listingFee` | `500.0` | What listing a design costs; `uxmbuilders.market.fee.exempt` pays nothing |
 | `economy.priceMin`, `priceMax` | `100.0`, `10000000.0` | The price range of a listing |
@@ -107,7 +109,7 @@ What the market's own lists hold is on [Selling a build](../features/market/sell
 | `reports.noteMax` | `100` | Longest report note kept, at most 255 |
 | `moderation.onSellerBan` | `HIDE` | What a market ban does to the seller's listings: `HIDE` or `REMOVE` |
 | `moderation.holdEarningsOfBanned` | `true` | Hold what the market owes a banned seller until the ban is lifted |
-| `moderation.revokeRefund` | `FULL` | `FULL`: buyers get their money back when staff revoke a design. `NONE`: they do not |
+| `moderation.revokeRefund` | `FULL` | `FULL`: buyers get their money back when staff revoke a design. `NONE`: they do not. Either way the seller gives back what those sales earned, so with `NONE` the server keeps that money |
 
 ## cooldowns
 
@@ -121,14 +123,13 @@ them.
 | `reportSeconds` | `60` | Reports |
 | `reissueSeconds` | `60` | Blueprints issued again for the same design |
 
-## text, cache and webhook
+## text and cache
 
 | Key | Default | Meaning |
 |---|---|---|
 | `text.blockedWords` | empty | Words refused in titles, descriptions and sign text. Case, accents and digits standing for letters (`b4d`) are ignored, and letters written apart (`b a d`) still match; a word only matches a whole word, so `class` is never refused for `ass` |
 | `text.blockedPatterns` | empty | Regular expressions refused the same way; one that does not compile is skipped with a warning |
 | `cache.syncSeconds` | `15` | How often other servers' market changes are read from a shared database, at least 5; read at startup |
-| `webhook.events`, `webhook.moderationUrl` | all four, empty | Not read in this version: the market's posts are switched and routed by `events` and `moderationUrl` in [webhooks.yml](webhooks-yml.md) |
 
 ## categories
 

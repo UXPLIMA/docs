@@ -33,7 +33,14 @@ server, are left out.
 The listing's own menu shows its details and the builds one purchase allows, a **Preview** and a
 **Materials** button, the seller's head (click for more of their designs) and the **Buy** button with
 your balance before and after. The button is grey, with the reason, when the listing is yours, sold out,
-off sale, when you hold as many copies as you may, or when you cannot afford it.
+off sale, when you hold as many copies as you may, or when you cannot afford it. **Report**, shown on
+other players' listings, tells the moderators what is wrong with it; see
+[Reports](moderation.md#reports).
+
+Bedrock players joining through Geyser or Floodgate get the market, the listing, the confirmation and
+My designs as lists of buttons, with `bedrock.menus` on in `config.yml`. A button that does several
+things, such as a design in My designs, asks which one. See
+[Bedrock forms](../../config/messages-and-menus.md#bedrock-forms).
 
 ## Previewing
 
@@ -92,8 +99,8 @@ build, while a build already running carries on.
 
 ## Cancelling a market build
 
-No money moves when a market build is cancelled, and the seller keeps what they earned. The build may
-be given back instead:
+No money moves when a market build is cancelled, and the seller keeps what they earned. What can come
+back is the build itself, the right to build the design once more:
 
 | Cancelled | Build given back |
 |---|---|
@@ -101,7 +108,10 @@ be given back instead:
 | By you, or for any other reason | When no more than `purchase.creditReturnMaxProgress` percent (10) was built |
 | By a restart | Not cancelled: the build resumes |
 
-The blocks already placed stay, as with any cancelled build.
+`/builders cancel` asks for `/builders confirm` with the share up to which the build comes back, rather
+than a refund (`infoCancelConfirmRequiredMarket`). The notice after it says whether the build came back,
+to be placed again from **My designs** (`infoBuildCancelledCreditBack`), or is used up
+(`infoBuildCancelledCreditUsed`). The blocks already placed stay, as with any cancelled build.
 
 ## Notes
 

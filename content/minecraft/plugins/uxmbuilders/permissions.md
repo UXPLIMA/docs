@@ -108,8 +108,9 @@ Numeric, like the [limits](#limits) above.
 | `uxmbuilders.market.commission.<n>` | `n` percent commission on the player's sales, at most 100; of several held, the **lowest** wins | `economy.commissionPercent` |
 
 `market.size.<n>` can only lower the volume `market.yml` allows: to sell bigger captures as a rank, give
-your default group a lower value and the rank a higher one. A commission node is read when a copy sells,
-and only while the seller is online on that server; otherwise `economy.commissionPercent` applies.
+your default group a lower value and the rank a higher one. A commission node is read when the player
+lists a design, and the confirm menu shows the rate: the listing keeps it for every copy it sells, on
+every server, online or not. A rank bought or lost later applies to the listings made after it.
 
 Operators hold `market.listings.*` and `market.size.*`, as these nodes are not registered, but no
 commission node: they pay the commission from `market.yml`.
@@ -132,8 +133,9 @@ commission node: they pay the commission from `market.yml`.
 | `uxmbuilders.admin.market` | Every `/builders admin market` action: [market moderation](features/market/moderation.md) | through `uxmbuilders.admin` |
 
 Give a moderator `uxmbuilders.admin.cancel` and `uxmbuilders.admin.perf` without handing them `give` or
-`build`. Holding any one action's node is enough for `admin` to show in `/builders help`. The selection
-wand marks corners for holders of `uxmbuilders.admin.wand` or `uxmbuilders.admin.save`.
+`build`. Holding any one action's node, `uxmbuilders.admin.market` included, is enough for `admin` to
+show in `/builders help`. The selection wand marks corners for holders of `uxmbuilders.admin.wand` or
+`uxmbuilders.admin.save`.
 
 A market moderator usually wants `uxmbuilders.admin.market` and `uxmbuilders.market.notify` together:
 the first to decide, the second to hear of reports as they come in.

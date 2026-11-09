@@ -1,7 +1,7 @@
 ---
 title: Developer API
 order: 395
-description: Starting builds, reading jobs, adding a protection plugin, and listening to build events.
+description: Starting builds, reading jobs, the player market, adding a protection plugin, and listening to events.
 icon: code
 ---
 
@@ -81,6 +81,7 @@ UxmBuildersBukkitAPI api = UxmBuildersBukkitAPI.getInstance();
 | `buildFacade()` | Builds and the shop |
 | `crewFacade()` | Builders and players' crews |
 | `playerFacade()` | Trust, warehouses and build history |
+| `marketFacade()` | The [player market](features/market/index.md): listings, selling, buying, reports and payouts |
 | `registerEvent(Object)`, `unregisterEvent(Object)` | Event listeners, see below |
 | `registerProtectionProvider(ProtectionProvider)`, `unregisterProtectionProvider(String id)` | Your own land checks |
 
@@ -97,6 +98,7 @@ refusal throws `BuildException`; `getStatus()` says why, `getStatus().messageKey
 | `BuildFacade` | `start`, `pause`, `resume`, `cancel`, `boost`, `purchase` | `activeJobs(UUID)`, `job(JobId)`, `allJobs()`, `packages()`, `findPackage(String)` |
 | `CrewFacade` | `select`, `unlock`, `upgrade`, `setLevel` | `builders()`, `profile(UUID)`, `selected(UUID)`, `levelOf(UUID, String)` |
 | `PlayerFacade` | `trust`, `untrust`, `deposit`, `withdraw` | `trusted(UUID)`, `warehouse(UUID)`, `history(UUID, page, pageSize)` (reads the database: call from a worker) |
+| `MarketFacade` | See [The player market](#the-player-market) | |
 
 Running jobs are returned as `JobView`, an immutable snapshot: id, owner, package, builder and level,
 state, pause reason, placed and total blocks, speed, time left, boost, world, origin, bounds, queue
@@ -136,6 +138,49 @@ A start runs every check a player's build does. With the player's checks the own
 online; a start for someone else is refused with `ERROR_OWNER_MISMATCH`. Pass
 `BuildCommandOptions.forAdmin()` to start a free build for any player, ignoring protection and rules.
 `BukkitConverter` turns `Location` and `Block` into `BlockPos` and `Cuboid` and back.
+
+## The player market
+
+`marketFacade()` reads the market and acts in it as a player would, with the same two forms of every
+action, the same `BuildException` and the same rule: actions block, so call them from a worker.
+
+| | Methods |
+|---|---|
+| Selling | `capture`, `create`, `updatePrice`, `updateDetails`, `pause`, `resume`, `delete`, `payout` |
+| Buying | `purchase`, `issueBlueprint`, `report` |
+| Lookups from memory, any thread | `enabled()`, `findListing(UUID)`, `findListing(ListingCode)`, `browse(MarketBrowseQuery)`, `listingsOf(UUID)`, `categories()`, `stats(UUID)` |
+| Lookups that read the database | `purchasesOf(UUID)`, `earnings(UUID)`: call from a worker |
+
+| Method | Does |
+|---|---|
+| `capture(MarketCaptureCommand)` | Reads the seller's selection into a `ListingDraft`, kept for ten minutes |
+| `create(MarketListingCreateCommand)` | Lists a draft and charges the listing fee. The listing keeps the seller's commission rate of that moment: their `uxmbuilders.market.commission.<n>` while they are online on this server, `economy.commissionPercent` otherwise |
+| `purchase(MarketListingPurchaseCommand)` | Buys one copy at `expectedPrice`, the price the buyer saw; a price changed since is refused. Returns a `MarketSale`: the licence, the listing after the sale, and whether the blueprint reached the inventory |
+| `issueBlueprint(MarketBlueprintIssueCommand)` | A new blueprint for a purchase; every older copy stops building |
+| `report(MarketListingReportCommand)` | Reports a listing, with the checks `/builders market report` applies |
+| `payout(MarketPayoutCommand)` | Pays the seller what the market owes them. Returns a `MarketPayout`: what was paid, and what the seller still owes after refunds |
+| `browse(MarketBrowseQuery)` | Listings on sale, by category, search and sort, a page at a time; with a viewer, only what that player may see |
+| `stats(UUID)` | The figures the [placeholders](placeholders.md#market) show; empty for a player not online on this server |
+
+```java
+MarketFacade market = api.marketFacade();
+Page<MarketListing> popular = market.browse(
+        new MarketBrowseQuery(null, MarketSort.POPULAR, null, player.getUniqueId(), 0, 10));
+
+MarketListing listing = market.findListing(ListingCode.parse("7KQ2MX")).orElseThrow();
+Bukkit.getAsyncScheduler().runNow(plugin, task -> {
+    try {
+        MarketSale sale = market.purchase(new MarketListingPurchaseCommand(
+                listing.getId(), player.getUniqueId(), player.getName(), listing.getPrice().toMajor()));
+    } catch (BuildException e) {
+        player.sendMessage("Refused: " + e.getStatus().messageKey());
+    }
+});
+```
+
+`BuildCommandOptions.forPlayer()` applies everything a player meets: permissions, the market ban,
+cooldowns, limits, the listing fee and the price. With `forAdmin()` no money moves: a listing pays no
+fee, and a purchase is a free grant that earns the seller nothing.
 
 ## A protection provider
 
@@ -202,8 +247,8 @@ UxmBuildersBukkitAPI.getInstance().registerEvent(new MyListener());
 
 A handler is an instance method returning `void` with one event parameter; anything else is logged and
 skipped. Handlers inherited from a superclass are registered too, and a handler for a base type
-(`BuildEvent`, `BuildersEvent`) receives every subtype. A handler that throws is logged and the others
-still run.
+(`BuildEvent`, `MarketEvent`, `BuildersEvent`) receives every subtype. A handler that throws is logged and
+the others still run.
 
 | Event | Fires | Cancellable |
 |---|---|---|
@@ -231,6 +276,51 @@ main thread, keep handlers short, and do Bukkit work through the scheduler. Safe
 server error, shutdown) and safety pauses go through even when a listener cancels them: a vetoed
 `BuildCancelEvent` on lost land still cancels, with the refund your listener set.
 
+### Market events
+
+The player market's events are in `com.uxplima.builders.domain.event.market`, go through the same bus
+and reach the same `@BuildEventHandler` methods. They extend `MarketEvent`; those about one listing extend
+`MarketListingEvent` (`getListing()`), those about one purchase `MarketPurchaseEvent` (`getPurchase()`).
+Both are copies taken after the change.
+
+```java
+@BuildEventHandler(priority = 5)
+public void onList(MarketListingCreateEvent event) {
+    if (event.getListing().getPrice().toMajor() > 1_000_000) event.setCancelled(true);
+}
+
+@BuildEventHandler(priority = 100, ignoreCancelled = true)
+public void onSale(MarketListingPurchaseEvent event) {
+    // event.getBuyer(), getPrice(), getFee() is the market's commission, getNet() the seller's share
+}
+```
+
+| Event | Fires | Cancellable |
+|---|---|---|
+| `MarketListingCreateEvent` | A seller is about to list a design | yes |
+| `MarketListingPriceChangeEvent` | A seller is about to change the price; the old and the new | yes |
+| `MarketListingDetailsUpdateEvent` | A seller is about to change the title, description, category or icon; `setDetails` rewrites them, within the same limits | yes |
+| `MarketListingDeleteEvent` | A seller is about to withdraw a listing for good | yes |
+| `MarketListingPauseEvent`, `MarketListingResumeEvent` | A seller took a listing off sale, or put it back | no |
+| `MarketListingPurchaseEvent` | A player is about to buy a copy; the buyer, the price, and how it splits into the market's fee and the seller's net | yes |
+| `MarketListingSoldOutEvent` | The last limited copy sold | no |
+| `MarketListingReportEvent` | A player is about to report a listing; the report | yes |
+| `MarketListingHideEvent` | A listing went under review: reported often enough, or its seller was banned | no |
+| `MarketListingRemoveEvent` | A moderator took a listing down; the moderator (null for the console) and the reason | no |
+| `MarketListingRestoreEvent` | A moderator put a listing back | no |
+| `MarketReportResolveEvent` | A moderator dismissed or acted on one report; `isActioned()` tells which | no |
+| `MarketCreditConsumeEvent` | A build of a bought design started and used one of its builds | no |
+| `MarketCreditReturnEvent` | A build went back to its purchase: the build could not start, or a [cancel gave it back](features/market/buying.md#cancelling-a-market-build) | no |
+| `MarketBlueprintIssueEvent` | A blueprint was issued again; `getPrevious()` is the token the old copies carry | no |
+| `MarketPurchaseRefundEvent` | A licence was taken back and the buyer refunded | no |
+| `MarketPurchaseRevokeEvent` | A licence was taken back without a refund | no |
+
+A cancelled event refuses the action with `EVENT_CANCELLED`, whose message is `errorRejectedByPlugin`.
+The cancellable ones fire before the change is stored, so the action can still fail after them: a
+purchase is refused when another server sold the last copy first, or when the economy will not take the
+money. A removal closes the listing's open reports, and a restore dismisses them, without a
+`MarketReportResolveEvent` for each.
+
 ## The domain types
 
 | Type | What it is |
@@ -241,5 +331,7 @@ server error, shutdown) and safety pauses go through even when a listener cancel
 | `BuildPackage`, `BuilderType`, `BuilderLevel`, `CrewProfile` | The configured content and a player's crew |
 | `JobId`, `BlockPos`, `Cuboid`, `Orientation`, `MaterialKey` | Value objects; a `Cuboid` is a world name and an inclusive box |
 | `BuildException` | Every refusal, with a `Status` and the values its message shows |
+| `MarketListing`, `MarketPurchase`, `ListingReport` | A listing, a buyer's licence and a report, in `com.uxplima.builders.domain.model.market` |
+| `ListingCode`, `Money`, `ListingStatus`, `MarketSort` | A listing's code (`ListingCode.parse` reads one as players type it), an amount, a listing's status, a browse order |
 
 Related: [Land protection](features/protection.md), [Integrations](integrations.md)

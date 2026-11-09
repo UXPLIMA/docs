@@ -37,7 +37,7 @@ included, changes nothing for buyers: every copy builds the stored design.
 | Step | Money |
 |---|---|
 | Listing | The seller pays `economy.listingFee`; holders of `uxmbuilders.market.fee.exempt` pay nothing. It is not returned when the listing ends |
-| Sale | The buyer pays the price. The market keeps the commission; the rest, the net, is owed to the seller |
+| Sale | The buyer pays the price. The market keeps the commission, at the rate fixed when the design was listed; the rest, the net, is owed to the seller |
 | Fee and commission | Credited to `economy.commissionAccount`, a player, or destroyed when it is empty |
 | Payout | The seller is paid at once or when they join, as `economy.payout` says; see [Earnings](selling.md#earnings-and-payouts) |
 
@@ -80,6 +80,10 @@ from the same market.
 ## Notes
 
 - The market's menus are `menu/market-*.yml`; see [Messages and menus](../../config/messages-and-menus.md).
+  Bedrock players get six of them as lists of buttons, worded by `menu/bedrock/market-*.yml`; see
+  [Bedrock forms](../../config/messages-and-menus.md#bedrock-forms).
+- A player's listings, sales, earnings and designs are [placeholders](../../placeholders.md#market) for
+  scoreboards.
 - Category names in `market.yml` follow the [language](../languages.md) like the rest of the texts.
 - The market writes listings, sales, payouts and refunds to the audit table when `logging.audit` is on.
 

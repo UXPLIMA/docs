@@ -40,4 +40,25 @@ never from the database, so the placeholders are safe to refresh often and from 
 The builder placeholders return `-` for an offline player, whose profile is not in memory. An unknown
 name after `uxmbuilders_` is left as written.
 
-Related: [Messages and menus](config/messages-and-menus.md)
+## Market
+
+The [player market](features/market/index.md)'s figures for the player.
+
+| Placeholder | Returns |
+|---|---|
+| `%uxmbuilders_market_listings%` | Their listings still on the market: for sale, paused, sold out or under review |
+| `%uxmbuilders_market_sold%` | Copies sold of those listings |
+| `%uxmbuilders_market_earnings%` | Everything the market credited them, paid, owed or on hold, less what refunds took back |
+| `%uxmbuilders_market_pending%` | What the market still owes them; earnings on hold are not counted, and a debt shows `0` |
+| `%uxmbuilders_market_designs%` | Designs they bought and still hold; refunded and revoked ones are left out |
+
+Withdrawn and removed listings, and the copies they sold, are not counted. Amounts are plain numbers,
+without the currency symbol or thousands marks: `1250` or `1250.5`.
+
+The figures are kept in memory for the players online on this server. They are worked out when a player
+joins, after the market's news and payout, then again every minute, and dropped when the player leaves,
+so a scoreboard never waits for the database. A sale or a payout therefore shows within a minute. Every
+market placeholder returns `-` until the figures are known: for a player who is not online on this
+server, and for the first seconds after joining.
+
+Related: [Messages and menus](config/messages-and-menus.md), [Player market](features/market/index.md)

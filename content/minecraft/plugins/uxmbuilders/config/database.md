@@ -63,7 +63,7 @@ file's folder is created if it is missing.
 | `uxmbuilders_trust` | Who trusts whom |
 | `uxmbuilders_audit` | Purchases, starts, cancels, refunds, boosts, trust, admin changes and market activity, when `logging.audit` is on |
 | `uxmbuilders_market_snapshots` | The designs listed on the market, each stored once |
-| `uxmbuilders_market_listings` | Listings: seller, title, price, stock, status, where the design was captured, reports |
+| `uxmbuilders_market_listings` | Listings: seller, title, price, stock, status, the commission rate fixed when listed, where the design was captured, reports |
 | `uxmbuilders_market_purchases` | Every purchase: buyer, price, commission, builds used, the blueprint's current copy |
 | `uxmbuilders_market_earnings` | What the market owes and paid each seller and the commission account |
 | `uxmbuilders_market_reports` | Reports and how they were resolved |
@@ -79,6 +79,18 @@ Checkpoints go through one background writer in order, so a slow disk never stal
 build is written before money moves or the build is counted: a refund is paid only once the cancelled
 build is stored, so a crash between the two never refunds twice. If the database refuses that write,
 nothing is paid, the owner is told the refund failed, and the build comes back after the next restart.
+
+## Schema upgrades
+
+The schema version is kept in `uxmbuilders_schema_migrations`. At startup the plugin applies, in order,
+every upgrade the database has not had yet, the same way on SQLite, MySQL and PostgreSQL.
+
+| Version | Adds |
+|---|---|
+| 1 | The tables for players, builders, builds, warehouses, trust and the audit trail |
+| 2 | The design each build builds: a package, or a design bought on the market |
+| 3 | The player market's tables |
+| 4 | `commission_bp` in `uxmbuilders_market_listings`: the commission each listing keeps, in hundredths of a percent, fixed when it is listed. Listings stored before it have none and use their seller's current rate at each sale |
 
 ## Several servers on one database
 

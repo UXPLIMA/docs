@@ -1,7 +1,7 @@
 ---
 title: Integrations
 order: 390
-description: WorldEdit, the economy, land protection, PlaceholderAPI and Discord.
+description: WorldEdit, the economy, land protection, PlaceholderAPI, Bedrock players and Discord.
 icon: plug
 ---
 
@@ -19,6 +19,7 @@ enables later is picked up when it loads.
 | uxmClaims | Claim checks, chunk by chunk | |
 | Lands, Residence, RedProtect, GriefDefender, HuskClaims, BentoBox, SuperiorSkyblock2 | Through the generic `bukkitEvent` provider, off by default | |
 | PlaceholderAPI | [Placeholders](placeholders.md) | No placeholders |
+| Geyser or Floodgate | Bedrock forms for the market's questions, and its menus as button lists; see [config.yml](config/config-yml.md#dialog-and-bedrock) | Bedrock players type in chat and use chest menus |
 | LuckPerms or any permissions plugin | The numeric nodes and content permissions | Defaults only |
 | Discord | [Notifications](features/notifications.md) through a webhook, no bot needed | |
 

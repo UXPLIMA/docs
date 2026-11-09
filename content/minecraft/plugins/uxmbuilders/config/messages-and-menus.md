@@ -69,7 +69,7 @@ One file per menu under `menu/`:
 | `warehouse.yml` | The material store |
 | `history.yml` | Finished and cancelled builds |
 | `market-browse.yml` | The [player market](../features/market/index.md): category tabs, sort, search and listings |
-| `market-listing.yml` | One listing: details, buy, preview, materials |
+| `market-listing.yml` | One listing: details, buy, preview, materials, report |
 | `market-confirm.yml` | The purchase confirmation of a design |
 | `market-designs.yml` | My designs: what a player bought |
 | `market-sell.yml` | A listing before it is published: icon, category, fee, publish |
@@ -124,6 +124,50 @@ Each item takes:
 Some items take their material from elsewhere (a package's or a category's icon) and use only the name
 and lore from the file; the header comment of each file says which, and which placeholders each item
 gets. An item without a slot is not drawn.
+
+## Bedrock forms
+
+Six market menus have a second file under `menu/bedrock/`: `market-browse`, `market-listing`,
+`market-confirm`, `market-mine`, `market-designs` and `market-sell`. A player joining through Geyser or
+Floodgate, with `bedrock.enabled` and `bedrock.menus` on in [config.yml](config-yml.md#dialog-and-bedrock),
+gets these menus as a list of buttons instead of a chest. The buttons are the chest menu's items in slot
+order, without the frame panes, and pressing one does what clicking the item does. Every other menu
+stays a chest for Bedrock players.
+
+```yaml
+enabled: true
+title: ''
+content:
+  - '<gray>Designs you bought: <white>%designs%</white></gray>'
+buttons:
+  entry:
+    label: '<white>%purchase.title%</white><newline><gray>Builds: <white>%purchase.credits%</white></gray>'
+    clicks:
+      LEFT: '<green>Get the blueprint</green>'
+      RIGHT: '<aqua>Preview where you look</aqua>'
+      SHIFT_LEFT: '<white>Materials</white>'
+```
+
+| Key | Meaning |
+|---|---|
+| `enabled` | `false` gives Bedrock players the chest menu here too |
+| `title` | The form's title; empty uses the chest menu's |
+| `content` | Lines shown above the buttons |
+| `buttons` | Only the items that should look different on Bedrock, by their key in the chest menu's file |
+
+Each entry under `buttons` takes:
+
+| Key | Meaning |
+|---|---|
+| `label` | The button's text, in MiniMessage, with the item's placeholders; empty uses the item's name |
+| `image` | A texture of the Bedrock resource pack (`textures/items/emerald`), an `https` URL, or `none`; empty picks an icon for the item's material |
+| `hidden` | `true` leaves the item out |
+| `clicks` | For an item that does different things per click in the chest: the choices offered after pressing it, each under the click it stands for (`LEFT`, `RIGHT`, `SHIFT_LEFT`, `SHIFT_RIGHT`) |
+
+A button that opens nothing, such as the sort, brings the form back once it is done, as a chest would
+stay open. The button that leads back from a list of choices is the `bedrockBack` message. The files
+follow the language and are read again on reload; one that cannot be read gives Bedrock players the
+chest menu until it is fixed.
 
 ## Updating
 

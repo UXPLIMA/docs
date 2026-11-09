@@ -1,7 +1,7 @@
 ---
 title: config.yml
 order: 401
-description: The license, the language, performance, preview, economy, protection and every other switch.
+description: The license, the language, performance, preview, economy, protection, dialogs, Bedrock forms and every other switch.
 icon: file-cog
 ---
 
@@ -29,6 +29,8 @@ progress:         # boss bar, action bar, milestones
 effects:          # sounds, particles, completion firework
 admin:            # seeds for new packages
 gui:              # menu timing
+dialog:           # dialog screens for typing, on Java clients
+bedrock:          # forms and menus for Bedrock players
 database:         # SQLite, MySQL or PostgreSQL, checkpoints, recovery, server id
 api:              # developer events
 logging:          # the audit trail
@@ -48,6 +50,19 @@ The Discord webhook is no longer here: it has its own file, [webhooks.yml](webho
 
 The update notice reaches staff as they join, with the version and a download link, and says so when a
 release includes a security fix. Its texts are the `update*` keys in `messages.yml`.
+
+With `metrics` on, uxmBuilders adds these charts to the server figures bStats collects itself:
+
+| Chart | Value |
+|---|---|
+| `active_jobs` | Builds running, queued or paused |
+| `package_count` | Packages in `packages.yml` |
+| `protection_mode`, `protection_providers` | `protection.mode`, and the protection plugins in use |
+| `build_order` | `schematic.buildOrder` |
+| `market_enabled` | Whether the [player market](../features/market/index.md) is on |
+| `market_listings` | Listings on the market: for sale, paused, sold out or under review |
+
+Servers sharing a database see the same market, so each of them reports the same listings.
 
 ## performance
 
@@ -157,5 +172,40 @@ language.
 
 The menus' filler pane is no longer a setting here: it is the entry without a slot under `otherItems`
 in each [menu file](messages-and-menus.md).
+
+## dialog and bedrock
+
+Where a player types something for the [player market](../features/market/index.md) (the listing form, a
+report, a search, a new price or title, a moderator's reason), the question comes on one screen when the
+player's game can show one, and in chat otherwise.
+
+```yaml
+dialog:
+  enabled: true
+  bedrockFallback: true
+  timeoutSeconds: 300
+
+bedrock:
+  enabled: true
+  menus: true
+```
+
+| Key | Default | Meaning |
+|---|---|---|
+| `dialog.enabled` | `true` | Dialog screens for Java players, on a Paper server with dialogs (1.21.7 and later). With ViaVersion installed, a client older than 1.21.6 is asked in chat |
+| `dialog.bedrockFallback` | `true` | When Bedrock forms are off or missing, Bedrock players are asked in chat instead of being sent a dialog their game cannot show |
+| `dialog.timeoutSeconds` | `300` | How long an open dialog waits for an answer; read at startup |
+| `bedrock.enabled` | `true` | Bedrock forms for players joining through Geyser or Floodgate, in place of dialogs and chat |
+| `bedrock.menus` | `true` | Also show the market's menus to Bedrock players as lists of buttons; see [Bedrock forms](messages-and-menus.md#bedrock-forms) |
+
+| Player | Questions | Market menus |
+|---|---|---|
+| Java, with dialogs | A dialog screen | Chest menus |
+| Java, without | Chat, one question at a time; `cancel` stops | Chest menus |
+| Bedrock, with `bedrock.enabled` | A Bedrock form; a choice such as a category or a report reason is a dropdown | Lists of buttons with `bedrock.menus`, chest menus without |
+| Bedrock, without | Chat | Chest menus |
+
+Geyser or Floodgate is looked for at startup; without either, nothing here changes for anyone. A reload
+applies every key except `dialog.timeoutSeconds`.
 
 Related: [packages.yml](packages-yml.md), [builders.yml](builders-yml.md), [webhooks.yml](webhooks-yml.md), [market.yml](market-yml.md)

@@ -11,7 +11,9 @@ sold, put it back, ban a seller from the market, refund a buyer or pay a seller 
 
 ## Reports
 
-`/builders market report <code> <reason> [note]`, with `uxmbuilders.market.report`:
+A player with `uxmbuilders.market.report` reports a listing with `/builders market report <code>
+<reason> [note]`, or with the **Report** button of the listing's menu, which is not shown on their own
+listing. The reasons:
 
 | Reason | Typed as |
 |---|---|
@@ -22,7 +24,14 @@ sold, put it back, ban a seller from the market, refund a buyer or pay a seller 
 | Other | `other` |
 
 A dash works in place of the underscore, and the note is the rest of the line, cut to
-`reports.noteMax` characters.
+`reports.noteMax` characters. The command without a reason, or with one it does not know, prints its
+usage and the reasons.
+
+The **Report** button asks for the reason and an optional note on one screen: a dialog on Java, or a
+Bedrock form with the reason as a dropdown. Where neither can be shown, chat lists the reasons with
+numbers and takes a number, the reason as typed in the command, or its name as listed; then the note,
+`-` for none. The note is not asked with `reports.noteMax: 0`, and `cancel` stops. Both ways file the
+same report, with the same checks:
 
 | Refused when | Setting |
 |---|---|
@@ -38,10 +47,14 @@ one is set, so the reporter's name stays out of the players' channel.
 
 ## Under review
 
-The report that brings a listing's count to `reports.autoHideThreshold` hides it: it leaves the market,
-nobody can buy it, and only its seller still sees it, marked **Under review**. The seller cannot put it
-back on sale. A report only ever hides; what happens next is a moderator's decision. The count starts
-again when the listing is restored. `0` turns hiding off.
+The report that brings a listing's open reports to `reports.autoHideThreshold` hides it: it leaves the
+market, nobody can buy it, and only its seller still sees it, marked **Under review**. The seller cannot
+put it back on sale. A report only ever hides; what happens next is a moderator's decision. `0` turns
+hiding off.
+
+Closing a report, dismissed or acted on, takes it off the count, so a single new report after a
+dismissal does not hide the listing again. Closing reports never shows a hidden listing again: it stays
+under review until it is restored, which starts the count again from nothing.
 
 ## The menus
 
@@ -55,7 +68,7 @@ Clicking one opens its inspection, also reached with `/builders admin market ins
 | Licences | Prints the active licences in chat, each with a refund link |
 | Teleport | To where the design was captured, above the build |
 | Restore | Shown while the listing is hidden or removed |
-| Dismiss the reports | Closes every open report; the listing stays as it is |
+| Dismiss the reports | Closes every open report and takes them off the count; the listing stays as it is, hidden or not |
 | Remove | Asks for a reason, which the seller reads |
 | Remove and revoke (shift-click) | Also takes back every licence |
 | Ban the seller (shift-click) | Asks for a reason; the ban lasts until it is lifted |
@@ -68,7 +81,7 @@ Clicking one opens its inspection, also reached with `/builders admin market ins
 | `/builders admin market remove <code> [--revoke] [reason]` | Takes the listing down; `--revoke` also takes back every licence |
 | `/builders admin market restore <code>` | Puts it back |
 | `/builders admin market reports [page]` | The reports menu |
-| `/builders admin market resolve <report> dismiss\|action` | Closes one report, by the id the reports list shows |
+| `/builders admin market resolve <report> dismiss\|action` | Closes one report, by the id the reports list shows, and takes it off the listing's count |
 | `/builders admin market inspect <code>` | The inspection |
 | `/builders admin market tp <code>` | Teleports to where it was captured |
 | `/builders admin market ban <player> [duration] [reason]` | Bans a seller; a duration is `30m`, `12h`, `7d` or `2w`, none or `never` for good |
@@ -95,6 +108,10 @@ it, each licence is taken back on its own:
 | The commission account | Charged its commission back, when it received one for that sale |
 | The buyer | Refunded the price with `moderation.revokeRefund: FULL`; with `NONE` the licence is taken without a refund |
 
+`revokeRefund: NONE` does not let the seller keep the money: they are still charged back what those
+sales earned them, and the commission account its commission. The buyer gets nothing either, so the
+server keeps that money.
+
 `refund <purchase>` does the same for one licence and always refunds the buyer; `refund <purchase>
 --revoke` refunds only as `revokeRefund` says. The purchase id is the one the **Licences** links fill
 in. A refund the economy refuses is written to the audit log for staff to pay by hand. A limited copy
@@ -116,9 +133,13 @@ A market ban stops a player from capturing and listing. In the same moment:
 | Their listings are hidden (`HIDE`) or removed (`REMOVE`) | `moderation.onSellerBan` |
 
 Buyers keep what they bought. Banning again replaces the earlier ban. `unban` releases the held earnings
-to be paid; the listings stay hidden until a moderator restores each one. When a timed ban runs out, the
-player may sell again, while the earnings it held stay on hold until `unban` or `payout`. `payout`
-refuses while a ban runs, and lifts one that has run out on the way.
+to be paid; the listings stay hidden until a moderator restores each one.
+
+When a timed ban runs out, the player may sell again at once. The ban is lifted, as `unban` would, at
+their next payout: their own `claim` or **Earnings** button, the payout when they join, the retry every
+minute while they are online with `economy.payout: INSTANT`, or a moderator's `payout`. That releases
+the earnings it held, which are paid with the rest. `payout` refuses while a ban runs. Either way the
+listings the ban hid stay hidden until a moderator restores them.
 
 A player banned from the server is treated as blocked whatever the market says: their listings are left
 out of the market, cannot be bought, and they are not paid until the server ban ends.

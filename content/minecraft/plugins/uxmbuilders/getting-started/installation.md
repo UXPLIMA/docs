@@ -36,6 +36,7 @@ The Paper jar declares `folia-supported: false`, so Folia refuses it. Use the Fo
 | PlaceholderAPI | The `%uxmbuilders_...%` [placeholders](../placeholders.md) |
 | WorldEdit or FastAsyncWorldEdit | A WorldEdit selection works for `/builders admin save`, beside the plugin's own wand |
 | WorldGuard, GriefPrevention, Towny, PlotSquared, uxmClaims | Native [land protection](../features/protection.md) checks |
+| Geyser or Floodgate | Bedrock forms and button menus for the player market; see [dialog and bedrock](../config/config-yml.md#dialog-and-bedrock) |
 | LuckPerms | Nothing specific; any permissions plugin grants the nodes |
 
 Every one of these is a soft dependency. A protection plugin that enables after uxmBuilders is picked up
@@ -66,6 +67,7 @@ plugins/uxmBuilders/
 ├── webhooks.yml        the Discord webhook and its texts
 ├── market.yml          the player market: money, listing rules, capture, moderation, categories
 ├── menu/*.yml          every menu: titles, slots, items, names and lore
+├── menu/bedrock/*.yml  the market's menus as Bedrock forms
 ├── schematics/         your .schem files
 ├── data/
 │   ├── uxmbuilders.db  the SQLite database, when SQLite is the backend

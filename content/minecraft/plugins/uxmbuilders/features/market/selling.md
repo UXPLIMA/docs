@@ -24,7 +24,8 @@ is the same item as `/builders admin wand` and marks corners for holders of `uxm
 ## The capture
 
 `/builders market sell`, or **Sell a build** in the market menu, checks the seller and the place before
-anything is read:
+anything is read. The seller comes first: the market must be open, and a seller without the permission
+or under a [market ban](moderation.md#bans) is told so before being asked about a selection.
 
 | Check | Refused when |
 |---|---|
@@ -81,8 +82,10 @@ The design is compared in all four rotations and mirrored:
 
 ## The listing form
 
-On Paper, for a client on 1.21.7 or later and with `dialog.enabled` in `config.yml`, the form is one
-dialog screen. Otherwise chat asks one question at a time; type `cancel` to stop.
+On Paper 1.21.7 or later, with `dialog.enabled` in `config.yml`, the form is one dialog screen. A
+Bedrock player joining through Geyser or Floodgate gets it as a Bedrock form with `bedrock.enabled`, the
+category as a dropdown. Otherwise chat asks one question at a time; type `cancel` to stop. See
+[dialog and bedrock](../../config/config-yml.md#dialog-and-bedrock).
 
 | Field | Rules |
 |---|---|
@@ -105,8 +108,12 @@ once, with its code.
 | Listing fee | `economy.listingFee` | `uxmbuilders.market.fee.exempt` pays nothing |
 | Commission | `economy.commissionPercent` of each sale | `uxmbuilders.market.commission.<n>` percent, the lowest held |
 
-The commission is set when a copy sells. A seller's `commission.<n>` node is read only while the seller
-is online on the server where the copy sells; otherwise `economy.commissionPercent` applies.
+The commission is fixed when the design is listed: the confirm menu shows the seller's rate, and the
+listing keeps that rate for every copy it sells, on every server, whether the seller is online or not.
+Changing a player's `commission.<n>` node, or `economy.commissionPercent`, applies to the listings they
+make afterwards. A listing stored before the rate was kept with it (before database
+[migration v4](../../config/database.md#schema-upgrades)) uses the seller's current rate at each sale:
+their node while they are online on that server, `economy.commissionPercent` otherwise.
 
 ## Managing listings
 
@@ -133,8 +140,17 @@ Each sale's net is owed to the seller in the market's books, then paid into thei
 `/builders market earnings` shows the lifetime total, what was paid, what is still to be paid, and what
 is on hold under a [market ban](moderation.md#bans). A seller who was away is told two seconds after
 joining how many copies sold and what they earned. A payout the economy refuses stays owed and is tried
-again; a seller banned from the server is paid once the ban ends. When a moderator refunds a buyer, the
-net is taken back from the seller: if it was already paid, the seller's next earnings pay it off first.
+again; a seller banned from the server is paid once the ban ends. When a moderator refunds or revokes a
+buyer's licence, the net is taken back from the seller: if it was already paid, the seller's next
+earnings pay it off first.
+
+When refunds took back more than the seller was owed, `earnings` shows the debt on an **Owed back** line
+instead of what is to be paid, without the **[Claim]** link, and `claim` says the next sales pay it off
+first.
+
+A timed market ban that has run out is lifted at the seller's next payout: their own `claim` or
+**Earnings** button, the payout when they join, or, with `INSTANT`, the retry every minute while they
+are online. The earnings it held are then paid with the rest.
 
 ## Notes
 
@@ -143,5 +159,8 @@ net is taken back from the seller: if it was already paid, the seller's next ear
   for everyone.
 - Abandoned captures leave nothing behind: nothing is stored until a listing is published.
 - A listing's seller name follows the player's current name, updated when they join.
+- Bedrock players get the confirm menu and `/builders market mine` as lists of buttons with
+  `bedrock.menus`; the menu that manages one listing stays a chest. See
+  [Bedrock forms](../../config/messages-and-menus.md#bedrock-forms).
 
 Related: [Buying a design](buying.md), [Market moderation](moderation.md), [market.yml](../../config/market-yml.md)

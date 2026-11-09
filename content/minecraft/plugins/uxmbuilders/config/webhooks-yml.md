@@ -78,7 +78,6 @@ The market texts take their own:
 Mentions are switched off on every post: nobody is pinged, not by a `<@id>` you write and not by a
 package or listing named `@everyone`.
 
-`market.yml` also has a `webhook` section with `events` and `moderationUrl`. It is not read: set both
-here.
+The market's posts are set here only: `market.yml` has no webhook section.
 
 Related: [Discord notifications](../features/notifications.md), [Messages and menus](messages-and-menus.md), [market.yml](market-yml.md)

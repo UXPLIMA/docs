@@ -31,7 +31,7 @@ There is one set of files, at the usual paths, written in the language in use:
 | File | Texts |
 |---|---|
 | `messages.yml` | Every message |
-| `menu/*.yml` | Every menu |
+| `menu/*.yml` | Every menu; `menu/bedrock/*.yml` the market's Bedrock forms |
 | `builders.yml` | Builder names, descriptions and level names |
 | `packages.yml` | Category names |
 | `market.yml` | The market's category names |
