@@ -5,9 +5,11 @@ description: How blocks are placed, in what order, and how the server stays at 2
 icon: gauge
 ---
 
-One task runs every tick and places blocks for every building job. Each job advances a cursor along
-a precomputed order of the schematic's blocks, so a 200,000-block castle is an array of indices, not
-200,000 objects.
+On Paper one task runs every tick and places blocks for every building job; on Folia each region's
+thread does the same for the builds standing in it. Each job advances a cursor along a precomputed
+order of the schematic's blocks, so a 200,000-block castle is an array of indices, not 200,000 objects.
+The order is planned off the main thread when the build starts, a few at a time, so many starts at
+once cannot take every core.
 
 ## Speed
 
@@ -16,7 +18,7 @@ A job's speed is its builder's `blocksPerSecond` at the level it started with, t
 | Step | Effect |
 |---|---|
 | Package affinity | `builderAffinity` in the package multiplies it for that builder |
-| `uxmbuilders.speed.<n>` | Adds `n` percent; the highest node held wins |
+| `uxmbuilders.speed.<n>` | Adds `n` percent: `speed.50` builds 1.5 times as fast. The highest node held wins; `speed.*` goes straight to the ceiling |
 | Speed boost | Multiplies it while a [boost](boost.md) runs |
 | Load factor | `1.0` normally, `slowdownFactor` under load, `0` below `pauseBelowTps` |
 | Server ceiling | Never more than `performance.blocksPerTick` blocks per tick |
@@ -36,7 +38,17 @@ none of them starves.
 | `performance.maxConcurrentJobs` | `5` | Jobs building at once; the rest queue |
 | `performance.queueLimit` | `20` | Jobs allowed to wait in the queue |
 
-Paused jobs hold no slot and do not count toward the queue limit.
+Paused jobs hold no slot and do not count toward the queue limit. A job the shared budget ran out on
+keeps the share it could not use for its next turn, so a job late in the rotation is not slowed down
+on a busy server.
+
+## On Folia
+
+Folia has no single server tick, so the limits apply per region. Each region shares
+`blocksPerTick` and `maxNanosPerTick` among the builds standing in it, and the adaptive slowdown reads
+that region's TPS, so a lagging region slows only its own builds. A build whose next block lies in
+another region moves to that region's thread. `maxConcurrentJobs` and `queueLimit` still count the whole
+server.
 
 ## Adaptive slowdown
 

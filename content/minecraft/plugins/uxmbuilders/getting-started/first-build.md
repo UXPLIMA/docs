@@ -7,10 +7,16 @@ icon: play
 
 ## 1. Save the structure
 
-Stand in front of a house you built, select it with WorldEdit, and save it into the plugin's folder:
+Stand by a house you built and take the selection wand:
 
 ```
-//wand
+/builders admin wand
+```
+
+Left-click one corner block of the house and right-click the opposite one. The chat confirms each
+corner and then the size of the selection. Save it into the plugin's folder:
+
+```
 /builders admin save oak_house
 ```
 
@@ -18,7 +24,10 @@ The file lands in `plugins/uxmBuilders/schematics/oak_house.schem`. Air inside t
 which matters: [site preparation](../features/site-preparation.md) clears whatever stands where the
 schematic has air. `--overwrite` replaces an existing file of the same name.
 
-A `.schem` from anywhere else works the same way: drop it into `schematics/`.
+With WorldEdit installed, a `//wand` selection works too; when both corners are marked with the
+plugin's wand, that selection is used instead. A `.schem` from anywhere else works the same way: drop
+it into `schematics/`. The
+plugin reads Sponge schematics, versions 1 to 3; MCEdit `.schematic` files are not read.
 
 ## 2. Create the package
 
@@ -27,14 +36,15 @@ A `.schem` from anywhere else works the same way: drop it into `schematics/`.
 ```
 
 This writes a package into `packages.yml` with the price `1500`, the first category, and the seed
-display name and icon from `admin.newPackage` in `config.yml`. Give it a proper name and icon:
+display name and icon from `admin.newPackage` in `config.yml`. The id is lower-cased and may hold
+letters, digits, `_` and `-`; the schematic file must exist. Give it a proper name and icon:
 
 ```
 /builders admin package edit oak_house display <gold>Oak Cottage</gold>
 /builders admin package edit oak_house icon OAK_PLANKS
-/builders admin reload
 ```
 
+Each edit is saved to `packages.yml` at once, comments kept, and applies without a reload.
 `/builders admin package info oak_house` prints the size, block count and material list.
 
 ## 3. Buy the blueprint
@@ -85,7 +95,8 @@ off. The build appears in `/builders history`.
 
 <Callout type="tip" title="Test with a fast builder first">
 
-`/builders admin setbuilder <player> wizard 5` gives a test account the fastest shipped builder, so you
-can confirm the package end to end in seconds before tuning prices and levels.
+`/builders admin setbuilder <player> wizard 5` gives a test account the fastest shipped builder at its
+top level and selects it, so you can confirm the package end to end in seconds before tuning prices and
+levels.
 
 </Callout>

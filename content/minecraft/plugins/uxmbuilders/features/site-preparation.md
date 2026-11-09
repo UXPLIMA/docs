@@ -36,13 +36,16 @@ count as gaps; anything solid ends the column.
 Columns where the bottom layer is empty (a porch roof, an overhang) get no foundation.
 
 The foundation goes below the box the protection check covered, so each column is asked about on its
-own before anything is placed under it. A column the owner may not build in is skipped. With the
-[warehouse](warehouse.md) on, each foundation block is charged like any other block.
+own, all of them once when the preparation starts, off the main thread. A column the owner may not
+build in is skipped, and so are columns asked about while the owner is offline. With the
+[warehouse](warehouse.md) on, each foundation block takes one item of the foundation block (or an
+accepted substitute) from the owner's warehouse; a builder's `efficiency` does not apply to it.
 
 ## Players on the site
 
-While a build is going up, a player standing in its footprint is moved just past the nearest edge, onto
-the ground there, and told so in chat. Blocks go in without physics, so one placed where a
+While a build is going up, a player in survival or adventure standing in its footprint is moved just
+past the nearest edge, onto the ground there, and told so in chat, at most once every three seconds.
+Players are checked four times a second. Blocks go in without physics, so one placed where a
 player stands would trap and suffocate them. Creative and spectator players take no suffocation damage
 and are left where they are, so staff can watch from inside.
 

@@ -24,8 +24,9 @@ A refund the economy refused shows as `0`, which is what the player actually rec
 
 ## Teleporting
 
-With `uxmbuilders.history.teleport`, clicking a completed build teleports to the top of it. Teleports are
-limited to one per `history.teleportCooldown` seconds, which `uxmbuilders.bypass.cooldown` skips.
+With `uxmbuilders.history.teleport`, clicking a completed build teleports to the top of it, once its
+chunk has loaded. Teleports are limited to one per `history.teleportCooldown` seconds, which
+`uxmbuilders.bypass.cooldown` skips. A build in a world that is not loaded cannot be reached.
 
 ## Other players
 
@@ -38,12 +39,15 @@ can be looked up, online or not.
 |---|---|---|
 | `history.teleportCooldown` | `30` | Seconds between teleports |
 
-The layout, the 21 entry slots and every line of text are in `menu/history.yml`.
+The layout, the 21 entry slots (`itemSlots`) and every line of text are in `menu/history.yml`. A page
+holds as many entries as there are entry slots.
 
 ## Notes
 
-- The history reads the job table, so builds from before the update that added it appear too, without
-  a refund amount or a reason.
+- The history is read from the database off the main thread, page by page.
+- Servers that [share a database](../config/database.md#several-servers-on-one-database) share the
+  history too: a player's list holds their builds from every server.
+- Builds from 1.0.0 are not in it; see [Upgrading from 1.0.0](../getting-started/upgrading.md).
 - Both permissions default to operators.
 
 Related: [Restarts and refunds](recovery.md), [Commands](../commands.md)
