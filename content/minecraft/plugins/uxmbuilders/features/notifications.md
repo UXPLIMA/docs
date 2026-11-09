@@ -50,9 +50,9 @@ Every placeholder is listed on the [webhooks.yml](../config/webhooks-yml.md) pag
 
 - Posts go out one at a time on a background thread; a slow or unreachable webhook never touches the
   main thread or a build.
-- A rate limit from Discord is waited out once, for as long as Discord asks, up to a minute. A longer
-  wait drops the posts until it is over, with one warning. A backlog of more than 100 posts is dropped
-  with a warning rather than held in memory.
+- A rate limit from Discord is waited out for as long as Discord asks, up to an hour, and the posts
+  are kept meanwhile; a wait longer than a minute is warned about once. A backlog of more than 100
+  posts is dropped, with one warning, rather than held in memory.
 - Posts still queued when the server stops get up to three seconds to go out.
 - Mentions are disabled: a player who names a package `@everyone` pings nobody.
 - An empty or invalid URL logs one warning and posts nothing.

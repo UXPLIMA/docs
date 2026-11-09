@@ -95,7 +95,8 @@ left and price. It works while the market is closed.
 | Shift + click | Lists its materials |
 
 A design shows **Revoked** or **Refunded** when a moderator took the licence back; it starts no new
-build, while a build already running carries on.
+build, while a build already running carries on. Such a design offers no blueprint, preview or
+materials (the `entryClosed` item of `menu/market-designs.yml`).
 
 ## Cancelling a market build
 
@@ -111,7 +112,9 @@ back is the build itself, the right to build the design once more:
 `/builders cancel` asks for `/builders confirm` with the share up to which the build comes back, rather
 than a refund (`infoCancelConfirmRequiredMarket`). The notice after it says whether the build came back,
 to be placed again from **My designs** (`infoBuildCancelledCreditBack`), or is used up
-(`infoBuildCancelledCreditUsed`). The blocks already placed stay, as with any cancelled build.
+(`infoBuildCancelledCreditUsed`). Cancelling your own build past that share, the confirmation says
+straight away that the build will be used up (`infoCancelConfirmRequiredMarketUsed`). The blocks
+already placed stay, as with any cancelled build.
 
 ## Notes
 

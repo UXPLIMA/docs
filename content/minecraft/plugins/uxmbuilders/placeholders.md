@@ -26,8 +26,8 @@ never from the database, so the placeholders are safe to refresh often and from 
 | `%uxmbuilders_eta%` | Time left, `3m 20s` or `1h 5m` | `-` |
 | `%uxmbuilders_queue_position%` | Builds ahead of it in the server queue | `0` |
 
-`queue_position` is `0` while the build is running as well as when it is first in line; read
-`state` to tell the two apart.
+`queue_position` is `0` while the build is running and when it is next in line; read `state` to tell
+the two apart. A paused build counts the queued builds ahead of it in the server queue.
 
 ## Builder
 

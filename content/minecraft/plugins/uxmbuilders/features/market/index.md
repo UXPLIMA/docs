@@ -42,7 +42,8 @@ included, changes nothing for buyers: every copy builds the stored design.
 | Payout | The seller is paid at once or when they join, as `economy.payout` says; see [Earnings](selling.md#earnings-and-payouts) |
 
 Prices and fees need an economy plugin through Vault. Without one, browsing still works, while listing
-with a fee and buying a design that has a price are refused.
+and buying are refused: every listing has a price nobody could pay. A seller hears it as soon as they
+run `/builders market sell`, before anything is captured, fee exempt or not.
 
 ## Listing statuses
 
