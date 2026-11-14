@@ -30,7 +30,11 @@ in `/uxmbedrock pack report` with the setting to change.
 |---|---|
 | Item models, item model definitions, old custom model data | Custom items Geyser registers, with icons; 3D models as geometry and attachables |
 | Armour and elytra equipment | Attachables on the player |
-| Blocks with custom states | Custom blocks Geyser registers; animated textures as flipbooks |
+| Leather armour a core shader draws (animated, emissive armour sets) | Attachables with the shader's frames, played at its speed |
+| Bows, crossbows, fishing rods and bundles with their states | The same states: a bow drawn back, a cast rod, a filled bundle |
+| Blocks with custom states | Custom blocks Geyser registers, broken at their host block's speed; animated textures as flipbooks |
+| Custom stairs, slabs, doors and trapdoors | Custom blocks in every state, turned as Java turns them |
+| Locator bar icons | The same icons on Bedrock's locator bar |
 | Sounds | Bedrock sounds, re-encoded smaller with ffmpeg when it is installed |
 | Fonts | Glyph pages and menu pictures |
 | Language files | Geyser's locale overrides, so items keep their names |

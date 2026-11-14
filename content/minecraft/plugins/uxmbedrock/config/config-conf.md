@@ -63,6 +63,7 @@ it.
 | `faces` | `true` | Faces are left out |
 | `tab-list` | `true` | Geyser's plain player list |
 | `java-chat` | `true` | Bedrock's chat layout |
+| `chat-colours` | `true` | Chat keeps Bedrock's sixteen colours |
 | `scoreboard` | `true` | Geyser's sidebar, with score numbers |
 | `scoreboard-art` | `true` | The plain sidebar |
 | `name-tags` | `true` | Geyser's name tags |
@@ -70,6 +71,7 @@ it.
 | `holograms` | `true` | Geyser's text displays |
 | `displays` | `true` | Bedrock shows nothing for item and block displays |
 | `skulls` | `true` | Custom heads show as Steve |
+| `biomes` | `true` | Geyser draws every data pack biome as an ocean |
 | `tap-words` | `true` | Click stays click for touch and controller players |
 | `menu-forms` | `true` | Other plugins' menus are always chests |
 | `menu-art` | `true` | Plain chests, no menu pictures |
@@ -89,7 +91,7 @@ it.
 
 | Key | Default | Meaning |
 |---|---|---|
-| `allowed` | `["java-font", "java-chat", "menu-art", "vanilla-hud", "hud-plugins", "animated-pack"]` | The features a Bedrock player may switch off in `/bedrock`. Only these may be listed: `java-font`, `exact-colours`, `faces`, `tab-list`, `java-chat`, `scoreboard-art`, `displays`, `menu-forms`, `menu-art`, `tooltips`, `vanilla-hud`, `hud-plugins`, `animated-pack` |
+| `allowed` | `["java-font", "java-chat", "chat-colours", "menu-art", "vanilla-hud", "hud-plugins", "animated-pack"]` | The features a Bedrock player may switch off in `/bedrock`. Only these may be listed: `java-font`, `exact-colours`, `faces`, `tab-list`, `java-chat`, `chat-colours`, `scoreboard-art`, `displays`, `menu-forms`, `menu-art`, `tooltips`, `vanilla-hud`, `hud-plugins`, `animated-pack` |
 
 ## preview
 

@@ -17,6 +17,7 @@ icon: layout-list
 rules = [
   { plugin = "ShopGUIPlus", title-contains = "", mode = "form" },
   { plugin = "*", title-contains = "Crate", mode = "chest" },
+  { plugin = "*", title-contains = "Settings", mode = "settings" },
 ]
 ```
 
@@ -24,7 +25,7 @@ rules = [
 |---|---|
 | `plugin` | The plugin's name as `/plugins` shows it, ignoring case; `*` for every plugin |
 | `title-contains` | Text the menu's title must hold, ignoring colours and case; empty for any title |
-| `mode` | `form` or `chest`. A rule with another word is skipped |
+| `mode` | `form`, `chest` or `settings`. A rule with another word is skipped |
 
 The most specific rule wins: plugin and title, then plugin, then `*`. A player who chose chests always gets chests.
 `/uxmbedrock menus` lists the rules in force.
