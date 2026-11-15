@@ -24,7 +24,8 @@ icon: package
 Only the packs these plugins have built are read, never their configuration, and only while the plugin runs: a plugin
 taken off the server leaves its built pack behind, which Java players no longer get, so it is not read either. A pack
 listed in `sources.extra` is read whatever wrote it. A plugin that protects its pack is named in
-`/uxmbedrock pack report` with the setting to change.
+`/uxmbedrock pack report` with the setting to change. ItemsAdder 5 ships with its pack obfuscated: set `zip_entries`,
+`zip_archive`, `png` and `short_texture_references` under `resource_pack.obfuscation` to `false`, then `/iazip`.
 
 ## What becomes what
 

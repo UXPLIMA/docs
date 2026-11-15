@@ -54,6 +54,9 @@ Both plugins skip Bedrock players by default. Each pack build names the setting 
 pack report (`/uxmbedrock pack-report`):
 `disable-to-bedrock-player: false` in `BetterHud/config.yml`, `disable-geyser-players: false` in
 `MythicHUD/config.yml`. Java runs one text shader, so with both plugins on one server only MythicHUD's HUD is placed.
+The HUD plugin's shader has to reach Java players in the pack they get. Nexo and CraftEngine carry it when the HUD
+pack is merged into theirs; ItemsAdder 5.0.0-beta-8 keeps its own text shader and drops theirs from a merged pack, so
+neither HUD shows on Java there.
 BetterHud's rainbow effect is drawn on Bedrock: every picture and letter of a rainbow layout takes a bright colour
 that changes once a second, as on Java. Java colours each corner of a letter on its own, so its letters blend from
 one colour to another; on Bedrock each letter and picture is one colour, picked from twelve hues. The colours reach
