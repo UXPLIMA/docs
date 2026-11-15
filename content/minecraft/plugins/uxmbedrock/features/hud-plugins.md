@@ -32,6 +32,31 @@ of its own can add `textures/ui/empty_progress_bar` to `hud-plugins.transparent-
 |---|---|
 | CustomNameplates | Boss bar backgrounds, name tags and chat bubbles. A bubble's background pieces stand a unit apart, since a hologram still cannot move left |
 | Dialogue plugins on the action bar | The whole box and its text |
-| BetterHud, MythicHUD | Not drawn. Both place their HUD with core shaders, which Bedrock does not have, and both skip Bedrock players by default (`disable-to-bedrock-player`, `disableGeyserPlayers`) |
+| BetterHud, MythicHUD | Pictures and text placed where their shaders place them (see below) |
+
+## Shader HUDs
+
+BetterHud and MythicHUD write their HUD into boss bars with font letters that Java would draw far below the screen,
+and a text shader in their pack moves each letter to a point of the screen: a share of its width and height, such as
+35 % across and the bottom, and a place from there. Bedrock has no shaders, so uxmBedrock reads the shader the server's
+packs give Java when it builds the pack, and places every piece of such a bar from the same point, at the same place,
+in the same layer and opacity.
+
+| Part | Becomes |
+|---|---|
+| The shader's points of the screen | Points of the screen on Bedrock, at the same shares of its width and height |
+| A piece's place from its point | The same place, in Java's units |
+| MythicHUD's scales | Pictures drawn that much larger; text keeps Java's size |
+| BetterHud's opacity and layers | The same opacity, and higher layers drawn over lower ones |
+| The shader's pictures | Pictures of the pack, one for each image however many places it is written at |
+
+Both plugins skip Bedrock players by default. Each pack build names the setting to change in the console and in the
+pack report (`/uxmbedrock pack-report`):
+`disable-to-bedrock-player: false` in `BetterHud/config.yml`, `disable-geyser-players: false` in
+`MythicHUD/config.yml`. Java runs one text shader, so with both plugins on one server only MythicHUD's HUD is placed.
+BetterHud's wave and rainbow effects are not drawn on Bedrock; the letters stand still in one colour.
+
+A font with more letters than Bedrock's font pages hold is left out and named in the pack report, so it does not
+fill the pages other plugins need. BetterHud's own `default` font is one: it carries over a hundred thousand letters.
 
 A player can switch the server's HUD off with `/bedrock feature hud-plugins off` when it is allowed.
