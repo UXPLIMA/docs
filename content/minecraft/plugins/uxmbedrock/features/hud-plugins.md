@@ -54,9 +54,18 @@ Both plugins skip Bedrock players by default. Each pack build names the setting 
 pack report (`/uxmbedrock pack-report`):
 `disable-to-bedrock-player: false` in `BetterHud/config.yml`, `disable-geyser-players: false` in
 `MythicHUD/config.yml`. Java runs one text shader, so with both plugins on one server only MythicHUD's HUD is placed.
-BetterHud's wave and rainbow effects are not drawn on Bedrock; the letters stand still in one colour.
+BetterHud's rainbow effect is drawn on Bedrock: every picture and letter of a rainbow layout takes a bright colour
+that changes once a second, as on Java. Java colours each corner of a letter on its own, so its letters blend from
+one colour to another; on Bedrock each letter and picture is one colour, picked from twelve hues. The colours reach
+the pack with the build after a player first sees them, so they show from the next join. The wave and tiny rainbow
+effects are not drawn; those letters stand still.
 
 A font with more letters than Bedrock's font pages hold is left out and named in the pack report, so it does not
 fill the pages other plugins need. BetterHud's own `default` font is one: it carries over a hundred thousand letters.
+Its letters are not drawn on Bedrock, but the build measures each one as Java does, so the pieces around them stand
+where Java puts them.
+
+Space letters that move the next letter forward by whole units, such as MythicHUD's `spaces` font, share five glyphs
+of the pack whatever their width, so a font of a thousand widths does not fill the font pages.
 
 A player can switch the server's HUD off with `/bedrock feature hud-plugins off` when it is allowed.
