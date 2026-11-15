@@ -27,4 +27,17 @@ villager) are not touched, and neither are menus of plugins built on uxmLib, whi
 `/uxmbedrock menus` lists the rules. The plugin a menu belongs to is the first plugin on the call stack that opened
 it, by the name `/plugins` shows.
 
-Java dialogs are turned into Bedrock forms by Geyser itself.
+## Settings menus
+
+A rule with `mode = "settings"` opens a menu of switches as a form of toggles. An item shows a setting when a line of
+its name or lore ends in a state word (enabled, disabled, on, off, true, false, yes, no, açık, kapalı, aktif, pasif)
+or, failing that, by its colour: lime or green is on, red is off. Every other item (Back, Close) is a choice in a
+"Then" list, which starts at Nothing. Submitting clicks each toggle the player changed, in turn, then the chosen
+item, and shows the form again while the menu stays open. A player who chose chests gets the chest. A setting that
+takes a number (stepped by left and right clicks) stays a toggle-less item in the list.
+
+## Java dialogs
+
+Geyser turns Java dialogs into Bedrock forms. Their text is drawn with Java's font and exact colours like any other
+text, an item shown in a dialog becomes a line with its name and count, and the dialogs a button opens are drawn the
+same way.

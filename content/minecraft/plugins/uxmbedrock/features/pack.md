@@ -12,17 +12,20 @@ icon: package
 | Nexo | `plugins/Nexo/pack/pack.zip` |
 | ItemsAdder | `plugins/ItemsAdder/output/generated.zip` or `output/` |
 | Oraxen | `plugins/Oraxen/pack/pack.zip` |
-| CraftEngine | `plugins/CraftEngine/generated/resource_pack.zip` or the folder |
+| CraftEngine | `plugins/CraftEngine/generated/resource_pack.zip` or the folder, written the first time CraftEngine generates its pack (`/ce reload all`) |
 | BetterHud | `plugins/BetterHud/build.zip` or `build/` |
-| MythicHUD | `plugins/MythicHUD/generated.zip` or `pack/` |
+| MythicHUD | `plugins/MythicHUD/built-pack/`, `generated.zip` or `pack/` |
 | HappyHUD | `plugins/HappyHUD/pack.zip` or `pack/` |
 | CustomNameplates, CustomFishing | `plugins/<plugin>/ResourcePack` |
 | LuxDialogues | `plugins/LuxDialogues/Output/LuxDialogues.zip` or the folder |
 | server.properties | The pack `resource-pack` names, fetched when `sources.server-properties` is on (up to 512 MB) |
 | Your own | Every zip or folder in `sources.extra` of [pack.conf](../config/pack-conf.md) |
 
-Only the packs these plugins have built are read, never their configuration. A plugin that protects its pack is named
-in `/uxmbedrock pack report` with the setting to change.
+Only the packs these plugins have built are read, never their configuration, and only while the plugin runs: a plugin
+taken off the server leaves its built pack behind, which Java players no longer get, so it is not read either. A pack
+listed in `sources.extra` is read whatever wrote it. A plugin that protects its pack is named in
+`/uxmbedrock pack report` with the setting to change. ItemsAdder 5 ships with its pack obfuscated: set `zip_entries`,
+`zip_archive`, `png` and `short_texture_references` under `resource_pack.obfuscation` to `false`, then `/iazip`.
 
 ## What becomes what
 
@@ -30,11 +33,21 @@ in `/uxmbedrock pack report` with the setting to change.
 |---|---|
 | Item models, item model definitions, old custom model data | Custom items Geyser registers, with icons; 3D models as geometry and attachables |
 | Armour and elytra equipment | Attachables on the player |
-| Blocks with custom states | Custom blocks Geyser registers; animated textures as flipbooks |
+| Leather armour a core shader draws (animated, emissive armour sets) | Attachables with the shader's frames, played at its speed |
+| Bows, crossbows, fishing rods and bundles with their states | The same states: a bow drawn back, a cast rod, a filled bundle |
+| Blocks with custom states | Custom blocks Geyser registers, broken at their host block's speed; animated textures as flipbooks |
+| Custom stairs, slabs, doors and trapdoors | Custom blocks in every state, turned as Java turns them |
+| Locator bar icons | The same icons on Bedrock's locator bar |
 | Sounds | Bedrock sounds, re-encoded smaller with ffmpeg when it is installed |
 | Fonts | Glyph pages and menu pictures |
 | Language files | Geyser's locale overrides, so items keep their names |
 | Custom heads | Heads Geyser registers by their skin |
+
+A Bedrock block draws only from 0.875 blocks below to 1.875 blocks above its corner, at most 1.875 blocks long along
+any axis. A block model reaching further, such as a plant two blocks high, is cut to that room: along y the part below
+the block goes first, where a plant stands in the ground, then the top; along x and z the side reaching further out.
+Each cut face keeps its texture where it was. A block state Java draws with nothing (CraftEngine's `block/empty`) is a
+clear block.
 
 Geyser needs the vanilla item under each custom item. It is read from the packs, learned the first time a player
 holds, picks up, places or sees an item with that model, or written in [items.conf](../config/items-conf.md).

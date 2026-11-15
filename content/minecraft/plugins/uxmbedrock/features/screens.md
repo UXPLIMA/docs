@@ -22,6 +22,12 @@ the touch button) shows what a Java player sees: the header, the players in Java
 and name) with their team prefix and suffix, face, ping and list score, up to 20 a column, then the footer. Blank and
 repeated header and footer lines are kept. Off, Bedrock players get Geyser's plain list.
 
+## Name tags that ride
+
+Java draws no name tag over a player something rides, and name tag plugins such as CustomNameplates draw their tag
+as a text display riding the player. With `name-tags` on, such a player shows only the plugin's tag on Bedrock too,
+at Java's height. A player in a team of the server's keeps the team's own name tag setting.
+
 ## Blank sidebar lines
 
 Bedrock drops a sidebar line that is empty and shows lines that read the same once. Each such line is sent with a
