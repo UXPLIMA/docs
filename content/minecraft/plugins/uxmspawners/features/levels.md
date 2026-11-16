@@ -1,7 +1,7 @@
 ---
 title: Levels
 order: 133
-description: Stacking identical spawners into one, what a level multiplies, and breaking levels off again.
+description: Stacking spawners of one kind into one, what a level multiplies, and breaking levels off again.
 icon: layers
 ---
 
@@ -11,18 +11,19 @@ produces what the ten would, from one block, into one storage, with one menu to 
 ## Levelling up
 
 The owner opens the spawner and presses **Level Up**. Every spawner item in their inventory and off
-hand that is identical to the placed one is merged into it, one level each, until the limit. Spawners
+hand of the same kind as the placed one is merged into it, one level each, until the limit. Spawners
 worn as a hat are left alone.
 
 | The owner is told | Why |
 |---|---|
 | How many levels were added | It worked |
-| No matching spawners were found | None in the inventory are identical to this one |
+| No matching spawners were found | None in the inventory are of the same kind |
 | The spawner is at its maximum level | `level-limit` is reached |
 | Only the owner can do that | Friends cannot level up someone else's spawner |
 
-Identical means the same item: the same type, name and lore. A spawner item handed out before you
-changed that type's name in its file no longer matches one handed out after.
+The same kind means the same spawner file, mob and mode, whatever the item's name and lore. Items
+handed out before you changed a file's look, and items from 4.2.0, still count. A zombie spawner from
+`default.yml` and one from `zombie.yml` are two kinds.
 
 ```yaml
 spawner-level-limit:
@@ -36,9 +37,10 @@ does.
 
 | Spawner | Effect of the level |
 |---|---|
-| `ENTITY` with modern Auto Kill | The loot and XP of every cycle |
-| `ENTITY`, other | The drops and XP of each mob, or the number of mobs with `level-scaling.mode: MOB_COUNT` |
+| `ENTITY` | The loot and XP of every mob it makes. It never spawns more mobs |
 | `ITEM` | The number of items each cycle |
+
+A spawn condition can ask for a lowest level with `min-level`. See [Spawn Conditions](spawn-conditions.md).
 
 Drops in `never-multiplied-items`, such as mob heads, come once whatever the level. See
 [Production](production.md#what-a-level-multiplies).
@@ -56,5 +58,8 @@ it, a level 50 spawner fills its storage fifty times faster. See [Storage & Sell
 
 Each item that would drop is rolled against the player's drop chance, so with a chance below 100 some
 of the levels can be lost. See [Breaking Rules](breaking.md#drop-chance).
+
+With `storage-limit.multiply-by-level` and `over-limit: DELETE`, levels come off only down to the
+lowest level whose limits still hold what the spawner stores.
 
 Related: [Basic Concepts](../getting-started/concepts.md), [Storage & Selling](storage.md)

@@ -28,15 +28,12 @@ xp-storage:
 | Setting | Meaning |
 |---|---|
 | `default` | Whether a newly placed spawner has it on |
-| `force-default` | Players cannot change it. Pressing the button sets the spawner back to `default` |
+| `force-default` | Every spawner, placed before or after, uses `default`, and players cannot change it |
 | `permission` | What a player needs to switch it in the spawner's Settings menu. Empty lets everyone |
 
 With Virtual Storage off, items drop on the ground around the spawner, or where its mob died; with
 XP Storage off, XP orbs do. `disable-xp-drops: true` stops spawners giving XP at all, stored or
 dropped.
-
-`force-default` does not change spawners already placed: one that has storage off keeps it off until
-someone presses the button.
 
 ## Limits
 
@@ -72,15 +69,27 @@ A spawner's limits follow its owner's permissions. They are worked out again whe
 or opens it, joins the server, and on `/usp reload`. With LuckPerms they also change at once when the
 owner's or a group's permissions change, even while the owner is offline.
 
-What comes in while the storage is full is lost.
+What comes in while the storage is full is lost. The storage menu shows each item with how many are
+stored out of its limit, and a bar coloured by how full it is.
+
+With `multiply-by-level` on and `over-limit: DELETE`, a spawner cannot be broken down to a level
+whose limits no longer hold what it stores: take some out first.
 
 ## Taking items and XP
 
 | Where | Click | Does |
 |---|---|---|
-| Storage menu | Left-click an item | Takes a stack of 64, or what is there |
-| Storage menu | Right-click an item | Takes as many as fit in the inventory |
+| Storage menu | Click an item | Opens the withdraw menu for that item |
+| Storage menu | Shift-click an item | Takes as many as fit in the inventory |
+| Withdraw menu | **Take 1**, **16**, **32** or **64** | Takes that many, or what is there |
+| Withdraw menu | **Custom Amount** | Asks for a number in chat, then takes it |
+| Withdraw menu | **Fill Inventory** | Takes as many as fit in the inventory |
 | Main or storage menu | The XP button | Gives all stored XP to whoever presses it |
+
+A take is never more than fits in the inventory; with a full one, the player is told so. The
+custom amount is a whole number above 0, typed within `withdraw-chat-timeout` seconds, 15 by
+default, or `0` for no limit. One of `chat-quit-triggers`, such as `cancel`, stops it. Once an item
+runs out, the withdraw menu goes back to the storage.
 
 The storage menu shows one slot per item type, as many as it has free slots: 28 in the shipped
 layout. `ITEM` spawners have no XP and no XP button.
@@ -92,8 +101,11 @@ from [Prices](../config/prices.md), times the seller's multiplier. The money goe
 it: a friend who sells gets the money, at their own multiplier.
 
 Items without a price are not sold. They stay in the storage and the seller is told how many. To
-keep a spawner type from being sold at all, set `sell-button: false` in its file; the button is then
-hidden.
+keep a spawner type from being sold at all, set `sell-button: false` in its file: the button is
+hidden and the storage shows as not for sale.
+
+A payment that fails gives the items back. A sale is worked out and paid in one step, so two players
+pressing Sell All at once cannot be paid twice.
 
 ```yaml
 multipliers:
