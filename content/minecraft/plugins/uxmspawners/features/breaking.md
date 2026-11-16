@@ -14,7 +14,7 @@ Everything about breaking is in `general-settings.yml`, except the world list, w
 |---|---|
 | Not in a disabled world | Refused there, except for `uxmspawners.bypassbreak` and bypass mode |
 | The owner, or staff with `uxmspawners.breakallspawners` | Friends cannot break it. Anyone else is told they are not the owner |
-| The claim plugin allows it | Its own rules for breaking blocks apply first |
+| The claim plugin allows it | Its own rules for breaking blocks apply first. It is asked about the block the spawner is placed as |
 | The item `break-management` asks for | Unless the player has `uxmspawners.bypassbreak` |
 | The storage is empty, at the last level | Unless `break-with-storage` says otherwise, see below |
 
@@ -114,7 +114,7 @@ When a player breaks a spawner's last level while it still stores items or XP:
 
 | `break-with-storage` | Result |
 |---|---|
-| `BLOCK` | Refused until the storage is empty. The player is told how much is left |
+| `BLOCK` | Refused until the storage is empty. The player is told how much is left. An op who breaks it while sneaking breaks it anyway, and its storage drops |
 | `INVENTORY` | The items go to the player's inventory and the XP to the player; what does not fit drops |
 | `DROP` | Everything drops where the spawner stood |
 
@@ -136,11 +136,38 @@ lost-spawner-storage:
 | `xp` | `OWNER`: given to the owner if online, otherwise dropped as one orb. `DROP` or `DELETE` |
 | `notify-owner` | An owner who is online is told the spawner is gone and what its storage sold for |
 
-The owner's sell multiplier counts for an offline owner only with LuckPerms installed. Large
-storages drop a little at a time, so nothing is lost and the server does not stall.
+An offline owner's sale counts their sell multiplier, read from LuckPerms. Storages drop a few stacks
+at a time, so the server does not stall.
+
+### Big storages
+
+A storage of a million items would put thousands of stacks on the ground. `dropped-storage` caps it,
+for every drop above: `break-with-storage` `DROP` and `INVENTORY`, and `lost-spawner-storage` `DROP`
+and `unsold-items: DROP`.
+
+```yaml
+dropped-storage:
+  max-stacks: 1000
+  over-limit: BLOCK
+```
+
+| Setting | Meaning |
+|---|---|
+| `max-stacks` | The most item stacks one spawner's storage drops. `0` is no limit |
+| `over-limit: BLOCK` | A player cannot break the spawner while more would drop, and is told to sell or take some first. A spawner gone without a player drops up to the limit; the rest is deleted |
+| `over-limit: DELETE` | Up to the limit drops, the rest is deleted |
+
+What is deleted is written to the log file with its amount.
+
+## Protecting spawner blocks
 
 `protect-spawners-from-explosions: true`, the default, keeps creepers, TNT and withers away from
-uxmSpawners spawners. Natural spawners are not protected.
+uxmSpawners spawners. Natural spawners are not protected. A spawner placed as another block, such as
+a diamond block, that an explosion does take, never drops that block.
+
+Whatever the settings, a spawner block is never changed by a hoe, shovel, axe or honeycomb, bone
+meal, a sheep, a silverfish, lightning or a tree growing into it. An iron, snow or copper golem
+or a wither built with spawner blocks in or around its shape is not made, and the blocks stay.
 
 ## Where the item goes
 
@@ -162,8 +189,10 @@ spawner item.
 vanilla-spawner-support:
   enabled: true
   disable-vanilla-breaking: false
+  disable-vanilla-spawning: false
   enable-placing: true
   on-break: UXMSPAWNERS
+  place-with-mob: true
   spawn-eggs:
     enabled: true
     permission: uxmspawners.spawnegg
@@ -172,15 +201,17 @@ vanilla-spawner-support:
 | Setting | Meaning |
 |---|---|
 | `enabled: false` | Natural spawners cannot be broken at all |
-| `disable-vanilla-breaking: true` | Only staff with `uxmspawners.admin` can break them, and get nothing |
+| `disable-vanilla-breaking: true` | Only players with `uxmspawners.breakvanillaspawners` can break them, and get nothing. `uxmspawners.admin` includes it |
+| `disable-vanilla-spawning: true` | They spawn nothing |
 | `on-break: UXMSPAWNERS` | Breaking one gives a uxmSpawners spawner of the same mob, from that mob's file in `spawners/` or `default.yml` |
 | `on-break: VANILLA` | Breaking one gives a vanilla spawner item of the same mob, placed again as a natural spawner |
 | `on-break: NONE` | Nothing drops, as in Minecraft |
 | `enable-placing` | Plain spawner items can be placed, as natural spawners. `false` refuses them |
+| `place-with-mob` | A vanilla spawner item dropped by `on-break: VANILLA` is placed with its mob. The game itself does that for creative operators only. Turn it off when another plugin does it |
 | `spawn-eggs` | Whether players may change a natural spawner's mob with a spawn egg, and the permission for it. Eggs never work on uxmSpawners spawners |
 
 The block always breaks the vanilla way and gives its XP; the drop is rolled against
-`vanilla-default` and `vanilla-permissions`.
+`vanilla-default` and `vanilla-permissions`, and given only when no other plugin cancelled the break.
 
 A natural spawner changed with an egg breaks into a spawner of the new mob, so with `on-break:
 UXMSPAWNERS` a cheap egg turns a zombie spawner into a blaze spawner. Keep `uxmspawners.spawnegg` for

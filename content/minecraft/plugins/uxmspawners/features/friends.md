@@ -34,9 +34,15 @@ Only the owner opens the friends menu. In it:
 | A friend's head, twice within 5 seconds | Removes that friend. The first click asks to click again |
 | The arrows | Turn the page. One page holds 28 heads |
 
-After **Add Friend**, the owner's next chat line is read as the name and is not shown in chat. The
-player named has to have played on the server before; they do not have to be online. Typing one of
-`chat-quit-triggers`, such as `cancel`, stops it, and so does leaving the server.
+After **Add Friend**, the owner's next chat line is read as the name. It is taken before other chat
+plugins see it, so nobody else sees it. The player named has to have played on the server before;
+they do not have to be online. Typing one of `chat-quit-triggers`, such as `cancel`, stops it, and so
+does leaving the server. The owner has to stay near the spawner: an answer given far away is
+cancelled.
+
+An owner can add up to `max-friends` friends to one spawner, 10 by default. A node
+`uxmspawners.maxfriends.<amount>` gives that many instead; the highest one counts, and like the rank
+nodes it counts only when given, not for being op. Admins in bypass mode have no limit.
 
 ## Settings
 
@@ -47,6 +53,7 @@ friends:
   enabled: true
   permission: uxmspawners.friends
   chat-timeout: 15
+  max-friends: 10
 
 chat-quit-triggers:
   - "cancel"
@@ -58,6 +65,7 @@ chat-quit-triggers:
 | `enabled` | `false` takes every friend's access away and closes the friends menu. The lists are kept for when it is turned on again |
 | `permission` | What an owner needs to add friends. Empty lets every owner. The default node is for ops only until you grant it |
 | `chat-timeout` | Seconds the name prompt waits. `0` waits until the owner answers, cancels or leaves |
+| `max-friends` | The most friends on one spawner. `-1` is no limit |
 | `chat-quit-triggers` | Words that cancel the prompt, compared without case. An empty list turns cancelling off |
 
 <Callout type="note" title="Friends belong to one spawner">

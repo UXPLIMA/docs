@@ -19,6 +19,7 @@ list:
     amount: 2
     model-data: 0
     duration: "1d"
+    useable-in: []
     name: "<#A99BF0><bold>Spawn Amount Boost</bold> <#5F6778>· <#DCE1EA>1 day"
     lore:
       - "<#5F6778>Each spawn cycle makes <#A99BF0>+2 <#5F6778>more."
@@ -27,11 +28,12 @@ list:
 | Key | Meaning |
 |---|---|
 | The key, `boost1` | The name `giveboost` takes and tab completion offers. `double-output` reads better than a number |
-| `material` | The item. An unknown name gives paper |
+| `material` | The item. A name that is no item gives paper, with a warning |
 | `type` | `SPAWN_AMOUNT`, `SPAWN_TIME` or `SELL_MULTIPLIER` |
 | `amount` | How strong it is, see below. Above 0 |
 | `duration` | How long it lasts once applied: a number and one unit, `30s`, `45m`, `12h` or `1d` |
-| `model-data` | A custom model data number for resource packs, or 0 for none |
+| `model-data` | A custom model data number, or an item model such as `myserver:boost`; 0 for none |
+| `useable-in` | The spawner files it can be used on, such as `[zombie, diamond]`. Empty is every spawner |
 | `name`, `lore` | The item's look, in MiniMessage |
 
 `duration` takes one unit only: write `36h`, not `1d12h`. A boost whose type, amount or duration
@@ -44,11 +46,12 @@ an entry changes the items already handed out. Renaming or removing the key make
 
 | Type | Effect | With `amount: 2` |
 |---|---|---|
-| `SPAWN_AMOUNT` | Adds `amount` to what one cycle produces, before the level multiplies it | Three times the output |
+| `SPAWN_AMOUNT` | Adds `amount` mobs, or loot rolls, or items, to what one cycle makes, before the level multiplies it | Three times the output |
 | `SPAWN_TIME` | Divides the time between cycles by `amount` | Twice as fast |
 | `SELL_MULTIPLIER` | Multiplies the money from selling this spawner's storage, on top of the seller's own multiplier | Twice the money |
 
-A fractional `SPAWN_AMOUNT` counts as a chance: `1.5` adds one or two, half the time each.
+A fractional `SPAWN_AMOUNT` counts as a chance: `1.5` adds one or two, half the time each. It never
+takes a spawner past the `max-mobs` of its spawn conditions.
 
 ## Applying a boost
 
@@ -61,7 +64,15 @@ starts.
 | A boost of that type is already active | One boost per type at a time. Boosts of different types run together |
 | The spawner is not managed by uxmSpawners | It is a natural spawner |
 | They have no access | It is someone else's spawner |
+| The boost cannot be used on this spawner | The spawner's file is not in `useable-in`. The item is kept |
 | The item was not made by the server | It was made or edited by hand. See [Item Signing](item-signing.md) |
+
+`useable-in` names the file a spawner was placed from: a zombie spawner placed before `zombie.yml`
+existed is `default`'s, also after the file is added. A boost already running stays when the list
+changes. A name in it that is no spawner file is reported in the console.
+
+A boost item does nothing but boost a spawner: it cannot be placed, eaten, thrown, worn down or used
+in a workstation.
 
 Active boosts survive restarts, and the main menu shows each one with the time left.
 `enabled: false` stops boost items from working and stops running boosts from counting until it is
