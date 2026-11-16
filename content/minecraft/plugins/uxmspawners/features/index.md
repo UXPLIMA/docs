@@ -1,18 +1,19 @@
 ---
 title: Features
 order: 130
-description: Production, storage and selling, levels, Auto Kill, boosts, friends, breaking rules, holograms and item signing.
+description: Production, spawn conditions, storage and selling, levels, Auto Kill, boosts, friends, breaking rules, holograms and item signing.
 icon: sparkles
 ---
 
 | Feature | File |
 |---|---|
 | [Production](production.md) | `spawners/`, `general-settings.yml` |
+| [Spawn Conditions](spawn-conditions.md) | `spawners/` |
 | [Storage & Selling](storage.md) | `general-settings.yml`, `prices.yml` |
 | [Levels](levels.md) | `general-settings.yml` |
 | [Auto Kill](auto-kill.md) | `general-settings.yml`, `config.yml` |
 | [Boosts](boosts.md) | `boosts.yml` |
 | [Friends](friends.md) | `general-settings.yml` |
 | [Breaking Rules](breaking.md) | `general-settings.yml`, `config.yml` |
-| [Holograms](holograms.md) | `hologram.yml` |
+| [Holograms](holograms.md) | `hologram.yml`, `spawners/` |
 | [Item Signing](item-signing.md) | `general-settings.yml` |

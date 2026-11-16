@@ -1,7 +1,7 @@
 ---
 title: Spawner Types
 order: 154
-description: The spawners folder, the default type every mob falls back on, types of your own and item spawners.
+description: The spawners folder, the four sections of a spawner file, the default type every mob falls back on, custom blocks and item spawners.
 icon: boxes
 ---
 
@@ -9,67 +9,114 @@ Every spawner type is a file in `spawners/`, and the file name is its name: `dia
 `diamond` type. `default.yml` is the one every mob without a file of its own is built from, so a
 fresh install already has a spawner for every mob in the game.
 
-```yaml
-name: "<#7AD7C9><bold><entity_name_lang> Spawner"
-disable-item-flags: true
-model-data: 0
+A file has four sections: the item players hold, the block it places, what the spawner does, and
+how its hologram looks.
 
-lore:
-  - "<#5F6778>Spawns <#DCE1EA><entity_name_lang> <#5F6778>while a player is near."
-spawner-info:
+```yaml
+enabled: true
+
+item-settings:
+  material: SPAWNER
+  model: 0
+  name: "<#7AD7C9><bold><entity_name_lang> Spawner"
+  lore:
+    - "<#5F6778>Spawns <#DCE1EA><entity_name_lang> <#5F6778>while a player is near."
+  glowing: false
+  enchantments: {}
+  hide-flags: true
+
+block-settings:
+  material: SPAWNER
+  show-inside: true
+
+spawner:
   mode: ENTITY
-  material: "{entity_name}"
-  range: 16
+  produces:
+    spawns: "<entity_name>"
+    model: 0
+    name: ""
+    lore: []
+  spawn-conditions:
+    players:
+      range: 16
+      min: 1
+      max: 0
   delay: 8
   sell-button: true
+
+hologram: {}
 ```
 
-## Keys
+## enabled
+
+`false` makes the plugin act as if the file were not there: spawners of this type already placed
+make nothing until it is turned on again, and their menu says why. They can still be broken.
+`default.yml` is always used, whatever it says.
+
+## item-settings: the spawner item
+
+What `/usp give` gives and a broken spawner drops.
 
 | Key | Meaning |
 |---|---|
-| `name`, `lore` | The spawner item's name and lore, in MiniMessage |
-| `disable-item-flags` | Hides the item's extra tooltip lines |
-| `model-data` | `ITEM` mode only: a custom model data number for the items it produces, or 0 |
-| `spawner-info.mode` | `ENTITY` spawns mobs, `ITEM` produces an item |
-| `spawner-info.material` | A mob in `ENTITY` mode, such as `ZOMBIE`; an item in `ITEM` mode, such as `DIAMOND` |
-| `spawner-info.range` | Blocks within which a player has to be for the spawner to run. 16 when left out |
-| `spawner-info.delay` | Seconds between cycles. 8 when left out |
-| `spawner-info.sell-button` | Whether the storage menu has a **Sell All** button |
-| `spawner-info.details` | `ITEM` mode only: the `name` and `lore` of the items produced |
+| `material` | `SPAWNER`, any other block item that places one block of its own, or an ItemsAdder (`IA-namespace:id`) or Nexo (`NEXO-id`) custom block's item. Not a door, bed, tall plant, chest or head, nor a slab, candle, snow layer or other block that joins one placed before |
+| `model` | A custom model data number, or an item model such as `myserver:spawner`; 0 for none |
+| `name`, `lore` | In MiniMessage. `<entity_name_lang>` is the mob's name in the server's language, `<entity_name>` its name in the game, `ZOMBIE`. Without a `name`, the file uses `default.yml`'s |
+| `glowing` | The enchantment glint |
+| `enchantments` | Enchantments and their levels, such as `{unbreaking: 3}`; a datapack's as `"namespace:key": 1` |
+| `hide-flags` | Hides the item's tooltip details: enchantments, attributes and the rest |
 
-In `name` and `lore`, `<entity_name>` is the mob's name, `ZOMBIE`, and `<entity_name_lang>` its
-translated name from `translates` in the language file. Leave `material: "{entity_name}"` as it is in
-`default.yml`: it stands for the mob the spawner is given for.
+## block-settings: the placed block
+
+| Key | Meaning |
+|---|---|
+| `material` | `SPAWNER`, or a plain full block that does not fall, has no use of its own and does not explode, such as `DIAMOND_BLOCK`; or an ItemsAdder or Nexo custom block (not a Nexo string block) |
+| `show-inside` | `SPAWNER` only: the mob or item it makes spins inside the cage |
+
+A material that does not fit is reported in the console on load, and `SPAWNER` is used. A spawner of
+another block behaves like a spawner: it is protected the same way, and right-clicking it opens its
+menu. A wet sponge spawner cannot be placed in the Nether, where it would dry at once.
+
+## spawner: what it does
+
+| Key | Meaning |
+|---|---|
+| `mode` | `ENTITY` spawns mobs, `ITEM` makes an item |
+| `produces.spawns` | A mob in `ENTITY` mode, such as `ZOMBIE`, or an ItemsAdder mob, `IA-namespace:id`; an item in `ITEM` mode, such as `DIAMOND` |
+| `produces.model`, `produces.name`, `produces.lore` | `ITEM` mode only: how the item it makes looks. Empty is the item's own look |
+| `spawn-conditions` | When it makes something. See [Spawn Conditions](../features/spawn-conditions.md) |
+| `delay` | Seconds between cycles. At least 1 |
+| `sell-button` | Whether its storage can be sold from the menu |
+
+Leave `spawns: "<entity_name>"` as it is in `default.yml`: there it stands for the mob each spawner
+was given for. A `spawns` that is no mob or no item is reported in the console with its file, and
+those spawners make nothing.
+
+## hologram: its own look
+
+Any setting of `hologram.yml` written here is used for this type's spawners instead of
+`hologram.yml`'s: `content`, `height`, `background-color`, `scale`, `translation`, `billboard`,
+`text-alignment`, `shadow`, `see-through-blocks`, `text-opacity` and `brightness`. `enabled` and
+`view-distance` are set in `hologram.yml` only. `{}` takes everything from `hologram.yml`.
+
+```yaml
+hologram:
+  height: 2
+  content:
+    - "<spawner> <#5F6778>· <#A99BF0>Lv. <level>"
+```
+
+See [Holograms](../features/holograms.md).
 
 ## A type of your own
 
 1. Copy `default.yml` in `spawners/`.
-2. Name the copy after a mob, such as `zombie.yml`, to change every spawner of that mob, the ones
-   natural spawners break into included. Or give it a new name, such as `iron.yml`, for a spawner
-   you hand out with `/usp give <player> iron`.
-3. Change `name`, `lore` and `spawner-info` to what this type should be. A copy named after a mob can
-   keep `material: "{entity_name}"`.
+2. Name the copy after a mob, such as `zombie.yml`, to change the zombie spawners given and dropped
+   from now on, natural spawners broken into one included. Or give it a new name, such as
+   `iron.yml`, for a spawner you hand out with `/usp give <player> iron`.
+3. Change the sections to what this type should be. A copy named after a mob can keep
+   `spawns: "<entity_name>"`.
 4. Run `/usp reload`.
-
-`spawners/diamond.yml`, shipped as an example:
-
-```yaml
-name: "<#8FE3F0><bold>Diamond Spawner"
-disable-item-flags: true
-lore:
-  - "<#5F6778>Makes <#8FE3F0>diamonds <#5F6778>while a player is near."
-spawner-info:
-  mode: ITEM
-  material: DIAMOND
-  range: 16
-  delay: 8
-  sell-button: true
-  details:
-    name: "<#7AD7C9>A cool diamond!"
-    lore:
-      - "<#9AA3B5>This is a very cool diamond!"
-```
 
 File names are matched without regard to case, so `Iron.yml` and `iron.yml` are one type. Do not
 keep both.
@@ -78,31 +125,45 @@ keep both.
 
 | Change | Placed spawners |
 |---|---|
-| `delay`, `range`, `material`, `details`, `sell-button` | Follow the new value after a reload |
-| `name`, `lore` | Keep the old ones on items already handed out, and those no longer level up with new ones |
-| The file is deleted or renamed | Its spawners run on `default.yml` and look like it. They can still be broken, and work as before once the file is back |
+| Anything in `block-settings` and `spawner` | Follow the new values after a reload, the block included: a placed spawner turns into the new block |
+| `item-settings` | New items look the new way. Items handed out before keep their look, but still place and level up as this type |
+| `enabled: false`, or the file deleted or renamed | They make nothing until the file is back. They can still be broken |
 
-`default.yml` and `diamond.yml` are written again when they are missing. To retire the diamond
-spawner, keep the file and stop handing it out.
+A spawner keeps the file it was placed from: a zombie spawner placed before `zombie.yml` existed
+stays a `default` spawner.
 
 ## Item spawners
 
-An `ITEM` spawner produces its item, level times per cycle, into its storage or onto the ground. It
-has no Auto Kill and no XP, and its menu hides those buttons. With Virtual Storage off, the items drop
-around the spawner where players can see them. See [Storage & Selling](../features/storage.md).
-
-## ItemsAdder
-
-With ItemsAdder installed, `material` can name an ItemsAdder item or mob:
+`spawners/diamond.yml` ships as an example on a new server:
 
 ```yaml
-spawner-info:
+spawner:
   mode: ITEM
-  material: "IA-myserver:ruby"
+  produces:
+    spawns: DIAMOND
+    name: "<#7AD7C9>A cool diamond!"
+  spawn-conditions:
+    players:
+      range: 16
+      min: 1
+      max: 0
+  delay: 8
 ```
 
-`IA-` followed by `namespace:id` produces that item in `ITEM` mode, or spawns that custom mob in
-`ENTITY` mode. ItemsAdder mobs have no loot table to roll, so they are spawned and killed even with
-modern Auto Kill.
+An `ITEM` spawner makes its item, level times per cycle, into its storage or onto the ground. It has
+no Auto Kill and no XP, and its menu hides those buttons. What it makes always sells as its material,
+whatever its name. With Virtual Storage off, the items drop around the spawner where players can see
+them. See [Storage & Selling](../features/storage.md).
 
-Related: [Basic Concepts](../getting-started/concepts.md), [Prices](prices.md), [Loot Tables](loot-tables.md)
+## ItemsAdder and Nexo
+
+With ItemsAdder installed, `produces.spawns` can name an ItemsAdder item in `ITEM` mode, or an
+ItemsAdder mob in `ENTITY` mode, as `IA-namespace:id`. ItemsAdder mobs have no loot table to roll, so
+they are spawned and killed even with modern Auto Kill.
+
+`item-settings.material` and `block-settings.material` can be an ItemsAdder or Nexo custom block,
+checked once that plugin has loaded its items. While a block is not known, because the plugin is
+missing or not loaded yet, its spawners are kept, make nothing and cannot be placed, and the console
+says so once until a reload. A custom block's spawner is registered a tick after it is placed.
+
+Related: [Spawn Conditions](../features/spawn-conditions.md), [Basic Concepts](../getting-started/concepts.md), [Prices](prices.md)
