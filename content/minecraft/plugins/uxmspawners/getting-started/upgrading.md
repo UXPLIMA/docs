@@ -15,7 +15,8 @@ The update moves everything on the first start; this page says what it does and 
 |---|---|
 | The server runs uxmSpawners 4.2.0 | The update reads 4.2.0 files. Update an older 4.x to 4.2.0 first. A 3.x `ancSpawners` folder is not read at all |
 | Paper 1.21.11 or newer, Java 21 | 5.0.0 does not start on anything older |
-| Vault and an economy plugin | Still required. NBTAPI and a hologram plugin are no longer needed |
+| Vault and an economy plugin | Still required |
+| LuckPerms installed | Required now: without it the server does not load uxmSpawners. NBTAPI and a hologram plugin are no longer needed |
 | PacketEvents installed | Holograms need it now. See [Holograms](../features/holograms.md) |
 | The server can reach the internet on its first start | The plugin downloads its libraries and checks its license |
 | A copy of `plugins/uxmSpawners/` and the worlds | The plugin backs itself up too, but a copy of your own costs nothing |
@@ -24,8 +25,9 @@ The update moves everything on the first start; this page says what it does and 
 
 For English, Turkish, German, French and Polish, 5.0.0 starts from its own new messages and menus.
 Your 4.2.0 `lang_<code>.yml` is kept in `backups/v5-<date>/configs/lang/`. Note what you changed
-before updating, and put it into the new files afterwards. A language you added yourself, such as
-`lang_es.yml`, is carried over with its texts.
+before updating, and put it into the new files afterwards. The mob names you added or changed in
+`translates`, and hologram lines you changed, are carried over. A language you added yourself, such
+as `lang_es.yml`, is carried over with its texts.
 
 </Callout>
 
@@ -39,32 +41,44 @@ before updating, and put it into the new files afterwards. A language you added 
 4. The console says `The update to 5.0.0 is done.`
 
 If a step fails, or the plugin cannot start on the new files, everything is put back as it was from
-the backup, and the console says why. The server can go on with the 4.2.0 jar, or start 5.0.0 again
-once the problem is fixed. A crash in the middle is handled the same way on the next start.
+the backup, and the console says why. With `stop-server-on-failure` on, the default, the server then
+stops. It can go on with the 4.2.0 jar, or start 5.0.0 again once the problem is fixed. A crash in
+the middle is handled the same way on the next start. Two spawner names that differ only in case, a
+4.x file that is no valid YAML, or a `lang/` or `modules/` folder that is a link stop the update
+before anything is changed.
+
+The moved files get the 5.0.0 comments above every key, and your 4.x comments on prices and
+permissions stay. 4.x files in another encoding than UTF-8, such as a loot table saved in ANSI, are
+written as UTF-8.
 
 ## Where everything went
 
 | 4.2.0 | 5.0.0 |
 |---|---|
-| `config.yml`: `spawners` | One file per type in `spawners/`, such as `spawners/diamond.yml`. See [Spawner Types](../config/spawner-types.md) |
-| `config.yml`: `itemPrices` | `prices.yml`, under `default-prices` and `price-provider` |
+| `config.yml`: `spawners` | One file per type in `spawners/`, such as `spawners/diamond.yml`, in the new four-part layout below. See [Spawner Types](../config/spawner-types.md) |
+| `config.yml`: `itemPrices` | `prices.yml`, under `default-prices` and `price-provider`, with `price-items-by: MATERIAL` to price as 4.2.0 did. With a shop plugin as the provider, the 4.x prices are written as comments, since 4.2.0 did not use them then |
 | `config.yml`: `disabled-worlds` | `world-management` in `config.yml`, as a `BLACKLIST` |
 | `config.yml`: `auto-save` | Gone. Production is written every `database.flush-interval-seconds`, 5 |
 | `config.yml`: `use-modern-autokill` | `use-modern-auto-kill` |
-| `config.yml`: `nerf-spawner-mobs`, `no-equipment`, `open-gui-on-click`, `disable-xp-drops`, `disable-vanilla-spawners-spawning`, `protect-spawners-from-explosions` | `general-settings.yml` |
+| `config.yml`: `nerf-spawner-mobs`, `no-equipment`, `open-gui-on-click`, `disable-xp-drops`, `protect-spawners-from-explosions` | `general-settings.yml` |
+| `config.yml`: `disable-vanilla-spawners-spawning` | `vanilla-spawner-support.disable-vanilla-spawning` in `general-settings.yml` |
 | `modules/settings.yml`, `other.yml`, `storage_limits.yml`, `friends.yml`, `autokill.yml`, `multipliers.yml` | `general-settings.yml`, as one file |
 | `modules/boosts.yml` | `boosts.yml` |
 | `modules/hologram.yml` | `hologram.yml`, with the FancyHolograms look carried over where it fits |
 | The hologram lines in the language file | `content` in `hologram.yml`, from the language in use |
-| `lang/lang_<code>.yml` | `languages/<code>/messages.yml` and four files in `languages/<code>/menus/` |
+| `lang/lang_<code>.yml` | `languages/<code>/messages.yml` and five files in `languages/<code>/menus/` |
 | `logs/errors.txt` | A file a day in `logs/`. The old file is left where it is |
 
 Renamed keys, all carried with their values:
 
 | 4.2.0 | 5.0.0 |
 |---|---|
-| `spawnerInfo`, `sell_button` | `spawner-info`, `sell-button` |
-| `{entity_name}`, `{entity_name_lang}` in names and lore | `<entity_name>`, `<entity_name_lang>` |
+| Spawner files: `name`, `lore`, `disable-item-flags` | `item-settings.name`, `lore`, `hide-flags` |
+| Spawner files: `spawnerInfo.mode`, `delay`, `sell_button` | `spawner.mode`, `delay`, `sell-button` |
+| Spawner files: `spawnerInfo.material`, `details`, `model-data` | `spawner.produces.spawns`, `name` and `lore`, `model` |
+| Spawner files: `spawnerInfo.range` | `spawner.spawn-conditions.players.range` |
+| `{entity_name}`, `{entity_name_lang}` in names, lore and `material` | `<entity_name>`, `<entity_name_lang>` |
+| `[toggle_autokill]` and the other toggle actions in menus | `[toggle_setting] auto-kill` and so on |
 | `{uses}` in the pickaxe name | `<uses>` |
 | `storage-limit.xpLimit`, `xpPermissions` | `xp-limit`, `xp-permissions` |
 | `auto-kill.loottable-only-autokill` | `loot-table-only-auto-kill` |
@@ -72,8 +86,10 @@ Renamed keys, all carried with their values:
 | `spawner-drop-chance.default` | Also copied to the new `vanilla-default`, since 4.2.0 used it for natural spawners too |
 | Loot tables: `itemDrops`, `xpDrops`, `xpDropChance` | `item-drops`, `xp-drops`, `xp-drop-chance`. The old names are still read |
 
-Every new setting is added with its default. `database.type` is set to `SQLITE`, since 4.2.0 only
-ever used `database.db`, whatever the file said.
+Every new setting is added with its default; each spawner file gets `enabled: true`,
+`block-settings`, the other spawn conditions turned off, and `hologram: {}`. The shipped `default` and
+`diamond` spawners get the 5.0.0 name and lore where yours were still 4.2.0's. `database.type` is set
+to `SQLITE`, since 4.2.0 only ever used `database.db`, whatever the file said.
 
 ## The items players carry
 
@@ -89,25 +105,31 @@ item does what its entry in `boosts.yml` says now. Once the old items have gone 
 | Area | 4.2.0 | 5.0.0 |
 |---|---|---|
 | Selling, items without a price | Sold for nothing and gone | Stay in the storage |
-| Selling, renamed items | Sold at their material's price | Not sold, with `price-items-by: ITEM`. Set it to `MATERIAL` in `prices.yml` for the 4.2.0 way. Item spawners such as `diamond` need it to sell anything |
+| Selling, renamed items | Sold at their material's price | The same: the update writes `price-items-by: MATERIAL`. New servers price the item itself, `ITEM` |
 | Breaking the last level with items stored | The storage was deleted | Refused until it is empty. `break-with-storage` changes it |
 | A spawner blown up, or its block removed | The storage was lost | Sold for the owner. `lost-spawner-storage` changes it |
 | `break-management.mode` | The names did not match what they did | Each mode does what its name says. Check yours against [Breaking Rules](../features/breaking.md#requiring-a-tool) |
 | `block: false` without the right tool | The whole spawner was lost | One level is lost. `lost-levels: ALL` for the 4.2.0 way |
 | The spawner pickaxe | Lost a use on every break | Only when the mode asked for it. `pickaxe-uses: ALWAYS` for the 4.2.0 way |
-| Natural spawners with `on-break: VANILLA` | Always dropped | Rolled against `vanilla-default` |
+| Natural spawners with `on-break: VANILLA` | Always dropped | Rolled against `vanilla-default`, which the update sets to 100 |
 | Loot tables | Applied to every spawner mob | With `loot-table-only-auto-kill: true`, the 4.2.0 default, only to mobs Auto Kill kills |
 | Auto Kill `enabled` and `force` | `enabled: false` changed little, `force` only new spawners | `enabled: false` turns it off everywhere, `force` keeps it on for every spawner |
-| Friends | Every owner could add them | Owners need `uxmspawners.friends`, op only until you grant it |
+| Auto Kill loot | Rolled with a random online player as the killer; legacy credited that player with the kill | The game's loot table without a killer, the same for modern and legacy. No player is credited, and Looting never counts |
+| When spawners run | A player within `range` | Spawn conditions, `players.range` among them. Not in Peaceful worlds unless `work-in-peaceful` is on |
+| Level Up | Matched items by their name and lore | Matches by spawner file, mob and mode, so items handed out before a rename still count |
+| Friends | Every owner could add them, without limit | Owners need `uxmspawners.friends`, op only until you grant it, and add up to `max-friends`, 10 |
 | Friends and the hologram | Friends could toggle it | Owner only |
 | Boosts | Anyone could apply one to any spawner | Owner and friends only. `SELL_MULTIPLIER` and `enabled: false` now work |
 | Spawn eggs on natural spawners | Anyone | Players with `uxmspawners.spawnegg` |
 | Mobs from spawners | No cap | At most `max-living-mobs`, 32, alive per spawner. Players cannot ride, tame or equip them |
 | Storage limits | Updated when the owner opened the menu | Also on join, reload and LuckPerms changes. New spawners store XP at once |
+| Taking items | Left-click 64, right-click as many as fit | A click opens a menu to choose how many; shift-click takes as many as fit |
+| Natural spawners with `disable-vanilla-breaking` | `uxmspawners.admin` could break them | `uxmspawners.breakvanillaspawners`, part of `uxmspawners.admin` |
 | A type without `range` | Range 0, never ran | Range 16 |
-| Holograms | Drawn by FancyHolograms, DecentHolograms or CMI | Drawn by uxmSpawners, with PacketEvents |
+| Holograms | Drawn by FancyHolograms, DecentHolograms or CMI | Drawn by uxmSpawners, with PacketEvents. No storage bar line: the update leaves a `{storage_bar}` line out |
+| A failed start | The plugin stayed off | The server stops, unless `stop-server-on-failure: false` |
 | Saving | Every `auto-save.interval`, 300 seconds | Player actions at once, production every 5 seconds |
-| Menus | The 4.2.0 layout | A new layout, with a stop button, a Settings menu and pages of friends |
+| Menus | The 4.2.0 layout | A new layout, with a spawn conditions clock, a stop button, a Settings menu, a withdraw menu and pages of friends |
 
 `protect-spawners-from-explosions` keeps the value your 4.2.0 `config.yml` had, `false` unless you
 changed it. New servers start with `true`; consider turning it on.
@@ -116,13 +138,15 @@ changed it. New servers start with `true`; consider turning it on.
 
 1. Read the console from the first start for warnings.
 2. Put your text changes back into `languages/<code>/`, from the copy in `backups/v5-<date>/configs/lang/`.
-3. Decide on `price-items-by` in `prices.yml`.
+3. Decide on `price-items-by` in `prices.yml`; `MATERIAL` keeps the 4.2.0 way.
 4. Grant `uxmspawners.friends`, and `uxmspawners.spawnegg` if players used eggs. See [Permissions](../permissions.md).
-5. Check `break-management`, `break-with-storage` and `lost-spawner-storage` in `general-settings.yml`.
+5. Check `break-management`, `break-with-storage`, `lost-spawner-storage` and `dropped-storage` in
+   `general-settings.yml`, and `max-friends` if owners had many friends.
 6. Open a few spawners and check their level, storage and friends.
 
 To move to MySQL, set it up after the update has finished. The plugin does not copy spawners from
-SQLite to MySQL: a server switched over starts with none.
+SQLite to MySQL: a server switched over starts with none. The items already handed out keep working,
+through `item-signing-key.txt`.
 
 ## Going back
 
