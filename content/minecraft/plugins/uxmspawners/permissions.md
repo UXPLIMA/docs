@@ -12,7 +12,7 @@ names: each one is set in `general-settings.yml`, so you can rename it.
 
 | Node | Default | Grants |
 |---|---|---|
-| `uxmspawners.admin` | op | Every node in this table down to `uxmspawners.seedebugs`. Also breaking vanilla spawners while `disable-vanilla-breaking` is on |
+| `uxmspawners.admin` | op | Every node in this table down to `uxmspawners.seedebugs`, and `uxmspawners.breakvanillaspawners` |
 | `uxmspawners.command.give` | op | `/usp give` |
 | `uxmspawners.command.giveboost` | op | `/usp giveboost` |
 | `uxmspawners.command.givepickaxe` | op | `/usp givepickaxe` |
@@ -22,11 +22,13 @@ names: each one is set in `general-settings.yml`, so you can rename it.
 | `uxmspawners.bypass` | op | `/usp bypass`: using every spawner as its owner |
 | `uxmspawners.seedebugs` | op | Seeing the debug messages turned on in `config.yml` |
 | `uxmspawners.breakallspawners` | no one | Breaking other players' spawners. `break-spawners.permission` |
+| `uxmspawners.breakvanillaspawners` | no one | Breaking natural spawners while `disable-vanilla-breaking` is on. Part of `uxmspawners.admin` |
 | `uxmspawners.bypassbreak` | no one | Breaking without the item `break-management` asks for, and breaking in disabled worlds. `break-management.exempt` |
 | `uxmspawners.bypassplace` | no one | Placing in disabled worlds and where a claim plugin would refuse it |
 
-The last three are not given to ops on their own, so an op testing the server breaks and places
-like a player. Grant them on purpose.
+The last four are not given to ops on their own, except `breakvanillaspawners` through
+`uxmspawners.admin`, so an op testing the server breaks and places like a player. Grant them on
+purpose.
 
 ## Players
 
@@ -38,6 +40,7 @@ like a player. Grant them on purpose.
 | `uxmspawners.friends` | op | Adding friends to a spawner | `friends.permission` |
 | `uxmspawners.spawnegg` | op | Changing a natural spawner's mob with a spawn egg | `vanilla-spawner-support.spawn-eggs.permission` |
 | `uxmspawners.autopickup` | op | A broken spawner goes into the inventory, while `auto-pickup.enabled` is on | `auto-pickup.permission` |
+| `uxmspawners.maxfriends.<amount>` | not declared | Up to that many friends per spawner instead of `friends.max-friends`. The highest counts | Not set in a file |
 
 Leave one of these settings empty and everyone may use that feature. An empty `exempt` or
 `break-spawners.permission` works the other way: nobody gets past it.
@@ -60,8 +63,13 @@ Four lists give more to players holding a node. The names are examples; write yo
 A player holding several nodes of one list gets the highest value, not the sum, so the order in the
 file does not matter. A value below the list's default is never used.
 
-These nodes count only when they are given to the player, so being op does not give the best rank.
-A `*` node in LuckPerms does count as giving them.
+These nodes, and `uxmspawners.maxfriends.<amount>`, count only when they are given to the player, so
+being op does not give the best rank. A `*` node in LuckPerms does count as giving them. They are read
+through LuckPerms, also for owners who are offline, and a change reaches the owner's spawners at
+once. A name may hold dots, such as `uxmspawners.storage.vip`.
+
+A spawn condition can ask for any permission of the owner, such as `group.vip`. See
+[Spawn Conditions](features/spawn-conditions.md).
 
 ## A default group
 

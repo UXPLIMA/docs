@@ -7,13 +7,15 @@ icon: lightbulb
 
 ## A spawner belongs to a player
 
-A uxmSpawners spawner is a spawner item that carries its type. Placing it registers it to the player
+A uxmSpawners spawner is a spawner item that carries its type. The item and the placed block are
+usually a spawner, but a spawner type can use another block, or an ItemsAdder or Nexo block. Placing it registers it to the player
 who placed it. Only that owner, and the friends they add, can open its menu; anyone else who
 right-clicks it gets nothing. Only the owner, or staff with `uxmspawners.breakallspawners`, can
 break it. With a claim plugin installed, the claim has to let them too.
 
-Spawner items, and the spawner pickaxe, are signed by the server. An item made or edited in creative
-mode or with an NBT editor does not work. See [Item Signing](../features/item-signing.md).
+Spawner items, boost items and the spawner pickaxe are signed by the server. An item made or edited
+in creative mode or with an NBT editor does not work, and none of them can be used for anything else,
+such as crafting or smelting. See [Item Signing](../features/item-signing.md).
 
 ## It runs on its own timer
 
@@ -23,11 +25,12 @@ The block's own vanilla spawning is switched off. Instead, the plugin runs every
 | Condition | Note |
 |---|---|
 | The chunk is loaded | An unloaded chunk produces nothing |
-| A player is within `range` blocks | Any player, not only the owner. A WildLoaders chunk loader in the chunk counts too |
+| Its spawn conditions hold | A player within 16 blocks by default, any player, not only the owner. A WildLoaders chunk loader in the chunk counts too. A spawner type can also ask for light, a time, weather, a biome, a rank and more |
 | The spawner is not stopped | The owner can stop it from the menu |
 
-The vanilla rules do not apply: light, free space and the number of mobs nearby make no difference.
-See [Production](../features/production.md).
+The vanilla rules do not apply: free space and the mobs nearby make no difference, and light only
+when a condition asks for it. The clock in the spawner's menu shows what it waits for. See
+[Production](../features/production.md) and [Spawn Conditions](../features/spawn-conditions.md).
 
 ## Two modes
 
@@ -40,8 +43,8 @@ The type of a spawner is set by its file in `spawners/`. See [Spawner Types](../
 
 ## Levels
 
-Identical spawners stack: the owner opens the menu, presses **Level Up**, and every matching spawner
-in their inventory is merged into the placed one, one level each. A spawner at level 5 produces what
+Spawners of one kind stack: the owner opens the menu, presses **Level Up**, and every matching
+spawner in their inventory is merged into the placed one, one level each. A spawner at level 5 produces what
 five separate spawners would, from one block and one storage. See [Levels](../features/levels.md).
 
 ## What one cycle produces
@@ -49,11 +52,10 @@ five separate spawners would, from one block and one storage. See [Levels](../fe
 | Setup | Result |
 |---|---|
 | `ENTITY` with Auto Kill, modern | No mob appears. The loot of one mob, times the level, times (1 + Spawn Amount boost), goes straight to storage |
-| `ENTITY` with Auto Kill, legacy | 1 + Spawn Amount boost mobs appear and die at once. Their drops are multiplied by the level |
+| `ENTITY` with Auto Kill, legacy | 1 + Spawn Amount boost mobs appear and die at once. Their loot, times the level, goes to storage |
 | `ENTITY` without Auto Kill | 1 + Spawn Amount boost mobs appear. When anyone kills one, its drops are multiplied by the level |
 | `ITEM` | Level times (1 + Spawn Amount boost) items |
 
-`level-scaling.mode: MOB_COUNT` spawns level times as many mobs instead of multiplying their drops.
 Boosts are on [Boosts](../features/boosts.md), Auto Kill on [Auto Kill](../features/auto-kill.md).
 
 ## Storage

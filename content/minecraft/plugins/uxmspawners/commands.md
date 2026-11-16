@@ -36,46 +36,51 @@ feet.
 `spawner` is looked up first among the files in `spawners/`, without regard to case, then among mob
 names. A mob without a file of its own gets a spawner built from `default.yml`. Only mobs can be
 given: a name like `ARROW` or `PLAYER` is refused. Tab completion offers your files and every mob.
-`amount` is capped at what one inventory holds.
+`amount` is a whole number above 0, capped at what one inventory holds; anything else gives nothing.
+PlaceholderAPI placeholders in the item's name and lore are filled for the target.
 
 ## giveboost and givepickaxe
 
 `giveboost` gives one boost per use; there is no amount. `givepickaxe` gives one pickaxe with `uses`
-uses, or 10. See [Boosts](features/boosts.md) and [Breaking Rules](features/breaking.md#the-spawner-pickaxe).
+uses, a whole number above 0, or 10. Every pickaxe is its own item: two never stack and share uses. See [Boosts](features/boosts.md) and [Breaking Rules](features/breaking.md#the-spawner-pickaxe).
 
 ## reload
 
 `reload` applies changes to every file: spawner types, prices and the price plugin, boosts, loot
 tables, holograms, the language and the menus. Spawners already placed keep their owner, level and
-storage. If a file has an error, the reload is refused, the console says what is wrong, and the
-previous settings stay in use.
+storage, and take the new block, mob and spawn conditions of their file. If a file has an error, the
+reload is refused, the console says what is wrong, and the previous settings stay in use. If the files
+were read but a setting could not be put in use, the sender is told some settings may still be the
+old ones.
 
 A restart is needed for the database settings (except `flush-interval-seconds`), the license key,
 and plugins you install or remove: a claim plugin, WildLoaders or PacketEvents.
 
-Spawner items already handed out keep the name and lore they were made with; only new items show a
-changed name.
+Spawner items already handed out keep the look they were made with; only new items show a changed
+name. They still place and level up as their type.
 
 ## debug
 
 Look at a spawner within 6 blocks and run `/usp debug`. The answer covers its owner and friends, its
-type and level, what it produces and when it last did, the nearest player and chunk loader, its
-storage and limits, the sell price source and your multiplier, its boosts, the claim plugin and its
-hologram. It is the first thing to run when a spawner does not do what you expect.
+type and level, what it produces and when it last did, its spawn conditions and which one it waits
+for, the nearest player and chunk loader, its storage and limits, the sell price source and your
+multiplier, its boosts, the claim plugin and its hologram. It is the first thing to run when a spawner does not do what you expect.
 
 ## bypass
 
 Bypass mode lets you open and manage every spawner as if it were yours: its menus, storage, friends,
 levels and the stop button. It does not let you break other players' spawners. It ends when you run
-the command again or lose `uxmspawners.bypass`. Staff who right-click someone else's spawner are
-reminded that the mode exists.
+the command again, lose `uxmspawners.bypass` or join the server again. Staff who right-click someone
+else's spawner are reminded that the mode exists.
 
 ## convert
 
 `convert` needs WildStacker and SuperiorSkyblock2. Every WildStacker spawner inside the protected
-range of an island becomes a uxmSpawners spawner where it stands: the same mob, owned by the island's
-owner, at a level equal to its stack size, with Auto Kill on and both storages off. Spawners outside
-an island, or outside its range, are skipped, and the console lists each one with the reason.
+range of an island becomes a uxmSpawners spawner where it stands: the same mob, from the mob's own
+file in `spawners/` or else `default.yml`, owned by the island's owner, at a level equal to its stack
+size. It starts like a newly placed spawner. A stack above `spawner-level-limit` is converted at the
+limit and logged. Spawners outside an island, or outside its range, are skipped, and the console
+lists each one with the reason. The sender is told how many were converted and skipped.
 
 <Callout type="warning" title="convert cannot be undone">
 

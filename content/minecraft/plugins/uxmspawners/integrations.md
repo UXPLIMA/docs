@@ -1,13 +1,13 @@
 ---
 title: Integrations
 order: 160
-description: The claim, shop, stacker, permission and item plugins uxmSpawners works with, and what each one does.
+description: The claim, shop, stacker, permission, item and block plugins uxmSpawners works with, and what each one does.
 icon: plug
 ---
 
-Vault with an economy plugin is required. The plugins below are used when they are installed; nothing
-needs to be set to turn them on, and the console names each one it picked at startup. A plugin whose
-version does not fit stops uxmSpawners at startup, with a message naming it.
+Vault with an economy plugin, and LuckPerms, are required. The other plugins below are used when they
+are installed; nothing needs to be set to turn them on, and the console names each one it picked at
+startup. A plugin whose version does not fit stops uxmSpawners at startup, with a message naming it.
 
 ## Claims, islands and regions
 
@@ -38,7 +38,8 @@ through; other staff need the rights like anyone else. Three settings use the cl
 | `break-management.claimless-spawners-breakable-by-everyone` | Anyone can break a spawner outside every claim, such as one whose claim was deleted |
 | `break-management.claim-owners-break-all-spawners` | Claim owners, and members allowed to break spawners, can break every spawner in the claim |
 
-Changing the claim plugin needs a restart.
+The claim plugin is asked about the block a spawner is placed as. Changing the claim plugin needs a
+restart.
 
 ## Shops and economy
 
@@ -49,17 +50,17 @@ ShopGUIPlus, EconomyShopGUI (free or premium) and ExcellentShop can supply sell 
 
 | Plugin | Note |
 |---|---|
-| RoseStacker | Spawner mobs stack, but never with other mobs. `rosestacker.stacked-deaths` decides how a stack killed at once pays, see below |
+| RoseStacker | A stack holds the mobs of one spawner, or only mobs no spawner made. The mobs of a spawner with Auto Kill on never join a stack. `rosestacker.stacked-deaths` decides how a stack killed at once pays, see below |
 | WildStacker | Only for `/usp convert`, which turns WildStacker spawners on SuperiorSkyblock2 islands into uxmSpawners spawners |
 
 | `rosestacker.stacked-deaths` | A stack killed at once |
 |---|---|
-| `OWN_SPAWNER` | Every mob pays the spawner it came from, at that spawner's level |
-| `TOP_SPAWNER` | The whole stack pays the spawner of the mob on top |
+| `OWN_SPAWNER` | Every mob pays the spawner it came from, at that spawner's level, and nothing is left on the ground |
 | `VANILLA` | RoseStacker drops the stack's normal loot on the ground, without levels or storage |
 
-Keep RoseStacker's `trigger-death-event-for-entire-stack-kill` at `false`, its default. `TOP_SPAWNER`
-needs it, and with `true` RoseStacker also drops a stray XP orb.
+Keep RoseStacker's `trigger-death-event-for-entire-stack-kill` at `false`, its default. With `true`,
+a huge stack killed at once pays only the part RoseStacker rolls, and the console warns at startup.
+RoseStacker 1.5.43 or newer is needed on Minecraft 26.3.
 
 <Callout type="danger" title="Turn off spawner stacking in the stacker">
 
@@ -72,13 +73,15 @@ it off and let uxmSpawners stack spawners with its levels.
 
 ## Chunk loaders
 
-With WildLoaders, a spawner in a chunk that has an active chunk loader runs with no player nearby.
+With WildLoaders, a spawner in a chunk that has an active chunk loader runs with no player nearby: the
+loader counts as enough players for its `players` spawn condition, never as too many.
 
-## Permissions
+## LuckPerms
 
-With LuckPerms, storage limits and sell multipliers follow the ranks of owners who are offline: a
-rank change reaches their spawners at once, and the storage of a spawner destroyed while its owner is
-offline sells at their multiplier. Without it, an offline owner's spawners wait until they join.
+LuckPerms is required. Storage limits, sell multipliers, the friend limit and the `permission` spawn
+condition read owners' ranks through it, also while they are offline: a rank change reaches their
+spawners at once, and the storage of a spawner destroyed while its owner is offline sells at their
+multiplier.
 
 ## Holograms
 
@@ -89,10 +92,15 @@ Holograms need PacketEvents. See [Holograms](features/holograms.md).
 With PlaceholderAPI, placeholders of other plugins work in messages, menus, spawner names and
 console commands of menu items. uxmSpawners adds no placeholders of its own.
 
-## Custom items and mobs
+## Custom items, mobs and blocks
 
-With ItemsAdder, a spawner type can produce an ItemsAdder item or spawn an ItemsAdder mob: write
-`material: "IA-namespace:id"`. See [Spawner Types](config/spawner-types.md#itemsadder).
+| Plugin | What a spawner type can use |
+|---|---|
+| ItemsAdder | An item or mob to produce, `spawns: "IA-namespace:id"`. A custom block as the spawner item and placed block, `material: "IA-namespace:id"` |
+| Nexo | A custom block as the spawner item and placed block, `material: "NEXO-id"`. Not a string block |
+
+Custom names are checked once the plugin has loaded its items, and on every reload. See
+[Spawner Types](config/spawner-types.md#itemsadder-and-nexo).
 
 ## Worlds
 
