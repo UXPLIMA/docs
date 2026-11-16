@@ -1,7 +1,7 @@
 ---
 title: config.yml
 order: 152
-description: The license, language, database, worlds, the Auto Kill mode and the debug messages.
+description: The license, language, database, stopping the server on a failed start, worlds, the Auto Kill mode and the debug messages.
 icon: file-cog
 ---
 
@@ -41,7 +41,7 @@ database:
 
 | Setting | Meaning |
 |---|---|
-| `type` | `SQLITE` keeps everything in a file in the plugin folder. `MYSQL` uses a MySQL or MariaDB server. Any other value is read as `SQLITE` |
+| `type` | `SQLITE` keeps everything in a file in the plugin folder. `MYSQL` uses a MySQL or MariaDB server. Any other value stops the start |
 | `database` | With SQLite, the file name: `database` is `database.db`. With MySQL, the schema, which has to exist |
 | `host`, `port`, `username`, `password` | MySQL only |
 | `use-ssl` | MySQL only: connect over SSL |
@@ -54,7 +54,20 @@ needs a database of its own: two servers on one overwrite and delete each other'
 
 Changing the database needs a restart. Switching from SQLite to MySQL starts on an empty database:
 the plugin does not copy spawners between them. When a new version changes the tables, a SQLite file
-is copied to `backups/` first; back up a MySQL database yourself before updating.
+is copied to `backups/` first; back up a MySQL database yourself before updating. MySQL tables use
+utf8mb4, so world names with accents, such as Turkish letters, stay apart.
+
+## A failed start
+
+```yaml
+stop-server-on-failure: true
+```
+
+When uxmSpawners cannot start, because the database does not open, a file is broken, the license is
+not valid or a hooked plugin does not fit, it stops the server and the console says why. Left running
+without it, its spawners could be broken and taken as plain vanilla spawners. `false` keeps the server
+running without uxmSpawners. It is read from the file itself, so it works even when `config.yml` is
+what failed.
 
 ## Worlds
 
@@ -63,6 +76,7 @@ world-management:
   world-list:
     - testWorld
   list-type: BLACKLIST
+  work-in-peaceful: false
 ```
 
 | `list-type` | Spawners can be placed and broken |
@@ -74,6 +88,10 @@ This applies to vanilla spawners too. In a disabled world, `uxmspawners.bypasspl
 `uxmspawners.bypassbreak` or bypass mode still breaks, with the owner and break rules applied.
 Spawners already in a disabled world keep producing and their menus still open. World names are
 matched exactly, case included.
+
+A world on Peaceful counts as disabled while `work-in-peaceful` is `false`, the default: no monster
+spawns there. With `true`, spawners can be placed and broken there, and mob spawners with Auto Kill
+on work; the others wait. See [Production](../features/production.md#peaceful-worlds).
 
 ## Auto Kill mode
 

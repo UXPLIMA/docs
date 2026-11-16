@@ -40,13 +40,16 @@ the provider applies with `/usp reload`.
 | Setting | Meaning |
 |---|---|
 | `dynamic-pricing` | `true` makes a sale from a spawner count as a sale in the shop: its sell limits and stock apply and its dynamic prices move. EconomyShopGUI and ExcellentShop only |
-| `shop-refused-items` | Items the shop has but does not buy, or not for this player's rank: `KEEP` leaves them in the spawner, `PRICES` sells them at `default-prices` |
+| `shop-refused-items` | Items the shop has but does not buy, or does not let this player sell: `KEEP` leaves them in the spawner, `PRICES` sells them at `default-prices` |
 | `price-items-by` | `ITEM` prices the item itself, so a renamed or custom item is not taken for its material. `MATERIAL` prices every item by its material, as 4.2.0 did |
 
 With `price-items-by: ITEM`, `default-prices` prices plain items only, and the shop sells an item
-only if it has that very item. The items an `ITEM` spawner makes always carry a name of their own,
-from `details`, so with `ITEM` they stay in the storage unsold. A server with item spawners, like
-the shipped `diamond`, needs `price-items-by: MATERIAL`, or a shop that lists those exact items.
+only if it has that very item. Custom drops from a loot table or another plugin need `MATERIAL`, or a
+shop that lists them. What an `ITEM` spawner makes always sells as its material, whatever its name and
+lore: the shipped `diamond` spawner's diamonds sell at `DIAMOND`'s price either way.
+
+`default-prices` keys are material names in any case. The update from 4.2.0 writes
+`price-items-by: MATERIAL`, so a 4.2.0 server keeps pricing as before.
 
 ## How a price is used
 

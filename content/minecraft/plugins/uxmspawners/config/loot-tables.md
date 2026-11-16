@@ -23,7 +23,7 @@ drops:
 
 | Part | Meaning |
 |---|---|
-| `ITEM` | A material name, such as `IRON_INGOT` |
+| `ITEM` | A material name, such as `IRON_INGOT`, or with its namespace, `minecraft:iron_ingot` |
 | `CHANCE` | A whole number from 0 to 100: the percent chance this line drops |
 | `MIN-MAX` | How many, picked at random between the two. `MAX` must not be below `MIN` |
 
@@ -50,16 +50,18 @@ The 4.2.0 names `itemDrops`, `xpDrops` and `xpDropChance` are still read.
 
 `loot-table-only-auto-kill` is in the `auto-kill` section of `general-settings.yml`.
 
-Without a table for a mob, a spawner mob drops its normal drops, and with modern Auto Kill the game's
-own loot table for that mob is rolled.
+Without a table for a mob, a spawner mob drops its normal drops, and Auto Kill rolls the game's own
+loot table for that mob. See [Auto Kill](../features/auto-kill.md#where-the-loot-comes-from).
 
 The amounts and XP are multiplied by the spawner's level, except items in
-`level-scaling.never-multiplied-items`, and with modern Auto Kill also by its Spawn Amount boost.
+`level-scaling.never-multiplied-items`. A Spawn Amount boost rolls the table once more per extra mob.
 
 ## Making one
 
 `loottables/example_zombie.yml` ships as a working reference. Its name is not a mob, so it is never
-used by itself: copy it to `zombie.yml`, edit it, and run `/usp reload`.
+used by itself: copy it to `zombie.yml`, edit it, and run `/usp reload`. File names are matched in
+any case, `Zombie.YML` included. A file that is no valid YAML stops the start, or keeps the old
+tables on a reload, and the console names it; an empty file is skipped with a warning.
 
 <Callout type="tip" title="Tables set the economy of farms">
 
