@@ -157,13 +157,97 @@ them. See [Storage & Selling](../features/storage.md).
 
 ## ItemsAdder and Nexo
 
-With ItemsAdder installed, `produces.spawns` can name an ItemsAdder item in `ITEM` mode, or an
-ItemsAdder mob in `ENTITY` mode, as `IA-namespace:id`. ItemsAdder mobs have no loot table to roll, so
-they are spawned and killed even with modern Auto Kill.
+A spawner type can use custom content from ItemsAdder or Nexo. Names carry the plugin in front:
+`IA-namespace:id` for ItemsAdder, `NEXO-id` for Nexo, the prefix in any case.
 
-`item-settings.material` and `block-settings.material` can be an ItemsAdder or Nexo custom block,
-checked once that plugin has loaded its items. While a block is not known, because the plugin is
-missing or not loaded yet, its spawners are kept, make nothing and cannot be placed, and the console
-says so once until a reload. A custom block's spawner is registered a tick after it is placed.
+| Key | ItemsAdder | Nexo |
+|---|---|---|
+| `spawner.produces.spawns`, `ENTITY` mode | A custom mob | No |
+| `spawner.produces.spawns`, `ITEM` mode | A custom item | No |
+| `item-settings.material` | A custom block's item | A custom block's item |
+| `block-settings.material` | A custom block | A custom block, but not a string block |
+
+### Custom mobs
+
+```yaml
+spawner:
+  mode: ENTITY
+  produces:
+    spawns: "IA-myserver:demon"
+```
+
+An ItemsAdder mob has no loot table to roll, so even with modern Auto Kill it is spawned and killed,
+as a kill of an online player, and pays what it drops, times the spawner's level. A mob that
+survives its kill is removed. Without Auto Kill it is a living mob like any other, and players kill
+it for its drops. Loot table files do not apply to ItemsAdder mobs, and in a Peaceful world their
+spawners wait.
+
+`/usp give` takes your file names, not ItemsAdder ids, so make one file per custom mob, such as
+`spawners/demon.yml`. Its spawner's name shows the mob through `<entity_name_lang>`: give it a name in
+`translates` of the language file under its full name in capitals, `"IA-MYSERVER:DEMON": "Demon"`.
+
+### Custom items
+
+```yaml
+spawner:
+  mode: ITEM
+  produces:
+    spawns: "IA-myserver:ruby"
+    name: ""
+    lore: []
+```
+
+The spawner makes that ItemsAdder item. `produces.name` and `lore` replace the item's own when they
+are set; leave them empty to keep the ItemsAdder look. What an `ITEM` spawner makes sells as its
+material, so a ruby made on paper sells at `PAPER`'s price in `default-prices`, or the shop's price
+for paper. See [Prices](prices.md).
+
+### Custom blocks
+
+```yaml
+item-settings:
+  material: "NEXO-ruby_spawner"
+  name: "<#EE8C8C><bold>Ruby Spawner"
+
+block-settings:
+  material: "NEXO-ruby_spawner"
+```
+
+`item-settings.material` makes the spawner item from the custom block's item: the name, lore,
+enchantments, glint and `model` of `item-settings` are put on top of it. Placing it, ItemsAdder or
+Nexo places its own block, and uxmSpawners registers the spawner a tick later, as the block
+`block-settings` names.
+
+`block-settings.material` is what the placed spawner is. `show-inside` has no effect on a custom
+block. The two settings are apart: an ItemsAdder item can place a plain `SPAWNER`, and a plain
+spawner item can place a custom block.
+
+A custom block spawner works like any other:
+
+| What | How |
+|---|---|
+| Right-click | Opens its menu |
+| Breaking | uxmSpawners breaks it by its own rules and drops the spawner item. A Nexo block does not drop its own item |
+| Explosions | Kept out of them while `protect-spawners-from-explosions` is on. Otherwise it is removed without dropping the custom block's item, and its storage is handled as `lost-spawner-storage` says |
+| Claim plugins | Asked about it as about a spawner |
+| Changing `block-settings` | Placed spawners turn into the new block, as with any block |
+
+A spawner of a custom block is registered a tick after it is placed. If it is broken, blown up or the
+server stops in that tick, the custom block stays without a spawner and the item is used up.
+
+### When the plugin is missing or not ready
+
+ItemsAdder and Nexo load their items after the server starts. uxmSpawners checks the names once
+the plugin says its items are loaded, and on every `/usp reload` after that.
+
+| The name in the file | Result |
+|---|---|
+| `item-settings.material` of a plugin that is not installed, or no block of it | The item is a plain `SPAWNER`, with a warning |
+| `block-settings.material` of a plugin that is not installed or not loaded yet, or no block of it | Its spawners are kept and make nothing, and none can be placed. Their menu says the block is not known, and the console says so once until a reload. When the plugin finishes loading, they get their block and work |
+| `block-settings.material` that is a Nexo string block | A plain `SPAWNER` is used, with a warning: water and a missing block under it would remove it |
+| `produces.spawns` that is no ItemsAdder item or mob | A warning with the file name; its spawners make nothing |
+
+A spawner whose custom block is not known is never deleted as a lost spawner. An ItemsAdder version
+whose API does not fit stops uxmSpawners at startup, naming it.
 
 Related: [Spawn Conditions](../features/spawn-conditions.md), [Basic Concepts](../getting-started/concepts.md), [Prices](prices.md)
