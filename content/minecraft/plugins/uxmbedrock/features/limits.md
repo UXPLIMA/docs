@@ -12,8 +12,9 @@ icon: circle-alert
 | Space letters that move text left | Bedrock text cannot move left | HUD pictures keep their order without the left moves |
 | Custom biome colours | Geyser maps every custom biome onto a vanilla Bedrock biome | Not converted |
 | Riding and seat camera from jump and sneak | Needs Geyser's input internals | Not changed |
-| ModelEngine, BetterModel and cosmetic models | No Geyser API to draw them | Not converted |
-| Furniture as blocks | A Geyser custom block needs a Java block state of its own | Furniture shows as a display stand |
+| BetterModel player models (`/bm disguise`) | A composite of the player's skin with a model per limb that a condition picks | Not drawn |
+| Furniture as blocks | A Geyser custom block needs a Java block state of its own | Furniture shows as a 3D display |
+| A dye that colours part of a custom item (a sofa's cushions) | Bedrock colours a dyed item's whole icon and whole held model | The icon and the model in the hand take the dye all over; furniture, displays and item frames show it on the dyed parts only |
 | Menu pictures on touch screens | The pocket layout has other panels | Touch players get the plain chest or a form |
 | Score numbers hidden by Java's number format | Bedrock always draws numbers | The pack hides the score column |
 | Animated textures on weak devices | Every frame is downloaded | A light pack keeps every second frame; `none` keeps the first frame |
