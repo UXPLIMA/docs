@@ -16,6 +16,7 @@ icon: puzzle
 | uxmLang | No | One language choice for every UXM plugin |
 | Velocity | No | One pack for the network and proxy command completion, with uxmBedrock-Velocity |
 | ffmpeg | No, a program on the machine | Smaller sounds |
+| TCPShield | No | Checked: Bedrock players can join only with its Geyser support on |
 
 ## Tested versions
 
@@ -42,6 +43,13 @@ as long as the plugin keeps the pack it builds and its API alike; `/uxmbedrock p
 Some pack plugins can protect the pack they write so other tools cannot read it. uxmBedrock reads only the built pack;
 when a plugin's protection keeps it from reading, `/uxmbedrock pack report` names the plugin, the file and the
 setting to change.
+
+## TCPShield
+
+TCPShield lets connections in only through its own network, and refuses Geyser's own connection unless its Geyser
+support is on; then no Bedrock player can join at all. When TCPShield runs on the server, uxmBedrock reads its setting
+at start: with `enable-geyser-support: false` in `plugins/TCPShield/config.yml`, the console says so and
+`/uxmbedrock doctor` repeats it. Set it to `true` (TCPShield needs Floodgate for it) and restart.
 
 ## Plugins built on uxmLib
 

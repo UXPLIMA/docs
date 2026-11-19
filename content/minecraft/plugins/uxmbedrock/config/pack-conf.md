@@ -9,6 +9,7 @@ icon: package
 |---|---|---|
 | `auto-convert` | `true` | Build again on its own when a source pack changes |
 | `check-every-seconds` | `30` | How often the sources are looked at; at least 5 |
+| `new-items-restart` | `"notify"` | A build that brings custom items, blocks or heads, which Geyser on this server reads only at its start. `notify`: the console says a restart is needed. `when-empty`: the server also restarts once nobody is online, through `restart-script` in `spigot.yml`; without one it only stops. With Geyser on a proxy, restart the proxy yourself |
 | `merge-bedrock-packs` | `[]` | Bedrock packs you already have, put in front of the converted one as they are, relative to the server folder |
 | `name` | `"uxmBedrock"` | The pack's name. It also makes the pack's id: renaming it makes every player download it again |
 | `description` | `"The server's own look"` | The line under the name in the Bedrock pack list |

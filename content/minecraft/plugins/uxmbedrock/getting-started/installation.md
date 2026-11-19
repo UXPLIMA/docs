@@ -59,17 +59,25 @@ plugins/uxmBedrock/
 ├── items.conf       the vanilla item under an item model the packs do not say
 ├── commands.conf    the name, aliases and switch of every command
 ├── messages/        one file per language
-├── backups/         the last five copies of config.conf, kept when a release adds keys
+├── backups/         copies of a file from before a release added keys to it
+├── reports/         menus.json, written by /uxmbedrock menus report
 ├── data/            bedrock.db, the SQLite database
 ├── cache/           the Java client's font, fetched skins and past builds
 └── output/          the build Geyser serves: packs, mappings, choices, heads, report.txt
 ../uxmTheme/theme.conf   the colours every UXM plugin shares
 ```
 
+## Updating
+
+Replace the three jars and restart. At start, every file the plugin ships (config.conf, text.conf, menus.conf,
+pack.conf, gui.conf, items.conf) gets the keys the new release adds; your values stay as they
+are, the file as it was is kept in `backups/`, and the console names each file it brought up to date and any key it
+does not know, such as a typo. New packs reach players from their next join.
+
 ## Checking the install
 
 | Command | Says |
 |---|---|
 | `/uxmbedrock status` | Floodgate and Geyser versions, where the pack goes, the network, the pack's size and build time, every switch |
-| `/uxmbedrock doctor` | One line per thing that can be wrong: Floodgate, the Bedrock players online, the pack |
+| `/uxmbedrock doctor` | One line per thing that can be wrong: Floodgate, TCPShield, the Bedrock players online, the pack |
 | `/uxmbedrock pack report` | What the last build converted and what it left out |
