@@ -32,7 +32,7 @@ listed in `sources.extra` is read whatever wrote it. A plugin that protects its 
 | Java | Bedrock |
 |---|---|
 | Item models, item model definitions, old custom model data | Custom items Geyser registers, with icons; 3D models as geometry and attachables |
-| Item models with a dye tint | Dyeable custom items: the icon shows the item's dye |
+| Item models with a dye tint | Dyeable custom items: the icon and the model in the hand show the item's dye |
 | Armour and elytra equipment | Attachables on the player |
 | Leather armour a core shader draws (animated, emissive armour sets) | Attachables with the shader's frames, played at its speed |
 | Bows, crossbows, fishing rods and bundles with their states | The same states: a bow drawn back, a cast rod, a filled bundle |
