@@ -10,7 +10,8 @@ icon: circle-alert
 | A line through or under text | Bedrock draws no lines and leaves a unit after every letter of the pack | Lines are drawn into the letters; a run of spaces is drawn four to a letter, so a rule shows a small gap every 16 units |
 | Symbols drawn in half units (unifont: the coin, the four pointed star, most arrows) | A letter of the pack is never finer than one unit | Drawn from the pack's font at Java's size and detail, in the nearest of Bedrock's sixteen colours |
 | Space letters that move text left | Bedrock text cannot move left | HUD pictures keep their order without the left moves |
-| Custom biome colours | Geyser maps every custom biome onto a vanilla Bedrock biome | Not converted |
+| More than 27 data pack biomes | A pack can colour only the biomes Bedrock knows, and 27 of them are free | The first 27 in key order get their own colours; the rest are drawn as the game's nearest biome |
+| Leaves in snowy biomes | Bedrock covers leaves with snow where it snows | Not changed: a snowy data pack biome shows it too |
 | Riding and seat camera from jump and sneak | Needs Geyser's input internals | Not changed |
 | BetterModel player models (`/bm disguise`) | A composite of the player's skin with a model per limb that a condition picks | Not drawn |
 | Furniture as blocks | A Geyser custom block needs a Java block state of its own | Furniture shows as a 3D display |

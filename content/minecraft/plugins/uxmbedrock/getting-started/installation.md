@@ -16,6 +16,7 @@ uxmBedrock is three jars with uxmLib inside them. This manual describes uxmBedro
 | Floodgate | Required on every Paper server: it tells which players are on Bedrock |
 | Geyser | On the same server (Geyser-Spigot), on the Velocity proxy, or Geyser Standalone |
 | Database | None for one server: SQLite is built in. MySQL, MariaDB or PostgreSQL for a network |
+| Java's language | Not Turkish or Azerbaijani. There a small i upper-cases to a dotted capital I, and plugins that look names up in capitals break (MythicHUD draws no HUD). The console says so at start; start Java with `-Duser.language=en -Duser.country=US` |
 
 The database drivers are downloaded on the first start, so the first start needs internet access. The first pack
 build also fetches the Java client's font once from Mojang's download service and keeps it in `cache/`.
