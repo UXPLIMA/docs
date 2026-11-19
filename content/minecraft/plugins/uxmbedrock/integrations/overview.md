@@ -19,8 +19,8 @@ icon: puzzle
 
 ## Tested versions
 
-Each plugin was checked in game at this version, a Java and a Bedrock client side by side. Other versions usually
-work: uxmBedrock reads the built pack and the plugins' public API, not their internals.
+Each plugin was checked in game at this version, a Java and a Bedrock client side by side. Another version works
+as long as the plugin keeps the pack it builds and its API alike; `/uxmbedrock pack report` names what a build left out.
 
 | Plugin | Version |
 |---|---|
