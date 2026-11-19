@@ -9,14 +9,16 @@ icon: circle-alert
 |---|---|---|
 | A line through or under text | Bedrock draws no lines and leaves a unit after every letter of the pack | Lines are drawn into the letters; a run of spaces is drawn four to a letter, so a rule shows a small gap every 16 units |
 | Symbols drawn in half units (unifont: the coin, the four pointed star, most arrows) | A letter of the pack is never finer than one unit | Drawn from the pack's font at Java's size and detail, in the nearest of Bedrock's sixteen colours |
-| Space letters that move text left | Bedrock text cannot move left | HUD pictures keep their order without the left moves |
+| Space letters that move text left | Bedrock text cannot move left | Menu titles and HUD pictures put each word where Java draws it, moving forward only |
+| Text drawn back over earlier text (a second line laid over the first) | A Bedrock line only runs forward | It stands after the earlier text |
 | More than 27 data pack biomes | A pack can colour only the biomes Bedrock knows, and 27 of them are free | The first 27 in key order get their own colours; the rest are drawn as the game's nearest biome |
 | Leaves in snowy biomes | Bedrock covers leaves with snow where it snows | Not changed: a snowy data pack biome shows it too |
 | Riding and seat camera from jump and sneak | Needs Geyser's input internals | Not changed |
 | BetterModel player models (`/bm disguise`) | A composite of the player's skin with a model per limb that a condition picks | Not drawn |
 | Furniture as blocks | A Geyser custom block needs a Java block state of its own | Furniture shows as a 3D display |
 | A dye that colours part of a custom item (a sofa's cushions) | Bedrock colours a dyed item's whole icon and whole held model | The icon and the model in the hand take the dye all over; furniture, displays and item frames show it on the dyed parts only |
-| Menu pictures on touch screens | The pocket layout has other panels | Touch players get the plain chest or a form |
+| Menu pictures on touch screens | The pocket layout puts the slots elsewhere | A chest with a picture is laid out as on a PC; `touch = "form"` gives a form instead |
+| A pack's furnace, crafting table, anvil, enchanting table or beacon screen | Bedrock places their slots differently, with a recipe book | Left as Bedrock draws them; chests and shulker boxes take the pack's look |
 | Score numbers hidden by Java's number format | Bedrock always draws numbers | The pack hides the score column |
 | Animated textures on weak devices | Every frame is downloaded | A light pack keeps every second frame; `none` keeps the first frame |
 

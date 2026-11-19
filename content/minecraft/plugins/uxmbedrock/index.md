@@ -15,3 +15,5 @@ icon: smartphone
 - [Integrations](integrations/)
 - [Database](database/)
 - [Developers](developer/)
+- [Security](security.md)
+- [Troubleshooting](troubleshooting.md)

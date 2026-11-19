@@ -14,8 +14,8 @@ icon: key-round
 | `uxmbedrock.admin.reload` | op | `/uxmbedrock reload` |
 | `uxmbedrock.admin.doctor` | op | `/uxmbedrock doctor` |
 | `uxmbedrock.admin.status` | op | `/uxmbedrock status` |
-| `uxmbedrock.admin.pack` | op | `pack build`, `pack report`, `pack sync`, `items unknown`, `skulls` |
-| `uxmbedrock.admin.menus` | op | `/uxmbedrock menus` |
+| `uxmbedrock.admin.pack` | op | `pack build`, `pack report`, `pack sync`, `pack builds`, `pack rollback`, `pack cache clear`, `items unknown`, `skulls` |
+| `uxmbedrock.admin.menus` | op | `/uxmbedrock menus`, `menus report` |
 | `uxmbedrock.admin.gui` | op | `gui measure`, `gui list`, `preview` |
 | `uxmbedrock.admin.language` | op | `lang set-player`, `lang reset-player` |
 | `uxmbedrock.admin.*` | op | Every `uxmbedrock.admin.` node |
