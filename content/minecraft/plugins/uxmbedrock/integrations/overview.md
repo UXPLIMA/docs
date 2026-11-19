@@ -17,6 +17,26 @@ icon: puzzle
 | Velocity | No | One pack for the network and proxy command completion, with uxmBedrock-Velocity |
 | ffmpeg | No, a program on the machine | Smaller sounds |
 
+## Tested versions
+
+Each plugin was checked in game at this version, a Java and a Bedrock client side by side. Another version works
+as long as the plugin keeps the pack it builds and its API alike; `/uxmbedrock pack report` names what a build left out.
+
+| Plugin | Version |
+|---|---|
+| Geyser | 2.12.1 |
+| Floodgate | 2.2.5 |
+| Nexo | 1.29.1 |
+| ItemsAdder | 5.0.0-beta-8 |
+| Oraxen | 1.220.1 |
+| CraftEngine | 26.9.2 |
+| ModelEngine | R4.2.0 |
+| BetterModel | 3.6.0 |
+| BetterHud | 2.2.0 |
+| CustomNameplates | 3.0.45 |
+| CustomFishing | 2.3.28 |
+| LuxDialogues | 4.1.5 |
+
 ## Plugins that protect their pack
 
 Some pack plugins can protect the pack they write so other tools cannot read it. uxmBedrock reads only the built pack;
