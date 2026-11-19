@@ -72,7 +72,12 @@ plugins/uxmBedrock/
 Replace the three jars and restart. At start, every file the plugin ships (config.conf, text.conf, menus.conf,
 pack.conf, gui.conf, items.conf) gets the keys the new release adds; your values stay as they
 are, the file as it was is kept in `backups/`, and the console names each file it brought up to date and any key it
-does not know, such as a typo. New packs reach players from their next join.
+does not know, such as a typo. The Geyser extension does the same with its own `config.conf`, keeping the file as it
+was in its own `backups/`. New packs reach players from their next join.
+
+A release that changes how the pack names items builds the pack again at the first start. Geyser on that server
+read the item names of the build before, so the console asks for a restart once the new build is done; restart
+then, or set `new-items-restart` to `when-empty` in [pack.conf](../config/pack-conf.md).
 
 ## Checking the install
 

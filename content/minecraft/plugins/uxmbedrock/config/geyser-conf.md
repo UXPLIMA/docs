@@ -5,7 +5,9 @@ description: "The extension's config.conf: where it finds the build, how often i
 icon: plug
 ---
 
-The extension writes `config.conf` in its folder under Geyser's `extensions/` on its first start.
+The extension writes `config.conf` in its folder under Geyser's `extensions/` on its first start. A later release
+adds the keys it brings to that file at start, with their comments; the values you wrote stay, and the file as it
+was is kept in `backups/` beside it.
 
 ## source
 
