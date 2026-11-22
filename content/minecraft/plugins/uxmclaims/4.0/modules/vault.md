@@ -13,13 +13,14 @@ Module `vault` · enabled by default · `modules/vault/config.yml` · requires [
 
 | Command | What it does | Permission |
 |---|---|---|
-| `/claim vault [page]` | Opens the vault of the land you stand in | `uxmclaims.ability.vault.access` |
+| `/claim vault [page]` | Opens the vault of the land you stand in | `uxmclaims.command.vault.open` and `uxmclaims.ability.vault.access` |
 
 ## Permissions
 
 | Node | Default | Grants |
 |---|---|---|
-| `uxmclaims.ability.vault.access` | everyone | Open land vaults where your role allows it |
+| `uxmclaims.command.vault.open` | everyone | `/claim vault` |
+| `uxmclaims.ability.vault.access` | everyone | Open land vaults where your role allows it; under LuckPerms it follows `undefined-ability` |
 | `uxmclaims.admin.vault` | op | Open the vault of any land |
 
 | Role permission | Default holder | Allows |

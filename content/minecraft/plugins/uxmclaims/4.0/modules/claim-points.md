@@ -15,12 +15,12 @@ Module `claim-points` · disabled by default · `modules/claim-points/config.yml
 
 | Command | What it does | Permission |
 |---|---|---|
-| `/claim points` | Shows your points, your counted play time and the minutes to the next point. | `uxmclaims.command.claim-points.use` |
+| `/claim points` | Shows your points, your counted play time and the minutes to the next point (at the cap, that play time earns no more). | `uxmclaims.command.claim-points.use` |
 | `/uxm claim-points check <player>` | Shows another player's points and play time. | `uxmclaims.admin.claim-points` |
 | `/uxm claim-points give <player> <amount>` | Gives points on top of what the player earned. | `uxmclaims.admin.claim-points` |
 | `/uxm claim-points take <player> <amount>` | Takes points from the player. | `uxmclaims.admin.claim-points` |
 
-The admin commands take any player who has played on the server, online or not. The local names of these
+The admin commands take any player who has played on the server, online or not, and an amount above 0. The local names of these
 commands are in `modules/claim-points/lang/<language>/commands.yml`.
 
 ## Permissions
@@ -43,7 +43,7 @@ commands are in `modules/claim-points/lang/<language>/commands.yml`.
 ## How points add up
 
 A player's points are their earned points (play time x `points-per-hour`, rounded down, capped at
-`max-earned`) plus the points given by command, minus the points taken, never below zero. Play time counts in
+`max-earned`) plus the points given by command, minus the points taken. Play time counts in
 whole minutes for every online player who moved within `afk-minutes`.
 
 The points are added after the player's own limit is worked out from `limits.yml` and their permission nodes
@@ -65,8 +65,8 @@ These need the [PlaceholderAPI](placeholders.md) module and the PlaceholderAPI p
 
 - Points add to every personal land the player owns, each on its own, not to one shared budget. Town and admin
   lands get nothing.
-- Taking more points than a player has leaves them at zero and keeps the rest as a debt: points they earn later
-  first pay it off.
+- `take` stops at the points the player has now: taking more leaves them at zero, and no debt is kept against
+  points they earn later.
 - Players cannot buy points yet.
 - In network mode an account is saved whole: if two servers change one player's points at the same moment, the
   later save wins.

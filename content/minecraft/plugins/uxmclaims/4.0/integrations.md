@@ -14,7 +14,7 @@ installed; a module whose plugin is missing does nothing or stays off with the r
 | Plugin | Adds | Module |
 |---|---|---|
 | Vault and an economy plugin | Prices, refunds, banks, taxes, plot sales and rents | [Economy](modules/economy.md) |
-| LuckPerms | Limits and abilities for offline players, LuckPerms contexts such as `uxmclaims:in-land` | [LuckPerms](modules/luckperms.md) |
+| LuckPerms | Limits, abilities and price nodes read through LuckPerms (offline players loaded on demand), LuckPerms contexts such as `uxmclaims:in-land` | [LuckPerms](modules/luckperms.md) |
 | WorldGuard | Keeps claims out of regions, the `uxmclaims-claim` region flag | [WorldGuard](modules/worldguard.md) |
 | PlaceholderAPI | The `%uxmclaims_...%` placeholders, see [Placeholders](placeholders.md) | [PlaceholderAPI](modules/placeholders.md) |
 | Dynmap, BlueMap, Pl3xMap, squaremap | Lands on every installed web map at once, layered by owner | [Web Maps](modules/webmap.md) |
@@ -37,7 +37,7 @@ installed; a module whose plugin is missing does nothing or stays off with the r
 | Missing | Result |
 |---|---|
 | Vault | The economy module stays off (`needs the plugin Vault`) and every price is free; modules that require it, such as Bank, stay off too |
-| An economy plugin behind Vault | The economy module runs, but paid actions are refused until an economy registers with Vault |
+| An economy plugin behind Vault | The economy module runs; with `when-no-provider: FREE` (the default) paid actions are free and one warning is logged, with `REFUSE` they are refused until an economy registers with Vault |
 | LuckPerms | Limits come from the online player's permissions through the server; offline players get the defaults |
 | WorldGuard | Regions are not checked |
 | PlaceholderAPI | Other plugins cannot read `%uxmclaims_...%` |

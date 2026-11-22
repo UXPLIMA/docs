@@ -37,7 +37,7 @@ Module `luckperms` · enabled by default · `modules/luckperms/config.yml` · re
 |---|---|---|
 | `uxmclaims:in-land` | `true`, `false` | The player stands in a land. |
 | `uxmclaims:wilderness` | `true`, `false` | The player stands outside every land. |
-| `uxmclaims:land-role` | the role name in lower case, such as `owner`, `member`, `visitor` | The player's role in the land underfoot. Not set in the wilderness. |
+| `uxmclaims:land-role` | the role name in lower case, such as `owner`, `member`, `visitor` or a custom role's name | The player's role in the land underfoot. Not set in the wilderness. LuckPerms' editor is offered the role names the lands use (up to 200). |
 | `uxmclaims:land-owner` | `true`, `false` | The player owns the land underfoot. |
 | `uxmclaims:trusted-here` | `true`, `false` | The player is a member of the land underfoot. |
 | `uxmclaims:town`, `uxmclaims:town-rank` | town name, rank name, in lower case | The player's town and rank, with [Towns](towns.md) on. |
@@ -55,12 +55,15 @@ a land, or when the land underfoot changes.
 
 ## Notes
 
-- `undefined-ability` applies to the ability checks of lands, areas, towns and nations. Warp abilities are
-  still read as plain Bukkit permissions, where an unset node is allowed.
-- 3.x treated an unset ability node as denied. The migration does not change this setting yet, so set
+- `undefined-ability` applies to the ability checks of lands, areas, towns, nations, warps, land vault and
+  claim block.
+- 3.x treated an unset ability node as denied. The migration does not change this setting, so set
   `undefined-ability: deny` yourself after moving from 3.x if your groups rely on that.
-- An offline player is read only while LuckPerms has their data in memory. Otherwise every node counts as
-  unset: limits fall back to their defaults and abilities follow `undefined-ability`.
+- An offline player LuckPerms has not loaded is loaded on demand. Reads off the server thread wait up to two
+  seconds for it; a read on the server thread never waits, counts every node as unset that once and starts the
+  load, so the next read answers.
+- Price nodes of [Economy](economy.md) and an offline player's `uxmclaims.bypass.jail` are read through
+  LuckPerms too, contexts included.
 - `/uxm luckperms contexts` takes online players only. It says when contexts are switched off.
 
 Related: [Limits](limits.md), [Permissions](../permissions.md), [Towns](towns.md), [Nations](nations.md), [Integrations](../integrations.md)

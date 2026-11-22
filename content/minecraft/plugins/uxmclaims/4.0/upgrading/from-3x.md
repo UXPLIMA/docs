@@ -127,17 +127,15 @@ Loss and behaviour checks can never be approved. See [Migration commands](migrat
 3.x and 4.0 both allow one active server per database (unless you use [network mode](../network-mode.md)).
 
 1. Stop every server on the database.
-2. Install 4.0 on one server and let it migrate.
-3. Give the other servers the migrated plugin folder of the first one before their first 4.0 start (leave out
-   `data/instance.id` and `data/license.cache`). `data/state.yml` tells 4.0 the data is already moved.
+2. Install 4.0 on one server and let it migrate to the end.
+3. Then start 4.0 on the other servers, one at a time. Each sees that the database already holds the moved
+   data and only converts its own 3.x config, language and menu files: the report says `CONFIG_ONLY`
+   (`I-CONFIG-ONLY`), and no row is copied or deleted. Copying the migrated plugin folder of the first server
+   instead works too (leave out `data/instance.id` and `data/license.cache`).
 
-<Callout type="danger" title="Do not start 4.0 on a second server with its own 3.x folder">
-
-The importer does not yet see that another server already moved the shared database. A second server that
-starts 4.0 on its own unconverted 3.x folder copies the 3.x tables again and replaces the 4.x rows, so every
-change made on 4.0 since the first migration is lost.
-
-</Callout>
+Move one server first even so. A second server that starts while the first one stopped half way through
+activating the data does not clean or copy anything: it locks its old claims down and reports
+`E-ACTIVATION-ELSEWHERE` until the first server has finished.
 
 ## The 3.x safety guard
 
@@ -157,7 +155,7 @@ found and disables itself. Go back with `/uxm migrate restore-v3` instead.
 
 - The maintenance import still starts the modules on the empty tables while the copy runs; the lock-down and
   join guard cover it, and the restart afterwards is required.
-- The maintenance kick text is always English for now, whatever the server language.
+- The maintenance kick text is Turkish when `language.default` is `tr`, and English for every other language.
 - The importer has been run live on SQLite; MySQL and PostgreSQL sources are not tested against a real 3.7.0
   server yet. Take your own backup.
 

@@ -64,7 +64,7 @@ Joining, accepting, declining and leaving act for the town whose mayor you are. 
 | `uxmclaims.ability.nation.kick` | everyone | Kicking towns. |
 | `uxmclaims.ability.nation.rank` | everyone | Giving ranks and creating, deleting and editing them. |
 | `uxmclaims.ability.nation.set` | everyone | Changing spawn, name, tag, board and open. |
-| `uxmclaims.ability.nation.spawn` | everyone | Registered, but not checked yet. |
+| `uxmclaims.ability.nation.spawn` | everyone | Teleporting to a nation spawn with `/nation spawn`. |
 | `uxmclaims.admin.nations` | op | The `/uxm nation` commands, which act on any nation without rank checks, and `/nation spawn <nation>` to any nation. |
 | `uxmclaims.bypass.priority` | op | Manages nation ranks and citizens regardless of rank priority (registered by [Lands](lands.md)). |
 

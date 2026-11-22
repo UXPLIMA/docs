@@ -27,15 +27,16 @@ Each is described in [Migration commands](../upgrading/migration-commands.md).
 | `SQLITE` (default) | One server | `storage.sqlite.file` (`data/storage.db`) |
 | `MYSQL` | One server or a network | `storage.remote.*` |
 | `MARIADB` | One server or a network | `storage.remote.*` |
-| `POSTGRESQL` | One server or a network | `storage.remote.*`, schema `public` |
+| `POSTGRESQL` | One server or a network | `storage.remote.*`, with `storage.remote.schema` (`public`) |
 
 ```yaml
 storage:
   type: MYSQL
   remote:
     host: db.example.net
-    port: 3306
+    port: 0
     database: uxmclaims
+    schema: public
     username: uxmclaims
     password: 'secret'
     properties:
@@ -49,7 +50,8 @@ storage:
     max-lifetime: 30m
 ```
 
-The port defaults to 3306; write `5432` for PostgreSQL. `properties` are added to the JDBC URL.
+Port `0` (the default) means the type's own port: 3306 for MySQL and MariaDB, 5432 for PostgreSQL. `schema`
+is read by PostgreSQL only. `properties` are added to the JDBC URL.
 `jdbc-url-override` replaces host, port and database with a URL you write in full. Create the database and a
 user with rights to create tables before the first start; uxmClaims creates its tables itself. Every key is
 listed in [Kernel config](kernel.md).
@@ -98,9 +100,8 @@ the server stopped or with your database's own dump tool.
 
 ## Notes
 
-- The lease timings (60 seconds, renewed every 20) are fixed; an error message mentions
-  `storage.lease.heartbeat-seconds`, but that key is not in `config.yml`.
-- The PostgreSQL schema is always `public`.
+- The lease timings (60 seconds, renewed every 20) are fixed; there is no key for them.
+- The PostgreSQL schema must exist before the first start; uxmClaims creates its tables in it, not the schema.
 - Moving from SQLite to a server database (or back) is not built in yet.
 
 Related: [Kernel config](kernel.md), [Network mode](../network-mode.md), [Migration commands](../upgrading/migration-commands.md)

@@ -76,9 +76,8 @@ shared. See [Network mode](../network-mode.md).
 
 ## Notes
 
-- The file's header mentions `/uxm modules enable <id>` and `disable <id>`; those commands do not exist yet.
-  Edit the file, or use `/uxm setup`, then restart.
+- No command switches a single module: edit the file, or use `/uxm setup`, then restart.
 - `/uxm reload` takes no module name: it always reloads every running module's files.
-- `/uxm modules` answers in English only.
+- `/uxm modules` and `/uxm reload` answer with texts from `lang/<code>/messages.yml` (`modules`, `reload`).
 
 Related: [Presets](presets.md), [Modules](../modules/index.md), [Kernel config](kernel.md)

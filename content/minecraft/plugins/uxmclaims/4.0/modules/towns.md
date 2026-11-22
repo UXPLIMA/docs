@@ -76,8 +76,8 @@ matching ability node.
 | `uxmclaims.ability.town.kick` | everyone | Kicking residents. |
 | `uxmclaims.ability.town.rank` | everyone | Giving ranks and creating, deleting and editing them. |
 | `uxmclaims.ability.town.set` | everyone | Changing spawn, name, tag, board, open and public. |
-| `uxmclaims.ability.town.spawn` | everyone | Registered, but not checked yet. |
-| `uxmclaims.admin.towns` | op | The `/uxm town` commands, which act on any town without rank checks. |
+| `uxmclaims.ability.town.spawn` | everyone | Teleporting to a town spawn with `/town spawn`. |
+| `uxmclaims.admin.towns` | op | The `/uxm town` commands, which act on any town without rank checks, and visiting the spawn of towns that are not public. |
 | `uxmclaims.bypass.priority` | op | Manages ranks and residents regardless of rank priority (registered by [Lands](lands.md)). |
 
 | Rank key | Allows |

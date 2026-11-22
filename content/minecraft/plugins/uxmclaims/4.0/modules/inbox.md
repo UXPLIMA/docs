@@ -30,7 +30,7 @@ Module `inbox` · disabled by default · `modules/inbox/config.yml` · requires 
 
 | Key | Default | What it does |
 |---|---|---|
-| `keep-days` | `30` | Days a notification is kept. Older ones are deleted, read or not. |
+| `keep-days` | `30` | Days a notification is kept. Older ones are deleted, read or not. `0` keeps them until `max-per-player` pushes them out. |
 | `max-per-player` | `100` | Most notifications kept per player. The oldest go first. |
 | `store-online` | `false` | Also keep notifications shown to online players, as read, so the inbox is a full history. With `false`, online players see them in chat only. |
 | `join-reminder.enabled` | `true` | Send the `<count> new notifications` line on join. |
@@ -43,6 +43,5 @@ Module `inbox` · disabled by default · `modules/inbox/config.yml` · requires 
   reach players who are online.
 - Each notice's text is in this module's `messages.yml` under `notifications` (see [Languages](../configuration/languages.md)). A key missing
   there shows as the plain `custom` line.
-- Keep `keep-days` above 0. Only notifications from the last day are loaded at start when it is 0.
 
 Related: [Notifications](notifications.md), [Relations](relations.md), [Bank](bank.md), [Taxes](taxes.md)

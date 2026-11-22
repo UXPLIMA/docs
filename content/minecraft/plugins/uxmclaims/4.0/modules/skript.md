@@ -129,6 +129,9 @@ on town join result:
   expressions are empty and the effects fail with `skript.module-missing`.
 - The add-on does not run on Folia.
 - There is no Skript language file yet, so Skript errors show the code names `uxmland`, `uxmtown` and
-  `uxmnation`. The add-on has not been run against a live Skript server yet.
+  `uxmnation`. The add-on has been loaded on a live server with Skript 2.17.1; an event firing in game has not
+  been tried yet.
+- The add-on is first-party, so its module keeps the plain id `skript`. Other add-ons need a vendor prefix in
+  their module id, such as `example-shops`.
 
 Related: [Towns](towns.md), [Nations](nations.md), [Events](../developer/events.md), [Integrations](../integrations.md)

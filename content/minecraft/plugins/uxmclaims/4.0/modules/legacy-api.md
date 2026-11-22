@@ -28,7 +28,7 @@ Module `legacy-api` · enabled by default · `modules/legacy-api/config.yml` · 
 | Key | Default | What it does |
 |---|---|---|
 | `log-callers` | `true` | Logs the name of each plugin that uses the old API, once, the first time it does. Refusals are always logged once. |
-| `write-timeout` | `10` | Seconds a write called from a thread other than the server thread waits for its result. On time-out the call throws `ClaimException(ERROR_TIMEOUT)`; the write may still finish in the background, which is logged. |
+| `write-timeout` | `10s` | How long a write called from a thread other than the server thread waits for its result, as a duration (`10s`, `1m`; a plain number counts as seconds, at least 1 second). On time-out the call throws `ClaimException(ERROR_TIMEOUT)`; the write may still finish in the background, which is logged. |
 | `slow-handler-millis` | `50` | A 3.x event handler (`@ClaimEventHandler`) running longer than this is logged. |
 
 ## What the bridge covers
@@ -37,7 +37,7 @@ Module `legacy-api` · enabled by default · `modules/legacy-api/config.yml` · 
 |---|---|
 | `ClaimFacade` reads | Answered from 4.0 lands. |
 | `ClaimFacade` writes | Go to the matching 4.0 module ([Lands](lands.md), [Warps](warps.md), [Claim Block](claim-block.md), [Bans](bans.md), [Invites](invites.md), [Expiry](expiry.md)). Personal lands only: town, nation and server lands are read-only. |
-| Writes with no 4.0 counterpart (vault contents), or whose module is off | Refused with `ERROR_UNSUPPORTED_IN_V4`. |
+| Writes to town, nation or server lands, or whose module is off | Refused with `ERROR_UNSUPPORTED_IN_V4`. |
 | `PlayerFacade` | Reads 4.0 player profiles. |
 | 3.x events | Made from the 4.0 land events and from the bans, invites, expiry, warps, vault and claim-block modules. A module that is off sends none. |
 | `ClaimPermissionPolicy` | For an online player inside the claim, the 4.0 protection rules answer (admin bypass, towns, relations, WorldGuard). Ability checks read the permission nodes in the 3.x order. |
@@ -51,7 +51,7 @@ For the class by class list of old and new calls, read the developer page
 
 - A write called on the server thread runs at once and returns the committed result, or throws the refusal.
   Called from any other thread, it is handed to the server thread and the caller waits at most
-  `write-timeout` seconds.
+  `write-timeout`.
 - A handler that throws no longer stops the write. The error is logged with the plugin's name and the next
   handler runs.
 - Handlers run on the server thread (on Folia, the land's region thread).

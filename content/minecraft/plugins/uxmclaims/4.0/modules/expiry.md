@@ -56,7 +56,7 @@ Module `expiry` · enabled by default · `modules/expiry/config.yml` · requires
 | `reminders.times` | `[1d, 1h, 10m]` | Time left at which an owner is reminded, once each |
 | `reminders.check-interval` | `1m` | How often online owners are checked |
 
-`/uxm reload expiry` applies changes; the two timer intervals need a restart.
+`/uxm reload` applies changes; the two timer intervals need a restart.
 
 ## Placeholders
 

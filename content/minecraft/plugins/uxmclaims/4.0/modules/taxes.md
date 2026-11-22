@@ -23,7 +23,7 @@ Module `taxes` · disabled by default · `modules/taxes/config.yml` · requires 
 | `/nation upkeep` | Shows your nation's daily upkeep, its debt and the next economy day. | `uxmclaims.command.taxes.use` |
 | `/claim upkeep` | Shows the upkeep and debt of the land you stand in. Only with `land-upkeep.enabled`. | `uxmclaims.command.taxes.use` |
 | `/claim tax` | Shows the daily tax members of the land you stand in pay. Only with `land-member-tax.enabled`. | `uxmclaims.command.taxes.use` |
-| `/claim tax set <amount>` | Sets that tax. Only the land's owner may. | `uxmclaims.command.taxes.use` |
+| `/claim tax set <amount>` | Sets that tax. The land's owner, or a member whose land role has `taxes:edit`. | `uxmclaims.command.taxes.use` |
 | `/uxm taxes newday` | Runs a full economy day now. | `uxmclaims.admin.taxes` |
 | `/uxm taxes preview` | Shows what the next economy day would charge. | `uxmclaims.admin.taxes` |
 
@@ -40,7 +40,7 @@ Switching percent mode sets the rate back to 0, so set it again afterwards.
 
 | Role permission | Given to | Grants |
 |---|---|---|
-| `taxes:edit` | owner | Setting the town's or nation's taxes. Ranks that have it also hear about upkeep and debt. |
+| `taxes:edit` | owner | Setting the land's, town's or nation's taxes. Members, residents or ranks that have it also hear about upkeep and debt. |
 
 ## Settings
 
@@ -62,6 +62,7 @@ Switching percent mode sets the rate back to 0, so set it again afterwards.
 | `nation.town-tax.enabled` | `true` | Member towns pay their nation, from the town bank. |
 | `nation.town-tax.default` | `0` | Tax a new nation charges. |
 | `nation.town-tax.max` | `1000` | Highest flat tax a nation may set. |
+| `nation.town-tax.percent-cap` | `100` | Highest percent of the town bank a nation may set in percent mode. |
 | `nation.town-tax.remove-unpaid` | `false` | Remove towns that cannot pay from the nation (`true`) or only warn. |
 | `nation.upkeep.flat` | `100` | Daily nation upkeep. |
 | `nation.upkeep.per-town` | `0` | Added per member town. |
@@ -100,7 +101,6 @@ A resident or town tax that cannot be paid is never a debt: the payer is warned,
 
 - The first start with the module on only records a starting day; taxes begin with the next economy day.
 - A day interrupted by a crash or restart is finished on the next start without charging anyone twice.
-- The nation town tax in percent mode has no cap of its own up to 100 percent.
 - [Levels](levels.md) can change a holder's upkeep by a percent.
 - The town plot tax is set and collected by [Plots](plots.md), not here.
 - A holder that stays at the debt cap is charged every day and its managers get the penalty notice every day.

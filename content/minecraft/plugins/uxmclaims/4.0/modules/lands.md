@@ -37,7 +37,7 @@ Commands that act on "your land" use, in this order: the land picked with `/clai
 | `/claim setspawn`, `/claim relocate` | Sets the land spawn where you stand | `uxmclaims.command.lands.setspawn` |
 | `/claim spawn [land]`, `/claim home`, `/claim tp` | Teleports to a land spawn | `uxmclaims.command.lands.spawn` |
 | `/claim delete [land]` | Deletes a land, after confirmation | `uxmclaims.command.lands.delete` |
-| `/claim transfer <player>`, `/claim member transfer` | Gives the land to another player, after confirmation | `uxmclaims.command.lands.delete` |
+| `/claim transfer <player>`, `/claim member transfer` | Gives the land to another player, after confirmation | `uxmclaims.command.lands.transfer` |
 | `/claim trust <player> [duration]`, `/claim member add` | Adds a member, for a while if a duration such as `3d` is given | `uxmclaims.command.lands.trust` |
 | `/claim untrust <player>`, `/claim kick`, `/claim member kick`, `/claim member remove` | Removes a member | `uxmclaims.command.lands.untrust` |
 | `/claim leave [land]`, `/claim member leave` | Leaves a land you are a member of | `uxmclaims.command.lands.leave` |
@@ -95,8 +95,10 @@ Admin commands. Each `/claim admin ...` command also answers as `/uxm land ...`.
 | `uxmclaims.ability.role.create`, `.delete`, `.rename`, `.priority` | everyone | Manage custom roles |
 | `uxmclaims.ability.role.permissions.<key>` | everyone | Change that permission on a role |
 | `uxmclaims.ability.claim.flag.<flag>` | everyone | Change that land flag |
-| `uxmclaims.bypass.priority` | op | Manage roles and members whatever your own role priority |
+| `uxmclaims.bypass.priority` | op | Manage roles, members, town residents and nation ranks whatever your own priority |
 | `uxmclaims.bypass.fly` | op | Use `/claim fly` in every land, whatever the role says |
+| `uxmclaims.bypass.enter` | op | Enter and stay in lands whose flags or bans keep you out |
+| `uxmclaims.bypass.teleport` | op | Teleport into lands (ender pearls, chorus fruit, land spawns) whatever their rules say |
 | `uxmclaims.admin.lands` | op | Every admin command above; also skips the teleport warmup |
 
 An ability node is a server-wide switch on top of the land role: a player needs both. Take a node away with your permission plugin to stop a rank from doing that thing on any land.
@@ -197,8 +199,8 @@ Other modules add their own keys: `warps:use`, `warps:manage`, `bans:manage`, `i
 | `fly.no-fall-damage` | `true` | No fall damage when land flight ends in the air |
 | `list-click` | `MENU` | Click on a land in the list: `MENU`, `TELEPORT` or `NONE` |
 | `command-rules.blocked-in-foreign-land` | `[sethome]` | Commands non-members cannot use inside a land |
-| `protection.admin-bypass` | `TOGGLE` | `TOGGLE` or `IMPLICIT` (OP and `uxmclaims.admin` always bypass) |
-| `confirmation.enabled` | `true` | Ask for `/claim confirm` before deleting, transferring and similar |
+| `protection.admin-bypass` | `TOGGLE` | `TOGGLE` (`/uxm bypass [on\|off]` with `uxmclaims.admin.bypass`) or `IMPLICIT` (OP and `uxmclaims.admin` always bypass) |
+| `confirmation.enabled` | `true` | Ask for `/claim confirm` (a yes/no form on Bedrock) before creating a land with `/claim`, deleting, leaving, merging or transferring a land and deleting a role; `false` runs them at once |
 | `confirmation.timeout-seconds` | `30` | How long a confirmation stays open (at least 5) |
 | `retention.deleted-days` | `30` | Days a deleted land is kept for `/claim admin restore`; `0` deletes at once |
 
@@ -273,11 +275,10 @@ For "may this player do this here", the first step with an answer wins: protecti
 
 ## Notes
 
-- `/uxm bypass` is not registered yet. With the default `protection.admin-bypass: TOGGLE` admins have no way to bypass protection; set `IMPLICIT` if your staff need it.
+- With the default `protection.admin-bypass: TOGGLE`, staff turn their bypass on with `/uxm bypass on`; it ends with `/uxm bypass off` or when they leave.
 - With [Invites](invites.md) on, `/claim trust <player>` without a duration sends an invite instead of adding the member at once.
 - A deleted land stays restorable for `retention.deleted-days`. Most modules keep its warps, bans and vault until then; bank, relations, taxes, towns and nations do not, so a restored land comes back without those.
 - `/claim merge` deletes the absorbed land for good: its roles, flags, spawn, warps, bans and bank go with it, and its members join with the member role. There is no merge button in the menus.
 - Temporary trust runs out on a 60 second timer; on a network only the leading server runs it.
-- `/claim transfer` uses the delete command node, not a node of its own.
 
 Related: [Areas](areas.md), [Invites](invites.md), [Bans](bans.md), [Warps](warps.md), [Limits](limits.md), [Economy](economy.md)

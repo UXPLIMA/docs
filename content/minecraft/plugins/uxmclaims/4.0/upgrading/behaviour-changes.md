@@ -13,11 +13,12 @@ default.
 
 | | 3.x | 4.0 clean install | 4.0 after migration |
 |---|---|---|---|
-| Who bypasses land protection | OP and `uxmclaims.admin`, always | Players with `uxmclaims.admin.bypass` who turned the bypass on | OP, `*` and `uxmclaims.admin`, always |
+| Who bypasses land protection | OP and `uxmclaims.admin`, always | Players with `uxmclaims.admin.bypass` who ran `/uxm bypass on` | OP, `*` and `uxmclaims.admin`, always |
 | Setting | none | `protection.admin-bypass: TOGGLE` | `protection.admin-bypass: IMPLICIT` |
 
-The value that counts is `protection.admin-bypass` in `modules/lands/config.yml`. The key with the same name in
-the root `config.yml` is not read.
+The setting is `protection.admin-bypass` in `modules/lands/config.yml`. With `TOGGLE`, `/uxm bypass [on|off]`
+switches it for yourself until you turn it off or leave; with `IMPLICIT` the command only says that admins
+always bypass. The root `config.yml` no longer has this key: 4.0.0 deletes it on the first start.
 
 ## Commands
 
@@ -25,7 +26,7 @@ the root `config.yml` is not read.
 |---|---|
 | `/claim reload` | `/uxm reload` (config, language and menu files; modules need a restart) |
 | `/claim admin ...` tools | Still `/claim admin ...`, and also `/uxm land ...` |
-| Admin and server tools | Under `/uxm`: `/uxm modules`, `/uxm db`, `/uxm preset`, `/uxm setup`, `/uxm lang update`, `/uxm migrate` |
+| Admin and server tools | Under `/uxm`: `/uxm modules`, `/uxm db`, `/uxm preset`, `/uxm setup`, `/uxm lang update`, `/uxm migrate`, `/uxm bypass`, `/uxm config check` |
 | Command names fixed in English | Local names and aliases per language in `lang/<code>/commands.yml` (needs a restart) |
 
 Player commands under `/claim` keep their 3.x names where the feature exists; each module page lists its own.
@@ -89,9 +90,9 @@ edited. A custom `claimSettings.defaultName` becomes `land.default-name` in the 
 
 ## Notes
 
-- With `TOGGLE`, there is no command yet to turn the bypass on (the config comment's `/uxm bypass` does not
-  exist). Only another plugin can turn it on through the API.
-- 4.0 ships English and Turkish. A 3.x server set to another language keeps that language code, but players
-  see the English texts except for the messages you had edited. See [Languages](../configuration/languages.md).
+- 4.0 ships eight languages: `en`, `tr`, `de`, `es`, `fr`, `pl`, `pt-BR` and `ru`. A 3.x server set to one of
+  them keeps it; any other language code is kept too, but players see the English texts except for the
+  messages you had edited. See [Languages](../configuration/languages.md).
+- The 3.x update check (`generalSettings.updateCheck`) is dropped: 4.0 has no update check.
 
 Related: [From 3.x](from-3x.md), [Modules](../modules/index.md), [Kernel config](../configuration/kernel.md)

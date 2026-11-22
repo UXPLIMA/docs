@@ -65,9 +65,9 @@ With the tool, left click sets the first corner and right click the second.
 | `selection.interval-ticks` | `10` | Ticks between outline draws |
 | `selection.max-distance` | `48` | Outline parts farther away are not drawn |
 | `selection.full-height` | `false` | A selection covers the whole world height |
-| `max-per-land` | `10` | Areas per land when the limits module does not decide |
+| `max-per-land` | `10` | Areas per land when the limits module does not decide. With [Limits](limits.md) on, it is copied into `limits.yml` at the first start; change it there afterwards |
 | `inherit-land-roles` | `true` | Area members may be given one of the land's roles |
-| `naming.pattern` | `[\p{L}\p{N}_\-]+` | Characters an area name may use |
+| `naming.pattern` | `[\p{L}\p{N}_\-]+` | Characters a new or renamed area name may use; commands still find areas whose name has spaces |
 | `naming.min-length` | `2` | Shortest area name |
 | `naming.max-length` | `32` | Longest area name |
 | `tracking.interval-ticks` | `10` | Ticks between checks of where players stand; `0` turns enter and leave events off |

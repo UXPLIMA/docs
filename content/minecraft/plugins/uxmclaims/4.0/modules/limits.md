@@ -98,10 +98,13 @@ its module runs.
 | `uxmclaims.delay.flags` | `5` | min | Cooldown between flag changes. | [Lands](lands.md) |
 | `uxmclaims.delay.unstuck` | `60` | min | Cooldown of `/claim unstuck`. | [Lands](lands.md) |
 | `uxmclaims.delay.warprename`, `.warprelocate` | `30`, `60` | min | Cooldowns for renaming and moving a warp. | [Warps](warps.md) |
-| `uxmclaims.delay.invite` | `10` | min | Cooldown between two invites. | [Invites](invites.md) |
+| `uxmclaims.delay.invite` | `0` | min | Cooldown between two invites a player sends; `0` is none (3.x shipped 10). | [Invites](invites.md) |
 
 A registered limit missing from the file is added at its registered default when the module loads, so the file
-always lists every limit that can apply.
+always lists every limit that can apply. From then on the value in the file wins. That includes the limits
+whose default comes from a module's config: `uxmclaims.limit.area` from `max-per-land` in Areas, and
+`uxmclaims.limit.ally` and `.enemy` from `ally.max` and `enemy.max` in Relations are copied once, so change them
+in `limits.yml` afterwards.
 
 ## Placeholders
 
@@ -109,7 +112,7 @@ With the [PlaceholderAPI](placeholders.md) module:
 
 | Placeholder | Renders |
 |---|---|
-| `%uxmclaims_player_limit_<name>%` | The player's value of `uxmclaims.limit.<name>`, online players only. `limit_chunk` reads `uxmclaims.limit.chunk`. |
+| `%uxmclaims_player_limit_<name>%` | The player's value of `uxmclaims.limit.<name>`, online players only. `limit_chunk` reads `uxmclaims.limit.chunk`, `limit_delay_teleport` the delay `uxmclaims.delay.teleport`. A limit no module registered prints nothing. |
 
 ## Notes
 

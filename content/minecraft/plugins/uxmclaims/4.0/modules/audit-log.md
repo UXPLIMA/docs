@@ -15,7 +15,7 @@ Module `audit-log` · disabled by default · `modules/audit-log/config.yml`
 
 | Command | What it does | Permission |
 |---|---|---|
-| `/uxm audit <target> [page]` | Shows the newest lines about a land, town or nation, or by or about a player. | `uxmclaims.command.audit-log.view` |
+| `/uxm audit <target> [page]` | Shows the newest lines about a land, town or nation, or by or about a player. | `uxmclaims.admin.audit-log` |
 
 A target is a name, tried as a land, then a town, a nation and a player. Put `land:`, `town:`, `nation:` or
 `player:` in front to pick one, for example `/uxm audit town:Avalon 2`. Names may contain spaces; a number at
@@ -29,7 +29,7 @@ the event name in lower case with hyphens: `LandMemberAddEvent` is `land-member-
 
 | Node | Default | Grants |
 |---|---|---|
-| `uxmclaims.command.audit-log.view` | op | `/uxm audit` |
+| `uxmclaims.admin.audit-log` | op | `/uxm audit` |
 
 ## Settings
 

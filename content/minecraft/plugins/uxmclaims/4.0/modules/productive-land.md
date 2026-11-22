@@ -27,8 +27,8 @@ The land menu has a profile button that opens the same menu.
 | Node | Default | Grants |
 |---|---|---|
 | `uxmclaims.command.productivity` | everyone | The `/claim productivity` commands. |
-| `uxmclaims.admin.productivity` | op | Picking the profile of any land, without the role permission. `uxmclaims.admin` does the same. |
-| `uxmclaims.productive-land.profile.<profile>` | not registered | Picking a profile that is not in `choosable-profiles`. |
+| `uxmclaims.admin.productivity` | op | Picking any configured profile for any land, without the role permission. `uxmclaims.admin` does the same. |
+| `uxmclaims.productive-land.profile.<profile>` | op | Picking a profile that is not in `choosable-profiles`. Registered for each profile in `profiles` at start-up. |
 
 | Role permission | Default holder | Allows |
 |---|---|---|
@@ -63,7 +63,8 @@ A picked profile that you later remove from `profiles` is skipped.
 
 ## Notes
 
-- With `choosable-profiles` empty, as shipped, only players with a `uxmclaims.productive-land.profile.<profile>` node can pick anything, admins included.
+- With `choosable-profiles` empty, as shipped, only staff with `uxmclaims.admin.productivity` and players with a `uxmclaims.productive-land.profile.<profile>` node can pick anything.
+- A profile added to `profiles` gets its node registered at the next start; until then it works as an op-only node.
 - The mob cap counts every living entity in the chunk except players; there are no caps per mob type.
 - Extra growth only applies to crops with growth stages. Saplings, sugar cane and cactus are not sped up.
 - A slower spawner skips spawns rather than waiting longer between them.

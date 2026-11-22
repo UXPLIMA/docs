@@ -18,7 +18,7 @@ Module `webhooks` · enabled by default · `modules/webhooks/config.yml`
 | Key | Default | What it does |
 |---|---|---|
 | `enabled` | `true` | Send nothing while `false`. |
-| `timeout-seconds` | `5` | Connect and read timeout of one request. |
+| `timeout-seconds` | `5` | Connect and read timeout of one request. Retries are described in Notes. |
 | `date-format` | `dd-MM-yyyy HH:mm:ss` | Date pattern for `%date:...%` in embeds (3.x `dateFormat`). |
 | `events.<key>` | `true` | Per-event switch by embed key. An event that is off sends nothing even with an embed; an event missing here is on. |
 
@@ -60,11 +60,11 @@ Keys are the 3.x event class names; the 4.x name in brackets works too and wins 
 | `ClaimInviteAcceptEvent` (`LandMemberAddEvent`) | A member joined. | yes |
 | `ClaimMemberLeaveEvent` (`LandMemberLeaveEvent`) | A member left. | yes |
 | `ClaimMemberKickEvent` (`LandMemberKickEvent`) | A member was removed. | yes |
-| `ClaimMemberRoleAssignEvent` (`LandMemberRoleChangeEvent`) | A member got another role. | no |
+| `ClaimMemberRoleAssignEvent` (`LandMemberRoleChangeEvent`) | A member got another role. | yes |
 | `ClaimOwnerTransferEvent` (`LandOwnerTransferEvent`) | The land changed owner. | yes |
-| `ClaimFlagsUpdateEvent` (`LandFlagChangeEvent`) | A flag changed. | no |
-| `ClaimRolePermissionUpdateEvent` (`LandRolePermissionChangeEvent`) | A role permission changed. | no |
-| `ClaimRelocateEvent` (`LandSpawnChangeEvent`) | The land spawn moved. | no |
+| `ClaimFlagsUpdateEvent` (`LandFlagChangeEvent`) | A flag changed. | yes |
+| `ClaimRolePermissionUpdateEvent` (`LandRolePermissionChangeEvent`) | A role permission changed. | yes |
+| `ClaimRelocateEvent` (`LandSpawnChangeEvent`) | The land spawn moved. | yes |
 | `ClaimRescheduleEvent` (`LandRescheduleEvent`) | A land's expiry date changed. | yes |
 | `ClaimBlockPlaceEvent` | A claim block was placed. | yes |
 | `ClaimBlockDestroyEvent` | A claim block was removed. | yes |
@@ -73,10 +73,10 @@ Keys are the 3.x event class names; the 4.x name in brackets works too and wins 
 | `TownMayorChangeEvent` | A town got a new mayor. | yes |
 | `NationCreateEvent`, `NationDeleteEvent`, `NationRenameEvent` | A nation was founded, deleted or renamed. | yes |
 | `NationJoinEvent`, `NationLeaveEvent` | A member joined or left a nation. | yes |
-| `NationKickEvent` | A member was removed from a nation. Without this embed, `NationLeaveEvent` is sent. | no |
+| `NationKickEvent` | A member was removed from a nation. Without this embed, the `NationLeaveEvent` embed is used. | yes |
 | `NationCapitalChangeEvent` | A nation got a new capital. | yes |
 
-An event without an embed sends nothing, so add one to `embeds.yml` for the rows marked "no".
+An event without an embed sends nothing. Every listed event ships with an embed.
 
 ## Embed placeholders
 
@@ -111,7 +111,10 @@ Case and `.` versus `_` do not matter; an unknown placeholder stays as written. 
 
 - Both shipped senders have an empty `url`, so nothing is sent until you paste a webhook URL.
 - An embed that names a sender `senders.yml` does not define is skipped, with one warning in the log.
-- A request Discord refuses is logged with its HTTP status and not sent again.
-- Switching off `NationLeaveEvent` in `events` also silences kicks that fall back to it.
+- A message Discord rate-limits (HTTP 429) is sent again after the wait Discord asks for, and one that meets a
+  Discord server error (5xx) after 1, then 2 seconds: at most 3 tries, no wait longer than 10 seconds. Other
+  refusals are logged with their HTTP status and not sent again.
+- Kicks from a nation follow the `NationKickEvent` switch only: switching off `NationLeaveEvent` does not
+  silence them, even when they use its embed.
 
 Related: [Discord](discord.md), [Expiry](expiry.md), [Claim Block](claim-block.md), [Towns](towns.md), [Nations](nations.md)

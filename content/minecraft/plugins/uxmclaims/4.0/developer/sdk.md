@@ -31,7 +31,7 @@ public final class ShopsPlugin extends JavaPlugin {
 |---|---|
 | `depend: [uxmClaims]` in your `plugin.yml` | `UxmModules.register` throws `IllegalStateException`: uxmClaims is not loaded yet |
 | Register in `onLoad` | A module registered after uxmClaims started (PlugMan, `/reload`) is ignored with a warning until the next restart |
-| The id has a vendor prefix with a dash, such as `example-shops` | The module is marked `INCOMPATIBLE` and does not start |
+| The id has a vendor prefix with a dash, such as `example-shops` | The module is marked `INCOMPATIBLE` and does not start. Only uxmClaims' own Skript add-on keeps a plain id (`skript`) |
 | The id is not one of uxmClaims' own | Your module is ignored; two third-party modules with one id are both turned off |
 
 Once found, the module appears in `plugins/uxmClaims/modules.yml` and in `/uxm modules`, and the server owner

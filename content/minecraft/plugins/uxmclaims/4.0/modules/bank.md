@@ -92,8 +92,8 @@ A placeholder is empty when you have no such holder or banks are off for that ki
 
 ## Notes
 
-- `holders.town: false` or `holders.nation: false` keeps the commands registered, but they answer that banks
-  are off for that kind of holder.
+- With `holders.town: false` or `holders.nation: false`, players get no bank commands or menu button for that
+  kind of holder; the `/uxm bank` admin commands stay. A change takes effect after a restart.
 - In `/uxm bank <holder> ...`, put a holder name in quotes when its first word is `balance`, `set`, `add` or
   `take`.
 - Some town and nation actions pay from the bank and then save the change separately. A crash between a failed

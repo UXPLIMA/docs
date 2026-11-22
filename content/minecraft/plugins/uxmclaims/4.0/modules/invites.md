@@ -52,7 +52,7 @@ Module `invites` · enabled by default · `modules/invites/config.yml` · requir
 | `receive-invites-by-default` | `true` | Whether players who never used `/claim invite toggle` receive invites |
 | `purge-interval` | `5m` | How often lapsed invites are removed from the database (at least 30 seconds) |
 
-`/uxm reload invites` applies changes.
+`/uxm reload` applies changes.
 
 ## Placeholders
 

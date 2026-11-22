@@ -100,14 +100,22 @@ With `backend: discordsrv` you need DiscordSRV installed; channel names and acco
 `/discord link` points players there. Without DiscordSRV the module logs one line and stays idle.
 
 With `backend: bot`, create an application in the Discord developer portal, add the bot to your server, turn on
-the Message Content intent, and set `bot.token` (or `UXM_DISCORD_TOKEN`) and `bot.guild-id`. For
-`guild.auto-channels` and `guild.roles` the bot needs to be allowed to manage channels and roles. Players link
-with `/discord link` and send the code to the bot in a direct message.
+the Message Content intent, and set `bot.token` (or `UXM_DISCORD_TOKEN`) and `bot.guild-id`. Invite the bot
+with these permissions:
+
+| Permission | Needed for |
+|---|---|
+| View Channels, Send Messages, Read Message History | Chat and notices |
+| Manage Channels | `guild.auto-channels`: a channel per town and nation and its permission overwrites |
+| Manage Roles | `guild.roles`: a role per town and nation, given to linked members. The bot's own role must be above those roles |
+
+Players link with `/discord link` and send the code to the bot in a direct message.
 
 ## Notes
 
 - `backend`, the token and the guild id are read at module start. `/uxm reload` does not switch the backend or
-  reconnect the bot; restart the server or turn the module off and on.
+  reconnect the bot; restart the server. `/uxm discord status` says when `config.yml` names another backend or
+  Discord server than the running one.
 - On a network with `backend: bot`, every server starts its own bot and reacts to the same events. Run the module
   on one server only. Account links made on another server show after a restart.
 - Only plain text messages reach the game. Edits, deletes, attachments, embeds and stickers are not carried.

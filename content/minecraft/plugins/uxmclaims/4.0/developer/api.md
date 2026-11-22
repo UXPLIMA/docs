@@ -175,8 +175,8 @@ safe to keep and to read from any thread. Only uxmClaims implements them.
 | Type (package `api.model`) | Holds |
 |---|---|
 | `OwnerRef(OwnerType, UUID)` | Who owns a land: `PLAYER`, `TOWN`, `NATION` or `SERVER`. `OwnerRef.player(id)`, `OwnerRef.server()` |
-| `HolderRef(HolderType, UUID)` | A land, area, town or nation that holds roles, money or relations |
-| `WorldRef(UUID id, String name)` | A world, by id and name |
+| `HolderRef(HolderType, UUID)` | A land, area, town or nation that holds roles, money or relations. `HolderRef.area(id)`, `HolderRef.town(id)`, `HolderRef.nation(id)` |
+| `WorldRef(UUID id, String name)` | A world, by id and name. `WorldRef.of(world)` from a loaded Bukkit world |
 | `ChunkPos(int x, int z)`, `BlockPos`, `Position` | Coordinates; `ChunkPos.ofBlock(x, z)` from block coordinates |
 | `Tri` | `ALLOW`, `DENY` or `UNSET` for flags, role permissions and overrides |
 | `LandKind` | `PERSONAL`, `TOWN_HOME`, `OUTPOST`, `ADMIN` |

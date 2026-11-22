@@ -9,13 +9,16 @@ The root `plugins/uxmClaims/config.yml` holds what no module owns: language, sto
 switches and the 3.x migration. Each module's settings are in `modules/<id>/config.yml`. Durations are written
 as `500ms`, `30s`, `10m`, `6h`, `30d` or `1w`; a bare number counts as seconds.
 
+`/uxm config check` (permission `uxmclaims.admin`) lists the warnings and errors the last load of every config
+and language file found, and shows the license key masked after its first four characters.
+
 ## Settings
 
 ### language
 
 | Key | Default | What it does |
 |---|---|---|
-| `language.default` | `en` | Server language. The jar ships `en` and `tr`. Read at start-up |
+| `language.default` | `en` | Server language: `en`, `tr`, `de`, `es`, `fr`, `pl`, `pt-BR` or `ru`. [restart] |
 | `language.per-player` | `false` | Each player gets messages and menus in their client language when it is in `enabled`, else the default. Console, logs, webhooks and maps keep the default. [restart] |
 | `language.enabled` | `[en]` | Languages loaded besides the default when `per-player` is on; their folders are created |
 | `language.locale-map` | `pt_br: pt-BR`, `pt_pt: pt-BR` | Client locale to language code. When nothing matches, the first two letters are tried |
@@ -27,8 +30,9 @@ as `500ms`, `30s`, `10m`, `6h`, `30d` or `1w`; a bare number counts as seconds.
 | `storage.type` | `SQLITE` | `SQLITE`, `MYSQL`, `MARIADB` or `POSTGRESQL`. [restart] |
 | `storage.sqlite.file` | `data/storage.db` | SQLite file, relative to the plugin folder |
 | `storage.remote.host` | `localhost` | Database host |
-| `storage.remote.port` | `3306` | Database port. Set `5432` yourself for PostgreSQL |
+| `storage.remote.port` | `0` | Database port. `0` uses the type's default: 3306 for MySQL and MariaDB, 5432 for PostgreSQL |
 | `storage.remote.database` | `uxmclaims` | Database name |
+| `storage.remote.schema` | `public` | PostgreSQL only: the schema the tables are in. [restart] |
 | `storage.remote.username` | `root` | User |
 | `storage.remote.password` | `""` | Password, never logged |
 | `storage.remote.properties` | `useSSL: false` | JDBC URL parameters |
@@ -45,8 +49,7 @@ See [Database](database.md) for each database type.
 
 | Key | Default | What it does |
 |---|---|---|
-| `license.key` | `""` | Your license key. The plugin does not start without one. Never logged. [restart] |
-| `protection.admin-bypass` | `TOGGLE` | Not read; the setting that counts is in `modules/lands/config.yml`, see Notes below |
+| `license.key` | `""` | Your license key. The plugin does not start without one. Never logged, masked in `/uxm config check`. [restart] |
 | `protection.access-guard.enabled` | `true` | Checks where every player is and pushes them out of lands they may not be in (banned, or without `lands:move_inside`), however they got there. [restart] |
 | `protection.access-guard.interval-ticks` | `20` | How often each player is checked, in ticks (20 = one second). [restart] |
 | `protection.decision-cache` | `true` | Remembers role answers per player and place until something changes. Turn off only to rule it out when a permission answer looks wrong |
@@ -66,29 +69,16 @@ See [Database](database.md) for each database type.
 | `migration.batch-size` | `1000` | Rows read and written per transaction when the 3.x data is copied (50 to 50,000) |
 | `migration.sync-threshold-seconds` | `20` | Above this estimated copy time the 3.x data is copied in the background in maintenance mode (0 to 3600). See [From 3.x](../upgrading/from-3x.md) |
 
-### updates, metrics, performance, debug
-
-| Key | Default | What it does |
-|---|---|---|
-| `updates.check` | `true` | Not used yet |
-| `updates.interval` | `6h` | Not used yet |
-| `updates.notify-admins-on-join` | `true` | Not used yet |
-| `metrics.bstats` | `true` | Not used yet |
-| `performance.async-save-batch` | `200` | Not used yet |
-| `performance.async-save-interval` | `5s` | Not used yet |
-| `debug.enabled` | `false` | Not used yet |
-| `debug.categories` | `[]` | Not used yet, for example `[protection, storage, config]` |
-
-These keys are written to the file but nothing in 4.0 reads them.
-
 ## Notes
 
-- **Admin bypass:** set `protection.admin-bypass` in `modules/lands/config.yml`, not here. `IMPLICIT` lets OP,
+- **Removed keys:** the file is at version 2. The first start of 4.0.0 deletes `updates`, `metrics`,
+  `performance`, `debug` and `protection.admin-bypass` from an older file; nothing read them.
+- **Admin bypass:** set `protection.admin-bypass` in `modules/lands/config.yml`. `IMPLICIT` lets OP,
   `*` and `uxmclaims.admin` bypass always (the 3.x way, written by the migration). `TOGGLE` asks for
-  `uxmclaims.admin.bypass` plus a switched-on bypass, and no command turns the bypass on yet.
+  `uxmclaims.admin.bypass` and `/uxm bypass [on|off]`, which lasts until the admin turns it off or leaves.
 - **Changing the language:** `language.default` is read at start-up; restart after changing it. The folders of
   the new language are created then; the old ones stay.
 - **Migration keys** are read straight from the file by the importer, on the start that runs the 3.x move.
-- The file comment mentions `/uxm config check`; that command does not exist.
+- After fixing a file, run `/uxm reload`; keys marked [restart] need a restart.
 
 Related: [Configuration](index.md), [Database](database.md), [Languages](languages.md)

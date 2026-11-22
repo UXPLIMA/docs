@@ -89,11 +89,11 @@ Climbing several levels at once runs the commands of each level passed.
 
 | Placeholder | Renders |
 |---|---|
-| `%uxmclaims_levels_town%` | The display name of the player's town level. |
+| `%uxmclaims_levels_town%` | The display name of the player's town level; `%uxmclaims_levels_town_name%` is the same. |
 | `%uxmclaims_levels_town_id%` | The id of that level. |
 | `%uxmclaims_levels_town_rank%` | Its position on the ladder, `0` for none. |
 | `%uxmclaims_levels_town_next%` | The display name of the next level. |
-| `%uxmclaims_levels_nation%` | The same for the player's nation, also as `_id`, `_rank` and `_next`. |
+| `%uxmclaims_levels_nation%` | The same for the player's nation, also as `_name`, `_id`, `_rank` and `_next`. |
 
 They are empty when the player has no town or nation, or it has no level yet.
 

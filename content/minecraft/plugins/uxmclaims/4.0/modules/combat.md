@@ -15,7 +15,7 @@ Module `combat` · disabled by default · `modules/combat/config.yml`
 
 | Command | What it does | Permission |
 |---|---|---|
-| `/claim combat` | Shows whether you are tagged and for how many seconds. | none |
+| `/claim combat` | Shows whether you are tagged and for how many seconds. | `uxmclaims.command.combat.status` |
 | `/uxm combat untag <player>` | Ends an online player's tag at once. | `uxmclaims.command.combat.admin` |
 
 The local names of these commands are in `modules/combat/lang/<language>/commands.yml`.
@@ -25,6 +25,7 @@ The local names of these commands are in `modules/combat/lang/<language>/command
 | Node | Default | Grants |
 |---|---|---|
 | `uxmclaims.bypass.combat` | nobody | Never tagged, and no combat rule applies. Not even operators have it unless you give it. |
+| `uxmclaims.command.combat.status` | everyone | `/claim combat`. |
 | `uxmclaims.command.combat.admin` | op | `/uxm combat untag`. |
 
 ## Settings

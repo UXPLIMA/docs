@@ -22,11 +22,17 @@ Every text a player sees is in a language file you can edit: kernel texts in `la
 
 | Code | Language |
 |---|---|
-| `en` | English, complete in every module; the fallback for any missing text |
+| `en` | English; the fallback for any missing text |
 | `tr` | Turkish |
+| `de` | German |
+| `es` | Spanish |
+| `fr` | French |
+| `pl` | Polish |
+| `pt-BR` | Brazilian Portuguese |
+| `ru` | Russian |
 
-Any other code (`de`, `pt-BR`) is accepted: its folders are created from the English copy, and you translate
-them. A code that is not a language code falls back to `en` with a warning.
+Each shipped language covers the kernel and every module. Any other code (`it`, `nl`) is accepted: its folders
+are created from the English copy, and you translate them. A code that is not a language code falls back to `en` with a warning.
 
 ## Where texts live
 
@@ -96,8 +102,7 @@ sync off and only adds missing keys.
 
 ## Notes
 
-- `language.default` is read at start-up only; restart after changing it. The comment in `config.yml` lists
-  eight shipped languages, but 4.0 ships `en` and `tr` only.
+- `language.default` is read at start-up only; restart after changing it.
 - With per-player languages on, some texts stay in the server language: town and nation list entries, the warp
   menu's visibility word, signs, holograms, claim items and amounts in some group notices.
 - There is no player command to pick a language; the client language decides.

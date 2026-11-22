@@ -95,3 +95,4 @@ module on or off, changing `storage`, and the license key need a restart.
 | Claiming works | Stand in a protected world and run `/claim create Test` |
 | Economy works | `/uxm modules` shows `economy` enabled; with Vault missing it explains why it is off |
 | The database is current | `/uxm db status` shows every module at its latest migration |
+| The config files load cleanly | `/uxm config check` lists the problems found when the files were loaded, or says there are none |

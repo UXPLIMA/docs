@@ -15,11 +15,11 @@ Module `land-chat` · enabled by default · `modules/land-chat/config.yml` · re
 
 | Command | What it does | Permission |
 |---|---|---|
-| `/claim chat` | Switches your chat to the land you stand in, or back to normal chat when it is already on. | the land permission `land-chat:use` |
-| `/claim chat <message>` | Sends one message to the land you stand in, without switching modes. | the land permission `land-chat:use` |
+| `/claim chat` | Switches your chat to the land you stand in, or back to normal chat when it is already on. | `uxmclaims.command.land-chat.chat` |
+| `/claim chat <message>` | Sends one message to the land you stand in, without switching modes. | `uxmclaims.command.land-chat.chat` |
 | `/claim chat spy` | Turns reading every land chat on or off for you. | `uxmclaims.command.land-chat.spy` |
 
-Both forms of `/claim chat` need you to stand in the land and be its owner or a member with `land-chat:use`.
+Both forms of `/claim chat` also need you to stand in the land and be its owner or a member with `land-chat:use`.
 Players with `uxmclaims.admin` may use any land's chat. The local names of these commands are in
 `modules/land-chat/lang/<language>/commands.yml`.
 
@@ -27,6 +27,7 @@ Players with `uxmclaims.admin` may use any land's chat. The local names of these
 
 | Node | Default | Grants |
 |---|---|---|
+| `uxmclaims.command.land-chat.chat` | everyone | `/claim chat`. |
 | `uxmclaims.command.land-chat.spy` | op | `/claim chat spy`, and receiving spied messages. |
 
 | Role permission | Given to | Grants |
@@ -49,7 +50,7 @@ The message layout is in `modules/land-chat/lang/<language>/messages.yml`: `form
   also not one-line `/claim chat <message>` messages. Use `members` if every member should always read along.
 - Chat mode is held in memory: it ends when you leave the server, when the land is deleted, or when you lose
   `land-chat:use`.
-- A spy switch set with `/claim chat spy` lasts until the next restart, then `admin-spy-default` applies again.
+- A spy switch set with `/claim chat spy` lasts until the staff member leaves the server; when they join again, `admin-spy-default` applies.
 - Messages typed into a chat prompt (a menu asking for a name, for example) are never sent to the land.
 - A typed `\n` is replaced by a space.
 

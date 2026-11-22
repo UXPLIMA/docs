@@ -32,7 +32,7 @@ Every `/plot` command works on the area you stand in, except `market`.
 | `/plot evict` | Puts the tenant out. An admin can also take a bought plot back from its buyer. | `uxmclaims.command.plots.use` |
 | `/plot remove` | Makes the plot an ordinary area again. | `uxmclaims.command.plots.use` |
 | `/town plots` | Opens your town's plots that are for sale or for rent. Only while [Towns](towns.md) runs. | `uxmclaims.command.plots.use` |
-| `/town set plottax <amount\|none>` | Sets the daily tax buyers of your town's plots pay; `none` goes back to the plot types' tax. Only while Towns runs. | `uxmclaims.command.plots.use` and the town permission `plots:tax` |
+| `/town set plottax <amount\|none>` | Sets the daily tax buyers of your town's plots pay; `none` goes back to the plot types' tax. Only while Towns runs. | `uxmclaims.command.plots.plottax` and the town permission `plots:tax` |
 
 Setting the type, selling, renting out, evicting and removing need the land role permission `plots:sell`
 (the land owner side always has it). A plot's buyer also manages their own plot. The local names of
@@ -42,7 +42,8 @@ these commands are in `modules/plots/lang/<language>/commands.yml`.
 
 | Node | Default | Grants |
 |---|---|---|
-| `uxmclaims.command.plots.use` | everyone | `/plot`, `/town plots`, `/town set plottax`. |
+| `uxmclaims.command.plots.use` | everyone | `/plot`, `/town plots`. |
+| `uxmclaims.command.plots.plottax` | everyone | `/town set plottax`; the town rank also needs `plots:tax`. |
 | `uxmclaims.ability.plot.settype` | everyone | Setting the type of plots you manage. |
 | `uxmclaims.ability.plot.sell` | everyone | Putting plots up for sale where the land role allows it. |
 | `uxmclaims.ability.plot.rent` | everyone | Offering plots for rent where the land role allows it. |
@@ -108,7 +109,7 @@ The `here_` placeholders are empty when the player is offline or not in a plot.
 - **PlotSquared also uses `/plot`.** Give the root a local name such as `parcel` in `commands.yml`
   (`plot.label`); a restart applies it.
 - **The town plot tax needs the bank.** It is paid into the town bank, so without [Bank](bank.md) running
-  for towns no plot tax is collected.
+  with `holders.town` on, no plot tax is collected; the log says so once.
 - **The area is not reset when a rental ends.** The tenant's builds stay; restoring an area is not done yet.
 - **No plot groups, auctions or instalments yet.** Each plot is sold or rented on its own, paid in one go.
 - **Membership is a second step.** The buyer or tenant is added to the area after the plot is saved; if

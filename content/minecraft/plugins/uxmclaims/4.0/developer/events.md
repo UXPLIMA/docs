@@ -95,7 +95,7 @@ public final class SpawnGuard implements Listener {
 | Getters | Each accessor in Bukkit style: `land()` becomes `getLand()`. `getEvent()` and `api()` return the API event |
 | `getActor()`, `getPlayer()` | Who acted; `getPlayer()` is the acting player when online, else `null`. An event field named `player` is therefore `getPlayerId()` |
 | When | After every handler on the uxmClaims bus has run, and only when a Bukkit listener is registered for that mirror class |
-| Cancelling | `setCancelled(true)` on a `Pre*` mirror cancels the write. `setCancelled(false)` cannot undo a cancellation |
+| Cancelling | `setCancelled(true)` on a `Pre*` mirror cancels the write. `setCancelled(false)` cannot undo a cancellation. The bus's `MONITOR` handlers ran before the mirror, so they do not see a cancellation made by a Bukkit listener; watch the after-commit event instead |
 | Groups | Only concrete events are mirrored: there is no Bukkit `LandEvent` to listen to every land event |
 | Async | The mirror is an async Bukkit event when it fires off the main thread (Folia region threads) |
 

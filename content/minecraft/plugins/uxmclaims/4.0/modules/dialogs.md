@@ -15,7 +15,7 @@ Module `dialogs` · enabled by default · `modules/dialogs/config.yml`
 
 | Key | Default | What it does |
 |---|---|---|
-| `timeout-seconds` | `300` | How long a dialog's buttons keep working on Paper (3.x `dialog.timeoutSeconds`). Spigot does not use it. |
+| `timeout-seconds` | `300` | How long a dialog's buttons keep working on Paper (3.x `dialog.timeoutSeconds`). On Spigot the buttons work until the dialog is closed. Needs a restart. |
 | `bedrock-fallback` | `true` | Keep dialogs from Bedrock players (Geyser or Floodgate). They get Bedrock forms with the [Bedrock](bedrock.md) module, or chests. |
 | `text-input` | `true` | Ask for text with a dialog instead of chat. |
 | `menus.enabled` | `true` | Menus whose file says `dialog: enabled: true` show as a dialog. |

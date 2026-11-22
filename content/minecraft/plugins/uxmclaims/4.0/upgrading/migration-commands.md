@@ -31,11 +31,12 @@ Without `confirm`, the commands that change data only explain what they will do.
 | Node | Default | Grants |
 |---|---|---|
 | `uxmclaims.admin` | op | Every `/uxm migrate` command (and the other `/uxm` admin commands) |
-| `uxmclaims.admin.db` | op | Every `/uxm db` command. It is a separate node: `uxmclaims.admin` alone does not grant it |
+| `uxmclaims.admin.db` | op | Every `/uxm db` command |
 | `uxmclaims.migration.bypass` | op | Joining while a maintenance import runs |
 
-The kernel does not register these nodes with Bukkit, so they default to op. Grant them by name in your
-permissions plugin.
+The plugin declares these nodes, and `uxmclaims.admin` includes `uxmclaims.admin.db` and
+`uxmclaims.migration.bypass` as children. To keep `/uxm db` from an admin group, set `uxmclaims.admin.db` to
+false for it.
 
 ## /uxm migrate in detail
 
@@ -96,7 +97,10 @@ import placed under a placeholder id because their world was not loaded then. Re
 
 ## Notes
 
-- The `/uxm migrate` replies and `/uxm modules` are English only; they are not in the language files yet.
-- `commands.yml` has local names for `/uxm db` but none for the `/uxm migrate` subcommands.
+- The `/uxm migrate` replies are texts under `migrate` in `lang/<code>/messages.yml`, and `commands.yml` has
+  local names for the `/uxm migrate` subcommands. On a start that halted before the language files were read,
+  the replies are English.
+- A second server on a database another server already migrated converts only its own files; see
+  [From 3.x](from-3x.md).
 
 Related: [From 3.x](from-3x.md), [Rollback](rollback.md), [Database](../configuration/database.md)

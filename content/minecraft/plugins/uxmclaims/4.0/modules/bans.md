@@ -46,7 +46,7 @@ All three act on the land you stand in, else your only land.
 | `eject-search-radius` | `16` | Chunks to search for a spot outside the land when putting a player out |
 | `purge-interval` | `5m` | How often lapsed temporary bans are removed from the database (at least 30 seconds) |
 
-`/uxm reload bans` applies changes.
+`/uxm reload` applies changes.
 
 ## Placeholders
 

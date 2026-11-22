@@ -20,7 +20,7 @@ way: a module that is off registers no command, no listener and no menu.
 | Files | `config.yml`, `messages.yml`, `entitlements.yml` and the rest in one folder | `config.yml` for the kernel, `modules.yml`, and a folder per module under `modules/` |
 | Platforms | A bukkit jar and a folia jar | One jar for Spigot, Paper and Folia |
 | Languages | Texts per server | Texts per server, or per player when you turn it on |
-| Admin bypass | Always on for admins | Kept on for servers moved from 3.x; a setting on new installs (see [Behaviour changes](upgrading/behaviour-changes.md)) |
+| Admin bypass | Always on for admins | Kept on for servers moved from 3.x; switched per admin with `/uxm bypass` on new installs (see [Behaviour changes](upgrading/behaviour-changes.md)) |
 | API | `com.uxplima.claim.*` | `com.uxplima.uxmclaims.api.*`, with the old API kept working through [Legacy API](modules/legacy-api.md) |
 
 Your 3.x claims, roles, members, warps, vaults and settings move over on the first start of 4.0. The

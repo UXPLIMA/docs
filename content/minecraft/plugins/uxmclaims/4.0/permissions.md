@@ -6,7 +6,8 @@ icon: key-round
 ---
 
 Every node starts with `uxmclaims.` and is registered with the server when its module starts, with a
-default and a description, so LuckPerms can list it. A node of a module that is off does not exist.
+default and a description, so LuckPerms can list it. A node of a module that is off does not exist. The
+kernel's own nodes are declared in the plugin itself and always exist.
 This page explains the kinds of nodes. Each module's page lists its own.
 
 ## Kinds of nodes
@@ -29,15 +30,15 @@ nodes they hold.
 
 | Node | Default | Grants |
 |---|---|---|
-| `uxmclaims.admin` | op | `/uxm` (modules, reload, setup, presets, lang, migrate) and every admin action; also bypasses protection when `protection.admin-bypass` is `IMPLICIT` |
+| `uxmclaims.admin` | op | `/uxm` (modules, reload, config check, setup, presets, lang, migrate) and every admin action; also bypasses protection when `protection.admin-bypass` is `IMPLICIT`. Includes the next three nodes |
 | `uxmclaims.admin.db` | op | `/uxm db status`, `repair`, `baseline` and `remap-world` |
-| `uxmclaims.admin.bypass` | op | The admin bypass switch when `protection.admin-bypass` is `TOGGLE` |
-| `uxmclaims.bypass.enter` | op | Walking into lands that refuse you |
-| `uxmclaims.bypass.teleport` | op | Teleporting, ender pearls and chorus fruit into lands that refuse you |
+| `uxmclaims.admin.bypass` | op | `/uxm bypass [on\|off]` when `protection.admin-bypass` is `TOGGLE` |
 | `uxmclaims.migration.bypass` | op | Joining while the 3.x data is copied in the background |
+| `uxmclaims.bypass.enter` | op | Walking into and staying in lands whose flags or bans keep you out |
+| `uxmclaims.bypass.teleport` | op | Teleporting, ender pearls, chorus fruit and land spawns into lands that refuse you |
 
-The commands that use these are on [Migration commands](upgrading/migration-commands.md) and
-[Configuration](configuration/index.md).
+`protection.admin-bypass` is set in `modules/lands/config.yml`. The commands that use these nodes are on
+[Migration commands](upgrading/migration-commands.md) and [Configuration](configuration/index.md).
 
 ## Land roles are not permission nodes
 
@@ -54,16 +55,17 @@ chunks. How several nodes combine (stack, highest, lowest) is set per limit in
 `modules/economy/costs.yml`, and a cost answers a `uxmclaims.cost.*` node only when its entry names
 one. See [Limits](modules/limits.md) and [Economy](modules/economy.md).
 
-With [LuckPerms](modules/luckperms.md) on, limits are also read for offline players, and LuckPerms
-contexts such as `uxmclaims:in-land` let you grant a node only inside lands.
+With [LuckPerms](modules/luckperms.md) on, limits are also read for offline players (LuckPerms loads
+them on demand), cost nodes are read through LuckPerms too, and contexts such as `uxmclaims:in-land`
+let you grant a node only inside lands.
 
 ## Ability nodes and LuckPerms
 
 Ability nodes default to everyone. Under LuckPerms, an ability node no group sets follows
 `undefined-ability` in `modules/luckperms/config.yml`. It ships as `allow`, also on a server moved
 from 3.x. Set it to `deny` to get the 3.x behaviour back, and then grant `uxmclaims.ability.*` or the
-single nodes to your default group, or nobody can claim. The setting is read by lands, areas, towns
-and nations; see [LuckPerms](modules/luckperms.md) for the details.
+single nodes to your default group, or nobody can claim. The setting is read by lands, areas, towns,
+nations, warps, land vault and claim block; see [LuckPerms](modules/luckperms.md) for the details.
 
 ## Where each module lists its nodes
 
@@ -73,8 +75,8 @@ and nations; see [LuckPerms](modules/luckperms.md) for the details.
 | [Towns](modules/towns.md) | `command.towns.*`, `ability.town.*`, `admin.towns` |
 | [Nations](modules/nations.md) | `command.nations.*`, `ability.nation.*`, `admin.nations` |
 | [Areas](modules/areas.md) | `command.areas.*`, `ability.area.*`, `admin.areas` |
-| [Warps](modules/warps.md) | `ability.warp.*`, `admin.warps`, `limit.warp`, `delay.warprename`, `delay.warprelocate` |
-| [Combat](modules/combat.md) | `command.combat.admin`, `bypass.combat` |
+| [Warps](modules/warps.md) | `command.warps.*`, `ability.warp.*`, `admin.warps`, `limit.warp`, `delay.warprename`, `delay.warprelocate` |
+| [Combat](modules/combat.md) | `command.combat.status`, `command.combat.admin`, `bypass.combat` |
 | [War](modules/war.md) | `command.war.use`, `ability.war.declare`, `admin.war`, `bypass.war.commands` |
 | [Jails](modules/jails.md) | `command.jails`, `admin.jails`, `bypass.jail`, `bypass.outlaw` |
 | Any other module | `command.<module>` and `admin.<module>`, listed on its page under [Modules](modules/index.md) |

@@ -15,8 +15,8 @@ Module `newbie-protection` · disabled by default · `modules/newbie-protection/
 
 | Command | What it does | Permission |
 |---|---|---|
-| `/claim protection` | Shows how long your protection lasts. | none |
-| `/claim protection off` | Ends your protection now, when `allow-self-disable` is on. | none |
+| `/claim protection` | Shows how long your protection lasts. | `uxmclaims.command.newbie-protection.status` |
+| `/claim protection off` | Ends your protection now, when `allow-self-disable` is on. | `uxmclaims.command.newbie-protection.off` |
 | `/uxm protection give <player> [duration]` | Gives an online player protection, for `pvp-protection.duration` unless you name a duration such as `30m` or `2h`. | `uxmclaims.command.newbie-protection.admin` |
 | `/uxm protection remove <player>` | Ends an online player's protection. | `uxmclaims.command.newbie-protection.admin` |
 
@@ -26,6 +26,8 @@ The local names of these commands are in `modules/newbie-protection/lang/<langua
 
 | Node | Default | Grants |
 |---|---|---|
+| `uxmclaims.command.newbie-protection.status` | everyone | `/claim protection`. |
+| `uxmclaims.command.newbie-protection.off` | everyone | `/claim protection off`. |
 | `uxmclaims.command.newbie-protection.admin` | op | `/uxm protection give` and `remove`. |
 
 ## Settings

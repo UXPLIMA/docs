@@ -32,7 +32,7 @@ Each shipped preset sets every module on or off. The table lists how each one di
 | `war-server` | towns, nations, relations, bank, taxes, levels, group-chat, ruins, audit-log, newbie-protection, inbox, leaderboards, combat, war, rollback | expiry, warps, claim-block | No personal lands; PvP in the wilderness; enemies need not agree; 24h town join cooldown |
 | `network` | network | vault | `personal-lands.enabled: true` |
 
-`towny-economy`, `lands-style` and `war-server` expect Vault. `network` expects MySQL, MariaDB or PostgreSQL
+`towny-economy`, `lands-style` and `war-server` need Vault. `network` needs MySQL, MariaDB or PostgreSQL
 storage, since the network module refuses to start on SQLite; restart every server after applying it.
 
 ## What applying does
@@ -48,9 +48,10 @@ storage, since the network module refuses to start on SQLite; restart every serv
 
 Module changes apply after a restart. No land loses its protection when a module is switched.
 
-Warnings do not stop a preset: a missing plugin, the wrong storage type, or a module whose dependency stays off
-are shown with `!` and the preset still applies. Only problems (shown with `x`), such as an unreadable
-`modules.yml` or an unknown key, refuse it.
+Problems (shown with `x`) refuse the preset: a plugin from `requires-plugins` that is not installed, a
+`storage.type` not in `requires-storage`, an unreadable `modules.yml` or an unknown key. Presets never change
+the storage type: set it in `config.yml`, restart, then apply. Warnings (shown with `!`), such as a module whose
+dependency stays off, do not stop it.
 
 ## The setup menu and the first start
 
@@ -87,7 +88,6 @@ Names and descriptions of the shipped presets are texts in `lang/<code>/messages
 
 - Values a module reads only at start-up need a restart, like the module switches.
 - The setup menu has no Bedrock form yet.
-- The `war-server` description still says "no war yet", but the preset turns `war` and `rollback` on.
 - `lands-style` turns on nations and levels, which still need towns: on a server without towns they stay off
   with a warning.
 

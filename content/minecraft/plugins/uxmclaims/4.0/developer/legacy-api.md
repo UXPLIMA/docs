@@ -63,7 +63,7 @@ published with each 4.x version and contain the 3.x classes only, so a 3.x plugi
 | `api.claimFacade()` | `api.lands()` plus the module services, `api.service(WarpService.class)` and so on |
 | `api.playerFacade()` | `api.profiles()` |
 | `api.getInstance(Class)` | `api.service(Class)` |
-| `BukkitConverter.toDomainLocation(Location)` | Not needed: `lands().at(Location)`; `new WorldRef(world.getUID(), world.getName())` and `ChunkPos.ofBlock(x, z)` for the rest |
+| `BukkitConverter.toDomainLocation(Location)` | Not needed: `lands().at(Location)`; `WorldRef.of(world)` and `ChunkPos.ofBlock(x, z)` for the rest |
 | `findById(UUID)` / `getById` / `getByIdUnsafe` | `lands().byId(UUID)` (an `Optional`) |
 | `findByChunk(Chunk)` | `lands().at(WorldRef, ChunkPos)` |
 | `findByLocation(Location)` | `lands().at(org.bukkit.Location)` or `protection().landAt(Location)` |

@@ -13,22 +13,24 @@ Module `claim-block` · enabled by default · `modules/claim-block/config.yml` �
 
 | Command | What it does | Permission |
 |---|---|---|
-| `/claim block` | Opens the claim block menu | none |
-| `/claim block place [type]` | Places the claim block where you stand (or the nearest free block) | `uxmclaims.ability.block.place` |
-| `/claim block change <type>` | Changes the block type | `uxmclaims.ability.block.change` |
-| `/claim block destroy` | Takes the claim block away | `uxmclaims.ability.block.destroy` |
+| `/claim block` | Opens the claim block menu | `uxmclaims.command.claim-block.menu` |
+| `/claim block place [type]` | Places the claim block where you stand (or the nearest free block) | `uxmclaims.command.claim-block.place` |
+| `/claim block change <type>` | Changes the block type | `uxmclaims.command.claim-block.change` |
+| `/claim block destroy` | Takes the claim block away | `uxmclaims.command.claim-block.destroy` |
 | `/uxm claim-block cleanup` | Removes claim blocks of lands that no longer exist | `uxmclaims.admin.claim-block` |
 | `/uxm claim-block cleanup all` | Takes every claim block out of the world | `uxmclaims.admin.claim-block` |
 | `/claim admin bulk setblock <type>` | Sets the type of every placed claim block | `uxmclaims.admin` |
 | `/claim admin bulk destroyblock` | Takes away every placed claim block | `uxmclaims.admin` |
 | `/claim admin giveitem <player> <tier> [amount]` | Gives an online player claim items of a tier | `uxmclaims.admin` |
 
-The `/claim block` commands act on the land you stand in.
+The `/claim block` commands act on the land you stand in. Their command nodes are open to everyone by default;
+place, change and destroy also need the ability node of the same name and the land role.
 
 ## Permissions
 
 | Node | Default | Grants |
 |---|---|---|
+| `uxmclaims.command.claim-block.<sub>` | everyone | The command of the table above (`menu` is the plain `/claim block`) |
 | `uxmclaims.ability.block.place` | everyone | Place the claim block |
 | `uxmclaims.ability.block.change` | everyone | Change the claim block type |
 | `uxmclaims.ability.block.destroy` | everyone | Remove the claim block |
@@ -70,7 +72,7 @@ Type keys are stored in the database: never rename one. Menu names and lore are 
 | `tiers.<tier>.radius` | `1` | Chunks around the used one that join the land: `0` one chunk, `1` 3x3, `2` 5x5 |
 | `tiers.<tier>.free` | `true` | The land and chunks cost nothing; `false` charges the normal prices |
 | `tiers.<tier>.refund-on-unclaim` | `true` | When the land is deleted, the item goes back to its owner (at the next join when offline) |
-| `tiers.<tier>.all-or-nothing` | `true` | When the chunks around cannot all be claimed: the land is deleted again and the player keeps the item. `false`: the land stays and the item is used up |
+| `tiers.<tier>.all-or-nothing` | `true` | When the chunks around cannot all be claimed: the land is deleted again and the player keeps the item. `false`: the land stays with only the chunk the item was used in, and the item is used up |
 | `tiers.<tier>.recipe.enabled` | `false` | Let players craft the item |
 | `tiers.<tier>.recipe.shape` | `EEE`, `EDE`, `EEE` | Crafting rows; a space is an empty slot |
 | `tiers.<tier>.recipe.ingredients` | `E: EMERALD`, `D: DIAMOND` | Letter to material |

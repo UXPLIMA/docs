@@ -33,8 +33,12 @@ its progress to whoever started it.
 | Node | Default | Grants |
 |---|---|---|
 | `uxmclaims.admin.rollback` | op | The `/uxm rollback` commands; `/claim history` in any land, free restores with no `owner-restore` check. |
-| `uxmclaims.command.rollback.history` | everyone | `/claim history` in a land you own. |
+| `uxmclaims.command.rollback.history` | everyone | `/claim history` in a land you own, or where your land role has `rollback:history`. |
 | `uxmclaims.command.rollback.history.restore` | everyone | `/claim history restore`, when `history.owner-restore` is on. |
+
+| Role permission | Given to | Grants |
+|---|---|---|
+| `rollback:history` | owner | Seeing the land's snapshots with `/claim history`, and restoring them where restores are allowed. |
 
 | Cost key | Default | What it pays for |
 |---|---|---|
@@ -60,7 +64,7 @@ its progress to whoever started it.
 | `on-unclaim.expiry` | `none` | Strategy for a land whose time ran out ([Expiry](expiry.md)). |
 | `on-unclaim.ruin` | `none` | Strategy for a ruined land, or a land of a ruined town, deleted at the end of its ruin ([Ruins](ruins.md)). |
 | `on-unclaim.plugin` | `none` | Strategy for a land deleted by another plugin or module. |
-| `history.owner-restore` | `true` | Owners may put a snapshot of their land back. Only the chunks still in the land are restored. |
+| `history.owner-restore` | `true` | Owners (and members with `rollback:history`) may put a snapshot of their land back. Only the chunks still in the land are restored. |
 
 ## When a land ends
 
@@ -86,7 +90,7 @@ module logs a warning at start: only snapshots taken by command or before a war 
 ## Notes
 
 - With the [War](war.md) module running, every land of the defending side is snapshotted (reason `war`) before a war starts.
-- `/claim history` is for the land's owner and staff only; members cannot use it, whatever their role.
+- `/claim history` is for the land's owner, members whose role has `rollback:history`, and staff.
 - The owner's restore price is taken when the snapshot is read and is not refunded if the restore fails or is cancelled.
 - `/uxm rollback coreprotect` does not run on Folia. CoreProtect is reached without a build dependency, and a border chunk takes four overlapping CoreProtect calls. The CoreProtect lookup form of `/claim history` (listing CoreProtect records) is not there yet.
 - Not stored: other plugins' data on block entities, beehive bees, furnace and brewing timers, paintings, mobs and dropped items. A chunk whose entities are not loaded is stored or restored without them.

@@ -16,8 +16,8 @@ Module `placeholders` · enabled by default · `modules/placeholders/config.yml`
 
 | Key | Default | What it does |
 |---|---|---|
-| `legacy-paths` | `true` | Keeps the 3.x paths working (`%uxmclaims_claim_name%`, `%uxmclaims_count:claim_members%`). Old paths that now belong to another module are forwarded through `aliases.yml`. |
-| `fallback-to-owned-land` | `true` | For `land_` and `claim_` placeholders: when the player stands in no land, use the only land they own (the 3.x order). `false` uses the land underfoot only. |
+| `legacy-paths` | `true` | Keeps the 3.x paths working (`%uxmclaims_claim_name%`, `%uxmclaims_count:claim_members%`). Old paths that now belong to another module are forwarded through `aliases.yml`. Needs a restart. |
+| `fallback-to-owned-land` | `true` | For `land_` and `claim_` placeholders: when the player picked no land with `/claim select` and stands in no land, use the only land they own (the 3.x order). `false` stops after the land underfoot. |
 
 The texts the placeholders print live in `lang/<code>/messages.yml` of the module:
 
@@ -77,7 +77,7 @@ The player:
 | `%uxmclaims_player_lands_owned%` | Lands the player owns. |
 | `%uxmclaims_player_lands_names%` | Names of the lands the player owns, comma separated, sorted. |
 | `%uxmclaims_player_chunks%` | Chunks over all lands the player owns. |
-| `%uxmclaims_player_limit_<name>%` | A limit value, online players only. `limit_claim` reads `uxmclaims.limit.claim`; an underscore stands for a dot. Unlimited prints `formats.unlimited`. |
+| `%uxmclaims_player_limit_<name>%` | A limit value, online players only. `limit_claim` reads `uxmclaims.limit.claim`, `limit_delay_teleport` the delay `uxmclaims.delay.teleport`; an underscore stands for a dot. Unlimited prints `formats.unlimited`; a limit no module registered prints nothing. |
 
 The spot the player stands on (`true` or `false`, empty for an offline player):
 

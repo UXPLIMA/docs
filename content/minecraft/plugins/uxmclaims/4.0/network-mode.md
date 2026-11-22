@@ -27,7 +27,7 @@ truth: when Redis is down, changes still arrive by polling.
 
 | Requirement | Detail |
 |---|---|
-| Storage | MySQL, MariaDB or PostgreSQL on every server, same database and same `table-prefix`. SQLite is never shared, and the network module refuses to start on it |
+| Storage | MySQL, MariaDB or PostgreSQL on every server, same database and same `table-prefix` (on PostgreSQL also the same `storage.remote.schema`). SQLite is never shared, and the network module refuses to start on it |
 | The same jar | Every server on the same uxmClaims version |
 | Node ids | A different `node-id` per server; empty uses the server's address and port |
 | Redis | Optional, 6 or newer for ACL users. No other Redis plugin is needed |
@@ -35,9 +35,10 @@ truth: when Redis is down, changes still arrive by polling.
 ## Setting it up
 
 1. Back up the database.
-2. On every server, set `storage` in `config.yml` to the shared database.
+2. On every server, set `storage` in `config.yml` to the shared database, and restart.
 3. Apply the `network` preset on one server (`/uxm preset apply network`), or turn `network` on in
-   `modules.yml` by hand. Copy `modules.yml` to every server: they should run the same modules.
+   `modules.yml` by hand. The preset is refused while `storage.type` is still `SQLITE`. Copy `modules.yml`
+   to every server: they should run the same modules.
 4. On every server, set `node-id` in `modules/network/config.yml`.
 5. Pick the server that may open land vaults and put its node id in `vault-node` on every server.
    Leave it empty to keep vaults closed everywhere.
@@ -85,5 +86,7 @@ another server takes over once its heartbeat is missed.
   same moment keep the last save.
 - With the Discord module on its own bot, run the module on one server only; every server would
   otherwise start its own bot.
+- Servers that move from 3.x onto one shared database: move one server first. The others then only convert
+  their own files, see [From 3.x](upgrading/from-3x.md).
 
 Related: [Network](modules/network.md), [Database](configuration/database.md), [Presets](configuration/presets.md)

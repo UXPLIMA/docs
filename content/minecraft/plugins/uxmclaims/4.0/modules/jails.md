@@ -39,7 +39,7 @@ The jails button on the town menu shows the same list as `/town jails`.
 |---|---|---|
 | `uxmclaims.command.jails` | everyone | The `/town` jail, cell and outlaw commands, where the town role allows them. |
 | `uxmclaims.admin.jails` | op | Jail and release in any town without role checks or limits; `/uxm jails release`. |
-| `uxmclaims.bypass.jail` | nobody | The player cannot be jailed (checked while they are online). |
+| `uxmclaims.bypass.jail` | nobody | The player cannot be jailed. Offline players are checked through the [LuckPerms](luckperms.md) module; without it they count as not having it. |
 | `uxmclaims.bypass.outlaw` | nobody | An outlaw with it may still enter the town. |
 
 | Role permission | Default holder | Allows |

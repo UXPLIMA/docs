@@ -45,8 +45,9 @@ on [Presets](configuration/presets.md).
 contents and settings move to 4.0 on its first start. Try it first with a dry run, and keep the 3.x
 backup. See [Upgrading from 3.x](upgrading/from-3x.md).
 
-**I run several 3.x servers on one database.** Move one server, then copy its converted plugin
-folder to the others. Never start another server on its own 3.x folder after the move. See
+**I run several 3.x servers on one database.** Move one server first and let it finish. A second
+server that then starts on its own 3.x folder sees the moved data and only converts its own config,
+language and menu files (`CONFIG_ONLY` in its report); it copies and deletes nothing. See
 [Upgrading from 3.x](upgrading/from-3x.md).
 
 **Can I go back to 3.x?** Yes, with the rollback steps on [Rollback to 3.x](upgrading/rollback.md).
@@ -61,8 +62,8 @@ working. The bridge goes away in 5.0, so ask the author to move to the 4.0 API; 
 
 **Do admins still bypass protection?** A server moved from 3.x keeps the 3.x behaviour:
 `protection.admin-bypass` in `modules/lands/config.yml` is set to `IMPLICIT`, and `uxmclaims.admin`
-always bypasses. A new install starts with `TOGGLE`, and 4.0.0 has no command yet to turn the bypass
-on, so set `IMPLICIT` if your staff need it. See [Behaviour changes](upgrading/behaviour-changes.md).
+always bypasses. A new install starts with `TOGGLE`: staff with `uxmclaims.admin.bypass` turn it on
+with `/uxm bypass on` and off with `/uxm bypass off`. See [Behaviour changes](upgrading/behaviour-changes.md).
 
 ## Players and permissions
 
@@ -78,7 +79,8 @@ player has the `/claim` command nodes. With LuckPerms and `undefined-ability: de
 `modules/economy/costs.yml`. See [Economy](modules/economy.md).
 
 **Can each player see the plugin in their own language?** Set `language.per-player: true` in
-`config.yml` and list the languages in `language.enabled`. English and Turkish ship with 4.0. Some
+`config.yml` and list the languages in `language.enabled`. Eight languages ship with 4.0: English,
+Turkish, German, Spanish, French, Polish, Brazilian Portuguese and Russian. Some
 texts, such as holograms, signs and town lists, stay in the server language. See
 [Languages](configuration/languages.md).
 
